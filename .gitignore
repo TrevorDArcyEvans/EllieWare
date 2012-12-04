@@ -1,0 +1,8 @@
+.metadata
+.DS_Store
+bin
+obj
+*.suo
+_ReSharper*
+*.user
+Thumbs.db

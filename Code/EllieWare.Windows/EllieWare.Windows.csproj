@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE021F3A-24BE-434B-832A-4AEF4F808FB5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EllieWare.Windows</RootNamespace>
+    <AssemblyName>EllieWare.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
+      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
+      <Name>EllieWare.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.DateTime\EllieWare.DateTime.csproj">
+      <Project>{22ABAC35-D498-413E-A429-98D317142CB6}</Project>
+      <Name>EllieWare.DateTime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Dropbox\EllieWare.Dropbox.csproj">
+      <Project>{177CA389-1B5B-4608-B4CE-2B932EB67D6A}</Project>
+      <Name>EllieWare.Dropbox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
+      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
+      <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Logging\EllieWare.Logging.csproj">
+      <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
+      <Name>EllieWare.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
+      <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
+      <Name>EllieWare.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.IO\EllieWare.IO.csproj">
+      <Project>{186AC2DD-F372-47F3-A279-F905F37DBA9D}</Project>
+      <Name>EllieWare.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Transfer.FTP\EllieWare.Transfer.FTP.csproj">
+      <Project>{6148FE29-F616-4501-931B-27A04C3E9B60}</Project>
+      <Name>EllieWare.Transfer.FTP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Transfer.SMTP\EllieWare.Transfer.SMTP.csproj">
+      <Project>{265A9186-5FA5-48DF-8FBE-71F2EBF750DE}</Project>
+      <Name>EllieWare.Transfer.SMTP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Zip\EllieWare.Zip.csproj">
+      <Project>{3E09D8C1-FDC2-47ED-8195-27F8D61C5F9F}</Project>
+      <Name>EllieWare.Zip</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Manager\EllieWare.Manager.csproj">
+      <Project>{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}</Project>
+      <Name>EllieWare.Manager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="robot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

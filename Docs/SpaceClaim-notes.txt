@@ -1,0 +1,137 @@
+---------------------------------------------------------
+
+// get active document
+-Window.ActiveWindow
+Window.Document
+
+---------------------------------------------------------
+
+// import a foreign file
+Document.Open
+  -ImportOptions.Create
+    ImportOptions.Acis
+      AcisImportOptions.CreateAssembly
+
+---------------------------------------------------------
+
+// get (main) part/s
+Document.MainPart
+Document.Parts
+
+---------------------------------------------------------
+
+// export to foreign file
+Part.Export
+  PartExportFormat.Step OR PartExportFormat.AcisBinary
+  -ExportOptions.Create
+    ExportOptions.Acis
+      AcisExportOptions.Units
+    ExportOptions.Step
+
+---------------------------------------------------------
+
+// export to 2d PDF
+Window.ExportDrawingSheet
+  DrawingSheetWindowExportFormat.Pdf
+
+---------------------------------------------------------
+
+// save current document to same/different file name
+Document.Save
+Document.SaveAs
+
+---------------------------------------------------------
+
+// view manipulation
+Window.ZoomExtents
+Window.ZoomSelection
+
+---------------------------------------------------------
+
+// export resized bitmap of window
+Window.CreateBitmap
+
+---------------------------------------------------------
+
+// export bitmap of window
+Window.Export
+  WindowExportFormat.Png
+
+---------------------------------------------------------
+
+// create drawing view of model
+Document.DrawingSheets
+  -DrawingSheet.Create
+    DrawingSheet.Views
+      -DrawingView.CreateGeneralView
+
+---------------------------------------------------------
+
+// export (thumbnail?) images of drawing sheet views
+Document.DrawingSheets
+  DrawingSheet.Images
+    Image.Bitmap
+
+---------------------------------------------------------
+
+// convert from user length units to system length units
+Document.Units
+  Units.UnitsSystem
+    UnitsSystem.Metric OR UnitsSystem.Imperial
+  Units.Length
+    MeasurementUnit.ConversionFactor
+-MeasurementUnit.System
+
+---------------------------------------------------------
+
+// colour faces below a threshold area
+Part.Bodies
+  DesignBody.Faces
+    DesignFace.Area
+    DesignFace.SetColor
+
+---------------------------------------------------------
+
+// select edges below a threshold length
+Part.Bodies
+  DesignBody.Edges
+    DesignEdge.Shape
+      Edge.Length
+
+Window.ActiveContext
+  InteractionContext.Selection
+    ICollection.Add
+
+---------------------------------------------------------
+
+// remove faces below a threshold area
+Part.Bodies
+  DesignBody.Faces
+    DesignFace.Area
+    DesignFace.Shape as Face
+  DesignBody.Shape as Body
+  Body.DeleteFaces
+    RepairAction.GrowSurrounding OR RepairAction.CapAcross
+
+---------------------------------------------------------
+
+// differences between two parts
+Part.Bodies
+  DesignBody.Shape as Body
+  Body.Copy
+  Body.Unite OR Body.Fuse
+  Body.Subtract
+
+Document.Create
+Part.Create
+DesignBody.Create
+Part.Bodies
+  ICollection.Add
+
+---------------------------------------------------------
+
+CommandData<T>
+  A base class for storing command data as an XML string.
+
+---------------------------------------------------------
+
