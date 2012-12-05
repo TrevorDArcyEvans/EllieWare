@@ -33,6 +33,11 @@ namespace EllieWare.Interfaces
     IParameter Get(Guid key);
   }
 
+  public interface IMutableRunnable : IRunnable
+  {
+    event EventHandler ConfigurationChanged;
+  }
+
   public interface IRunnable : IXmlSerializable
   {
     string Description { get; }
