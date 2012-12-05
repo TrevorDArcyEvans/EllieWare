@@ -14,7 +14,7 @@ namespace EllieWare.Logging
     {
       get
       {
-        return "LoggingFactory Title";
+        return "Log a message";
       }
     }
 
@@ -22,7 +22,7 @@ namespace EllieWare.Logging
     {
       get
       {
-        return "LoggingFactory Description";
+        return "Log messages to the output window";
       }
     }
 
@@ -30,7 +30,7 @@ namespace EllieWare.Logging
     {
       get
       {
-        return "LoggingFactory Keywords";
+        return "log, message, debug";
       }
     }
 
@@ -40,8 +40,8 @@ namespace EllieWare.Logging
       {
         return new[]
                      {
-                       "TODO    LoggingFactory Categories1", 
-                       "TODO    LoggingFactory Categories2"
+                       "logging", 
+                       "debugging"
                      };
       }
     }

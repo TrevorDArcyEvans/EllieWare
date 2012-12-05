@@ -51,7 +51,7 @@
       this.tableLayoutPanel1.RowCount = 2;
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 243);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 123);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
       // label1
@@ -81,6 +81,7 @@
       this.mMessage.Name = "mMessage";
       this.mMessage.Size = new System.Drawing.Size(263, 20);
       this.mMessage.TabIndex = 2;
+      this.mMessage.TextChanged += new System.EventHandler(this.Message_TextChanged);
       // 
       // mLevel
       // 
@@ -97,6 +98,7 @@
       this.mLevel.Name = "mLevel";
       this.mLevel.Size = new System.Drawing.Size(263, 21);
       this.mLevel.TabIndex = 3;
+      this.mLevel.SelectedIndexChanged += new System.EventHandler(this.Level_SelectedIndexChanged);
       // 
       // Logging
       // 
@@ -104,7 +106,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.tableLayoutPanel1);
       this.Name = "Logging";
-      this.Size = new System.Drawing.Size(328, 243);
+      this.Size = new System.Drawing.Size(328, 123);
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
       this.ResumeLayout(false);
