@@ -64,7 +64,6 @@ namespace EllieWare.IO
     {
       // TODO   ReadXml
       var dummy = reader.GetAttribute("bbb");
-      label1.Text = dummy;
     }
 
     public void WriteXml(XmlWriter writer)
