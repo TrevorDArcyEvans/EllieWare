@@ -42,7 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileEnumeration.cs" />
+    <Compile Include="DirectoryCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryCreate.Designer.cs">
+      <DependentUpon>DirectoryCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryCreateFactory.cs" />
+    <Compile Include="FileDelete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileDelete.Designer.cs">
+      <DependentUpon>FileDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileDeleteFactory.cs" />
     <Compile Include="FileExists.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -53,12 +66,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
+      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
+      <Name>EllieWare.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DirectoryCreate.resx">
+      <DependentUpon>DirectoryCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDelete.resx">
+      <DependentUpon>FileDelete.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FileExists.resx">
       <DependentUpon>FileExists.cs</DependentUpon>
     </EmbeddedResource>

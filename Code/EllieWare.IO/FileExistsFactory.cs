@@ -12,7 +12,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "FileExistsFactory Title";
+        return "File checker";
       }
     }
 
@@ -20,7 +20,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "FileExistsFactory Description";
+        return "Check if a file exists or not";
       }
     }
 
@@ -28,7 +28,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "FileExistsFactory Keywords";
+        return "file system, IO, disk";
       }
     }
 
@@ -38,8 +38,7 @@ namespace EllieWare.IO
       {
         return new[]
                      {
-                       "TODO    FileExistsFactory Categories1", 
-                       "TODO    FileExistsFactory Categories2"
+                       "File system"
                      };
       }
     }

@@ -3,43 +3,45 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public partial class FileExists : UserControl, IRunnable
+  public partial class FileExists : MutableRunnableBase
   {
-    private readonly object mRoot;
-    private readonly ICallback mCallback;
-    private readonly IParameterManager mParamMgr;
-
     public FileExists()
     {
       InitializeComponent();
     }
 
     public FileExists(object root, ICallback callback, IParameterManager mgr) :
-      this()
+      base(root, callback, mgr)
     {
-      mRoot = root;
-      mCallback = callback;
-      mParamMgr = mgr;
+      InitializeComponent();
+
+      mExists.SelectedIndex = 0;
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
-        return "TODO    FileExists Description";
+        var exist = mExists.SelectedIndex == 1;
+        var descrip = string.Format("Check that {0} is ", mFilePath.Text) + (exist ? "" : "not ") + "present";
+
+        return descrip;
       }
     }
 
-    public Control ConfigurationUserInterface
+    public override Control ConfigurationUserInterface
     {
       get
       {
@@ -47,29 +49,37 @@ namespace EllieWare.IO
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
-      // TODO   Run;
-      mCallback.Log(LogLevel.Information, Description);
+      var exist = mExists.SelectedIndex == 1;
+      var fileExists = File.Exists(mFilePath.Text);
 
-      return true;
+      return exist ? fileExists : !fileExists;
     }
 
-    public XmlSchema GetSchema()
+    public override void ReadXml(XmlReader reader)
     {
-      return null;
+      var numStr = reader.GetAttribute("Exists");
+      var num = int.Parse(numStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
+      mExists.SelectedIndex = num;
+
+      mFilePath.Text = reader.GetAttribute("FilePath");
     }
 
-    public void ReadXml(XmlReader reader)
+    public override void WriteXml(XmlWriter writer)
     {
-      // TODO   ReadXml
-      var dummy = reader.GetAttribute("bbb");
+      writer.WriteAttributeString("FilePath", mFilePath.Text);
+      writer.WriteAttributeString("Exists", mExists.SelectedIndex.ToString(CultureInfo.InvariantCulture));
     }
 
-    public void WriteXml(XmlWriter writer)
+    private void FilePath_TextChanged(object sender, EventArgs e)
     {
-      // TODO   WriteXml
-      writer.WriteAttributeString("bbb", GetType().ToString());
+      FireConfigurationChanged();
+    }
+
+    private void Exists_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
     }
   }
 }
