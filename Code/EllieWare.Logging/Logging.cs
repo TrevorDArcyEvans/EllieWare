@@ -9,32 +9,27 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
 {
-  public partial class Logging : UserControl, IRunnable
+  public partial class Logging : MutableRunnableBase
   {
-    private readonly object mRoot;
-    private readonly ICallback mCallback;
-    private readonly IParameterManager mParamMgr;
-
     public Logging()
+    {
+      InitializeComponent();
+    }
+
+    public Logging(object root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
 
       mLevel.SelectedIndex = 0;
     }
 
-    public Logging(object root, ICallback callback, IParameterManager mgr) :
-      this()
-    {
-      mRoot = root;
-      mCallback = callback;
-      mParamMgr = mgr;
-    }
-
-    public string Description
+    public override string Description
     {
       get
       {
@@ -43,7 +38,7 @@ namespace EllieWare.Logging
       }
     }
 
-    public Control ConfigurationUserInterface
+    public override Control ConfigurationUserInterface
     {
       get
       {
@@ -51,19 +46,14 @@ namespace EllieWare.Logging
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
       mCallback.Log((LogLevel)mLevel.SelectedIndex, mMessage.Text);
 
       return true;
     }
 
-    public XmlSchema GetSchema()
-    {
-      return null;
-    }
-
-    public void ReadXml(XmlReader reader)
+    public override void ReadXml(XmlReader reader)
     {
       var levelStr = reader.GetAttribute("Level");
       var levelNum = int.Parse(levelStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
@@ -71,10 +61,20 @@ namespace EllieWare.Logging
       mMessage.Text = reader.GetAttribute("Message");
     }
 
-    public void WriteXml(XmlWriter writer)
+    public override void WriteXml(XmlWriter writer)
     {
       writer.WriteAttributeString("Level", mLevel.SelectedIndex.ToString(CultureInfo.InvariantCulture));
       writer.WriteAttributeString("Message", mMessage.Text);
+    }
+
+    private void Level_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
+    }
+
+    private void Message_TextChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
     }
   }
 }
