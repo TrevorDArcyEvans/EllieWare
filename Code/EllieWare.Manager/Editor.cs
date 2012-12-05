@@ -115,6 +115,8 @@ namespace EllieWare.Manager
       mStepsContainer.Panel2.Controls.Clear();
       var step = (IRunnable)mSteps.SelectedItem;
       mStepsContainer.Panel2.Controls.Add(step.ConfigurationUserInterface);
+      step.ConfigurationUserInterface.Dock = DockStyle.Fill;
+
       UpdateButtons();
     }
 
