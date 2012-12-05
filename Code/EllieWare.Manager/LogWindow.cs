@@ -20,7 +20,8 @@ namespace EllieWare.Manager
     public void Log(LogLevel level, string message)
     {
       // TODO   LogLevel
-      txtLog.AppendText(message + Environment.NewLine);
+      var msg = string.Format("{0} : {1}", level, message);
+      txtLog.AppendText(msg + Environment.NewLine);
     }
 
     public void Clear()

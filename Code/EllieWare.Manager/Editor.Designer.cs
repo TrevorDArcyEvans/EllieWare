@@ -1,4 +1,6 @@
-﻿namespace EllieWare.Manager
+﻿using EllieWare.Support;
+
+namespace EllieWare.Manager
 {
   partial class Editor
   {
@@ -36,7 +38,7 @@
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdSave = new System.Windows.Forms.Button();
       this.mStepsContainer = new System.Windows.Forms.SplitContainer();
-      this.mSteps = new System.Windows.Forms.ListBox();
+      this.mSteps = new EllieWare.Support.RefreshingListBox();
       this.CmdStep = new System.Windows.Forms.Button();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -111,6 +113,7 @@
       // 
       // CmdSave
       // 
+      this.CmdSave.Enabled = false;
       this.CmdSave.Location = new System.Drawing.Point(401, 360);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
@@ -251,7 +254,7 @@
     private System.Windows.Forms.Button CmdRun;
     private System.Windows.Forms.Button CmdSave;
     private System.Windows.Forms.SplitContainer mStepsContainer;
-    private System.Windows.Forms.ListBox mSteps;
+    private RefreshingListBox mSteps;
     private System.Windows.Forms.Button CmdStep;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

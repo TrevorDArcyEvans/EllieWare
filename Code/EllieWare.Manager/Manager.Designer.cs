@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Spec1",
             "aaa"}, -1);
@@ -45,8 +46,11 @@
       this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.RmbFileMgr = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.CmdDelete = new System.Windows.Forms.ToolStripMenuItem();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
+      this.RmbFileMgr.SuspendLayout();
       this.SuspendLayout();
       // 
       // CmdNew
@@ -96,6 +100,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
       this.mSpecs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
+      this.mSpecs.ContextMenuStrip = this.RmbFileMgr;
       this.mSpecs.FullRowSelect = true;
       this.mSpecs.HideSelection = false;
       this.mSpecs.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
@@ -155,6 +160,24 @@
       this.tableLayoutPanel2.Size = new System.Drawing.Size(645, 390);
       this.tableLayoutPanel2.TabIndex = 6;
       // 
+      // RmbFileMgr
+      // 
+      this.RmbFileMgr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CmdDelete});
+      this.RmbFileMgr.Name = "RmbFileMgr";
+      this.RmbFileMgr.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+      this.RmbFileMgr.ShowImageMargin = false;
+      this.RmbFileMgr.Size = new System.Drawing.Size(128, 48);
+      this.RmbFileMgr.Opening += new System.ComponentModel.CancelEventHandler(this.RmbFileMgr_Opening);
+      // 
+      // CmdDelete
+      // 
+      this.CmdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdDelete.Name = "CmdDelete";
+      this.CmdDelete.Size = new System.Drawing.Size(127, 22);
+      this.CmdDelete.Text = "Delete";
+      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
+      // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +191,7 @@
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel2.ResumeLayout(false);
       this.tableLayoutPanel2.PerformLayout();
+      this.RmbFileMgr.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -182,5 +206,7 @@
     private System.Windows.Forms.ColumnHeader columnHeader1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+    private System.Windows.Forms.ContextMenuStrip RmbFileMgr;
+    private System.Windows.Forms.ToolStripMenuItem CmdDelete;
   }
 }

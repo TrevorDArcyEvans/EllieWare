@@ -133,5 +133,17 @@ namespace EllieWare.Manager
     {
       UpdateButtons();
     }
+
+    private void CmdDelete_Click(object sender, EventArgs e)
+    {
+      var selFilePath = GetSelectedSpecificationPath();
+      File.Delete(selFilePath);
+      RefreshSpecificationsList();
+    }
+
+    private void RmbFileMgr_Opening(object sender, CancelEventArgs e)
+    {
+      CmdDelete.Enabled = mSpecs.SelectedItems.Count > 0;
+    }
   }
 }
