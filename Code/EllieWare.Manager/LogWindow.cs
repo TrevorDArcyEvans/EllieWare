@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Controls.Development;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
@@ -19,14 +20,13 @@ namespace EllieWare.Manager
 
     public void Log(LogLevel level, string message)
     {
-      // TODO   LogLevel
-      var msg = string.Format("{0} : {1}", level, message);
-      txtLog.AppendText(msg + Environment.NewLine);
+      var item = new ImageListBoxItem(message, (int) level);
+      mMessages.Items.Add(item);
     }
 
     public void Clear()
     {
-      txtLog.Clear();
+      mMessages.Items.Clear();
     }
 
     public bool AllowClose { get; set; }

@@ -38,19 +38,20 @@
       System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Spec3",
             "ccc"}, -1);
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manager));
       this.CmdNew = new System.Windows.Forms.Button();
       this.CmdEdit = new System.Windows.Forms.Button();
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdDebug = new System.Windows.Forms.Button();
       this.mSpecs = new System.Windows.Forms.ListView();
       this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.RmbFileMgr = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.CmdDelete = new System.Windows.Forms.ToolStripMenuItem();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.RmbFileMgr.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
-      this.RmbFileMgr.SuspendLayout();
       this.SuspendLayout();
       // 
       // CmdNew
@@ -122,6 +123,24 @@
       this.columnHeader1.Text = "Title";
       this.columnHeader1.Width = 450;
       // 
+      // RmbFileMgr
+      // 
+      this.RmbFileMgr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CmdDelete});
+      this.RmbFileMgr.Name = "RmbFileMgr";
+      this.RmbFileMgr.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+      this.RmbFileMgr.ShowImageMargin = false;
+      this.RmbFileMgr.Size = new System.Drawing.Size(83, 26);
+      this.RmbFileMgr.Opening += new System.ComponentModel.CancelEventHandler(this.RmbFileMgr_Opening);
+      // 
+      // CmdDelete
+      // 
+      this.CmdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdDelete.Name = "CmdDelete";
+      this.CmdDelete.Size = new System.Drawing.Size(82, 22);
+      this.CmdDelete.Text = "Delete";
+      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
+      // 
       // tableLayoutPanel1
       // 
       this.tableLayoutPanel1.AutoSize = true;
@@ -160,38 +179,21 @@
       this.tableLayoutPanel2.Size = new System.Drawing.Size(645, 390);
       this.tableLayoutPanel2.TabIndex = 6;
       // 
-      // RmbFileMgr
-      // 
-      this.RmbFileMgr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmdDelete});
-      this.RmbFileMgr.Name = "RmbFileMgr";
-      this.RmbFileMgr.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-      this.RmbFileMgr.ShowImageMargin = false;
-      this.RmbFileMgr.Size = new System.Drawing.Size(128, 48);
-      this.RmbFileMgr.Opening += new System.ComponentModel.CancelEventHandler(this.RmbFileMgr_Opening);
-      // 
-      // CmdDelete
-      // 
-      this.CmdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.CmdDelete.Name = "CmdDelete";
-      this.CmdDelete.Size = new System.Drawing.Size(127, 22);
-      this.CmdDelete.Text = "Delete";
-      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
-      // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(669, 414);
       this.Controls.Add(this.tableLayoutPanel2);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Manager";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Manager";
+      this.RmbFileMgr.ResumeLayout(false);
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel2.ResumeLayout(false);
       this.tableLayoutPanel2.PerformLayout();
-      this.RmbFileMgr.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }

@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Adder));
       this.CmdCancel = new System.Windows.Forms.Button();
       this.CmdOK = new System.Windows.Forms.Button();
       this.txtSearchBox = new System.Windows.Forms.TextBox();
@@ -213,6 +214,7 @@
       this.CancelButton = this.CmdCancel;
       this.ClientSize = new System.Drawing.Size(464, 515);
       this.Controls.Add(this.tableLayoutPanel3);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Adder";
       this.ShowInTaskbar = false;
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;

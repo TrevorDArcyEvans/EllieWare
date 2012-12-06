@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileSaveDialog));
       this.CmdCancel = new System.Windows.Forms.Button();
       this.CmdOK = new System.Windows.Forms.Button();
       this.mFileNames = new System.Windows.Forms.ComboBox();
@@ -75,6 +76,7 @@
       this.Controls.Add(this.mFileNames);
       this.Controls.Add(this.CmdOK);
       this.Controls.Add(this.CmdCancel);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.MaximumSize = new System.Drawing.Size(5000, 121);
       this.MinimumSize = new System.Drawing.Size(500, 121);
