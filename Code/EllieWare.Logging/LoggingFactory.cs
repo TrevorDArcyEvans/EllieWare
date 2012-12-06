@@ -40,8 +40,8 @@ namespace EllieWare.Logging
       {
         return new[]
                      {
-                       "logging", 
-                       "debugging"
+                       "Logging", 
+                       "Debugging"
                      };
       }
     }
