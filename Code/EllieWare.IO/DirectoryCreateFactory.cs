@@ -6,40 +6,35 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class DirectoryCreateFactory : IFactory
+  public class DirectoryCreateFactory : IOFactoryBase
   {
-    #region Implementation of IFactory
-
-    public string Title
+    public override string Title
     {
-      get { return "Create a directory"; }
+      get
+      {
+        return "Create a directory";
+      }
     }
 
-    public string Description
+    public override string Description
     {
-      get { return "Create a directory if it does not exist"; }
+      get
+      {
+        return "Create a directory if it does not exist";
+      }
     }
 
-    public string Keywords
+    public override Type CreatedType
     {
-      get { return "File system, IO, disk"; }
+      get
+      {
+        return typeof(DirectoryCreate);
+      }
     }
 
-    public IEnumerable<string> Categories
+    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
-      get { return new[] { "File system", "disk" }; }
+      return new DirectoryCreate(root, callback, mgr);
     }
-
-    public Type CreatedType
-    {
-      get { return typeof(DirectoryCreate); }
-    }
-
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
-    {
-      throw new NotImplementedException();
-    }
-
-    #endregion
   }
 }

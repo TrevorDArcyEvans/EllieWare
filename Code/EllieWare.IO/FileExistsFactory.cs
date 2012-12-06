@@ -6,9 +6,9 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class FileExistsFactory : IFactory
+  public class FileExistsFactory : IOFactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -16,7 +16,7 @@ namespace EllieWare.IO
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -24,26 +24,7 @@ namespace EllieWare.IO
       }
     }
 
-    public string Keywords
-    {
-      get
-      {
-        return "file system, IO, disk";
-      }
-    }
-
-    public IEnumerable<string> Categories
-    {
-      get
-      {
-        return new[]
-                     {
-                       "File system"
-                     };
-      }
-    }
-
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -51,7 +32,7 @@ namespace EllieWare.IO
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
       return new FileExists(root, callback, mgr);
     }

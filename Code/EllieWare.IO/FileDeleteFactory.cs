@@ -6,36 +6,35 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class FileDeleteFactory : IFactory
+  public class FileDeleteFactory : IOFactoryBase
   {
-    public string Title
+    public override string Title
     {
-      get { return "Delete a file"; }
+      get
+      {
+        return "Delete a file";
+      }
     }
 
-    public string Description
+    public override string Description
     {
-      get { return "Delete a file"; }
+      get
+      {
+        return "Delete a file";
+      }
     }
 
-    public string Keywords
+    public override Type CreatedType
     {
-      get { return "file system, IO, disk"; }
+      get
+      {
+        return typeof(FileDelete);
+      }
     }
 
-    public IEnumerable<string> Categories
+    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
-      get { return new []{"File system", "Disk"}; }
-    }
-
-    public Type CreatedType
-    {
-      get { return typeof(FileDelete); }
-    }
-
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
-    {
-      throw new NotImplementedException();
+      return new FileDelete(root, callback, mgr);
     }
   }
 }
