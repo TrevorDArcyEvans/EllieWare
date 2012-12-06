@@ -37,7 +37,7 @@ namespace EllieWare.DateTime
 
     public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
-      throw new NotImplementedException();
+      return new DateTimeLog(root, callback, mgr);
     }
 
     #endregion
