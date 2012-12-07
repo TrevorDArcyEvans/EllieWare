@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace EllieWare.Windows
       Application.SetCompatibleTextRenderingDefault(false);
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-      var userSpecsPath = Path.Combine(userDocs, "EllieWare for Windows");
+      var userSpecsPath = Path.Combine(userDocs, "RobotWare for Windows");
       Directory.CreateDirectory(userSpecsPath);
 
       Application.Run(new EllieWare.Manager.Manager(null, userSpecsPath));

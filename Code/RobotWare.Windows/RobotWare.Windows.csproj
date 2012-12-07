@@ -8,8 +8,8 @@
     <ProjectGuid>{AE021F3A-24BE-434B-832A-4AEF4F808FB5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EllieWare.Windows</RootNamespace>
-    <AssemblyName>EllieWare.Windows</AssemblyName>
+    <RootNamespace>RobotWare.Windows</RootNamespace>
+    <AssemblyName>RobotWare.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
