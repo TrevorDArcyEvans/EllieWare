@@ -20,17 +20,12 @@ namespace EllieWare.Interfaces
     void Log(LogLevel level, string message);
   }
 
-  public interface IParameter : IXmlSerializable
-  {
-    string DisplayName { get; }
-    string Value { get; }
-  }
-
   public interface IParameterManager : IXmlSerializable
   {
-    bool Contains(Guid key);
-    void Add(Guid key, IParameter parameter);
-    IParameter Get(Guid key);
+    IEnumerable<string> DisplayNames { get; }
+    bool Contains(string displayName);
+    void Add(string displayName, object parameter);
+    object Get(string displayName);
   }
 
   public interface IMutableRunnable : IRunnable
