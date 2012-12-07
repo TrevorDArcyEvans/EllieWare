@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using EllieWare.Interfaces;
@@ -14,18 +12,14 @@ namespace EllieWare.Common
     private readonly ICallback mCallback;
     private readonly IEnumerable<IFactory> mFactories;
 
-    public Specification()
-    {
-      ParameterManager = new ParameterManager();
-      Steps = new List<IRunnable>();
-    }
-
-    public Specification(object root, ICallback callback, IEnumerable<IFactory> factories) :
-      this()
+    public Specification(object root, ICallback callback, IEnumerable<IFactory> factories) 
     {
       mRoot = root;
       mCallback = callback;
       mFactories = factories;
+
+      ParameterManager = new ParameterManager();
+      Steps = new List<IRunnable>();
     }
 
     public IParameterManager ParameterManager
