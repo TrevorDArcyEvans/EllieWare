@@ -18,6 +18,8 @@ namespace EllieWare.IO
       base(root, callback, mgr)
     {
       InitializeComponent();
+
+      mExists.SelectedIndex = 0;
     }
 
     public override void ReadXml(XmlReader reader)
