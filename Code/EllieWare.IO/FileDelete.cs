@@ -1,63 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Schema;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public partial class FileDelete : MutableRunnableBase
+  public class FileDelete : FileExists
   {
-    public FileDelete()
-    {
-      InitializeComponent();
-    }
-
     public FileDelete(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
+      lblExists.Visible = mExists.Visible = false;
     }
 
     #region Implementation of IRunnable
 
     public override string Description
     {
-      get { throw new NotImplementedException(); }
+      get
+      {
+        var descrip = string.Format("Delete {0}", mFilePath.Text);
+
+        return descrip;
+      }
     }
 
     public override Control ConfigurationUserInterface
     {
-      get { return this; }
+      get
+      {
+        return this;
+      }
     }
 
     public override bool Run()
     {
-      throw new NotImplementedException();
+      try
+      {
+        File.Delete(mFilePath.Text);
+      }
+      catch (Exception ex)
+      {
+        mCallback.Log(LogLevel.Critical, ex.Message);
+
+        return false;
+      }
+
+      return true;
     }
 
     #endregion
-
-    public override void ReadXml(XmlReader reader)
-    {
-      throw new NotImplementedException();
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      throw new NotImplementedException();
-    }
-
-    private void FilePath_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
   }
 }

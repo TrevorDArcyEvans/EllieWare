@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class IOFactoryBase : IFactory
+  public abstract class IOFactoryBase
   {
     #region Implementation of IFactory
 
-    public virtual string Title
-    {
-      get { throw new NotImplementedException(); }
-    }
-
-    public virtual string Description
-    {
-      get { throw new NotImplementedException(); }
-    }
+    public abstract string Title { get; }
+    public abstract string Description { get; }
 
     public string Keywords
     {
@@ -40,15 +31,8 @@ namespace EllieWare.IO
       }
     }
 
-    public virtual Type CreatedType
-    {
-      get { throw new NotImplementedException(); }
-    }
-
-    public virtual IRunnable Create(object root, ICallback callback, IParameterManager mgr)
-    {
-      throw new NotImplementedException();
-    }
+    public abstract Type CreatedType { get; }
+    public abstract IRunnable Create(object root, ICallback callback, IParameterManager mgr);
 
     #endregion
   }

@@ -42,18 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectoryBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryBase.Designer.cs">
+      <DependentUpon>DirectoryBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectoryCreate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DirectoryCreate.Designer.cs">
-      <DependentUpon>DirectoryCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="DirectoryCreateFactory.cs" />
-    <Compile Include="FileDelete.cs">
+    <Compile Include="DirectoryDelete.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FileDelete.Designer.cs">
-      <DependentUpon>FileDelete.cs</DependentUpon>
+    <Compile Include="DirectoryDeleteFactory.cs" />
+    <Compile Include="DirectoryExists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryExistsFactory.cs" />
+    <Compile Include="FileDelete.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FileDeleteFactory.cs" />
     <Compile Include="FileExists.cs">
@@ -77,11 +85,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DirectoryCreate.resx">
-      <DependentUpon>DirectoryCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FileDelete.resx">
-      <DependentUpon>FileDelete.cs</DependentUpon>
+    <EmbeddedResource Include="DirectoryBase.resx">
+      <DependentUpon>DirectoryBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileExists.resx">
       <DependentUpon>FileExists.cs</DependentUpon>

@@ -3,13 +3,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class FileDeleteFactory : IOFactoryBase, IFactory
+  public class DirectoryDeleteFactory : IOFactoryBase, IFactory
   {
     public override string Title
     {
       get
       {
-        return "Delete a file";
+        return "Delete a directory";
       }
     }
 
@@ -17,7 +17,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "Delete a file";
+        return "Delete a directory and any subdirectories and files";
       }
     }
 
@@ -25,13 +25,13 @@ namespace EllieWare.IO
     {
       get
       {
-        return typeof(FileDelete);
+        return typeof(DirectoryDelete);
       }
     }
 
     public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
-      return new FileDelete(root, callback, mgr);
+      return new DirectoryDelete(root, callback, mgr);
     }
   }
 }

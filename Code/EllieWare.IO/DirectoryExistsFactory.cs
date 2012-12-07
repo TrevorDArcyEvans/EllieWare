@@ -3,13 +3,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class FileDeleteFactory : IOFactoryBase, IFactory
+  public class DirectoryExistsFactory : IOFactoryBase, IFactory
   {
     public override string Title
     {
       get
       {
-        return "Delete a file";
+        return "Directory checker";
       }
     }
 
@@ -17,7 +17,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "Delete a file";
+        return "Check if a directory exists or not";
       }
     }
 
@@ -25,13 +25,13 @@ namespace EllieWare.IO
     {
       get
       {
-        return typeof(FileDelete);
+        return typeof(DirectoryExists);
       }
     }
 
     public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
-      return new FileDelete(root, callback, mgr);
+      return new DirectoryExists(root, callback, mgr);
     }
   }
 }

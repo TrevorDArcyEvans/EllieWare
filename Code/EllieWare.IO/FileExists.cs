@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Schema;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -80,6 +73,16 @@ namespace EllieWare.IO
     private void Exists_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
+    }
+
+    private void CmdBrowse_Click(object sender, EventArgs e)
+    {
+      if (FileSelector.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      mFilePath.Text = FileSelector.FileName;
     }
   }
 }

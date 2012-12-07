@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class FileExistsFactory : IOFactoryBase
+  public class FileExistsFactory : IOFactoryBase, IFactory
   {
     public override string Title
     {

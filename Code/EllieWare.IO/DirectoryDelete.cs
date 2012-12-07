@@ -5,9 +5,9 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class DirectoryCreate : DirectoryBase
+  public class DirectoryDelete : DirectoryBase
   {
-    public DirectoryCreate(object root, ICallback callback, IParameterManager mgr) :
+    public DirectoryDelete(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
       lblExists.Visible = mExists.Visible = false;
@@ -17,7 +17,7 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Create {0}", mDirectory.Text);
+        var descrip = string.Format("Delete {0} and any subdirectories and files", mDirectory.Text);
 
         return descrip;
       }
@@ -35,7 +35,7 @@ namespace EllieWare.IO
     {
       try
       {
-        Directory.CreateDirectory(mDirectory.Text);
+        Directory.Delete(mDirectory.Text, true);
       }
       catch (Exception ex)
       {
