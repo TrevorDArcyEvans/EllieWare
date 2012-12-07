@@ -48,6 +48,13 @@
     <Compile Include="DirectoryBase.Designer.cs">
       <DependentUpon>DirectoryBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectoryCopy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryCopy.Designer.cs">
+      <DependentUpon>DirectoryCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryCopyFactory.cs" />
     <Compile Include="DirectoryCreate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -60,6 +67,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DirectoryExistsFactory.cs" />
+    <Compile Include="DirectoryMove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryMoveFactory.cs" />
     <Compile Include="FileCopy.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,6 +109,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DirectoryBase.resx">
       <DependentUpon>DirectoryBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryCopy.resx">
+      <DependentUpon>DirectoryCopy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileCopy.resx">
       <DependentUpon>FileCopy.cs</DependentUpon>
