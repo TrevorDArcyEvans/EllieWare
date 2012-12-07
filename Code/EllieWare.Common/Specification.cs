@@ -12,14 +12,19 @@ namespace EllieWare.Common
     private readonly ICallback mCallback;
     private readonly IEnumerable<IFactory> mFactories;
 
-    public Specification(object root, ICallback callback, IEnumerable<IFactory> factories) 
+    // parameterless constructor required for XML serialisation
+    public Specification()
+    {
+      ParameterManager = new ParameterManager();
+      Steps = new List<IRunnable>();
+    }
+
+    public Specification(object root, ICallback callback, IEnumerable<IFactory> factories) :
+      this()
     {
       mRoot = root;
       mCallback = callback;
       mFactories = factories;
-
-      ParameterManager = new ParameterManager();
-      Steps = new List<IRunnable>();
     }
 
     public IParameterManager ParameterManager
