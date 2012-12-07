@@ -1,43 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EllieWare.Interfaces;
 
 namespace EllieWare.DateTime
 {
-  public class DateTimeLogFactory : IFactory
+  public class PauseFactory : IFactory
   {
     #region Implementation of IFactory
 
     public string Title
     {
-      get { return "Log current date and time"; }
+      get
+      {
+        return "Pause for a period";
+      }
     }
 
     public string Description
     {
-      get { return "Log current date and time"; }
+      get
+      {
+        return "Pause for user defined interval";
+      }
     }
 
     public string Keywords
     {
-      get { return "log, date, time, "; }
+      get
+      {
+        return "pause wait delay";
+      }
     }
 
     public IEnumerable<string> Categories
     {
-      get { return new[] { "Logging", "Debugging" }; }
+      get
+      {
+        return new[]
+                     {
+                       "Time"
+                     };
+      }
     }
 
     public Type CreatedType
     {
-      get { return typeof(DateTimeLog); }
+      get
+      {
+        return typeof(Pause);
+      }
     }
 
     public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
-      return new DateTimeLog(root, callback, mgr);
+      return new Pause(root, callback, mgr);
     }
 
     #endregion

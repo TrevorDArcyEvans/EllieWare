@@ -42,13 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateTimeLog.cs">
+    <Compile Include="Pause.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DateTimeLog.Designer.cs">
-      <DependentUpon>DateTimeLog.cs</DependentUpon>
+    <Compile Include="Pause.Designer.cs">
+      <DependentUpon>Pause.cs</DependentUpon>
     </Compile>
-    <Compile Include="DateTimeLogFactory.cs" />
+    <Compile Include="PauseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,8 +62,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DateTimeLog.resx">
-      <DependentUpon>DateTimeLog.cs</DependentUpon>
+    <EmbeddedResource Include="Pause.resx">
+      <DependentUpon>Pause.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
