@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using EllieWare.Common;
-using EllieWare.Interfaces;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
@@ -139,6 +135,7 @@ namespace EllieWare.Manager
       var selFilePath = GetSelectedSpecificationPath();
       File.Delete(selFilePath);
       RefreshSpecificationsList();
+      UpdateButtons();
     }
 
     private void RmbFileMgr_Opening(object sender, CancelEventArgs e)

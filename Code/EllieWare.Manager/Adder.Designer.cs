@@ -74,7 +74,7 @@
       this.txtSearchBox.Name = "txtSearchBox";
       this.txtSearchBox.Size = new System.Drawing.Size(359, 20);
       this.txtSearchBox.TabIndex = 2;
-      this.txtSearchBox.TextChanged += new System.EventHandler(this.txtSearchBox_TextChanged);
+      this.txtSearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
       // 
       // ddlCategories
       // 
@@ -85,7 +85,7 @@
       this.ddlCategories.Name = "ddlCategories";
       this.ddlCategories.Size = new System.Drawing.Size(359, 21);
       this.ddlCategories.TabIndex = 4;
-      this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.ddlCategories_SelectedIndexChanged);
+      this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
       // 
       // lbSteps
       // 
@@ -96,7 +96,7 @@
       this.lbSteps.Name = "lbSteps";
       this.lbSteps.Size = new System.Drawing.Size(359, 271);
       this.lbSteps.TabIndex = 5;
-      this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.lbSteps_SelectedIndexChanged);
+      this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       // 
       // txtDescription
       // 
