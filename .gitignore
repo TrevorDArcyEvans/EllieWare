@@ -7,3 +7,5 @@ _ReSharper*
 *.user
 Thumbs.db
 SpaceClaim
+Debug
+Release
