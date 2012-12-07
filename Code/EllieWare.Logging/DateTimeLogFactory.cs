@@ -1,0 +1,46 @@
+﻿using System;
+using EllieWare.Interfaces;
+
+namespace EllieWare.Logging
+{
+  public class DateTimeLogFactory : LoggingFactoryBase, IFactory
+  {
+    #region Implementation of IFactory
+
+    public override string Title
+    {
+      get
+      {
+        return "Log current date and time";
+      }
+    }
+
+    public override string Description
+    {
+      get
+      {
+        return "Log current date and time";
+      }
+    }
+
+    public override string Keywords
+    {
+      get
+      {
+        return base.Keywords + " date time";
+      }
+    }
+
+    public override Type CreatedType
+    {
+      get { return typeof(DateTimeLog); }
+    }
+
+    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    {
+      return new DateTimeLog(root, callback, mgr);
+    }
+
+    #endregion
+  }
+}

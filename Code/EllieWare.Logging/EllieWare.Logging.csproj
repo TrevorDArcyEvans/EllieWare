@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTimeLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DateTimeLogFactory.cs" />
     <Compile Include="LoggingFactory.cs" />
     <Compile Include="Logging.cs">
       <SubType>UserControl</SubType>
@@ -49,6 +53,7 @@
     <Compile Include="Logging.Designer.cs">
       <DependentUpon>Logging.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoggingFactoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
