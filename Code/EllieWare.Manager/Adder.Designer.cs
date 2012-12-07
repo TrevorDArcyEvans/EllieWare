@@ -95,6 +95,7 @@
       this.lbSteps.Location = new System.Drawing.Point(72, 56);
       this.lbSteps.Name = "lbSteps";
       this.lbSteps.Size = new System.Drawing.Size(359, 271);
+      this.lbSteps.Sorted = true;
       this.lbSteps.TabIndex = 5;
       this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       // 
