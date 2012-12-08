@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,13 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Zip.cs" />
+    <Compile Include="ZipDirectory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZipDirectoryFactory.cs" />
+    <Compile Include="ZipFactoryBase.cs" />
+    <Compile Include="ZipFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZipFileFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetZip\Zip\Zip DLL.csproj">
       <Project>{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}</Project>
       <Name>Zip DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
+      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
+      <Name>EllieWare.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
+      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
+      <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
