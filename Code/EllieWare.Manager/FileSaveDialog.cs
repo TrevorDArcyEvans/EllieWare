@@ -54,5 +54,10 @@ namespace EllieWare.Manager
         }
       }
     }
+
+    private void FileSaveDialog_Shown(object sender, EventArgs e)
+    {
+      mFileNames.Focus();
+    }
   }
 }

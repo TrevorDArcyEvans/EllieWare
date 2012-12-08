@@ -85,6 +85,7 @@
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Save";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FileSaveDialog_FormClosing);
+      this.Shown += new System.EventHandler(this.FileSaveDialog_Shown);
       this.ResumeLayout(false);
 
     }
