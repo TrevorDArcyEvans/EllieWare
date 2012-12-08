@@ -8,6 +8,7 @@ namespace EllieWare.Common
       base(root, callback, mgr, fileBased)
     {
       mDestinationLabel.Visible = mDestinationFilePath.Visible = CmdDestinationBrowse.Visible = false;
+      mExistsLabel.Visible = mExists.Visible = true;
     }
   }
 }
