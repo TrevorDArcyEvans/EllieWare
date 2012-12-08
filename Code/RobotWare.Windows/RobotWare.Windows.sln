@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.Windows", "RobotW
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotWare for Windows", "..\RobotWare for Windows\RobotWare for Windows.vdproj", "{97E8F914-8610-40FE-8BE5-8B31B1361647}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip DLL", "..\DotNetZip\Zip\Zip DLL.csproj", "{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,10 +172,22 @@ Global
 		{AE021F3A-24BE-434B-832A-4AEF4F808FB5}.Release|x86.Build.0 = Release|x86
 		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Debug|Any CPU.ActiveCfg = Debug
 		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Debug|Mixed Platforms.Build.0 = Debug
 		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Debug|x86.ActiveCfg = Debug
 		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Release|Any CPU.ActiveCfg = Release
 		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Release|Mixed Platforms.ActiveCfg = Release
+		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Release|Mixed Platforms.Build.0 = Release
 		{97E8F914-8610-40FE-8BE5-8B31B1361647}.Release|x86.ActiveCfg = Release
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
