@@ -38,8 +38,6 @@ namespace EllieWare.Process
 
         return false;
       }
-
-      return true;
     }
   }
 }
