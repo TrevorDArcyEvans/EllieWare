@@ -1,13 +1,13 @@
 ﻿using System.IO;
-using System.Windows.Forms;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class DirectoryExists : DirectoryBase
+  public class DirectoryExists : SingleItemExistsIOBase
   {
     public DirectoryExists(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+      base(root, callback, mgr, false)
     {
     }
 
@@ -16,24 +16,16 @@ namespace EllieWare.IO
       get
       {
         var exist = mExists.SelectedIndex == 1;
-        var descrip = string.Format("Check that {0} is ", mDirectory.Text) + (exist ? "" : "not ") + "present";
+        var descrip = string.Format("Check that {0} is ", mSourceFilePath.Text) + (exist ? "" : "not ") + "present";
 
         return descrip;
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
     public override bool Run()
     {
       var exist = mExists.SelectedIndex == 1;
-      var dirExists = Directory.Exists(mDirectory.Text);
+      var dirExists = Directory.Exists(mSourceFilePath.Text);
 
       return exist ? dirExists : !dirExists;
     }

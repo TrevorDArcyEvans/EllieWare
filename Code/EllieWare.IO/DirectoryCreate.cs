@@ -1,33 +1,24 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Forms;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class DirectoryCreate : DirectoryBase
+  public class DirectoryCreate : SingleItemIOBase
   {
     public DirectoryCreate(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+      base(root, callback, mgr, false)
     {
-      lblExists.Visible = mExists.Visible = false;
     }
 
     public override string Description
     {
       get
       {
-        var descrip = string.Format("Create {0}", mDirectory.Text);
+        var descrip = string.Format("Create {0}", mSourceFilePath.Text);
 
         return descrip;
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
@@ -35,7 +26,7 @@ namespace EllieWare.IO
     {
       try
       {
-        Directory.CreateDirectory(mDirectory.Text);
+        Directory.CreateDirectory(mSourceFilePath.Text);
       }
       catch (Exception ex)
       {

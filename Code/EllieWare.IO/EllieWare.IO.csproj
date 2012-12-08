@@ -42,17 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryBase.Designer.cs">
-      <DependentUpon>DirectoryBase.cs</DependentUpon>
-    </Compile>
     <Compile Include="DirectoryCopy.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryCopy.Designer.cs">
-      <DependentUpon>DirectoryCopy.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectoryCopyFactory.cs" />
     <Compile Include="DirectoryCreate.cs">
@@ -74,9 +65,6 @@
     <Compile Include="FileCopy.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FileCopy.Designer.cs">
-      <DependentUpon>FileCopy.cs</DependentUpon>
-    </Compile>
     <Compile Include="FileCopyFactory.cs" />
     <Compile Include="FileDelete.cs">
       <SubType>UserControl</SubType>
@@ -84,9 +72,6 @@
     <Compile Include="FileDeleteFactory.cs" />
     <Compile Include="FileExists.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileExists.Designer.cs">
-      <DependentUpon>FileExists.cs</DependentUpon>
     </Compile>
     <Compile Include="FileExistsFactory.cs" />
     <Compile Include="FileMove.cs">
@@ -105,20 +90,6 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DirectoryBase.resx">
-      <DependentUpon>DirectoryBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DirectoryCopy.resx">
-      <DependentUpon>DirectoryCopy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FileCopy.resx">
-      <DependentUpon>FileCopy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FileExists.resx">
-      <DependentUpon>FileExists.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

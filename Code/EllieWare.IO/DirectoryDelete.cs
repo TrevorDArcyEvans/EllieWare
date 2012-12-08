@@ -1,33 +1,24 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Forms;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class DirectoryDelete : DirectoryBase
+  public class DirectoryDelete : SingleItemIOBase
   {
     public DirectoryDelete(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+      base(root, callback, mgr, false)
     {
-      lblExists.Visible = mExists.Visible = false;
     }
 
     public override string Description
     {
       get
       {
-        var descrip = string.Format("Delete {0} and any subdirectories and files", mDirectory.Text);
+        var descrip = string.Format("Delete {0} and any subdirectories and files", mSourceFilePath.Text);
 
         return descrip;
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
@@ -35,7 +26,7 @@ namespace EllieWare.IO
     {
       try
       {
-        Directory.Delete(mDirectory.Text, true);
+        Directory.Delete(mSourceFilePath.Text, true);
       }
       catch (Exception ex)
       {

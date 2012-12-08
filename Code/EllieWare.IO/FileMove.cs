@@ -7,10 +7,6 @@ namespace EllieWare.IO
 {
   public class FileMove : FileCopy
   {
-    public FileMove()
-    {
-    }
-
     public FileMove(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
