@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -25,7 +26,11 @@ namespace EllieWare.Zip
     {
       try
       {
-        //File.Delete(mSourceFilePath.Text);
+        var zipFileName = Path.ChangeExtension(mSourceFilePath.Text, ".zip");
+        var zip = new Ionic.Zip.ZipFile(zipFileName);
+        var files = Directory.EnumerateFiles(mSourceFilePath.Text, "*", SearchOption.AllDirectories);
+        zip.AddFiles(files);
+        zip.Save();
       }
       catch (Exception ex)
       {
