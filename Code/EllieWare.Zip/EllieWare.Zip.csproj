@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnZipFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnZipFileFactory.cs" />
     <Compile Include="ZipDirectory.cs">
       <SubType>UserControl</SubType>
     </Compile>
