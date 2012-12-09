@@ -8,7 +8,7 @@ namespace EllieWare.Zip
   public class ZipFile : SingleItemIOBase
   {
     public ZipFile(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, true)
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

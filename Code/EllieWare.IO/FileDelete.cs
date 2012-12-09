@@ -8,7 +8,7 @@ namespace EllieWare.IO
   public class FileDelete : SingleItemIOBase
   {
     public FileDelete(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, true)
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

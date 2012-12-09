@@ -8,7 +8,7 @@ namespace EllieWare.IO
   public class DirectoryCreate : SingleItemIOBase
   {
     public DirectoryCreate(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, false)
+      base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
     }
 

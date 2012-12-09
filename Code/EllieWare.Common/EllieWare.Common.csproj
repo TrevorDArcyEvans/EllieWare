@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowserTypes.cs" />
     <Compile Include="DualItemIOBase.cs">
       <SubType>UserControl</SubType>
     </Compile>

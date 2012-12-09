@@ -12,7 +12,7 @@ namespace EllieWare.IO
     }
 
     public DirectoryCopy(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, false)
+      base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
     }
 

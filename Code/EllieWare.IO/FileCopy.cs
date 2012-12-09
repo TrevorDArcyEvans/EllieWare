@@ -8,7 +8,7 @@ namespace EllieWare.IO
   public class FileCopy : DualItemIOBase
   {
     public FileCopy(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, true)
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

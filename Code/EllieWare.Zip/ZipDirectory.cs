@@ -8,7 +8,7 @@ namespace EllieWare.Zip
   public class ZipDirectory : SingleItemIOBase
   {
     public ZipDirectory(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, false)
+      base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
     }
 

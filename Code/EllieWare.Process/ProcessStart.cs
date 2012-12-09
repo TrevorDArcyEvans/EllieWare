@@ -7,7 +7,7 @@ namespace EllieWare.Process
   public class ProcessStart : SingleItemIOBase
   {
     public ProcessStart(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, true)
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

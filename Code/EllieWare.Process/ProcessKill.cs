@@ -8,7 +8,7 @@ namespace EllieWare.Process
   public class ProcessKill : SingleItemIOBase
   {
     public ProcessKill(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, true)
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

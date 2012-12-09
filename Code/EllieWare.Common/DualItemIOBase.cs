@@ -8,19 +8,19 @@ namespace EllieWare.Common
 {
   public partial class DualItemIOBase : MutableRunnableBase
   {
-    private readonly bool mIsFileBased;
+    private readonly BrowserTypes mBrowsers;
 
     public DualItemIOBase()
     {
       InitializeComponent();
     }
 
-    public DualItemIOBase(object root, ICallback callback, IParameterManager mgr, bool fileBased) :
+    public DualItemIOBase(object root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
       base(root, callback, mgr)
     {
       InitializeComponent();
 
-      mIsFileBased = fileBased;
+      mBrowsers = browsers;
 
       // initialise both text boxes to an empty string so that de/serialisation is safer ie no null strings
       mSourceFilePath.Text = mDestinationFilePath.Text = string.Empty;
@@ -66,7 +66,7 @@ namespace EllieWare.Common
 
     private void CmdSourceBrowse_Click(object sender, EventArgs e)
     {
-      if (mIsFileBased)
+      if (mBrowsers == BrowserTypes.BothFile || mBrowsers == BrowserTypes.FileDirectory)
       {
         if (FileSelector.ShowDialog() != DialogResult.OK)
         {
@@ -75,7 +75,7 @@ namespace EllieWare.Common
 
         mSourceFilePath.Text = FileSelector.FileName;
       }
-      else
+      else if (mBrowsers == BrowserTypes.BothDirectory || mBrowsers == BrowserTypes.DirectoryFile)
       {
         if (DirectorySelector.ShowDialog() != DialogResult.OK)
         {
@@ -88,7 +88,7 @@ namespace EllieWare.Common
 
     private void CmdDestinationBrowse_Click(object sender, EventArgs e)
     {
-      if (mIsFileBased)
+      if (mBrowsers == BrowserTypes.BothFile || mBrowsers == BrowserTypes.DirectoryFile)
       {
         if (FileSelector.ShowDialog() != DialogResult.OK)
         {
@@ -97,7 +97,7 @@ namespace EllieWare.Common
 
         mDestinationFilePath.Text = FileSelector.FileName;
       }
-      else
+      else if (mBrowsers == BrowserTypes.BothDirectory || mBrowsers == BrowserTypes.FileDirectory)
       {
         if (DirectorySelector.ShowDialog() != DialogResult.OK)
         {

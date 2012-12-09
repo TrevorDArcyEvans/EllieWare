@@ -8,7 +8,7 @@ namespace EllieWare.Zip
   public class UnZipFile : DualItemIOBase
   {
     public UnZipFile(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, true)
+      base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
     }
 
