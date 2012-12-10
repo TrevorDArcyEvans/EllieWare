@@ -43,9 +43,9 @@ namespace EllieWare.Interfaces
   public interface ICallback
   {
     /// <summary>
-    /// Used by a <seealso cref="IRunnable"/> or <seealso cref="IMutableRunnable"/> to send a message during execution
+    /// Used by a <see cref="IRunnable"/> or <see cref="IMutableRunnable"/> to send a message during execution
     /// </summary>
-    /// <param name="level"><see cref="LogLevel"/></param>
+    /// <param name="level">importance of message - see <see cref="LogLevel"/></param>
     /// <param name="message">message to send</param>
     void Log(LogLevel level, string message);
   }
@@ -64,47 +64,47 @@ namespace EllieWare.Interfaces
     /// <summary>
     /// Check if a parameter of the given (display) name already exists
     /// </summary>
-    /// <param name="displayName"></param>
-    /// <returns></returns>
+    /// <param name="displayName">name of parameter - see <see cref="DisplayNames"/></param>
+    /// <returns>true if parameter exists</returns>
     bool Contains(string displayName);
 
     /// <summary>
-    /// Create a parameter with the given (display) name and value, and add it to the <seealso cref="IParameterManager"/>
+    /// Create a parameter with the given (display) name and value, and add it to the <see cref="IParameterManager"/>
     /// </summary>
-    /// <param name="displayName"><seealso cref="DisplayNames"/></param>
+    /// <param name="displayName">name of parameter - see <see cref="DisplayNames"/></param>
     /// <param name="parameter">parameter value</param>
-    /// <remarks>If the <see cref="displayName"/> already exists, will throw a <seealso cref="ArgumentException"/></remarks>
+    /// <remarks>If the <paramref name="displayName"/> already exists, will throw a <see cref="ArgumentException"/></remarks>
     void Add(string displayName, object parameter);
 
     /// <summary>
     /// Updates the value of an existing parameter with the given (display) name with the given value
     /// </summary>
-    /// <param name="displayName"><seealso cref="DisplayNames"/></param>
+    /// <param name="displayName">name of parameter - see <see cref="DisplayNames"/></param>
     /// <param name="parameter">parameter value</param>
     /// <remarks>
-    /// If the <see cref="displayName"/> does not exist, will throw a <seealso cref="KeyNotFoundException"/>
-    /// If the new <see cref="parameter"/> is of a different type to the existing parameter, will throw a <seealso cref="TypeAccessException"/>
+    /// If the <paramref name="displayName"/> does not exist, will throw a <see cref="KeyNotFoundException"/>
+    /// If the new <paramref name="parameter"/> is of a different type to the existing parameter, will throw a <see cref="TypeAccessException"/>
     /// </remarks>
     void Update(string displayName, object parameter);
 
     /// <summary>
     /// Remove the parameter with the given (display) name
     /// </summary>
-    /// <param name="displayName"><seealso cref="DisplayNames"/></param>
+    /// <param name="displayName">name of parameter - see <see cref="DisplayNames"/></param>
     /// <returns>true if the parameter exists and was successfully removed</returns>
     bool Remove(string displayName);
 
     /// <summary>
     /// Returns the value of an existing parameter with the given (display) name
     /// </summary>
-    /// <param name="displayName"><seealso cref="DisplayNames"/></param>
+    /// <param name="displayName">name of parameter - see <see cref="DisplayNames"/></param>
     /// <returns>parameter value</returns>
-    /// If the <see cref="displayName"/> does not exist, will throw a <seealso cref="KeyNotFoundException"/>
+    /// If the <paramref name="displayName"/> does not exist, will throw a <see cref="KeyNotFoundException"/>
     object Get(string displayName);
   }
 
   /// <summary>
-  /// A <seealso cref="IRunnable"/> which can change its configuration
+  /// A <see cref="IRunnable"/> which can change its configuration
   /// </summary>
   public interface IMutableRunnable : IRunnable
   {
@@ -140,13 +140,13 @@ namespace EllieWare.Interfaces
   }
 
   /// <summary>
-  /// Factory for creating <seealso cref="IRunnable"/> or <seealso cref="IMutableRunnable"/>
+  /// Factory for creating <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>
   /// This should be a lightweight object, so that most of the work is done in <see cref="Create"/>
   /// </summary>
   public interface IFactory
   {
     /// <summary>
-    /// 
+    /// Name of factory to appear in user interface.
     /// </summary>
     /// <remarks>Should be localised</remarks>
     string Title { get; }
@@ -172,7 +172,7 @@ namespace EllieWare.Interfaces
     /// ie "File System" and "File system" are considered distinct categories
     /// </summary>
     /// <example>
-    /// <list type="">
+    /// <list type="bullet">
     /// <item>File system</item>
     /// <item>Disk</item>
     /// </list>
@@ -181,19 +181,19 @@ namespace EllieWare.Interfaces
     IEnumerable<string> Categories { get; }
 
     /// <summary>
-    /// <seealso cref="Type"/> of <seealso cref="IRunnable"/> which will be created by <seealso cref="Create"/>
+    /// <see cref="Type"/> of <see cref="IRunnable"/> which will be created by <see cref="Create"/>
     /// </summary>
     Type CreatedType { get; }
 
     /// <summary>
-    /// Called to create a <seealso cref="IRunnable"/> or <seealso cref="IMutableRunnable"/>.
+    /// Called to create a <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>.
     /// Most of the work should be done in this method.
     /// </summary>
     /// <param name="root">Domain root object</param>
-    /// <param name="callback"><seealso cref="ICallback"/></param>
-    /// <param name="mgr"><seealso cref="IParameterManager"/></param>
-    /// <returns>A fully constructed <seealso cref="IRunnable"/> or <seealso cref="IMutableRunnable"/></returns>
-    /// <remarks><seealso cref="root"/> depends on the application domain and can be null - BEWARE!</remarks>
+    /// <param name="callback">logging - see <see cref="ICallback"/></param>
+    /// <param name="mgr">parameter manager - see <see cref="IParameterManager"/></param>
+    /// <returns>A fully constructed <see cref="IRunnable"/> or <see cref="IMutableRunnable"/></returns>
+    /// <remarks><paramref name="root"/> depends on the application domain and can be null - BEWARE!</remarks>
     IRunnable Create(object root, ICallback callback, IParameterManager mgr);
   }
 }

@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip DLL", "..\DotNetZip\Zip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Process", "..\EllieWare.Process\EllieWare.Process.csproj", "{6205CDC5-02F2-4122-A513-D779941DAC35}"
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "EllieWare.Interfaces.Docs", "..\EllieWare.Interfaces.Docs\EllieWare.Interfaces.Docs.shfbproj", "{1E41E392-39A5-4B56-84FD-D0C818200709}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -199,6 +201,16 @@ Global
 		{6205CDC5-02F2-4122-A513-D779941DAC35}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6205CDC5-02F2-4122-A513-D779941DAC35}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6205CDC5-02F2-4122-A513-D779941DAC35}.Release|x86.ActiveCfg = Release|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1E41E392-39A5-4B56-84FD-D0C818200709}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
