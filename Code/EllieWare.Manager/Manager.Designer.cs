@@ -38,20 +38,22 @@
       System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Spec3",
             "ccc"}, -1);
+      System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+      System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manager));
       this.CmdNew = new System.Windows.Forms.Button();
       this.CmdEdit = new System.Windows.Forms.Button();
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdDebug = new System.Windows.Forms.Button();
       this.mSpecs = new System.Windows.Forms.ListView();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdDelete = new System.Windows.Forms.Button();
       this.CmdAbout = new System.Windows.Forms.Button();
-      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.ManagerHelp = new System.Windows.Forms.HelpProvider();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.tableLayoutPanel1.SuspendLayout();
-      this.tableLayoutPanel2.SuspendLayout();
+      tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel1.SuspendLayout();
+      tableLayoutPanel2.SuspendLayout();
       this.SuspendLayout();
       // 
       // columnHeader1
@@ -126,29 +128,29 @@
       // 
       // tableLayoutPanel1
       // 
-      this.tableLayoutPanel1.AutoSize = true;
-      this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel1.ColumnCount = 1;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.Controls.Add(this.CmdNew, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.CmdEdit, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.CmdDelete, 0, 2);
-      this.tableLayoutPanel1.Controls.Add(this.CmdDebug, 0, 5);
-      this.tableLayoutPanel1.Controls.Add(this.CmdRun, 0, 4);
-      this.tableLayoutPanel1.Controls.Add(this.CmdAbout, 0, 7);
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(561, 3);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 8;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(81, 214);
-      this.tableLayoutPanel1.TabIndex = 5;
+      tableLayoutPanel1.AutoSize = true;
+      tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      tableLayoutPanel1.ColumnCount = 1;
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel1.Controls.Add(this.CmdNew, 0, 0);
+      tableLayoutPanel1.Controls.Add(this.CmdEdit, 0, 1);
+      tableLayoutPanel1.Controls.Add(this.CmdDelete, 0, 2);
+      tableLayoutPanel1.Controls.Add(this.CmdDebug, 0, 5);
+      tableLayoutPanel1.Controls.Add(this.CmdRun, 0, 4);
+      tableLayoutPanel1.Controls.Add(this.CmdAbout, 0, 7);
+      tableLayoutPanel1.Location = new System.Drawing.Point(561, 3);
+      tableLayoutPanel1.Name = "tableLayoutPanel1";
+      tableLayoutPanel1.RowCount = 8;
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.Size = new System.Drawing.Size(81, 214);
+      tableLayoutPanel1.TabIndex = 5;
       // 
       // CmdDelete
       // 
@@ -172,35 +174,35 @@
       // 
       // tableLayoutPanel2
       // 
-      this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel2.ColumnCount = 2;
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 1, 0);
-      this.tableLayoutPanel2.Controls.Add(this.mSpecs, 0, 0);
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
-      this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-      this.tableLayoutPanel2.RowCount = 1;
-      this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(645, 390);
-      this.tableLayoutPanel2.TabIndex = 6;
+      tableLayoutPanel2.ColumnCount = 2;
+      tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel2.Controls.Add(tableLayoutPanel1, 1, 0);
+      tableLayoutPanel2.Controls.Add(this.mSpecs, 0, 0);
+      tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
+      tableLayoutPanel2.Name = "tableLayoutPanel2";
+      tableLayoutPanel2.RowCount = 1;
+      tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel2.Size = new System.Drawing.Size(645, 390);
+      tableLayoutPanel2.TabIndex = 6;
       // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(669, 414);
-      this.Controls.Add(this.tableLayoutPanel2);
+      this.Controls.Add(tableLayoutPanel2);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Manager";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Manager";
-      this.tableLayoutPanel1.ResumeLayout(false);
-      this.tableLayoutPanel2.ResumeLayout(false);
-      this.tableLayoutPanel2.PerformLayout();
+      tableLayoutPanel1.ResumeLayout(false);
+      tableLayoutPanel2.ResumeLayout(false);
+      tableLayoutPanel2.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -212,8 +214,6 @@
     private System.Windows.Forms.Button CmdRun;
     private System.Windows.Forms.Button CmdDebug;
     private System.Windows.Forms.ListView mSpecs;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.Button CmdDelete;
     private System.Windows.Forms.Button CmdAbout;
     private System.Windows.Forms.HelpProvider ManagerHelp;

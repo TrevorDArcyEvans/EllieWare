@@ -30,31 +30,32 @@ namespace EllieWare.Logging
     /// </summary>
     private void InitializeComponent()
     {
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       this.label1 = new System.Windows.Forms.Label();
       this.lblMessage = new System.Windows.Forms.Label();
-      this.mMessage = new ParameterTextBox();
+      this.mMessage = new EllieWare.Common.ParameterTextBox();
       this.mLevel = new System.Windows.Forms.ComboBox();
-      this.tableLayoutPanel1.SuspendLayout();
+      tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // tableLayoutPanel1
       // 
-      this.tableLayoutPanel1.ColumnCount = 2;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.lblMessage, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.mMessage, 1, 1);
-      this.tableLayoutPanel1.Controls.Add(this.mLevel, 1, 0);
-      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 123);
-      this.tableLayoutPanel1.TabIndex = 0;
+      tableLayoutPanel1.ColumnCount = 2;
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+      tableLayoutPanel1.Controls.Add(this.lblMessage, 0, 1);
+      tableLayoutPanel1.Controls.Add(this.mMessage, 1, 1);
+      tableLayoutPanel1.Controls.Add(this.mLevel, 1, 0);
+      tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      tableLayoutPanel1.Name = "tableLayoutPanel1";
+      tableLayoutPanel1.RowCount = 2;
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.Size = new System.Drawing.Size(328, 123);
+      tableLayoutPanel1.TabIndex = 0;
       // 
       // label1
       // 
@@ -73,7 +74,7 @@ namespace EllieWare.Logging
       this.lblMessage.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
       this.lblMessage.Name = "lblMessage";
       this.lblMessage.Size = new System.Drawing.Size(53, 13);
-      this.lblMessage.TabIndex = 1;
+      this.lblMessage.TabIndex = 2;
       this.lblMessage.Text = "Message:";
       // 
       // mMessage
@@ -82,7 +83,7 @@ namespace EllieWare.Logging
       this.mMessage.Location = new System.Drawing.Point(62, 30);
       this.mMessage.Name = "mMessage";
       this.mMessage.Size = new System.Drawing.Size(263, 20);
-      this.mMessage.TabIndex = 2;
+      this.mMessage.TabIndex = 3;
       this.mMessage.TextChanged += new System.EventHandler(this.Message_TextChanged);
       // 
       // mLevel
@@ -99,25 +100,24 @@ namespace EllieWare.Logging
       this.mLevel.Location = new System.Drawing.Point(62, 3);
       this.mLevel.Name = "mLevel";
       this.mLevel.Size = new System.Drawing.Size(263, 21);
-      this.mLevel.TabIndex = 3;
+      this.mLevel.TabIndex = 1;
       this.mLevel.SelectedIndexChanged += new System.EventHandler(this.Level_SelectedIndexChanged);
       // 
       // Logging
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.tableLayoutPanel1);
+      this.Controls.Add(tableLayoutPanel1);
       this.Name = "Logging";
       this.Size = new System.Drawing.Size(328, 123);
-      this.tableLayoutPanel1.ResumeLayout(false);
-      this.tableLayoutPanel1.PerformLayout();
+      tableLayoutPanel1.ResumeLayout(false);
+      tableLayoutPanel1.PerformLayout();
       this.ResumeLayout(false);
 
     }
 
     #endregion
 
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.Label label1;
     protected System.Windows.Forms.Label lblMessage;
     protected ParameterTextBox mMessage;
