@@ -47,6 +47,7 @@ namespace EllieWare.Manager
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdParameters = new System.Windows.Forms.Button();
       this.CmdClose = new System.Windows.Forms.Button();
+      this.EditorHelp = new System.Windows.Forms.HelpProvider();
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).BeginInit();
       this.mStepsContainer.Panel1.SuspendLayout();
       this.mStepsContainer.SuspendLayout();
@@ -61,7 +62,7 @@ namespace EllieWare.Manager
       this.CmdAdd.Location = new System.Drawing.Point(3, 3);
       this.CmdAdd.Name = "CmdAdd";
       this.CmdAdd.Size = new System.Drawing.Size(75, 23);
-      this.CmdAdd.TabIndex = 1;
+      this.CmdAdd.TabIndex = 0;
       this.CmdAdd.Text = "Add...";
       this.CmdAdd.UseVisualStyleBackColor = true;
       this.CmdAdd.Click += new System.EventHandler(this.CmdAdd_Click);
@@ -71,7 +72,7 @@ namespace EllieWare.Manager
       this.CmdDelete.Location = new System.Drawing.Point(3, 32);
       this.CmdDelete.Name = "CmdDelete";
       this.CmdDelete.Size = new System.Drawing.Size(75, 23);
-      this.CmdDelete.TabIndex = 2;
+      this.CmdDelete.TabIndex = 1;
       this.CmdDelete.Text = "Delete";
       this.CmdDelete.UseVisualStyleBackColor = true;
       this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
@@ -81,7 +82,7 @@ namespace EllieWare.Manager
       this.CmdUp.Location = new System.Drawing.Point(3, 61);
       this.CmdUp.Name = "CmdUp";
       this.CmdUp.Size = new System.Drawing.Size(75, 23);
-      this.CmdUp.TabIndex = 3;
+      this.CmdUp.TabIndex = 2;
       this.CmdUp.Text = "Up";
       this.CmdUp.UseVisualStyleBackColor = true;
       this.CmdUp.Click += new System.EventHandler(this.CmdUp_Click);
@@ -91,7 +92,7 @@ namespace EllieWare.Manager
       this.CmdDown.Location = new System.Drawing.Point(3, 90);
       this.CmdDown.Name = "CmdDown";
       this.CmdDown.Size = new System.Drawing.Size(75, 23);
-      this.CmdDown.TabIndex = 4;
+      this.CmdDown.TabIndex = 3;
       this.CmdDown.Text = "Down";
       this.CmdDown.UseVisualStyleBackColor = true;
       this.CmdDown.Click += new System.EventHandler(this.CmdDown_Click);
@@ -101,7 +102,7 @@ namespace EllieWare.Manager
       this.CmdHelp.Location = new System.Drawing.Point(3, 52);
       this.CmdHelp.Name = "CmdHelp";
       this.CmdHelp.Size = new System.Drawing.Size(75, 23);
-      this.CmdHelp.TabIndex = 5;
+      this.CmdHelp.TabIndex = 1;
       this.CmdHelp.Text = "Help";
       this.CmdHelp.UseVisualStyleBackColor = true;
       this.CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
@@ -111,7 +112,7 @@ namespace EllieWare.Manager
       this.CmdRun.Location = new System.Drawing.Point(3, 3);
       this.CmdRun.Name = "CmdRun";
       this.CmdRun.Size = new System.Drawing.Size(75, 23);
-      this.CmdRun.TabIndex = 6;
+      this.CmdRun.TabIndex = 0;
       this.CmdRun.Text = "Run";
       this.CmdRun.UseVisualStyleBackColor = true;
       this.CmdRun.Click += new System.EventHandler(this.CmdRun_Click);
@@ -122,7 +123,7 @@ namespace EllieWare.Manager
       this.CmdSave.Location = new System.Drawing.Point(320, 360);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
-      this.CmdSave.TabIndex = 8;
+      this.CmdSave.TabIndex = 1;
       this.CmdSave.Text = "Save";
       this.CmdSave.UseVisualStyleBackColor = true;
       this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
@@ -142,7 +143,7 @@ namespace EllieWare.Manager
       this.tableLayoutPanel4.SetRowSpan(this.mStepsContainer, 5);
       this.mStepsContainer.Size = new System.Drawing.Size(473, 351);
       this.mStepsContainer.SplitterDistance = 174;
-      this.mStepsContainer.TabIndex = 9;
+      this.mStepsContainer.TabIndex = 0;
       // 
       // mSteps
       // 
@@ -152,7 +153,7 @@ namespace EllieWare.Manager
       this.mSteps.Location = new System.Drawing.Point(0, 0);
       this.mSteps.Name = "mSteps";
       this.mSteps.Size = new System.Drawing.Size(471, 172);
-      this.mSteps.TabIndex = 10;
+      this.mSteps.TabIndex = 0;
       this.mSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       // 
       // CmdStep
@@ -160,7 +161,7 @@ namespace EllieWare.Manager
       this.CmdStep.Location = new System.Drawing.Point(3, 32);
       this.CmdStep.Name = "CmdStep";
       this.CmdStep.Size = new System.Drawing.Size(75, 23);
-      this.CmdStep.TabIndex = 6;
+      this.CmdStep.TabIndex = 1;
       this.CmdStep.Text = "Step";
       this.CmdStep.UseVisualStyleBackColor = true;
       this.CmdStep.Click += new System.EventHandler(this.CmdStep_Click);
@@ -252,7 +253,7 @@ namespace EllieWare.Manager
       this.CmdParameters.Location = new System.Drawing.Point(3, 3);
       this.CmdParameters.Name = "CmdParameters";
       this.CmdParameters.Size = new System.Drawing.Size(75, 23);
-      this.CmdParameters.TabIndex = 12;
+      this.CmdParameters.TabIndex = 0;
       this.CmdParameters.Text = "Parameters...";
       this.CmdParameters.UseVisualStyleBackColor = true;
       this.CmdParameters.Click += new System.EventHandler(this.CmdParameters_Click);
@@ -263,7 +264,7 @@ namespace EllieWare.Manager
       this.CmdClose.Location = new System.Drawing.Point(401, 360);
       this.CmdClose.Name = "CmdClose";
       this.CmdClose.Size = new System.Drawing.Size(75, 23);
-      this.CmdClose.TabIndex = 14;
+      this.CmdClose.TabIndex = 2;
       this.CmdClose.Text = "Close";
       this.CmdClose.UseVisualStyleBackColor = true;
       // 
@@ -312,5 +313,6 @@ namespace EllieWare.Manager
     private System.Windows.Forms.Button CmdParameters;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     private System.Windows.Forms.Button CmdClose;
+    private System.Windows.Forms.HelpProvider EditorHelp;
   }
 }

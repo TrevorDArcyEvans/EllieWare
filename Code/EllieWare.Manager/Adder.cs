@@ -90,5 +90,11 @@ namespace EllieWare.Manager
         return (IFactory)lbSteps.SelectedItem;
       }
     }
+
+    private void Steps_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+      DialogResult = DialogResult.OK;
+      Close();
+    }
   }
 }

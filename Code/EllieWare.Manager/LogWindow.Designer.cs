@@ -31,29 +31,31 @@ namespace EllieWare.Manager
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
+      System.Windows.Forms.ImageList imageList1;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogWindow));
-      this.mMessages = new ImageListBox();
-      this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+      this.mMessages = new Controls.Development.ImageListBox();
+      imageList1 = new System.Windows.Forms.ImageList(this.components);
       this.SuspendLayout();
       // 
       // mMessages
       // 
       this.mMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.mMessages.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+      this.mMessages.ImageList = imageList1;
       this.mMessages.Location = new System.Drawing.Point(0, 0);
       this.mMessages.Name = "mMessages";
       this.mMessages.Size = new System.Drawing.Size(697, 387);
-      this.mMessages.ImageList = this.imageList1;
       this.mMessages.TabIndex = 0;
       // 
       // imageList1
       // 
-      this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-      this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-      this.imageList1.Images.SetKeyName(0, "bug_green.png");
-      this.imageList1.Images.SetKeyName(1, "information2.png");
-      this.imageList1.Images.SetKeyName(2, "sign_warning.png");
-      this.imageList1.Images.SetKeyName(3, "brickwall_warning.png");
-      this.imageList1.Images.SetKeyName(4, "error.png");
+      imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+      imageList1.TransparentColor = System.Drawing.Color.Transparent;
+      imageList1.Images.SetKeyName(0, "bug_green.png");
+      imageList1.Images.SetKeyName(1, "information2.png");
+      imageList1.Images.SetKeyName(2, "sign_warning.png");
+      imageList1.Images.SetKeyName(3, "brickwall_warning.png");
+      imageList1.Images.SetKeyName(4, "error.png");
       // 
       // LogWindow
       // 
@@ -74,7 +76,6 @@ namespace EllieWare.Manager
     #endregion
 
     private ImageListBox mMessages;
-    private System.Windows.Forms.ImageList imageList1;
 
   }
 }

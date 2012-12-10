@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditParameter));
       this.label2 = new System.Windows.Forms.Label();
       this.mParameterValue = new System.Windows.Forms.TextBox();
       this.mDisplayName = new System.Windows.Forms.TextBox();
@@ -39,6 +40,7 @@
       this.DirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
       this.FileSelector = new System.Windows.Forms.SaveFileDialog();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.AddEditParameterHelp = new System.Windows.Forms.HelpProvider();
       this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -49,7 +51,7 @@
       this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(37, 13);
-      this.label2.TabIndex = 4;
+      this.label2.TabIndex = 2;
       this.label2.Text = "Value:";
       // 
       // mParameterValue
@@ -87,7 +89,7 @@
       this.CmdCancel.Location = new System.Drawing.Point(362, 78);
       this.CmdCancel.Name = "CmdCancel";
       this.CmdCancel.Size = new System.Drawing.Size(75, 23);
-      this.CmdCancel.TabIndex = 4;
+      this.CmdCancel.TabIndex = 7;
       this.CmdCancel.Text = "Cancel";
       this.CmdCancel.UseVisualStyleBackColor = true;
       // 
@@ -97,7 +99,7 @@
       this.CmdOK.Location = new System.Drawing.Point(281, 78);
       this.CmdOK.Name = "CmdOK";
       this.CmdOK.Size = new System.Drawing.Size(75, 23);
-      this.CmdOK.TabIndex = 5;
+      this.CmdOK.TabIndex = 6;
       this.CmdOK.Text = "OK";
       this.CmdOK.UseVisualStyleBackColor = true;
       // 
@@ -106,7 +108,7 @@
       this.CmdBrowseFile.Location = new System.Drawing.Point(443, 29);
       this.CmdBrowseFile.Name = "CmdBrowseFile";
       this.CmdBrowseFile.Size = new System.Drawing.Size(75, 23);
-      this.CmdBrowseFile.TabIndex = 6;
+      this.CmdBrowseFile.TabIndex = 4;
       this.CmdBrowseFile.Text = "File...";
       this.CmdBrowseFile.UseVisualStyleBackColor = true;
       this.CmdBrowseFile.Click += new System.EventHandler(this.CmdBrowseFile_Click);
@@ -116,7 +118,7 @@
       this.CmdDirectory.Location = new System.Drawing.Point(524, 29);
       this.CmdDirectory.Name = "CmdDirectory";
       this.CmdDirectory.Size = new System.Drawing.Size(75, 23);
-      this.CmdDirectory.TabIndex = 7;
+      this.CmdDirectory.TabIndex = 5;
       this.CmdDirectory.Text = "Directory...";
       this.CmdDirectory.UseVisualStyleBackColor = true;
       this.CmdDirectory.Click += new System.EventHandler(this.CmdDirectory_Click);
@@ -167,6 +169,7 @@
       this.CancelButton = this.CmdCancel;
       this.ClientSize = new System.Drawing.Size(624, 129);
       this.Controls.Add(this.tableLayoutPanel1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "AddEditParameter";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -190,5 +193,6 @@
     protected System.Windows.Forms.FolderBrowserDialog DirectorySelector;
     protected System.Windows.Forms.SaveFileDialog FileSelector;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.HelpProvider AddEditParameterHelp;
   }
 }

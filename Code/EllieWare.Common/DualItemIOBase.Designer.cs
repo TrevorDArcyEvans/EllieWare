@@ -28,40 +28,20 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-      this.CmdSourceBrowse = new System.Windows.Forms.Button();
-      this.DirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
-      this.FileSelector = new System.Windows.Forms.SaveFileDialog();
       this.mExistsLabel = new System.Windows.Forms.Label();
       this.mSourceLabel = new System.Windows.Forms.Label();
       this.mDestinationLabel = new System.Windows.Forms.Label();
       this.mSourceFilePath = new EllieWare.Common.ParameterTextBox();
       this.mDestinationFilePath = new EllieWare.Common.ParameterTextBox();
+      this.CmdSourceBrowse = new System.Windows.Forms.Button();
       this.CmdDestinationBrowse = new System.Windows.Forms.Button();
       this.mExists = new System.Windows.Forms.ComboBox();
+      this.DirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
+      this.FileSelector = new System.Windows.Forms.SaveFileDialog();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
-      // 
-      // CmdSourceBrowse
-      // 
-      this.CmdSourceBrowse.AutoSize = true;
-      this.CmdSourceBrowse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.CmdSourceBrowse.Location = new System.Drawing.Point(417, 3);
-      this.CmdSourceBrowse.Name = "CmdSourceBrowse";
-      this.CmdSourceBrowse.Size = new System.Drawing.Size(26, 23);
-      this.CmdSourceBrowse.TabIndex = 4;
-      this.CmdSourceBrowse.Text = "...";
-      this.CmdSourceBrowse.UseVisualStyleBackColor = true;
-      this.CmdSourceBrowse.Click += new System.EventHandler(this.CmdSourceBrowse_Click);
-      // 
-      // FileSelector
-      // 
-      this.FileSelector.CheckPathExists = false;
-      this.FileSelector.OverwritePrompt = false;
-      this.FileSelector.RestoreDirectory = true;
-      this.FileSelector.Title = "Select File";
       // 
       // tableLayoutPanel1
       // 
@@ -85,7 +65,7 @@
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       tableLayoutPanel1.Size = new System.Drawing.Size(446, 239);
-      tableLayoutPanel1.TabIndex = 2;
+      tableLayoutPanel1.TabIndex = 0;
       // 
       // mExistsLabel
       // 
@@ -115,7 +95,7 @@
       this.mDestinationLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.mDestinationLabel.Name = "mDestinationLabel";
       this.mDestinationLabel.Size = new System.Drawing.Size(63, 13);
-      this.mDestinationLabel.TabIndex = 1;
+      this.mDestinationLabel.TabIndex = 3;
       this.mDestinationLabel.Text = "Destination:";
       // 
       // mSourceFilePath
@@ -124,7 +104,7 @@
       this.mSourceFilePath.Location = new System.Drawing.Point(72, 3);
       this.mSourceFilePath.Name = "mSourceFilePath";
       this.mSourceFilePath.Size = new System.Drawing.Size(339, 20);
-      this.mSourceFilePath.TabIndex = 2;
+      this.mSourceFilePath.TabIndex = 1;
       this.mSourceFilePath.TextChanged += new System.EventHandler(this.SourceFilePath_TextChanged);
       // 
       // mDestinationFilePath
@@ -133,8 +113,20 @@
       this.mDestinationFilePath.Location = new System.Drawing.Point(72, 32);
       this.mDestinationFilePath.Name = "mDestinationFilePath";
       this.mDestinationFilePath.Size = new System.Drawing.Size(339, 20);
-      this.mDestinationFilePath.TabIndex = 3;
+      this.mDestinationFilePath.TabIndex = 4;
       this.mDestinationFilePath.TextChanged += new System.EventHandler(this.DestinationFilePath_TextChanged);
+      // 
+      // CmdSourceBrowse
+      // 
+      this.CmdSourceBrowse.AutoSize = true;
+      this.CmdSourceBrowse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.CmdSourceBrowse.Location = new System.Drawing.Point(417, 3);
+      this.CmdSourceBrowse.Name = "CmdSourceBrowse";
+      this.CmdSourceBrowse.Size = new System.Drawing.Size(26, 23);
+      this.CmdSourceBrowse.TabIndex = 2;
+      this.CmdSourceBrowse.Text = "...";
+      this.CmdSourceBrowse.UseVisualStyleBackColor = true;
+      this.CmdSourceBrowse.Click += new System.EventHandler(this.CmdSourceBrowse_Click);
       // 
       // CmdDestinationBrowse
       // 
@@ -161,6 +153,13 @@
       this.mExists.TabIndex = 7;
       this.mExists.Visible = false;
       this.mExists.SelectedIndexChanged += new System.EventHandler(this.Exists_SelectedIndexChanged);
+      // 
+      // FileSelector
+      // 
+      this.FileSelector.CheckPathExists = false;
+      this.FileSelector.OverwritePrompt = false;
+      this.FileSelector.RestoreDirectory = true;
+      this.FileSelector.Title = "Select File";
       // 
       // DualItemIOBase
       // 

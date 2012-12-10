@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.Windows.Forms.ColumnHeader columnHeader1;
       System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Spec1",
             "aaa"}, -1);
@@ -37,7 +38,6 @@
       System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Spec3",
             "ccc"}, -1);
-      System.Windows.Forms.ColumnHeader columnHeader1;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manager));
       this.CmdNew = new System.Windows.Forms.Button();
       this.CmdEdit = new System.Windows.Forms.Button();
@@ -45,13 +45,19 @@
       this.CmdDebug = new System.Windows.Forms.Button();
       this.mSpecs = new System.Windows.Forms.ListView();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdDelete = new System.Windows.Forms.Button();
-      this.CmdHelp = new System.Windows.Forms.Button();
+      this.CmdAbout = new System.Windows.Forms.Button();
+      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.ManagerHelp = new System.Windows.Forms.HelpProvider();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.SuspendLayout();
+      // 
+      // columnHeader1
+      // 
+      columnHeader1.Text = "Title";
+      columnHeader1.Width = 500;
       // 
       // CmdNew
       // 
@@ -78,7 +84,7 @@
       this.CmdRun.Location = new System.Drawing.Point(3, 110);
       this.CmdRun.Name = "CmdRun";
       this.CmdRun.Size = new System.Drawing.Size(75, 23);
-      this.CmdRun.TabIndex = 2;
+      this.CmdRun.TabIndex = 3;
       this.CmdRun.Text = "Run...";
       this.CmdRun.UseVisualStyleBackColor = true;
       this.CmdRun.Click += new System.EventHandler(this.CmdRun_Click);
@@ -88,7 +94,7 @@
       this.CmdDebug.Location = new System.Drawing.Point(3, 139);
       this.CmdDebug.Name = "CmdDebug";
       this.CmdDebug.Size = new System.Drawing.Size(75, 23);
-      this.CmdDebug.TabIndex = 2;
+      this.CmdDebug.TabIndex = 4;
       this.CmdDebug.Text = "Debug...";
       this.CmdDebug.UseVisualStyleBackColor = true;
       this.CmdDebug.Click += new System.EventHandler(this.CmdDebug_Click);
@@ -112,16 +118,11 @@
       this.mSpecs.Name = "mSpecs";
       this.mSpecs.Size = new System.Drawing.Size(552, 384);
       this.mSpecs.Sorting = System.Windows.Forms.SortOrder.Ascending;
-      this.mSpecs.TabIndex = 4;
+      this.mSpecs.TabIndex = 0;
       this.mSpecs.UseCompatibleStateImageBehavior = false;
       this.mSpecs.View = System.Windows.Forms.View.Details;
       this.mSpecs.SelectedIndexChanged += new System.EventHandler(this.Specs_SelectedIndexChanged);
       this.mSpecs.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Specs_MouseDoubleClick);
-      // 
-      // columnHeader1
-      // 
-      columnHeader1.Text = "Title";
-      columnHeader1.Width = 500;
       // 
       // tableLayoutPanel1
       // 
@@ -134,7 +135,7 @@
       this.tableLayoutPanel1.Controls.Add(this.CmdDelete, 0, 2);
       this.tableLayoutPanel1.Controls.Add(this.CmdDebug, 0, 5);
       this.tableLayoutPanel1.Controls.Add(this.CmdRun, 0, 4);
-      this.tableLayoutPanel1.Controls.Add(this.CmdHelp, 0, 7);
+      this.tableLayoutPanel1.Controls.Add(this.CmdAbout, 0, 7);
       this.tableLayoutPanel1.Location = new System.Drawing.Point(561, 3);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
       this.tableLayoutPanel1.RowCount = 8;
@@ -148,6 +149,26 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.Size = new System.Drawing.Size(81, 214);
       this.tableLayoutPanel1.TabIndex = 5;
+      // 
+      // CmdDelete
+      // 
+      this.CmdDelete.Location = new System.Drawing.Point(3, 61);
+      this.CmdDelete.Name = "CmdDelete";
+      this.CmdDelete.Size = new System.Drawing.Size(75, 23);
+      this.CmdDelete.TabIndex = 2;
+      this.CmdDelete.Text = "Delete";
+      this.CmdDelete.UseVisualStyleBackColor = true;
+      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
+      // 
+      // CmdAbout
+      // 
+      this.CmdAbout.Location = new System.Drawing.Point(3, 188);
+      this.CmdAbout.Name = "CmdAbout";
+      this.CmdAbout.Size = new System.Drawing.Size(75, 23);
+      this.CmdAbout.TabIndex = 5;
+      this.CmdAbout.Text = "About...";
+      this.CmdAbout.UseVisualStyleBackColor = true;
+      this.CmdAbout.Click += new System.EventHandler(this.CmdAbout_Click);
       // 
       // tableLayoutPanel2
       // 
@@ -165,26 +186,6 @@
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel2.Size = new System.Drawing.Size(645, 390);
       this.tableLayoutPanel2.TabIndex = 6;
-      // 
-      // CmdDelete
-      // 
-      this.CmdDelete.Location = new System.Drawing.Point(3, 61);
-      this.CmdDelete.Name = "CmdDelete";
-      this.CmdDelete.Size = new System.Drawing.Size(75, 23);
-      this.CmdDelete.TabIndex = 3;
-      this.CmdDelete.Text = "Delete";
-      this.CmdDelete.UseVisualStyleBackColor = true;
-      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
-      // 
-      // CmdHelp
-      // 
-      this.CmdHelp.Location = new System.Drawing.Point(3, 188);
-      this.CmdHelp.Name = "CmdHelp";
-      this.CmdHelp.Size = new System.Drawing.Size(75, 23);
-      this.CmdHelp.TabIndex = 2;
-      this.CmdHelp.Text = "Help";
-      this.CmdHelp.UseVisualStyleBackColor = true;
-      this.CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
       // 
       // Manager
       // 
@@ -214,6 +215,7 @@
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.Button CmdDelete;
-    private System.Windows.Forms.Button CmdHelp;
+    private System.Windows.Forms.Button CmdAbout;
+    private System.Windows.Forms.HelpProvider ManagerHelp;
   }
 }

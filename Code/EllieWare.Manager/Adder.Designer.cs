@@ -42,6 +42,7 @@
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      this.AdderHelp = new System.Windows.Forms.HelpProvider();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
@@ -53,7 +54,7 @@
       this.CmdCancel.Location = new System.Drawing.Point(84, 3);
       this.CmdCancel.Name = "CmdCancel";
       this.CmdCancel.Size = new System.Drawing.Size(75, 23);
-      this.CmdCancel.TabIndex = 0;
+      this.CmdCancel.TabIndex = 1;
       this.CmdCancel.Text = "Cancel";
       this.CmdCancel.UseVisualStyleBackColor = true;
       // 
@@ -63,7 +64,7 @@
       this.CmdOK.Location = new System.Drawing.Point(3, 3);
       this.CmdOK.Name = "CmdOK";
       this.CmdOK.Size = new System.Drawing.Size(75, 23);
-      this.CmdOK.TabIndex = 1;
+      this.CmdOK.TabIndex = 0;
       this.CmdOK.Text = "OK";
       this.CmdOK.UseVisualStyleBackColor = true;
       // 
@@ -73,7 +74,7 @@
       this.txtSearchBox.Location = new System.Drawing.Point(72, 3);
       this.txtSearchBox.Name = "txtSearchBox";
       this.txtSearchBox.Size = new System.Drawing.Size(359, 20);
-      this.txtSearchBox.TabIndex = 2;
+      this.txtSearchBox.TabIndex = 1;
       this.txtSearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
       // 
       // ddlCategories
@@ -84,7 +85,7 @@
       this.ddlCategories.Location = new System.Drawing.Point(72, 29);
       this.ddlCategories.Name = "ddlCategories";
       this.ddlCategories.Size = new System.Drawing.Size(359, 21);
-      this.ddlCategories.TabIndex = 4;
+      this.ddlCategories.TabIndex = 3;
       this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
       // 
       // lbSteps
@@ -94,20 +95,21 @@
       this.lbSteps.FormattingEnabled = true;
       this.lbSteps.Location = new System.Drawing.Point(72, 56);
       this.lbSteps.Name = "lbSteps";
-      this.lbSteps.Size = new System.Drawing.Size(359, 271);
+      this.lbSteps.Size = new System.Drawing.Size(359, 205);
       this.lbSteps.Sorted = true;
       this.lbSteps.TabIndex = 5;
       this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
+      this.lbSteps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Steps_MouseDoubleClick);
       // 
       // txtDescription
       // 
       this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtDescription.Location = new System.Drawing.Point(72, 333);
+      this.txtDescription.Location = new System.Drawing.Point(72, 267);
       this.txtDescription.Multiline = true;
       this.txtDescription.Name = "txtDescription";
       this.txtDescription.ReadOnly = true;
-      this.txtDescription.Size = new System.Drawing.Size(359, 114);
-      this.txtDescription.TabIndex = 6;
+      this.txtDescription.Size = new System.Drawing.Size(359, 85);
+      this.txtDescription.TabIndex = 7;
       // 
       // label1
       // 
@@ -115,7 +117,7 @@
       this.label1.Location = new System.Drawing.Point(3, 0);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(44, 13);
-      this.label1.TabIndex = 7;
+      this.label1.TabIndex = 0;
       this.label1.Text = "Search:";
       // 
       // label2
@@ -124,7 +126,7 @@
       this.label2.Location = new System.Drawing.Point(3, 26);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(52, 13);
-      this.label2.TabIndex = 7;
+      this.label2.TabIndex = 2;
       this.label2.Text = "Category:";
       // 
       // label3
@@ -133,16 +135,16 @@
       this.label3.Location = new System.Drawing.Point(3, 53);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(32, 13);
-      this.label3.TabIndex = 7;
+      this.label3.TabIndex = 4;
       this.label3.Text = "Step:";
       // 
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(3, 330);
+      this.label4.Location = new System.Drawing.Point(3, 264);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(63, 13);
-      this.label4.TabIndex = 7;
+      this.label4.TabIndex = 6;
       this.label4.Text = "Description:";
       // 
       // tableLayoutPanel1
@@ -170,7 +172,7 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 450);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 355);
       this.tableLayoutPanel1.TabIndex = 8;
       // 
       // tableLayoutPanel2
@@ -182,7 +184,7 @@
       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel2.Controls.Add(this.CmdOK, 0, 0);
       this.tableLayoutPanel2.Controls.Add(this.CmdCancel, 1, 0);
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(275, 459);
+      this.tableLayoutPanel2.Location = new System.Drawing.Point(275, 364);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 1;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -204,7 +206,7 @@
       this.tableLayoutPanel3.RowCount = 2;
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(440, 491);
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(440, 396);
       this.tableLayoutPanel3.TabIndex = 10;
       // 
       // Adder
@@ -213,7 +215,7 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdCancel;
-      this.ClientSize = new System.Drawing.Size(464, 515);
+      this.ClientSize = new System.Drawing.Size(464, 420);
       this.Controls.Add(this.tableLayoutPanel3);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Adder";
@@ -245,5 +247,6 @@
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+    private System.Windows.Forms.HelpProvider AdderHelp;
   }
 }

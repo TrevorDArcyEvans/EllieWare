@@ -144,9 +144,8 @@ namespace EllieWare.Manager
       CmdEdit_Click(sender, e);
     }
 
-    private void CmdHelp_Click(object sender, EventArgs e)
+    private void CmdAbout_Click(object sender, EventArgs e)
     {
-      // TODO   Help
       var dlg = new AboutBox(mApplicationName);
       dlg.ShowDialog();
     }
