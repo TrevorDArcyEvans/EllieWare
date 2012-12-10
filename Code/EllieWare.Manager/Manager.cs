@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,6 +11,7 @@ namespace EllieWare.Manager
   {
     public const string MacroFileExtension = ".mxml";
 
+    private readonly string mApplicationName;
     private readonly LogWindow mCallback = new LogWindow();
 
     public Manager()
@@ -19,10 +19,11 @@ namespace EllieWare.Manager
       InitializeComponent();
     }
 
-    public Manager(object root, string userSpecsPath) :
+    public Manager(object root, string appName, string userSpecsPath) :
       this()
     {
       Root = root;
+      mApplicationName = appName;
       SpecificationsFolder = userSpecsPath;
 
       RefreshSpecificationsList();
@@ -122,7 +123,7 @@ namespace EllieWare.Manager
 
     private void UpdateButtons()
     {
-      CmdEdit.Enabled = CmdRun.Enabled = CmdDebug.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = CmdDebug.Enabled = mSpecs.SelectedItems.Count > 0;
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,9 +139,16 @@ namespace EllieWare.Manager
       UpdateButtons();
     }
 
-    private void RmbFileMgr_Opening(object sender, CancelEventArgs e)
+    private void Specs_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      CmdDelete.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit_Click(sender, e);
+    }
+
+    private void CmdHelp_Click(object sender, EventArgs e)
+    {
+      // TODO   Help
+      var dlg = new AboutBox(mApplicationName);
+      dlg.ShowDialog();
     }
   }
 }

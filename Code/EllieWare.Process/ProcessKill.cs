@@ -12,11 +12,11 @@ namespace EllieWare.Process
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Kill process: {0}", mSourceFilePath.Text);
+        var descrip = string.Format("Kill process: {0}", SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -26,7 +26,7 @@ namespace EllieWare.Process
     {
       try
       {
-        var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == mSourceFilePath.Text);
+        var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == SourceFilePathResolvedValue);
         if (targets.Count() == 1)
         {
           targets.First().Kill();

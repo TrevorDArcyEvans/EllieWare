@@ -12,11 +12,11 @@ namespace EllieWare.Zip
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Uncompress {0} to {1}", mSourceFilePath.Text, mDestinationFilePath.Text);
+        var descrip = string.Format("Uncompress {0} to {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -26,10 +26,10 @@ namespace EllieWare.Zip
     {
       try
       {
-        using (var zip = Ionic.Zip.ZipFile.Read(mSourceFilePath.Text))
+        using (var zip = Ionic.Zip.ZipFile.Read(SourceFilePathResolvedValue))
         {
           zip.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
-          zip.ExtractAll(mDestinationFilePath.Text);
+          zip.ExtractAll(DestinationFilePathResolvedValue);
         }
       }
       catch (Exception ex)

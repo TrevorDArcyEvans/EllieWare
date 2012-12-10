@@ -32,6 +32,20 @@ namespace EllieWare.Common
       mParameters.Add(displayName, parameter);
     }
 
+    public void Update(string displayName, object parameter)
+    {
+      if (mParameters[displayName].GetType() != parameter.GetType())
+      {
+        throw new TypeAccessException("Attempt to change parameter type");
+      }
+      mParameters[displayName] = parameter;
+    }
+
+    public bool Remove(string displayName)
+    {
+      return mParameters.Remove(displayName);
+    }
+
     public object Get(string displayName)
     {
       return mParameters[displayName];

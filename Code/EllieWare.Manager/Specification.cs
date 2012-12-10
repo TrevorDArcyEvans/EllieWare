@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
-namespace EllieWare.Common
+namespace EllieWare.Manager
 {
   public class Specification : ISpecification
   {
@@ -72,7 +73,10 @@ namespace EllieWare.Common
       writer.WriteEndElement();
 
       writer.WriteStartElement("Steps");
+      // ReSharper disable ForCanBeConvertedToForeach
+      // NOTE:  order is important for steps, so explicitly iterate
       for (var i = 0; i < Steps.Count; i++)
+      // ReSharper restore ForCanBeConvertedToForeach
       {
         writer.WriteStartElement("Step");
         writer.WriteAttributeString("Type", Steps[i].GetType().ToString());

@@ -25,8 +25,50 @@ namespace EllieWare.Common
       // initialise both text boxes to an empty string so that de/serialisation is safer ie no null strings
       mSourceFilePath.Text = mDestinationFilePath.Text = string.Empty;
 
+      mSourceFilePath.SetParameterManager(mgr);
+      mDestinationFilePath.SetParameterManager(mgr);
+
       // initialise to NO so that de/serialisation is safer ie no invalid values (-1)
       mExists.SelectedIndex = 0;
+    }
+
+    public bool Exists
+    {
+      get
+      {
+        return mExists.SelectedIndex == 1;
+      }
+    }
+
+    public string SourceFilePathResolvedValue
+    {
+      get
+      {
+        return mSourceFilePath.ResolvedValue;
+      }
+    }
+
+    public string DestinationFilePathResolvedValue
+    {
+      get
+      {
+        return mDestinationFilePath.ResolvedValue;
+      }
+    }
+
+    protected void SetSourceVisible(bool isVisible)
+    {
+      mSourceLabel.Visible = mSourceFilePath.Visible = CmdSourceBrowse.Visible = isVisible;
+    }
+
+    protected void SetDestinationVisible(bool isVisible)
+    {
+      mDestinationLabel.Visible = mDestinationFilePath.Visible = CmdDestinationBrowse.Visible = isVisible;
+    }
+
+    protected void SetExistsVisible(bool isVisible)
+    {
+      mExistsLabel.Visible = mExists.Visible = isVisible;
     }
 
     public override Control ConfigurationUserInterface

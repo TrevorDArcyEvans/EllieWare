@@ -11,11 +11,11 @@ namespace EllieWare.Process
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Start process: {0}", mSourceFilePath.Text);
+        var descrip = string.Format("Start process: {0}", SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -25,7 +25,7 @@ namespace EllieWare.Process
     {
       try
       {
-        System.Diagnostics.Process.Start(mSourceFilePath.Text);
+        System.Diagnostics.Process.Start(SourceFilePathResolvedValue);
       }
       catch (Exception ex)
       {

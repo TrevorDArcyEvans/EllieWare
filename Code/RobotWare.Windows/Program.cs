@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace EllieWare.Windows
+namespace RobotWare.Windows
 {
   static class Program
   {
@@ -17,11 +15,13 @@ namespace EllieWare.Windows
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
+      const string ApplicationName = "RobotWare for Windows";
+
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-      var userSpecsPath = Path.Combine(userDocs, "RobotWare for Windows");
+      var userSpecsPath = Path.Combine(userDocs, ApplicationName);
       Directory.CreateDirectory(userSpecsPath);
 
-      Application.Run(new EllieWare.Manager.Manager(null, userSpecsPath));
+      Application.Run(new EllieWare.Manager.Manager(null,ApplicationName, userSpecsPath));
     }
   }
 }

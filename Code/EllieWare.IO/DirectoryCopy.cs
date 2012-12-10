@@ -16,11 +16,11 @@ namespace EllieWare.IO
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Copy {0} --> {1} including subdirectories", mSourceFilePath.Text, mDestinationFilePath.Text);
+        var descrip = string.Format("Copy {0} --> {1} including subdirectories", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -30,7 +30,7 @@ namespace EllieWare.IO
     {
       try
       {
-        DoDirectoryCopy(mSourceFilePath.Text, mDestinationFilePath.Text, true);
+        DoDirectoryCopy(SourceFilePathResolvedValue, DestinationFilePathResolvedValue, true);
       }
       catch (Exception ex)
       {

@@ -46,7 +46,7 @@ namespace EllieWare.Common
 
     #region Implementation of IRunnable
 
-    public virtual string Description
+    public virtual string Summary
     {
       get { throw new NotImplementedException(); }
     }

@@ -44,12 +44,16 @@ namespace EllieWare.Manager
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      this.CmdParameters = new System.Windows.Forms.Button();
+      this.CmdClose = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).BeginInit();
       this.mStepsContainer.Panel1.SuspendLayout();
       this.mStepsContainer.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel4.SuspendLayout();
+      this.tableLayoutPanel3.SuspendLayout();
       this.SuspendLayout();
       // 
       // CmdAdd
@@ -94,7 +98,7 @@ namespace EllieWare.Manager
       // 
       // CmdHelp
       // 
-      this.CmdHelp.Location = new System.Drawing.Point(482, 360);
+      this.CmdHelp.Location = new System.Drawing.Point(3, 52);
       this.CmdHelp.Name = "CmdHelp";
       this.CmdHelp.Size = new System.Drawing.Size(75, 23);
       this.CmdHelp.TabIndex = 5;
@@ -115,7 +119,7 @@ namespace EllieWare.Manager
       // CmdSave
       // 
       this.CmdSave.Enabled = false;
-      this.CmdSave.Location = new System.Drawing.Point(401, 360);
+      this.CmdSave.Location = new System.Drawing.Point(320, 360);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
       this.CmdSave.TabIndex = 8;
@@ -126,7 +130,7 @@ namespace EllieWare.Manager
       // mStepsContainer
       // 
       this.mStepsContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tableLayoutPanel4.SetColumnSpan(this.mStepsContainer, 2);
+      this.tableLayoutPanel4.SetColumnSpan(this.mStepsContainer, 3);
       this.mStepsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mStepsContainer.Location = new System.Drawing.Point(3, 3);
       this.mStepsContainer.Name = "mStepsContainer";
@@ -135,14 +139,14 @@ namespace EllieWare.Manager
       // mStepsContainer.Panel1
       // 
       this.mStepsContainer.Panel1.Controls.Add(this.mSteps);
-      this.tableLayoutPanel4.SetRowSpan(this.mStepsContainer, 3);
+      this.tableLayoutPanel4.SetRowSpan(this.mStepsContainer, 5);
       this.mStepsContainer.Size = new System.Drawing.Size(473, 351);
       this.mStepsContainer.SplitterDistance = 174;
       this.mStepsContainer.TabIndex = 9;
       // 
       // mSteps
       // 
-      this.mSteps.DisplayMember = "Description";
+      this.mSteps.DisplayMember = "Summary";
       this.mSteps.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mSteps.FormattingEnabled = true;
       this.mSteps.Location = new System.Drawing.Point(0, 0);
@@ -203,18 +207,22 @@ namespace EllieWare.Manager
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel4.ColumnCount = 3;
+      this.tableLayoutPanel4.ColumnCount = 4;
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel4.Controls.Add(this.CmdHelp, 2, 3);
+      this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tableLayoutPanel4.Controls.Add(this.mStepsContainer, 0, 0);
-      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel1, 2, 0);
-      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 2, 2);
-      this.tableLayoutPanel4.Controls.Add(this.CmdSave, 1, 3);
+      this.tableLayoutPanel4.Controls.Add(this.CmdSave, 1, 5);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 3, 4);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 3, 2);
+      this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel1, 3, 0);
+      this.tableLayoutPanel4.Controls.Add(this.CmdClose, 2, 5);
       this.tableLayoutPanel4.Location = new System.Drawing.Point(12, 12);
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-      this.tableLayoutPanel4.RowCount = 4;
+      this.tableLayoutPanel4.RowCount = 6;
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -222,10 +230,48 @@ namespace EllieWare.Manager
       this.tableLayoutPanel4.Size = new System.Drawing.Size(566, 386);
       this.tableLayoutPanel4.TabIndex = 13;
       // 
+      // tableLayoutPanel3
+      // 
+      this.tableLayoutPanel3.AutoSize = true;
+      this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.tableLayoutPanel3.ColumnCount = 1;
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel3.Controls.Add(this.CmdParameters, 0, 0);
+      this.tableLayoutPanel3.Controls.Add(this.CmdHelp, 0, 2);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(482, 229);
+      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+      this.tableLayoutPanel3.RowCount = 3;
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(81, 78);
+      this.tableLayoutPanel3.TabIndex = 13;
+      // 
+      // CmdParameters
+      // 
+      this.CmdParameters.Location = new System.Drawing.Point(3, 3);
+      this.CmdParameters.Name = "CmdParameters";
+      this.CmdParameters.Size = new System.Drawing.Size(75, 23);
+      this.CmdParameters.TabIndex = 12;
+      this.CmdParameters.Text = "Parameters...";
+      this.CmdParameters.UseVisualStyleBackColor = true;
+      this.CmdParameters.Click += new System.EventHandler(this.CmdParameters_Click);
+      // 
+      // CmdClose
+      // 
+      this.CmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.CmdClose.Location = new System.Drawing.Point(401, 360);
+      this.CmdClose.Name = "CmdClose";
+      this.CmdClose.Size = new System.Drawing.Size(75, 23);
+      this.CmdClose.TabIndex = 14;
+      this.CmdClose.Text = "Close";
+      this.CmdClose.UseVisualStyleBackColor = true;
+      // 
       // Editor
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.CancelButton = this.CmdClose;
       this.ClientSize = new System.Drawing.Size(590, 410);
       this.Controls.Add(this.tableLayoutPanel4);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -234,6 +280,7 @@ namespace EllieWare.Manager
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Editor";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Editor_FormClosed);
       this.mStepsContainer.Panel1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).EndInit();
@@ -242,6 +289,7 @@ namespace EllieWare.Manager
       this.tableLayoutPanel2.ResumeLayout(false);
       this.tableLayoutPanel4.ResumeLayout(false);
       this.tableLayoutPanel4.PerformLayout();
+      this.tableLayoutPanel3.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -261,5 +309,8 @@ namespace EllieWare.Manager
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+    private System.Windows.Forms.Button CmdParameters;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+    private System.Windows.Forms.Button CmdClose;
   }
 }

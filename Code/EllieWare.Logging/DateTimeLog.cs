@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows.Forms;
-using System.Xml;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
@@ -15,7 +12,7 @@ namespace EllieWare.Logging
       lblMessage.Visible = mMessage.Visible = false;
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {

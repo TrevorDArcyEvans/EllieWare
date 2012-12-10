@@ -1,4 +1,6 @@
-﻿namespace EllieWare.Logging
+﻿using EllieWare.Common;
+
+namespace EllieWare.Logging
 {
   partial class Logging
   {
@@ -31,7 +33,7 @@
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.label1 = new System.Windows.Forms.Label();
       this.lblMessage = new System.Windows.Forms.Label();
-      this.mMessage = new System.Windows.Forms.TextBox();
+      this.mMessage = new ParameterTextBox();
       this.mLevel = new System.Windows.Forms.ComboBox();
       this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
@@ -118,7 +120,7 @@
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.Label label1;
     protected System.Windows.Forms.Label lblMessage;
-    protected System.Windows.Forms.TextBox mMessage;
+    protected ParameterTextBox mMessage;
     protected System.Windows.Forms.ComboBox mLevel;
 
   }

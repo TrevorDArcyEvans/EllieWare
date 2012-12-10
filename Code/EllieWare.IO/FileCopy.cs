@@ -12,11 +12,11 @@ namespace EllieWare.IO
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Copy {0} --> {1}", mSourceFilePath.Text, mDestinationFilePath.Text);
+        var descrip = string.Format("Copy {0} --> {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       try
       {
-        File.Copy(mSourceFilePath.Text, mDestinationFilePath.Text);
+        File.Copy(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
       }
       catch (Exception ex)
       {

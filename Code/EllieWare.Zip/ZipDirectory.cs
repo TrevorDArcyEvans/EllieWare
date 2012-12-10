@@ -12,11 +12,11 @@ namespace EllieWare.Zip
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Compress {0} and all subdirectories to a zip file", mSourceFilePath.Text);
+        var descrip = string.Format("Compress {0} and all subdirectories to a zip file", SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -26,9 +26,9 @@ namespace EllieWare.Zip
     {
       try
       {
-        var zipFileName = Path.ChangeExtension(mSourceFilePath.Text, ".zip");
+        var zipFileName = Path.ChangeExtension(SourceFilePathResolvedValue, ".zip");
         var zip = new Ionic.Zip.ZipFile(zipFileName);
-        var files = Directory.EnumerateFiles(mSourceFilePath.Text, "*", SearchOption.AllDirectories);
+        var files = Directory.EnumerateFiles(SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
         zip.AddFiles(files);
         zip.Save();
       }

@@ -7,7 +7,7 @@ namespace EllieWare.Common
     public SingleItemIOBase(object root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
       base(root, callback, mgr, browsers)
     {
-      mExistsLabel.Visible = mExists.Visible =  false;
+      SetExistsVisible(false);
     }
   }
 }

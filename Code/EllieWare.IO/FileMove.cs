@@ -12,11 +12,11 @@ namespace EllieWare.IO
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Move {0} --> {1}", mSourceFilePath.Text, mDestinationFilePath.Text);
+        var descrip = string.Format("Move {0} --> {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +34,7 @@ namespace EllieWare.IO
     {
       try
       {
-        File.Move(mSourceFilePath.Text, mDestinationFilePath.Text);
+        File.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
       }
       catch (Exception ex)
       {

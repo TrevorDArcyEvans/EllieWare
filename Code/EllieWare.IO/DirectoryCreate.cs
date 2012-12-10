@@ -12,11 +12,11 @@ namespace EllieWare.IO
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Create {0}", mSourceFilePath.Text);
+        var descrip = string.Format("Create {0}", SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       try
       {
-        Directory.CreateDirectory(mSourceFilePath.Text);
+        Directory.CreateDirectory(SourceFilePathResolvedValue);
       }
       catch (Exception ex)
       {

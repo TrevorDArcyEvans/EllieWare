@@ -23,7 +23,7 @@ namespace EllieWare.DateTime
       mTimeSpan.Value = new System.DateTime(2006, 2, 20, 0, 0, 0);
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {

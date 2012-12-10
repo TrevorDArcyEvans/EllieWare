@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
@@ -16,7 +15,7 @@ namespace EllieWare.Manager
     private readonly IHostEx mHost;
     private readonly object mRoot;
     private readonly ICallbackEx mCallback;
-    private ISpecification mSpecification;
+    private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
     private readonly List<IFactory> mFactories = new List<IFactory>();
@@ -159,7 +158,7 @@ namespace EllieWare.Manager
       mCallback.Log(LogLevel.Critical, "Error!");
 
       var step = (IRunnable)mSteps.Items[mCurrentStep];
-      mCallback.Log(LogLevel.Critical, "  " + step.Description);
+      mCallback.Log(LogLevel.Critical, "  " + step.Summary);
     }
 
     public void Run()
@@ -341,12 +340,61 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
-      // TODO   help
+      // TODO   Help
     }
 
     private void Editor_FormClosed(object sender, FormClosedEventArgs e)
     {
       mCallback.AllowClose = true;
+    }
+
+    private void CmdParameters_Click(object sender, EventArgs e)
+    {
+      var dlg = new ParametersEditor(mSpecification.ParameterManager);
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+      CmdSave.Enabled = true;
+
+      var paramMgr = mSpecification.ParameterManager;
+
+      // remove all parameters
+      var displayNames = paramMgr.DisplayNames.ToList();
+      foreach (var displayName in displayNames)
+      {
+        paramMgr.Remove(displayName);
+      }
+
+      // recreate all parameters
+      foreach (var parameter in dlg.Parameters)
+      {
+        paramMgr.Add(parameter.DisplayName, parameter.ParameterValue);
+      }
+
+      UpdateUserInterface();
+    }
+
+    private void Editor_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (!CmdSave.Enabled)
+      {
+        return;
+      }
+
+      var msg = string.Format("You have unsaved changes.\nDo you want to save them?");
+      var retVal = MessageBox.Show(msg, "Confirm", MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+      if (retVal == DialogResult.Cancel)
+      {
+        e.Cancel = true;
+        return;
+      } 
+      if (retVal == DialogResult.Yes)
+      {
+        CmdSave_Click(sender, e);
+        return;
+      }
     }
   }
 }

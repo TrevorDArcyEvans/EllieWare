@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EllieWare.Interfaces;
 using NUnit.Framework;
@@ -38,8 +39,10 @@ namespace EllieWare.Common.Tests
 
     #endregion
 
+    #region Add/Contains
+
     [Test]
-    public void ParameterManager_DoesNotContainRandomKey()
+    public void ParameterManager_Contains_DoesNotContainRandomKey()
     {
       Assert.False(mParamMgr.Contains(Guid.NewGuid().ToString()));
     }
@@ -74,6 +77,10 @@ namespace EllieWare.Common.Tests
       Assert.True(mParamMgr.Contains(mKey2));
     }
 
+    #endregion
+
+    #region Get
+
     [Test]
     public void ParameterManager_GetSameKey_ReturnsSameParameter()
     {
@@ -96,17 +103,77 @@ namespace EllieWare.Common.Tests
     }
 
     [Test]
-    public void ParameterManager_GetDisplayNames_ContainsExpectedDisplayName()
+    [ExpectedException(typeof(KeyNotFoundException))]
+    public void ParameterManager_GetRandomKey_ThrowsException()
+    {
+      Assert.IsNull(mParamMgr.Get(Guid.NewGuid().ToString()));
+    }
+
+    #endregion
+
+    #region DisplayNames
+
+    [Test]
+    public void ParameterManager_DisplayNames_ContainsExpectedDisplayName()
     {
       mParamMgr.Add(mKey1, mParam);
       Assert.True(mParamMgr.DisplayNames.Contains(mKey1));
     }
 
     [Test]
-    public void ParameterManager_GetDisplayNames_ContainsExpectedCount()
+    public void ParameterManager_DisplayNames_ContainsExpectedCount()
     {
       mParamMgr.Add(mKey1, mParam);
       Assert.True(mParamMgr.DisplayNames.Count() == 1);
     }
+
+    #endregion
+
+    #region Remove
+
+    [Test]
+    public void ParameterManager_Remove_ReturnsTrue()
+    {
+      mParamMgr.Add(mKey1, mParam);
+      Assert.True(mParamMgr.Remove(mKey1));
+    }
+
+    [Test]
+    public void ParameterManager_RemoveTwice_ReturnsFalse()
+    {
+      mParamMgr.Add(mKey1, mParam);
+      Assert.True(mParamMgr.Remove(mKey1));
+      Assert.False(mParamMgr.Remove(mKey1));
+    }
+
+    #endregion
+
+    #region Update
+
+    [Test]
+    public void ParameterManager_Update_UpdatesParameter()
+    {
+      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Update(mKey1, "stuff");
+      Assert.AreSame(mParamMgr.Get(mKey1), "stuff");
+    }
+
+    [Test]
+    [ExpectedException(typeof(TypeAccessException))]
+    public void ParameterManager_UpdateDifferentType_ThrowsException()
+    {
+      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Update(mKey1, 7.0);
+    }
+
+    [Test]
+    [ExpectedException(typeof(KeyNotFoundException))]
+    public void ParameterManager_UpdateNotExists_ThrowsException()
+    {
+      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Update("NotExists", 7.0);
+    }
+
+    #endregion
   }
 }

@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Schema;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -26,15 +19,16 @@ namespace EllieWare.Logging
     {
       InitializeComponent();
 
+      mMessage.SetParameterManager(mgr);
       mLevel.SelectedIndex = 0;
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
         var level = (LogLevel) mLevel.SelectedIndex;
-        return string.Format("{0} : {1}", level, mMessage.Text);
+        return string.Format("{0} : {1}", level, mMessage.ResolvedValue);
       }
     }
 
@@ -48,7 +42,7 @@ namespace EllieWare.Logging
 
     public override bool Run()
     {
-      mCallback.Log((LogLevel)mLevel.SelectedIndex, mMessage.Text);
+      mCallback.Log((LogLevel)mLevel.SelectedIndex, mMessage.ResolvedValue);
 
       return true;
     }

@@ -16,11 +16,11 @@ namespace EllieWare.IO
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var descrip = string.Format("Move {0} --> {1} including subdirectories", mSourceFilePath.Text, mDestinationFilePath.Text);
+        var descrip = string.Format("Move {0} --> {1} including subdirectories", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -38,7 +38,7 @@ namespace EllieWare.IO
     {
       try
       {
-        Directory.Move(mSourceFilePath.Text, mDestinationFilePath.Text);
+        Directory.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
       }
       catch (Exception ex)
       {

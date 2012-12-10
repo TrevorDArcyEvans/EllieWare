@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -11,12 +12,11 @@ namespace EllieWare.IO
     {
     }
 
-    public override string Description
+    public override string Summary
     {
       get
       {
-        var exist = mExists.SelectedIndex == 1;
-        var descrip = string.Format("Check that {0} is ", mSourceFilePath.Text) + (exist ? "" : "not ") + "present";
+        var descrip = string.Format("Check that {0} is ", SourceFilePathResolvedValue) + (Exists ? "" : "not ") + "present";
 
         return descrip;
       }
@@ -24,10 +24,18 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      var exist = mExists.SelectedIndex == 1;
-      var dirExists = Directory.Exists(mSourceFilePath.Text);
+      try
+      {
+        var dirExists = Directory.Exists(SourceFilePathResolvedValue);
 
-      return exist ? dirExists : !dirExists;
+        return Exists ? dirExists : !dirExists;
+      }
+      catch (Exception ex)
+      {
+        mCallback.Log(LogLevel.Critical, ex.Message);
+
+        return false;
+      }
     }
   }
 }
