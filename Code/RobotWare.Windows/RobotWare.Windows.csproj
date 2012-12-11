@@ -127,9 +127,7 @@
       <Name>EllieWare.Manager</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="robot.ico" />
   </ItemGroup>
