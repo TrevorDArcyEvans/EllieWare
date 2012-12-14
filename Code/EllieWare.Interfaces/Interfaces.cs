@@ -101,6 +101,11 @@ namespace EllieWare.Interfaces
     /// <returns>parameter value</returns>
     /// If the <paramref name="displayName"/> does not exist, will throw a <see cref="KeyNotFoundException"/>
     object Get(string displayName);
+
+    /// <summary>
+    /// Event fired when after parameter has changed
+    /// </summary>
+    event EventHandler ParameterChanged;
   }
 
   /// <summary>

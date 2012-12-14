@@ -20,6 +20,13 @@ namespace EllieWare.Common
     {
       mParamMgr = paramMgr;
 
+      UpdateParameters();
+
+      mParamMgr.ParameterChanged += OnParameterChanged;
+    }
+
+    private void UpdateParameters()
+    {
       ParameterMenu.Items.Clear();
       var compatibleParamNames = from thisName in mParamMgr.DisplayNames
                                  where mParamMgr.Get(thisName).GetType() == typeof(string)
@@ -29,6 +36,11 @@ namespace EllieWare.Common
         var newItem = ParameterMenu.Items.Add(compatibleName);
         newItem.Click += MenuItem_Click;
       }
+    }
+
+    private void OnParameterChanged(object sender, EventArgs e)
+    {
+      UpdateParameters();
     }
 
     #region un/encoding parameter names
@@ -63,7 +75,7 @@ namespace EllieWare.Common
         // parse for a parameter name
         var retVal = Text;
         var encodedParamNames = from item in ParameterMenu.Items.Cast<ToolStripItem>()
-                               select GetEncodedParameterName(item.Text);
+                                select GetEncodedParameterName(item.Text);
         foreach (var encodedParamName in encodedParamNames)
         {
           if (retVal.Contains(encodedParamName))

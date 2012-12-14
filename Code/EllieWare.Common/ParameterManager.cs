@@ -30,6 +30,7 @@ namespace EllieWare.Common
     public void Add(string displayName, object parameter)
     {
       mParameters.Add(displayName, parameter);
+      FireParameterChanged();
     }
 
     public void Update(string displayName, object parameter)
@@ -39,16 +40,29 @@ namespace EllieWare.Common
         throw new TypeAccessException("Attempt to change parameter type");
       }
       mParameters[displayName] = parameter;
+      FireParameterChanged();
     }
 
     public bool Remove(string displayName)
     {
-      return mParameters.Remove(displayName);
+      var retval = mParameters.Remove(displayName);
+
+      FireParameterChanged();
+
+      return retval;
     }
 
     public object Get(string displayName)
     {
       return mParameters[displayName];
+    }
+
+    private void FireParameterChanged()
+    {
+      if (ParameterChanged != null)
+      {
+        ParameterChanged(this, new EventArgs());
+      }
     }
 
     public XmlSchema GetSchema()
@@ -92,6 +106,8 @@ namespace EllieWare.Common
 
       writer.WriteEndElement();
     }
+
+    public event EventHandler ParameterChanged;
 
     #region Object serialisation helpers
 

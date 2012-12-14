@@ -8,7 +8,7 @@ namespace EllieWare.Common
 {
   public partial class DualItemIOBase : MutableRunnableBase
   {
-    private readonly BrowserTypes mBrowsers;
+    private BrowserTypes mBrowsers;
 
     public DualItemIOBase()
     {
@@ -20,6 +20,11 @@ namespace EllieWare.Common
     {
       InitializeComponent();
 
+      Initialise(root, callback, mgr, browsers);
+    }
+
+    public void Initialise(object root, ICallback callback, IParameterManager mgr, BrowserTypes browsers)
+    {
       mBrowsers = browsers;
 
       // initialise both text boxes to an empty string so that de/serialisation is safer ie no null strings
