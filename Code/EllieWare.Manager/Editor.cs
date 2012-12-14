@@ -137,6 +137,11 @@ namespace EllieWare.Manager
 
     private void Steps_SelectedIndexChanged(object sender, EventArgs e)
     {
+      if (mSteps.SelectedIndex == -1)
+      {
+        return;
+      }
+
       mStepsContainer.Panel2.Controls.Clear();
       var step = (IRunnable)mSteps.SelectedItem;
       mStepsContainer.Panel2.Controls.Add(step.ConfigurationUserInterface);
