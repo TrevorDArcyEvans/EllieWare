@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -24,16 +23,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      try
-      {
-        File.Delete(SourceFilePathResolvedValue);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      File.Delete(SourceFilePathResolvedValue);
 
       return true;
     }

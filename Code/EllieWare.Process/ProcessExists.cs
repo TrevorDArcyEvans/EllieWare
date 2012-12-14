@@ -24,19 +24,10 @@ namespace EllieWare.Process
 
     public override bool Run()
     {
-      try
-      {
-        var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == SourceFilePathResolvedValue);
+      var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == SourceFilePathResolvedValue);
 
-        // must be exactly one instance of process for it to unambiguously 'exist'
-        return Exists ? (targets.Count() == 1) : (targets.Count() != 1);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      // must be exactly one instance of process for it to unambiguously 'exist'
+      return Exists ? (targets.Count() == 1) : (targets.Count() != 1);
     }
   }
 }

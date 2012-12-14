@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EllieWare.Interfaces">
+      <HintPath>..\EllieWare.Interfaces\bin\Debug\EllieWare.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,8 +48,54 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="FTP.cs" />
+    <Compile Include="DirectoryExists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryExists.Designer.cs">
+      <DependentUpon>DirectoryExists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryExistsFactory.cs" />
+    <Compile Include="FtpFactoryBase.cs" />
+    <Compile Include="FtpInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FtpInfo.Designer.cs">
+      <DependentUpon>FtpInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FtpDualItemIOBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FtpDualItemIOBase.Designer.cs">
+      <DependentUpon>FtpDualItemIOBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FtpSingleItemExistsIOBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FtpSingleItemExistsIOBase.Designer.cs">
+      <DependentUpon>FtpSingleItemExistsIOBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\edtftpnet\src\edtFTPnet.csproj">
+      <Project>{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}</Project>
+      <Name>edtFTPnet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
+      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
+      <Name>EllieWare.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FtpInfo.resx">
+      <DependentUpon>FtpInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FtpDualItemIOBase.resx">
+      <DependentUpon>FtpDualItemIOBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FtpSingleItemExistsIOBase.resx">
+      <DependentUpon>FtpSingleItemExistsIOBase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

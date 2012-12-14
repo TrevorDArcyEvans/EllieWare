@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 
@@ -7,6 +6,10 @@ namespace EllieWare.IO
 {
   public class FileMove : FileCopy
   {
+    public FileMove()
+    {
+    }
+
     public FileMove(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
@@ -32,16 +35,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      try
-      {
-        File.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      File.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
       return true;
     }

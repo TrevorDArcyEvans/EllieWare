@@ -23,18 +23,9 @@ namespace EllieWare.Process
 
     public override bool Run()
     {
-      try
-      {
-        System.Diagnostics.Process.Start(SourceFilePathResolvedValue);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
+      var newProc = System.Diagnostics.Process.Start(SourceFilePathResolvedValue);
 
-        return false;
-      }
-
-      return true;
+      return newProc != null;
     }
   }
 }

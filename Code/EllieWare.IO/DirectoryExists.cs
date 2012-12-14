@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -7,6 +6,10 @@ namespace EllieWare.IO
 {
   public class DirectoryExists : SingleItemExistsIOBase
   {
+    public DirectoryExists()
+    {
+    }
+
     public DirectoryExists(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
@@ -24,18 +27,9 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      try
-      {
-        var dirExists = Directory.Exists(SourceFilePathResolvedValue);
+      var dirExists = Directory.Exists(SourceFilePathResolvedValue);
 
-        return Exists ? dirExists : !dirExists;
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      return Exists ? dirExists : !dirExists;
     }
   }
 }

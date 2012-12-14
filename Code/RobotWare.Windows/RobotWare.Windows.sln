@@ -36,6 +36,10 @@ Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "EllieWare.Interfaces.Docs",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.RobotWare.Docs", "..\EllieWare.RobotWare.Docs\EllieWare.RobotWare.Docs.csproj", "{2AE2EB9B-0E2D-493F-975A-4B453D985D4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edtFTPnet", "..\edtftpnet\src\edtFTPnet.csproj", "{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Audio", "..\EllieWare.Audio\EllieWare.Audio.csproj", "{B576477E-C3E2-42A6-9C46-B523D9F6B834}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +267,30 @@ Global
 		{2AE2EB9B-0E2D-493F-975A-4B453D985D4F}.Release|Win32.ActiveCfg = Debug|x86
 		{2AE2EB9B-0E2D-493F-975A-4B453D985D4F}.Release|x86.ActiveCfg = Debug|x86
 		{2AE2EB9B-0E2D-493F-975A-4B453D985D4F}.Release|x86.Build.0 = Debug|x86
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Release|Win32.ActiveCfg = Release|Any CPU
+		{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}.Release|x86.ActiveCfg = Release|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Release|Win32.ActiveCfg = Release|Any CPU
+		{B576477E-C3E2-42A6-9C46-B523D9F6B834}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

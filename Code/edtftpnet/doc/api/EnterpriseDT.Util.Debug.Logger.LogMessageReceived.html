@@ -1,0 +1,92 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>Logger.LogMessageReceived Event</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">Logger.LogMessageReceived Event
+					</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p> If this event is set then all logging events are directed to the event as well as the loggers. </p>
+      <div class="syntax">public static event <a href="EnterpriseDT.Util.Debug.LogMessageHandler.html">LogMessageHandler</a> LogMessageReceived;</div>
+      <p>
+      </p>
+      <h4 class="dtH4">Event Data</h4>
+      <p>The event handler receives an argument of type <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.html">LogMessageEventArgs</a> containing data related to this event. The following <B>LogMessageEventArgs</B> properties provide information specific to this event.</p>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Property</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.Arguments.html">Arguments</a>
+            </td>
+            <td width="50%"> The array of variable arguments. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.Exception.html">Exception</a>
+            </td>
+            <td width="50%"> An exception if it exists (passed in as the first in the argument list). </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.FormattedText.html">FormattedText</a>
+            </td>
+            <td width="50%"> The formatted message text, constructed from the arguments and using the Text as a formatting string. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.LoggerName.html">LoggerName</a>
+            </td>
+            <td width="50%"> Returns the name of the logger for this message </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.LogLevel.html">LogLevel</a>
+            </td>
+            <td width="50%"> Returns the level of this message </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.Text.html">Text</a>
+            </td>
+            <td width="50%"> The message text. </td>
+          </tr>
+        </table>
+      </div>
+      <h4 class="dtH4">Remarks</h4>
+      <p>If it is desired to only send logging to the log system subscribing to this event, the <a href="EnterpriseDT.Util.Debug.Logger.CurrentLevel.html">CurrentLevel</a> should be set to <a href="EnterpriseDT.Util.Debug.Level.OFF.html">OFF</a>.</p>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="EnterpriseDT.Util.Debug.Logger.html">Logger Class</a> | <a href="EnterpriseDT.Util.Debug.html">EnterpriseDT.Util.Debug Namespace</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="LogMessageReceived event">
+        </param>
+        <param name="Keyword" value="LogMessageReceived event, Logger class">
+        </param>
+        <param name="Keyword" value="Logger.LogMessageReceived event">
+        </param>
+      </object>
+    </div>
+  </body>
+</html>

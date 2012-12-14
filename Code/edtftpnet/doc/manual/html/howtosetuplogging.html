@@ -1,0 +1,74 @@
+<html><head>
+   <title>How to set up logging</title>
+</head>
+
+
+<body style="background-color: rgb(255, 255, 255);">
+
+<table cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_tl.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_t.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_tr.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_l.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="font-family: sans-serif; font-weight: bold; font-size: 14pt; background-image: url(../images/bk_c.jpg); background-repeat: repeat;" width="100%"> &nbsp;How to set up logging </td>
+
+      <td style="background-image: url(../images/bk_r.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_bl.jpg); background-repeat: repeat-x;" height="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_b.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_br.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br><div align="left" ><font face="Arial" ><span style="font-size:10pt" >Often, it can be very helpful to look at the extensive logging output if any 
+problems are experienced communicating with FTP servers.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >All commands sent to the FTP server and subsequent replies are logged, and can be made 
+available on the console or directed to a log file. Much other useful information is also logged.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >Statements are logged at different levels, ranging from least 
+verbose (<i>Fatal</i>) to most verbose (<i>Debug</i>). Intermediate levels are <i>Error</i>, <i>Warning </i>and <i>Information</i>. An overall level can be set for the library, and all statements up to and including 
+that level will be outputted.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >For example, if the overall level is set to <i>Information</i>, then <i>Fatal</i>, <i>Error</i>, <i>Warning </i>and <i>Information </i>log statements will be outputted, but <i>Debug </i>statements will not be.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >There are also two additional levels that can be conveniently used - <i>None</i>, which means no 
+logging will occur, and <i>All</i>, which means all log statements will be outputted, no matter what 
+level they are. </span></font><font face="Arial" ><span style="font-size:10pt" >The <i>All </i>level is actually an additional level which is used for extremely verbose 
+output - so when the level is set to <i>All </i>more log statements may be outputted than at <i>Debug</i>.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >The overall level can be set via the static LogLevel property:</span></font></div>
+
+<div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left"  style="margin-left:13mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >FTPConnection.</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >LogLevel = LogLevel.Information</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >;</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div>
+
+<div align="left" ><font face="Arial" ><span style="font-size:10pt" >The destination for logging can be set via several properties, described below. </span></font></div>
+
+<br><div align="left" ></div><table border="1"  width="554"  cellpadding="3"  cellspacing="0"  style="border-collapse: collapse; border: none" >
+    <tr>
+    <td valign="top"  width="117"  height="16"  style="border: solid #010101 1px;" >
+    <div align="left" ><font face="Arial" ><span style="font-size:10pt" >LogToConsole</span></font></div>
+    </td>
+    <td valign="top"  width="419"  height="16"  style="border: solid #010101 1px;" >
+    <div align="left" ><font face="Arial" ><span style="font-size:10pt" >If set to true, logging is directed to the console</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="117"  style="border: solid #010101 1px;" >
+    <div align="left" ><font face="Arial" ><span style="font-size:10pt" >LogFile</span></font></div>
+    </td>
+    <td valign="top"  width="419"  style="border: solid #010101 1px;" >
+    <div align="left" ><font face="Arial" ><span style="font-size:10pt" >If to a valid filename, logging is directed to the file</span></font></div>
+    </td></tr></table><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div>
+    
+   </body></html>

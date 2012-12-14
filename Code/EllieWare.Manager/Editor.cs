@@ -222,8 +222,16 @@ namespace EllieWare.Manager
     private bool Run(int stepNum)
     {
       var step = (IRunnable)mSteps.Items[stepNum];
+      try
+      {
+        return step.Run();
+      }
+      catch (Exception ex)
+      {
+        mCallback.Log(LogLevel.Critical, ex.Message);
 
-      return step.Run();
+        return false;
+      }
     }
 
     private void UpdateButtons()
@@ -389,7 +397,7 @@ namespace EllieWare.Manager
       {
         e.Cancel = true;
         return;
-      } 
+      }
       if (retVal == DialogResult.Yes)
       {
         CmdSave_Click(sender, e);

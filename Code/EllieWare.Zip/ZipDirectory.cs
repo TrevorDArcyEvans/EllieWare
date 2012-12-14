@@ -24,19 +24,12 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      try
+      var zipFileName = Path.ChangeExtension(SourceFilePathResolvedValue, ".zip");
+      using (var zip = new Ionic.Zip.ZipFile(zipFileName))
       {
-        var zipFileName = Path.ChangeExtension(SourceFilePathResolvedValue, ".zip");
-        var zip = new Ionic.Zip.ZipFile(zipFileName);
         var files = Directory.EnumerateFiles(SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
         zip.AddFiles(files);
         zip.Save();
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
       }
 
       return true;

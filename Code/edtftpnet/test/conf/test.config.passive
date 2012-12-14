@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- test configuration edtFTPnet nunit tests -->
+<configuration>
+  <appSettings>
+  	<add key="edtftp.log.level" value="ALL"/>
+  	<!-- add key="ftptest.host" value="edtmobile"/ -->
+  	<add key="ftptest.host" value="vistamobile"/> 	
+  	<add key="ftptest.user" value="javaftp"/>
+  	<add key="ftptest.password" value="javaftp"/>
+  	<add key="ftptest.timeout" value="30000"/>
+    <add key="ftptest.wakeupinterval" value="0"/>
+  	<add key="ftptest.strictreplies" value="true"/>
+  	<add key="ftptest.connectmode" value="PASV"/>
+  	<add key="ftptest.testdir" value="remote/test"/>
+  	<add key="ftptest.file.local.text" value="local.txt"/>
+  	<add key="ftptest.file.remote.text" value="remote.txt"/>
+  	<add key="ftptest.file.local.binary" value="test.dll"/>
+  	<add key="ftptest.file.remote.binary" value="remote.dll"/>
+  	<add key="ftptest.file.local.big" value="pretty_big.AVI"/>
+  	<add key="ftptest.logdir" value="log"/>
+  	<add key="ftptest.datadir.local" value="data"/>
+  	<add key="ftptest.bulkcount" value="25"/>
+  	<add key="ftptest.file.local.empty" value="empty_local.txt"/>
+  	<add key="ftptest.file.remote.empty" value="empty_remote.txt"/>
+  	<add key="ftptest.dir.remote.empty" value="empty"/>	
+  </appSettings>
+</configuration>

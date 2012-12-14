@@ -1,0 +1,210 @@
+<html><head>
+   <title>How to use FTP events</title>
+</head>
+
+
+<body style="background-color: rgb(255, 255, 255);">
+
+<table cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_tl.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_t.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_tr.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_l.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="font-family: sans-serif; font-weight: bold; font-size: 14pt; background-image: url(../images/bk_c.jpg); background-repeat: repeat;" width="100%"> &nbsp;How to use FTP events </td>
+
+      <td style="background-image: url(../images/bk_r.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_bl.jpg); background-repeat: repeat-x;" height="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_b.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_br.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+   
+   
+<div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><br><font face="Arial" ><span style="font-size:10pt" >Events are useful for providing feedback on the progress of FTP 
+operations.&#160; For example, the </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.BytesTransferred.html"><font face="Arial" ><span style="font-size:10pt" >BytesTransferred</span></font></a><font face="Arial" ><span style="font-size:10pt" > event fires during a file transfer each 
+time 
+another <i>n</i> bytes have been transferred, where <i>n</i> is equal to </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.TransferNotifyInterval.html"><font face="Arial" ><span style="font-size:10pt" >FTPConnection.TransferNotifyInterval</span></font></a><font face="Arial" ><span style="font-size:10pt" >.&#160; An event such as this may be used to provide 
+progress feedback during long transfer operations.</span></font></div><div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Arial" ><span style="font-size:10pt" >Handling events is done using delegates in the same way as other .NET events.&#160; For 
+example, to handle the </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Connected.html"><font face="Arial" ><span style="font-size:10pt" >Connected</span></font></a><font face="Arial" ><span style="font-size:10pt" > event, an event handler must be defined:</span></font></div><div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" ><br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >&#160;&#160; private</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >void</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > ftpConnection_Connected(</span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >object</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > sender,<br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > EnterpriseDT.Net.Ftp.FTPConnectionEventArgs e)<br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >&#160;&#160; </span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >{<br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >&#160;&#160;&#160;&#160;&#160; </span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >Print(&quot;Connected to &quot; + e.ServerAddress + &quot;:&quot; + e.ServerPort);<br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >&#160;&#160; </span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >}<br><br></span></font><font face="Arial" ><span style="font-size:10pt" >A delegate for this event-handler must then be added to the event:</span></font></div><div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  size="1" ><span style="font-size:9pt" ><br></span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >&#160;&#160; ftpConnection.Connected +=<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >new</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > FTPConnectionEventHandler(ftpConnection_Connected);<br><br></span></font><font face="Arial"  size="1" ><span style="font-size:9pt" >Once this has been done, the ftpConnection_Connect method will be called when a connection with the 
+server has been established.</span></font></div>
+
+<div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Arial" ><span style="font-size:10pt" >The following events relate to specific FTP operations. Most events are available in </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.html"><font face="Arial" ><span style="font-size:10pt" >FTPConnection</span></font></a><font face="Arial" ><span style="font-size:10pt" >:</span></font><br><br></div>
+
+    <table border="1"  bordercolor="#999999"  width="567"  cellpadding="5"  cellspacing="0"  style="border-collapse: collapse;" >
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Closed.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Closed</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the component has closed its connection to the server.</span></font></div>
+    </td>
+    </tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Closing.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Closing</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the component is about to close its connection to the 
+    server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Connected.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Connected</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the component has connected to the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Connecting.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Connecting</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the component is connecting to the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Deleted.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Deleted</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a file has been deleted from the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Deleting.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Deleting</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a file is about to be deleted from the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.DirectoryChanged.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >DirectoryChanged</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the working directory on the server has been changed.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.DirectoryChanging.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >DirectoryChanging</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the working directory on the server is about to be changed.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Downloaded.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Downloaded</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a file has been downloaded from the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Downloading.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Downloading</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a file is about to be downloaded from the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.LoggedIn.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >LoggedIn</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the component has logged in.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.LoggingIn.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >LoggingIn</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when the component is about to log in.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.RenamedFile.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >RenamedFile</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a remote file has been renamed.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.RenamingFile.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >RenamingFile</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a remote file is about to be renamed.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Uploaded.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Uploaded</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a file has been uploaded to the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.Uploading.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Uploading</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a file is about to be uploaded to the server.</span></font></div>
+    </td></tr></table>
+    
+    
+    <div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left"  style="margin-left:2mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Arial" ><span style="font-size:10pt" >The following events are of a more general nature and can occur across a range of FTP 
+operations:</span></font><br><br></div>
+
+<table border="1"  bordercolor="#999999"  width="567"  cellpadding="5"  cellspacing="0"  style="border-collapse: collapse;" >
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br>
+    </span></font></div>
+    <div align="left" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.BytesTransferred.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >BytesTransferred</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs every time a specified number of bytes of data have been 
+    transferred.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.CommandSent.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >CommandSent</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a command is sent to the server.</span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.ExFTPConnection.Error.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >Error</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when an exception is thrown during an asynchronous operation. </span></font></div>
+    </td></tr>
+    <tr>
+    <td valign="top"  width="119"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.ReplyReceived.html"><font face="Verdana"  size="1" ><span style="font-size:8pt" >ReplyReceived</span></font></a></div>
+    </td>
+    <td valign="top"  width="422"  style="border-left:solid #999999 1px; border-right:solid #999999 0px; border-top:solid #999999 0px; border-bottom:solid #999999 1px" >
+    <div align="left"  style="margin-left:0mm; margin-right:0mm; text-indent:0mm; margin-top:3mm; margin-bottom:1mm;" ><font face="Verdana"  size="1" ><span style="font-size:8pt" >Occurs when a reply is received from the server.</span></font></div>
+    </td></tr></table>
+    
+</body></html>

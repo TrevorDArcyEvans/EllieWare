@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -7,6 +6,10 @@ namespace EllieWare.IO
 {
   public class DirectoryDelete : SingleItemIOBase
   {
+    public DirectoryDelete()
+    {
+    }
+
     public DirectoryDelete(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
@@ -24,16 +27,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      try
-      {
-        Directory.Delete(SourceFilePathResolvedValue, true);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      Directory.Delete(SourceFilePathResolvedValue, true);
 
       return true;
     }

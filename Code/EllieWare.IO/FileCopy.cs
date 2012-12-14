@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -7,6 +6,10 @@ namespace EllieWare.IO
 {
   public class FileCopy : DualItemIOBase
   {
+    public FileCopy()
+    {
+    }
+
     public FileCopy(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
@@ -24,16 +27,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      try
-      {
-        File.Copy(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      File.Copy(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
       return true;
     }

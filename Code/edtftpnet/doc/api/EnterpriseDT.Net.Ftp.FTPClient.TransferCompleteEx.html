@@ -1,0 +1,113 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>FTPClient.TransferCompleteEx Event</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPClient.TransferCompleteEx Event
+					</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p> Notifies of the completion of a transfer, and supplies more details than <a href="EnterpriseDT.Net.Ftp.FTPClient.TransferComplete.html">TransferComplete</a>
+            </p>
+      <div class="syntax">public event <a href="EnterpriseDT.Net.Ftp.TransferHandler.html">TransferHandler</a> TransferCompleteEx;</div>
+      <p>
+      </p>
+      <h4 class="dtH4">Event Data</h4>
+      <p>The event handler receives an argument of type <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.html">TransferEventArgs</a> containing data related to this event. The following <B>TransferEventArgs</B> properties provide information specific to this event.</p>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Property</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPEventArgs.ConnectionInstanceNumber.html">ConnectionInstanceNumber</a>
+            </td>
+            <td width="50%"> Identifies the pooled connection on which the task is running. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.Direction.html">Direction</a>
+            </td>
+            <td width="50%"> Gets the transfer direction </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPEventArgs.IsGuiThread.html">IsGuiThread</a>
+            </td>
+            <td width="50%"> Indicates whether or not the event-handler has been invoked on the GUI thread. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.LocalByteArray.html">LocalByteArray</a>
+            </td>
+            <td width="50%"> Gets the byte-array being transferred to/from. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.LocalFilePath.html">LocalFilePath</a>
+            </td>
+            <td width="50%"> Gets the path of the local file. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.LocalStream.html">LocalStream</a>
+            </td>
+            <td width="50%"> Gets the stream being transferred to/from. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.RemoteFilename.html">RemoteFilename</a>
+            </td>
+            <td width="50%"> Gets the remote filename </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPEventArgs.TaskID.html">TaskID</a>
+            </td>
+            <td width="50%"> Identifies the asynchronous operation within which the event was triggered (applies to asynchronous methods only). </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.TransferEventArgs.TransferType.html">TransferType</a>
+            </td>
+            <td width="50%"> Gets the transfer type </td>
+          </tr>
+        </table>
+      </div>
+      <h4 class="dtH4">Implements</h4>
+      <p>
+        <a href="EnterpriseDT.Net.Ftp.IFileTransferClient.TransferCompleteEx.html">IFileTransferClient.TransferCompleteEx</a>
+      </p>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="EnterpriseDT.Net.Ftp.FTPClient.html">FTPClient Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="TransferCompleteEx event">
+        </param>
+        <param name="Keyword" value="TransferCompleteEx event, FTPClient class">
+        </param>
+        <param name="Keyword" value="FTPClient.TransferCompleteEx event">
+        </param>
+      </object>
+    </div>
+  </body>
+</html>

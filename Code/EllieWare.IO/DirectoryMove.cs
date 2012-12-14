@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 
@@ -36,16 +35,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      try
-      {
-        Directory.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
-      }
+      Directory.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
       return true;
     }

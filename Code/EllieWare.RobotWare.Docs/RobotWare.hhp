@@ -1,12 +1,21 @@
 [OPTIONS]
+Auto Index=Yes
+Auto TOC=9
 Compatibility=1.1 or later
 Compiled file=EllieWare.RobotWare.chm
 Contents file=Table of Contents.hhc
+Default topic=index.html
 Display compile progress=Yes
+Full-text search=Yes
 Index file=Index.hhk
 Language=0x809 English (United Kingdom)
 Title=RobotWare
 
+
+[FILES]
+index.html
+API.html
+Parameters.html
 
 [INFOTYPES]
 

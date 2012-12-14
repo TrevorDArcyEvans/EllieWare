@@ -6,6 +6,10 @@ namespace EllieWare.Logging
 {
   public class DateTimeLog : Logging
   {
+    public DateTimeLog()
+    {
+    }
+
     public DateTimeLog(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {

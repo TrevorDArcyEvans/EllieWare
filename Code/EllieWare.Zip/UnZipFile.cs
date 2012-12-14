@@ -24,19 +24,10 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      try
+      using (var zip = Ionic.Zip.ZipFile.Read(SourceFilePathResolvedValue))
       {
-        using (var zip = Ionic.Zip.ZipFile.Read(SourceFilePathResolvedValue))
-        {
-          zip.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
-          zip.ExtractAll(DestinationFilePathResolvedValue);
-        }
-      }
-      catch (Exception ex)
-      {
-        mCallback.Log(LogLevel.Critical, ex.Message);
-
-        return false;
+        zip.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
+        zip.ExtractAll(DestinationFilePathResolvedValue);
       }
 
       return true;

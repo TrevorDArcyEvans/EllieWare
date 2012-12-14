@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>How to get a directory listing</title>
+</head>
+
+
+  <body style="background-color: rgb(255, 255, 255);">
+
+<table cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_tl.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_t.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_tr.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_l.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="font-family: sans-serif; font-weight: bold; font-size: 14pt; background-image: url(../images/bk_c.jpg); background-repeat: repeat;" width="100%"> &nbsp;How to get a directory listing </td>
+
+      <td style="background-image: url(../images/bk_r.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_bl.jpg); background-repeat: repeat-x;" height="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_b.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_br.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">There
+are two basic ways to get a list of the files in a particular directory
+on an FTP server. The simpler way gets the names of the files using the</span></font>
+<a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.GetFiles_overloads.html"><font color="#0000ff" face="Arial"><span style="font-size: 10pt;"><u>GetFiles()</u></span></font></a><font color="#010101" face="Arial"><span style="font-size: 10pt;"> method:</span></font> </div>
+
+<div style="margin-left: 13mm; margin-right: 0mm; text-indent: 0mm;" align="left"> <br>
+
+<font color="#0000ff" face="Lucida Console" size="1"><span style="font-size: 8pt;">string</span></font><font face="Lucida Console" size="1"><span style="font-size: 8pt;">[] files = ftpConnection.GetFiles();<br>
+
+<br>
+
+</span></font> </div>
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">This
+results in the files array containing the name of the files and
+directories in the current working directory on the server.&nbsp;</span></font>
+</div>
+
+<div align="left"> <br>
+</div>
+
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">Often more information that just the name of the file/directory is required.  
+In such cases, the </span></font>
+<a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.GetFileInfos_overloads.html"><font color="#0000ff" face="Arial"><span style="font-size: 10pt;"><u> GetFileInfos()</u></span></font></a>
+<font color="#010101" face="Arial"><span style="font-size: 10pt;"> method should be used:</span></font>
+</div>
+
+<div style="margin-left: 13mm; margin-right: 0mm; text-indent: 0mm;" align="left"> <br>
+
+<font face="Lucida Console" size="1"><span style="font-size: 8pt;">
+FTPFile[] fileDetails = ftpConnection.GetFileInfos();<br>
+
+<br>
+
+</span></font> </div>
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">This
+method returns an array of</span></font> <a href="../../api/EnterpriseDT.Net.Ftp.FTPFile.html"><font color="#0000ff" face="Arial"><span style="font-size: 10pt;"><u>FTPFile</u></span></font></a><font color="#010101" face="Arial"><span style="font-size: 10pt;"> objects containing information
+about the files in the directory - details such as the size of the file
+and whether or not it is a directory.&nbsp;</span></font>
+</div>
+
+<div align="left"> <br>
+
+</div>
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">If
+a listing of a directory other than the current working directory is
+required it is recommended that the remote working directory be changed
+to that directory, as described in <a href="howtochangedirectories.html"><font color="#0000ff" face="Arial"><span style="font-size: 10pt;"><u>How
+to change directories</u></span></font></a>.
+The relative or absolute path may be passed to either method, but
+some FTP servers do not support this feature. In these cases changing
+directories should work.</span></font><br>
+
+</div>
+
+
+</body>
+</html>

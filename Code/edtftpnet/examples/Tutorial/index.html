@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Using FTPConnection in Windows Forms</title>
+
+
+  <style>
+h1 { font-size: large; font-family: sans-serif; background-color: #ffeeff }
+h2 { font-size: medium; font-family: sans-serif; background-color: #eeeeff }
+p { font-size: small; font-family: sans-serif }
+tt { font-size: small; color: #cc44cc }
+dt { font-size: small; font-weight: bold; font-family: sans-serif }
+dd { font-size: small; font-family: sans-serif }
+ol li { font-size: small; font-family: sans-serif }
+ol.ops li { list-style-type: lower-roman }
+ol.instr li { margin-top: 20px }
+ul li { font-size: small; font-family: sans-serif; list-style-type: square }
+pre { font-size: small; color: #cc44cc; margin: 10px 10px 10px 20px }
+pre.code { color: white; background-color: black; font-size: xx-small }
+  </style>
+</head>
+<body>
+
+<h1>Using FTPConnection in Windows Forms</h1>
+
+The following refers to Visual Studio.NET 2003. &nbsp;Similar steps
+apply to VS.NET 2005 and SharpDevelop.<br>
+
+<h2>1. Adding FTPConnection to the Visual Studio Toolbox</h2>
+
+In order to be able to drop an FTPConnection onto a Windows form, it
+must first be added to the Toolbox. &nbsp;<br>
+
+<ol>
+
+  <li>Open the Components panel of the Toolbox:</li>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 182px; height: 367px;" src="images/toolbox1.gif" alt=""><br>
+
+</div>
+
+<ol start="2">
+
+  <li>Right-click on a blank part of the Components panel and
+select "Add/Remove Items..." from the drop-down menu:</li>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 343px; height: 534px;" alt="" src="images/toolbox2.gif"><br>
+
+</div>
+
+<ol start="3">
+
+  <li>Click the "Browse..." button in the Customize Toolbox
+dialog:</li>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 571px; height: 403px;" alt="" src="images/toolbox3.gif"><br>
+
+</div>
+
+<ol start="4">
+
+  <li>Select the edtFTPnet DLL from the file dialog and press
+"Open":</li>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 640px; height: 393px;" alt="" src="images/toolbox4.gif"><br>
+
+<div style="text-align: left;">
+<ol start="5">
+
+  <li>Click OK in the Customize Toolbox dialog and you should now
+see that FTPConnection has been added to your Components Toolbox panel:</li>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 182px; height: 367px;" alt="" src="images/toolbox5.gif"><br>
+
+</div>
+
+<h2>2. Adding an FTPConnection to a Windows Form</h2>
+
+Create a new Windows Form and drag an FTPConnection onto the
+form. &nbsp;Since the component is not a visible control, an icon
+representing it will appear below the form itself:
+<ol>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 319px; height: 388px;" alt="" src="images/form1.gif"><br>
+
+<div style="text-align: left;">
+<h2>3. Setting FTPConnection Properties</h2>
+
+Set the FTPConnection properties as shown below:<br>
+
+<div style="text-align: center;"><img style="width: 668px; height: 485px;" alt="" src="images/properties1.gif"><br>
+
+</div>
+
+<h2>4. Placing Controls on the Form</h2>
+
+Place a button and a listbox on the form as shown below:<br>
+
+<div style="text-align: center;"><img style="width: 300px; height: 300px;" alt="" src="images/form2.gif"><br>
+
+</div>
+
+<h2>5. Making Things Happen</h2>
+
+<ol>
+
+  <li>Double-click on button1 to create an event-handler for it.</li>
+
+</ol>
+
+<div style="margin-left: 80px;"><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </span><span style="color: rgb(51, 51, 255); font-family: monospace;">private
+void</span><span style="font-family: monospace;">
+button1_Click(</span><span style="color: rgb(51, 51, 255); font-family: monospace;">object</span><span style="font-family: monospace;"> sender, System.EventArgs e)</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; {</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; }</span><br style="font-family: monospace;">
+
+</div>
+
+<ol start="2">
+
+  <li>Place code as follows into the event-handler:</li>
+
+</ol>
+
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px; font-family: monospace;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; <span style="color: rgb(51, 51, 255);">private void</span>
+button1_Click(<span style="color: rgb(51, 51, 255);">object</span>
+sender, System.EventArgs e)<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ftpConnection1.Connect();<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; <span style="color: rgb(51, 51, 255);">string</span>[] files
+= ftpConnection1.GetFiles();<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; listBox1.Items.AddRange(files);<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ftpConnection1.Close();<br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br>
+
+</div>
+
+</div>
+
+<ol start="3">
+
+  <li>Run the application and press the button. &nbsp;You
+should now see a list of files in the list-box:</li>
+
+</ol>
+
+<div style="text-align: center;"><img style="width: 300px; height: 300px;" alt="" src="images/form3.gif"><br>
+
+<div style="text-align: left;">
+<h2>Troubleshooting</h2>
+
+Common sources of problems are:<br>
+
+<ol>
+
+  <li>Incorrect server address set (i.e. the RemoteHost property
+of FTPConnection).</li>
+
+  <li>Incorrect user-name or password (i.e. the UserName and
+Password properties of FTPConnection).</li>
+
+  <li>No files on the server. &nbsp;If nothing seems to
+happen when the button is pressed, it may be simply because there are
+no files in the user's directory on the server.</li>
+
+  <li>For other problems you may refer to the <a href="http://www.enterprisedt.com/forums/viewforum.php?f=6">EDT
+forums</a>.</li>
+
+</ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

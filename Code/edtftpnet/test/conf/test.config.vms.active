@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- test configuration edtFTPnet nunit tests -->
+<configuration>
+  <appSettings>
+  	<add key="edtftp.log.level" value="ALL"/>
+  	<add key="ftptest.host" value="ftp.process.com"/>
+  	<add key="ftptest.user" value="anonymous"/>
+  	<add key="ftptest.password" value="javaftp@enterprisedt.com"/>
+  	<add key="ftptest.timeout" value="10000"/>
+  	<add key="ftptest.strictreplies" value="true"/>
+  	<add key="ftptest.connectmode" value="ACTIVE"/>
+  	<add key="ftptest.testdir" value="SUPPORT"/>
+  	<add key="ftptest.file.remote.text" value="README.TXT"/>
+  	<add key="ftptest.file.remote.binary" value="FSS_TES.ZIP"/>
+  </appSettings>
+</configuration>

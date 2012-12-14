@@ -56,19 +56,51 @@ namespace EllieWare.Common
       }
     }
 
-    protected void SetSourceVisible(bool isVisible)
+    public void SetSourceVisible(bool isVisible)
     {
       mSourceLabel.Visible = mSourceFilePath.Visible = CmdSourceBrowse.Visible = isVisible;
     }
 
-    protected void SetDestinationVisible(bool isVisible)
+    public void SetDestinationVisible(bool isVisible)
     {
       mDestinationLabel.Visible = mDestinationFilePath.Visible = CmdDestinationBrowse.Visible = isVisible;
     }
 
-    protected void SetExistsVisible(bool isVisible)
+    public void SetExistsVisible(bool isVisible)
     {
       mExistsLabel.Visible = mExists.Visible = isVisible;
+    }
+
+    public bool AllowSourceBrowse
+    {
+      get
+      {
+        return CmdSourceBrowse.Visible;
+      }
+      set
+      {
+        CmdSourceBrowse.Visible = value;
+        if (value)
+        {
+          mSourceLabel.Visible = mSourceFilePath.Visible = true;
+        }
+      }
+    }
+
+    public bool AllowDestinationBrowse
+    {
+      get
+      {
+        return CmdDestinationBrowse.Visible;
+      }
+      set
+      {
+        CmdDestinationBrowse.Visible = value;
+        if (value)
+        {
+          mDestinationLabel.Visible = mDestinationFilePath.Visible = true;
+        }
+      }
     }
 
     public override Control ConfigurationUserInterface
