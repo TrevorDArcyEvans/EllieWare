@@ -35,12 +35,23 @@ namespace EllieWare.Transfer.FTP
       {
         try
         {
-          // connect and login
-          ftp.Connect();
-          ftp.Login();
+          var oldCursor = Cursor.Current;
+          try
+          {
+            Cursor = Cursors.WaitCursor;
+
+            // connect and login
+            ftp.Connect();
+            ftp.Login();
+
+          }
+          finally
+          {
+            Cursor = oldCursor;
+          }
 
           var msg = string.Format("Successfully connected and logged in to {0}", Host.ResolvedValue);
-          MessageBox.Show(msg);
+          MessageBox.Show(msg, "FTP Information");
         }
         catch (Exception ex)
         {
