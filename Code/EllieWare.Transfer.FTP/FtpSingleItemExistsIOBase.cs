@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
@@ -13,7 +14,7 @@ namespace EllieWare.Transfer.FTP
     }
 
     public FtpSingleItemExistsIOBase(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       InitializeComponent();
 
@@ -24,6 +25,7 @@ namespace EllieWare.Transfer.FTP
     {
       mDualItemIO.SetDestinationVisible(false);
       mDualItemIO.AllowSourceBrowse = false;
+      mDualItemIO.SetExistsVisible(true);
     }
 
     public override Control ConfigurationUserInterface

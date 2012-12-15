@@ -155,9 +155,9 @@ namespace EllieWare.Transfer.FTP
 
     #endregion
 
-    private ParameterTextBox Host;
-    private ParameterTextBox UserName;
-    private ParameterTextBox Password;
+    public ParameterTextBox Host;
+    public ParameterTextBox UserName;
+    public ParameterTextBox Password;
     private System.Windows.Forms.Button CmdTest;
   }
 }

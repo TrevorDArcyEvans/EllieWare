@@ -15,10 +15,13 @@ namespace EllieWare.Transfer.FTP
       ConnectEventHandlers();
     }
 
-    public FtpDualItemIOBase(object root, ICallback callback, IParameterManager mgr) :
+    public FtpDualItemIOBase(object root, ICallback callback, IParameterManager mgr, BrowserTypes browserTypes) :
       base(root, callback, mgr)
     {
       InitializeComponent();
+
+      mFtpInfo.Initialise(root, callback, mgr);
+      mDualItemIO.Initialise(root, callback, mgr, browserTypes);
 
       ConnectEventHandlers();
     }

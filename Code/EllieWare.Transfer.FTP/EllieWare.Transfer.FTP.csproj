@@ -55,6 +55,34 @@
       <DependentUpon>DirectoryExists.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectoryExistsFactory.cs" />
+    <Compile Include="FileDelete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileDelete.Designer.cs">
+      <DependentUpon>FileDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileDeleteFactory.cs" />
+    <Compile Include="FileDownload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileDownload.Designer.cs">
+      <DependentUpon>FileDownload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileDownloadFactory.cs" />
+    <Compile Include="FileExists.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileExists.Designer.cs">
+      <DependentUpon>FileExists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileExistsFactory.cs" />
+    <Compile Include="FileUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileUpload.Designer.cs">
+      <DependentUpon>FileUpload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileUploadFactory.cs" />
     <Compile Include="FtpFactoryBase.cs" />
     <Compile Include="FtpInfo.cs">
       <SubType>UserControl</SubType>

@@ -2,29 +2,38 @@
 
 namespace EllieWare.Transfer.FTP
 {
-  public partial class DirectoryExists : FtpSingleItemExistsIOBase
+  public partial class FileDelete : FtpSingleItemExistsIOBase
   {
-    public DirectoryExists()
+    public FileDelete()
     {
       InitializeComponent();
+
+      Initialise();
     }
 
-    public DirectoryExists(object root, ICallback callback, IParameterManager mgr) :
+    public FileDelete(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
       InitializeComponent();
+
+      Initialise();
+    }
+
+    private void Initialise()
+    {
+      mDualItemIO.AllowSourceBrowse = false;
+      mDualItemIO.SetExistsVisible(false);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Login to {0} as {1}[{2}] and check that (directory) {3} is ", 
+        var descrip = string.Format("Login to {0} as {1}[{2}] and delete (file) {3}", 
                           mFtpInfo.Host.ResolvedValue,
                           mFtpInfo.UserName.ResolvedValue,
                           mFtpInfo.Password.ResolvedValue,
-                          mDualItemIO.SourceFilePathResolvedValue) + 
-                        (mDualItemIO.Exists ? "" : "not ") + "present";
+                          mDualItemIO.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -38,9 +47,7 @@ namespace EllieWare.Transfer.FTP
         ftp.Connect();
         ftp.Login();
 
-        var dirExists = ftp.ChangeWorkingDirectory(mDualItemIO.SourceFilePathResolvedValue);
-
-        return mDualItemIO.Exists ? dirExists : !dirExists;
+        return ftp.DeleteFile(mDualItemIO.SourceFilePathResolvedValue);
       }
     }
   }

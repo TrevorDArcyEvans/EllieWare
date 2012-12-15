@@ -1,6 +1,6 @@
 ﻿namespace EllieWare.Transfer.FTP
 {
-  partial class FtpSingleItemExistsIOBase
+  partial class FileDelete
   {
     /// <summary> 
     /// Required designer variable.
@@ -28,24 +28,8 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.SuspendLayout();
-      // 
-      // mFtpInfo
-      // 
-      this.mFtpInfo.Size = new System.Drawing.Size(370, 108);
-      // 
-      // mDualItemIO
-      // 
-      this.mDualItemIO.Size = new System.Drawing.Size(366, 122);
-      // 
-      // FtpSingleItemExistsIOBase
-      // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      components = new System.ComponentModel.Container();
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Name = "FtpSingleItemExistsIOBase";
-      this.Size = new System.Drawing.Size(376, 242);
-      this.ResumeLayout(false);
-
     }
 
     #endregion

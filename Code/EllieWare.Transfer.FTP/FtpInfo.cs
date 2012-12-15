@@ -18,6 +18,15 @@ namespace EllieWare.Transfer.FTP
       base(root, callback, mgr)
     {
       InitializeComponent();
+
+      Initialise(root, callback, mgr);
+    }
+
+    public void Initialise(object root, ICallback callback, IParameterManager mgr)
+    {
+      Host.SetParameterManager(mgr);
+      UserName.SetParameterManager(mgr);
+      Password.SetParameterManager(mgr);
     }
 
     private void CmdTest_Click(object sender, EventArgs e)
