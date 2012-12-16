@@ -48,6 +48,20 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="DirectoryCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryCreate.Designer.cs">
+      <DependentUpon>DirectoryCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryCreateFactory.cs" />
+    <Compile Include="DirectoryDelete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryDelete.Designer.cs">
+      <DependentUpon>DirectoryDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryDeleteFactory.cs" />
     <Compile Include="DirectoryExists.cs">
       <SubType>UserControl</SubType>
     </Compile>
