@@ -1,0 +1,37 @@
+﻿using System;
+using EllieWare.Interfaces;
+
+namespace EllieWare.Transfer.FTP
+{
+  public class DirectoryDownloadFactory : FtpFactoryBase, IFactory
+  {
+    public override string Title
+    {
+      get
+      {
+        return "FTP directory download";
+      }
+    }
+
+    public override string Description
+    {
+      get
+      {
+        return "Download a directory from an FTP site";
+      }
+    }
+
+    public override Type CreatedType
+    {
+      get
+      {
+        return typeof(DirectoryDownload);
+      }
+    }
+
+    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    {
+      return new DirectoryDownload(root, callback, mgr);
+    }
+  }
+}
