@@ -2,7 +2,7 @@
 
 namespace EllieWare.Manager
 {
-  public interface IHostEx
+  public interface IHost
   {
     void RefreshSpecificationsList();
     string SpecificationsFolder { get; }

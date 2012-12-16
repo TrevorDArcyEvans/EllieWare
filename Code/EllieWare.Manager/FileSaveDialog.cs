@@ -7,14 +7,14 @@ namespace EllieWare.Manager
 {
   public partial class FileSaveDialog : Form
   {
-    private readonly IHostEx mHost;
+    private readonly IHost mHost;
 
     public FileSaveDialog()
     {
       InitializeComponent();
     }
 
-    public FileSaveDialog(IHostEx host) :
+    public FileSaveDialog(IHost host) :
       this()
     {
       mHost = host;

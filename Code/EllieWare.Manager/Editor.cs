@@ -12,9 +12,9 @@ namespace EllieWare.Manager
 {
   public partial class Editor : Form
   {
-    private readonly IHostEx mHost;
+    private readonly IHost mHost;
     private readonly object mRoot;
-    private readonly ICallbackEx mCallback;
+    private readonly ICallbackEx mCallback = new LogWindow();
     private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
@@ -27,12 +27,11 @@ namespace EllieWare.Manager
       InitializeComponent();
     }
 
-    public Editor(IHostEx host, object root, ICallbackEx callback, string filePath) :
+    public Editor(IHost host, object root, string filePath) :
       this()
     {
       mHost = host;
       mRoot = root;
-      mCallback = callback;
       mFilePath = filePath;
 
       InitialiseFactories();
