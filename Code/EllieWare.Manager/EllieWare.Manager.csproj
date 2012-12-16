@@ -76,7 +76,7 @@
       <DependentUpon>FileSaveDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ICallbackEx.cs" />
-    <Compile Include="IHostEx.cs" />
+    <Compile Include="IHost.cs" />
     <Compile Include="IParameter.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="LogWindow.cs">
