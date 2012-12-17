@@ -111,6 +111,7 @@
       <DependentUpon>FileUpload.cs</DependentUpon>
     </Compile>
     <Compile Include="FileUploadFactory.cs" />
+    <Compile Include="FtpClientExtensions.cs" />
     <Compile Include="FtpFactoryBase.cs" />
     <Compile Include="FtpInfo.cs">
       <SubType>UserControl</SubType>

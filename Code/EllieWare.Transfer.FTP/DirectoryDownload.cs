@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -58,7 +59,32 @@ namespace EllieWare.Transfer.FTP
         ftp.Connect();
         ftp.Login();
 
-        // TODO   ftp.DownloadFile(mDualItemIO.DestinationFilePathResolvedValue, mDualItemIO.SourceFilePathResolvedValue);
+        ftp.ServerDirectory = mDualItemIO.SourceFilePathResolvedValue;
+
+        var files = ftp.GetFileInfosRecursive();
+        foreach (var ftpFile in files)
+        {
+          var remotePath = ftpFile.Path;
+          if (remotePath[0] == '/')
+          {
+            remotePath = remotePath.Remove(0, 1);
+          }
+          remotePath = remotePath.Replace('/', '\\');
+
+          var localPath = Path.Combine(mDualItemIO.DestinationFilePathResolvedValue, remotePath);
+
+          if (ftpFile.Dir)
+          {
+            if (!Directory.Exists(localPath))
+            {
+              Directory.CreateDirectory(localPath);
+            }
+          }
+          else
+          {
+            ftp.DownloadFile(localPath, ftpFile.Path);
+          }
+        }
 
         return true;
       }
