@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace EllieWare.Manager
 {
   public partial class FileSaveDialog : Form
   {
-    private readonly IHostEx mHost;
+    private readonly IHost mHost;
 
     public FileSaveDialog()
     {
       InitializeComponent();
     }
 
-    public FileSaveDialog(IHostEx host) :
+    public FileSaveDialog(IHost host) :
       this()
     {
       mHost = host;
@@ -53,6 +48,11 @@ namespace EllieWare.Manager
           return;
         }
       }
+    }
+
+    private void FileSaveDialog_Shown(object sender, EventArgs e)
+    {
+      mFileNames.Focus();
     }
   }
 }

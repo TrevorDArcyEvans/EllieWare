@@ -1,76 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Schema;
+﻿using System.IO;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public partial class FileExists : UserControl, IRunnable
+  public class FileExists : SingleItemExistsIOBase
   {
-    private readonly object mRoot;
-    private readonly ICallback mCallback;
-    private readonly IParameterManager mParamMgr;
-
     public FileExists()
     {
-      InitializeComponent();
     }
 
     public FileExists(object root, ICallback callback, IParameterManager mgr) :
-      this()
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      mRoot = root;
-      mCallback = callback;
-      mParamMgr = mgr;
     }
 
-    public string Description
+    public override string Summary
     {
       get
       {
-        return "TODO    FileExists Description";
+        var descrip = string.Format("Check that {0} is ", SourceFilePathResolvedValue) + (Exists ? "" : "not ") + "present";
+
+        return descrip;
       }
     }
 
-    public Control ConfigurationUserInterface
+    public override bool Run()
     {
-      get
-      {
-        return this;
-      }
-    }
+      var fileExists = File.Exists(SourceFilePathResolvedValue);
 
-    public bool Run()
-    {
-      // TODO   Run;
-      mCallback.Log(LogLevel.Information, Description);
-
-      return true;
-    }
-
-    public XmlSchema GetSchema()
-    {
-      return null;
-    }
-
-    public void ReadXml(XmlReader reader)
-    {
-      // TODO   ReadXml
-      var dummy = reader.GetAttribute("bbb");
-      label1.Text = dummy;
-    }
-
-    public void WriteXml(XmlWriter writer)
-    {
-      // TODO   WriteXml
-      writer.WriteAttributeString("bbb", GetType().ToString());
+      return Exists ? fileExists : !fileExists;
     }
   }
 }

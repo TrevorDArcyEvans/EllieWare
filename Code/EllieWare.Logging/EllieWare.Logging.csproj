@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
+    <Compile Include="DateTimeLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DateTimeLogFactory.cs" />
     <Compile Include="LoggingFactory.cs" />
     <Compile Include="Logging.cs">
       <SubType>UserControl</SubType>
@@ -49,9 +56,14 @@
     <Compile Include="Logging.Designer.cs">
       <DependentUpon>Logging.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoggingFactoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
+      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
+      <Name>EllieWare.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>

@@ -1,0 +1,206 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>FTPConnection.Uploaded Event</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPConnection.Uploaded Event
+					</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>Occurs when a file has been uploaded to the server.</p>
+      <div class="syntax">public event <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventHandler.html">FTPFileTransferEventHandler</a> Uploaded;</div>
+      <p>
+      </p>
+      <h4 class="dtH4">Event Data</h4>
+      <p>The event handler receives an argument of type <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.html">FTPFileTransferEventArgs</a> containing data related to this event. The following <B>FTPFileTransferEventArgs</B> properties provide information specific to this event.</p>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Property</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Append.html">Append</a>
+            </td>
+            <td width="50%"> Indicates whether or not data was appended to the remote file. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Appended.html">Appended</a>
+            </td>
+            <td width="50%">
+              <FONT color="red">
+                <B>Obsolete. </B>
+              </FONT> Indicates whether or not data was appended to the remote file. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Bytes.html">Bytes</a>
+            </td>
+            <td width="50%"> Reference to byte-array if <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalDataType.html">LocalDataType</a> is <code>ByteArray</code>. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.BytesTransferred.html">BytesTransferred</a>
+            </td>
+            <td width="50%"> Number of bytes transferred. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Cancel.html">Cancel</a>
+            </td>
+            <td width="50%"> Cancel transfer. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPEventArgs.ConnectionInstanceNumber.html">ConnectionInstanceNumber</a>
+            </td>
+            <td width="50%"> Identifies the pooled connection on which the task is running. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPCancelableEventArgs.Exception.html">Exception</a>
+            </td>
+            <td width="50%"> The exception thrown if a transfer failed. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.FileSize.html">FileSize</a>
+            </td>
+            <td width="50%">
+              <FONT color="red">
+                <B>Obsolete. </B>
+              </FONT> Size of remote file (see remarks) </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPEventArgs.IsGuiThread.html">IsGuiThread</a>
+            </td>
+            <td width="50%"> Indicates whether or not the event-handler has been invoked on the GUI thread. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LastWriteTime.html">LastWriteTime</a>
+            </td>
+            <td width="50%"> Last write-time of the file. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalDataType.html">LocalDataType</a>
+            </td>
+            <td width="50%"> Type of local data source/destination. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalDirectory.html">LocalDirectory</a>
+            </td>
+            <td width="50%"> Name of the local directory (not including file-name). </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalFile.html">LocalFile</a>
+            </td>
+            <td width="50%"> Name of the local file (without path). </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalFileSize.html">LocalFileSize</a>
+            </td>
+            <td width="50%"> Size of local file (see remarks). </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalPath.html">LocalPath</a>
+            </td>
+            <td width="50%"> Path of local file if <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalDataType.html">LocalDataType</a> is <code>File</code>. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.RemoteDirectory.html">RemoteDirectory</a>
+            </td>
+            <td width="50%"> Full path of remote directory. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.RemoteFile.html">RemoteFile</a>
+            </td>
+            <td width="50%"> Name of remote file as passed into the method that initiated the transfer. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.RemoteFileName.html">RemoteFileName</a>
+            </td>
+            <td width="50%"> Name of remote file without the path. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.RemoteFileSize.html">RemoteFileSize</a>
+            </td>
+            <td width="50%"> Size of remote file (see remarks) </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.RemotePath.html">RemotePath</a>
+            </td>
+            <td width="50%"> Full path of remote file. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Resume.html">Resume</a>
+            </td>
+            <td width="50%"> Indicates whether or not this tranfer should be resumed. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Stream.html">Stream</a>
+            </td>
+            <td width="50%"> Reference to <b>Stream</b> if <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.LocalDataType.html">LocalDataType</a> is <code>Stream</code>. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPCancelableEventArgs.Succeeded.html">Succeeded</a>
+            </td>
+            <td width="50%"> Indicates whether or not the transfer succeeded. </td>
+          </tr>
+          <tr VALIGN="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Net.Ftp.FTPEventArgs.TaskID.html">TaskID</a>
+            </td>
+            <td width="50%"> Identifies the asynchronous operation within which the event was triggered (applies to asynchronous methods only). </td>
+          </tr>
+        </table>
+      </div>
+      <h4 class="dtH4">Remarks</h4>
+      <p>The <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.html">FTPFileTransferEventArgs</a> argument passed to handlers has a <a href="EnterpriseDT.Net.Ftp.FTPFileTransferEventArgs.Cancel.html">Cancel</a> property, that indicates whether or not the transfer was cancelled.</p>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="EnterpriseDT.Net.Ftp.FTPConnection.html">FTPConnection Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="Uploaded event">
+        </param>
+        <param name="Keyword" value="Uploaded event, FTPConnection class">
+        </param>
+        <param name="Keyword" value="FTPConnection.Uploaded event">
+        </param>
+      </object>
+    </div>
+  </body>
+</html>

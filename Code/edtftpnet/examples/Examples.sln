@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPClientCS", "FTPClientCS\FTPClientCS.csproj", "{BA92F015-622C-4612-A4EA-41222F24C744}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FTPClientVB", "FTPClientVB\FTPClientVB.vbproj", "{BF1EC6FA-3DB7-4A14-BFB5-8F17AB17520C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FTPConnectionVB", "FTPConnectionVB\FTPConnectionVB.vbproj", "{A6866D85-43A8-4827-A36F-14E643900080}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPConnectionCS", "FTPConnectionCS\FTPConnectionCS.csproj", "{F2528AC7-9033-4892-9970-5F086122FA06}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A6866D85-43A8-4827-A36F-14E643900080}.Debug.ActiveCfg = Debug|.NET
+		{A6866D85-43A8-4827-A36F-14E643900080}.Debug.Build.0 = Debug|.NET
+		{A6866D85-43A8-4827-A36F-14E643900080}.Release.ActiveCfg = Release|.NET
+		{A6866D85-43A8-4827-A36F-14E643900080}.Release.Build.0 = Release|.NET
+		{F2528AC7-9033-4892-9970-5F086122FA06}.Debug.ActiveCfg = Debug|.NET
+		{F2528AC7-9033-4892-9970-5F086122FA06}.Debug.Build.0 = Debug|.NET
+		{F2528AC7-9033-4892-9970-5F086122FA06}.Release.ActiveCfg = Release|.NET
+		{F2528AC7-9033-4892-9970-5F086122FA06}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

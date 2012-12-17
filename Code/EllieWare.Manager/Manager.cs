@@ -1,32 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using EllieWare.Common;
-using EllieWare.Interfaces;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace EllieWare.Manager
 {
-  public partial class Manager : Form, IHostEx
+  public partial class Manager : Form, IHost
   {
     public const string MacroFileExtension = ".mxml";
 
-    private readonly LogWindow mCallback = new LogWindow();
+    private readonly object mRoot;
+    private readonly string mApplicationName;
 
     public Manager()
     {
       InitializeComponent();
     }
 
-    public Manager(object root, string userSpecsPath) :
+    public Manager(object root, string appName, string userSpecsPath) :
       this()
     {
-      Root = root;
+      mRoot = root;
+      mApplicationName = appName;
       SpecificationsFolder = userSpecsPath;
 
       RefreshSpecificationsList();
@@ -43,7 +39,7 @@ namespace EllieWare.Manager
 
     private void CmdNew_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, Root, CallbackEx, string.Empty);
+      var dlg = new Editor(this, mRoot, string.Empty);
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -51,7 +47,7 @@ namespace EllieWare.Manager
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, Root, CallbackEx, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -66,9 +62,7 @@ namespace EllieWare.Manager
 
     private void CmdDebug_Click(object sender, EventArgs e)
     {
-      mCallback.Clear();
-      mCallback.Show();
-      var dlg = new Editor(this, Root, CallbackEx, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -76,29 +70,10 @@ namespace EllieWare.Manager
 
     #region IHost
 
-    public object Root { get; private set; }
-
-    public ICallback Callback
-    {
-      get { return mCallback; }
-    }
-
-    #endregion
-
-    #region IHostEx
-
     public void Run(string filePath)
     {
-      var dlg = new Editor(this, Root, CallbackEx, filePath);
+      var dlg = new Editor(this, mRoot, filePath);
       dlg.Run();
-    }
-
-    public ICallbackEx CallbackEx
-    {
-      get
-      {
-        return mCallback;
-      }
     }
 
     public void RefreshSpecificationsList()
@@ -126,12 +101,31 @@ namespace EllieWare.Manager
 
     private void UpdateButtons()
     {
-      CmdEdit.Enabled = CmdRun.Enabled = CmdDebug.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = CmdDebug.Enabled = mSpecs.SelectedItems.Count > 0;
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)
     {
       UpdateButtons();
+    }
+
+    private void CmdDelete_Click(object sender, EventArgs e)
+    {
+      var selFilePath = GetSelectedSpecificationPath();
+      File.Delete(selFilePath);
+      RefreshSpecificationsList();
+      UpdateButtons();
+    }
+
+    private void Specs_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+      CmdEdit_Click(sender, e);
+    }
+
+    private void CmdAbout_Click(object sender, EventArgs e)
+    {
+      var dlg = new AboutBox(mApplicationName);
+      dlg.ShowDialog();
     }
   }
 }

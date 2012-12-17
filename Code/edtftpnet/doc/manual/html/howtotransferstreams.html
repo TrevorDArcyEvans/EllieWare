@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>How to transfer using FTP streams</title>
+</head>
+
+
+<body style="background-color: rgb(255, 255, 255);">
+
+<table cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_tl.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_t.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_tr.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_l.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="font-family: sans-serif; font-weight: bold; font-size: 14pt; background-image: url(../images/bk_c.jpg); background-repeat: repeat;" width="100%"> &nbsp;How to transfer using FTP streams </td>
+
+      <td style="background-image: url(../images/bk_r.jpg); background-repeat: repeat-y;" width="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="background-image: url(../images/bk_bl.jpg); background-repeat: repeat-x;" height="4"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_b.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+      <td style="background-image: url(../images/bk_br.jpg); background-repeat: repeat-x;"><img src="../images/space.gif" height="4" width="4"></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">One
+of the advantages of integrating FTP functionality directly into a
+product rather than using stand-alone FTP applications is that data can
+be transferred directly to and from memory. This is particularly useful
+when transferring dynamic content needs, such as the results of
+database queries and other application data.</span></font> </div>
+
+<div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div>
+
+<div align="left" ><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.html"><font face="Arial" ><span style="font-size:10pt" >FTPConnection</span></font></a><font face="Arial" ><span style="font-size:10pt" > offers two alternatives for memory transfers: byte-arrays and streams.&#160; Byte-
+arrays are generally easier to deal with but do not facilitate streaming.&#160; In other words, the 
+data must be fully generated and stored in a byte-array before being transferred.&#160; This is fine 
+when memory usage is not an issue, but if it is necessary to limit memory usage then streams 
+should be used.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div>
+
+
+<div align="left" ><font face="Arial" ><span style="font-size:10pt" ><b>Byte-Array Transfers</b> are performed using the </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.DownloadByteArray.html"><font face="Arial" ><span style="font-size:10pt" >DownloadByteArray</span></font></a><font face="Arial" ><span style="font-size:10pt" > and </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.UploadByteArray_overloads.html"><font face="Arial" ><span style="font-size:10pt" >UploadByteArray</span></font></a><font face="Arial" ><span style="font-size:10pt" > 
+
+methods.&#160; They simply take the byte-array and the remote file-name as a parameter.</span></font></div><div align="left"  style="margin-left:13mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:8pt" ><br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:8pt" >string</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" > s = &quot;Hello world&quot;;</span></font></div><div align="left"  style="margin-left:13mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:8pt" >byte</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >[] bytes = Encoding.ASCII.GetBytes(s);</span></font></div><div align="left"  style="margin-left:13mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >ftpConnection.UploadByteArray(bytes, remotFileName);<br><br></span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><b>Stream Transfers</b> allow the programmer to delay creation of the data to be transferred until it 
+is ready to be transferred.&#160; For example, the data to be transferred might be the result of a 
+database query that could return millions of rows.&#160; In such a case, storing it all in memory at 
+once would be inefficient.&#160; To circumvent this problem a custom stream may be written which 
+uses a cursor to iterate through the query result as the file is being transferred.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >To transfer streams, the methods </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.DownloadStream.html"><font face="Arial" ><span style="font-size:10pt" >DownloadStream</span></font></a><font face="Arial" ><span style="font-size:10pt" > 
+
+and </span></font><a href="../../api/EnterpriseDT.Net.Ftp.FTPConnection.UploadStream_overloads.html"><font face="Arial" ><span style="font-size:10pt" >UploadStream</span></font></a><font face="Arial" ><span style="font-size:10pt" > should be used.&#160; If a 
+suitable Stream is not available from the standard libraries a new one may be created by 
+extending the System.IO.Stream class and overriding the appropriate read and/or write 
+methods.</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" >The following code-snippet shows code and pseudo-code that illustrates the use of a custom 
+stream to upload the results of a query to an FTP server:</span></font></div><div align="left" ><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div><div align="left"  style="margin-left:13mm; margin-right:0mm; text-indent:0mm; margin-top:0mm; margin-bottom:0mm;" ><font face="Lucida Console"  size="1" ><span style="font-size:8pt" ><br></span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >SqlDataStream dbStr = new SqlDataStream(sqlDataReader);<br>
+ftpConnection.UploadStream(dbStr, remoteFileName);<br>
+.<br>
+.<br>
+.<br></span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >public</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >class</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" > SqlDataStream : Stream<br>
+
+{<br>
+&#160;&#160; </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >private</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > </span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >MemoryStream buffer = </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >new</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" > MemoryStream();<br><br>
+&#160;&#160; </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >public</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >override</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >int</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > Read(</span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >byte</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >[] bytes, </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >int</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > offset, </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >int</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > count)<br>
+
+&#160;&#160; {<br>
+&#160;&#160;&#160;&#160;&#160; </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >if</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > (</span></font><font face="Lucida Console"  color="#008000"  size="1" ><span style="font-size:9pt" ><i>not enough bytes in buffer</i></span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >)<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ReadFromDatabase(count)<br>
+&#160;&#160;&#160;&#160;&#160; </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >int </span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >numBytes = buffer.Read(bytes, 0, count);<br>
+
+&#160;&#160;&#160;&#160;&#160; </span></font><font face="Lucida Console"  color="#008000"  size="1" ><span style="font-size:9pt" ><i>remove read bytes from buffer</i></span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" ><br></span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" >&#160;&#160; </span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >}<br>
+&#160;&#160; <br>
+&#160;&#160; </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >private</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > </span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >void</span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" > ReadFromDatabase(</span></font><font face="Lucida Console"  color="#0000ff"  size="1" ><span style="font-size:9pt" >int</span></font><font face="Lucida Console"  size="1" ><span style="font-size:9pt" > count</span><span style="font-size:8pt" >)<br>
+
+&#160;&#160; {<br></span></font><font face="Lucida Console"  color="#008000"  size="1" ><span style="font-size:8pt" ><i>&#160;&#160;&#160;&#160;&#160; 1. write remainder of fields from current record to the buffer<br>
+&#160;&#160;&#160;&#160;&#160; 2. read sufficient records from the database such that there are<br>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; at least 'count' bytes in the buffer</i></span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" ><br></span></font><font face="Lucida Console"  size="1" ><span style="font-size:8pt" >&#160;&#160; }<br><br></span></font><font face="Arial" ><span style="font-size:10pt" ><br></span></font></div>
+
+<div align="left"> <font color="#010101" face="Arial"><span style="font-size: 10pt;">
+Again, it is <b>essential</b> to close the stream before performing any other FTP operations.</span></font> </div>
+
+<div align="left"> <br>
+</div>
+
+</body>
+</html>

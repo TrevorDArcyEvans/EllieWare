@@ -1,0 +1,51 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>FTPConnection.DownloadStream Method</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPConnection.DownloadStream Method </h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>Download a file from the FTP server and write it to the given stream.</p>
+      <div class="syntax">public virtual <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemVoidClassTopic.htm">void</a> DownloadStream(<br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemIOStreamClassTopic.htm">Stream</a> <i>destStream</i>,<br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemStringClassTopic.htm">string</a> <i>remoteFile</i><br />);</div>
+      <h4 class="dtH4">Parameters</h4>
+      <dl>
+        <dt>
+          <i>destStream</i>
+        </dt>
+        <dd>Data stream to write data to.</dd>
+        <dt>
+          <i>remoteFile</i>
+        </dt>
+        <dd>Name of remote file in current working directory.</dd>
+      </dl>
+      <h4 class="dtH4">Remarks</h4>
+            <p>Transfers are in the current <a href="EnterpriseDT.Net.Ftp.FTPConnection.TransferType.html">TransferType</a>. The stream is closed after the transfer is complete if <a href="EnterpriseDT.Net.Ftp.FTPConnection.CloseStreamsAfterTransfer.html">CloseStreamsAfterTransfer</a> is <code>true</code> (the default) is are left open otherwise. If the stream is left open the its position will be at the end of the stream. Use <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemIOStreamClassSeekTopic.htm">Seek</a> to change the position if required.</p>
+            <p>
+            <example>The following example shows a file being downloaded into a <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemIOMemoryStreamClassTopic.htm">MemoryStream</a>, which is then used to initialize a <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemIOStreamReaderClassTopic.htm">StreamReader</a>.</example>
+            <pre class="code">ftpConnection.CloseStreamsAfterTransfer = false;
+            MemoryStream memStr = new MemoryStream();
+            ftpConnection.DownloadStream(memStr, "filename");
+            memStr.Seek(0, SeekOrigin.Begin);
+            StreamReader inStr = new StreamReader(memStr);
+            ... use sr for whatever ...</pre></p>
+            <h4 class="dtH4">See Also</h4><p><a href="EnterpriseDT.Net.Ftp.FTPConnection.html">FTPConnection Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="DownloadStream method"></param><param name="Keyword" value="DownloadStream method, FTPConnection class"></param><param name="Keyword" value="FTPConnection.DownloadStream method"></param></object></div>
+  </body>
+</html>

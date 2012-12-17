@@ -1,0 +1,86 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>FTPConnection Class</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPConnection Class</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>Provides FTP client functionality.</p>
+      <p>For a list of all members of this type, see <a href="EnterpriseDT.Net.Ftp.FTPConnectionMembers.html">FTPConnection Members</a>.</p>
+      <p>
+        <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemObjectClassTopic.htm">System.Object</a>
+        <br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemMarshalByRefObjectClassTopic.htm">System.MarshalByRefObject</a><br />      <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemComponentModelComponentClassTopic.htm">System.ComponentModel.Component</a><br />         <b>EnterpriseDT.Net.Ftp.FTPConnection</b></p>
+      <div class="syntax">
+        <div>public class FTPConnection<b> : <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemComponentModelComponentClassTopic.htm">Component</a>, <a href="EnterpriseDT.Net.Ftp.IFTPComponent.html">IFTPComponent</a></b></div>
+      </div>
+      <H4 class="dtH4">Thread Safety</H4>
+      <P>Public static (<b>Shared</b> in Visual Basic) members of this type are 
+				safe for multithreaded operations. Instance members are <b>not</b> guaranteed to be 
+				thread-safe.</P>
+      <h4 class="dtH4">Remarks</h4>
+            <p><code>FTPConnection</code> provides FTP client functionality. It is a .NET Component which may be used in visual designers, or it may be used as a conventional class.</p>
+            
+            <p><b>Constructing and connecting: </b> The constructor for <code>FTPConnection</code> takes no arguments. Before connecting to a server, the <code>FTPConnection</code> must be configured with the <a href="EnterpriseDT.Net.Ftp.FTPConnection.ServerAddress.html">ServerAddress</a>, <a href="EnterpriseDT.Net.Ftp.FTPConnection.UserName.html">UserName</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.Password.html">Password</a>. After this has been done, the <a href="EnterpriseDT.Net.Ftp.FTPConnection.Connect.html">Connect</a> method should be called, which will connect and log onto the server. <pre class="code">  FTPConnection ftp = new FTPConnection();
+  ftp.ServerAddress = "myservername";
+  ftp.UserName = "myusername";
+  ftp.Password = "mypassword";
+  ftp.Connect();
+  ftp.Close();
+</pre> The <a href="EnterpriseDT.Net.Ftp.FTPConnection.Close_overload_2.html">Close</a> method should be called when the required FTP operations have been completed so that the connection to the server is released. </p>
+            
+            <p><b>Directory listings: </b> Directory listings may be obtained in two basic forms: (1) The method <a href="EnterpriseDT.Net.Ftp.FTPConnection.GetFiles_overload_2.html">GetFiles</a> returns strings containing file-names. (2) The method <a href="EnterpriseDT.Net.Ftp.FTPConnection.GetFileInfos_overload_2.html">GetFileInfos</a> returns <a href="EnterpriseDT.Net.Ftp.FTPFile.html">FTPFile</a> objects which contain information about the file including name, size, and date.</p>
+            
+            <p><b>Downloading and uploading files: </b> There are many different methods for downloading files from the server and uploading them to the server. Data may be copied from or to: <ol><li>Files (<a href="EnterpriseDT.Net.Ftp.FTPConnection.DownloadFile.html">DownloadFile</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.UploadFile_overload_2.html">UploadFile</a></li><li>Streams (<a href="EnterpriseDT.Net.Ftp.FTPConnection.DownloadStream.html">DownloadStream</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.UploadStream_overload_2.html">UploadStream</a>)</li><li>Byte-arrays (<a href="EnterpriseDT.Net.Ftp.FTPConnection.DownloadByteArray.html">DownloadByteArray</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.UploadByteArray_overload_2.html">UploadByteArray</a></li></ol> Methods for downloading and uploading multiple files and directories are available in <code>ExFTPConnection</code> and <code>SecureFTPConnection</code>, which are included in <a href="http://www.enterprisedt.com/products/edtftpnetpro/overview.html"> EDT's commercial .NET FTP products</a>. </p>
+            
+            <p><b>Other file operations:</b> Other operations that may be performed on files are: <ul type="disc"><li>Renaming files using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.RenameFile.html">RenameFile</a> method.</li><li>Deleting files using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.DeleteFile.html">DeleteFile</a> method.</li><li>Getting a files size using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.GetSize.html">GetSize</a> method and its modification time using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.GetLastWriteTime.html">GetLastWriteTime</a> method.</li></ul></p>
+            
+            <p><b>Directories: </b> The server maintains a "working directory" for each session. The path of the current working directory may be set and retrieved using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.WorkingDirectory.html">WorkingDirectory</a> property. Changing directory to a subdirectory of the current working directory may be done by setting the same property, or by using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.ChangeWorkingDirectory.html">ChangeWorkingDirectory</a> method. Changing up to a parent directory is done using the <a href="EnterpriseDT.Net.Ftp.FTPConnection.ChangeWorkingDirectoryUp.html">ChangeWorkingDirectoryUp</a> method. Empty directories may be removed using <a href="EnterpriseDT.Net.Ftp.FTPConnection.DeleteDirectory.html">DeleteDirectory</a>. If a non-empty directory is to be deleted then all the files and subdirectories in it must be deleted first. <code>ExFTPConnection</code> and <code>SecureFTPConnection</code> have methods for achieving this in a single method-call.</p>
+            
+            <p><b>Events:</b>
+            <code>FTPConnection</code> fires events before and after most FTP operations. For example, before a file is downloaded the <a href="EnterpriseDT.Net.Ftp.FTPConnection.Downloading.html">Downloading</a> event is fired, while it's downloading the <a href="EnterpriseDT.Net.Ftp.FTPConnection.BytesTransferred.html">BytesTransferred</a> event is fired each time <a href="EnterpriseDT.Net.Ftp.FTPConnection.TransferNotifyInterval.html">TransferNotifyInterval</a> bytes have been transferred, and after it's been downloaded the <a href="EnterpriseDT.Net.Ftp.FTPConnection.Downloaded.html">Downloaded</a> event is fired. Operations that have corresponding events are: <div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">FTP Operation</th><th width="50%">Events</th></tr><tr valign="top"><td>Connecting and logging in</td>
+            <td><a href="EnterpriseDT.Net.Ftp.FTPConnection.Connecting.html">Connecting</a>, <a href="EnterpriseDT.Net.Ftp.FTPConnection.LoggingIn.html">LoggingIn</a>, <a href="EnterpriseDT.Net.Ftp.FTPConnection.LoggedIn.html">LoggedIn</a>, and <a href="EnterpriseDT.Net.Ftp.FTPConnection.Connected.html">Connected</a></td></tr><tr valign="top"><td>Closing</td>
+            <td><a href="EnterpriseDT.Net.Ftp.FTPConnection.Closing.html">Closing</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.Closed.html">Closed</a></td></tr><tr valign="top"><td>Downloading data</td>
+            <td><b>Downloading</b>, <b>BytesTransferred</b> and <b>Downloaded</b></td></tr><tr valign="top"><td>Uploading data</td>
+            <td><a href="EnterpriseDT.Net.Ftp.FTPConnection.Uploading.html">Uploading</a>, <b>BytesTransferred</b> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.Uploaded.html">Uploaded</a></td></tr><tr valign="top"><td>Changing directories</td>
+            <td><a href="EnterpriseDT.Net.Ftp.FTPConnection.DirectoryChanging.html">DirectoryChanging</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.DirectoryChanged.html">DirectoryChanged</a></td></tr><tr valign="top"><td>Deleting files/directories</td>
+            <td><a href="EnterpriseDT.Net.Ftp.FTPConnection.Deleting.html">Deleting</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.Deleted.html">Deleted</a></td></tr><tr valign="top"><td>Sending FTP commands</td>
+            <td><a href="EnterpriseDT.Net.Ftp.FTPConnection.CommandSent.html">CommandSent</a> and <a href="EnterpriseDT.Net.Ftp.FTPConnection.ReplyReceived.html">ReplyReceived</a></td></tr></table></div></p>
+            
+            <p><b>Logging:</b> It is often very helpful to look at the detailed logging output if any problems are experienced communicating with FTP servers. All commands sent to the FTP server and subsequent replies are logged, and can be made available on the console or directed to a log file. Much other useful information is also logged.</p>
+            
+            <p>Operations are logged at different levels, ranging from no logging (<a href="EnterpriseDT.Util.Debug.LogLevel.html">Off</a>) to most verbose (<a href="EnterpriseDT.Util.Debug.LogLevel.html">All</a>). Intermediate levels are <a href="EnterpriseDT.Util.Debug.LogLevel.html">Fatal</a>, <a href="EnterpriseDT.Util.Debug.LogLevel.html">Error</a>, <a href="EnterpriseDT.Util.Debug.LogLevel.html">Warning</a> and <a href="EnterpriseDT.Util.Debug.LogLevel.html">Information</a>.For example, if the overall level is set to Information, then Fatal, Error, Warning and Information log statements will be outputted, but Debug statements will not be logged.</p>
+            
+            <p>The overall level can be set via the LogLevel property: <pre class="code">  ftpConnection.LogLevel = LogLevel.Information;
+</pre> The destination for logging can be set via several properties, described below: <div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Property</th><th width="50%">Description</th></tr><tr valign="top"><td>LogToConsole</td><td>If set to <code>true</code>, logging is directed to the console.</td></tr><tr valign="top"><td>LogToTrace</td><td>If set to <code>true</code>, logging is directed to .NET's Trace facility.</td></tr><tr valign="top"><td>LogFile</td><td>If to a valid filename, logging is directed to the file.</td></tr></table></div></p>
+            
+            <p><b>Overview of the FTP protocol: </b> FTP is defined in the Request For Comments 959 document (RFC 959), which can be obtained from the Internet Engineering Task Force.</p>
+            
+            <p>FTP requires a client program (FTP client) and a server program (FTP server). The FTP client can fetch files and file details from the server, and also upload files to the server. The server is generally loginPassword protected.</p>
+            
+            <p>FTP commands are initiated by the FTP client, which opens a TCP connection called the control connection to the server. This control connection is used for the entire duration of a session between the FTP client and server. A session typically begins when the FTP client logs in, and ends when the quit command is sent to the server. The control connection is used exclusively for sending FTP commands and reading server replies - it is never used to transfer files.</p>
+            
+            <p>Transient TCP connections called data connections are set up whenever data (normally a file's contents) is to be transferred. For example, the FTP client issues a command to retrieve a file from the server via the control channel. A data connection is then established, and the file's contents transferred to the FTP client across it. Once the transfer is complete, the data connection is closed. Meanwhile, the control connection is maintained.</p>
+            
+            <p><b>Compliance: </b> <a href="EnterpriseDT.Net.Ftp.FTPClient.html">FTPClient</a> implements FTP as defined by RFC959. It attempts to match the standard as closely as possible, but due to variation in the level of compliance of the numerous FTP servers available, it sometime allows servers some tolerance. If the property <a href="EnterpriseDT.Net.Ftp.FTPConnection.StrictReturnCodes.html">StrictReturnCodes</a> is set to <code>false</code> then <b>FTPClient</b> is more tolerant of non-compliant servers.</p>
+            <h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp</a></p><p><b>Assembly: </b>edtFTPnet (in edtFTPnet.dll)
+					</p><h4 class="dtH4">See Also</h4><p><a href="EnterpriseDT.Net.Ftp.FTPConnectionMembers.html">FTPConnection Members</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="FTPConnection class, about FTPConnection class"></param></object></div>
+  </body>
+</html>

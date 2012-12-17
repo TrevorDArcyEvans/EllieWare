@@ -1,0 +1,47 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>UseGuiThreadIfAvailable Property</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPConnection.UseGuiThreadIfAvailable Property</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>Determines whether or not event-handlers will be run on the GUI thread if one is available.</p>
+      <div class="syntax">public <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemBooleanClassTopic.htm">bool</a> UseGuiThreadIfAvailable {get; set;}</div>
+      <p>
+      </p>
+      <h4 class="dtH4">Property Value</h4>
+      <p>The <code>UseGuiThreadIfAvailable</code> flag determines whether or not event-handlers will be run on the GUI thread if one is available. If the flag is <code>true</code> (the default) then they will be run on the GUI thread if one is available (only for Windows Forms applications). If the flag is <code>false</code> then they will be run on a worker-thread.</p>
+      <h4 class="dtH4">Remarks</h4>
+      <p> It is important to note that if event-handlers are run on a worker-thread then Windows Forms related operations will usually fail. Since such operations are commonly used in event-handlers, the default is <code>true</code>. </p>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="EnterpriseDT.Net.Ftp.FTPConnection.html">FTPConnection Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="UseGuiThreadIfAvailable property">
+        </param>
+        <param name="Keyword" value="UseGuiThreadIfAvailable property, FTPConnection class">
+        </param>
+        <param name="Keyword" value="FTPConnection.UseGuiThreadIfAvailable property">
+        </param>
+      </object>
+    </div>
+  </body>
+</html>

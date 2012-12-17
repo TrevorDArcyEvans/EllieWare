@@ -1,45 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Schema;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
 {
-  public partial class Logging : UserControl, IRunnable
+  public partial class Logging : MutableRunnableBase
   {
-    private readonly object mRoot;
-    private readonly ICallback mCallback;
-    private readonly IParameterManager mParamMgr;
-
     public Logging()
     {
       InitializeComponent();
     }
 
-    public Logging(object root, ICallback callback,IParameterManager mgr) :
-      this()
+    public Logging(object root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
-      mRoot = root;
-      mCallback = callback;
-      mParamMgr = mgr;
+      InitializeComponent();
+
+      mMessage.SetParameterManager(mgr);
+      mLevel.SelectedIndex = 0;
     }
 
-    public string Description
+    public override string Summary
     {
       get
       {
-        return "TODO    Logging Description";
+        var level = (LogLevel) mLevel.SelectedIndex;
+        return string.Format("{0} : {1}", level, mMessage.ResolvedValue);
       }
     }
 
-    public Control ConfigurationUserInterface
+    public override Control ConfigurationUserInterface
     {
       get
       {
@@ -47,30 +40,35 @@ namespace EllieWare.Logging
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
-      // TODO   Run
-      mCallback.Log(LogLevel.Information, Description);
+      mCallback.Log((LogLevel)mLevel.SelectedIndex, mMessage.ResolvedValue);
 
       return true;
     }
 
-    public XmlSchema GetSchema()
+    public override void ReadXml(XmlReader reader)
     {
-      return null;
+      var levelStr = reader.GetAttribute("Level");
+      var levelNum = int.Parse(levelStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
+      mLevel.SelectedIndex = levelNum;
+      mMessage.Text = reader.GetAttribute("Message");
     }
 
-    public void ReadXml(XmlReader reader)
+    public override void WriteXml(XmlWriter writer)
     {
-      // TODO   ReadXml
-      var dummy = reader.GetAttribute("aaa");
-      label1.Text = dummy;
+      writer.WriteAttributeString("Level", mLevel.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("Message", mMessage.Text);
     }
 
-    public void WriteXml(XmlWriter writer)
+    private void Level_SelectedIndexChanged(object sender, EventArgs e)
     {
-      // TODO   WriteXml
-      writer.WriteAttributeString("aaa", GetType().ToString());
+      FireConfigurationChanged();
+    }
+
+    private void Message_TextChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
     }
   }
 }

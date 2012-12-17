@@ -1,0 +1,36 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>CommandEncoding Property</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPConnection.CommandEncoding Property</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p> The character-encoding to use for FTP control commands and when dealing with file- and directory-paths. </p>
+      <div class="syntax">public virtual <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemTextEncodingClassTopic.htm">System.Text.Encoding</a> CommandEncoding {get; set;}</div>
+      <p>
+      </p>
+      <h4 class="dtH4">Remarks</h4>
+            <p> The default is <code>ASCII</code>, but should be changed when using file-names or directories containing non-ASCII characters. </p>
+            <p> Officially the FTP protocol (RFC959) only supports 7-bit ASCII characters. This means that file and directory names transferred across the control channel can only be ASCII. Fortunately, most servers actually support at least 8-bit ASCII. However there is no standard for what extended ASCII encoding is to be used. As a result, the meaning of characters 0 to 127 is well defined, but the meaning of characters 128 to 255 varies from one server to the other. One server might interpret character 193 as an accented A, whereas another might interpret it as an accented E. </p>
+            <p> By default, <code>FTPConnection</code> supports 7-bit ASCII. If it encounters a character whose code is 128 to 255 it will represent it as a question mark. This property allows the developer to select an 8-bit character encoding that matches that of the server. Unfortunately many servers do not state what 8-bit ASCII character set they are using, so it is often necessary to use trial and error to find out. Some common character encodings to try for western European languages are <code>Windows-1252</code> and <code>ISO-8859-1</code>. </p>
+            <h4 class="dtH4">See Also</h4><p><a href="EnterpriseDT.Net.Ftp.FTPConnection.html">FTPConnection Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="CommandEncoding property"></param><param name="Keyword" value="CommandEncoding property, FTPConnection class"></param><param name="Keyword" value="FTPConnection.CommandEncoding property"></param></object></div>
+  </body>
+</html>

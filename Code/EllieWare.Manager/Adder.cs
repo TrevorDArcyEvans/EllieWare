@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 
@@ -45,12 +39,12 @@ namespace EllieWare.Manager
       ddlCategories.DataSource = categories.ToList();
     }
 
-    private void lbSteps_SelectedIndexChanged(object sender, EventArgs e)
+    private void Steps_SelectedIndexChanged(object sender, EventArgs e)
     {
       txtDescription.Text = ((IFactory)lbSteps.SelectedItem).Description;
     }
 
-    private void ddlCategories_SelectedIndexChanged(object sender, EventArgs e)
+    private void Categories_SelectedIndexChanged(object sender, EventArgs e)
     {
       var searchTxt = txtSearchBox.Text.ToLower(CultureInfo.CurrentCulture);
       if (ddlCategories.SelectedIndex == 0 && string.IsNullOrEmpty(searchTxt))
@@ -84,9 +78,9 @@ namespace EllieWare.Manager
       lbSteps.DataSource = factsBySearch.ToList();
     }
 
-    private void txtSearchBox_TextChanged(object sender, EventArgs e)
+    private void SearchBox_TextChanged(object sender, EventArgs e)
     {
-      ddlCategories_SelectedIndexChanged(sender, e);
+      Categories_SelectedIndexChanged(sender, e);
     }
 
     public IFactory SelectedFactory
@@ -95,6 +89,12 @@ namespace EllieWare.Manager
       {
         return (IFactory)lbSteps.SelectedItem;
       }
+    }
+
+    private void Steps_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+      DialogResult = DialogResult.OK;
+      Close();
     }
   }
 }

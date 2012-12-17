@@ -1,0 +1,50 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>FTPClient.Restart Method</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPClient.Restart Method </h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>Set the REST marker so that the next transfer doesn't start at the beginning of the remote file</p>
+      <div class="syntax">public <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemVoidClassTopic.htm">void</a> Restart(<br />   <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemInt64ClassTopic.htm">long</a> <i>size</i><br />);</div>
+      <h4 class="dtH4">Parameters</h4>
+      <dl>
+        <dt>
+          <i>size</i>
+        </dt>
+        <dd>the REST param, the mark at which the restart is performed on the remote file. For STOR, this is retrieved by SIZE</dd>
+      </dl>
+      <h4 class="dtH4">Remarks</h4>
+      <p> Issue the RESTart command to the remote server. This indicates the byte position that REST is performed at. For put, bytes start at this point, while for get, bytes are fetched from this point. </p>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="EnterpriseDT.Net.Ftp.FTPClient.html">FTPClient Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p>
+      <object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;">
+        <param name="Keyword" value="Restart method">
+        </param>
+        <param name="Keyword" value="Restart method, FTPClient class">
+        </param>
+        <param name="Keyword" value="FTPClient.Restart method">
+        </param>
+      </object>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+
+*
+{
+  font-family:Arial;
+}
+
+a:href
+{
+  font-size: 24px;
+}
+
+a:link
+{
+  font-size: 24px;
+}
+
+button
+{
+  font-size: large;
+  height:32px;
+}
+
+hr
+{
+  height: 2px;
+  width: 100%;
+}
+
+.app_img
+{
+  border: 1px solid;
+  width: 128px;
+  height: 128px;
+}
+
+.app_store_badge
+{
+  border: 0px solid;
+  width: 168px;
+  height: 58px;
+}
+
+.android_store_badge
+{
+  border: 0px solid;
+  width: 58px;
+  height: 58px;
+}
+
+.elliesoft_store_badge
+{
+  border: 0px solid;
+  width: 58px;
+  height: 66px;
+}
+
+.iPhone_img
+{
+  border: 1px solid;
+  width: 160px;
+  height: 240px;
+}
+
+.iPhone_ls_img
+{
+  border: 1px solid;
+  width: 240px;
+  height: 160px;
+}
+
+.iPad_img
+{
+  border: 1px solid;
+  width: 256px;
+  height: 341px;
+}
+
+.iPad_img_ls
+{
+  border: 1px solid;
+  width: 341px;
+  height: 256px;
+}
+
+.OSX_img
+{
+  border: 1px solid;
+  width: 427px;
+  height: 267px;
+}
+
+table
+{
+  text-align: left;
+  width: 100%;"
+  border: 0;
+}
+
+tbody
+{
+  vertical-align: top;
+  text-align: center;
+  font-weight: bold;
+}
+
+.theader
+{
+  colspan: 4;
+  text-align: center;
+  font-size: 24pt;
+}
+

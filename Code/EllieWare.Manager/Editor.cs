@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
   public partial class Editor : Form
   {
-    private readonly IHostEx mHost;
+    private readonly IHost mHost;
     private readonly object mRoot;
-    private readonly ICallbackEx mCallback;
-    private ISpecification mSpecification;
+    private readonly ICallbackEx mCallback = new LogWindow();
+    private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
     private readonly List<IFactory> mFactories = new List<IFactory>();
@@ -32,14 +27,36 @@ namespace EllieWare.Manager
       InitializeComponent();
     }
 
-    public Editor(IHostEx host, object root, ICallbackEx callback, string filePath) :
+    public Editor(IHost host, object root, string filePath) :
       this()
     {
       mHost = host;
       mRoot = root;
-      mCallback = callback;
       mFilePath = filePath;
 
+      InitialiseFactories();
+
+      mAddDlg = new Adder(mFactories);
+      mSpecification = new Specification(mRoot, mCallback, mFactories);
+      mSteps.DataSource = mSpecification.Steps;
+
+      LoadFromFile();
+      ConnectChangeListeners();
+      UpdateUserInterface();
+
+      if (!string.IsNullOrEmpty(mFilePath))
+      {
+        UpdateTitle();
+      }
+    }
+
+    private void UpdateTitle()
+    {
+      Text = string.Format("Editor - {0}", Path.GetFileNameWithoutExtension(mFilePath));
+    }
+
+    private void InitialiseFactories()
+    {
       var callAssyLoc = Assembly.GetCallingAssembly().Location;
       var callAssyDir = Path.GetDirectoryName(callAssyLoc);
       var dllFiles = Directory.EnumerateFiles(callAssyDir, "*.dll");
@@ -58,12 +75,15 @@ namespace EllieWare.Manager
           // might not be a .NET dll but how?
         }
       }
+    }
 
-      mAddDlg = new Adder(mFactories);
-      mSpecification = new Specification(mRoot, mCallback, mFactories);
-
-      LoadFromFile();
-      UpdateUserInterface();
+    private void ConnectChangeListeners()
+    {
+      var changeableSteps = mSpecification.Steps.OfType<IMutableRunnable>();
+      foreach (var mutableRunnable in changeableSteps)
+      {
+        mutableRunnable.ConfigurationChanged += OnConfigurationChanged;
+      }
     }
 
     private void LoadFromFile()
@@ -88,6 +108,8 @@ namespace EllieWare.Manager
         var xs = new XmlSerializer(typeof(Specification));
         xs.Serialize(fs, mSpecification);
       }
+
+      CmdSave.Enabled = false;
     }
 
     private void CmdSave_Click(object sender, EventArgs e)
@@ -104,6 +126,8 @@ namespace EllieWare.Manager
 
         var filePath = Path.Combine(mHost.SpecificationsFolder, dlg.FileName);
         mFilePath = Path.ChangeExtension(filePath, Manager.MacroFileExtension);
+
+        UpdateTitle();
       }
       SaveToFile();
 
@@ -112,28 +136,58 @@ namespace EllieWare.Manager
 
     private void Steps_SelectedIndexChanged(object sender, EventArgs e)
     {
+      if (mSteps.SelectedIndex == -1)
+      {
+        return;
+      }
+
       mStepsContainer.Panel2.Controls.Clear();
       var step = (IRunnable)mSteps.SelectedItem;
       mStepsContainer.Panel2.Controls.Add(step.ConfigurationUserInterface);
+      step.ConfigurationUserInterface.Dock = DockStyle.Fill;
+
       UpdateButtons();
+    }
+
+    private void SetupForRun()
+    {
+      mCallback.Clear();
+      mCallback.Show();
+      mCallback.Log(LogLevel.Information, "Started");
+      mCallback.AllowClose = false;
+    }
+
+    private void ReportFailure()
+    {
+      mCallback.Log(LogLevel.Critical, "Error!");
+
+      var step = (IRunnable)mSteps.Items[mCurrentStep];
+      mCallback.Log(LogLevel.Critical, "  " + step.Summary);
     }
 
     public void Run()
     {
       if (mCurrentStep == 0)
       {
-        mCallback.Clear();
-        mCallback.Show();
-        mCallback.Log(LogLevel.Information, "Started");
-        mCallback.AllowClose = false;
+        SetupForRun();
       }
 
       // if user presses Run while Step(ping), run from current step
       for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
       {
-        Run(mCurrentStep);
+        if (!Run(mCurrentStep))
+        {
+          ReportFailure();
+
+          break;
+        }
       }
 
+      TearDownForRun();
+    }
+
+    private void TearDownForRun()
+    {
       mCurrentStep = 0;
       mCallback.AllowClose = true;
       mCallback.Log(LogLevel.Information, "Finished");
@@ -148,38 +202,40 @@ namespace EllieWare.Manager
     {
       if (mCurrentStep >= mSteps.Items.Count)
       {
-        mCurrentStep = mSteps.SelectedIndex = 0;
+        mSteps.SelectedIndex = 0;
 
-        mCallback.Log(LogLevel.Information, "Finished");
-        mCallback.AllowClose = true;
+        TearDownForRun();
 
         return;
       }
 
       if (mCurrentStep == 0)
       {
-        mCallback.Clear();
-        mCallback.Show();
-        mCallback.Log(LogLevel.Information, "Started");
-        mCallback.AllowClose = false;
+        SetupForRun();
       }
 
       mSteps.SelectedIndex = mCurrentStep;
-      Run(mCurrentStep);
+      if (!Run(mCurrentStep))
+      {
+        ReportFailure();
+      }
 
       mCurrentStep++;
     }
 
-    private void Run(int stepNum)
+    private bool Run(int stepNum)
     {
       var step = (IRunnable)mSteps.Items[stepNum];
-      step.Run();
-    }
+      try
+      {
+        return step.Run();
+      }
+      catch (Exception ex)
+      {
+        mCallback.Log(LogLevel.Critical, ex.Message);
 
-    private void UpdateUserInterface()
-    {
-      UpdateSteps();
-      UpdateButtons();
+        return false;
+      }
     }
 
     private void UpdateButtons()
@@ -191,10 +247,33 @@ namespace EllieWare.Manager
       CmdDown.Enabled &= (selIndex < mSteps.Items.Count - 1);
     }
 
-    private void UpdateSteps()
+    private void UpdateUserInterface()
     {
-      mSteps.DataSource = mSpecification.Steps.ToList();
+      mSteps.RefreshItems();
       UpdateButtons();
+    }
+
+    private void OnConfigurationChanged(object sender, EventArgs e)
+    {
+      var selIndex = mSteps.SelectedIndex;
+      if (selIndex == -1)
+      {
+        return;
+      }
+
+      try
+      {
+        // ListBox.RefreshItems causes change in selection, so temporarily disable
+        // while we update the UI description for this step
+        mSteps.SelectedIndexChanged -= Steps_SelectedIndexChanged;
+        mSteps.RefreshItem(selIndex);
+      }
+      finally
+      {
+        mSteps.SelectedIndexChanged += Steps_SelectedIndexChanged;
+      }
+
+      CmdSave.Enabled = true;
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
@@ -207,7 +286,14 @@ namespace EllieWare.Manager
       var selFactory = mAddDlg.SelectedFactory;
       var step = selFactory.Create(mRoot, mCallback, mSpecification.ParameterManager);
 
+      var changeableStep = step as IMutableRunnable;
+      if (changeableStep != null)
+      {
+        changeableStep.ConfigurationChanged += OnConfigurationChanged;
+      }
+
       mSpecification.Steps.Add(step);
+      CmdSave.Enabled = true;
 
       UpdateUserInterface();
 
@@ -223,6 +309,7 @@ namespace EllieWare.Manager
       }
 
       mSpecification.Steps.RemoveAt(selIndex);
+      CmdSave.Enabled = true;
       mStepsContainer.Panel2.Controls.Clear();
       UpdateUserInterface();
     }
@@ -238,6 +325,7 @@ namespace EllieWare.Manager
       var tmp = mSpecification.Steps[selIndex];
       mSpecification.Steps[selIndex] = mSpecification.Steps[selIndex - 1];
       mSpecification.Steps[selIndex - 1] = tmp;
+      CmdSave.Enabled = true;
 
       UpdateUserInterface();
 
@@ -255,6 +343,7 @@ namespace EllieWare.Manager
       var tmp = mSpecification.Steps[selIndex];
       mSpecification.Steps[selIndex] = mSpecification.Steps[selIndex + 1];
       mSpecification.Steps[selIndex + 1] = tmp;
+      CmdSave.Enabled = true;
 
       UpdateUserInterface();
 
@@ -263,12 +352,61 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
-      // TODO   help
+      // TODO   Help
     }
 
     private void Editor_FormClosed(object sender, FormClosedEventArgs e)
     {
       mCallback.AllowClose = true;
+    }
+
+    private void CmdParameters_Click(object sender, EventArgs e)
+    {
+      var dlg = new ParametersEditor(mSpecification.ParameterManager);
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+      CmdSave.Enabled = true;
+
+      var paramMgr = mSpecification.ParameterManager;
+
+      // remove all parameters
+      var displayNames = paramMgr.DisplayNames.ToList();
+      foreach (var displayName in displayNames)
+      {
+        paramMgr.Remove(displayName);
+      }
+
+      // recreate all parameters
+      foreach (var parameter in dlg.Parameters)
+      {
+        paramMgr.Add(parameter.DisplayName, parameter.ParameterValue);
+      }
+
+      UpdateUserInterface();
+    }
+
+    private void Editor_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (!CmdSave.Enabled)
+      {
+        return;
+      }
+
+      var msg = string.Format("You have unsaved changes.\nDo you want to save them?");
+      var retVal = MessageBox.Show(msg, "Confirm", MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+      if (retVal == DialogResult.Cancel)
+      {
+        e.Cancel = true;
+        return;
+      }
+      if (retVal == DialogResult.Yes)
+      {
+        CmdSave_Click(sender, e);
+        return;
+      }
     }
   }
 }

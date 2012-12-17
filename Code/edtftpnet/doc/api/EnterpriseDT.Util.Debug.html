@@ -1,0 +1,151 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>EnterpriseDT.Util.Debug</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">EnterpriseDT.Util.Debug Namespace</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>
+        <a href="EnterpriseDT.Util.DebugHierarchy.html">Namespace hierarchy</a>
+      </p>
+      <h3 class="dtH3">Classes</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Class</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.FileAppender.html">FileAppender</a>
+            </td>
+            <td width="50%"> Appends log statements to a file </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.Level.html">Level</a>
+            </td>
+            <td width="50%"> Simple debug level class. Uses the same interface (but not implementation) as log4net, so that the debug classes could be easily replaced by log4net </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.Lock.html">Lock</a>
+            </td>
+            <td width="50%"> Utility class for helping to debug deadlocks caused by lock synchronization. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.Logger.html">Logger</a>
+            </td>
+            <td width="50%"> Logger class that mimics log4net Logger class </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogLevelHelper.html">LogLevelHelper</a>
+            </td>
+            <td width="50%"> Helper for compact frameworks, which doesn't have Enum.Parse() </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageEventArgs.html">LogMessageEventArgs</a>
+            </td>
+            <td width="50%"> An instance of this class is supplied to the LogMessageReceived event </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.MemoryAppender.html">MemoryAppender</a>
+            </td>
+            <td width="50%">Appends log statements to an in-memory buffer.</td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.RollingFileAppender.html">RollingFileAppender</a>
+            </td>
+            <td width="50%"> Rolling file appender that moves the log file to a backup file once it exceeds a certain size. </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.StandardOutputAppender.html">StandardOutputAppender</a>
+            </td>
+            <td width="50%"> Appends log statements to standard output </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.TraceAppender.html">TraceAppender</a>
+            </td>
+            <td width="50%">Appends log statements using <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemDiagnosticsTraceClassTopic.htm">Trace</a>.</td>
+          </tr>
+        </table>
+      </div>
+      <h3 class="dtH3">Interfaces</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Interface</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.Appender.html">Appender</a>
+            </td>
+            <td width="50%"> Interface for classes that output log statements </td>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.CustomLogLevelAppender.html">CustomLogLevelAppender</a>
+            </td>
+            <td width="50%"> Extends <a href="EnterpriseDT.Util.Debug.Appender.html">Appender</a> by allowing an appender to have its own log-level. </td>
+          </tr>
+        </table>
+      </div>
+      <h3 class="dtH3">Delegates</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Delegate</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogMessageHandler.html">LogMessageHandler</a>
+            </td>
+            <td width="50%"> Delegate used for LogMessageReceived event </td>
+          </tr>
+        </table>
+      </div>
+      <h3 class="dtH3">Enumerations</h3>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+          <tr valign="top">
+            <th width="50%">Enumeration</th>
+            <th width="50%">Description</th>
+          </tr>
+          <tr valign="top">
+            <td width="50%">
+              <a href="EnterpriseDT.Util.Debug.LogLevel.html">LogLevel</a>
+            </td>
+            <td width="50%"> Enumeration specifying logging levels. </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

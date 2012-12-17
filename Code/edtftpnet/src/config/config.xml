@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--configuration for the edtFTPnet client -->
+<configuration>
+  <appSettings>
+  	<add key="edtftp.log.level" value="ALL"/>	
+  </appSettings>
+</configuration>

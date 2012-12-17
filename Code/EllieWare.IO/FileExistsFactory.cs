@@ -1,50 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class FileExistsFactory : IFactory
+  public class FileExistsFactory : IOFactoryBase, IFactory
   {
-    public string Title
+    public override string Title
     {
       get
       {
-        return "FileExistsFactory Title";
+        return "File checker";
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
-        return "FileExistsFactory Description";
+        return "Check if a file exists or not";
       }
     }
 
-    public string Keywords
-    {
-      get
-      {
-        return "FileExistsFactory Keywords";
-      }
-    }
-
-    public IEnumerable<string> Categories
-    {
-      get
-      {
-        return new[]
-                     {
-                       "TODO    FileExistsFactory Categories1", 
-                       "TODO    FileExistsFactory Categories2"
-                     };
-      }
-    }
-
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -52,7 +29,7 @@ namespace EllieWare.IO
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
     {
       return new FileExists(root, callback, mgr);
     }

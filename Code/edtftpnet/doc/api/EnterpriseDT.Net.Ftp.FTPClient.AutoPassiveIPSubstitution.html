@@ -1,0 +1,36 @@
+<html dir="LTR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>AutoPassiveIPSubstitution Property</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">An NDoc Documented Class Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">FTPClient.AutoPassiveIPSubstitution Property</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p> Use <code>AutoPassiveIPSubstitution</code> to ensure that data-socket connections are made to the same IP address that the control socket is connected to. </p>
+      <div class="syntax">public <a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemBooleanClassTopic.htm">bool</a> AutoPassiveIPSubstitution {get; set;}</div>
+      <p>
+      </p>
+      <h4 class="dtH4">Remarks</h4>
+            <p>
+            <code>AutoPassiveIPSubstitution</code> is useful in passive mode when the FTP server is supplying an incorrect IP address to the client for use in creating data connections (directory listings and file transfers), e.g. an internal IP address that is not accessible from the client. Instead, the client will use the IP address obtained from the FTP server's hostname. </p>
+            <p> This usually happens when an FTP server is behind a NAT router and has not been configured to reflect the fact that its internal (LAN) IP address is different from the address that external (Internet) machines connect to. </p>
+            <h4 class="dtH4">See Also</h4><p><a href="EnterpriseDT.Net.Ftp.FTPClient.html">FTPClient Class</a> | <a href="EnterpriseDT.Net.Ftp.html">EnterpriseDT.Net.Ftp Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="AutoPassiveIPSubstitution property"></param><param name="Keyword" value="AutoPassiveIPSubstitution property, FTPClient class"></param><param name="Keyword" value="FTPClient.AutoPassiveIPSubstitution property"></param></object></div>
+  </body>
+</html>
