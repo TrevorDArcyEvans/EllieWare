@@ -1,4 +1,11 @@
-﻿using EllieWare.Interfaces;
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {

@@ -1,4 +1,11 @@
-﻿using System.Globalization;
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using System.Globalization;
 using System.Xml;
 using Moq;
 

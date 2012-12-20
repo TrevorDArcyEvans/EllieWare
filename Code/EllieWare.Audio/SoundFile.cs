@@ -1,4 +1,11 @@
-﻿using System.Media;
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using System.Media;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
