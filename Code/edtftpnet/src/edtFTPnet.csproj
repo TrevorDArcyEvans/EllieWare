@@ -94,10 +94,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <Name>nunit.framework</Name>
-      <HintPath>..\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -184,91 +180,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="net\ftp\TandemFileParser.cs" />
-    <Compile Include="net\ftp\test\AbstractTestCase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestBigTransfer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestBulkTransfer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestCase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestDirOperations.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestEvents.cs" />
-    <Compile Include="net\ftp\test\FTPConnTestExists.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestFeatures.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestFileOperations.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestListings.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestLogin.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestPortRange.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestReconnect.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestResume.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPConnTestTransfer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\FTPTestCase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestBigTransfer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestBulkTransfer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestDirOperations.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestExists.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestFeatures.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestFileOperations.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestListings.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestLogin.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestPortRange.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestReconnect.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestResume.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\TestTransfer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="net\ftp\test\VMSTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="net\ftp\TransferCompleteStrings.cs">
       <SubType>Code</SubType>
     </Compile>

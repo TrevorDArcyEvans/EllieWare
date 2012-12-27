@@ -1,4 +1,11 @@
-﻿using EllieWare.Common;
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using EllieWare.Common;
 
 namespace EllieWare.Logging
 {

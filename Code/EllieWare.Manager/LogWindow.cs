@@ -1,4 +1,11 @@
-﻿using System.Windows.Forms;
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using System.Windows.Forms;
 using Controls.Development;
 using EllieWare.Interfaces;
 

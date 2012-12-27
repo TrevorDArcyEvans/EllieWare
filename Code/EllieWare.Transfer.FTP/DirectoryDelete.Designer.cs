@@ -1,4 +1,11 @@
-﻿namespace EllieWare.Transfer.FTP
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+namespace EllieWare.Transfer.FTP
 {
   partial class DirectoryDelete
   {

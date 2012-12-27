@@ -1,4 +1,11 @@
-﻿using System.IO;
+﻿//
+//  Copyright (C) 2012 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -6,6 +13,10 @@ namespace EllieWare.IO
 {
   public class FileDelete : SingleItemIOBase
   {
+    public FileDelete()
+    {
+    }
+
     public FileDelete(object root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
