@@ -49,6 +49,13 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AppExit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AppExit.Designer.cs">
+      <DependentUpon>AppExit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppExitFactory.cs" />
     <Compile Include="CloseAllNoSave.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -63,6 +70,41 @@
       <DependentUpon>CloseNoSave.cs</DependentUpon>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
+    <Compile Include="ExportToBitmap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportToBitmap.Designer.cs">
+      <DependentUpon>ExportToBitmap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportToBitmapFactory.cs" />
+    <Compile Include="ExportToForeign.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportToForeign.Designer.cs">
+      <DependentUpon>ExportToForeign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportToForeignFactory.cs" />
+    <Compile Include="ExportToPdf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportToPdf.Designer.cs">
+      <DependentUpon>ExportToPdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportToPdfFactory.cs" />
+    <Compile Include="ImportFromForeign.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImportFromForeign.Designer.cs">
+      <DependentUpon>ImportFromForeign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportFromForeignFactory.cs" />
+    <Compile Include="NewDesign.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewDesign.Designer.cs">
+      <DependentUpon>NewDesign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewDesignFactory.cs" />
     <Compile Include="OpenNative.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,7 +123,32 @@
       <DependentUpon>SaveAll.cs</DependentUpon>
     </Compile>
     <Compile Include="SaveAllFactory.cs" />
+    <Compile Include="SaveAs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SaveAsFactory.cs" />
     <Compile Include="SaveFactory.cs" />
+    <Compile Include="SetViewProjection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SetViewProjection.Designer.cs">
+      <DependentUpon>SetViewProjection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetViewProjectionFactory.cs" />
+    <Compile Include="ZoomExtents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZoomExtents.Designer.cs">
+      <DependentUpon>ZoomExtents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZoomExtentsFactory.cs" />
+    <Compile Include="ZoomSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZoomSelection.Designer.cs">
+      <DependentUpon>ZoomSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZoomSelectionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
@@ -96,6 +163,11 @@
       <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
       <Name>EllieWare.Support</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SetViewProjection.resx">
+      <DependentUpon>SetViewProjection.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
