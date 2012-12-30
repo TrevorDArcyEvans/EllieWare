@@ -10,8 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ionic.Zip</RootNamespace>
     <AssemblyName>Ionic.Zip</AssemblyName>
-    <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\Ionic.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\EllieWare.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -119,6 +119,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\EllieWare.snk">
+      <Link>EllieWare.snk</Link>
+    </None>
     <None Include="Migrated rules for Zip DLL.ruleset" />
     <None Include="Resources\CommandLineSelfExtractorStub.cs" />
     <None Include="Resources\PasswordDialog.cs" />
@@ -138,9 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PackResources.vbs" />
-    <None Include="..\Ionic.snk">
-      <Link>Ionic.snk</Link>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PasswordDialog.resx">
