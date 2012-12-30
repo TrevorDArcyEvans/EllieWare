@@ -172,12 +172,14 @@ namespace EllieWare.Manager
       mCallback.Log(LogLevel.Critical, "  " + step.Summary);
     }
 
-    public void Run()
+    public bool Run()
     {
       if (mCurrentStep == 0)
       {
         SetupForRun();
       }
+
+      var retVal = true;
 
       // if user presses Run while Step(ping), run from current step
       for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
@@ -185,12 +187,15 @@ namespace EllieWare.Manager
         if (!Run(mCurrentStep))
         {
           ReportFailure();
+          retVal = false;
 
           break;
         }
       }
 
       TearDownForRun();
+
+      return retVal;
     }
 
     private void TearDownForRun()
