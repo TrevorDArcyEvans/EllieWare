@@ -10,7 +10,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using EllieWare.Common;
-using EllieWare.Interfaces;
 using EllieWare.Manager;
 using RobotWare.SpaceClaim.Properties;
 using SpaceClaim.Api.V10;
