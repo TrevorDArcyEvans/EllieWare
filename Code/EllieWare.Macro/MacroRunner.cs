@@ -35,6 +35,7 @@ namespace EllieWare.Macro
 
     public override bool Run()
     {
+      // FIX ME!  potential licensing hole as demo mode is implemented in Editor
       var dlg = new Editor(null, mRoots, SourceFilePathResolvedValue);
 
       return dlg.Run();
