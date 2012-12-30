@@ -28,6 +28,7 @@ namespace EllieWare.Manager
     private string mFilePath;
     private readonly Adder mAddDlg;
     private readonly List<IFactory> mFactories = new List<IFactory>();
+    private readonly bool IsLicensed;
 
     private int mCurrentStep;
 
@@ -42,6 +43,9 @@ namespace EllieWare.Manager
       mHost = host;
       mRoots = roots;
       mFilePath = filePath;
+
+      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      IsLicensed = licensable != null ? licensable.IsLicensed : false;
 
       InitialiseFactories();
 
@@ -239,7 +243,7 @@ namespace EllieWare.Manager
 
     private bool Run(int stepNum)
     {
-      if (stepNum >= MaxUnlicensedSteps && !mHost.IsLicensed)
+      if (stepNum >= MaxUnlicensedSteps && !IsLicensed)
       {
         var msg = string.Format("Only {0} steps in demo mode", MaxUnlicensedSteps);
 

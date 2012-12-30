@@ -58,6 +58,7 @@
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="LicensableWrapper.cs" />
     <Compile Include="MutableRunnableBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Licensing\EllieWare.Licensing.csproj">
+      <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
+      <Name>EllieWare.Licensing</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

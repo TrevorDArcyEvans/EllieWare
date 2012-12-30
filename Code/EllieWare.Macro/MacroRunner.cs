@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Collections.Generic;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -13,7 +12,7 @@ using EllieWare.Manager;
 
 namespace EllieWare.Macro
 {
-  public partial class MacroRunner : SingleItemIOBase, IHost
+  public partial class MacroRunner : SingleItemIOBase
   {
     public MacroRunner()
     {
@@ -36,37 +35,9 @@ namespace EllieWare.Macro
 
     public override bool Run()
     {
-      var dlg = new Editor(this, mRoots, SourceFilePathResolvedValue);
+      var dlg = new Editor(null, mRoots, SourceFilePathResolvedValue);
 
       return dlg.Run();
     }
-
-    #region Implementation of IHost
-
-    public void RefreshSpecificationsList()
-    {
-      throw new NotImplementedException();
-    }
-
-    public string SpecificationsFolder
-    {
-      get { throw new NotImplementedException(); }
-    }
-
-    public IEnumerable<string> Specifications
-    {
-      get { throw new NotImplementedException(); }
-    }
-
-    public bool IsLicensed
-    {
-      get
-      {
-        // FIX ME!    licensing hole but need ApplicationName
-        return true;
-      }
-    }
-
-    #endregion
   }
 }
