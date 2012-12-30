@@ -1,0 +1,17 @@
+- Visual Studio 2010 SP1
+- MSBuild Community Tasks
+- Sandcastle Help File Builder
+- MS HTML Help Workshop
+
+- nUnit
+- Moq
+- OpenCover
+
+- git
+- Tortoise Git
+
+- Resharper
+
+
+
+

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{186AC2DD-F372-47F3-A279-F905F37DBA9D}</ProjectGuid>
+    <ProjectGuid>{639D40B5-8191-409A-A267-8A78D4D38452}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EllieWare.IO</RootNamespace>
-    <AssemblyName>EllieWare.IO</AssemblyName>
+    <RootNamespace>EllieWare.Licensing</RootNamespace>
+    <AssemblyName>EllieWare.Licensing</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,8 +39,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,54 +49,8 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DirectoryCopy.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryCopyFactory.cs" />
-    <Compile Include="DirectoryCreate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryCreateFactory.cs" />
-    <Compile Include="DirectoryDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryDeleteFactory.cs" />
-    <Compile Include="DirectoryExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryExistsFactory.cs" />
-    <Compile Include="DirectoryMove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryMoveFactory.cs" />
-    <Compile Include="FileCopy.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileCopyFactory.cs" />
-    <Compile Include="FileDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileDeleteFactory.cs" />
-    <Compile Include="FileExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileExistsFactory.cs" />
-    <Compile Include="FileMove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileMoveFactory.cs" />
-    <Compile Include="IOFactoryBase.cs" />
+    <Compile Include="LicenseManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
-      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
-      <Name>EllieWare.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
-      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
-      <Name>EllieWare.Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">

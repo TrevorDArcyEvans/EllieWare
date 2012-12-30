@@ -19,6 +19,7 @@ namespace EllieWare.Manager
 
     private readonly object mRoot;
     private readonly string mApplicationName;
+    private readonly bool IsLicensed;
 
     public Manager()
     {
@@ -31,6 +32,8 @@ namespace EllieWare.Manager
       mRoot = root;
       mApplicationName = appName;
       SpecificationsFolder = userSpecsPath;
+
+      IsLicensed = Licensing.LicenseManager.IsLicensed(mApplicationName);
 
       RefreshSpecificationsList();
       UpdateButtons();
