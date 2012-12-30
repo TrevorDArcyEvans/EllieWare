@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
@@ -21,8 +22,8 @@ namespace EllieWare.Logging
       InitializeComponent();
     }
 
-    public Logging(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public Logging(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
 

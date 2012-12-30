@@ -87,6 +87,10 @@
       <Project>{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}</Project>
       <Name>Zip DLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Audio\EllieWare.Audio.csproj">
+      <Project>{B576477E-C3E2-42A6-9C46-B523D9F6B834}</Project>
+      <Name>EllieWare.Audio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>
@@ -103,9 +107,17 @@
       <Project>{186AC2DD-F372-47F3-A279-F905F37DBA9D}</Project>
       <Name>EllieWare.IO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Licensing\EllieWare.Licensing.csproj">
+      <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
+      <Name>EllieWare.Licensing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Logging\EllieWare.Logging.csproj">
       <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
       <Name>EllieWare.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Macro\EllieWare.Macro.csproj">
+      <Project>{D6569BA5-350C-4A7A-B23C-5E9FCAA6DF21}</Project>
+      <Name>EllieWare.Macro</Name>
     </ProjectReference>
     <ProjectReference Include="..\EllieWare.Manager\EllieWare.Manager.csproj">
       <Project>{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}</Project>

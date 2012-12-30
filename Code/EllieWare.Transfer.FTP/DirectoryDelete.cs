@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
@@ -18,8 +19,8 @@ namespace EllieWare.Transfer.FTP
       Initialise();
     }
 
-    public DirectoryDelete(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public DirectoryDelete(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
 

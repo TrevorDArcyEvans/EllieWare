@@ -201,11 +201,22 @@ namespace EllieWare.Interfaces
     /// Called to create a <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>.
     /// Most of the work should be done in this method.
     /// </summary>
-    /// <param name="root">Domain root object</param>
+    /// <param name="roots">Domain root objects</param>
     /// <param name="callback">logging - see <see cref="ICallback"/></param>
     /// <param name="mgr">parameter manager - see <see cref="IParameterManager"/></param>
     /// <returns>A fully constructed <see cref="IRunnable"/> or <see cref="IMutableRunnable"/></returns>
-    /// <remarks><paramref name="root"/> depends on the application domain and can be null - BEWARE!</remarks>
-    IRunnable Create(object root, ICallback callback, IParameterManager mgr);
+    /// <remarks><paramref name="roots"/> depends on the application domain/s and can be null - BEWARE!</remarks>
+    IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr);
+  }
+
+  /// <summary>
+  /// A product which is licensed
+  /// </summary>
+  public interface ILicensable
+  {
+    /// <summary>
+    /// if product is licensed
+    /// </summary>
+    bool IsLicensed { get; }
   }
 }

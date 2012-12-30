@@ -37,6 +37,6 @@ namespace EllieWare.Logging
     }
 
     public abstract Type CreatedType { get; }
-    public abstract IRunnable Create(object root, ICallback callback, IParameterManager mgr);
+    public abstract IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr);
   }
 }

@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 
@@ -17,8 +18,8 @@ namespace EllieWare.Logging
     {
     }
 
-    public DateTimeLog(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public DateTimeLog(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       lblMessage.Visible = mMessage.Visible = false;
     }

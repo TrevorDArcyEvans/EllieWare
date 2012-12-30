@@ -41,87 +41,24 @@ namespace EllieWare.Manager
       System.Windows.Forms.Label label4;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Adder));
-      this.CmdCancel = new System.Windows.Forms.Button();
-      this.CmdOK = new System.Windows.Forms.Button();
-      this.txtSearchBox = new System.Windows.Forms.TextBox();
-      this.ddlCategories = new System.Windows.Forms.ComboBox();
-      this.lbSteps = new System.Windows.Forms.ListBox();
-      this.txtDescription = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.txtDescription = new System.Windows.Forms.TextBox();
+      this.txtSearchBox = new System.Windows.Forms.TextBox();
+      this.lbSteps = new System.Windows.Forms.ListBox();
+      this.ddlCategories = new System.Windows.Forms.ComboBox();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.CmdOK = new System.Windows.Forms.Button();
+      this.CmdCancel = new System.Windows.Forms.Button();
       this.AdderHelp = new System.Windows.Forms.HelpProvider();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
       label3 = new System.Windows.Forms.Label();
       label4 = new System.Windows.Forms.Label();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel3.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
-      tableLayoutPanel3.SuspendLayout();
       this.SuspendLayout();
-      // 
-      // CmdCancel
-      // 
-      this.CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.CmdCancel.Location = new System.Drawing.Point(84, 3);
-      this.CmdCancel.Name = "CmdCancel";
-      this.CmdCancel.Size = new System.Drawing.Size(75, 23);
-      this.CmdCancel.TabIndex = 1;
-      this.CmdCancel.Text = "Cancel";
-      this.CmdCancel.UseVisualStyleBackColor = true;
-      // 
-      // CmdOK
-      // 
-      this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.CmdOK.Location = new System.Drawing.Point(3, 3);
-      this.CmdOK.Name = "CmdOK";
-      this.CmdOK.Size = new System.Drawing.Size(75, 23);
-      this.CmdOK.TabIndex = 0;
-      this.CmdOK.Text = "OK";
-      this.CmdOK.UseVisualStyleBackColor = true;
-      // 
-      // txtSearchBox
-      // 
-      this.txtSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtSearchBox.Location = new System.Drawing.Point(72, 3);
-      this.txtSearchBox.Name = "txtSearchBox";
-      this.txtSearchBox.Size = new System.Drawing.Size(359, 20);
-      this.txtSearchBox.TabIndex = 1;
-      this.txtSearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
-      // 
-      // ddlCategories
-      // 
-      this.ddlCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ddlCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.ddlCategories.FormattingEnabled = true;
-      this.ddlCategories.Location = new System.Drawing.Point(72, 29);
-      this.ddlCategories.Name = "ddlCategories";
-      this.ddlCategories.Size = new System.Drawing.Size(359, 21);
-      this.ddlCategories.TabIndex = 3;
-      this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
-      // 
-      // lbSteps
-      // 
-      this.lbSteps.DisplayMember = "Title";
-      this.lbSteps.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.lbSteps.FormattingEnabled = true;
-      this.lbSteps.Location = new System.Drawing.Point(72, 56);
-      this.lbSteps.Name = "lbSteps";
-      this.lbSteps.Size = new System.Drawing.Size(359, 205);
-      this.lbSteps.Sorted = true;
-      this.lbSteps.TabIndex = 5;
-      this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
-      this.lbSteps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Steps_MouseDoubleClick);
-      // 
-      // txtDescription
-      // 
-      this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtDescription.Location = new System.Drawing.Point(72, 267);
-      this.txtDescription.Multiline = true;
-      this.txtDescription.Name = "txtDescription";
-      this.txtDescription.ReadOnly = true;
-      this.txtDescription.Size = new System.Drawing.Size(359, 85);
-      this.txtDescription.TabIndex = 7;
       // 
       // label1
       // 
@@ -159,6 +96,24 @@ namespace EllieWare.Manager
       label4.TabIndex = 6;
       label4.Text = "Description:";
       // 
+      // tableLayoutPanel3
+      // 
+      tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      tableLayoutPanel3.ColumnCount = 2;
+      tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 1, 1);
+      tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
+      tableLayoutPanel3.Location = new System.Drawing.Point(12, 12);
+      tableLayoutPanel3.Name = "tableLayoutPanel3";
+      tableLayoutPanel3.RowCount = 2;
+      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel3.Size = new System.Drawing.Size(440, 396);
+      tableLayoutPanel3.TabIndex = 10;
+      // 
       // tableLayoutPanel1
       // 
       this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -187,6 +142,49 @@ namespace EllieWare.Manager
       this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 355);
       this.tableLayoutPanel1.TabIndex = 8;
       // 
+      // txtDescription
+      // 
+      this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtDescription.Location = new System.Drawing.Point(72, 267);
+      this.txtDescription.Multiline = true;
+      this.txtDescription.Name = "txtDescription";
+      this.txtDescription.ReadOnly = true;
+      this.txtDescription.Size = new System.Drawing.Size(359, 85);
+      this.txtDescription.TabIndex = 7;
+      // 
+      // txtSearchBox
+      // 
+      this.txtSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtSearchBox.Location = new System.Drawing.Point(72, 3);
+      this.txtSearchBox.Name = "txtSearchBox";
+      this.txtSearchBox.Size = new System.Drawing.Size(359, 20);
+      this.txtSearchBox.TabIndex = 1;
+      this.txtSearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+      // 
+      // lbSteps
+      // 
+      this.lbSteps.DisplayMember = "Title";
+      this.lbSteps.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lbSteps.FormattingEnabled = true;
+      this.lbSteps.Location = new System.Drawing.Point(72, 56);
+      this.lbSteps.Name = "lbSteps";
+      this.lbSteps.Size = new System.Drawing.Size(359, 205);
+      this.lbSteps.Sorted = true;
+      this.lbSteps.TabIndex = 5;
+      this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
+      this.lbSteps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Steps_MouseDoubleClick);
+      // 
+      // ddlCategories
+      // 
+      this.ddlCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ddlCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.ddlCategories.FormattingEnabled = true;
+      this.ddlCategories.Location = new System.Drawing.Point(72, 29);
+      this.ddlCategories.Name = "ddlCategories";
+      this.ddlCategories.Size = new System.Drawing.Size(359, 21);
+      this.ddlCategories.TabIndex = 3;
+      this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
+      // 
       // tableLayoutPanel2
       // 
       this.tableLayoutPanel2.AutoSize = true;
@@ -203,23 +201,25 @@ namespace EllieWare.Manager
       this.tableLayoutPanel2.Size = new System.Drawing.Size(162, 29);
       this.tableLayoutPanel2.TabIndex = 9;
       // 
-      // tableLayoutPanel3
+      // CmdOK
       // 
-      tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      tableLayoutPanel3.ColumnCount = 2;
-      tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 1, 1);
-      tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
-      tableLayoutPanel3.Location = new System.Drawing.Point(12, 12);
-      tableLayoutPanel3.Name = "tableLayoutPanel3";
-      tableLayoutPanel3.RowCount = 2;
-      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel3.Size = new System.Drawing.Size(440, 396);
-      tableLayoutPanel3.TabIndex = 10;
+      this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.CmdOK.Location = new System.Drawing.Point(3, 3);
+      this.CmdOK.Name = "CmdOK";
+      this.CmdOK.Size = new System.Drawing.Size(75, 23);
+      this.CmdOK.TabIndex = 0;
+      this.CmdOK.Text = "OK";
+      this.CmdOK.UseVisualStyleBackColor = true;
+      // 
+      // CmdCancel
+      // 
+      this.CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.CmdCancel.Location = new System.Drawing.Point(84, 3);
+      this.CmdCancel.Name = "CmdCancel";
+      this.CmdCancel.Size = new System.Drawing.Size(75, 23);
+      this.CmdCancel.TabIndex = 1;
+      this.CmdCancel.Text = "Cancel";
+      this.CmdCancel.UseVisualStyleBackColor = true;
       // 
       // Adder
       // 
@@ -231,15 +231,14 @@ namespace EllieWare.Manager
       this.Controls.Add(tableLayoutPanel3);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Adder";
-      this.ShowInTaskbar = false;
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Add Step";
+      tableLayoutPanel3.ResumeLayout(false);
+      tableLayoutPanel3.PerformLayout();
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
       this.tableLayoutPanel2.ResumeLayout(false);
-      tableLayoutPanel3.ResumeLayout(false);
-      tableLayoutPanel3.PerformLayout();
       this.ResumeLayout(false);
 
     }

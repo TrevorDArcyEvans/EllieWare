@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
@@ -22,15 +23,15 @@ namespace EllieWare.Common
       InitializeComponent();
     }
 
-    public DualItemIOBase(object root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
-      base(root, callback, mgr)
+    public DualItemIOBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
 
-      Initialise(root, callback, mgr, browsers);
+      Initialise(roots, callback, mgr, browsers);
     }
 
-    public void Initialise(object root, ICallback callback, IParameterManager mgr, BrowserTypes browsers)
+    public void Initialise(IEnumerable<object> roots, ICallback callback, IParameterManager mgr, BrowserTypes browsers)
     {
       mBrowsers = browsers;
 

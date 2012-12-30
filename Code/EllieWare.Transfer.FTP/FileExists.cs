@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using EllieWare.Interfaces;
@@ -19,8 +20,8 @@ namespace EllieWare.Transfer.FTP
       InitializeComponent();
     }
 
-    public FileExists(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public FileExists(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
     }
 

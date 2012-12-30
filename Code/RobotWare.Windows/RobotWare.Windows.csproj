@@ -38,6 +38,12 @@
   <PropertyGroup>
     <ApplicationIcon>robot.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\EllieWare.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +72,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="..\EllieWare.snk">
+      <Link>EllieWare.snk</Link>
+    </None>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,13 +99,13 @@
       <Project>{22ABAC35-D498-413E-A429-98D317142CB6}</Project>
       <Name>EllieWare.DateTime</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EllieWare.Dropbox\EllieWare.Dropbox.csproj">
-      <Project>{177CA389-1B5B-4608-B4CE-2B932EB67D6A}</Project>
-      <Name>EllieWare.Dropbox</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Licensing\EllieWare.Licensing.csproj">
+      <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
+      <Name>EllieWare.Licensing</Name>
     </ProjectReference>
     <ProjectReference Include="..\EllieWare.Logging\EllieWare.Logging.csproj">
       <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
@@ -117,10 +126,6 @@
     <ProjectReference Include="..\EllieWare.Transfer.FTP\EllieWare.Transfer.FTP.csproj">
       <Project>{6148FE29-F616-4501-931B-27A04C3E9B60}</Project>
       <Name>EllieWare.Transfer.FTP</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EllieWare.Transfer.SMTP\EllieWare.Transfer.SMTP.csproj">
-      <Project>{265A9186-5FA5-48DF-8FBE-71F2EBF750DE}</Project>
-      <Name>EllieWare.Transfer.SMTP</Name>
     </ProjectReference>
     <ProjectReference Include="..\EllieWare.Zip\EllieWare.Zip.csproj">
       <Project>{3E09D8C1-FDC2-47ED-8195-27F8D61C5F9F}</Project>

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
@@ -17,23 +18,31 @@ namespace EllieWare.Manager
   {
     public const string MacroFileExtension = ".mxml";
 
-    private readonly object mRoot;
+    private readonly IEnumerable<object> mRoots;
     private readonly string mApplicationName;
-    private readonly bool IsLicensed;
 
     public Manager()
     {
       InitializeComponent();
     }
 
-    public Manager(object root, string appName, string userSpecsPath) :
+    public Manager(IEnumerable<object> roots, string appName, string userSpecsPath) :
       this()
     {
-      mRoot = root;
+      mRoots = roots;
       mApplicationName = appName;
       SpecificationsFolder = userSpecsPath;
 
-      IsLicensed = Licensing.LicenseManager.IsLicensed(mApplicationName);
+      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      var isLicensed = licensable != null ? licensable.IsLicensed : false;
+      if (!isLicensed)
+      {
+        var dlg = new RequestLicense(appName);
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+          Licensing.LicenseManager.Register(appName, dlg.UserName.Text, dlg.LicenseCode.Text);
+        }
+      }
 
       RefreshSpecificationsList();
       UpdateButtons();
@@ -49,7 +58,7 @@ namespace EllieWare.Manager
 
     private void CmdNew_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoot, string.Empty);
+      var dlg = new Editor(this, mRoots, string.Empty);
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -57,7 +66,7 @@ namespace EllieWare.Manager
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoots, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -72,7 +81,7 @@ namespace EllieWare.Manager
 
     private void CmdDebug_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoots, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -82,7 +91,7 @@ namespace EllieWare.Manager
 
     public void Run(string filePath)
     {
-      var dlg = new Editor(this, mRoot, filePath);
+      var dlg = new Editor(this, mRoots, filePath);
       dlg.Run();
     }
 

@@ -13,8 +13,6 @@ namespace EllieWare.DateTime
 {
   public class PauseFactory : IFactory
   {
-    #region Implementation of IFactory
-
     public string Title
     {
       get
@@ -58,11 +56,9 @@ namespace EllieWare.DateTime
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new Pause(root, callback, mgr);
+      return new Pause(roots, callback, mgr);
     }
-
-    #endregion
   }
 }

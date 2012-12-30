@@ -19,13 +19,16 @@ namespace EllieWare.Manager
 {
   public partial class Editor : Form
   {
+    private const int MaxUnlicensedSteps = 5;
+
     private readonly IHost mHost;
-    private readonly object mRoot;
+    private readonly IEnumerable<object> mRoots;
     private readonly ICallbackEx mCallback = new LogWindow();
     private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
     private readonly List<IFactory> mFactories = new List<IFactory>();
+    private readonly bool IsLicensed;
 
     private int mCurrentStep;
 
@@ -34,17 +37,20 @@ namespace EllieWare.Manager
       InitializeComponent();
     }
 
-    public Editor(IHost host, object root, string filePath) :
+    public Editor(IHost host, IEnumerable<object> roots, string filePath) :
       this()
     {
       mHost = host;
-      mRoot = root;
+      mRoots = roots;
       mFilePath = filePath;
+
+      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      IsLicensed = licensable != null ? licensable.IsLicensed : false;
 
       InitialiseFactories();
 
       mAddDlg = new Adder(mFactories);
-      mSpecification = new Specification(mRoot, mCallback, mFactories);
+      mSpecification = new Specification(mRoots, mCallback, mFactories);
       mSteps.DataSource = mSpecification.Steps;
 
       LoadFromFile();
@@ -172,12 +178,14 @@ namespace EllieWare.Manager
       mCallback.Log(LogLevel.Critical, "  " + step.Summary);
     }
 
-    public void Run()
+    public bool Run()
     {
       if (mCurrentStep == 0)
       {
         SetupForRun();
       }
+
+      var retVal = true;
 
       // if user presses Run while Step(ping), run from current step
       for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
@@ -185,12 +193,15 @@ namespace EllieWare.Manager
         if (!Run(mCurrentStep))
         {
           ReportFailure();
+          retVal = false;
 
           break;
         }
       }
 
       TearDownForRun();
+
+      return retVal;
     }
 
     private void TearDownForRun()
@@ -232,6 +243,15 @@ namespace EllieWare.Manager
 
     private bool Run(int stepNum)
     {
+      if (stepNum >= MaxUnlicensedSteps && !IsLicensed)
+      {
+        var msg = string.Format("Only {0} steps in demo mode", MaxUnlicensedSteps);
+
+        mCallback.Log(LogLevel.Information, msg);
+
+        return false;
+      }
+
       var step = (IRunnable)mSteps.Items[stepNum];
       try
       {
@@ -291,7 +311,7 @@ namespace EllieWare.Manager
       }
 
       var selFactory = mAddDlg.SelectedFactory;
-      var step = selFactory.Create(mRoot, mCallback, mSpecification.ParameterManager);
+      var step = selFactory.Create(mRoots, mCallback, mSpecification.ParameterManager);
 
       var changeableStep = step as IMutableRunnable;
       if (changeableStep != null)

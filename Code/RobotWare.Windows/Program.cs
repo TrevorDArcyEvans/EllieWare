@@ -8,11 +8,13 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using EllieWare.Common;
 
 namespace RobotWare.Windows
 {
   static class Program
   {
+
     /// <summary>
     /// The main entry point for the application.
     /// </summary>
@@ -24,11 +26,12 @@ namespace RobotWare.Windows
 
       const string ApplicationName = "RobotWare for Windows";
 
+      var licWrapper = new LicensableWrapper(ApplicationName);
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       var userSpecsPath = Path.Combine(userDocs, ApplicationName);
       Directory.CreateDirectory(userSpecsPath);
 
-      Application.Run(new EllieWare.Manager.Manager(null,ApplicationName, userSpecsPath));
+      Application.Run(new EllieWare.Manager.Manager(new[] { licWrapper }, ApplicationName, userSpecsPath));
     }
   }
 }

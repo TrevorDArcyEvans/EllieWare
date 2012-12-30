@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Zip
@@ -36,9 +37,9 @@ namespace EllieWare.Zip
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new UnZipFile(root, callback, mgr);
+      return new UnZipFile(roots, callback, mgr);
     }
   }
 }

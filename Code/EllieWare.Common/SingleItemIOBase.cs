@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -15,8 +16,8 @@ namespace EllieWare.Common
     {
     }
 
-    public SingleItemIOBase(object root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
-      base(root, callback, mgr, browsers)
+    public SingleItemIOBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
+      base(roots, callback, mgr, browsers)
     {
       SetExistsVisible(false);
     }

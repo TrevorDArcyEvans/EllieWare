@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
@@ -36,9 +37,9 @@ namespace EllieWare.Logging
       }
     }
 
-    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new Logging(root, callback, mgr);
+      return new Logging(roots, callback, mgr);
     }
   }
 }

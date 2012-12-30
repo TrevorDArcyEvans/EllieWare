@@ -30,8 +30,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ExportToBitmap(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+    public ExportToBitmap(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

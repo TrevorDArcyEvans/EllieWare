@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
@@ -17,8 +18,8 @@ namespace EllieWare.IO
     {
     }
 
-    public DirectoryMove(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public DirectoryMove(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
     }
 

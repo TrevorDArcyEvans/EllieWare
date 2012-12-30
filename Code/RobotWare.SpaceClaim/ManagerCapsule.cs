@@ -9,6 +9,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using EllieWare.Common;
 using EllieWare.Manager;
 using RobotWare.SpaceClaim.Properties;
 using SpaceClaim.Api.V10;
@@ -24,18 +25,18 @@ namespace RobotWare.SpaceClaim
 
     private const string ApplicationName = "RobotWare for SpaceClaim";
 
+    private readonly LicensableWrapper mLicenseWrapper = new LicensableWrapper(ApplicationName);
     private readonly string mUserSpecsPath;
     private Lazy<Manager> mManager;
 
     public ManagerCapsule()
       : base(CommandName, Resources.ManagerText, Resources.robot, Resources.ManagerHint)
     {
-
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       mUserSpecsPath = Path.Combine(userDocs, ApplicationName);
       Directory.CreateDirectory(mUserSpecsPath);
 
-      mManager = new Lazy<Manager>(() => new Manager(null, ApplicationName, mUserSpecsPath));
+      mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }, ApplicationName, mUserSpecsPath));
     }
 
     protected override void OnInitialize(Command command)
@@ -59,7 +60,7 @@ namespace RobotWare.SpaceClaim
     {
       if (mManager.Value.IsDisposed)
       {
-        mManager = new Lazy<Manager>(() => new Manager(null, ApplicationName, mUserSpecsPath));
+        mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }, ApplicationName, mUserSpecsPath));
       }
       mManager.Value.Show(Application.MainWindow);
     }

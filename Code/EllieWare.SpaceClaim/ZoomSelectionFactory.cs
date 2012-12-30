@@ -57,9 +57,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new ZoomSelection(root, callback, mgr);
+      return new ZoomSelection(roots, callback, mgr);
     }
   }
 }

@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.Linq;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -13,8 +14,8 @@ namespace EllieWare.Process
 {
   public class ProcessExists : SingleItemExistsIOBase
   {
-    public ProcessExists(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+    public ProcessExists(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

@@ -32,8 +32,8 @@ namespace EllieWare.Audio
       InitializeComponent();
     }
 
-    public SystemSound(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public SystemSound(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
 
