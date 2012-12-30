@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
@@ -22,8 +23,8 @@ namespace EllieWare.DateTime
       InitializeComponent();
     }
 
-    public Pause(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public Pause(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
 

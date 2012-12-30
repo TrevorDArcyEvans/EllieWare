@@ -56,9 +56,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new NewDesign(root, callback, mgr);
+      return new NewDesign(roots, callback, mgr);
     }
   }
 }

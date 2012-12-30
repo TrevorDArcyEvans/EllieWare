@@ -19,8 +19,10 @@ namespace EllieWare.Manager
 {
   public partial class Editor : Form
   {
+    private const int MaxUnlicensedSteps = 5;
+
     private readonly IHost mHost;
-    private readonly object mRoot;
+    private readonly IEnumerable<object> mRoots;
     private readonly ICallbackEx mCallback = new LogWindow();
     private readonly ISpecification mSpecification;
     private string mFilePath;
@@ -34,17 +36,17 @@ namespace EllieWare.Manager
       InitializeComponent();
     }
 
-    public Editor(IHost host, object root, string filePath) :
+    public Editor(IHost host, IEnumerable<object> roots, string filePath) :
       this()
     {
       mHost = host;
-      mRoot = root;
+      mRoots = roots;
       mFilePath = filePath;
 
       InitialiseFactories();
 
       mAddDlg = new Adder(mFactories);
-      mSpecification = new Specification(mRoot, mCallback, mFactories);
+      mSpecification = new Specification(mRoots, mCallback, mFactories);
       mSteps.DataSource = mSpecification.Steps;
 
       LoadFromFile();
@@ -237,6 +239,15 @@ namespace EllieWare.Manager
 
     private bool Run(int stepNum)
     {
+      if (stepNum >= MaxUnlicensedSteps && !mHost.IsLicensed)
+      {
+        var msg = string.Format("Only {0} steps in demo mode", MaxUnlicensedSteps);
+
+        mCallback.Log(LogLevel.Information, msg);
+
+        return false;
+      }
+
       var step = (IRunnable)mSteps.Items[stepNum];
       try
       {
@@ -296,7 +307,7 @@ namespace EllieWare.Manager
       }
 
       var selFactory = mAddDlg.SelectedFactory;
-      var step = selFactory.Create(mRoot, mCallback, mSpecification.ParameterManager);
+      var step = selFactory.Create(mRoots, mCallback, mSpecification.ParameterManager);
 
       var changeableStep = step as IMutableRunnable;
       if (changeableStep != null)

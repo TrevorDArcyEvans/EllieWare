@@ -58,9 +58,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new ImportFromForeign(root, callback, mgr);
+      return new ImportFromForeign(roots, callback, mgr);
     }
   }
 }

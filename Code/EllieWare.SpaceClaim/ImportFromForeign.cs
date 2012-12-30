@@ -49,8 +49,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ImportFromForeign(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+    public ImportFromForeign(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

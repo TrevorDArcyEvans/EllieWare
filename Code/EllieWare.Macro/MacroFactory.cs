@@ -58,9 +58,9 @@ namespace EllieWare.Macro
       }
     }
 
-    public IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new MacroRunner(root, callback, mgr);
+      return new MacroRunner(roots, callback, mgr);
     }
 
     #endregion

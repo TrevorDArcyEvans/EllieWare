@@ -16,7 +16,7 @@ namespace EllieWare.Manager
 {
   public class Specification : ISpecification
   {
-    private readonly object mRoot;
+    private readonly IEnumerable<object> mRoot;
     private readonly ICallback mCallback;
     private readonly IEnumerable<IFactory> mFactories;
 
@@ -27,10 +27,10 @@ namespace EllieWare.Manager
       Steps = new List<IRunnable>();
     }
 
-    public Specification(object root, ICallback callback, IEnumerable<IFactory> factories) :
+    public Specification(IEnumerable<object> roots, ICallback callback, IEnumerable<IFactory> factories) :
       this()
     {
-      mRoot = root;
+      mRoot = roots;
       mCallback = callback;
       mFactories = factories;
     }

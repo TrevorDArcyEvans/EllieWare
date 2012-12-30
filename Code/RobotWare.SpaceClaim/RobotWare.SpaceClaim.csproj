@@ -87,6 +87,10 @@
       <Project>{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}</Project>
       <Name>Zip DLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Audio\EllieWare.Audio.csproj">
+      <Project>{B576477E-C3E2-42A6-9C46-B523D9F6B834}</Project>
+      <Name>EllieWare.Audio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>

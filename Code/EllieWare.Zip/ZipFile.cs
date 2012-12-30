@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -13,8 +14,8 @@ namespace EllieWare.Zip
 {
   public class ZipFile : SingleItemIOBase
   {
-    public ZipFile(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+    public ZipFile(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

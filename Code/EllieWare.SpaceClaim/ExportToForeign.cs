@@ -50,8 +50,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ExportToForeign(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+    public ExportToForeign(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

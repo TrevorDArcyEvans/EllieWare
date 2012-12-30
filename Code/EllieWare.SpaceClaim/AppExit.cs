@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -21,8 +22,8 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-    public AppExit(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public AppExit(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
     }

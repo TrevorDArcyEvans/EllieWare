@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.Media;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -17,8 +18,8 @@ namespace EllieWare.Audio
     {
     }
 
-    public SoundFile(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+    public SoundFile(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -21,15 +22,15 @@ namespace EllieWare.Transfer.FTP
       InitializeComponent();
     }
 
-    public FtpInfo(object root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr)
+    public FtpInfo(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+      base(roots, callback, mgr)
     {
       InitializeComponent();
 
-      Initialise(root, callback, mgr);
+      Initialise(roots, callback, mgr);
     }
 
-    public void Initialise(object root, ICallback callback, IParameterManager mgr)
+    public void Initialise(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
       Host.SetParameterManager(mgr);
       UserName.SetParameterManager(mgr);

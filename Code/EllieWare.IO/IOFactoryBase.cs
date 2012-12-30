@@ -13,8 +13,6 @@ namespace EllieWare.IO
 {
   public abstract class IOFactoryBase
   {
-    #region Implementation of IFactory
-
     public abstract string Title { get; }
     public abstract string Description { get; }
 
@@ -39,8 +37,6 @@ namespace EllieWare.IO
     }
 
     public abstract Type CreatedType { get; }
-    public abstract IRunnable Create(object root, ICallback callback, IParameterManager mgr);
-
-    #endregion
+    public abstract IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr);
   }
 }

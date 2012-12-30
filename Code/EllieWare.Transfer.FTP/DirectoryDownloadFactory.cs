@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
@@ -36,9 +37,9 @@ namespace EllieWare.Transfer.FTP
       }
     }
 
-    public override IRunnable Create(object root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new DirectoryDownload(root, callback, mgr);
+      return new DirectoryDownload(roots, callback, mgr);
     }
   }
 }

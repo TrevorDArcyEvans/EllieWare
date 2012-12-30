@@ -14,5 +14,6 @@ namespace EllieWare.Manager
     void RefreshSpecificationsList();
     string SpecificationsFolder { get; }
     IEnumerable<string> Specifications { get; }
+    bool IsLicensed { get; }
   }
 }
