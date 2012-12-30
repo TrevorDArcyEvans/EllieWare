@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
@@ -19,7 +20,6 @@ namespace EllieWare.Manager
 
     private readonly IEnumerable<object> mRoots;
     private readonly string mApplicationName;
-    public bool IsLicensed { get; private set; }
 
     public Manager()
     {
@@ -33,7 +33,16 @@ namespace EllieWare.Manager
       mApplicationName = appName;
       SpecificationsFolder = userSpecsPath;
 
-      IsLicensed = Licensing.LicenseManager.IsLicensed(mApplicationName);
+      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      var isLicensed = licensable != null ? licensable.IsLicensed : false;
+      if (!isLicensed)
+      {
+        var dlg = new RequestLicense(appName);
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+          Licensing.LicenseManager.Register(appName, dlg.UserName.Text, dlg.LicenseCode.Text);
+        }
+      }
 
       RefreshSpecificationsList();
       UpdateButtons();

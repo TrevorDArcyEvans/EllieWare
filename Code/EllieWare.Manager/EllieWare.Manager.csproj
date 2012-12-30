@@ -110,6 +110,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RequestLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestLicense.Designer.cs">
+      <DependentUpon>RequestLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Specification.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +146,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestLicense.resx">
+      <DependentUpon>RequestLicense.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

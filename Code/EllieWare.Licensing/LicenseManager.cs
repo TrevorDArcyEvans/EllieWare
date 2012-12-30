@@ -33,7 +33,7 @@ namespace EllieWare.Licensing
 
     private const string RegistryKey = "EllieWare";
 
-    internal static string GetUserName(string productName)
+    public static string GetUserName(string productName)
     {
       var currentUser = Registry.CurrentUser.OpenSubKey("SOFTWARE");
       var ellieWare = currentUser.OpenSubKey(RegistryKey);
@@ -53,7 +53,7 @@ namespace EllieWare.Licensing
       return userName ?? string.Empty;
     }
 
-    private static void CreateUserName(string productName, string userName)
+    public static void CreateUserName(string productName, string userName)
     {
       var currentUser = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
       var ellieWare = currentUser.OpenSubKey(RegistryKey, true) ?? currentUser.CreateSubKey(RegistryKey);
@@ -62,7 +62,7 @@ namespace EllieWare.Licensing
       product.SetValue("UserName", userName);
     }
 
-    private static void UnregisterForCurrentUser(string productName)
+    public static void UnregisterForCurrentUser(string productName)
     {
       var currentUser = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
       var ellieWare = currentUser.OpenSubKey(RegistryKey, true);
@@ -108,7 +108,7 @@ namespace EllieWare.Licensing
       return regLicCode == licCode;
     }
 
-    internal static void Register(string productName, string userName, string licCode)
+    public static void Register(string productName, string userName, string licCode)
     {
       // save user name to HKCU
       CreateUserName(productName, userName);
@@ -123,7 +123,7 @@ namespace EllieWare.Licensing
       userNameKey.SetValue("Code", licCode);
     }
 
-    internal static void Unregister(string productName, string userName)
+    public static void Unregister(string productName, string userName)
     {
       // remove from HKCU
       UnregisterForCurrentUser(productName);

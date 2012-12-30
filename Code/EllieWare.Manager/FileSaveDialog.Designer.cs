@@ -111,6 +111,7 @@ namespace EllieWare.Manager
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.MaximumSize = new System.Drawing.Size(5000, 121);
+      this.MinimumSize = new System.Drawing.Size(300, 121);
       this.Name = "FileSaveDialog";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
