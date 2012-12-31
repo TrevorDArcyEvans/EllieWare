@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
@@ -33,7 +34,7 @@ namespace EllieWare.Manager
       mApplicationName = appName;
       SpecificationsFolder = userSpecsPath;
 
-      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
       var isLicensed = licensable != null ? licensable.IsLicensed : false;
       if (!isLicensed)
       {

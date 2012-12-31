@@ -58,7 +58,8 @@
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="LicensableWrapper.cs" />
+    <Compile Include="IRobotWare.cs" />
+    <Compile Include="RobotWareWrapper.cs" />
     <Compile Include="MutableRunnableBase.cs">
       <SubType>UserControl</SubType>
     </Compile>

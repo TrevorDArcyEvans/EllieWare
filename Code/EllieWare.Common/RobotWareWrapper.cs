@@ -5,15 +5,13 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Interfaces;
-
 namespace EllieWare.Common
 {
-  public class LicensableWrapper : ILicensable
+  public class RobotWareWrapper : IRobotWare
   {
     public bool IsLicensed { get; private set; }
 
-    public LicensableWrapper(string appName)
+    public RobotWareWrapper(string appName)
     {
       IsLicensed = Licensing.LicenseManager.IsLicensed(appName);
     }

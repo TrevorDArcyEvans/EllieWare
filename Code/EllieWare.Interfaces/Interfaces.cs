@@ -208,15 +208,4 @@ namespace EllieWare.Interfaces
     /// <remarks><paramref name="roots"/> depends on the application domain/s and can be null - BEWARE!</remarks>
     IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr);
   }
-
-  /// <summary>
-  /// A product which is licensed
-  /// </summary>
-  public interface ILicensable
-  {
-    /// <summary>
-    /// if product is licensed
-    /// </summary>
-    bool IsLicensed { get; }
-  }
 }

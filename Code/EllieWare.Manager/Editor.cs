@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
@@ -44,7 +45,7 @@ namespace EllieWare.Manager
       mRoots = roots;
       mFilePath = filePath;
 
-      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
       IsLicensed = licensable != null ? licensable.IsLicensed : false;
 
       InitialiseFactories();
