@@ -97,6 +97,13 @@
       <DependentUpon>ExportToPdf.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportToPdfFactory.cs" />
+    <Compile Include="FaceAreaColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaColor.Designer.cs">
+      <DependentUpon>FaceAreaColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FaceAreaColorFactory.cs" />
     <Compile Include="ImportFromForeign.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,6 +123,13 @@
     </Compile>
     <Compile Include="OpenNativeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reload.Designer.cs">
+      <DependentUpon>Reload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReloadFactory.cs" />
     <Compile Include="Save.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,6 +185,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FaceAreaColor.resx">
+      <DependentUpon>FaceAreaColor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetViewProjection.resx">
       <DependentUpon>SetViewProjection.cs</DependentUpon>
     </EmbeddedResource>
