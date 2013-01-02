@@ -13,7 +13,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using EllieWare.Common;
-using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
