@@ -224,7 +224,7 @@ namespace EllieWare.Manager
       this.CmdLog.Name = "CmdLog";
       this.CmdLog.Size = new System.Drawing.Size(75, 23);
       this.CmdLog.TabIndex = 2;
-      this.CmdLog.Text = "Log >>>";
+      this.CmdLog.Text = "Log <<<";
       this.CmdLog.UseVisualStyleBackColor = true;
       this.CmdLog.Click += new System.EventHandler(this.CmdLog_Click);
       // 
