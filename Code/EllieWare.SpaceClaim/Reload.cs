@@ -57,16 +57,31 @@ namespace EllieWare.SpaceClaim
       }
     }
 
+    private string mFilePath;
+
     public override bool Run()
     {
       WriteBlock.AppendTask(() =>
                               {
-                                var filePath = Window.ActiveWindow.Document.Path;
-                                Window.ActiveWindow.Close();
-                                Document.Open(filePath, null);
+                                Document.DocumentRemoved += Document_DocumentRemoved;
+                                mFilePath = Window.ActiveWindow.Document.Path;
+                                var allWindows = Window.GetWindows(Window.ActiveWindow.Document);
+                                foreach (var thisWindow in allWindows)
+                                {
+                                  thisWindow.Close();
+                                }
                               });
 
       return true;
+    }
+
+    void Document_DocumentRemoved(object sender, SubjectEventArgs<Document> e)
+    {
+      Document.DocumentRemoved -= Document_DocumentRemoved;
+      WriteBlock.AppendTask(() =>
+                              {
+                                Document.Open(mFilePath, null);
+                              });
     }
   }
 }
