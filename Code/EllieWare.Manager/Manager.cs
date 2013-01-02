@@ -7,6 +7,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -41,7 +42,16 @@ namespace EllieWare.Manager
         var dlg = new RequestLicense(appName);
         if (dlg.ShowDialog() == DialogResult.OK)
         {
+          // attempt to register with provided info
           Licensing.LicenseManager.Register(appName, dlg.UserName.Text, dlg.LicenseCode.Text);
+
+          isLicensed = licensable != null ? licensable.IsLicensed : false;
+          var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
+                                                  "  " + appName + Environment.NewLine +
+                                                  "to:" + Environment.NewLine +
+                                                  "  " + dlg.UserName
+                                                  : "Information incorrect - product not registered");
+          MessageBox.Show(msg, appName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
       }
 
@@ -98,10 +108,7 @@ namespace EllieWare.Manager
 
     public void RefreshSpecificationsList()
     {
-      mSpecs.Items.Clear();
-
-      var allSpecsNoExten = from specNoExtn in Specifications select new ListViewItem(specNoExtn);
-      mSpecs.Items.AddRange(allSpecsNoExten.ToArray());
+      RefreshSpecificationsList(string.Empty);
     }
 
     public string SpecificationsFolder { get; private set; }
@@ -118,6 +125,14 @@ namespace EllieWare.Manager
     }
 
     #endregion
+
+    private void RefreshSpecificationsList(string searchTxt)
+    {
+      mSpecs.Items.Clear();
+
+      var filteredSpecsNoExten = from specNoExtn in Specifications where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
+      mSpecs.Items.AddRange(filteredSpecsNoExten.ToArray());
+    }
 
     private void UpdateButtons()
     {
@@ -146,6 +161,11 @@ namespace EllieWare.Manager
     {
       var dlg = new AboutBox(mApplicationName);
       dlg.ShowDialog();
+    }
+
+    private void Search_TextChanged(object sender, EventArgs e)
+    {
+      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
     }
   }
 }
