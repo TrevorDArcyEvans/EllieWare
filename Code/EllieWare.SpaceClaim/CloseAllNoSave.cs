@@ -68,5 +68,6 @@ namespace EllieWare.SpaceClaim
                               });
 
       return true;
-    }  }
+    }
+  }
 }
