@@ -306,6 +306,7 @@ namespace EllieWare.Manager
             | System.Windows.Forms.AnchorStyles.Right)));
       this.mMainContainer.BackColor = System.Drawing.SystemColors.HotTrack;
       this.mMainContainer.Location = new System.Drawing.Point(12, 12);
+      this.mMainContainer.Margin = new System.Windows.Forms.Padding(0);
       this.mMainContainer.Name = "mMainContainer";
       // 
       // mMainContainer.Panel1
@@ -320,11 +321,15 @@ namespace EllieWare.Manager
       this.mMainContainer.Size = new System.Drawing.Size(841, 439);
       this.mMainContainer.SplitterDistance = 597;
       this.mMainContainer.TabIndex = 15;
+      this.mMainContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.MainContainer_SplitterMoved);
       // 
       // mCallback
       // 
+      this.mCallback.AutoSize = true;
+      this.mCallback.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.mCallback.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mCallback.Location = new System.Drawing.Point(0, 0);
+      this.mCallback.Margin = new System.Windows.Forms.Padding(0);
       this.mCallback.Name = "mCallback";
       this.mCallback.Size = new System.Drawing.Size(240, 439);
       this.mCallback.TabIndex = 14;
@@ -342,6 +347,7 @@ namespace EllieWare.Manager
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Editor";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
+      this.SizeChanged += new System.EventHandler(this.Editor_SizeChanged);
       tableLayoutPanel4.ResumeLayout(false);
       tableLayoutPanel4.PerformLayout();
       this.mStepsContainer.Panel1.ResumeLayout(false);
@@ -352,6 +358,7 @@ namespace EllieWare.Manager
       tableLayoutPanel1.ResumeLayout(false);
       this.mMainContainer.Panel1.ResumeLayout(false);
       this.mMainContainer.Panel2.ResumeLayout(false);
+      this.mMainContainer.Panel2.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mMainContainer)).EndInit();
       this.mMainContainer.ResumeLayout(false);
       this.ResumeLayout(false);

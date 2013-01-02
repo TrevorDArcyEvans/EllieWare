@@ -31,10 +31,13 @@ namespace EllieWare.Manager
     private readonly bool IsLicensed;
 
     private int mCurrentStep;
+    private int mLastLogWidth;
 
     public Editor()
     {
       InitializeComponent();
+
+      UpdateWidth();
     }
 
     public Editor(IHost host, IEnumerable<object> roots, string filePath) :
@@ -60,6 +63,14 @@ namespace EllieWare.Manager
       if (!string.IsNullOrEmpty(mFilePath))
       {
         UpdateTitle();
+      }
+    }
+
+    private void UpdateWidth()
+    {
+      if (!mMainContainer.Panel2Collapsed)
+      {
+        mLastLogWidth = mMainContainer.Panel2.Width + mMainContainer.SplitterWidth;
       }
     }
 
@@ -435,9 +446,51 @@ namespace EllieWare.Manager
 
     private void CmdLog_Click(object sender, EventArgs e)
     {
-      mMainContainer.Panel2Collapsed = !mMainContainer.Panel2Collapsed;
+      try
+      {
+        DisconnectSizingHandlers();
 
-      CmdLog.Text = mMainContainer.Panel2Collapsed ? "Log >>>" : "Log <<<";
+        mMainContainer.Panel2Collapsed = !mMainContainer.Panel2Collapsed;
+
+        if (!mMainContainer.Panel2Collapsed)
+        {
+          // new state uncollapsed
+          Width += mLastLogWidth;
+          UpdateWidth();
+        }
+        else
+        {
+          Width -= mLastLogWidth;
+        }
+      }
+      finally
+      {
+        ConnectSizingHandlers();
+
+        CmdLog.Text = mMainContainer.Panel2Collapsed ? "Log >>>" : "Log <<<";
+      }
+    }
+
+    private void ConnectSizingHandlers()
+    {
+      mMainContainer.SplitterMoved += MainContainer_SplitterMoved;
+      SizeChanged += Editor_SizeChanged;
+    }
+
+    private void DisconnectSizingHandlers()
+    {
+      mMainContainer.SplitterMoved -= MainContainer_SplitterMoved;
+      SizeChanged -= Editor_SizeChanged;
+    }
+
+    private void Editor_SizeChanged(object sender, EventArgs e)
+    {
+      UpdateWidth();
+    }
+
+    private void MainContainer_SplitterMoved(object sender, SplitterEventArgs e)
+    {
+      UpdateWidth();
     }
   }
 }
