@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
-  public partial class LogWindow : Form, ICallbackEx
+  public partial class LogWindow : UserControl, ICallback
   {
     public LogWindow()
     {
@@ -27,25 +27,6 @@ namespace EllieWare.Manager
     public void Clear()
     {
       mMessages.Items.Clear();
-    }
-
-    public bool AllowClose { get; set; }
-
-    private void LogWindow_FormClosing(object sender, FormClosingEventArgs e)
-    {
-      if (!AllowClose)
-      {
-        e.Cancel = true;
-        return;
-      }
-
-      if (e.CloseReason == CloseReason.UserClosing)
-      {
-        Hide();
-
-        e.Cancel = true;
-        return;
-      }
     }
   }
 }

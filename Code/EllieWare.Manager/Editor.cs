@@ -24,7 +24,6 @@ namespace EllieWare.Manager
 
     private readonly IHost mHost;
     private readonly IEnumerable<object> mRoots;
-    private readonly ICallbackEx mCallback = new LogWindow();
     private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
@@ -166,9 +165,7 @@ namespace EllieWare.Manager
     private void SetupForRun()
     {
       mCallback.Clear();
-      mCallback.Show();
       mCallback.Log(LogLevel.Information, "Started");
-      mCallback.AllowClose = false;
     }
 
     private void ReportFailure()
@@ -208,7 +205,6 @@ namespace EllieWare.Manager
     private void TearDownForRun()
     {
       mCurrentStep = 0;
-      mCallback.AllowClose = true;
       mCallback.Log(LogLevel.Information, "Finished");
     }
 
@@ -383,11 +379,6 @@ namespace EllieWare.Manager
       // TODO   Help
     }
 
-    private void Editor_FormClosed(object sender, FormClosedEventArgs e)
-    {
-      mCallback.AllowClose = true;
-    }
-
     private void CmdParameters_Click(object sender, EventArgs e)
     {
       var dlg = new ParametersEditor(mSpecification.ParameterManager);
@@ -435,6 +426,18 @@ namespace EllieWare.Manager
         CmdSave_Click(sender, e);
         return;
       }
+    }
+
+    private void CmdClose_Click(object sender, EventArgs e)
+    {
+      Close();
+    }
+
+    private void CmdLog_Click(object sender, EventArgs e)
+    {
+      mMainContainer.Panel2Collapsed = !mMainContainer.Panel2Collapsed;
+
+      CmdLog.Text = mMainContainer.Panel2Collapsed ? "Log >>>" : "Log <<<";
     }
   }
 }

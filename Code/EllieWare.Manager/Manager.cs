@@ -103,6 +103,7 @@ namespace EllieWare.Manager
     public void Run(string filePath)
     {
       var dlg = new Editor(this, mRoots, filePath);
+      dlg.Show(this);
       dlg.Run();
     }
 
