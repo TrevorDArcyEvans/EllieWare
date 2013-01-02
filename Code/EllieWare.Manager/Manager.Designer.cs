@@ -35,6 +35,7 @@ namespace EllieWare.Manager
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.ColumnHeader columnHeader1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -56,14 +57,19 @@ namespace EllieWare.Manager
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdAbout = new System.Windows.Forms.Button();
       this.mSpecs = new System.Windows.Forms.ListView();
-      this.ManagerHelp = new System.Windows.Forms.HelpProvider();
       this.SearchBox = new System.Windows.Forms.TextBox();
+      this.ManagerHelp = new System.Windows.Forms.HelpProvider();
+      this.FileOperations = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.FileOpCopy = new System.Windows.Forms.ToolStripMenuItem();
+      this.FileOpDelete = new System.Windows.Forms.ToolStripMenuItem();
+      this.FileOpShow = new System.Windows.Forms.ToolStripMenuItem();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       tableLayoutPanel1.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
+      this.FileOperations.SuspendLayout();
       this.SuspendLayout();
       // 
       // columnHeader1
@@ -183,6 +189,7 @@ namespace EllieWare.Manager
       // 
       this.mSpecs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             columnHeader1});
+      this.mSpecs.ContextMenuStrip = this.FileOperations;
       this.mSpecs.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mSpecs.FullRowSelect = true;
       this.mSpecs.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -221,6 +228,37 @@ namespace EllieWare.Manager
       this.SearchBox.TabIndex = 1;
       this.SearchBox.TextChanged += new System.EventHandler(this.Search_TextChanged);
       // 
+      // FileOperations
+      // 
+      this.FileOperations.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileOpCopy,
+            this.FileOpDelete,
+            this.FileOpShow});
+      this.FileOperations.Name = "FileOperations";
+      this.FileOperations.Size = new System.Drawing.Size(162, 92);
+      this.FileOperations.Opening += new System.ComponentModel.CancelEventHandler(this.FileOperations_Opening);
+      // 
+      // FileOpCopy
+      // 
+      this.FileOpCopy.Name = "FileOpCopy";
+      this.FileOpCopy.Size = new System.Drawing.Size(161, 22);
+      this.FileOpCopy.Text = "Copy";
+      this.FileOpCopy.Click += new System.EventHandler(this.FileOpCopy_Click);
+      // 
+      // FileOpDelete
+      // 
+      this.FileOpDelete.Name = "FileOpDelete";
+      this.FileOpDelete.Size = new System.Drawing.Size(161, 22);
+      this.FileOpDelete.Text = "Delete";
+      this.FileOpDelete.Click += new System.EventHandler(this.FileOpDelete_Click);
+      // 
+      // FileOpShow
+      // 
+      this.FileOpShow.Name = "FileOpShow";
+      this.FileOpShow.Size = new System.Drawing.Size(161, 22);
+      this.FileOpShow.Text = "Show in Explorer";
+      this.FileOpShow.Click += new System.EventHandler(this.FileOpShow_Click);
+      // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +273,7 @@ namespace EllieWare.Manager
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel2.ResumeLayout(false);
       tableLayoutPanel2.PerformLayout();
+      this.FileOperations.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -250,5 +289,9 @@ namespace EllieWare.Manager
     private System.Windows.Forms.Button CmdAbout;
     private System.Windows.Forms.HelpProvider ManagerHelp;
     private System.Windows.Forms.TextBox SearchBox;
+    private System.Windows.Forms.ContextMenuStrip FileOperations;
+    private System.Windows.Forms.ToolStripMenuItem FileOpCopy;
+    private System.Windows.Forms.ToolStripMenuItem FileOpDelete;
+    private System.Windows.Forms.ToolStripMenuItem FileOpShow;
   }
 }

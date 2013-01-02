@@ -7,6 +7,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -136,7 +137,7 @@ namespace EllieWare.Manager
 
     private void UpdateButtons()
     {
-      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = CmdDebug.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = CmdDebug.Enabled = FileOperations.Enabled = mSpecs.SelectedItems.Count > 0;
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)
@@ -166,6 +167,42 @@ namespace EllieWare.Manager
     private void Search_TextChanged(object sender, EventArgs e)
     {
       RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+    }
+
+    private void FileOperations_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      UpdateButtons();
+    }
+
+    private void FileOpCopy_Click(object sender, EventArgs e)
+    {
+      var selSpecPath = GetSelectedSpecificationPath();
+      var fileRoot = Path.GetFileNameWithoutExtension(selSpecPath);
+      var extension = Path.GetExtension(selSpecPath);
+      var fileName = String.Concat(string.Format("{0} - Copy", fileRoot), extension);
+      var fullPath = Path.Combine(SpecificationsFolder, fileName);
+      var number = 1;
+      while (File.Exists(fullPath))
+      {
+        fileName = String.Concat(string.Format("{0} - Copy ({1})", fileRoot, ++number), extension);
+        fullPath = Path.Combine(SpecificationsFolder, fileName);
+      }
+
+      File.Copy(selSpecPath, fullPath);
+      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+    }
+
+    private void FileOpDelete_Click(object sender, EventArgs e)
+    {
+      File.Delete(GetSelectedSpecificationPath());
+      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+    }
+
+    private void FileOpShow_Click(object sender, EventArgs e)
+    {
+      var selectionArgs = @"/select, " + "\"" + GetSelectedSpecificationPath() + "\"";
+
+      Process.Start("explorer.exe", selectionArgs);
     }
   }
 }
