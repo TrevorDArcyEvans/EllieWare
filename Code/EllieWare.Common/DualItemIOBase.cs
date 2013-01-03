@@ -79,6 +79,26 @@ namespace EllieWare.Common
       mDestinationLabel.Visible = mDestinationFilePath.Visible = CmdDestinationBrowse.Visible = isVisible;
     }
 
+    public void SetSourceLabel(string label)
+    {
+      mSourceLabel.Text = label;
+    }
+
+    public void SetDestinationLabel(string label)
+    {
+      mDestinationLabel.Text = label;
+    }
+
+    public void SetSourceFileSelectorFilter(string filter)
+    {
+      SourceFileSelector.Filter = filter;
+    }
+
+    public void SetDestinationFileSelectorFilter(string filter)
+    {
+      DestinationFileSelector.Filter = filter;
+    }
+
     public void SetExistsVisible(bool isVisible)
     {
       mExistsLabel.Visible = mExists.Visible = isVisible;
@@ -155,21 +175,21 @@ namespace EllieWare.Common
     {
       if (mBrowsers == BrowserTypes.BothFile || mBrowsers == BrowserTypes.FileDirectory)
       {
-        if (FileSelector.ShowDialog() != DialogResult.OK)
+        if (SourceFileSelector.ShowDialog() != DialogResult.OK)
         {
           return;
         }
 
-        mSourceFilePath.Text = FileSelector.FileName;
+        mSourceFilePath.Text = SourceFileSelector.FileName;
       }
       else if (mBrowsers == BrowserTypes.BothDirectory || mBrowsers == BrowserTypes.DirectoryFile)
       {
-        if (DirectorySelector.ShowDialog() != DialogResult.OK)
+        if (SourceDirectorySelector.ShowDialog() != DialogResult.OK)
         {
           return;
         }
 
-        mSourceFilePath.Text = DirectorySelector.SelectedPath;
+        mSourceFilePath.Text = SourceDirectorySelector.SelectedPath;
       }
     }
 
@@ -177,23 +197,22 @@ namespace EllieWare.Common
     {
       if (mBrowsers == BrowserTypes.BothFile || mBrowsers == BrowserTypes.DirectoryFile)
       {
-        if (FileSelector.ShowDialog() != DialogResult.OK)
+        if (DestinationFileSelector.ShowDialog() != DialogResult.OK)
         {
           return;
         }
 
-        mDestinationFilePath.Text = FileSelector.FileName;
+        mDestinationFilePath.Text = DestinationFileSelector.FileName;
       }
       else if (mBrowsers == BrowserTypes.BothDirectory || mBrowsers == BrowserTypes.FileDirectory)
       {
-        if (DirectorySelector.ShowDialog() != DialogResult.OK)
+        if (DestinationDirectorySelector.ShowDialog() != DialogResult.OK)
         {
           return;
         }
 
-        mDestinationFilePath.Text = DirectorySelector.SelectedPath;
+        mDestinationFilePath.Text = DestinationDirectorySelector.SelectedPath;
       }
-
     }
 
     private void Exists_SelectedIndexChanged(object sender, EventArgs e)
