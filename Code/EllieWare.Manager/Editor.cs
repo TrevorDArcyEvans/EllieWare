@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
@@ -23,7 +24,6 @@ namespace EllieWare.Manager
 
     private readonly IHost mHost;
     private readonly IEnumerable<object> mRoots;
-    private readonly ICallbackEx mCallback = new LogWindow();
     private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
@@ -31,10 +31,13 @@ namespace EllieWare.Manager
     private readonly bool IsLicensed;
 
     private int mCurrentStep;
+    private int mLastLogWidth;
 
     public Editor()
     {
       InitializeComponent();
+
+      UpdateWidth();
     }
 
     public Editor(IHost host, IEnumerable<object> roots, string filePath) :
@@ -44,7 +47,7 @@ namespace EllieWare.Manager
       mRoots = roots;
       mFilePath = filePath;
 
-      var licensable = roots.Where(x => x is ILicensable).FirstOrDefault() as ILicensable;
+      var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
       IsLicensed = licensable != null ? licensable.IsLicensed : false;
 
       InitialiseFactories();
@@ -60,6 +63,14 @@ namespace EllieWare.Manager
       if (!string.IsNullOrEmpty(mFilePath))
       {
         UpdateTitle();
+      }
+    }
+
+    private void UpdateWidth()
+    {
+      if (!mMainContainer.Panel2Collapsed)
+      {
+        mLastLogWidth = mMainContainer.Panel2.Width + mMainContainer.SplitterWidth;
       }
     }
 
@@ -165,9 +176,7 @@ namespace EllieWare.Manager
     private void SetupForRun()
     {
       mCallback.Clear();
-      mCallback.Show();
       mCallback.Log(LogLevel.Information, "Started");
-      mCallback.AllowClose = false;
     }
 
     private void ReportFailure()
@@ -207,7 +216,6 @@ namespace EllieWare.Manager
     private void TearDownForRun()
     {
       mCurrentStep = 0;
-      mCallback.AllowClose = true;
       mCallback.Log(LogLevel.Information, "Finished");
     }
 
@@ -382,11 +390,6 @@ namespace EllieWare.Manager
       // TODO   Help
     }
 
-    private void Editor_FormClosed(object sender, FormClosedEventArgs e)
-    {
-      mCallback.AllowClose = true;
-    }
-
     private void CmdParameters_Click(object sender, EventArgs e)
     {
       var dlg = new ParametersEditor(mSpecification.ParameterManager);
@@ -434,6 +437,60 @@ namespace EllieWare.Manager
         CmdSave_Click(sender, e);
         return;
       }
+    }
+
+    private void CmdClose_Click(object sender, EventArgs e)
+    {
+      Close();
+    }
+
+    private void CmdLog_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        DisconnectSizingHandlers();
+
+        mMainContainer.Panel2Collapsed = !mMainContainer.Panel2Collapsed;
+
+        if (!mMainContainer.Panel2Collapsed)
+        {
+          // new state uncollapsed
+          Width += mLastLogWidth;
+          UpdateWidth();
+        }
+        else
+        {
+          Width -= mLastLogWidth;
+        }
+      }
+      finally
+      {
+        ConnectSizingHandlers();
+
+        CmdLog.Text = mMainContainer.Panel2Collapsed ? "Log >>>" : "Log <<<";
+      }
+    }
+
+    private void ConnectSizingHandlers()
+    {
+      mMainContainer.SplitterMoved += MainContainer_SplitterMoved;
+      SizeChanged += Editor_SizeChanged;
+    }
+
+    private void DisconnectSizingHandlers()
+    {
+      mMainContainer.SplitterMoved -= MainContainer_SplitterMoved;
+      SizeChanged -= Editor_SizeChanged;
+    }
+
+    private void Editor_SizeChanged(object sender, EventArgs e)
+    {
+      UpdateWidth();
+    }
+
+    private void MainContainer_SplitterMoved(object sender, SplitterEventArgs e)
+    {
+      UpdateWidth();
     }
   }
 }

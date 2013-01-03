@@ -59,7 +59,14 @@ namespace EllieWare.SpaceClaim
 
     public override bool Run()
     {
-      WriteBlock.AppendTask(() => Window.ActiveWindow.Close());
+      WriteBlock.AppendTask(() =>
+                              {
+                                var allWindows = Window.GetWindows(Window.ActiveWindow.Document);
+                                foreach (var thisWindow in allWindows)
+                                {
+                                  thisWindow.Close();
+                                }
+                              });
 
       return true;
     }

@@ -48,17 +48,18 @@ namespace EllieWare.Manager
       // 
       imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
       imageList1.TransparentColor = System.Drawing.Color.Transparent;
-      imageList1.Images.SetKeyName(0, "bug_green.png");
-      imageList1.Images.SetKeyName(1, "information2.png");
-      imageList1.Images.SetKeyName(2, "sign_warning.png");
-      imageList1.Images.SetKeyName(3, "brickwall_warning.png");
-      imageList1.Images.SetKeyName(4, "error.png");
+      imageList1.Images.SetKeyName(0, "bug_green_16x16.png");
+      imageList1.Images.SetKeyName(1, "information2_16x16.png");
+      imageList1.Images.SetKeyName(2, "sign_warning_16x16.png");
+      imageList1.Images.SetKeyName(3, "brickwall_warning_16x16.png");
+      imageList1.Images.SetKeyName(4, "error_16x16.png");
       // 
       // mMessages
       // 
       this.mMessages.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mMessages.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
       this.mMessages.ImageList = imageList1;
+      this.mMessages.ItemHeight = 18;
       this.mMessages.Location = new System.Drawing.Point(0, 0);
       this.mMessages.Name = "mMessages";
       this.mMessages.Size = new System.Drawing.Size(697, 387);
@@ -70,11 +71,8 @@ namespace EllieWare.Manager
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(697, 387);
       this.Controls.Add(this.mMessages);
-      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "LogWindow";
-      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Log Window";
-      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogWindow_FormClosing);
       this.ResumeLayout(false);
 
     }

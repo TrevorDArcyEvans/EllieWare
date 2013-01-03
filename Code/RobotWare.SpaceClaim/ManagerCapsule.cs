@@ -25,7 +25,7 @@ namespace RobotWare.SpaceClaim
 
     private const string ApplicationName = "RobotWare for SpaceClaim";
 
-    private readonly LicensableWrapper mLicenseWrapper = new LicensableWrapper(ApplicationName);
+    private readonly RobotWareWrapper mLicenseWrapper = new RobotWareWrapper(ApplicationName);
     private readonly string mUserSpecsPath;
     private Lazy<Manager> mManager;
 

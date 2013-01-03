@@ -81,12 +81,11 @@
     <Compile Include="FileSaveDialog.Designer.cs">
       <DependentUpon>FileSaveDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ICallbackEx.cs" />
     <Compile Include="IHost.cs" />
     <Compile Include="IParameter.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="LogWindow.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="LogWindow.Designer.cs">
       <DependentUpon>LogWindow.cs</DependentUpon>

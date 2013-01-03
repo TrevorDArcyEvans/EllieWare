@@ -35,6 +35,7 @@ namespace EllieWare.Common
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       this.mExistsLabel = new System.Windows.Forms.Label();
       this.mSourceLabel = new System.Windows.Forms.Label();
@@ -44,8 +45,10 @@ namespace EllieWare.Common
       this.CmdSourceBrowse = new System.Windows.Forms.Button();
       this.CmdDestinationBrowse = new System.Windows.Forms.Button();
       this.mExists = new System.Windows.Forms.ComboBox();
-      this.DirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
-      this.FileSelector = new System.Windows.Forms.SaveFileDialog();
+      this.SourceDirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
+      this.SourceFileSelector = new System.Windows.Forms.SaveFileDialog();
+      this.DestinationFileSelector = new System.Windows.Forms.SaveFileDialog();
+      this.DestinationDirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
@@ -161,12 +164,21 @@ namespace EllieWare.Common
       this.mExists.Visible = false;
       this.mExists.SelectedIndexChanged += new System.EventHandler(this.Exists_SelectedIndexChanged);
       // 
-      // FileSelector
+      // SourceFileSelector
       // 
-      this.FileSelector.CheckPathExists = false;
-      this.FileSelector.OverwritePrompt = false;
-      this.FileSelector.RestoreDirectory = true;
-      this.FileSelector.Title = "Select File";
+      this.SourceFileSelector.CheckPathExists = false;
+      this.SourceFileSelector.Filter = "All files (*.*)|*.*";
+      this.SourceFileSelector.OverwritePrompt = false;
+      this.SourceFileSelector.RestoreDirectory = true;
+      this.SourceFileSelector.Title = "Select File";
+      // 
+      // DestinationFileSelector
+      // 
+      this.DestinationFileSelector.CheckPathExists = false;
+      this.DestinationFileSelector.Filter = "All files (*.*)|*.*";
+      this.DestinationFileSelector.OverwritePrompt = false;
+      this.DestinationFileSelector.RestoreDirectory = true;
+      this.DestinationFileSelector.Title = "Select File";
       // 
       // DualItemIOBase
       // 
@@ -185,13 +197,15 @@ namespace EllieWare.Common
 
     private ParameterTextBox mSourceFilePath;
     private ParameterTextBox mDestinationFilePath;
-    private System.Windows.Forms.FolderBrowserDialog DirectorySelector;
+    private System.Windows.Forms.FolderBrowserDialog SourceDirectorySelector;
     private System.Windows.Forms.Label mSourceLabel;
-    private System.Windows.Forms.SaveFileDialog FileSelector;
+    private System.Windows.Forms.SaveFileDialog SourceFileSelector;
     private System.Windows.Forms.Label mExistsLabel;
     private System.Windows.Forms.ComboBox mExists;
     private System.Windows.Forms.Label mDestinationLabel;
     private System.Windows.Forms.Button CmdDestinationBrowse;
     private System.Windows.Forms.Button CmdSourceBrowse;
+    private System.Windows.Forms.SaveFileDialog DestinationFileSelector;
+    private System.Windows.Forms.FolderBrowserDialog DestinationDirectorySelector;
   }
 }

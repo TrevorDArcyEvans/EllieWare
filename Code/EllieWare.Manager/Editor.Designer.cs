@@ -38,51 +38,60 @@ namespace EllieWare.Manager
     private void InitializeComponent()
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+      System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+      System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+      System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
       this.mStepsContainer = new System.Windows.Forms.SplitContainer();
       this.mSteps = new EllieWare.Support.RefreshingListBox();
       this.CmdSave = new System.Windows.Forms.Button();
-      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdParameters = new System.Windows.Forms.Button();
       this.CmdHelp = new System.Windows.Forms.Button();
-      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdStep = new System.Windows.Forms.Button();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.CmdLog = new System.Windows.Forms.Button();
       this.CmdAdd = new System.Windows.Forms.Button();
       this.CmdDelete = new System.Windows.Forms.Button();
       this.CmdUp = new System.Windows.Forms.Button();
       this.CmdDown = new System.Windows.Forms.Button();
       this.CmdClose = new System.Windows.Forms.Button();
       this.EditorHelp = new System.Windows.Forms.HelpProvider();
+      this.mMainContainer = new System.Windows.Forms.SplitContainer();
+      this.mCallback = new EllieWare.Manager.LogWindow();
       tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel4.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).BeginInit();
       this.mStepsContainer.Panel1.SuspendLayout();
       this.mStepsContainer.SuspendLayout();
-      this.tableLayoutPanel3.SuspendLayout();
-      this.tableLayoutPanel2.SuspendLayout();
-      this.tableLayoutPanel1.SuspendLayout();
+      tableLayoutPanel3.SuspendLayout();
+      tableLayoutPanel2.SuspendLayout();
+      tableLayoutPanel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.mMainContainer)).BeginInit();
+      this.mMainContainer.Panel1.SuspendLayout();
+      this.mMainContainer.Panel2.SuspendLayout();
+      this.mMainContainer.SuspendLayout();
       this.SuspendLayout();
       // 
       // tableLayoutPanel4
       // 
-      tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
       tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      tableLayoutPanel4.ColumnCount = 4;
+      tableLayoutPanel4.ColumnCount = 5;
       tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel4.Controls.Add(this.mStepsContainer, 0, 0);
       tableLayoutPanel4.Controls.Add(this.CmdSave, 1, 5);
-      tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 3, 4);
-      tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 3, 2);
-      tableLayoutPanel4.Controls.Add(this.tableLayoutPanel1, 3, 0);
+      tableLayoutPanel4.Controls.Add(tableLayoutPanel3, 3, 4);
+      tableLayoutPanel4.Controls.Add(tableLayoutPanel2, 3, 2);
+      tableLayoutPanel4.Controls.Add(tableLayoutPanel1, 3, 0);
       tableLayoutPanel4.Controls.Add(this.CmdClose, 2, 5);
-      tableLayoutPanel4.Location = new System.Drawing.Point(12, 12);
+      tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+      tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
       tableLayoutPanel4.Name = "tableLayoutPanel4";
       tableLayoutPanel4.RowCount = 6;
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -91,7 +100,8 @@ namespace EllieWare.Manager
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel4.Size = new System.Drawing.Size(600, 439);
+      tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      tableLayoutPanel4.Size = new System.Drawing.Size(597, 439);
       tableLayoutPanel4.TabIndex = 13;
       // 
       // mStepsContainer
@@ -107,8 +117,8 @@ namespace EllieWare.Manager
       // 
       this.mStepsContainer.Panel1.Controls.Add(this.mSteps);
       tableLayoutPanel4.SetRowSpan(this.mStepsContainer, 5);
-      this.mStepsContainer.Size = new System.Drawing.Size(507, 404);
-      this.mStepsContainer.SplitterDistance = 200;
+      this.mStepsContainer.Size = new System.Drawing.Size(504, 404);
+      this.mStepsContainer.SplitterDistance = 157;
       this.mStepsContainer.TabIndex = 0;
       // 
       // mSteps
@@ -118,14 +128,14 @@ namespace EllieWare.Manager
       this.mSteps.FormattingEnabled = true;
       this.mSteps.Location = new System.Drawing.Point(0, 0);
       this.mSteps.Name = "mSteps";
-      this.mSteps.Size = new System.Drawing.Size(505, 198);
+      this.mSteps.Size = new System.Drawing.Size(502, 155);
       this.mSteps.TabIndex = 0;
       this.mSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       // 
       // CmdSave
       // 
       this.CmdSave.Enabled = false;
-      this.CmdSave.Location = new System.Drawing.Point(354, 413);
+      this.CmdSave.Location = new System.Drawing.Point(351, 413);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
       this.CmdSave.TabIndex = 1;
@@ -135,20 +145,20 @@ namespace EllieWare.Manager
       // 
       // tableLayoutPanel3
       // 
-      this.tableLayoutPanel3.AutoSize = true;
-      this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel3.ColumnCount = 1;
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.Controls.Add(this.CmdParameters, 0, 0);
-      this.tableLayoutPanel3.Controls.Add(this.CmdHelp, 0, 2);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(516, 229);
-      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-      this.tableLayoutPanel3.RowCount = 3;
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(81, 78);
-      this.tableLayoutPanel3.TabIndex = 13;
+      tableLayoutPanel3.AutoSize = true;
+      tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      tableLayoutPanel3.ColumnCount = 1;
+      tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel3.Controls.Add(this.CmdParameters, 0, 0);
+      tableLayoutPanel3.Controls.Add(this.CmdHelp, 0, 2);
+      tableLayoutPanel3.Location = new System.Drawing.Point(513, 258);
+      tableLayoutPanel3.Name = "tableLayoutPanel3";
+      tableLayoutPanel3.RowCount = 3;
+      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel3.Size = new System.Drawing.Size(81, 78);
+      tableLayoutPanel3.TabIndex = 13;
       // 
       // CmdParameters
       // 
@@ -172,19 +182,21 @@ namespace EllieWare.Manager
       // 
       // tableLayoutPanel2
       // 
-      this.tableLayoutPanel2.AutoSize = true;
-      this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel2.ColumnCount = 1;
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel2.Controls.Add(this.CmdRun, 0, 0);
-      this.tableLayoutPanel2.Controls.Add(this.CmdStep, 0, 1);
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(516, 145);
-      this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-      this.tableLayoutPanel2.RowCount = 2;
-      this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(81, 58);
-      this.tableLayoutPanel2.TabIndex = 11;
+      tableLayoutPanel2.AutoSize = true;
+      tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      tableLayoutPanel2.ColumnCount = 1;
+      tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel2.Controls.Add(this.CmdRun, 0, 0);
+      tableLayoutPanel2.Controls.Add(this.CmdStep, 0, 1);
+      tableLayoutPanel2.Controls.Add(this.CmdLog, 0, 2);
+      tableLayoutPanel2.Location = new System.Drawing.Point(513, 145);
+      tableLayoutPanel2.Name = "tableLayoutPanel2";
+      tableLayoutPanel2.RowCount = 3;
+      tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel2.Size = new System.Drawing.Size(81, 87);
+      tableLayoutPanel2.TabIndex = 11;
       // 
       // CmdRun
       // 
@@ -206,25 +218,35 @@ namespace EllieWare.Manager
       this.CmdStep.UseVisualStyleBackColor = true;
       this.CmdStep.Click += new System.EventHandler(this.CmdStep_Click);
       // 
+      // CmdLog
+      // 
+      this.CmdLog.Location = new System.Drawing.Point(3, 61);
+      this.CmdLog.Name = "CmdLog";
+      this.CmdLog.Size = new System.Drawing.Size(75, 23);
+      this.CmdLog.TabIndex = 2;
+      this.CmdLog.Text = "Log <<<";
+      this.CmdLog.UseVisualStyleBackColor = true;
+      this.CmdLog.Click += new System.EventHandler(this.CmdLog_Click);
+      // 
       // tableLayoutPanel1
       // 
-      this.tableLayoutPanel1.AutoSize = true;
-      this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel1.ColumnCount = 1;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.Controls.Add(this.CmdAdd, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.CmdDelete, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.CmdUp, 0, 2);
-      this.tableLayoutPanel1.Controls.Add(this.CmdDown, 0, 3);
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(516, 3);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 4;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(81, 116);
-      this.tableLayoutPanel1.TabIndex = 10;
+      tableLayoutPanel1.AutoSize = true;
+      tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      tableLayoutPanel1.ColumnCount = 1;
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel1.Controls.Add(this.CmdAdd, 0, 0);
+      tableLayoutPanel1.Controls.Add(this.CmdDelete, 0, 1);
+      tableLayoutPanel1.Controls.Add(this.CmdUp, 0, 2);
+      tableLayoutPanel1.Controls.Add(this.CmdDown, 0, 3);
+      tableLayoutPanel1.Location = new System.Drawing.Point(513, 3);
+      tableLayoutPanel1.Name = "tableLayoutPanel1";
+      tableLayoutPanel1.RowCount = 4;
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.Size = new System.Drawing.Size(81, 116);
+      tableLayoutPanel1.TabIndex = 10;
       // 
       // CmdAdd
       // 
@@ -269,35 +291,76 @@ namespace EllieWare.Manager
       // CmdClose
       // 
       this.CmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.CmdClose.Location = new System.Drawing.Point(435, 413);
+      this.CmdClose.Location = new System.Drawing.Point(432, 413);
       this.CmdClose.Name = "CmdClose";
       this.CmdClose.Size = new System.Drawing.Size(75, 23);
       this.CmdClose.TabIndex = 2;
       this.CmdClose.Text = "Close";
       this.CmdClose.UseVisualStyleBackColor = true;
+      this.CmdClose.Click += new System.EventHandler(this.CmdClose_Click);
+      // 
+      // mMainContainer
+      // 
+      this.mMainContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.mMainContainer.BackColor = System.Drawing.SystemColors.HotTrack;
+      this.mMainContainer.Location = new System.Drawing.Point(12, 12);
+      this.mMainContainer.Margin = new System.Windows.Forms.Padding(0);
+      this.mMainContainer.Name = "mMainContainer";
+      // 
+      // mMainContainer.Panel1
+      // 
+      this.mMainContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
+      this.mMainContainer.Panel1.Controls.Add(tableLayoutPanel4);
+      // 
+      // mMainContainer.Panel2
+      // 
+      this.mMainContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
+      this.mMainContainer.Panel2.Controls.Add(this.mCallback);
+      this.mMainContainer.Size = new System.Drawing.Size(841, 439);
+      this.mMainContainer.SplitterDistance = 597;
+      this.mMainContainer.TabIndex = 15;
+      this.mMainContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.MainContainer_SplitterMoved);
+      // 
+      // mCallback
+      // 
+      this.mCallback.AutoSize = true;
+      this.mCallback.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.mCallback.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.mCallback.Location = new System.Drawing.Point(0, 0);
+      this.mCallback.Margin = new System.Windows.Forms.Padding(0);
+      this.mCallback.Name = "mCallback";
+      this.mCallback.Size = new System.Drawing.Size(240, 439);
+      this.mCallback.TabIndex = 14;
       // 
       // Editor
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdClose;
-      this.ClientSize = new System.Drawing.Size(624, 463);
-      this.Controls.Add(tableLayoutPanel4);
+      this.ClientSize = new System.Drawing.Size(865, 463);
+      this.Controls.Add(this.mMainContainer);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Editor";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Editor";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
-      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Editor_FormClosed);
+      this.SizeChanged += new System.EventHandler(this.Editor_SizeChanged);
       tableLayoutPanel4.ResumeLayout(false);
       tableLayoutPanel4.PerformLayout();
       this.mStepsContainer.Panel1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).EndInit();
       this.mStepsContainer.ResumeLayout(false);
-      this.tableLayoutPanel3.ResumeLayout(false);
-      this.tableLayoutPanel2.ResumeLayout(false);
-      this.tableLayoutPanel1.ResumeLayout(false);
+      tableLayoutPanel3.ResumeLayout(false);
+      tableLayoutPanel2.ResumeLayout(false);
+      tableLayoutPanel1.ResumeLayout(false);
+      this.mMainContainer.Panel1.ResumeLayout(false);
+      this.mMainContainer.Panel2.ResumeLayout(false);
+      this.mMainContainer.Panel2.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.mMainContainer)).EndInit();
+      this.mMainContainer.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -314,11 +377,11 @@ namespace EllieWare.Manager
     private System.Windows.Forms.SplitContainer mStepsContainer;
     private RefreshingListBox mSteps;
     private System.Windows.Forms.Button CmdStep;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.Button CmdParameters;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     private System.Windows.Forms.Button CmdClose;
     private System.Windows.Forms.HelpProvider EditorHelp;
+    private LogWindow mCallback;
+    private System.Windows.Forms.SplitContainer mMainContainer;
+    private System.Windows.Forms.Button CmdLog;
   }
 }

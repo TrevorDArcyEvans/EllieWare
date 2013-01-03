@@ -26,7 +26,7 @@ namespace RobotWare.Windows
 
       const string ApplicationName = "RobotWare for Windows";
 
-      var licWrapper = new LicensableWrapper(ApplicationName);
+      var licWrapper = new RobotWareWrapper(ApplicationName);
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       var userSpecsPath = Path.Combine(userDocs, ApplicationName);
       Directory.CreateDirectory(userSpecsPath);
