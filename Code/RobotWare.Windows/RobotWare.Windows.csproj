@@ -99,6 +99,10 @@
       <Project>{22ABAC35-D498-413E-A429-98D317142CB6}</Project>
       <Name>EllieWare.DateTime</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Imaging\EllieWare.Imaging.csproj">
+      <Project>{6EB7F82C-CA6D-4BA8-AE0A-0FEA5451A4B9}</Project>
+      <Name>EllieWare.Imaging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
@@ -134,6 +138,10 @@
     <ProjectReference Include="..\EllieWare.Manager\EllieWare.Manager.csproj">
       <Project>{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}</Project>
       <Name>EllieWare.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageProcessor\ImageProcessor.csproj">
+      <Project>{F90913DF-8E39-41EE-8A5B-5F72AF35A397}</Project>
+      <Name>ImageProcessor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

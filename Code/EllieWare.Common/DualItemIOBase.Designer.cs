@@ -167,6 +167,7 @@ namespace EllieWare.Common
       // SourceFileSelector
       // 
       this.SourceFileSelector.CheckPathExists = false;
+      this.SourceFileSelector.Filter = "All files (*.*)|*.*";
       this.SourceFileSelector.OverwritePrompt = false;
       this.SourceFileSelector.RestoreDirectory = true;
       this.SourceFileSelector.Title = "Select File";
@@ -174,6 +175,7 @@ namespace EllieWare.Common
       // DestinationFileSelector
       // 
       this.DestinationFileSelector.CheckPathExists = false;
+      this.DestinationFileSelector.Filter = "All files (*.*)|*.*";
       this.DestinationFileSelector.OverwritePrompt = false;
       this.DestinationFileSelector.RestoreDirectory = true;
       this.DestinationFileSelector.Title = "Select File";
