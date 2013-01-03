@@ -60,6 +60,13 @@
     </Compile>
     <Compile Include="PrintFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Protect.Designer.cs">
+      <DependentUpon>Protect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +91,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Print.resx">
       <DependentUpon>Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Protect.resx">
+      <DependentUpon>Protect.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

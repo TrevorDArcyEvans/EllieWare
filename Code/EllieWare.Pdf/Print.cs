@@ -21,6 +21,8 @@ namespace EllieWare.Pdf
     public Print()
     {
       InitializeComponent();
+
+      PrintMain.BringToFront();
     }
 
     public Print(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :

@@ -41,6 +41,5 @@ namespace EllieWare.Pdf
     {
       return new Print(roots, callback, mgr);
     }
-  
   }
 }
