@@ -115,6 +115,10 @@
       <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
       <Name>EllieWare.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Pdf\EllieWare.Pdf.csproj">
+      <Project>{5BBEFC9F-BF24-42B2-8BE6-09E19DB5357C}</Project>
+      <Name>EllieWare.Pdf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Process\EllieWare.Process.csproj">
       <Project>{6205CDC5-02F2-4122-A513-D779941DAC35}</Project>
       <Name>EllieWare.Process</Name>
@@ -142,6 +146,10 @@
     <ProjectReference Include="..\ImageProcessor\ImageProcessor.csproj">
       <Project>{F90913DF-8E39-41EE-8A5B-5F72AF35A397}</Project>
       <Name>ImageProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PdfSharp\PdfSharp.csproj">
+      <Project>{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}</Project>
+      <Name>PdfSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
