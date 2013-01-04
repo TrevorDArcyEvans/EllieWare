@@ -18,7 +18,7 @@ namespace EllieWare.Pdf
     public abstract string Title { get; }
     public abstract string Description { get; }
 
-    public string Keywords
+    public virtual string Keywords
     {
       get
       {
