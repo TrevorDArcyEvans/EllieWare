@@ -24,6 +24,7 @@ namespace EllieWare.SpaceClaim
     public ExportToBitmap(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
       base(roots, callback, mgr, BrowserTypes.BothFile)
     {
+      SetSourceFileSelectorFilter(Utils.WindowRasterExportFilter);
     }
 
     public override string Summary
