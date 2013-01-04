@@ -1,0 +1,1 @@
+edtFTPnet/Free is Open Source, licensed under the GNU LGPL.

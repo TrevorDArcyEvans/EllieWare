@@ -6,9 +6,12 @@
 //  www.EllieWare.com
 //
 using System.Reflection;
+using EllieWare.Interfaces;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EllieWare.Pdf")]
 [assembly: AssemblyProduct("EllieWare.Pdf")]
+
+[assembly: LicenseInformation("License.txt")]
