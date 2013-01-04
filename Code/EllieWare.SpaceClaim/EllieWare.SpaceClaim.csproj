@@ -155,6 +155,7 @@
       <DependentUpon>SetViewProjection.cs</DependentUpon>
     </Compile>
     <Compile Include="SetViewProjectionFactory.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ZoomExtents.cs">
       <SubType>UserControl</SubType>
     </Compile>
