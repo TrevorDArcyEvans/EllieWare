@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-
 using System.Collections.Generic;
 using SpaceClaim.Api.V10;
 
@@ -76,5 +75,48 @@ namespace EllieWare.SpaceClaim
     public const string PartWindowExportFilter = InternalPartWindowExportFilter + AllFilesFilter;
 
     public const string AllPartExportFilter = InternalPartExportFilter + InternalPartWindowExportFilter + AllFilesFilter;
+
+    public static readonly Dictionary<string, WindowExportFormat> RasterFormats = new Dictionary<string, WindowExportFormat>
+                                                                                  {
+                                                                                    {".bmp", WindowExportFormat.Bmp},
+                                                                                    {".jpg", WindowExportFormat.Jpeg},
+                                                                                    {".jpeg", WindowExportFormat.Jpeg},
+                                                                                    {".png", WindowExportFormat.Png},
+                                                                                    {".tif", WindowExportFormat.Tiff},
+                                                                                    {".tiff", WindowExportFormat.Tiff}
+                                                                                  };
+
+    public static readonly Dictionary<string, WindowExportFormat> VectorFormats = new Dictionary<string, WindowExportFormat>
+                                                                                  {
+                                                                                    {".dwg", WindowExportFormat.AutoCadDwg},
+                                                                                    {".dxf", WindowExportFormat.AutoCadDxf}
+                                                                                  };
+
+    private const string InternalWindowVectorExportFilter =
+                          "AutoCAD DWG files (*.dwg)|*.dwg|" +
+                          "AutoCAD DXF files (*.dxf)|*.dxf|";
+
+    private const string InternalWindowRasterExportFilter =
+                          "Windows bitmap files (*.bmp)|*.bmp|" +
+                          "JPEG image files (*.jpg)|*.jpg|" +
+                          "JPEG image files (*.jpeg)|*.jpeg|" +
+                          "PNG image files (*.png)|*.png|" +
+                          "TIFF image files (*.tif)|*.tif|" +
+                          "TIFF image files (*.tiff)|*.tiff|" +
+                          "GIF image files (*.gif)|*.gif|";
+
+    public const string WindowVectorExportFilter = InternalWindowVectorExportFilter + AllFilesFilter;
+    public const string WindowRasterExportFilter = InternalWindowRasterExportFilter + AllFilesFilter;
+    public const string AllWindowRasterExportFilter = InternalWindowVectorExportFilter + InternalWindowRasterExportFilter + AllFilesFilter;
+
+    private const string InternalPdfFilesFilter = 
+                          "Adobe PDF files (*.pdf)|*.pdf|";
+
+    public const string PdfFilesFilter = InternalPdfFilesFilter + AllFilesFilter;
+
+    private const string InternalNativeFilter =
+                          "SpaceClaim files (*.scdoc)|*.scdoc|";
+
+    public const string NativeFilter = InternalNativeFilter + AllFilesFilter;
   }
 }
