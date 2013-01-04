@@ -29,6 +29,14 @@ namespace EllieWare.Pdf
       }
     }
 
+    public override string Keywords
+    {
+      get
+      {
+        return base.Keywords + ", password, permission, owner, user, security, encryption";
+      }
+    }
+
     public override Type CreatedType
     {
       get

@@ -51,6 +51,13 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="Concatenate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Concatenate.Designer.cs">
+      <DependentUpon>Concatenate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConcatenateFactory.cs" />
     <Compile Include="PdfFactoryBase.cs" />
     <Compile Include="Print.cs">
       <SubType>UserControl</SubType>
@@ -89,6 +96,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Concatenate.resx">
+      <DependentUpon>Concatenate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Print.resx">
       <DependentUpon>Print.cs</DependentUpon>
     </EmbeddedResource>

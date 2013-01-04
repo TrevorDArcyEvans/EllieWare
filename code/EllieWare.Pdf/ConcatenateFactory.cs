@@ -11,13 +11,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Pdf
 {
-  public class PrintFactory : PdfFactoryBase, IFactory
+  public class ConcatenateFactory : PdfFactoryBase, IFactory
   {
     public override string Title
     {
       get
       {
-        return "Print a PDF file to a printer";
+        return "Join two PDF files together";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.Pdf
     {
       get
       {
-        return "Print a PDF file to a printer";
+        return "Join two PDF files together into a third PDF file";
       }
     }
 
@@ -33,7 +33,7 @@ namespace EllieWare.Pdf
     {
       get
       {
-        return base.Keywords + ", print";
+        return base.Keywords + ", concatenate";
       }
     }
 
@@ -41,13 +41,14 @@ namespace EllieWare.Pdf
     {
       get
       {
-        return typeof(Print);
+        return typeof(Concatenate);
       }
     }
 
     public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
     {
-      return new Print(roots, callback, mgr);
+      return new Concatenate(roots, callback, mgr);
     }
+  
   }
 }

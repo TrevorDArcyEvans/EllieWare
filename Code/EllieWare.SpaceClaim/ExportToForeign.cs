@@ -16,36 +16,6 @@ namespace EllieWare.SpaceClaim
 {
   public partial class ExportToForeign : SingleItemIOBase
   {
-    private readonly Dictionary<string, PartExportFormat> BrepFormats = new Dictionary<string, PartExportFormat>
-                                              {
-                                                {".CATPart".ToLowerInvariant(), PartExportFormat.CatiaV5Part},
-                                                {".CATProduct".ToLowerInvariant(), PartExportFormat.CatiaV5Assembly},
-                                                {".cgr", PartExportFormat.CatiaV5Graphics},
-                                                {".igs", PartExportFormat.Iges},
-                                                {".iges", PartExportFormat.Iges},
-                                                {".stp", PartExportFormat.Step},
-                                                {".step", PartExportFormat.Step},
-                                                {".vda", PartExportFormat.Vda},
-                                                {".jt", PartExportFormat.JtOpen},
-                                                {".x_t", PartExportFormat.ParasolidText},
-                                                {".x_b", PartExportFormat.ParasolidBinary},
-                                                {".sat", PartExportFormat.AcisText},
-                                                {".sab", PartExportFormat.AcisBinary},
-                                                {".3dm", PartExportFormat.Rhino},
-                                                {".pdf", PartExportFormat.Pdf},
-                                                {".skp", PartExportFormat.SketchUp}
-                                              };
-
-    private readonly Dictionary<string, PartWindowExportFormat> TessellatedFormats = new Dictionary<string, PartWindowExportFormat>
-                                              {
-                                                {".bip", PartWindowExportFormat.Bip},
-                                                {".obj", PartWindowExportFormat.Obj},
-                                                {".stl", PartWindowExportFormat.Stl},
-                                                {".wrl", PartWindowExportFormat.Vrml},
-                                                {".vrml", PartWindowExportFormat.Vrml},
-                                                {".xaml", PartWindowExportFormat.Xaml}
-                                              };
-
     public ExportToForeign()
     {
     }
@@ -68,17 +38,17 @@ namespace EllieWare.SpaceClaim
     private PartWindowExportFormat TessellatedFormat(string fileName)
     {
       var extn = Path.GetExtension(fileName);
-      if (extn == null || !TessellatedFormats.ContainsKey(extn.ToLowerInvariant()))
+      if (extn == null || !Utils.TessellatedFormats.ContainsKey(extn.ToLowerInvariant()))
       {
         return PartWindowExportFormat.Stl;
       }
 
-      return TessellatedFormats[extn.ToLowerInvariant()];
+      return Utils.TessellatedFormats[extn.ToLowerInvariant()];
     }
 
     private string TessellatedExtension(PartWindowExportFormat fmt)
     {
-      return TessellatedFormats.First(x => x.Value == fmt).Key;
+      return Utils.TessellatedFormats.First(x => x.Value == fmt).Key;
     }
 
     private bool IsBrepFormat(string fileName)
@@ -89,7 +59,7 @@ namespace EllieWare.SpaceClaim
         return false;
       }
 
-      return BrepFormats.ContainsKey(extn.ToLowerInvariant());
+      return Utils.BrepFormats.ContainsKey(extn.ToLowerInvariant());
     }
 
     public override bool Run()
@@ -99,7 +69,7 @@ namespace EllieWare.SpaceClaim
                                 if (IsBrepFormat(SourceFilePathResolvedValue))
                                 {
                                   var extn = Path.GetExtension(SourceFilePathResolvedValue).ToLowerInvariant();
-                                  var fmt = BrepFormats[extn];
+                                  var fmt = Utils.BrepFormats[extn];
                                   var opts = ExportOptions.Create();
 
                                   opts.ExportNames = true;

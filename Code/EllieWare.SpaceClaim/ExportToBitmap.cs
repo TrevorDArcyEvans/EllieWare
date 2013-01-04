@@ -16,15 +16,6 @@ namespace EllieWare.SpaceClaim
 {
   public partial class ExportToBitmap : SingleItemIOBase
   {
-    private readonly Dictionary<string, WindowExportFormat> RasterFormats = new Dictionary<string, WindowExportFormat>
-                                                                                  {
-                                                                                    {".bmp", WindowExportFormat.Bmp},
-                                                                                    {".jpg", WindowExportFormat.Jpeg},
-                                                                                    {".jpeg", WindowExportFormat.Jpeg},
-                                                                                    {".png", WindowExportFormat.Png},
-                                                                                    {".tif", WindowExportFormat.Tiff},
-                                                                                    {".tiff", WindowExportFormat.Tiff}
-                                                                                  };
 
     public ExportToBitmap()
     {
@@ -48,17 +39,17 @@ namespace EllieWare.SpaceClaim
     private WindowExportFormat Format(string fileName)
     {
       var extn = Path.GetExtension(fileName);
-      if (extn == null || !RasterFormats.ContainsKey(extn.ToLowerInvariant()))
+      if (extn == null || !Utils.RasterFormats.ContainsKey(extn.ToLowerInvariant()))
       {
         return WindowExportFormat.Png;
       }
 
-      return RasterFormats[extn.ToLowerInvariant()];
+      return Utils.RasterFormats[extn.ToLowerInvariant()];
     }
 
     private string Extension(WindowExportFormat fmt)
     {
-      return RasterFormats.First(x => x.Value == fmt).Key;
+      return Utils.RasterFormats.First(x => x.Value == fmt).Key;
     }
 
     public override bool Run()
