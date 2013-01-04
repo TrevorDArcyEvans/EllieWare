@@ -22,6 +22,7 @@ namespace EllieWare.SpaceClaim
     public ExportToPdf(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
       base(roots, callback, mgr, BrowserTypes.BothFile)
     {
+      SetSourceFileSelectorFilter(Utils.PdfFilesFilter);
     }
 
     public override string Summary

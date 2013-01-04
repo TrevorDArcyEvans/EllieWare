@@ -21,6 +21,7 @@ namespace EllieWare.SpaceClaim
     public SaveAs(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
       base(roots, callback, mgr, BrowserTypes.BothFile)
     {
+      SetSourceFileSelectorFilter(Utils.NativeFilter);
     }
 
     public override string Summary

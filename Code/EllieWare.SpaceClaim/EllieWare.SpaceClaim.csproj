@@ -76,6 +76,10 @@
       <DependentUpon>CloseNoSave.cs</DependentUpon>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
+    <Compile Include="ExportToAutoCAD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportToAutoCADFactory.cs" />
     <Compile Include="ExportToBitmap.cs">
       <SubType>UserControl</SubType>
     </Compile>

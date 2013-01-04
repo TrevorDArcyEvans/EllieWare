@@ -23,6 +23,7 @@ namespace EllieWare.SpaceClaim
     public ExportToForeign(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
       base(roots, callback, mgr, BrowserTypes.BothFile)
     {
+      SetSourceFileSelectorFilter(Utils.PartExportFilter);
     }
 
     public override string Summary
