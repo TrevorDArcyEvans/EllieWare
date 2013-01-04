@@ -1,61 +1,61 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.SpaceClaim", "RobotWare.SpaceClaim.csproj", "{E717A0E2-3B92-4636-9A95-F0E10A93BD6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.SpaceClaim", "RobotWare.SpaceClaim\RobotWare.SpaceClaim.csproj", "{E717A0E2-3B92-4636-9A95-F0E10A93BD6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Common", "..\EllieWare.Common\EllieWare.Common.csproj", "{72C5924A-0D73-45CE-8066-9F42B401F7A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Common", "EllieWare.Common\EllieWare.Common.csproj", "{72C5924A-0D73-45CE-8066-9F42B401F7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Manager", "..\EllieWare.Manager\EllieWare.Manager.csproj", "{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Manager", "EllieWare.Manager\EllieWare.Manager.csproj", "{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Interfaces", "..\EllieWare.Interfaces\EllieWare.Interfaces.csproj", "{6BC6C904-3CA4-494E-AF88-827394E14654}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Interfaces", "EllieWare.Interfaces\EllieWare.Interfaces.csproj", "{6BC6C904-3CA4-494E-AF88-827394E14654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Support", "..\EllieWare.Support\EllieWare.Support.csproj", "{E1644A8E-CB78-4C41-873E-D743CECCCB0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Support", "EllieWare.Support\EllieWare.Support.csproj", "{E1644A8E-CB78-4C41-873E-D743CECCCB0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip DLL", "..\DotNetZip\Zip\Zip DLL.csproj", "{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip DLL", "DotNetZip\Zip\Zip DLL.csproj", "{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edtFTPnet", "..\edtftpnet\src\edtFTPnet.csproj", "{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edtFTPnet", "edtftpnet\src\edtFTPnet.csproj", "{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Audio", "..\EllieWare.Audio\EllieWare.Audio.csproj", "{B576477E-C3E2-42A6-9C46-B523D9F6B834}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Audio", "EllieWare.Audio\EllieWare.Audio.csproj", "{B576477E-C3E2-42A6-9C46-B523D9F6B834}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.DateTime", "..\EllieWare.DateTime\EllieWare.DateTime.csproj", "{22ABAC35-D498-413E-A429-98D317142CB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.DateTime", "EllieWare.DateTime\EllieWare.DateTime.csproj", "{22ABAC35-D498-413E-A429-98D317142CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.IO", "..\EllieWare.IO\EllieWare.IO.csproj", "{186AC2DD-F372-47F3-A279-F905F37DBA9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.IO", "EllieWare.IO\EllieWare.IO.csproj", "{186AC2DD-F372-47F3-A279-F905F37DBA9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Logging", "..\EllieWare.Logging\EllieWare.Logging.csproj", "{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Logging", "EllieWare.Logging\EllieWare.Logging.csproj", "{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Process", "..\EllieWare.Process\EllieWare.Process.csproj", "{6205CDC5-02F2-4122-A513-D779941DAC35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Process", "EllieWare.Process\EllieWare.Process.csproj", "{6205CDC5-02F2-4122-A513-D779941DAC35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Transfer.FTP", "..\EllieWare.Transfer.FTP\EllieWare.Transfer.FTP.csproj", "{6148FE29-F616-4501-931B-27A04C3E9B60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Transfer.FTP", "EllieWare.Transfer.FTP\EllieWare.Transfer.FTP.csproj", "{6148FE29-F616-4501-931B-27A04C3E9B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Zip", "..\EllieWare.Zip\EllieWare.Zip.csproj", "{3E09D8C1-FDC2-47ED-8195-27F8D61C5F9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Zip", "EllieWare.Zip\EllieWare.Zip.csproj", "{3E09D8C1-FDC2-47ED-8195-27F8D61C5F9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.SpaceClaim", "..\EllieWare.SpaceClaim\EllieWare.SpaceClaim.csproj", "{31F91FF5-7362-4C78-934E-3C6116FC8CBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.SpaceClaim", "EllieWare.SpaceClaim\EllieWare.SpaceClaim.csproj", "{31F91FF5-7362-4C78-934E-3C6116FC8CBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Licensing", "..\EllieWare.Licensing\EllieWare.Licensing.csproj", "{639D40B5-8191-409A-A267-8A78D4D38452}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Licensing", "EllieWare.Licensing\EllieWare.Licensing.csproj", "{639D40B5-8191-409A-A267-8A78D4D38452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.LicenseGenerator", "..\EllieWare.LicenseGenerator\EllieWare.LicenseGenerator.csproj", "{B041F5F3-FA67-4510-B372-71C8A5EA6373}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.LicenseGenerator", "EllieWare.LicenseGenerator\EllieWare.LicenseGenerator.csproj", "{B041F5F3-FA67-4510-B372-71C8A5EA6373}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Macro", "..\EllieWare.Macro\EllieWare.Macro.csproj", "{D6569BA5-350C-4A7A-B23C-5E9FCAA6DF21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Macro", "EllieWare.Macro\EllieWare.Macro.csproj", "{D6569BA5-350C-4A7A-B23C-5E9FCAA6DF21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.Windows", "..\RobotWare.Windows\RobotWare.Windows.csproj", "{AE021F3A-24BE-434B-832A-4AEF4F808FB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.Windows", "RobotWare.Windows\RobotWare.Windows.csproj", "{AE021F3A-24BE-434B-832A-4AEF4F808FB5}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotWare for Windows", "..\RobotWare for Windows\RobotWare for Windows.vdproj", "{DD1B38C0-4B7E-4872-83BB-DA5751F5717C}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotWare for Windows", "RobotWare for Windows\RobotWare for Windows.vdproj", "{DD1B38C0-4B7E-4872-83BB-DA5751F5717C}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotWare for SpaceClaim", "..\RobotWare for SpaceClaim\RobotWare for SpaceClaim.vdproj", "{D7DAB241-1065-48DA-A226-F1DB9D51295A}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotWare for SpaceClaim", "RobotWare for SpaceClaim\RobotWare for SpaceClaim.vdproj", "{D7DAB241-1065-48DA-A226-F1DB9D51295A}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "EllieWare.Interfaces.Docs", "..\EllieWare.Interfaces.Docs\EllieWare.Interfaces.Docs.shfbproj", "{1E41E392-39A5-4B56-84FD-D0C818200709}"
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "EllieWare.Interfaces.Docs", "EllieWare.Interfaces.Docs\EllieWare.Interfaces.Docs.shfbproj", "{1E41E392-39A5-4B56-84FD-D0C818200709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.RobotWare.Docs", "..\EllieWare.RobotWare.Docs\EllieWare.RobotWare.Docs.csproj", "{69CA96F0-9303-47C9-B91C-C7D2EEFBE9AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.RobotWare.Docs", "EllieWare.RobotWare.Docs\EllieWare.RobotWare.Docs.csproj", "{69CA96F0-9303-47C9-B91C-C7D2EEFBE9AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Imaging", "..\EllieWare.Imaging\EllieWare.Imaging.csproj", "{6EB7F82C-CA6D-4BA8-AE0A-0FEA5451A4B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Imaging", "EllieWare.Imaging\EllieWare.Imaging.csproj", "{6EB7F82C-CA6D-4BA8-AE0A-0FEA5451A4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessor", "..\ImageProcessor\ImageProcessor.csproj", "{F90913DF-8E39-41EE-8A5B-5F72AF35A397}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessor", "ImageProcessor\ImageProcessor.csproj", "{F90913DF-8E39-41EE-8A5B-5F72AF35A397}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp", "..\PdfSharp\PdfSharp.csproj", "{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp", "PdfSharp\PdfSharp.csproj", "{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Pdf", "..\EllieWare.Pdf\EllieWare.Pdf.csproj", "{5BBEFC9F-BF24-42B2-8BE6-09E19DB5357C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Pdf", "EllieWare.Pdf\EllieWare.Pdf.csproj", "{5BBEFC9F-BF24-42B2-8BE6-09E19DB5357C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFsharpTests-GDI", "..\PdfSharp.UnitTests\PDFsharpTests-GDI\PDFsharpTests-GDI.csproj", "{890837F6-2F9E-482E-A395-9330D92A1070}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFsharpTests-GDI", "PdfSharp.UnitTests\PDFsharpTests-GDI\PDFsharpTests-GDI.csproj", "{890837F6-2F9E-482E-A395-9330D92A1070}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -269,11 +269,16 @@ Global
 		{DD1B38C0-4B7E-4872-83BB-DA5751F5717C}.Release|x86.ActiveCfg = Release
 		{DD1B38C0-4B7E-4872-83BB-DA5751F5717C}.Release|x86.Build.0 = Release
 		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Debug|Any CPU.ActiveCfg = Debug
+		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Debug|Any CPU.Build.0 = Debug
 		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Debug|Mixed Platforms.ActiveCfg = Debug
 		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Debug|x86.ActiveCfg = Debug
+		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Debug|x86.Build.0 = Debug
 		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Release|Any CPU.ActiveCfg = Release
+		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Release|Any CPU.Build.0 = Release
 		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Release|Mixed Platforms.ActiveCfg = Release
+		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Release|Mixed Platforms.Build.0 = Release
 		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Release|x86.ActiveCfg = Release
+		{D7DAB241-1065-48DA-A226-F1DB9D51295A}.Release|x86.Build.0 = Release
 		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E41E392-39A5-4B56-84FD-D0C818200709}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
