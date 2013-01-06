@@ -51,7 +51,7 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="MacroFactory.cs" />
+    <Compile Include="MacroRunnerFactory.cs" />
     <Compile Include="MacroRunner.cs">
       <SubType>UserControl</SubType>
     </Compile>
