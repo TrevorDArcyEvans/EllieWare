@@ -5,12 +5,11 @@
 //
 //  www.EllieWare.com
 //
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public interface IParameter
   {
     string DisplayName { get; set; }
     object ParameterValue { get; set; }
-    string Summary { get; }
   }
 }

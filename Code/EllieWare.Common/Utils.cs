@@ -1,9 +1,15 @@
-﻿using System;
+﻿//
+//  Copyright (C) 2013 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
