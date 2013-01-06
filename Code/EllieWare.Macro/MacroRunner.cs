@@ -6,9 +6,10 @@
 //  www.EllieWare.com
 //
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
-using EllieWare.Manager;
 
 namespace EllieWare.Macro
 {
@@ -35,10 +36,25 @@ namespace EllieWare.Macro
 
     public override bool Run()
     {
-      // FIX ME!  potential licensing hole as demo mode is implemented in Editor
-      var dlg = new Editor(null, mRoots, SourceFilePathResolvedValue);
+      var factories = Utils.GetFactories();
+      var spec = new Specification(mRoots, mCallback, factories);
+      using (var fs = new FileStream(SourceFilePathResolvedValue, FileMode.Open))
+      {
+        var reader = XmlReader.Create(fs);
+        spec.ReadXml(reader);
+      }
 
-      return dlg.Run();
+      foreach (var step in spec.Steps)
+      {
+        if (!step.Run())
+        {
+          mCallback.Log(LogLevel.Critical, step.Summary);
+
+          return false;
+        }
+      }
+
+      return true;
     }
   }
 }
