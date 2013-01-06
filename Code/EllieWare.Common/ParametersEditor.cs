@@ -9,10 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public partial class ParametersEditor : Form
   {

@@ -7,7 +7,7 @@
 //
 using EllieWare.Support;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   partial class ParametersEditor
   {

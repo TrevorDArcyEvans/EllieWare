@@ -9,9 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using EllieWare.Common;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public partial class AddEditParameter : Form
   {
