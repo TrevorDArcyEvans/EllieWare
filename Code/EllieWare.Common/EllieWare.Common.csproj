@@ -51,6 +51,13 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AddEditParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditParameter.Designer.cs">
+      <DependentUpon>AddEditParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchParameter.cs" />
     <Compile Include="BrowserTypes.cs" />
     <Compile Include="DualItemIOBase.cs">
       <SubType>UserControl</SubType>
@@ -58,10 +65,17 @@
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="IBatchParameter.cs" />
     <Compile Include="IParameter.cs" />
     <Compile Include="IRobotWare.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="Parameter.cs" />
+    <Compile Include="ParametersEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParametersEditor.Designer.cs">
+      <DependentUpon>ParametersEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="RobotWareWrapper.cs" />
     <Compile Include="MutableRunnableBase.cs">
       <SubType>UserControl</SubType>
@@ -95,10 +109,20 @@
       <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
       <Name>EllieWare.Licensing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
+      <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
+      <Name>EllieWare.Support</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddEditParameter.resx">
+      <DependentUpon>AddEditParameter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DualItemIOBase.resx">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParametersEditor.resx">
+      <DependentUpon>ParametersEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParameterTextBox.resx">
       <DependentUpon>ParameterTextBox.cs</DependentUpon>

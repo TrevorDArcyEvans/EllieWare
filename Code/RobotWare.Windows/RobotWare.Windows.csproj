@@ -115,6 +115,10 @@
       <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
       <Name>EllieWare.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Macro\EllieWare.Macro.csproj">
+      <Project>{D6569BA5-350C-4A7A-B23C-5E9FCAA6DF21}</Project>
+      <Name>EllieWare.Macro</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Pdf\EllieWare.Pdf.csproj">
       <Project>{5BBEFC9F-BF24-42B2-8BE6-09E19DB5357C}</Project>
       <Name>EllieWare.Pdf</Name>

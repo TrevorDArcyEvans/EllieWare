@@ -26,17 +26,14 @@ namespace RobotWare.SpaceClaim
     private const string ApplicationName = "RobotWare for SpaceClaim";
 
     private readonly RobotWareWrapper mLicenseWrapper = new RobotWareWrapper(ApplicationName);
-    private readonly string mUserSpecsPath;
     private Lazy<Manager> mManager;
 
     public ManagerCapsule()
       : base(CommandName, Resources.ManagerText, Resources.robot, Resources.ManagerHint)
     {
-      var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-      mUserSpecsPath = Path.Combine(userDocs, ApplicationName);
-      Directory.CreateDirectory(mUserSpecsPath);
+      Directory.CreateDirectory(mLicenseWrapper.UserSpecificationFolder);
 
-      mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }, ApplicationName, mUserSpecsPath));
+      mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }));
     }
 
     protected override void OnInitialize(Command command)
@@ -60,7 +57,7 @@ namespace RobotWare.SpaceClaim
     {
       if (mManager.Value.IsDisposed)
       {
-        mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }, ApplicationName, mUserSpecsPath));
+        mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }));
       }
       mManager.Value.Show(Application.MainWindow);
     }
