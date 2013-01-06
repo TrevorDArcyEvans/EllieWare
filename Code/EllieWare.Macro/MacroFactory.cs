@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Macro
 {
-  public class MacroFactory : IFactory
+  public class MacroRunnerFactory : IFactory
   {
     #region Implementation of IFactory
 
