@@ -9,10 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public class Specification : ISpecification
   {

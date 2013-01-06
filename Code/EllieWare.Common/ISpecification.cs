@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using EllieWare.Interfaces;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public interface ISpecification : IXmlSerializable
   {

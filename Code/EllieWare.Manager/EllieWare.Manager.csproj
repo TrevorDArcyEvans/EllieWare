@@ -82,7 +82,6 @@
       <DependentUpon>FileSaveDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="IHost.cs" />
-    <Compile Include="IParameter.cs" />
     <Compile Include="LogWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,7 +94,6 @@
     <Compile Include="Manager.Designer.cs">
       <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parameter.cs" />
     <Compile Include="ParametersEditor.cs">
       <SubType>Form</SubType>
     </Compile>
