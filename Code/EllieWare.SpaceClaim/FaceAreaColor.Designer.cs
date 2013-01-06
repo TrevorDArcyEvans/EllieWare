@@ -36,14 +36,13 @@ namespace EllieWare.SpaceClaim
     private void InitializeComponent()
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-      System.Windows.Forms.Label label1;
+      this.AreaLabel = new System.Windows.Forms.Label();
       this.ColorLabel = new System.Windows.Forms.Label();
       this.AreaUnits = new System.Windows.Forms.Label();
       this.AreaThreshold = new System.Windows.Forms.NumericUpDown();
       this.ColorSwatch = new System.Windows.Forms.PictureBox();
       this.ColorDlg = new System.Windows.Forms.ColorDialog();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      label1 = new System.Windows.Forms.Label();
       tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.AreaThreshold)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
@@ -55,7 +54,7 @@ namespace EllieWare.SpaceClaim
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      tableLayoutPanel1.Controls.Add(label1, 0, 0);
+      tableLayoutPanel1.Controls.Add(this.AreaLabel, 0, 0);
       tableLayoutPanel1.Controls.Add(this.ColorLabel, 0, 1);
       tableLayoutPanel1.Controls.Add(this.AreaUnits, 2, 0);
       tableLayoutPanel1.Controls.Add(this.AreaThreshold, 1, 0);
@@ -69,15 +68,15 @@ namespace EllieWare.SpaceClaim
       tableLayoutPanel1.Size = new System.Drawing.Size(294, 223);
       tableLayoutPanel1.TabIndex = 0;
       // 
-      // label1
+      // AreaLabel
       // 
-      label1.AutoSize = true;
-      label1.Location = new System.Drawing.Point(3, 6);
-      label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      label1.Name = "label1";
-      label1.Size = new System.Drawing.Size(32, 13);
-      label1.TabIndex = 0;
-      label1.Text = "Area:";
+      this.AreaLabel.AutoSize = true;
+      this.AreaLabel.Location = new System.Drawing.Point(3, 6);
+      this.AreaLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      this.AreaLabel.Name = "AreaLabel";
+      this.AreaLabel.Size = new System.Drawing.Size(32, 13);
+      this.AreaLabel.TabIndex = 0;
+      this.AreaLabel.Text = "Area:";
       // 
       // ColorLabel
       // 
@@ -147,9 +146,10 @@ namespace EllieWare.SpaceClaim
     #endregion
 
     private System.Windows.Forms.ColorDialog ColorDlg;
-    private System.Windows.Forms.Label AreaUnits;
     protected System.Windows.Forms.Label ColorLabel;
     protected System.Windows.Forms.PictureBox ColorSwatch;
     protected System.Windows.Forms.NumericUpDown AreaThreshold;
+    protected System.Windows.Forms.Label AreaUnits;
+    protected System.Windows.Forms.Label AreaLabel;
   }
 }

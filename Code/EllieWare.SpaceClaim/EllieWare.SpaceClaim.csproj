@@ -76,6 +76,10 @@
       <DependentUpon>CloseNoSave.cs</DependentUpon>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
+    <Compile Include="EdgeLengthSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EdgeLengthSelectFactory.cs" />
     <Compile Include="ExportToAutoCAD.cs">
       <SubType>UserControl</SubType>
     </Compile>
