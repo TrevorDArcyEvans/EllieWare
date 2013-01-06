@@ -127,7 +127,7 @@ namespace EllieWare.Manager
         }
 
         var filePath = Path.Combine(mHost.SpecificationsFolder, dlg.FileName);
-        mFilePath = Path.ChangeExtension(filePath, Manager.MacroFileExtension);
+        mFilePath = Path.ChangeExtension(filePath, Utils.MacroFileExtension);
 
         UpdateTitle();
       }

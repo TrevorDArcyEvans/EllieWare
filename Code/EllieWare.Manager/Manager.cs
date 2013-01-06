@@ -18,42 +18,39 @@ namespace EllieWare.Manager
 {
   public partial class Manager : Form, IHost
   {
-    public const string MacroFileExtension = ".mxml";
-
     private readonly IEnumerable<object> mRoots;
-    private readonly string mApplicationName;
+    private readonly IRobotWare mRobotWare;
 
     public Manager()
     {
       InitializeComponent();
     }
 
-    public Manager(IEnumerable<object> roots, string appName, string userSpecsPath) :
+    public Manager(IEnumerable<object> roots) :
       this()
     {
       mRoots = roots;
-      mApplicationName = appName;
-      SpecificationsFolder = userSpecsPath;
 
-      var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
-      var isLicensed = licensable != null ? licensable.IsLicensed : false;
-      if (!isLicensed)
+      mRobotWare = roots.Where(x => x is IRobotWare).Single() as IRobotWare;
+      if (!mRobotWare.IsLicensed)
       {
-        var dlg = new RequestLicense(appName);
+        var dlg = new RequestLicense(mRobotWare.ApplicationName);
         if (dlg.ShowDialog() == DialogResult.OK)
         {
           // attempt to register with provided info
-          Licensing.LicenseManager.Register(appName, dlg.UserName.Text, dlg.LicenseCode.Text);
+          Licensing.LicenseManager.Register(mRobotWare.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
 
-          isLicensed = licensable != null ? licensable.IsLicensed : false;
+          var isLicensed = mRobotWare.IsLicensed;
           var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                                  "  " + appName + Environment.NewLine +
+                                                  "  " + mRobotWare.ApplicationName + Environment.NewLine +
                                                   "to:" + Environment.NewLine +
                                                   "  " + dlg.UserName
                                                   : "Information incorrect - product not registered");
-          MessageBox.Show(msg, appName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+          MessageBox.Show(msg, mRobotWare.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
       }
+      
+      SpecificationsFolder = mRobotWare.UserSpecificationFolder;
 
       RefreshSpecificationsList();
       UpdateButtons();
@@ -62,7 +59,7 @@ namespace EllieWare.Manager
     private string GetSelectedSpecificationPath()
     {
       var pathNoExtn = Path.Combine(SpecificationsFolder, mSpecs.SelectedItems[0].Text);
-      var retVal = Path.ChangeExtension(pathNoExtn, MacroFileExtension);
+      var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
 
       return retVal;
     }
@@ -118,7 +115,7 @@ namespace EllieWare.Manager
     {
       get
       {
-        var allSpecsWithExtn = Directory.EnumerateFiles(SpecificationsFolder, "*" + MacroFileExtension);
+        var allSpecsWithExtn = Directory.EnumerateFiles(SpecificationsFolder, "*" + Utils.MacroFileExtension);
         var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
 
         return allSpecsNoExten;
@@ -160,7 +157,7 @@ namespace EllieWare.Manager
 
     private void CmdAbout_Click(object sender, EventArgs e)
     {
-      var dlg = new AboutBox(mApplicationName);
+      var dlg = new AboutBox(mRobotWare.ApplicationName);
       dlg.ShowDialog();
     }
 

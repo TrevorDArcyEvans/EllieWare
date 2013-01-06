@@ -10,5 +10,7 @@ namespace EllieWare.Common
   public interface IRobotWare
   {
     bool IsLicensed { get; }
+    string UserSpecificationFolder { get; }
+    string ApplicationName { get; }
   }
 }
