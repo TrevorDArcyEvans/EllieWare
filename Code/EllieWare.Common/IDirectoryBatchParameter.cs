@@ -5,15 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EllieWare.Common
 {
   interface IDirectoryBatchParameter : IParameter
   {
     string FileMask { get; set; }
+    string Directory { get; set; }
   }
 }
