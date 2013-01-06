@@ -57,7 +57,7 @@
     <Compile Include="AddEditParameter.Designer.cs">
       <DependentUpon>AddEditParameter.cs</DependentUpon>
     </Compile>
-    <Compile Include="BatchParameter.cs" />
+    <Compile Include="DirectoryBatchParameter.cs" />
     <Compile Include="BrowserTypes.cs" />
     <Compile Include="DualItemIOBase.cs">
       <SubType>UserControl</SubType>
@@ -65,7 +65,7 @@
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="IBatchParameter.cs" />
+    <Compile Include="IDirectoryBatchParameter.cs" />
     <Compile Include="IParameter.cs" />
     <Compile Include="IRobotWare.cs" />
     <Compile Include="ISpecification.cs" />
