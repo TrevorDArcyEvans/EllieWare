@@ -12,7 +12,7 @@ using System.Text;
 
 namespace EllieWare.Common
 {
-  interface IBatchParameter : IParameter
+  interface IDirectoryBatchParameter : IParameter
   {
     string FileMask { get; set; }
   }

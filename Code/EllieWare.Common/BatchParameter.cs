@@ -12,11 +12,11 @@ using System.Text;
 
 namespace EllieWare.Common
 {
-  public class BatchParameter : Parameter, IBatchParameter
+  public class DirectoryBatchParameter : Parameter, IDirectoryBatchParameter
   {
     public string FileMask { get; set; }
     
-    public BatchParameter(string name, string directory, string fileMask) :
+    public DirectoryBatchParameter(string name, string directory, string fileMask) :
       base(name, directory)
     {
       FileMask = fileMask;
