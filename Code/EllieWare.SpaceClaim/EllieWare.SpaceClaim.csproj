@@ -108,6 +108,10 @@
       <DependentUpon>FaceAreaColor.cs</DependentUpon>
     </Compile>
     <Compile Include="FaceAreaColorFactory.cs" />
+    <Compile Include="FaceAreaRemove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaRemoveFactory.cs" />
     <Compile Include="ImportFromForeign.cs">
       <SubType>UserControl</SubType>
     </Compile>
