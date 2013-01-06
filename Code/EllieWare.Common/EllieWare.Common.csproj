@@ -59,6 +59,7 @@
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
     <Compile Include="IRobotWare.cs" />
+    <Compile Include="ISpecification.cs" />
     <Compile Include="RobotWareWrapper.cs" />
     <Compile Include="MutableRunnableBase.cs">
       <SubType>UserControl</SubType>
@@ -80,6 +81,8 @@
     <Compile Include="SingleItemIOBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Specification.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">

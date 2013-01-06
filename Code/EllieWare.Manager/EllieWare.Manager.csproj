@@ -83,7 +83,6 @@
     </Compile>
     <Compile Include="IHost.cs" />
     <Compile Include="IParameter.cs" />
-    <Compile Include="ISpecification.cs" />
     <Compile Include="LogWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,7 +114,6 @@
     <Compile Include="RequestLicense.Designer.cs">
       <DependentUpon>RequestLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Specification.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutBox.resx">

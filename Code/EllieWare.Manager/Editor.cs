@@ -27,7 +27,7 @@ namespace EllieWare.Manager
     private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
-    private readonly List<IFactory> mFactories = new List<IFactory>();
+    private readonly List<IFactory> mFactories;
     private readonly bool IsLicensed;
 
     private int mCurrentStep;
@@ -50,7 +50,7 @@ namespace EllieWare.Manager
       var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
       IsLicensed = licensable != null ? licensable.IsLicensed : false;
 
-      InitialiseFactories();
+      mFactories = Utils.GetFactories().ToList();
 
       mAddDlg = new Adder(mFactories);
       mSpecification = new Specification(mRoots, mCallback, mFactories);
@@ -77,28 +77,6 @@ namespace EllieWare.Manager
     private void UpdateTitle()
     {
       Text = string.Format("Editor - {0}", Path.GetFileNameWithoutExtension(mFilePath));
-    }
-
-    private void InitialiseFactories()
-    {
-      var callAssyLoc = Assembly.GetCallingAssembly().Location;
-      var callAssyDir = Path.GetDirectoryName(callAssyLoc);
-      var dllFiles = Directory.EnumerateFiles(callAssyDir, "*.dll");
-      foreach (var thisDllFile in dllFiles)
-      {
-        try
-        {
-          var assy = Assembly.LoadFrom(thisDllFile);
-          var factories = from t in assy.GetTypes()
-                          where t.GetInterfaces().Contains(typeof(IFactory))
-                          select Activator.CreateInstance(t) as IFactory;
-          mFactories.AddRange(factories);
-        }
-        catch (BadImageFormatException)
-        {
-          // might not be a .NET dll but how?
-        }
-      }
     }
 
     private void ConnectChangeListeners()
