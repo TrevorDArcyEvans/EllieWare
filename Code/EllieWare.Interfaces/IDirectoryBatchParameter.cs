@@ -6,13 +6,21 @@
 //  www.EllieWare.com
 //
 
-using EllieWare.Interfaces;
-
-namespace EllieWare.Common
+namespace EllieWare.Interfaces
 {
+  /// <summary>
+  /// A series of parameterized values taken from a listing of files in a directory
+  /// </summary>
   public interface IDirectoryBatchParameter : IParameter
   {
+    /// <summary>
+    /// File mask when retrieving files from <see cref="Directory"/>
+    /// </summary>
     string FileMask { get; set; }
+
+    /// <summary>
+    /// Fully qualified path to directory on disk
+    /// </summary>
     string Directory { get; set; }
   }
 }
