@@ -27,7 +27,8 @@ namespace EllieWare.Common
       }
     }
 
-    public Parameter()
+    public Parameter() :
+      base()
     {
     }
 

@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-
 using System.Xml;
 using EllieWare.Interfaces;
 
@@ -39,14 +38,16 @@ namespace EllieWare.Common
 
     public override void ReadXml(XmlReader reader)
     {
-      // TODO   ReadXml
       base.ReadXml(reader);
+
+      FileMask = reader.GetAttribute("FileMask");
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      // TODO   WriteXml
       base.WriteXml(writer);
+
+      writer.WriteAttributeString("FileMask", FileMask);
     }
   }
 }
