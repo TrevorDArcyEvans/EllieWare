@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+using EllieWare.Interfaces;
+
 namespace EllieWare.Common
 {
   public class Parameter : IParameter

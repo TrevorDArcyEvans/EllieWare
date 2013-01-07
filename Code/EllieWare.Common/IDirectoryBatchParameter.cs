@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 
+using EllieWare.Interfaces;
+
 namespace EllieWare.Common
 {
   interface IDirectoryBatchParameter : IParameter
