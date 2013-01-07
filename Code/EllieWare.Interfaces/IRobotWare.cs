@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
+
 namespace EllieWare.Interfaces
 {
   /// <summary>
@@ -13,18 +15,23 @@ namespace EllieWare.Interfaces
   public interface IRobotWare
   {
     /// <summary>
-    /// if specific RobotWare product is licensed
+    /// If specific RobotWare product is licensed
     /// </summary>
     bool IsLicensed { get; }
 
     /// <summary>
-    /// fully qualified path to user specifications folder on disk
+    /// Fully qualified path to user specifications folder on disk
     /// </summary>
     string UserSpecificationFolder { get; }
 
     /// <summary>
-    /// specific RobotWare application name eg 'RobotWare for Windows'
+    /// Specific RobotWare application name eg 'RobotWare for Windows'
     /// </summary>
     string ApplicationName { get; }
+
+    /// <summary>
+    /// A list of all specifications in the <see cref="UserSpecificationFolder"/> without a file extension
+    /// </summary>
+    IEnumerable<string> Specifications { get; }
   }
 }

@@ -5,14 +5,11 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 
 namespace EllieWare.Manager
 {
   public interface IHost
   {
     void RefreshSpecificationsList();
-    string SpecificationsFolder { get; }
-    IEnumerable<string> Specifications { get; }
   }
 }

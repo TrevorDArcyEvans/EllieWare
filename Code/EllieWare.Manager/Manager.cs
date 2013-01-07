@@ -47,8 +47,6 @@ namespace EllieWare.Manager
           MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
       }
-      
-      SpecificationsFolder = mRoot.UserSpecificationFolder;
 
       RefreshSpecificationsList();
       UpdateButtons();
@@ -56,7 +54,7 @@ namespace EllieWare.Manager
 
     private string GetSelectedSpecificationPath()
     {
-      var pathNoExtn = Path.Combine(SpecificationsFolder, mSpecs.SelectedItems[0].Text);
+      var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
       var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
 
       return retVal;
@@ -107,26 +105,13 @@ namespace EllieWare.Manager
       RefreshSpecificationsList(string.Empty);
     }
 
-    public string SpecificationsFolder { get; private set; }
-
-    public IEnumerable<string> Specifications
-    {
-      get
-      {
-        var allSpecsWithExtn = Directory.EnumerateFiles(SpecificationsFolder, "*" + Utils.MacroFileExtension);
-        var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
-
-        return allSpecsNoExten;
-      }
-    }
-
     #endregion
 
     private void RefreshSpecificationsList(string searchTxt)
     {
       mSpecs.Items.Clear();
 
-      var filteredSpecsNoExten = from specNoExtn in Specifications where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
+      var filteredSpecsNoExten = from specNoExtn in mRoot.Specifications where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
       mSpecs.Items.AddRange(filteredSpecsNoExten.ToArray());
     }
 
@@ -175,12 +160,12 @@ namespace EllieWare.Manager
       var fileRoot = Path.GetFileNameWithoutExtension(selSpecPath);
       var extension = Path.GetExtension(selSpecPath);
       var fileName = String.Concat(string.Format("{0} - Copy", fileRoot), extension);
-      var fullPath = Path.Combine(SpecificationsFolder, fileName);
+      var fullPath = Path.Combine(mRoot.UserSpecificationFolder, fileName);
       var number = 1;
       while (File.Exists(fullPath))
       {
         fileName = String.Concat(string.Format("{0} - Copy ({1})", fileRoot, ++number), extension);
-        fullPath = Path.Combine(SpecificationsFolder, fileName);
+        fullPath = Path.Combine(mRoot.UserSpecificationFolder, fileName);
       }
 
       File.Copy(selSpecPath, fullPath);

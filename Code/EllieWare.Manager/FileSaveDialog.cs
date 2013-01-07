@@ -9,23 +9,24 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
   public partial class FileSaveDialog : Form
   {
-    private readonly IHost mHost;
+    private readonly IRobotWare mRoot;
 
     public FileSaveDialog()
     {
       InitializeComponent();
     }
 
-    public FileSaveDialog(IHost host) :
+    public FileSaveDialog(IRobotWare root) :
       this()
     {
-      mHost = host;
-      mFileNames.DataSource = mHost.Specifications.ToList();
+      mRoot = root;
+      mFileNames.DataSource = mRoot.Specifications.ToList();
     }
 
     public string FileName
@@ -43,7 +44,7 @@ namespace EllieWare.Manager
         return;
       }
 
-      var lowerCaseFileNames = from thisFileName in mHost.Specifications select thisFileName.ToLower(CultureInfo.CurrentCulture);
+      var lowerCaseFileNames = from thisFileName in mRoot.Specifications select thisFileName.ToLower(CultureInfo.CurrentCulture);
       if (lowerCaseFileNames.Contains(FileName.ToLower(CultureInfo.CurrentCulture)))
       {
         var msg = string.Format("{0} already exists.\nDo you want to overwrite?", FileName);

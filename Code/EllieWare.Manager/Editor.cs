@@ -114,14 +114,14 @@ namespace EllieWare.Manager
       if (string.IsNullOrEmpty(mFilePath))
       {
         // new file, so get file name
-        var dlg = new FileSaveDialog(mHost);
+        var dlg = new FileSaveDialog(mRoot);
         if (dlg.ShowDialog() != DialogResult.OK)
         {
           // user cancelled
           return;
         }
 
-        var filePath = Path.Combine(mHost.SpecificationsFolder, dlg.FileName);
+        var filePath = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
         mFilePath = Path.ChangeExtension(filePath, Utils.MacroFileExtension);
 
         UpdateTitle();

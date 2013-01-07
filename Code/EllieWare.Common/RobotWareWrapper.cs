@@ -6,7 +6,9 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -24,6 +26,17 @@ namespace EllieWare.Common
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);
+    }
+
+    public IEnumerable<string> Specifications
+    {
+      get
+      {
+        var allSpecsWithExtn = Directory.EnumerateFiles(UserSpecificationFolder, "*" + Utils.MacroFileExtension);
+        var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
+
+        return allSpecsNoExten;
+      }
     }
   }
 }

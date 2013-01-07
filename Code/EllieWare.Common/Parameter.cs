@@ -6,11 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
-using System.IO;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
-using System.Xml.Serialization;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -52,7 +49,7 @@ namespace EllieWare.Common
       var typeStr = reader.GetAttribute("ValueType");
       var objType = Type.GetType(typeStr);
       var objData = reader.GetAttribute("Value");
-      ParameterValue = XmlDeserializeFromString(objData, objType);
+      ParameterValue = XmlSerializationHelpers.XmlDeserializeFromString(objData, objType);
     }
 
     public virtual void WriteXml(XmlWriter writer)
@@ -62,38 +59,8 @@ namespace EllieWare.Common
       var objType = ParameterValue.GetType();
       writer.WriteAttributeString("ValueType", objType.ToString());
 
-      var objData = XmlSerializeToString(ParameterValue);
+      var objData = XmlSerializationHelpers.XmlSerializeToString(ParameterValue);
       writer.WriteAttributeString("Value", objData);
     }
-
-    #region Object serialisation helpers
-
-    private static string XmlSerializeToString(object objectInstance)
-    {
-      var serializer = new XmlSerializer(objectInstance.GetType());
-      var sb = new StringBuilder();
-
-      using (TextWriter writer = new StringWriter(sb))
-      {
-        serializer.Serialize(writer, objectInstance);
-      }
-
-      return sb.ToString();
-    }
-
-    private static object XmlDeserializeFromString(string objectData, Type type)
-    {
-      var serializer = new XmlSerializer(type);
-      object result;
-
-      using (TextReader reader = new StringReader(objectData))
-      {
-        result = serializer.Deserialize(reader);
-      }
-
-      return result;
-    }
-
-    #endregion
   }
 }

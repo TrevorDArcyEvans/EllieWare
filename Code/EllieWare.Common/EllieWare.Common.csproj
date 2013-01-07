@@ -65,6 +65,12 @@
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="MacroFileSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MacroFileSelector.Designer.cs">
+      <DependentUpon>MacroFileSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parameter.cs" />
     <Compile Include="ParameterCollection.cs" />
     <Compile Include="ParametersEditor.cs">
@@ -96,6 +102,7 @@
     </Compile>
     <Compile Include="Specification.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="XmlSerializationHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
@@ -117,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DualItemIOBase.resx">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MacroFileSelector.resx">
+      <DependentUpon>MacroFileSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParametersEditor.resx">
       <DependentUpon>ParametersEditor.cs</DependentUpon>
