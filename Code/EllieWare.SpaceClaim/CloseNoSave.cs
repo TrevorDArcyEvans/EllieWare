@@ -21,8 +21,8 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-    public CloseNoSave(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public CloseNoSave(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
     }

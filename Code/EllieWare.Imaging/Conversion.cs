@@ -18,8 +18,8 @@ namespace EllieWare.Imaging
     {
     }
 
-    public Conversion(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public Conversion(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(Utils.ImageFilesFilter);
       SetDestinationFileSelectorFilter(Utils.ImageFilesFilter);

@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -21,8 +20,8 @@ namespace EllieWare.Transfer.FTP
       Initialise();
     }
 
-    public FtpSingleItemExistsIOBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public FtpSingleItemExistsIOBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       InitializeComponent();
 

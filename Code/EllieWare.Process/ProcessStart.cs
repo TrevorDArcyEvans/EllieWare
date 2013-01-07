@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -13,8 +12,8 @@ namespace EllieWare.Process
 {
   public class ProcessStart : SingleItemIOBase
   {
-    public ProcessStart(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ProcessStart(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

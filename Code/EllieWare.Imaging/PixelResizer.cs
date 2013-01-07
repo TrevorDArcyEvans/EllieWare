@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 using Simplicode.Imaging.Filters;
@@ -18,8 +17,8 @@ namespace EllieWare.Imaging
     {
     }
 
-    public PixelResizer(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public PixelResizer(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       Label1.Text = "Pixels Wide:";
       Label2.Text = "Pixels High:";

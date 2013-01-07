@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
@@ -37,9 +36,9 @@ namespace EllieWare.IO
       }
     }
 
-    public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new FileDelete(roots, callback, mgr);
+      return new FileDelete(root, callback, mgr);
     }
   }
 }

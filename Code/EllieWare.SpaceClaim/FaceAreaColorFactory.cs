@@ -56,9 +56,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new FaceAreaColor(roots, callback, mgr);
+      return new FaceAreaColor(root, callback, mgr);
     }
   }
 }

@@ -22,8 +22,8 @@ namespace EllieWare.Transfer.FTP
       Initialise();
     }
 
-    public DirectoryUpload(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothDirectory)
+    public DirectoryUpload(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
       InitializeComponent();
 

@@ -23,12 +23,11 @@ namespace EllieWare.Manager
     private const int MaxUnlicensedSteps = 5;
 
     private readonly IHost mHost;
-    private readonly IEnumerable<object> mRoots;
+    private readonly IRobotWare mRoot;
     private readonly ISpecification mSpecification;
     private string mFilePath;
     private readonly Adder mAddDlg;
     private readonly List<IFactory> mFactories;
-    private readonly bool IsLicensed;
 
     private int mCurrentStep;
     private int mLastLogWidth;
@@ -40,20 +39,17 @@ namespace EllieWare.Manager
       UpdateWidth();
     }
 
-    public Editor(IHost host, IEnumerable<object> roots, string filePath) :
+    public Editor(IHost host, IRobotWare root, string filePath) :
       this()
     {
       mHost = host;
-      mRoots = roots;
+      mRoot = root;
       mFilePath = filePath;
-
-      var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
-      IsLicensed = licensable != null ? licensable.IsLicensed : false;
 
       mFactories = Utils.GetFactories().ToList();
 
       mAddDlg = new Adder(mFactories);
-      mSpecification = new Specification(mRoots, mCallback, mFactories);
+      mSpecification = new Specification(mRoot, mCallback, mFactories);
       mSteps.DataSource = mSpecification.Steps;
 
       LoadFromFile();
@@ -229,7 +225,7 @@ namespace EllieWare.Manager
 
     private bool Run(int stepNum)
     {
-      if (stepNum >= MaxUnlicensedSteps && !IsLicensed)
+      if (stepNum >= MaxUnlicensedSteps && !mRoot.IsLicensed)
       {
         var msg = string.Format("Only {0} steps in demo mode", MaxUnlicensedSteps);
 
@@ -297,7 +293,7 @@ namespace EllieWare.Manager
       }
 
       var selFactory = mAddDlg.SelectedFactory;
-      var step = selFactory.Create(mRoots, mCallback, mSpecification.ParameterManager);
+      var step = selFactory.Create(mRoot, mCallback, mSpecification.ParameterManager);
 
       var changeableStep = step as IMutableRunnable;
       if (changeableStep != null)

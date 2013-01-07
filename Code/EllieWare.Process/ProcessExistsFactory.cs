@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Process
@@ -37,9 +36,9 @@ namespace EllieWare.Process
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new ProcessExists(roots, callback, mgr);
+      return new ProcessExists(root, callback, mgr);
     }
   }
 }

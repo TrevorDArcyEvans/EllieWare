@@ -18,8 +18,8 @@ namespace EllieWare.Logging
     {
     }
 
-    public DateTimeLog(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public DateTimeLog(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       lblMessage.Visible = mMessage.Visible = false;
     }

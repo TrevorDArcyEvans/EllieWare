@@ -29,7 +29,7 @@ namespace RobotWare.Windows
       var licWrapper = new RobotWareWrapper(ApplicationName);
       Directory.CreateDirectory(licWrapper.UserSpecificationFolder);
 
-      Application.Run(new EllieWare.Manager.Manager(new[] { licWrapper }));
+      Application.Run(new EllieWare.Manager.Manager(licWrapper));
     }
   }
 }

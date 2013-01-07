@@ -56,6 +56,7 @@
     <Compile Include="IFactory.cs" />
     <Compile Include="IMutableRunnable.cs" />
     <Compile Include="IParameterManager.cs" />
+    <Compile Include="IRobotWare.cs" />
     <Compile Include="IRunnable.cs" />
     <Compile Include="LicenseInformation.cs" />
     <Compile Include="LogLevel.cs" />

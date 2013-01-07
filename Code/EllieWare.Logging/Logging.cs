@@ -22,8 +22,8 @@ namespace EllieWare.Logging
       InitializeComponent();
     }
 
-    public Logging(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public Logging(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
 

@@ -18,8 +18,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public EdgeLengthSelect(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public EdgeLengthSelect(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       AreaLabel.Text = "Length:";
       AreaUnits.Text = Window.ActiveWindow.Units.Length.Symbol;

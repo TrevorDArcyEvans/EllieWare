@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -19,8 +18,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ExportToAutoCAD(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ExportToAutoCAD(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(Utils.WindowVectorExportFilter);
     }

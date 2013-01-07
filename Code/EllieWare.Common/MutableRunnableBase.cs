@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
@@ -16,7 +15,7 @@ namespace EllieWare.Common
 {
   public partial class MutableRunnableBase : UserControl, IMutableRunnable
   {
-    protected readonly IEnumerable<object> mRoots;
+    protected readonly IRobotWare mRoot;
     protected readonly ICallback mCallback;
     protected readonly IParameterManager mParamMgr;
 
@@ -25,10 +24,10 @@ namespace EllieWare.Common
       InitializeComponent();
     }
 
-    public MutableRunnableBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
+    public MutableRunnableBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
       this()
     {
-      mRoots = roots;
+      mRoot = root;
       mCallback = callback;
       mParamMgr = mgr;
     }

@@ -36,8 +36,8 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-    public SetViewProjection(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public SetViewProjection(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
 

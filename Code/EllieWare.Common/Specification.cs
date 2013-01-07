@@ -15,7 +15,7 @@ namespace EllieWare.Common
 {
   public class Specification : ISpecification
   {
-    private readonly IEnumerable<object> mRoot;
+    private readonly IRobotWare mRoot;
     private readonly ICallback mCallback;
     private readonly IEnumerable<IFactory> mFactories;
 
@@ -26,10 +26,10 @@ namespace EllieWare.Common
       Steps = new List<IRunnable>();
     }
 
-    public Specification(IEnumerable<object> roots, ICallback callback, IEnumerable<IFactory> factories) :
+    public Specification(IRobotWare root, ICallback callback, IEnumerable<IFactory> factories) :
       this()
     {
-      mRoot = roots;
+      mRoot = root;
       mCallback = callback;
       mFactories = factories;
     }

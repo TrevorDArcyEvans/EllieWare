@@ -13,8 +13,6 @@ namespace EllieWare.Macro
 {
   public class MacroRunnerFactory : IFactory
   {
-    #region Implementation of IFactory
-
     public string Title
     {
       get
@@ -58,11 +56,9 @@ namespace EllieWare.Macro
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new MacroRunner(roots, callback, mgr);
+      return new MacroRunner(root, callback, mgr);
     }
-
-    #endregion
   }
 }

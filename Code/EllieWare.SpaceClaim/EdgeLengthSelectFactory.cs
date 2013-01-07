@@ -56,9 +56,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new EdgeLengthSelect(roots, callback, mgr);
+      return new EdgeLengthSelect(root, callback, mgr);
     }
   }
 }

@@ -6,9 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -22,8 +20,8 @@ namespace EllieWare.Imaging
       InitializeComponent();
     }
 
-    public ResizerBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ResizerBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       InitializeComponent();
 

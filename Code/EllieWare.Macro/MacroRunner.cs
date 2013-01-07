@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using EllieWare.Common;
@@ -19,8 +18,8 @@ namespace EllieWare.Macro
     {
     }
 
-    public MacroRunner(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public MacroRunner(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 
@@ -37,7 +36,7 @@ namespace EllieWare.Macro
     public override bool Run()
     {
       var factories = Utils.GetFactories();
-      var spec = new Specification(mRoots, mCallback, factories);
+      var spec = new Specification(mRoot, mCallback, factories);
       using (var fs = new FileStream(SourceFilePathResolvedValue, FileMode.Open))
       {
         var reader = XmlReader.Create(fs);

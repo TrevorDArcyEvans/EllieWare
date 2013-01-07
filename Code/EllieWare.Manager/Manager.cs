@@ -13,44 +13,42 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using EllieWare.Common;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
   public partial class Manager : Form, IHost
   {
-    private readonly IEnumerable<object> mRoots;
-    private readonly IRobotWare mRobotWare;
+    private readonly IRobotWare mRoot;
 
     public Manager()
     {
       InitializeComponent();
     }
 
-    public Manager(IEnumerable<object> roots) :
+    public Manager(IRobotWare root) :
       this()
     {
-      mRoots = roots;
-
-      mRobotWare = roots.Where(x => x is IRobotWare).Single() as IRobotWare;
-      if (!mRobotWare.IsLicensed)
+      mRoot = root;
+      if (!mRoot.IsLicensed)
       {
-        var dlg = new RequestLicense(mRobotWare.ApplicationName);
+        var dlg = new RequestLicense(mRoot.ApplicationName);
         if (dlg.ShowDialog() == DialogResult.OK)
         {
           // attempt to register with provided info
-          Licensing.LicenseManager.Register(mRobotWare.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
+          Licensing.LicenseManager.Register(mRoot.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
 
-          var isLicensed = mRobotWare.IsLicensed;
+          var isLicensed = mRoot.IsLicensed;
           var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                                  "  " + mRobotWare.ApplicationName + Environment.NewLine +
+                                                  "  " + mRoot.ApplicationName + Environment.NewLine +
                                                   "to:" + Environment.NewLine +
                                                   "  " + dlg.UserName
                                                   : "Information incorrect - product not registered");
-          MessageBox.Show(msg, mRobotWare.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+          MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
       }
       
-      SpecificationsFolder = mRobotWare.UserSpecificationFolder;
+      SpecificationsFolder = mRoot.UserSpecificationFolder;
 
       RefreshSpecificationsList();
       UpdateButtons();
@@ -66,7 +64,7 @@ namespace EllieWare.Manager
 
     private void CmdNew_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoots, string.Empty);
+      var dlg = new Editor(this, mRoot, string.Empty);
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -74,7 +72,7 @@ namespace EllieWare.Manager
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoots, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -89,7 +87,7 @@ namespace EllieWare.Manager
 
     private void CmdDebug_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoots, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -99,7 +97,7 @@ namespace EllieWare.Manager
 
     public void Run(string filePath)
     {
-      var dlg = new Editor(this, mRoots, filePath);
+      var dlg = new Editor(this, mRoot, filePath);
       dlg.Show(this);
       dlg.Run();
     }
@@ -157,7 +155,7 @@ namespace EllieWare.Manager
 
     private void CmdAbout_Click(object sender, EventArgs e)
     {
-      var dlg = new AboutBox(mRobotWare.ApplicationName);
+      var dlg = new AboutBox(mRoot.ApplicationName);
       dlg.ShowDialog();
     }
 

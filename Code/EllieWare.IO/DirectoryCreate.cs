@@ -18,8 +18,8 @@ namespace EllieWare.IO
     {
     }
 
-    public DirectoryCreate(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothDirectory)
+    public DirectoryCreate(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
     }
 

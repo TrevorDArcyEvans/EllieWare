@@ -16,8 +16,8 @@ namespace EllieWare.Common
     {
     }
 
-    public SingleItemExistsIOBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
-      base(roots, callback, mgr, browsers)
+    public SingleItemExistsIOBase(IRobotWare root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
+      base(root, callback, mgr, browsers)
     {
       SetDestinationVisible(false);
       SetExistsVisible(true);

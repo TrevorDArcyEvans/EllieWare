@@ -7,6 +7,7 @@
 //
 using System;
 using System.IO;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {

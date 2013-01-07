@@ -56,9 +56,9 @@ namespace EllieWare.DateTime
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new Pause(roots, callback, mgr);
+      return new Pause(root, callback, mgr);
     }
   }
 }

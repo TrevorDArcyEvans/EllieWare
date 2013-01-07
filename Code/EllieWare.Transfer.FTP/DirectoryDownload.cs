@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using EllieWare.Common;
@@ -22,8 +21,8 @@ namespace EllieWare.Transfer.FTP
       Initialise();
     }
 
-    public DirectoryDownload(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothDirectory)
+    public DirectoryDownload(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
       InitializeComponent();
 

@@ -20,8 +20,8 @@ namespace EllieWare.SpaceClaim
       ColorLabel.Visible = ColorSwatch.Visible = false;
     }
 
-    public FaceAreaRemove(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public FaceAreaRemove(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       ColorLabel.Visible = ColorSwatch.Visible = false;
     }

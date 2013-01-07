@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using EllieWare.Common;
@@ -20,8 +19,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ExportToForeign(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ExportToForeign(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(Utils.PartExportFilter);
     }

@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -21,8 +20,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ExportToBitmap(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ExportToBitmap(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(Utils.WindowRasterExportFilter);
     }

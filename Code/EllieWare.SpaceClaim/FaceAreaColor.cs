@@ -25,8 +25,8 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-    public FaceAreaColor(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public FaceAreaColor(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
 

@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
@@ -42,9 +41,9 @@ namespace EllieWare.Logging
       get { return typeof(DateTimeLog); }
     }
 
-    public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new DateTimeLog(roots, callback, mgr);
+      return new DateTimeLog(root, callback, mgr);
     }
   }
 }

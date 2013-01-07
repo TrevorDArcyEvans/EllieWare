@@ -33,7 +33,7 @@ namespace RobotWare.SpaceClaim
     {
       Directory.CreateDirectory(mLicenseWrapper.UserSpecificationFolder);
 
-      mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }));
+      mManager = new Lazy<Manager>(() => new Manager(mLicenseWrapper));
     }
 
     protected override void OnInitialize(Command command)
@@ -57,7 +57,7 @@ namespace RobotWare.SpaceClaim
     {
       if (mManager.Value.IsDisposed)
       {
-        mManager = new Lazy<Manager>(() => new Manager(new[] { mLicenseWrapper }));
+        mManager = new Lazy<Manager>(() => new Manager(mLicenseWrapper));
       }
       mManager.Value.Show(Application.MainWindow);
     }

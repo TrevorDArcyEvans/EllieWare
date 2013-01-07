@@ -19,8 +19,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public ExportToPdf(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ExportToPdf(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(Utils.PdfFilesFilter);
     }
