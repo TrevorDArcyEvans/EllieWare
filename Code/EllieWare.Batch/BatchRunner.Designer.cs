@@ -138,6 +138,7 @@ namespace EllieWare.Batch
       this.mSpecs.Size = new System.Drawing.Size(411, 365);
       this.mSpecs.TabIndex = 0;
       this.mSpecs.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
+      this.mSpecs.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Specs_MouseDoubleClick);
       // 
       // CmdParameters
       // 

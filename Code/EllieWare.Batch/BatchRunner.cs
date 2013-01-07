@@ -134,11 +134,15 @@ namespace EllieWare.Batch
       FireConfigurationChanged();
     }
 
-    private void CmdEdit_Click(object sender, EventArgs e)
+    private void EditSelectedSpecification()
     {
-      //
       var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
+    }
+
+    private void CmdEdit_Click(object sender, EventArgs e)
+    {
+      EditSelectedSpecification();
     }
 
     private void CmdUp_Click(object sender, EventArgs e)
@@ -191,7 +195,18 @@ namespace EllieWare.Batch
 
     public void RefreshSpecificationsList()
     {
-      // ignore
+      // nothing to refresh in UI, so ignore
+    }
+
+    private void Specs_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+      var selIndex = mSpecs.SelectedIndex;
+      if (selIndex == -1)
+      {
+        return;
+      }
+
+      EditSelectedSpecification();
     }
   }
 }
