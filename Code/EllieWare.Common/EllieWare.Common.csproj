@@ -65,8 +65,6 @@
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDirectoryBatchParameter.cs" />
-    <Compile Include="ISpecification.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParametersEditor.cs">
       <SubType>Form</SubType>
