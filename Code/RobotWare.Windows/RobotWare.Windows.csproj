@@ -91,6 +91,10 @@
       <Project>{B576477E-C3E2-42A6-9C46-B523D9F6B834}</Project>
       <Name>EllieWare.Audio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Batch\EllieWare.Batch.csproj">
+      <Project>{07855637-6DC5-4515-B1DB-D49BF498D933}</Project>
+      <Name>EllieWare.Batch</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>

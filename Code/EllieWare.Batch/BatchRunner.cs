@@ -31,6 +31,7 @@ namespace EllieWare.Batch
     public BatchRunner(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
+      InitializeComponent();
     }
 
     #region Implementation of IXmlSerializable
