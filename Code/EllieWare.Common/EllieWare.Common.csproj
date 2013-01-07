@@ -66,7 +66,6 @@
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
     <Compile Include="IDirectoryBatchParameter.cs" />
-    <Compile Include="IParameter.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParametersEditor.cs">
