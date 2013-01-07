@@ -6,7 +6,7 @@
 //  www.EllieWare.com
 //
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public interface IHost
   {

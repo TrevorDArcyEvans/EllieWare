@@ -7,7 +7,7 @@
 //
 using Controls.Development;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   partial class LogWindow
   {

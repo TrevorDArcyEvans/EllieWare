@@ -12,7 +12,6 @@ using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
-using EllieWare.Manager;
 
 namespace EllieWare.Batch
 {

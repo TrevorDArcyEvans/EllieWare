@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Controls.Development;
 using EllieWare.Interfaces;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   public partial class LogWindow : UserControl, ICallback
   {

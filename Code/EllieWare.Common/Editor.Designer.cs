@@ -7,7 +7,7 @@
 //
 using EllieWare.Support;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
   partial class Editor
   {
@@ -57,7 +57,7 @@ namespace EllieWare.Manager
       this.CmdClose = new System.Windows.Forms.Button();
       this.EditorHelp = new System.Windows.Forms.HelpProvider();
       this.mMainContainer = new System.Windows.Forms.SplitContainer();
-      this.mCallback = new EllieWare.Manager.LogWindow();
+      this.mCallback = new LogWindow();
       tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
