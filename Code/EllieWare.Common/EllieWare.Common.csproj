@@ -57,6 +57,12 @@
     <Compile Include="AddEditParameter.Designer.cs">
       <DependentUpon>AddEditParameter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Adder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adder.Designer.cs">
+      <DependentUpon>Adder.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectoryBatchParameter.cs" />
     <Compile Include="BrowserTypes.cs" />
     <Compile Include="DualItemIOBase.cs">
@@ -64,6 +70,25 @@
     </Compile>
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileSaveDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileSaveDialog.Designer.cs">
+      <DependentUpon>FileSaveDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHost.cs" />
+    <Compile Include="LogWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LogWindow.Designer.cs">
+      <DependentUpon>LogWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="MacroFileSelector.cs">
       <SubType>Form</SubType>
@@ -122,8 +147,20 @@
     <EmbeddedResource Include="AddEditParameter.resx">
       <DependentUpon>AddEditParameter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Adder.resx">
+      <DependentUpon>Adder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DualItemIOBase.resx">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileSaveDialog.resx">
+      <DependentUpon>FileSaveDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogWindow.resx">
+      <DependentUpon>LogWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MacroFileSelector.resx">
       <DependentUpon>MacroFileSelector.cs</DependentUpon>
