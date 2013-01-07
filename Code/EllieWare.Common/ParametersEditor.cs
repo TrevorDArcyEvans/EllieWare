@@ -24,9 +24,9 @@ namespace EllieWare.Common
       this()
     {
       ParametersDisplay.Items.Clear();
-      foreach (var displayName in paramMgr.DisplayNames)
+      foreach (var displayName in paramMgr.Parameters)
       {
-        ParametersDisplay.Items.Add(new Parameter(displayName, paramMgr.Get(displayName)));
+        ParametersDisplay.Items.Add(displayName);
       }
     }
 

@@ -35,12 +35,12 @@ namespace EllieWare.Common
     private void UpdateParameters()
     {
       ParameterMenu.Items.Clear();
-      var compatibleParamNames = from thisName in mParamMgr.DisplayNames
-                                 where mParamMgr.Get(thisName).GetType() == typeof(string)
+      var compatibleParamNames = from thisName in mParamMgr.Parameters
+                                 where mParamMgr.Get(thisName.DisplayName).ParameterValue.GetType() == typeof(string)
                                  select thisName;
       foreach (var compatibleName in compatibleParamNames)
       {
-        var newItem = ParameterMenu.Items.Add(compatibleName);
+        var newItem = ParameterMenu.Items.Add(compatibleName.DisplayName);
         newItem.Click += MenuItem_Click;
       }
     }
@@ -88,8 +88,8 @@ namespace EllieWare.Common
           if (retVal.Contains(encodedParamName))
           {
             var unencodedParamName = GetUnencodedParameterName(encodedParamName);
-            var paramValue = mParamMgr.Get(unencodedParamName);
-            retVal = retVal.Replace(encodedParamName, paramValue.ToString());
+            var param = mParamMgr.Get(unencodedParamName);
+            retVal = retVal.Replace(encodedParamName, param.ParameterValue.ToString());
           }
         }
         return retVal;

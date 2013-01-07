@@ -66,6 +66,7 @@
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Parameter.cs" />
+    <Compile Include="ParameterCollection.cs" />
     <Compile Include="ParametersEditor.cs">
       <SubType>Form</SubType>
     </Compile>

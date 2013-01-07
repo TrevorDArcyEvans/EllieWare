@@ -5,12 +5,14 @@
 //
 //  www.EllieWare.com
 //
+using System.Xml.Serialization;
+
 namespace EllieWare.Interfaces
 {
   /// <summary>
   /// A parameterized value
   /// </summary>
-  public interface IParameter
+  public interface IParameter : IXmlSerializable
   {
     /// <summary>
     /// Unique name of parameter, suitable for display in a user interface

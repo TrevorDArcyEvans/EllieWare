@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -376,7 +375,7 @@ namespace EllieWare.Manager
       var paramMgr = mSpecification.ParameterManager;
 
       // remove all parameters
-      var displayNames = paramMgr.DisplayNames.ToList();
+      var displayNames = paramMgr.Parameters.ToList();
       foreach (var displayName in displayNames)
       {
         paramMgr.Remove(displayName);
@@ -385,7 +384,7 @@ namespace EllieWare.Manager
       // recreate all parameters
       foreach (var parameter in dlg.Parameters)
       {
-        paramMgr.Add(parameter.DisplayName, parameter.ParameterValue);
+        paramMgr.Add(parameter);
       }
 
       UpdateUserInterface();

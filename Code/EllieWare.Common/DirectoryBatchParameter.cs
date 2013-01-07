@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 
+using System.Xml;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -25,10 +26,27 @@ namespace EllieWare.Common
       }
     }
 
+    public DirectoryBatchParameter() :
+      base()
+    {
+    }
+
     public DirectoryBatchParameter(string name, string directory, string fileMask) :
       base(name, directory)
     {
       FileMask = fileMask;
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      // TODO   ReadXml
+      base.ReadXml(reader);
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      // TODO   WriteXml
+      base.WriteXml(writer);
     }
   }
 }
