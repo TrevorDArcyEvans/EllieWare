@@ -25,8 +25,8 @@ namespace EllieWare.Pdf
       ConcatenateMain.BringToFront();
     }
 
-    public Concatenate(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public Concatenate(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       InitializeComponent();
 
