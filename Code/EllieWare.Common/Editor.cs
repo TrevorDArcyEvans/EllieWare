@@ -60,6 +60,14 @@ namespace EllieWare.Common
       }
     }
 
+    public ISpecification Specification
+    {
+      get
+      {
+        return mSpecification;
+      }
+    }
+
     private void UpdateWidth()
     {
       if (!mMainContainer.Panel2Collapsed)

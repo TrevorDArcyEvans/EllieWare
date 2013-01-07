@@ -37,6 +37,8 @@ namespace EllieWare.Batch
 
     public override void ReadXml(XmlReader reader)
     {
+      mParamMgr.ReadXml(reader);
+
       var specFileListStr = reader.GetAttribute("SpecificationFileNames");
       var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
       mSpecFileNames.AddRange(tempList);
@@ -46,6 +48,8 @@ namespace EllieWare.Batch
 
     public override void WriteXml(XmlWriter writer)
     {
+      mParamMgr.WriteXml(writer);
+
       var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
       writer.WriteAttributeString("SpecificationFileNames", specFileList);
     }
@@ -136,6 +140,9 @@ namespace EllieWare.Batch
     private void EditSelectedSpecification()
     {
       var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
+
+      // TODO   merge ParameterManager
+
       dlg.ShowDialog();
     }
 
@@ -180,6 +187,15 @@ namespace EllieWare.Batch
       mSpecs.SelectedIndex = selIndex + 1;
 
       FireConfigurationChanged();
+    }
+
+    private void CmdParameters_Click(object sender, EventArgs e)
+    {
+      var dlg = new ParametersEditor(mParamMgr);
+      if (dlg.ShowDialog() == DialogResult.OK)
+      {
+        FireConfigurationChanged();
+      }
     }
 
     private void Steps_SelectedIndexChanged(object sender, EventArgs e)

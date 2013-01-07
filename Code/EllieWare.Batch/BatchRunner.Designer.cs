@@ -149,6 +149,7 @@ namespace EllieWare.Batch
       this.CmdParameters.TabIndex = 6;
       this.CmdParameters.Text = "Parameters...";
       this.CmdParameters.UseVisualStyleBackColor = true;
+      this.CmdParameters.Click += new System.EventHandler(this.CmdParameters_Click);
       // 
       // BatchRunner
       // 
