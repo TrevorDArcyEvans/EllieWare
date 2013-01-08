@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -17,6 +18,7 @@ namespace EllieWare.Batch
 {
   public partial class BatchRunner : MutableRunnableBase, IHost
   {
+    private readonly IParameterManager mBatchParamMgr = new ParameterManager();
     private readonly List<string> mSpecFileNames = new List<string>();
 
     public BatchRunner() :
@@ -37,21 +39,21 @@ namespace EllieWare.Batch
 
     public override void ReadXml(XmlReader reader)
     {
-      mParamMgr.ReadXml(reader);
-
       var specFileListStr = reader.GetAttribute("SpecificationFileNames");
       var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
       mSpecFileNames.AddRange(tempList);
+
+      mBatchParamMgr.ReadXml(reader);
 
       UpdateUserInterface();
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      mParamMgr.WriteXml(writer);
-
       var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
       writer.WriteAttributeString("SpecificationFileNames", specFileList);
+
+      mBatchParamMgr.WriteXml(writer);
     }
 
     #endregion
@@ -191,11 +193,26 @@ namespace EllieWare.Batch
 
     private void CmdParameters_Click(object sender, EventArgs e)
     {
-      var dlg = new ParametersEditor(mParamMgr);
-      if (dlg.ShowDialog() == DialogResult.OK)
+      var dlg = new ParametersEditor(mBatchParamMgr);
+      if (dlg.ShowDialog() != DialogResult.OK)
       {
-        FireConfigurationChanged();
+        return;
       }
+
+      // remove all parameters
+      var displayNames = mBatchParamMgr.Parameters.ToList();
+      foreach (var displayName in displayNames)
+      {
+        mBatchParamMgr.Remove(displayName);
+      }
+
+      // recreate all parameters
+      foreach (var parameter in dlg.Parameters)
+      {
+        mBatchParamMgr.Add(parameter);
+      }
+
+      FireConfigurationChanged();
     }
 
     private void Steps_SelectedIndexChanged(object sender, EventArgs e)

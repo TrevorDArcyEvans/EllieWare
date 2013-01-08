@@ -11,7 +11,7 @@ namespace EllieWare.Interfaces
   /// <summary>
   /// A series of parameterized values taken from a listing of files in a directory
   /// </summary>
-  public interface IDirectoryBatchParameter : IParameter
+  public interface IDirectoryBatchParameter : IBatchParameter
   {
     /// <summary>
     /// File mask when retrieving files from <see cref="Directory"/>

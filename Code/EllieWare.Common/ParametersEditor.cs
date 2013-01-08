@@ -38,6 +38,19 @@ namespace EllieWare.Common
       }
     }
 
+    private void EditSelectedParameter()
+    {
+      var selParam = (Parameter) ParametersDisplay.SelectedItem;
+      var dlg = new AddEditParameter(Parameters, selParam);
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      selParam.ParameterValue = dlg.Parameter.ParameterValue;
+      ParametersDisplay.RefreshItem(ParametersDisplay.SelectedIndex);
+    }
+
     private void CmdAdd_Click(object sender, EventArgs e)
     {
       var dlg = new AddEditParameter(Parameters);
@@ -51,15 +64,7 @@ namespace EllieWare.Common
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var selParam = (Parameter) ParametersDisplay.SelectedItem;
-      var dlg = new AddEditParameter(Parameters, selParam);
-      if (dlg.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-
-      selParam.ParameterValue = dlg.Parameter.ParameterValue;
-      ParametersDisplay.RefreshItem(ParametersDisplay.SelectedIndex);
+      EditSelectedParameter();
     }
 
     private void CmdDelete_Click(object sender, EventArgs e)
@@ -70,6 +75,16 @@ namespace EllieWare.Common
     private void Parameters_SelectedIndexChanged(object sender, EventArgs e)
     {
       CmdEdit.Enabled = CmdDelete.Enabled = ParametersDisplay.SelectedIndex != -1;
+    }
+
+    private void ParametersDisplay_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+      if (ParametersDisplay.SelectedIndex == -1)
+      {
+        return;
+      }
+
+      EditSelectedParameter();
     }
   }
 }

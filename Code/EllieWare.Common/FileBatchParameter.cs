@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
+using System.IO;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -26,6 +28,14 @@ namespace EllieWare.Common
     public FileBatchParameter(string name, string filePath) :
       base(name, filePath)
     {
+    }
+
+    public IEnumerable<string> ResolvedValues
+    {
+      get
+      {
+        return File.ReadAllLines(FilePath);
+      }
     }
   }
 }

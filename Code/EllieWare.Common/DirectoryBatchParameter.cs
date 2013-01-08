@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using System.Xml;
 using EllieWare.Interfaces;
 
@@ -48,6 +49,11 @@ namespace EllieWare.Common
       base.WriteXml(writer);
 
       writer.WriteAttributeString("FileMask", FileMask);
+    }
+
+    public IEnumerable<string> ResolvedValues
+    {
+      get { return System.IO.Directory.EnumerateFiles(Directory, FileMask); }
     }
   }
 }

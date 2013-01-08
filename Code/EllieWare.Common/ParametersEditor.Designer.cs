@@ -42,12 +42,12 @@ namespace EllieWare.Common
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParametersEditor));
-      this.CmdDelete = new System.Windows.Forms.Button();
       this.CmdAdd = new System.Windows.Forms.Button();
+      this.CmdEdit = new System.Windows.Forms.Button();
+      this.CmdDelete = new System.Windows.Forms.Button();
+      this.ParametersDisplay = new EllieWare.Support.RefreshingListBox();
       this.CmdCancel = new System.Windows.Forms.Button();
       this.CmdOK = new System.Windows.Forms.Button();
-      this.ParametersDisplay = new EllieWare.Support.RefreshingListBox();
-      this.CmdEdit = new System.Windows.Forms.Button();
       this.ParametersEditorHelp = new System.Windows.Forms.HelpProvider();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,71 +58,6 @@ namespace EllieWare.Common
       tableLayoutPanel4.SuspendLayout();
       tableLayoutPanel3.SuspendLayout();
       this.SuspendLayout();
-      // 
-      // CmdDelete
-      // 
-      this.CmdDelete.Enabled = false;
-      this.CmdDelete.Location = new System.Drawing.Point(3, 61);
-      this.CmdDelete.Name = "CmdDelete";
-      this.CmdDelete.Size = new System.Drawing.Size(75, 23);
-      this.CmdDelete.TabIndex = 2;
-      this.CmdDelete.Text = "Delete";
-      this.CmdDelete.UseVisualStyleBackColor = true;
-      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
-      // 
-      // CmdAdd
-      // 
-      this.CmdAdd.Location = new System.Drawing.Point(3, 3);
-      this.CmdAdd.Name = "CmdAdd";
-      this.CmdAdd.Size = new System.Drawing.Size(75, 23);
-      this.CmdAdd.TabIndex = 0;
-      this.CmdAdd.Text = "Add...";
-      this.CmdAdd.UseVisualStyleBackColor = true;
-      this.CmdAdd.Click += new System.EventHandler(this.CmdAdd_Click);
-      // 
-      // CmdCancel
-      // 
-      this.CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.CmdCancel.Location = new System.Drawing.Point(3, 3);
-      this.CmdCancel.Name = "CmdCancel";
-      this.CmdCancel.Size = new System.Drawing.Size(75, 23);
-      this.CmdCancel.TabIndex = 0;
-      this.CmdCancel.Text = "Cancel";
-      this.CmdCancel.UseVisualStyleBackColor = true;
-      // 
-      // CmdOK
-      // 
-      this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.CmdOK.Location = new System.Drawing.Point(3, 3);
-      this.CmdOK.Name = "CmdOK";
-      this.CmdOK.Size = new System.Drawing.Size(75, 23);
-      this.CmdOK.TabIndex = 0;
-      this.CmdOK.Text = "OK";
-      this.CmdOK.UseVisualStyleBackColor = true;
-      // 
-      // ParametersDisplay
-      // 
-      tableLayoutPanel2.SetColumnSpan(this.ParametersDisplay, 3);
-      this.ParametersDisplay.DisplayMember = "Summary";
-      this.ParametersDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ParametersDisplay.FormattingEnabled = true;
-      this.ParametersDisplay.Location = new System.Drawing.Point(3, 3);
-      this.ParametersDisplay.Name = "ParametersDisplay";
-      this.ParametersDisplay.Size = new System.Drawing.Size(474, 268);
-      this.ParametersDisplay.Sorted = true;
-      this.ParametersDisplay.TabIndex = 0;
-      this.ParametersDisplay.SelectedIndexChanged += new System.EventHandler(this.Parameters_SelectedIndexChanged);
-      // 
-      // CmdEdit
-      // 
-      this.CmdEdit.Enabled = false;
-      this.CmdEdit.Location = new System.Drawing.Point(3, 32);
-      this.CmdEdit.Name = "CmdEdit";
-      this.CmdEdit.Size = new System.Drawing.Size(75, 23);
-      this.CmdEdit.TabIndex = 1;
-      this.CmdEdit.Text = "Edit...";
-      this.CmdEdit.UseVisualStyleBackColor = true;
-      this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 
       // tableLayoutPanel1
       // 
@@ -141,6 +76,38 @@ namespace EllieWare.Common
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.Size = new System.Drawing.Size(81, 87);
       tableLayoutPanel1.TabIndex = 8;
+      // 
+      // CmdAdd
+      // 
+      this.CmdAdd.Location = new System.Drawing.Point(3, 3);
+      this.CmdAdd.Name = "CmdAdd";
+      this.CmdAdd.Size = new System.Drawing.Size(75, 23);
+      this.CmdAdd.TabIndex = 0;
+      this.CmdAdd.Text = "Add...";
+      this.CmdAdd.UseVisualStyleBackColor = true;
+      this.CmdAdd.Click += new System.EventHandler(this.CmdAdd_Click);
+      // 
+      // CmdEdit
+      // 
+      this.CmdEdit.Enabled = false;
+      this.CmdEdit.Location = new System.Drawing.Point(3, 32);
+      this.CmdEdit.Name = "CmdEdit";
+      this.CmdEdit.Size = new System.Drawing.Size(75, 23);
+      this.CmdEdit.TabIndex = 1;
+      this.CmdEdit.Text = "Edit...";
+      this.CmdEdit.UseVisualStyleBackColor = true;
+      this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
+      // 
+      // CmdDelete
+      // 
+      this.CmdDelete.Enabled = false;
+      this.CmdDelete.Location = new System.Drawing.Point(3, 61);
+      this.CmdDelete.Name = "CmdDelete";
+      this.CmdDelete.Size = new System.Drawing.Size(75, 23);
+      this.CmdDelete.TabIndex = 2;
+      this.CmdDelete.Text = "Delete";
+      this.CmdDelete.UseVisualStyleBackColor = true;
+      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
       // 
       // tableLayoutPanel2
       // 
@@ -165,6 +132,20 @@ namespace EllieWare.Common
       tableLayoutPanel2.Size = new System.Drawing.Size(567, 329);
       tableLayoutPanel2.TabIndex = 9;
       // 
+      // ParametersDisplay
+      // 
+      tableLayoutPanel2.SetColumnSpan(this.ParametersDisplay, 3);
+      this.ParametersDisplay.DisplayMember = "Summary";
+      this.ParametersDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ParametersDisplay.FormattingEnabled = true;
+      this.ParametersDisplay.Location = new System.Drawing.Point(3, 3);
+      this.ParametersDisplay.Name = "ParametersDisplay";
+      this.ParametersDisplay.Size = new System.Drawing.Size(474, 268);
+      this.ParametersDisplay.Sorted = true;
+      this.ParametersDisplay.TabIndex = 0;
+      this.ParametersDisplay.SelectedIndexChanged += new System.EventHandler(this.Parameters_SelectedIndexChanged);
+      this.ParametersDisplay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ParametersDisplay_MouseDoubleClick);
+      // 
       // tableLayoutPanel4
       // 
       tableLayoutPanel4.AutoSize = true;
@@ -179,6 +160,16 @@ namespace EllieWare.Common
       tableLayoutPanel4.Size = new System.Drawing.Size(81, 29);
       tableLayoutPanel4.TabIndex = 10;
       // 
+      // CmdCancel
+      // 
+      this.CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.CmdCancel.Location = new System.Drawing.Point(3, 3);
+      this.CmdCancel.Name = "CmdCancel";
+      this.CmdCancel.Size = new System.Drawing.Size(75, 23);
+      this.CmdCancel.TabIndex = 0;
+      this.CmdCancel.Text = "Cancel";
+      this.CmdCancel.UseVisualStyleBackColor = true;
+      // 
       // tableLayoutPanel3
       // 
       tableLayoutPanel3.AutoSize = true;
@@ -192,6 +183,16 @@ namespace EllieWare.Common
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel3.Size = new System.Drawing.Size(81, 29);
       tableLayoutPanel3.TabIndex = 10;
+      // 
+      // CmdOK
+      // 
+      this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.CmdOK.Location = new System.Drawing.Point(3, 3);
+      this.CmdOK.Name = "CmdOK";
+      this.CmdOK.Size = new System.Drawing.Size(75, 23);
+      this.CmdOK.TabIndex = 0;
+      this.CmdOK.Text = "OK";
+      this.CmdOK.UseVisualStyleBackColor = true;
       // 
       // ParametersEditor
       // 
