@@ -43,7 +43,10 @@ namespace EllieWare.Batch
       var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
       mSpecFileNames.AddRange(tempList);
 
-      mBatchParamMgr.ReadXml(reader);
+      if (reader.ReadToDescendant("ParameterManager"))
+      {
+        mBatchParamMgr.ReadXml(reader.ReadSubtree());
+      }
 
       UpdateUserInterface();
     }
@@ -53,7 +56,9 @@ namespace EllieWare.Batch
       var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
       writer.WriteAttributeString("SpecificationFileNames", specFileList);
 
+      writer.WriteStartElement("ParameterManager");
       mBatchParamMgr.WriteXml(writer);
+      writer.WriteEndElement();
     }
 
     #endregion
@@ -64,7 +69,8 @@ namespace EllieWare.Batch
     {
       get
       {
-        return "TODO    Summary";
+        var descrip = string.Format("Run {0} other macro files with parameters", mSpecFileNames.Count);
+        return descrip;
       }
     }
 
@@ -114,10 +120,16 @@ namespace EllieWare.Batch
 
     private void MergeParameters(ISpecification spec)
     {
-      // TODO   merge ParameterManager
       foreach (var param in mBatchParamMgr.Parameters)
       {
-        spec.ParameterManager.Add(param);
+        if (!spec.ParameterManager.Contains(param))
+        {
+          spec.ParameterManager.Add(param);
+        }
+        else
+        {
+          spec.ParameterManager.Update(param);
+        }
       }
     }
 
