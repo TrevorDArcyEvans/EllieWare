@@ -57,7 +57,7 @@ namespace EllieWare.Common
       this.CmdClose = new System.Windows.Forms.Button();
       this.EditorHelp = new System.Windows.Forms.HelpProvider();
       this.mMainContainer = new System.Windows.Forms.SplitContainer();
-      this.mCallback = new LogWindow();
+      this.mCallback = new EllieWare.Common.LogWindow();
       tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -101,7 +101,7 @@ namespace EllieWare.Common
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      tableLayoutPanel4.Size = new System.Drawing.Size(597, 439);
+      tableLayoutPanel4.Size = new System.Drawing.Size(597, 463);
       tableLayoutPanel4.TabIndex = 13;
       // 
       // mStepsContainer
@@ -117,8 +117,8 @@ namespace EllieWare.Common
       // 
       this.mStepsContainer.Panel1.Controls.Add(this.mSteps);
       tableLayoutPanel4.SetRowSpan(this.mStepsContainer, 5);
-      this.mStepsContainer.Size = new System.Drawing.Size(504, 404);
-      this.mStepsContainer.SplitterDistance = 157;
+      this.mStepsContainer.Size = new System.Drawing.Size(504, 428);
+      this.mStepsContainer.SplitterDistance = 166;
       this.mStepsContainer.TabIndex = 0;
       // 
       // mSteps
@@ -128,14 +128,14 @@ namespace EllieWare.Common
       this.mSteps.FormattingEnabled = true;
       this.mSteps.Location = new System.Drawing.Point(0, 0);
       this.mSteps.Name = "mSteps";
-      this.mSteps.Size = new System.Drawing.Size(502, 155);
+      this.mSteps.Size = new System.Drawing.Size(502, 164);
       this.mSteps.TabIndex = 0;
       this.mSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       // 
       // CmdSave
       // 
       this.CmdSave.Enabled = false;
-      this.CmdSave.Location = new System.Drawing.Point(351, 413);
+      this.CmdSave.Location = new System.Drawing.Point(351, 437);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
       this.CmdSave.TabIndex = 1;
@@ -291,7 +291,7 @@ namespace EllieWare.Common
       // CmdClose
       // 
       this.CmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.CmdClose.Location = new System.Drawing.Point(432, 413);
+      this.CmdClose.Location = new System.Drawing.Point(432, 437);
       this.CmdClose.Name = "CmdClose";
       this.CmdClose.Size = new System.Drawing.Size(75, 23);
       this.CmdClose.TabIndex = 2;
@@ -318,7 +318,7 @@ namespace EllieWare.Common
       // 
       this.mMainContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
       this.mMainContainer.Panel2.Controls.Add(this.mCallback);
-      this.mMainContainer.Size = new System.Drawing.Size(841, 439);
+      this.mMainContainer.Size = new System.Drawing.Size(841, 463);
       this.mMainContainer.SplitterDistance = 597;
       this.mMainContainer.TabIndex = 15;
       this.mMainContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.MainContainer_SplitterMoved);
@@ -331,7 +331,7 @@ namespace EllieWare.Common
       this.mCallback.Location = new System.Drawing.Point(0, 0);
       this.mCallback.Margin = new System.Windows.Forms.Padding(0);
       this.mCallback.Name = "mCallback";
-      this.mCallback.Size = new System.Drawing.Size(240, 439);
+      this.mCallback.Size = new System.Drawing.Size(240, 463);
       this.mCallback.TabIndex = 14;
       // 
       // Editor
@@ -339,7 +339,7 @@ namespace EllieWare.Common
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdClose;
-      this.ClientSize = new System.Drawing.Size(865, 463);
+      this.ClientSize = new System.Drawing.Size(865, 487);
       this.Controls.Add(this.mMainContainer);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Editor";

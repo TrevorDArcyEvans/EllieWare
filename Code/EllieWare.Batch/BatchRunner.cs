@@ -21,6 +21,8 @@ namespace EllieWare.Batch
     private readonly IParameterManager mBatchParamMgr = new ParameterManager();
     private readonly List<string> mSpecFileNames = new List<string>();
 
+    private IBatchParameter mBatchParam = new FileBatchParameter("aaa", "TODO");
+
     public BatchRunner() :
       base()
     {
@@ -158,6 +160,8 @@ namespace EllieWare.Batch
 
     private void UpdateUserInterface()
     {
+      BatchSummary.Text = mBatchParam.Summary;
+
       mSpecs.RefreshItems();
       UpdateButtons();
     }

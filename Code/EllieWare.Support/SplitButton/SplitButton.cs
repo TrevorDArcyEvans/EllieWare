@@ -32,7 +32,6 @@ namespace wyDay.Controls
 
     public SplitButton()
     {
-      AutoSize = true;
     }
 
     #region Properties
