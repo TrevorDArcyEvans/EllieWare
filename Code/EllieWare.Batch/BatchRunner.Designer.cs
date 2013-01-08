@@ -35,6 +35,11 @@ namespace EllieWare.Batch
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
+      System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+      System.Windows.Forms.ToolStripMenuItem BatchFile;
+      System.Windows.Forms.ToolStripMenuItem BatchDirectory;
+      System.Windows.Forms.ToolStripMenuItem BatchEdit;
       this.CmdAdd = new System.Windows.Forms.Button();
       this.CmdDelete = new System.Windows.Forms.Button();
       this.CmdEdit = new System.Windows.Forms.Button();
@@ -43,7 +48,13 @@ namespace EllieWare.Batch
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.mSpecs = new EllieWare.Support.RefreshingListBox();
       this.CmdParameters = new System.Windows.Forms.Button();
+      this.CmdBatchParameter = new wyDay.Controls.SplitButton();
+      contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      BatchFile = new System.Windows.Forms.ToolStripMenuItem();
+      BatchDirectory = new System.Windows.Forms.ToolStripMenuItem();
+      BatchEdit = new System.Windows.Forms.ToolStripMenuItem();
       this.tableLayoutPanel1.SuspendLayout();
+      contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // CmdAdd
@@ -115,10 +126,11 @@ namespace EllieWare.Batch
       this.tableLayoutPanel1.Controls.Add(this.CmdDown, 1, 4);
       this.tableLayoutPanel1.Controls.Add(this.CmdEdit, 1, 2);
       this.tableLayoutPanel1.Controls.Add(this.CmdUp, 1, 3);
+      this.tableLayoutPanel1.Controls.Add(this.CmdBatchParameter, 1, 7);
       this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 7;
+      this.tableLayoutPanel1.RowCount = 8;
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -126,7 +138,8 @@ namespace EllieWare.Batch
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(498, 371);
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(498, 447);
       this.tableLayoutPanel1.TabIndex = 7;
       // 
       // mSpecs
@@ -136,8 +149,8 @@ namespace EllieWare.Batch
       this.mSpecs.FormattingEnabled = true;
       this.mSpecs.Location = new System.Drawing.Point(3, 3);
       this.mSpecs.Name = "mSpecs";
-      this.tableLayoutPanel1.SetRowSpan(this.mSpecs, 7);
-      this.mSpecs.Size = new System.Drawing.Size(411, 365);
+      this.tableLayoutPanel1.SetRowSpan(this.mSpecs, 8);
+      this.mSpecs.Size = new System.Drawing.Size(411, 441);
       this.mSpecs.TabIndex = 0;
       this.mSpecs.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       this.mSpecs.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Specs_MouseDoubleClick);
@@ -153,14 +166,56 @@ namespace EllieWare.Batch
       this.CmdParameters.UseVisualStyleBackColor = true;
       this.CmdParameters.Click += new System.EventHandler(this.CmdParameters_Click);
       // 
+      // CmdBatchParameter
+      // 
+      this.CmdBatchParameter.ContextMenuStrip = contextMenuStrip1;
+      this.CmdBatchParameter.Location = new System.Drawing.Point(420, 197);
+      this.CmdBatchParameter.Name = "CmdBatchParameter";
+      this.CmdBatchParameter.Size = new System.Drawing.Size(75, 23);
+      this.CmdBatchParameter.SplitMenuStrip = contextMenuStrip1;
+      this.CmdBatchParameter.TabIndex = 7;
+      this.CmdBatchParameter.Text = "Batch";
+      this.CmdBatchParameter.UseVisualStyleBackColor = true;
+      // 
+      // contextMenuStrip1
+      // 
+      contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            BatchFile,
+            BatchDirectory,
+            BatchEdit});
+      contextMenuStrip1.Name = "contextMenuStrip1";
+      contextMenuStrip1.Size = new System.Drawing.Size(132, 70);
+      // 
+      // BatchFile
+      // 
+      BatchFile.Name = "BatchFile";
+      BatchFile.Size = new System.Drawing.Size(131, 22);
+      BatchFile.Text = "File...";
+      BatchFile.Click += new System.EventHandler(this.BatchFile_Click);
+      // 
+      // BatchDirectory
+      // 
+      BatchDirectory.Name = "BatchDirectory";
+      BatchDirectory.Size = new System.Drawing.Size(131, 22);
+      BatchDirectory.Text = "Directory...";
+      BatchDirectory.Click += new System.EventHandler(this.BatchDirectory_Click);
+      // 
+      // BatchEdit
+      // 
+      BatchEdit.Name = "BatchEdit";
+      BatchEdit.Size = new System.Drawing.Size(131, 22);
+      BatchEdit.Text = "Edit...";
+      BatchEdit.Click += new System.EventHandler(this.BatchEdit_Click);
+      // 
       // BatchRunner
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.tableLayoutPanel1);
       this.Name = "BatchRunner";
-      this.Size = new System.Drawing.Size(498, 371);
+      this.Size = new System.Drawing.Size(498, 447);
       this.tableLayoutPanel1.ResumeLayout(false);
+      contextMenuStrip1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -175,5 +230,6 @@ namespace EllieWare.Batch
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private EllieWare.Support.RefreshingListBox mSpecs;
     private System.Windows.Forms.Button CmdParameters;
+    private wyDay.Controls.SplitButton CmdBatchParameter;
   }
 }

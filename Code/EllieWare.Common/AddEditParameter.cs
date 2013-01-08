@@ -43,18 +43,6 @@ namespace EllieWare.Common
 
       // TODO   use CultureInfo.InvariantCulture for numbers
       mParameterValue.Text = selParam.ParameterValue.ToString();
-
-      if (selParam is IDirectoryBatchParameter)
-      {
-        CmdBrowseFile.Visible = false;
-      }
-      else
-      {
-        var batchHeight = Math.Max(FileMaskLabel.Height, mFileMask.Height);
-
-        FileMaskLabel.Visible = mFileMask.Visible = false;
-        Height -= batchHeight;
-      }
     }
 
     public IParameter Parameter

@@ -43,6 +43,8 @@ namespace EllieWare.Batch
       var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
       mSpecFileNames.AddRange(tempList);
 
+      // TODO   de/serialise BatchParameter to/from node
+
       if (reader.ReadToDescendant("ParameterManager"))
       {
         mBatchParamMgr.ReadXml(reader.ReadSubtree());
@@ -55,6 +57,8 @@ namespace EllieWare.Batch
     {
       var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
       writer.WriteAttributeString("SpecificationFileNames", specFileList);
+
+      // TODO   de/serialise BatchParameter to/from node
 
       writer.WriteStartElement("ParameterManager");
       mBatchParamMgr.WriteXml(writer);
@@ -289,6 +293,21 @@ namespace EllieWare.Batch
       }
 
       EditSelectedSpecification();
+    }
+
+    private void BatchDirectory_Click(object sender, EventArgs e)
+    {
+      // TODO   BatchDirectory_Click
+    }
+
+    private void BatchFile_Click(object sender, EventArgs e)
+    {
+      // TODO   BatchFile_Click
+    }
+
+    private void BatchEdit_Click(object sender, EventArgs e)
+    {
+      // TODO   BatchEdit_Click
     }
   }
 }
