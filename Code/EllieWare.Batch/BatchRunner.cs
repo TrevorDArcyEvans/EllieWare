@@ -99,6 +99,8 @@ namespace EllieWare.Batch
       var selIndex = mSpecs.SelectedIndex;
       CmdUp.Enabled &= (selIndex > 0);
       CmdDown.Enabled &= (selIndex < mSpecs.Items.Count - 1);
+
+      CmdDelete.Enabled = CmdEdit.Enabled = selIndex != -1;
     }
 
     private void UpdateUserInterface()
@@ -232,8 +234,7 @@ namespace EllieWare.Batch
 
     private void Specs_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      var selIndex = mSpecs.SelectedIndex;
-      if (selIndex == -1)
+      if (mSpecs.SelectedIndex == -1)
       {
         return;
       }

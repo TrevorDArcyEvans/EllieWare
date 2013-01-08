@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+using wmgCMS;
+
 namespace EllieWare.Common
 {
   partial class Adder
@@ -41,14 +43,14 @@ namespace EllieWare.Common
       System.Windows.Forms.Label label4;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Adder));
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.txtDescription = new System.Windows.Forms.TextBox();
-      this.txtSearchBox = new System.Windows.Forms.TextBox();
-      this.lbSteps = new System.Windows.Forms.ListBox();
-      this.ddlCategories = new System.Windows.Forms.ComboBox();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdOK = new System.Windows.Forms.Button();
       this.CmdCancel = new System.Windows.Forms.Button();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.txtDescription = new System.Windows.Forms.TextBox();
+      this.SearchBox = new wmgCMS.WaterMarkTextBox();
+      this.lbSteps = new System.Windows.Forms.ListBox();
+      this.ddlCategories = new System.Windows.Forms.ComboBox();
       this.AdderHelp = new System.Windows.Forms.HelpProvider();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
@@ -56,14 +58,15 @@ namespace EllieWare.Common
       label4 = new System.Windows.Forms.Label();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel3.SuspendLayout();
-      this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
+      this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
       // 
       label1.AutoSize = true;
-      label1.Location = new System.Drawing.Point(3, 0);
+      label1.Location = new System.Drawing.Point(3, 6);
+      label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label1.Name = "label1";
       label1.Size = new System.Drawing.Size(44, 13);
       label1.TabIndex = 0;
@@ -72,7 +75,8 @@ namespace EllieWare.Common
       // label2
       // 
       label2.AutoSize = true;
-      label2.Location = new System.Drawing.Point(3, 26);
+      label2.Location = new System.Drawing.Point(3, 32);
+      label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label2.Name = "label2";
       label2.Size = new System.Drawing.Size(52, 13);
       label2.TabIndex = 2;
@@ -81,7 +85,8 @@ namespace EllieWare.Common
       // label3
       // 
       label3.AutoSize = true;
-      label3.Location = new System.Drawing.Point(3, 53);
+      label3.Location = new System.Drawing.Point(3, 59);
+      label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label3.Name = "label3";
       label3.Size = new System.Drawing.Size(32, 13);
       label3.TabIndex = 4;
@@ -90,7 +95,8 @@ namespace EllieWare.Common
       // label4
       // 
       label4.AutoSize = true;
-      label4.Location = new System.Drawing.Point(3, 264);
+      label4.Location = new System.Drawing.Point(3, 270);
+      label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label4.Name = "label4";
       label4.Size = new System.Drawing.Size(63, 13);
       label4.TabIndex = 6;
@@ -113,77 +119,6 @@ namespace EllieWare.Common
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel3.Size = new System.Drawing.Size(440, 396);
       tableLayoutPanel3.TabIndex = 10;
-      // 
-      // tableLayoutPanel1
-      // 
-      this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel1.ColumnCount = 2;
-      tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel1, 2);
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.Controls.Add(label1, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.txtDescription, 1, 3);
-      this.tableLayoutPanel1.Controls.Add(label4, 0, 3);
-      this.tableLayoutPanel1.Controls.Add(this.txtSearchBox, 1, 0);
-      this.tableLayoutPanel1.Controls.Add(label3, 0, 2);
-      this.tableLayoutPanel1.Controls.Add(this.lbSteps, 1, 2);
-      this.tableLayoutPanel1.Controls.Add(label2, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.ddlCategories, 1, 1);
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 4;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 355);
-      this.tableLayoutPanel1.TabIndex = 8;
-      // 
-      // txtDescription
-      // 
-      this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtDescription.Location = new System.Drawing.Point(72, 267);
-      this.txtDescription.Multiline = true;
-      this.txtDescription.Name = "txtDescription";
-      this.txtDescription.ReadOnly = true;
-      this.txtDescription.Size = new System.Drawing.Size(359, 85);
-      this.txtDescription.TabIndex = 7;
-      // 
-      // txtSearchBox
-      // 
-      this.txtSearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtSearchBox.Location = new System.Drawing.Point(72, 3);
-      this.txtSearchBox.Name = "txtSearchBox";
-      this.txtSearchBox.Size = new System.Drawing.Size(359, 20);
-      this.txtSearchBox.TabIndex = 1;
-      this.txtSearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
-      // 
-      // lbSteps
-      // 
-      this.lbSteps.DisplayMember = "Title";
-      this.lbSteps.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.lbSteps.FormattingEnabled = true;
-      this.lbSteps.Location = new System.Drawing.Point(72, 56);
-      this.lbSteps.Name = "lbSteps";
-      this.lbSteps.Size = new System.Drawing.Size(359, 205);
-      this.lbSteps.Sorted = true;
-      this.lbSteps.TabIndex = 5;
-      this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
-      this.lbSteps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Steps_MouseDoubleClick);
-      // 
-      // ddlCategories
-      // 
-      this.ddlCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ddlCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.ddlCategories.FormattingEnabled = true;
-      this.ddlCategories.Location = new System.Drawing.Point(72, 29);
-      this.ddlCategories.Name = "ddlCategories";
-      this.ddlCategories.Size = new System.Drawing.Size(359, 21);
-      this.ddlCategories.TabIndex = 3;
-      this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
       // 
       // tableLayoutPanel2
       // 
@@ -221,6 +156,79 @@ namespace EllieWare.Common
       this.CmdCancel.Text = "Cancel";
       this.CmdCancel.UseVisualStyleBackColor = true;
       // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.tableLayoutPanel1.ColumnCount = 2;
+      tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel1, 2);
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tableLayoutPanel1.Controls.Add(label1, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.txtDescription, 1, 3);
+      this.tableLayoutPanel1.Controls.Add(label4, 0, 3);
+      this.tableLayoutPanel1.Controls.Add(this.SearchBox, 1, 0);
+      this.tableLayoutPanel1.Controls.Add(label3, 0, 2);
+      this.tableLayoutPanel1.Controls.Add(this.lbSteps, 1, 2);
+      this.tableLayoutPanel1.Controls.Add(label2, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this.ddlCategories, 1, 1);
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 4;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 355);
+      this.tableLayoutPanel1.TabIndex = 8;
+      // 
+      // txtDescription
+      // 
+      this.txtDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtDescription.Location = new System.Drawing.Point(72, 267);
+      this.txtDescription.Multiline = true;
+      this.txtDescription.Name = "txtDescription";
+      this.txtDescription.ReadOnly = true;
+      this.txtDescription.Size = new System.Drawing.Size(359, 85);
+      this.txtDescription.TabIndex = 7;
+      // 
+      // SearchBox
+      // 
+      this.SearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.SearchBox.Location = new System.Drawing.Point(72, 3);
+      this.SearchBox.Name = "SearchBox";
+      this.SearchBox.Size = new System.Drawing.Size(359, 20);
+      this.SearchBox.TabIndex = 1;
+      this.SearchBox.WaterMarkColor = System.Drawing.Color.Gray;
+      this.SearchBox.WaterMarkText = "Search...";
+      this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+      // 
+      // lbSteps
+      // 
+      this.lbSteps.DisplayMember = "Title";
+      this.lbSteps.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.lbSteps.FormattingEnabled = true;
+      this.lbSteps.Location = new System.Drawing.Point(72, 56);
+      this.lbSteps.Name = "lbSteps";
+      this.lbSteps.Size = new System.Drawing.Size(359, 205);
+      this.lbSteps.Sorted = true;
+      this.lbSteps.TabIndex = 5;
+      this.lbSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
+      this.lbSteps.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Steps_MouseDoubleClick);
+      // 
+      // ddlCategories
+      // 
+      this.ddlCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ddlCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.ddlCategories.FormattingEnabled = true;
+      this.ddlCategories.Location = new System.Drawing.Point(72, 29);
+      this.ddlCategories.Name = "ddlCategories";
+      this.ddlCategories.Size = new System.Drawing.Size(359, 21);
+      this.ddlCategories.TabIndex = 3;
+      this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
+      // 
       // Adder
       // 
       this.AcceptButton = this.CmdOK;
@@ -236,9 +244,9 @@ namespace EllieWare.Common
       this.Text = "Add Step";
       tableLayoutPanel3.ResumeLayout(false);
       tableLayoutPanel3.PerformLayout();
+      this.tableLayoutPanel2.ResumeLayout(false);
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
-      this.tableLayoutPanel2.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -247,7 +255,7 @@ namespace EllieWare.Common
 
     private System.Windows.Forms.Button CmdCancel;
     private System.Windows.Forms.Button CmdOK;
-    private System.Windows.Forms.TextBox txtSearchBox;
+    private WaterMarkTextBox SearchBox;
     private System.Windows.Forms.ComboBox ddlCategories;
     private System.Windows.Forms.ListBox lbSteps;
     private System.Windows.Forms.TextBox txtDescription;

@@ -53,7 +53,7 @@ namespace EllieWare.Common
 
     private void Categories_SelectedIndexChanged(object sender, EventArgs e)
     {
-      var searchTxt = txtSearchBox.Text.ToLower(CultureInfo.CurrentCulture);
+      var searchTxt = SearchBox.Text.ToLower(CultureInfo.CurrentCulture);
       if (ddlCategories.SelectedIndex == 0 && string.IsNullOrEmpty(searchTxt))
       {
         lbSteps.DataSource = mFactories;

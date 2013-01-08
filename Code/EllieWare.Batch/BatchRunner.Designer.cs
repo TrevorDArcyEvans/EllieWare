@@ -60,6 +60,7 @@ namespace EllieWare.Batch
       // CmdDelete
       // 
       this.CmdDelete.Dock = System.Windows.Forms.DockStyle.Top;
+      this.CmdDelete.Enabled = false;
       this.CmdDelete.Location = new System.Drawing.Point(420, 32);
       this.CmdDelete.Name = "CmdDelete";
       this.CmdDelete.Size = new System.Drawing.Size(75, 23);
@@ -71,6 +72,7 @@ namespace EllieWare.Batch
       // CmdEdit
       // 
       this.CmdEdit.Dock = System.Windows.Forms.DockStyle.Top;
+      this.CmdEdit.Enabled = false;
       this.CmdEdit.Location = new System.Drawing.Point(420, 61);
       this.CmdEdit.Name = "CmdEdit";
       this.CmdEdit.Size = new System.Drawing.Size(75, 23);

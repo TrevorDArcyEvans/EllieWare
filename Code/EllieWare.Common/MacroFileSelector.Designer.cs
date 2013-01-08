@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+using wmgCMS;
+
 namespace EllieWare.Common
 {
   partial class MacroFileSelector
@@ -46,16 +48,14 @@ namespace EllieWare.Common
             "Spec3",
             "ccc"}, -1);
       System.Windows.Forms.ColumnHeader columnHeader1;
-      System.Windows.Forms.Label label1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MacroFileSelector));
       this.mSpecs = new System.Windows.Forms.ListView();
-      this.SearchBox = new System.Windows.Forms.TextBox();
+      this.SearchBox = new wmgCMS.WaterMarkTextBox();
       this.CmdCancel = new System.Windows.Forms.Button();
       this.CmdOK = new System.Windows.Forms.Button();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      label1 = new System.Windows.Forms.Label();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
@@ -66,14 +66,13 @@ namespace EllieWare.Common
       tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      tableLayoutPanel1.ColumnCount = 3;
-      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel1.ColumnCount = 2;
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      tableLayoutPanel1.Controls.Add(this.mSpecs, 1, 1);
-      tableLayoutPanel1.Controls.Add(label1, 0, 0);
-      tableLayoutPanel1.Controls.Add(this.SearchBox, 1, 0);
-      tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 2, 2);
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      tableLayoutPanel1.Controls.Add(this.mSpecs, 0, 1);
+      tableLayoutPanel1.Controls.Add(this.SearchBox, 0, 0);
+      tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 2);
       tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
       tableLayoutPanel1.RowCount = 3;
@@ -96,10 +95,10 @@ namespace EllieWare.Common
             listViewItem1,
             listViewItem2,
             listViewItem3});
-      this.mSpecs.Location = new System.Drawing.Point(53, 29);
+      this.mSpecs.Location = new System.Drawing.Point(3, 29);
       this.mSpecs.MultiSelect = false;
       this.mSpecs.Name = "mSpecs";
-      this.mSpecs.Size = new System.Drawing.Size(516, 261);
+      this.mSpecs.Size = new System.Drawing.Size(566, 261);
       this.mSpecs.Sorting = System.Windows.Forms.SortOrder.Ascending;
       this.mSpecs.TabIndex = 2;
       this.mSpecs.UseCompatibleStateImageBehavior = false;
@@ -112,24 +111,16 @@ namespace EllieWare.Common
       columnHeader1.Text = "Title";
       columnHeader1.Width = 500;
       // 
-      // label1
-      // 
-      label1.AutoSize = true;
-      label1.Location = new System.Drawing.Point(3, 6);
-      label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      label1.Name = "label1";
-      label1.Size = new System.Drawing.Size(44, 13);
-      label1.TabIndex = 0;
-      label1.Text = "Search:";
-      // 
       // SearchBox
       // 
       tableLayoutPanel1.SetColumnSpan(this.SearchBox, 2);
       this.SearchBox.Dock = System.Windows.Forms.DockStyle.Top;
-      this.SearchBox.Location = new System.Drawing.Point(53, 3);
+      this.SearchBox.Location = new System.Drawing.Point(3, 3);
       this.SearchBox.Name = "SearchBox";
-      this.SearchBox.Size = new System.Drawing.Size(516, 20);
+      this.SearchBox.Size = new System.Drawing.Size(566, 20);
       this.SearchBox.TabIndex = 1;
+      this.SearchBox.WaterMarkColor = System.Drawing.Color.Gray;
+      this.SearchBox.WaterMarkText = "Search...";
       this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
       // 
       // tableLayoutPanel2
@@ -193,7 +184,7 @@ namespace EllieWare.Common
 
     private System.Windows.Forms.Button CmdOK;
     private System.Windows.Forms.Button CmdCancel;
-    private System.Windows.Forms.TextBox SearchBox;
+    private WaterMarkTextBox SearchBox;
     private System.Windows.Forms.ListView mSpecs;
   }
 }
