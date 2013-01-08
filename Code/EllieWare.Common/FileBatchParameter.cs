@@ -25,6 +25,11 @@ namespace EllieWare.Common
       }
     }
 
+    public FileBatchParameter() :
+      base()
+    {
+    }
+
     public FileBatchParameter(string name, string filePath) :
       base(name, filePath)
     {

@@ -21,7 +21,7 @@ namespace EllieWare.Batch
     private readonly IParameterManager mBatchParamMgr = new ParameterManager();
     private readonly List<string> mSpecFileNames = new List<string>();
 
-    private IBatchParameter mBatchParam = new FileBatchParameter("aaa", "TODO");
+    private IBatchParameter mBatchParam;
 
     public BatchRunner() :
       base()
@@ -35,6 +35,7 @@ namespace EllieWare.Batch
       InitializeComponent();
 
       mSpecs.DataSource = mSpecFileNames;
+      mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
 
     #region Implementation of IXmlSerializable
@@ -45,7 +46,10 @@ namespace EllieWare.Batch
       var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
       mSpecFileNames.AddRange(tempList);
 
-      // TODO   de/serialise BatchParameter to/from node
+      var batchTypeStr = reader.GetAttribute("BatchType");
+      var batchType = Type.GetType(batchTypeStr);
+      mBatchParam = (IBatchParameter)Activator.CreateInstance(batchType);
+      mBatchParam.ReadXml(reader);
 
       if (reader.ReadToDescendant("ParameterManager"))
       {
@@ -60,7 +64,9 @@ namespace EllieWare.Batch
       var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
       writer.WriteAttributeString("SpecificationFileNames", specFileList);
 
-      // TODO   de/serialise BatchParameter to/from node
+      var batchType = mBatchParam.GetType().AssemblyQualifiedName;
+      writer.WriteAttributeString("BatchType", batchType);
+      mBatchParam.WriteXml(writer);
 
       writer.WriteStartElement("ParameterManager");
       mBatchParamMgr.WriteXml(writer);
@@ -301,17 +307,45 @@ namespace EllieWare.Batch
 
     private void BatchDirectory_Click(object sender, EventArgs e)
     {
-      // TODO   BatchDirectory_Click
+      var dlg = new DirectoryBatchParameterEditor();
+      var dirBatchParam = mBatchParam as IDirectoryBatchParameter;
+      if (dirBatchParam != null)
+      {
+        dlg.DisplayName = dirBatchParam.DisplayName;
+        dlg.SelectedPath = dirBatchParam.Directory;
+        dlg.FileMask = dirBatchParam.FileMask;
+      }
+
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      mBatchParam = new DirectoryBatchParameter(dlg.DisplayName, dlg.SelectedPath, dlg.FileMask);
+
+      UpdateUserInterface();
+      FireConfigurationChanged();
     }
 
     private void BatchFile_Click(object sender, EventArgs e)
     {
-      // TODO   BatchFile_Click
-    }
+      var dlg = new FileBatchParameterEditor();
+      var fileBatchParam = mBatchParam as IFileBatchParameter;
+      if (fileBatchParam != null)
+      {
+        dlg.DisplayName = fileBatchParam.DisplayName;
+        dlg.FilePath = fileBatchParam.FilePath;
+      }
 
-    private void BatchEdit_Click(object sender, EventArgs e)
-    {
-      // TODO   BatchEdit_Click
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      mBatchParam = new FileBatchParameter(dlg.DisplayName, dlg.FilePath);
+
+      UpdateUserInterface();
+      FireConfigurationChanged();
     }
   }
 }

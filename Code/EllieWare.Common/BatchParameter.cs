@@ -12,12 +12,12 @@ namespace EllieWare.Common
 {
   public abstract class BatchParameter : Parameter, IBatchParameter
   {
-    protected BatchParameter() :
+    public BatchParameter() :
       base()
     {
     }
 
-    protected BatchParameter(string name, string info) :
+    public BatchParameter(string name, string info) :
       base(name, info)
     {
     }
