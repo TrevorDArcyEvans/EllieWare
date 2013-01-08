@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common

@@ -79,10 +79,47 @@ namespace EllieWare.Batch
     public override bool Run()
     {
       // TODO   Run
+      var factories = Utils.GetFactories();
+
+      // load each specification
+      foreach (var specFileName in mSpecFileNames)
+      {
+        var specFilePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, specFileName);
+        var specFilePath = Path.ChangeExtension(specFilePathNoExtn, Utils.MacroFileExtension);
+        var spec = new Specification(mRoot, mCallback, factories);
+        using (var fs = new FileStream(specFilePath, FileMode.Open))
+        {
+          var reader = XmlReader.Create(fs);
+          spec.ReadXml(reader);
+        }
+
+        MergeParameters(spec);
+
+        // run spec
+        foreach (var step in spec.Steps)
+        {
+          if (!step.Run())
+          {
+            mCallback.Log(LogLevel.Critical, step.Summary);
+
+            return false;
+          }
+        }
+      }
+
       return true;
     }
 
     #endregion
+
+    private void MergeParameters(ISpecification spec)
+    {
+      // TODO   merge ParameterManager
+      foreach (var param in mBatchParamMgr.Parameters)
+      {
+        spec.ParameterManager.Add(param);
+      }
+    }
 
     private string GetSelectedSpecificationPath()
     {
@@ -145,7 +182,7 @@ namespace EllieWare.Batch
     {
       var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
 
-      // TODO   merge ParameterManager
+      MergeParameters(dlg.Specification);
 
       dlg.ShowDialog();
     }
