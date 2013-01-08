@@ -17,7 +17,7 @@ namespace EllieWare.Common
     public string DisplayName { get; set; }
     public object ParameterValue { get; set; }
 
-    public string Summary
+    public virtual string Summary
     {
       get
       {

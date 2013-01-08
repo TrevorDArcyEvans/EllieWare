@@ -22,6 +22,7 @@ namespace EllieWare.Common
     {
     }
 
+    public abstract override string Summary { get; }
     public abstract IEnumerable<string> ResolvedValues { get; }
   }
 }

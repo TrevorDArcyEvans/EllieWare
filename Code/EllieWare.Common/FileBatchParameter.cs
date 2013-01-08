@@ -30,6 +30,16 @@ namespace EllieWare.Common
     {
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var summ = string.Format("List of files from {0}", FilePath);
+
+        return summ;
+      }
+    }
+
     public override IEnumerable<string> ResolvedValues
     {
       get

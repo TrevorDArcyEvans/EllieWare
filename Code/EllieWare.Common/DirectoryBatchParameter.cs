@@ -51,6 +51,16 @@ namespace EllieWare.Common
       writer.WriteAttributeString("FileMask", FileMask);
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var summ = string.Format("{0} files in {1}", FileMask, Directory);
+
+        return summ;
+      }
+    }
+
     public override IEnumerable<string> ResolvedValues
     {
       get
