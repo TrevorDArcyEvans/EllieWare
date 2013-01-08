@@ -15,3 +15,4 @@ using EllieWare.Interfaces;
 [assembly: AssemblyProduct("EllieWare.Support")]
 
 [assembly: LicenseInformation("WaterMarkTextBox.CPOL.txt")]
+[assembly: LicenseInformation("SplitButton.License.txt")]
