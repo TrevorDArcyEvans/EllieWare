@@ -51,7 +51,7 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="MacroFactory.cs" />
+    <Compile Include="MacroRunnerFactory.cs" />
     <Compile Include="MacroRunner.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,15 +69,16 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EllieWare.Manager\EllieWare.Manager.csproj">
-      <Project>{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}</Project>
-      <Name>EllieWare.Manager</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MacroRunner.resx">
+      <DependentUpon>MacroRunner.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

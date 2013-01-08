@@ -7,59 +7,58 @@
 //
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
-using System.Xml.Serialization;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
   public class ParameterManager : IParameterManager
   {
-    // [DisplayName] --> [object]
-    private readonly Dictionary<string, object> mParameters = new Dictionary<string, object>();
+    // [DisplayName] --> [IParameter]
+    private readonly ParameterCollection mParameters = new ParameterCollection();
 
-    public IEnumerable<string> DisplayNames
+    public IEnumerable<IParameter> Parameters
     {
       get
       {
-        return mParameters.Keys;
+        return mParameters;
       }
     }
 
-    public bool Contains(string displayName)
+    public bool Contains(IParameter parameter)
     {
-      return mParameters.ContainsKey(displayName);
+      return mParameters.Where(x => x.DisplayName.Equals(parameter.DisplayName)).Count() == 1;
     }
 
-    public void Add(string displayName, object parameter)
+    public void Add(IParameter parameter)
     {
-      mParameters.Add(displayName, parameter);
+      mParameters.Add(parameter);
       FireParameterChanged();
     }
 
-    public void Update(string displayName, object parameter)
+    public void Update(IParameter parameter)
     {
-      if (mParameters[displayName].GetType() != parameter.GetType())
+      if (mParameters[parameter.DisplayName].ParameterValue.GetType() != parameter.ParameterValue.GetType())
       {
         throw new TypeAccessException("Attempt to change parameter type");
       }
-      mParameters[displayName] = parameter;
+      mParameters[parameter.DisplayName].ParameterValue = parameter.ParameterValue;
       FireParameterChanged();
     }
 
-    public bool Remove(string displayName)
+    public bool Remove(IParameter parameter)
     {
-      var retval = mParameters.Remove(displayName);
+      var realParam = mParameters.Where(x => x.DisplayName.Equals(parameter.DisplayName)).SingleOrDefault();
+      var retval = mParameters.Remove(realParam);
 
       FireParameterChanged();
 
       return retval;
     }
 
-    public object Get(string displayName)
+    public IParameter Get(string displayName)
     {
       return mParameters[displayName];
     }
@@ -83,13 +82,13 @@ namespace EllieWare.Common
       {
         while (reader.ReadToFollowing("Parameter"))
         {
-          var dispNameStr = reader.GetAttribute("DisplayName");
           var typeStr = reader.GetAttribute("Type");
           var objType = Type.GetType(typeStr);
-          var objData = reader.GetAttribute("Value");
-          var obj = XmlDeserializeFromString(objData, objType);
+          var param = (IParameter)Activator.CreateInstance(objType);
 
-          mParameters.Add(dispNameStr, obj);
+          param.ReadXml(reader);
+
+          mParameters.Add(param);
         }
       }
     }
@@ -98,15 +97,12 @@ namespace EllieWare.Common
     {
       writer.WriteStartElement("Parameters");
 
-      foreach (var paramKvp in mParameters)
+      foreach (var param in mParameters)
       {
         writer.WriteStartElement("Parameter");
 
-        writer.WriteAttributeString("DisplayName", paramKvp.Key);
-        writer.WriteAttributeString("Type", paramKvp.Value.GetType().ToString());
-
-        var objData = XmlSerializeToString(paramKvp.Value);
-        writer.WriteAttributeString("Value", objData);
+        writer.WriteAttributeString("Type", param.GetType().ToString());
+        param.WriteXml(writer);
 
         writer.WriteEndElement();
       }
@@ -115,35 +111,5 @@ namespace EllieWare.Common
     }
 
     public event EventHandler ParameterChanged;
-
-    #region Object serialisation helpers
-
-    private static string XmlSerializeToString(object objectInstance)
-    {
-      var serializer = new XmlSerializer(objectInstance.GetType());
-      var sb = new StringBuilder();
-
-      using (TextWriter writer = new StringWriter(sb))
-      {
-        serializer.Serialize(writer, objectInstance);
-      }
-
-      return sb.ToString();
-    }
-
-    private static object XmlDeserializeFromString(string objectData, Type type)
-    {
-      var serializer = new XmlSerializer(type);
-      object result;
-
-      using (TextReader reader = new StringReader(objectData))
-      {
-        result = serializer.Deserialize(reader);
-      }
-
-      return result;
-    }
-
-    #endregion
   }
 }

@@ -51,37 +51,37 @@ namespace EllieWare.Common.Tests
     [Test]
     public void ParameterManager_Contains_DoesNotContainRandomKey()
     {
-      Assert.False(mParamMgr.Contains(Guid.NewGuid().ToString()));
+      Assert.False(mParamMgr.Contains(new Parameter(Guid.NewGuid().ToString(), mParam)));
     }
 
     [Test]
     public void ParameterManager_Add_ContainsKey()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.True(mParamMgr.Contains(mKey1));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.True(mParamMgr.Contains(new Parameter(mKey1, mParam)));
     }
 
     [Test]
     [ExpectedException(typeof(ArgumentException))]
     public void ParameterManager_AddSameKey_ThrowsException()
     {
-      mParamMgr.Add(mKey1, mParam);
-      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
     }
 
     [Test]
     public void ParameterManager_Add_ReturnsSameObject()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.AreEqual(mParam, mParamMgr.Get(mKey1));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.AreEqual(mParam, mParamMgr.Get(mKey1).ParameterValue);
     }
 
     [Test]
     public void ParameterManager_Add_ContainsSameKey()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.True(mParamMgr.Contains(mKey1));
-      Assert.True(mParamMgr.Contains(mKey2));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.True(mParamMgr.Contains(new Parameter(mKey1, mParam)));
+      Assert.True(mParamMgr.Contains(new Parameter(mKey2, mParam)));
     }
 
     #endregion
@@ -91,21 +91,21 @@ namespace EllieWare.Common.Tests
     [Test]
     public void ParameterManager_GetSameKey_ReturnsSameParameter()
     {
-      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
       Assert.AreSame(mParamMgr.Get(mKey1), mParamMgr.Get(mKey2));
     }
 
     [Test]
     public void ParameterManager_GetSameKey_ReturnsSameValue()
     {
-      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
       Assert.AreSame(mParamMgr.Get(mKey1), mParamMgr.Get(mKey2));
     }
 
     [Test]
     public void ParameterManager_GetSameKey_ReturnsSameDisplayName()
     {
-      mParamMgr.Add(mKey1, mParam);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
       Assert.AreSame(mParamMgr.Get(mKey1), mParamMgr.Get(mKey2));
     }
 
@@ -123,15 +123,15 @@ namespace EllieWare.Common.Tests
     [Test]
     public void ParameterManager_DisplayNames_ContainsExpectedDisplayName()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.True(mParamMgr.DisplayNames.Contains(mKey1));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.True(mParamMgr.Contains(new Parameter(mKey1, mParam)));
     }
 
     [Test]
     public void ParameterManager_DisplayNames_ContainsExpectedCount()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.True(mParamMgr.DisplayNames.Count() == 1);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.True(mParamMgr.Parameters.Count() == 1);
     }
 
     #endregion
@@ -141,16 +141,16 @@ namespace EllieWare.Common.Tests
     [Test]
     public void ParameterManager_Remove_ReturnsTrue()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.True(mParamMgr.Remove(mKey1));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.True(mParamMgr.Remove(new Parameter(mKey1, mParam)));
     }
 
     [Test]
     public void ParameterManager_RemoveTwice_ReturnsFalse()
     {
-      mParamMgr.Add(mKey1, mParam);
-      Assert.True(mParamMgr.Remove(mKey1));
-      Assert.False(mParamMgr.Remove(mKey1));
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      Assert.True(mParamMgr.Remove(new Parameter(mKey1, mParam)));
+      Assert.False(mParamMgr.Remove(new Parameter(mKey1, mParam)));
     }
 
     #endregion
@@ -160,25 +160,25 @@ namespace EllieWare.Common.Tests
     [Test]
     public void ParameterManager_Update_UpdatesParameter()
     {
-      mParamMgr.Add(mKey1, mParam);
-      mParamMgr.Update(mKey1, "stuff");
-      Assert.AreSame(mParamMgr.Get(mKey1), "stuff");
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      mParamMgr.Update(new Parameter(mKey1, "stuff"));
+      Assert.AreSame(mParamMgr.Get(mKey1).ParameterValue, "stuff");
     }
 
     [Test]
     [ExpectedException(typeof(TypeAccessException))]
     public void ParameterManager_UpdateDifferentType_ThrowsException()
     {
-      mParamMgr.Add(mKey1, mParam);
-      mParamMgr.Update(mKey1, 7.0);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      mParamMgr.Update(new Parameter(mKey1, 7.0));
     }
 
     [Test]
     [ExpectedException(typeof(KeyNotFoundException))]
     public void ParameterManager_UpdateNotExists_ThrowsException()
     {
-      mParamMgr.Add(mKey1, mParam);
-      mParamMgr.Update("NotExists", 7.0);
+      mParamMgr.Add(new Parameter(mKey1, mParam));
+      mParamMgr.Update(new Parameter("NotExists", 7.0));
     }
 
     #endregion

@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
@@ -18,8 +17,8 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    public SaveAs(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public SaveAs(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(Utils.NativeFilter);
     }

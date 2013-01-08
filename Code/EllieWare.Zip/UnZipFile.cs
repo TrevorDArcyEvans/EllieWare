@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Ionic.Zip;
@@ -14,8 +13,8 @@ namespace EllieWare.Zip
 {
   public class UnZipFile : DualItemIOBase
   {
-    public UnZipFile(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.FileDirectory)
+    public UnZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
     }
 

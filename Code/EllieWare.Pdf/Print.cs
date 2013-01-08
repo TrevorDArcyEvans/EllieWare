@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using EllieWare.Common;
@@ -25,8 +24,8 @@ namespace EllieWare.Pdf
       PrintMain.BringToFront();
     }
 
-    public Print(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public Print(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
       InitializeComponent();
 

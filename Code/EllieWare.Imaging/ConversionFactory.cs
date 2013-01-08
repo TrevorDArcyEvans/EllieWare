@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Imaging
@@ -37,9 +36,9 @@ namespace EllieWare.Imaging
       }
     }
 
-    public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new Conversion(roots, callback, mgr);
+      return new Conversion(root, callback, mgr);
     }
   }
 }

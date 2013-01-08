@@ -5,40 +5,101 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
-using EllieWare.Manager;
 
 namespace EllieWare.Macro
 {
-  public partial class MacroRunner : SingleItemIOBase
+  public partial class MacroRunner : MutableRunnableBase
   {
-    public MacroRunner()
+    public MacroRunner() :
+      base()
     {
+      InitializeComponent();
     }
 
-    public MacroRunner(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public MacroRunner(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
+      InitializeComponent();
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Run {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Run {0}", MacroFileName.ResolvedValue);
 
         return descrip;
       }
     }
 
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+      MacroFileName.Text = reader.GetAttribute("MacroFileName");
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      writer.WriteAttributeString("MacroFileName", MacroFileName.Text);
+    }
+
+    #endregion
+
+    public override Control ConfigurationUserInterface
+    {
+      get
+      {
+        return this;
+      }
+    }
+
     public override bool Run()
     {
-      // FIX ME!  potential licensing hole as demo mode is implemented in Editor
-      var dlg = new Editor(null, mRoots, SourceFilePathResolvedValue);
+      var factories = Utils.GetFactories();
+      var specFilePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, MacroFileName.ResolvedValue);
+      var specFilePath = Path.ChangeExtension(specFilePathNoExtn, Utils.MacroFileExtension);
+      var spec = new Specification(mRoot, mCallback, factories);
+      using (var fs = new FileStream(specFilePath, FileMode.Open))
+      {
+        var reader = XmlReader.Create(fs);
+        spec.ReadXml(reader);
+      }
 
-      return dlg.Run();
+      foreach (var step in spec.Steps)
+      {
+        if (!step.Run())
+        {
+          mCallback.Log(LogLevel.Critical, step.Summary);
+
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    private void CmdSelectMacro_Click(object sender, System.EventArgs e)
+    {
+      var dlg = new MacroFileSelector(mRoot);
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      MacroFileName.Text = Path.GetFileNameWithoutExtension(dlg.SelectedSpecificationPath);
+
+      FireConfigurationChanged();
+    }
+
+    private void MacroFileName_TextChanged(object sender, System.EventArgs e)
+    {
+      FireConfigurationChanged();
     }
   }
 }

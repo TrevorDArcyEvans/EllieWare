@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -23,13 +22,13 @@ namespace EllieWare.Transfer.FTP
       ConnectEventHandlers();
     }
 
-    public FtpDualItemIOBase(IEnumerable<object> roots, ICallback callback, IParameterManager mgr, BrowserTypes browserTypes) :
-      base(roots, callback, mgr)
+    public FtpDualItemIOBase(IRobotWare root, ICallback callback, IParameterManager mgr, BrowserTypes browserTypes) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
 
-      mFtpInfo.Initialise(roots, callback, mgr);
-      mDualItemIO.Initialise(roots, callback, mgr, browserTypes);
+      mFtpInfo.Initialise(root, callback, mgr);
+      mDualItemIO.Initialise(root, callback, mgr, browserTypes);
 
       ConnectEventHandlers();
     }

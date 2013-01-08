@@ -52,8 +52,19 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="Interfaces.cs" />
+    <Compile Include="IBatchParameter.cs" />
+    <Compile Include="ICallback.cs" />
+    <Compile Include="IDirectoryBatchParameter.cs" />
+    <Compile Include="IFactory.cs" />
+    <Compile Include="IFileBatchParameter.cs" />
+    <Compile Include="IMutableRunnable.cs" />
+    <Compile Include="IParameter.cs" />
+    <Compile Include="IParameterManager.cs" />
+    <Compile Include="IRobotWare.cs" />
+    <Compile Include="IRunnable.cs" />
+    <Compile Include="ISpecification.cs" />
     <Compile Include="LicenseInformation.cs" />
+    <Compile Include="LogLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

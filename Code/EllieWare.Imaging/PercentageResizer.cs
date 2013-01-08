@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
@@ -19,8 +18,8 @@ namespace EllieWare.Imaging
     {
     }
 
-    public PercentageResizer(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public PercentageResizer(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       Label1.Text = "Percentage:";
       Label2.Visible = Dimension2.Visible = false;

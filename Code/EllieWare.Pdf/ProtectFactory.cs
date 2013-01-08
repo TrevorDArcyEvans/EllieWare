@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Pdf
@@ -45,9 +44,9 @@ namespace EllieWare.Pdf
       }
     }
 
-    public override IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new Protect(roots, callback, mgr);
+      return new Protect(root, callback, mgr);
     }
   }
 }

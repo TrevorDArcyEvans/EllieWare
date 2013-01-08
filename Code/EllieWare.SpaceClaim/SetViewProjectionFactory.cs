@@ -57,9 +57,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new SetViewProjection(roots, callback, mgr);
+      return new SetViewProjection(root, callback, mgr);
     }
   }
 }

@@ -120,11 +120,20 @@
   <metadata name="tableLayoutPanel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="logoPictureBox.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="okButton.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="logoPictureBox.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="logoPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAAd0SU1FB9gEDw8MFsxnPxQAAP+fSURBVHhe7J0FeFV3tvZ7ZzpSG+9IR9uZdqYz
+        DQAACw0B7QfALAAAAAd0SU1FB9gEDw8MFsxnPxQAAP+fSURBVHhe7J0FeFV3tvZ7ZzpSG+9IR9uZdqYz
         daG0xd3dJUCQ4E6AGCHuIQkkIQGChRA0JEiQ4O7uDqXuSiXr+73/k0Np73z3dmZ62ylzDs9+9snJSUh2
         9rJ3vetdN93ke9xQV6Bhw4Y/aN2iRbsGtWvnNWtU/3iLpo0+adu6hbVt2dw6de70XtvWrU60bNGirE2b
         NoVt2rdLatyw/tD69Wt1rVOjTg2+9o8tK1X66Q11QXy/jO8K3OhXoG29pnfXrlm9f4uWLda0b9Pqg6FD

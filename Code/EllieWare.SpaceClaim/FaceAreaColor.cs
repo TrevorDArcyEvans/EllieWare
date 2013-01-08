@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -24,17 +25,22 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-    public FaceAreaColor(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public FaceAreaColor(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
+
+      AreaUnits.Text = string.Format("{0}^2", Window.ActiveWindow.Units.Length.Symbol);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Make all faces below {0} mm^2 {1}", AreaThreshold.Value, ColorDlg.Color);
+        var descrip = string.Format("Make all faces below {0} {1}^2 {2}",
+                        AreaThreshold.Value,
+                        Window.ActiveWindow.Units.Length.Symbol,
+                        ColorDlg.Color);
 
         return descrip;
       }
@@ -69,27 +75,29 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    private void ColorFaces()
+    protected Dictionary<DesignBody, IEnumerable<DesignFace>> GetFacesBelowThreshold(Document doc, double threshold)
     {
-      var allParts = Window.ActiveWindow.Document.Parts;
-      foreach (var thisPart in allParts)
+      var retval = new Dictionary<DesignBody, IEnumerable<DesignFace>>();
+      var lengthFactor = doc.Units.Length.ConversionFactor;
+      var areaFactor = lengthFactor * lengthFactor;
+      var allParts = doc.Parts;
+      foreach (var thisBody in allParts.SelectMany(thisPart => thisPart.Bodies))
       {
-        foreach (var thisBody in thisPart.Bodies)
-        {
-          foreach (var thisFace in thisBody.Faces)
-          {
-            if (thisFace.Area < (double)AreaThreshold.Value)
-            {
-              thisFace.SetColor(null, ColorDlg.Color);
-            }
-          }
-        }
+        retval[thisBody] = from thisFace in thisBody.Faces where thisFace.Area * areaFactor < threshold select thisFace;
       }
+
+      return retval;
     }
 
     public override bool Run()
     {
-      WriteBlock.AppendTask(ColorFaces);
+      WriteBlock.AppendTask(() =>
+                              {
+                                foreach (var face in GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value).Values.SelectMany(bodyFaces => bodyFaces))
+                                {
+                                  face.SetColor(null, ColorDlg.Color);
+                                }
+                              });
 
       return true;
     }

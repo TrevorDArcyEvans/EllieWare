@@ -51,14 +51,73 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AddEditParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditParameter.Designer.cs">
+      <DependentUpon>AddEditParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adder.Designer.cs">
+      <DependentUpon>Adder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BatchParameter.cs" />
+    <Compile Include="DirectoryBatchParameter.cs" />
     <Compile Include="BrowserTypes.cs" />
+    <Compile Include="DirectoryBatchParameterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectoryBatchParameterEditor.Designer.cs">
+      <DependentUpon>DirectoryBatchParameterEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="DualItemIOBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DualItemIOBase.Designer.cs">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="IRobotWare.cs" />
+    <Compile Include="Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileBatchParameter.cs" />
+    <Compile Include="FileBatchParameterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileBatchParameterEditor.Designer.cs">
+      <DependentUpon>FileBatchParameterEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileSaveDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileSaveDialog.Designer.cs">
+      <DependentUpon>FileSaveDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IHost.cs" />
+    <Compile Include="LogWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LogWindow.Designer.cs">
+      <DependentUpon>LogWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MacroFileSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MacroFileSelector.Designer.cs">
+      <DependentUpon>MacroFileSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parameter.cs" />
+    <Compile Include="ParameterCollection.cs" />
+    <Compile Include="ParametersEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParametersEditor.Designer.cs">
+      <DependentUpon>ParametersEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="RobotWareWrapper.cs" />
     <Compile Include="MutableRunnableBase.cs">
       <SubType>UserControl</SubType>
@@ -80,6 +139,9 @@
     <Compile Include="SingleItemIOBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Specification.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="XmlSerializationHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
@@ -90,10 +152,41 @@
       <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
       <Name>EllieWare.Licensing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
+      <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
+      <Name>EllieWare.Support</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddEditParameter.resx">
+      <DependentUpon>AddEditParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adder.resx">
+      <DependentUpon>Adder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryBatchParameterEditor.resx">
+      <DependentUpon>DirectoryBatchParameterEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DualItemIOBase.resx">
       <DependentUpon>DualItemIOBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileBatchParameterEditor.resx">
+      <DependentUpon>FileBatchParameterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileSaveDialog.resx">
+      <DependentUpon>FileSaveDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogWindow.resx">
+      <DependentUpon>LogWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MacroFileSelector.resx">
+      <DependentUpon>MacroFileSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParametersEditor.resx">
+      <DependentUpon>ParametersEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParameterTextBox.resx">
       <DependentUpon>ParameterTextBox.cs</DependentUpon>

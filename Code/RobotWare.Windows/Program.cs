@@ -27,11 +27,9 @@ namespace RobotWare.Windows
       const string ApplicationName = "RobotWare for Windows";
 
       var licWrapper = new RobotWareWrapper(ApplicationName);
-      var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-      var userSpecsPath = Path.Combine(userDocs, ApplicationName);
-      Directory.CreateDirectory(userSpecsPath);
+      Directory.CreateDirectory(licWrapper.UserSpecificationFolder);
 
-      Application.Run(new EllieWare.Manager.Manager(new[] { licWrapper }, ApplicationName, userSpecsPath));
+      Application.Run(new EllieWare.Manager.Manager(licWrapper));
     }
   }
 }

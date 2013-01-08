@@ -57,9 +57,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public IRunnable Create(IEnumerable<object> roots, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new ExportToAutoCAD(roots, callback, mgr);
+      return new ExportToAutoCAD(root, callback, mgr);
     }
   }
 }

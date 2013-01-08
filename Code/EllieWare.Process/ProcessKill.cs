@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.Linq;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -14,8 +13,8 @@ namespace EllieWare.Process
 {
   public class ProcessKill : SingleItemIOBase
   {
-    public ProcessKill(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr, BrowserTypes.BothFile)
+    public ProcessKill(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr, BrowserTypes.BothFile)
     {
     }
 

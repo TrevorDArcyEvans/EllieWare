@@ -17,8 +17,8 @@ namespace EllieWare.Transfer.FTP
       InitializeComponent();
     }
 
-    public DirectoryExists(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public DirectoryExists(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
     }

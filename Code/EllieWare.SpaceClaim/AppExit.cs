@@ -22,8 +22,8 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-    public AppExit(IEnumerable<object> roots, ICallback callback, IParameterManager mgr) :
-      base(roots, callback, mgr)
+    public AppExit(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
       InitializeComponent();
     }

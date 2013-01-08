@@ -6,52 +6,44 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using EllieWare.Common;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
   public partial class Manager : Form, IHost
   {
-    public const string MacroFileExtension = ".mxml";
-
-    private readonly IEnumerable<object> mRoots;
-    private readonly string mApplicationName;
+    private readonly IRobotWare mRoot;
 
     public Manager()
     {
       InitializeComponent();
     }
 
-    public Manager(IEnumerable<object> roots, string appName, string userSpecsPath) :
+    public Manager(IRobotWare root) :
       this()
     {
-      mRoots = roots;
-      mApplicationName = appName;
-      SpecificationsFolder = userSpecsPath;
-
-      var licensable = roots.Where(x => x is IRobotWare).FirstOrDefault() as IRobotWare;
-      var isLicensed = licensable != null ? licensable.IsLicensed : false;
-      if (!isLicensed)
+      mRoot = root;
+      if (!mRoot.IsLicensed)
       {
-        var dlg = new RequestLicense(appName);
+        var dlg = new RequestLicense(mRoot.ApplicationName);
         if (dlg.ShowDialog() == DialogResult.OK)
         {
           // attempt to register with provided info
-          Licensing.LicenseManager.Register(appName, dlg.UserName.Text, dlg.LicenseCode.Text);
+          Licensing.LicenseManager.Register(mRoot.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
 
-          isLicensed = licensable != null ? licensable.IsLicensed : false;
+          var isLicensed = mRoot.IsLicensed;
           var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                                  "  " + appName + Environment.NewLine +
+                                                  "  " + mRoot.ApplicationName + Environment.NewLine +
                                                   "to:" + Environment.NewLine +
                                                   "  " + dlg.UserName
                                                   : "Information incorrect - product not registered");
-          MessageBox.Show(msg, appName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+          MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
       }
 
@@ -61,15 +53,15 @@ namespace EllieWare.Manager
 
     private string GetSelectedSpecificationPath()
     {
-      var pathNoExtn = Path.Combine(SpecificationsFolder, mSpecs.SelectedItems[0].Text);
-      var retVal = Path.ChangeExtension(pathNoExtn, MacroFileExtension);
+      var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
+      var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
 
       return retVal;
     }
 
     private void CmdNew_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoots, string.Empty);
+      var dlg = new Editor(this, mRoot, string.Empty);
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -77,7 +69,7 @@ namespace EllieWare.Manager
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoots, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -92,7 +84,7 @@ namespace EllieWare.Manager
 
     private void CmdDebug_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoots, GetSelectedSpecificationPath());
+      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -102,7 +94,7 @@ namespace EllieWare.Manager
 
     public void Run(string filePath)
     {
-      var dlg = new Editor(this, mRoots, filePath);
+      var dlg = new Editor(this, mRoot, filePath);
       dlg.Show(this);
       dlg.Run();
     }
@@ -112,26 +104,13 @@ namespace EllieWare.Manager
       RefreshSpecificationsList(string.Empty);
     }
 
-    public string SpecificationsFolder { get; private set; }
-
-    public IEnumerable<string> Specifications
-    {
-      get
-      {
-        var allSpecsWithExtn = Directory.EnumerateFiles(SpecificationsFolder, "*" + MacroFileExtension);
-        var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
-
-        return allSpecsNoExten;
-      }
-    }
-
     #endregion
 
     private void RefreshSpecificationsList(string searchTxt)
     {
       mSpecs.Items.Clear();
 
-      var filteredSpecsNoExten = from specNoExtn in Specifications where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
+      var filteredSpecsNoExten = from specNoExtn in mRoot.Specifications where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
       mSpecs.Items.AddRange(filteredSpecsNoExten.ToArray());
     }
 
@@ -160,7 +139,7 @@ namespace EllieWare.Manager
 
     private void CmdAbout_Click(object sender, EventArgs e)
     {
-      var dlg = new AboutBox(mApplicationName);
+      var dlg = new AboutBox(mRoot.ApplicationName);
       dlg.ShowDialog();
     }
 
@@ -180,12 +159,12 @@ namespace EllieWare.Manager
       var fileRoot = Path.GetFileNameWithoutExtension(selSpecPath);
       var extension = Path.GetExtension(selSpecPath);
       var fileName = String.Concat(string.Format("{0} - Copy", fileRoot), extension);
-      var fullPath = Path.Combine(SpecificationsFolder, fileName);
+      var fullPath = Path.Combine(mRoot.UserSpecificationFolder, fileName);
       var number = 1;
       while (File.Exists(fullPath))
       {
         fileName = String.Concat(string.Format("{0} - Copy ({1})", fileRoot, ++number), extension);
-        fullPath = Path.Combine(SpecificationsFolder, fileName);
+        fullPath = Path.Combine(mRoot.UserSpecificationFolder, fileName);
       }
 
       File.Copy(selSpecPath, fullPath);

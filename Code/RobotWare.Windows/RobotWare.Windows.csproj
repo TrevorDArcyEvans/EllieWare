@@ -91,6 +91,10 @@
       <Project>{B576477E-C3E2-42A6-9C46-B523D9F6B834}</Project>
       <Name>EllieWare.Audio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Batch\EllieWare.Batch.csproj">
+      <Project>{07855637-6DC5-4515-B1DB-D49BF498D933}</Project>
+      <Name>EllieWare.Batch</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>
@@ -114,6 +118,10 @@
     <ProjectReference Include="..\EllieWare.Logging\EllieWare.Logging.csproj">
       <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
       <Name>EllieWare.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Macro\EllieWare.Macro.csproj">
+      <Project>{D6569BA5-350C-4A7A-B23C-5E9FCAA6DF21}</Project>
+      <Name>EllieWare.Macro</Name>
     </ProjectReference>
     <ProjectReference Include="..\EllieWare.Pdf\EllieWare.Pdf.csproj">
       <Project>{5BBEFC9F-BF24-42B2-8BE6-09E19DB5357C}</Project>
