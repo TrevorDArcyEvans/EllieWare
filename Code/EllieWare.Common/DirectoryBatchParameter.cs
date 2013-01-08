@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class DirectoryBatchParameter : Parameter, IDirectoryBatchParameter
+  public class DirectoryBatchParameter : BatchParameter, IDirectoryBatchParameter
   {
     public string FileMask { get; set; }
     public string Directory
@@ -51,9 +51,12 @@ namespace EllieWare.Common
       writer.WriteAttributeString("FileMask", FileMask);
     }
 
-    public IEnumerable<string> ResolvedValues
+    public override IEnumerable<string> ResolvedValues
     {
-      get { return System.IO.Directory.EnumerateFiles(Directory, FileMask); }
+      get
+      {
+        return System.IO.Directory.EnumerateFiles(Directory, FileMask);
+      }
     }
   }
 }

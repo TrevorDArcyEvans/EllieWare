@@ -63,6 +63,7 @@
     <Compile Include="Adder.Designer.cs">
       <DependentUpon>Adder.cs</DependentUpon>
     </Compile>
+    <Compile Include="BatchParameter.cs" />
     <Compile Include="DirectoryBatchParameter.cs" />
     <Compile Include="BrowserTypes.cs" />
     <Compile Include="DualItemIOBase.cs">

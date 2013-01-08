@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class FileBatchParameter : Parameter, IFileBatchParameter
+  public class FileBatchParameter : BatchParameter, IFileBatchParameter
   {
     public string FilePath
     {
@@ -30,7 +30,7 @@ namespace EllieWare.Common
     {
     }
 
-    public IEnumerable<string> ResolvedValues
+    public override IEnumerable<string> ResolvedValues
     {
       get
       {
