@@ -311,10 +311,10 @@ namespace EllieWare.Batch
       var dirBatchParam = mBatchParam as IDirectoryBatchParameter;
       if (dirBatchParam != null)
       {
-        dlg.DisplayName = dirBatchParam.DisplayName;
         dlg.SelectedPath = dirBatchParam.Directory;
         dlg.FileMask = dirBatchParam.FileMask;
       }
+      dlg.DisplayName = mBatchParam.DisplayName;
 
       if (dlg.ShowDialog() != DialogResult.OK)
       {
@@ -333,9 +333,9 @@ namespace EllieWare.Batch
       var fileBatchParam = mBatchParam as IFileBatchParameter;
       if (fileBatchParam != null)
       {
-        dlg.DisplayName = fileBatchParam.DisplayName;
         dlg.FilePath = fileBatchParam.FilePath;
       }
+      dlg.DisplayName = mBatchParam.DisplayName;
 
       if (dlg.ShowDialog() != DialogResult.OK)
       {
