@@ -89,14 +89,6 @@ namespace EllieWare.Manager
       UpdateButtons();
     }
 
-    private void CmdDebug_Click(object sender, EventArgs e)
-    {
-      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
-      dlg.ShowDialog();
-
-      UpdateButtons();
-    }
-
     #region IHost
 
     public void Run(string filePath)
@@ -123,7 +115,7 @@ namespace EllieWare.Manager
 
     private void UpdateButtons()
     {
-      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = CmdDebug.Enabled = FileOperations.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = FileOperations.Enabled = mSpecs.SelectedItems.Count > 0;
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)

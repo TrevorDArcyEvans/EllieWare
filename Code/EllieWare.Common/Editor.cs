@@ -452,8 +452,6 @@ namespace EllieWare.Common
       finally
       {
         ConnectSizingHandlers();
-
-        CmdLog.Text = mMainContainer.Panel2Collapsed ? "Log >>>" : "Log <<<";
       }
     }
 
