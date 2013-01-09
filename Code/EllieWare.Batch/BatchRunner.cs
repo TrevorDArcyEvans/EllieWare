@@ -8,7 +8,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -18,7 +17,6 @@ namespace EllieWare.Batch
 {
   public partial class BatchRunner : MutableRunnableBase, IHost
   {
-    private readonly IParameterManager mBatchParamMgr = new ParameterManager();
     private readonly List<string> mSpecFileNames = new List<string>();
 
     private IBatchParameter mBatchParam;
@@ -51,11 +49,6 @@ namespace EllieWare.Batch
       mBatchParam = (IBatchParameter)Activator.CreateInstance(batchType);
       mBatchParam.ReadXml(reader);
 
-      if (reader.ReadToDescendant("ParameterManager"))
-      {
-        mBatchParamMgr.ReadXml(reader.ReadSubtree());
-      }
-
       UpdateUserInterface();
     }
 
@@ -67,10 +60,6 @@ namespace EllieWare.Batch
       var batchType = mBatchParam.GetType().AssemblyQualifiedName;
       writer.WriteAttributeString("BatchType", batchType);
       mBatchParam.WriteXml(writer);
-
-      writer.WriteStartElement("ParameterManager");
-      mBatchParamMgr.WriteXml(writer);
-      writer.WriteEndElement();
     }
 
     #endregion
@@ -96,31 +85,36 @@ namespace EllieWare.Batch
 
     public override bool Run()
     {
-      // TODO   Run
       var factories = Utils.GetFactories();
 
-      // load each specification
-      foreach (var specFileName in mSpecFileNames)
+      foreach (var batchParamValue in mBatchParam.ResolvedValues)
       {
-        var specFilePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, specFileName);
-        var specFilePath = Path.ChangeExtension(specFilePathNoExtn, Utils.MacroFileExtension);
-        var spec = new Specification(mRoot, mCallback, factories);
-        using (var fs = new FileStream(specFilePath, FileMode.Open))
-        {
-          var reader = XmlReader.Create(fs);
-          spec.ReadXml(reader);
-        }
+        // update batch parameter to current value
+        mBatchParam.ParameterValue = batchParamValue;
 
-        MergeParameters(spec);
-
-        // run spec
-        foreach (var step in spec.Steps)
+        // load each specification
+        foreach (var specFileName in mSpecFileNames)
         {
-          if (!step.Run())
+          var specFilePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, specFileName);
+          var specFilePath = Path.ChangeExtension(specFilePathNoExtn, Utils.MacroFileExtension);
+          var spec = new Specification(mRoot, mCallback, factories);
+          using (var fs = new FileStream(specFilePath, FileMode.Open))
           {
-            mCallback.Log(LogLevel.Critical, step.Summary);
+            var reader = XmlReader.Create(fs);
+            spec.ReadXml(reader);
+          }
 
-            return false;
+          MergeParameters(spec);
+
+          // run spec
+          foreach (var step in spec.Steps)
+          {
+            if (!step.Run())
+            {
+              mCallback.Log(LogLevel.Critical, step.Summary);
+
+              return false;
+            }
           }
         }
       }
@@ -130,19 +124,25 @@ namespace EllieWare.Batch
 
     #endregion
 
+    private void AddOrUpdateParameter(ISpecification spec, IParameter param)
+    {
+      if (!spec.ParameterManager.Contains(param))
+      {
+        spec.ParameterManager.Add(param);
+      }
+      else
+      {
+        spec.ParameterManager.Update(param);
+      }
+    }
+
     private void MergeParameters(ISpecification spec)
     {
-      foreach (var param in mBatchParamMgr.Parameters)
+      foreach (var param in mParamMgr.Parameters)
       {
-        if (!spec.ParameterManager.Contains(param))
-        {
-          spec.ParameterManager.Add(param);
-        }
-        else
-        {
-          spec.ParameterManager.Update(param);
-        }
+        AddOrUpdateParameter(spec, param);
       }
+      AddOrUpdateParameter(spec, mBatchParam);
     }
 
     private string GetSelectedSpecificationPath()
@@ -159,7 +159,7 @@ namespace EllieWare.Batch
 
       var selIndex = mSpecs.SelectedIndex;
       CmdUp.Enabled &= (selIndex > 0);
-      CmdDown.Enabled &= (selIndex < mSpecs.Items.Count - 1);
+      CmdDown.Enabled &= (selIndex < mSpecs.Items.Count - 1) && (selIndex > -1);
 
       CmdDelete.Enabled = CmdEdit.Enabled = selIndex != -1;
     }
@@ -252,30 +252,6 @@ namespace EllieWare.Batch
       UpdateUserInterface();
 
       mSpecs.SelectedIndex = selIndex + 1;
-
-      FireConfigurationChanged();
-    }
-
-    private void CmdParameters_Click(object sender, EventArgs e)
-    {
-      var dlg = new ParametersEditor(mBatchParamMgr);
-      if (dlg.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-
-      // remove all parameters
-      var displayNames = mBatchParamMgr.Parameters.ToList();
-      foreach (var displayName in displayNames)
-      {
-        mBatchParamMgr.Remove(displayName);
-      }
-
-      // recreate all parameters
-      foreach (var parameter in dlg.Parameters)
-      {
-        mBatchParamMgr.Add(parameter);
-      }
 
       FireConfigurationChanged();
     }

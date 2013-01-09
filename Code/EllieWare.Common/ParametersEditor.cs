@@ -30,17 +30,17 @@ namespace EllieWare.Common
       }
     }
 
-    public IEnumerable<Parameter> Parameters
+    public IEnumerable<IParameter> Parameters
     {
       get
       {
-        return ParametersDisplay.Items.Cast<Parameter>();
+        return ParametersDisplay.Items.Cast<IParameter>();
       }
     }
 
     private void EditSelectedParameter()
     {
-      var selParam = (Parameter) ParametersDisplay.SelectedItem;
+      var selParam = (Parameter)ParametersDisplay.SelectedItem;
       var dlg = new AddEditParameter(Parameters, selParam);
       if (dlg.ShowDialog() != DialogResult.OK)
       {
@@ -74,7 +74,16 @@ namespace EllieWare.Common
 
     private void Parameters_SelectedIndexChanged(object sender, EventArgs e)
     {
-      CmdEdit.Enabled = CmdDelete.Enabled = ParametersDisplay.SelectedIndex != -1;
+      if (ParametersDisplay.SelectedIndex == -1)
+      {
+        CmdEdit.Enabled = CmdDelete.Enabled = false;
+
+        return;
+      }
+
+      // cannot edit or delete batch parameters
+      var isBatchParam = ParametersDisplay.SelectedItem is IBatchParameter;
+      CmdEdit.Enabled = CmdDelete.Enabled = !isBatchParam;
     }
 
     private void ParametersDisplay_MouseDoubleClick(object sender, MouseEventArgs e)

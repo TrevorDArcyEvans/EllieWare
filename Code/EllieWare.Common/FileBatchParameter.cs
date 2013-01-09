@@ -39,7 +39,7 @@ namespace EllieWare.Common
     {
       get
       {
-        var summ = string.Format("List of files from {0}", FilePath);
+        var summ = string.Format("{0} -- > List of files from {1}", DisplayName, FilePath);
 
         return summ;
       }

@@ -55,7 +55,7 @@ namespace EllieWare.Common
     {
       get
       {
-        var summ = string.Format("{0} files in {1}", FileMask, Directory);
+        var summ = string.Format("{0} -- > {1} files in {2}", DisplayName, FileMask, Directory);
 
         return summ;
       }

@@ -110,7 +110,7 @@ namespace EllieWare.Common
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(465, 110);
+      tableLayoutPanel1.Size = new System.Drawing.Size(522, 110);
       tableLayoutPanel1.TabIndex = 8;
       // 
       // mDisplayName
@@ -119,7 +119,7 @@ namespace EllieWare.Common
       this.mDisplayName.Dock = System.Windows.Forms.DockStyle.Top;
       this.mDisplayName.Location = new System.Drawing.Point(47, 3);
       this.mDisplayName.Name = "mDisplayName";
-      this.mDisplayName.Size = new System.Drawing.Size(365, 20);
+      this.mDisplayName.Size = new System.Drawing.Size(422, 20);
       this.mDisplayName.TabIndex = 1;
       this.mDisplayName.TextChanged += new System.EventHandler(this.DisplayName_TextChanged);
       // 
@@ -129,7 +129,7 @@ namespace EllieWare.Common
       this.mParameterValue.Dock = System.Windows.Forms.DockStyle.Top;
       this.mParameterValue.Location = new System.Drawing.Point(47, 29);
       this.mParameterValue.Name = "mParameterValue";
-      this.mParameterValue.Size = new System.Drawing.Size(365, 20);
+      this.mParameterValue.Size = new System.Drawing.Size(422, 20);
       this.mParameterValue.TabIndex = 3;
       // 
       // tableLayoutPanel2
@@ -141,7 +141,7 @@ namespace EllieWare.Common
       tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       tableLayoutPanel2.Controls.Add(this.CmdOK, 0, 0);
       tableLayoutPanel2.Controls.Add(this.CmdCancel, 1, 0);
-      tableLayoutPanel2.Location = new System.Drawing.Point(250, 78);
+      tableLayoutPanel2.Location = new System.Drawing.Point(307, 78);
       tableLayoutPanel2.Name = "tableLayoutPanel2";
       tableLayoutPanel2.RowCount = 1;
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -151,6 +151,7 @@ namespace EllieWare.Common
       // CmdOK
       // 
       this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.CmdOK.Enabled = false;
       this.CmdOK.Location = new System.Drawing.Point(3, 3);
       this.CmdOK.Name = "CmdOK";
       this.CmdOK.Size = new System.Drawing.Size(75, 23);
@@ -180,7 +181,7 @@ namespace EllieWare.Common
       splitButton1.AutoSize = true;
       splitButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       splitButton1.ContextMenuStrip = contextMenuStrip1;
-      splitButton1.Location = new System.Drawing.Point(418, 29);
+      splitButton1.Location = new System.Drawing.Point(475, 29);
       splitButton1.Name = "splitButton1";
       splitButton1.Size = new System.Drawing.Size(44, 23);
       splitButton1.SplitMenuStrip = contextMenuStrip1;
@@ -216,7 +217,7 @@ namespace EllieWare.Common
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdCancel;
-      this.ClientSize = new System.Drawing.Size(487, 134);
+      this.ClientSize = new System.Drawing.Size(544, 134);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximumSize = new System.Drawing.Size(2000, 172);
