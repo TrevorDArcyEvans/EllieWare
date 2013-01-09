@@ -189,11 +189,13 @@ namespace EllieWare.Manager
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.MaximumSize = new System.Drawing.Size(5000, 172);
+      this.MinimizeBox = false;
       this.MinimumSize = new System.Drawing.Size(400, 172);
       this.Name = "RequestLicense";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Enter License Code";
+      this.Shown += new System.EventHandler(this.RequestLicense_Shown);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       tableLayoutPanel2.ResumeLayout(false);

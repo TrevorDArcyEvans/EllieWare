@@ -58,6 +58,12 @@ namespace EllieWare.Common
       {
         UpdateTitle();
       }
+
+      if (mSteps.Items.Count > 0)
+      {
+        // select first step if there are any steps
+        mSteps.SelectedIndex = 0;
+      }
     }
 
     public ISpecification Specification
@@ -446,8 +452,6 @@ namespace EllieWare.Common
       finally
       {
         ConnectSizingHandlers();
-
-        CmdLog.Text = mMainContainer.Panel2Collapsed ? "Log >>>" : "Log <<<";
       }
     }
 

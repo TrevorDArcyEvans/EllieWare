@@ -118,6 +118,11 @@
     <Compile Include="ParametersEditor.Designer.cs">
       <DependentUpon>ParametersEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RobotWareWrapper.cs" />
     <Compile Include="MutableRunnableBase.cs">
       <SubType>UserControl</SubType>
@@ -191,11 +196,69 @@
     <EmbeddedResource Include="ParameterTextBox.resx">
       <DependentUpon>ParameterTextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_stop_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_run_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_pause_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_new_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_up_green_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_down_green_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scroll_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scroll2_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lifebelt_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -46,8 +46,8 @@ namespace EllieWare.Common
       this.mFilePath = new System.Windows.Forms.TextBox();
       this.CmdBrowse = new System.Windows.Forms.Button();
       this.mPreview = new System.Windows.Forms.TextBox();
-      this.SourceFileSelector = new System.Windows.Forms.SaveFileDialog();
       this.mDisplayName = new System.Windows.Forms.TextBox();
+      this.SourceFileSelector = new System.Windows.Forms.SaveFileDialog();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
@@ -66,17 +66,18 @@ namespace EllieWare.Common
             | System.Windows.Forms.AnchorStyles.Right)));
       tableLayoutPanel1.AutoSize = true;
       tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      tableLayoutPanel1.ColumnCount = 4;
+      tableLayoutPanel1.ColumnCount = 5;
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.Controls.Add(label1, 0, 1);
       tableLayoutPanel1.Controls.Add(this.mFilePath, 1, 1);
-      tableLayoutPanel1.Controls.Add(this.CmdBrowse, 3, 1);
+      tableLayoutPanel1.Controls.Add(this.CmdBrowse, 4, 1);
       tableLayoutPanel1.Controls.Add(this.mPreview, 1, 2);
       tableLayoutPanel1.Controls.Add(label2, 0, 2);
-      tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 2, 3);
+      tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 3, 3);
       tableLayoutPanel1.Controls.Add(label3, 0, 0);
       tableLayoutPanel1.Controls.Add(this.mDisplayName, 1, 0);
       tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
@@ -101,7 +102,7 @@ namespace EllieWare.Common
       // 
       // mFilePath
       // 
-      tableLayoutPanel1.SetColumnSpan(this.mFilePath, 2);
+      tableLayoutPanel1.SetColumnSpan(this.mFilePath, 3);
       this.mFilePath.Dock = System.Windows.Forms.DockStyle.Top;
       this.mFilePath.Location = new System.Drawing.Point(54, 29);
       this.mFilePath.Name = "mFilePath";
@@ -123,7 +124,7 @@ namespace EllieWare.Common
       // 
       // mPreview
       // 
-      tableLayoutPanel1.SetColumnSpan(this.mPreview, 3);
+      tableLayoutPanel1.SetColumnSpan(this.mPreview, 4);
       this.mPreview.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mPreview.Location = new System.Drawing.Point(54, 58);
       this.mPreview.Multiline = true;
@@ -179,14 +180,6 @@ namespace EllieWare.Common
       CmdCancel.Text = "Cancel";
       CmdCancel.UseVisualStyleBackColor = true;
       // 
-      // SourceFileSelector
-      // 
-      this.SourceFileSelector.CheckPathExists = false;
-      this.SourceFileSelector.Filter = "All files (*.*)|*.*";
-      this.SourceFileSelector.OverwritePrompt = false;
-      this.SourceFileSelector.RestoreDirectory = true;
-      this.SourceFileSelector.Title = "Select File";
-      // 
       // label3
       // 
       label3.AutoSize = true;
@@ -199,12 +192,20 @@ namespace EllieWare.Common
       // 
       // mDisplayName
       // 
-      tableLayoutPanel1.SetColumnSpan(this.mDisplayName, 2);
+      tableLayoutPanel1.SetColumnSpan(this.mDisplayName, 4);
       this.mDisplayName.Dock = System.Windows.Forms.DockStyle.Top;
       this.mDisplayName.Location = new System.Drawing.Point(54, 3);
       this.mDisplayName.Name = "mDisplayName";
-      this.mDisplayName.Size = new System.Drawing.Size(358, 20);
+      this.mDisplayName.Size = new System.Drawing.Size(390, 20);
       this.mDisplayName.TabIndex = 1;
+      // 
+      // SourceFileSelector
+      // 
+      this.SourceFileSelector.CheckPathExists = false;
+      this.SourceFileSelector.Filter = "All files (*.*)|*.*";
+      this.SourceFileSelector.OverwritePrompt = false;
+      this.SourceFileSelector.RestoreDirectory = true;
+      this.SourceFileSelector.Title = "Select File";
       // 
       // FileBatchParameterEditor
       // 

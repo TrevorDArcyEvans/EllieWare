@@ -7,23 +7,14 @@
 //
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
   public class FileBatchParameter : BatchParameter, IFileBatchParameter
   {
-    public string FilePath
-    {
-      get
-      {
-        return (string)ParameterValue;
-      }
-      set
-      {
-        ParameterValue = value;
-      }
-    }
+    public string FilePath { get; set; }
 
     public FileBatchParameter() :
       base()
@@ -31,15 +22,30 @@ namespace EllieWare.Common
     }
 
     public FileBatchParameter(string name, string filePath) :
-      base(name, filePath)
+      base(name)
     {
+      FilePath = filePath;
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      FilePath = reader.GetAttribute("FilePath");
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("FilePath", FilePath);
     }
 
     public override string Summary
     {
       get
       {
-        var summ = string.Format("List of files from {0}", FilePath);
+        var summ = string.Format("{0} -- > List of files from {1}", DisplayName, FilePath);
 
         return summ;
       }

@@ -21,5 +21,10 @@ namespace EllieWare.Manager
     {
       Product.Text = appName;
     }
+
+    private void RequestLicense_Shown(object sender, System.EventArgs e)
+    {
+      UserName.Focus();
+    }
   }
 }

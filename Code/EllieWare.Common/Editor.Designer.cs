@@ -37,10 +37,12 @@ namespace EllieWare.Common
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+      System.Windows.Forms.ToolTip EditorTips;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
       this.mStepsContainer = new System.Windows.Forms.SplitContainer();
       this.mSteps = new EllieWare.Support.RefreshingListBox();
@@ -62,6 +64,7 @@ namespace EllieWare.Common
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      EditorTips = new System.Windows.Forms.ToolTip(this.components);
       tableLayoutPanel4.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).BeginInit();
       this.mStepsContainer.Panel1.SuspendLayout();
@@ -101,7 +104,7 @@ namespace EllieWare.Common
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      tableLayoutPanel4.Size = new System.Drawing.Size(597, 463);
+      tableLayoutPanel4.Size = new System.Drawing.Size(597, 515);
       tableLayoutPanel4.TabIndex = 13;
       // 
       // mStepsContainer
@@ -117,8 +120,8 @@ namespace EllieWare.Common
       // 
       this.mStepsContainer.Panel1.Controls.Add(this.mSteps);
       tableLayoutPanel4.SetRowSpan(this.mStepsContainer, 5);
-      this.mStepsContainer.Size = new System.Drawing.Size(504, 428);
-      this.mStepsContainer.SplitterDistance = 166;
+      this.mStepsContainer.Size = new System.Drawing.Size(539, 480);
+      this.mStepsContainer.SplitterDistance = 186;
       this.mStepsContainer.TabIndex = 0;
       // 
       // mSteps
@@ -128,14 +131,14 @@ namespace EllieWare.Common
       this.mSteps.FormattingEnabled = true;
       this.mSteps.Location = new System.Drawing.Point(0, 0);
       this.mSteps.Name = "mSteps";
-      this.mSteps.Size = new System.Drawing.Size(502, 164);
+      this.mSteps.Size = new System.Drawing.Size(537, 184);
       this.mSteps.TabIndex = 0;
       this.mSteps.SelectedIndexChanged += new System.EventHandler(this.Steps_SelectedIndexChanged);
       // 
       // CmdSave
       // 
       this.CmdSave.Enabled = false;
-      this.CmdSave.Location = new System.Drawing.Point(351, 437);
+      this.CmdSave.Location = new System.Drawing.Point(386, 489);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
       this.CmdSave.TabIndex = 1;
@@ -151,32 +154,34 @@ namespace EllieWare.Common
       tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel3.Controls.Add(this.CmdParameters, 0, 0);
       tableLayoutPanel3.Controls.Add(this.CmdHelp, 0, 2);
-      tableLayoutPanel3.Location = new System.Drawing.Point(513, 258);
+      tableLayoutPanel3.Location = new System.Drawing.Point(548, 377);
       tableLayoutPanel3.Name = "tableLayoutPanel3";
       tableLayoutPanel3.RowCount = 3;
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel3.Size = new System.Drawing.Size(81, 78);
+      tableLayoutPanel3.Size = new System.Drawing.Size(46, 106);
       tableLayoutPanel3.TabIndex = 13;
       // 
       // CmdParameters
       // 
+      this.CmdParameters.Image = global::EllieWare.Common.Properties.Resources.gears_32x32;
       this.CmdParameters.Location = new System.Drawing.Point(3, 3);
       this.CmdParameters.Name = "CmdParameters";
-      this.CmdParameters.Size = new System.Drawing.Size(75, 23);
+      this.CmdParameters.Size = new System.Drawing.Size(40, 34);
       this.CmdParameters.TabIndex = 0;
-      this.CmdParameters.Text = "Parameters...";
+      EditorTips.SetToolTip(this.CmdParameters, "Parameters...");
       this.CmdParameters.UseVisualStyleBackColor = true;
       this.CmdParameters.Click += new System.EventHandler(this.CmdParameters_Click);
       // 
       // CmdHelp
       // 
-      this.CmdHelp.Location = new System.Drawing.Point(3, 52);
+      this.CmdHelp.Image = global::EllieWare.Common.Properties.Resources.lifebelt_32x32;
+      this.CmdHelp.Location = new System.Drawing.Point(3, 63);
       this.CmdHelp.Name = "CmdHelp";
-      this.CmdHelp.Size = new System.Drawing.Size(75, 23);
+      this.CmdHelp.Size = new System.Drawing.Size(40, 40);
       this.CmdHelp.TabIndex = 1;
-      this.CmdHelp.Text = "Help";
+      EditorTips.SetToolTip(this.CmdHelp, "Help...");
       this.CmdHelp.UseVisualStyleBackColor = true;
       this.CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
       // 
@@ -189,42 +194,45 @@ namespace EllieWare.Common
       tableLayoutPanel2.Controls.Add(this.CmdRun, 0, 0);
       tableLayoutPanel2.Controls.Add(this.CmdStep, 0, 1);
       tableLayoutPanel2.Controls.Add(this.CmdLog, 0, 2);
-      tableLayoutPanel2.Location = new System.Drawing.Point(513, 145);
+      tableLayoutPanel2.Location = new System.Drawing.Point(548, 213);
       tableLayoutPanel2.Name = "tableLayoutPanel2";
       tableLayoutPanel2.RowCount = 3;
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel2.Size = new System.Drawing.Size(81, 87);
+      tableLayoutPanel2.Size = new System.Drawing.Size(46, 138);
       tableLayoutPanel2.TabIndex = 11;
       // 
       // CmdRun
       // 
+      this.CmdRun.Image = global::EllieWare.Common.Properties.Resources.step_run_32x32;
       this.CmdRun.Location = new System.Drawing.Point(3, 3);
       this.CmdRun.Name = "CmdRun";
-      this.CmdRun.Size = new System.Drawing.Size(75, 23);
+      this.CmdRun.Size = new System.Drawing.Size(40, 40);
       this.CmdRun.TabIndex = 0;
-      this.CmdRun.Text = "Run";
+      EditorTips.SetToolTip(this.CmdRun, "Run");
       this.CmdRun.UseVisualStyleBackColor = true;
       this.CmdRun.Click += new System.EventHandler(this.CmdRun_Click);
       // 
       // CmdStep
       // 
-      this.CmdStep.Location = new System.Drawing.Point(3, 32);
+      this.CmdStep.Image = global::EllieWare.Common.Properties.Resources.step_32x321;
+      this.CmdStep.Location = new System.Drawing.Point(3, 49);
       this.CmdStep.Name = "CmdStep";
-      this.CmdStep.Size = new System.Drawing.Size(75, 23);
+      this.CmdStep.Size = new System.Drawing.Size(40, 40);
       this.CmdStep.TabIndex = 1;
-      this.CmdStep.Text = "Step";
+      EditorTips.SetToolTip(this.CmdStep, "Step");
       this.CmdStep.UseVisualStyleBackColor = true;
       this.CmdStep.Click += new System.EventHandler(this.CmdStep_Click);
       // 
       // CmdLog
       // 
-      this.CmdLog.Location = new System.Drawing.Point(3, 61);
+      this.CmdLog.Image = global::EllieWare.Common.Properties.Resources.scroll2_32x32;
+      this.CmdLog.Location = new System.Drawing.Point(3, 95);
       this.CmdLog.Name = "CmdLog";
-      this.CmdLog.Size = new System.Drawing.Size(75, 23);
+      this.CmdLog.Size = new System.Drawing.Size(40, 40);
       this.CmdLog.TabIndex = 2;
-      this.CmdLog.Text = "Log <<<";
+      EditorTips.SetToolTip(this.CmdLog, "Toggle log window");
       this.CmdLog.UseVisualStyleBackColor = true;
       this.CmdLog.Click += new System.EventHandler(this.CmdLog_Click);
       // 
@@ -238,60 +246,64 @@ namespace EllieWare.Common
       tableLayoutPanel1.Controls.Add(this.CmdDelete, 0, 1);
       tableLayoutPanel1.Controls.Add(this.CmdUp, 0, 2);
       tableLayoutPanel1.Controls.Add(this.CmdDown, 0, 3);
-      tableLayoutPanel1.Location = new System.Drawing.Point(513, 3);
+      tableLayoutPanel1.Location = new System.Drawing.Point(548, 3);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
       tableLayoutPanel1.RowCount = 4;
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(81, 116);
+      tableLayoutPanel1.Size = new System.Drawing.Size(46, 184);
       tableLayoutPanel1.TabIndex = 10;
       // 
       // CmdAdd
       // 
+      this.CmdAdd.Image = global::EllieWare.Common.Properties.Resources.step_add_32x32;
       this.CmdAdd.Location = new System.Drawing.Point(3, 3);
       this.CmdAdd.Name = "CmdAdd";
-      this.CmdAdd.Size = new System.Drawing.Size(75, 23);
+      this.CmdAdd.Size = new System.Drawing.Size(40, 40);
       this.CmdAdd.TabIndex = 0;
-      this.CmdAdd.Text = "Add...";
+      EditorTips.SetToolTip(this.CmdAdd, "Add...");
       this.CmdAdd.UseVisualStyleBackColor = true;
       this.CmdAdd.Click += new System.EventHandler(this.CmdAdd_Click);
       // 
       // CmdDelete
       // 
-      this.CmdDelete.Location = new System.Drawing.Point(3, 32);
+      this.CmdDelete.Image = global::EllieWare.Common.Properties.Resources.step_delete_32x32;
+      this.CmdDelete.Location = new System.Drawing.Point(3, 49);
       this.CmdDelete.Name = "CmdDelete";
-      this.CmdDelete.Size = new System.Drawing.Size(75, 23);
+      this.CmdDelete.Size = new System.Drawing.Size(40, 40);
       this.CmdDelete.TabIndex = 1;
-      this.CmdDelete.Text = "Delete";
+      EditorTips.SetToolTip(this.CmdDelete, "Delete");
       this.CmdDelete.UseVisualStyleBackColor = true;
       this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
       // 
       // CmdUp
       // 
-      this.CmdUp.Location = new System.Drawing.Point(3, 61);
+      this.CmdUp.Image = global::EllieWare.Common.Properties.Resources.arrow_up_green_32x32;
+      this.CmdUp.Location = new System.Drawing.Point(3, 95);
       this.CmdUp.Name = "CmdUp";
-      this.CmdUp.Size = new System.Drawing.Size(75, 23);
+      this.CmdUp.Size = new System.Drawing.Size(40, 40);
       this.CmdUp.TabIndex = 2;
-      this.CmdUp.Text = "Up";
+      EditorTips.SetToolTip(this.CmdUp, "Up");
       this.CmdUp.UseVisualStyleBackColor = true;
       this.CmdUp.Click += new System.EventHandler(this.CmdUp_Click);
       // 
       // CmdDown
       // 
-      this.CmdDown.Location = new System.Drawing.Point(3, 90);
+      this.CmdDown.Image = global::EllieWare.Common.Properties.Resources.arrow_down_green_32x32;
+      this.CmdDown.Location = new System.Drawing.Point(3, 141);
       this.CmdDown.Name = "CmdDown";
-      this.CmdDown.Size = new System.Drawing.Size(75, 23);
+      this.CmdDown.Size = new System.Drawing.Size(40, 40);
       this.CmdDown.TabIndex = 3;
-      this.CmdDown.Text = "Down";
+      EditorTips.SetToolTip(this.CmdDown, "Down");
       this.CmdDown.UseVisualStyleBackColor = true;
       this.CmdDown.Click += new System.EventHandler(this.CmdDown_Click);
       // 
       // CmdClose
       // 
       this.CmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.CmdClose.Location = new System.Drawing.Point(432, 437);
+      this.CmdClose.Location = new System.Drawing.Point(467, 489);
       this.CmdClose.Name = "CmdClose";
       this.CmdClose.Size = new System.Drawing.Size(75, 23);
       this.CmdClose.TabIndex = 2;
@@ -318,7 +330,7 @@ namespace EllieWare.Common
       // 
       this.mMainContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
       this.mMainContainer.Panel2.Controls.Add(this.mCallback);
-      this.mMainContainer.Size = new System.Drawing.Size(841, 463);
+      this.mMainContainer.Size = new System.Drawing.Size(841, 515);
       this.mMainContainer.SplitterDistance = 597;
       this.mMainContainer.TabIndex = 15;
       this.mMainContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.MainContainer_SplitterMoved);
@@ -331,7 +343,7 @@ namespace EllieWare.Common
       this.mCallback.Location = new System.Drawing.Point(0, 0);
       this.mCallback.Margin = new System.Windows.Forms.Padding(0);
       this.mCallback.Name = "mCallback";
-      this.mCallback.Size = new System.Drawing.Size(240, 463);
+      this.mCallback.Size = new System.Drawing.Size(240, 515);
       this.mCallback.TabIndex = 14;
       // 
       // Editor
@@ -339,7 +351,7 @@ namespace EllieWare.Common
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdClose;
-      this.ClientSize = new System.Drawing.Size(865, 487);
+      this.ClientSize = new System.Drawing.Size(865, 539);
       this.Controls.Add(this.mMainContainer);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Editor";

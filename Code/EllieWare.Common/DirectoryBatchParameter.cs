@@ -14,17 +14,7 @@ namespace EllieWare.Common
   public class DirectoryBatchParameter : BatchParameter, IDirectoryBatchParameter
   {
     public string FileMask { get; set; }
-    public string Directory
-    {
-      get
-      {
-        return (string)ParameterValue;
-      }
-      set
-      {
-        ParameterValue = value;
-      }
-    }
+    public string Directory { get; set; }
 
     public DirectoryBatchParameter() :
       base()
@@ -32,9 +22,10 @@ namespace EllieWare.Common
     }
 
     public DirectoryBatchParameter(string name, string directory, string fileMask) :
-      base(name, directory)
+      base(name)
     {
       FileMask = fileMask;
+      Directory = directory;
     }
 
     public override void ReadXml(XmlReader reader)
@@ -42,6 +33,7 @@ namespace EllieWare.Common
       base.ReadXml(reader);
 
       FileMask = reader.GetAttribute("FileMask");
+      Directory = reader.GetAttribute("Directory");
     }
 
     public override void WriteXml(XmlWriter writer)
@@ -49,13 +41,14 @@ namespace EllieWare.Common
       base.WriteXml(writer);
 
       writer.WriteAttributeString("FileMask", FileMask);
+      writer.WriteAttributeString("Directory", Directory);
     }
 
     public override string Summary
     {
       get
       {
-        var summ = string.Format("{0} files in {1}", FileMask, Directory);
+        var summ = string.Format("{0} -- > {1} files in {2}", DisplayName, FileMask, Directory);
 
         return summ;
       }

@@ -35,28 +35,34 @@ namespace EllieWare.Common
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.Label label2;
       System.Windows.Forms.Label label1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+      wyDay.Controls.SplitButton splitButton1;
+      System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+      System.Windows.Forms.ToolStripMenuItem BrowseFile;
+      System.Windows.Forms.ToolStripMenuItem BrowseDirectory;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditParameter));
-      this.CmdDirectory = new System.Windows.Forms.Button();
       this.mDisplayName = new System.Windows.Forms.TextBox();
       this.mParameterValue = new System.Windows.Forms.TextBox();
       this.CmdOK = new System.Windows.Forms.Button();
       this.CmdCancel = new System.Windows.Forms.Button();
-      this.CmdBrowseFile = new System.Windows.Forms.Button();
       this.DirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
       this.FileSelector = new System.Windows.Forms.SaveFileDialog();
       this.AddEditParameterHelp = new System.Windows.Forms.HelpProvider();
-      this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       label2 = new System.Windows.Forms.Label();
       label1 = new System.Windows.Forms.Label();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      splitButton1 = new wyDay.Controls.SplitButton();
+      contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      BrowseFile = new System.Windows.Forms.ToolStripMenuItem();
+      BrowseDirectory = new System.Windows.Forms.ToolStripMenuItem();
       tableLayoutPanel1.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
-      this.tableLayoutPanel3.SuspendLayout();
+      contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // label2
@@ -96,7 +102,7 @@ namespace EllieWare.Common
       tableLayoutPanel1.Controls.Add(this.mDisplayName, 1, 0);
       tableLayoutPanel1.Controls.Add(this.mParameterValue, 1, 1);
       tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 3, 3);
-      tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 4, 1);
+      tableLayoutPanel1.Controls.Add(splitButton1, 4, 1);
       tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
       tableLayoutPanel1.RowCount = 4;
@@ -104,18 +110,8 @@ namespace EllieWare.Common
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(602, 116);
+      tableLayoutPanel1.Size = new System.Drawing.Size(522, 110);
       tableLayoutPanel1.TabIndex = 8;
-      // 
-      // CmdDirectory
-      // 
-      this.CmdDirectory.Location = new System.Drawing.Point(84, 3);
-      this.CmdDirectory.Name = "CmdDirectory";
-      this.CmdDirectory.Size = new System.Drawing.Size(75, 23);
-      this.CmdDirectory.TabIndex = 1;
-      this.CmdDirectory.Text = "Directory...";
-      this.CmdDirectory.UseVisualStyleBackColor = true;
-      this.CmdDirectory.Click += new System.EventHandler(this.CmdDirectory_Click);
       // 
       // mDisplayName
       // 
@@ -123,7 +119,7 @@ namespace EllieWare.Common
       this.mDisplayName.Dock = System.Windows.Forms.DockStyle.Top;
       this.mDisplayName.Location = new System.Drawing.Point(47, 3);
       this.mDisplayName.Name = "mDisplayName";
-      this.mDisplayName.Size = new System.Drawing.Size(384, 20);
+      this.mDisplayName.Size = new System.Drawing.Size(422, 20);
       this.mDisplayName.TabIndex = 1;
       this.mDisplayName.TextChanged += new System.EventHandler(this.DisplayName_TextChanged);
       // 
@@ -133,7 +129,7 @@ namespace EllieWare.Common
       this.mParameterValue.Dock = System.Windows.Forms.DockStyle.Top;
       this.mParameterValue.Location = new System.Drawing.Point(47, 29);
       this.mParameterValue.Name = "mParameterValue";
-      this.mParameterValue.Size = new System.Drawing.Size(384, 20);
+      this.mParameterValue.Size = new System.Drawing.Size(422, 20);
       this.mParameterValue.TabIndex = 3;
       // 
       // tableLayoutPanel2
@@ -145,7 +141,7 @@ namespace EllieWare.Common
       tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       tableLayoutPanel2.Controls.Add(this.CmdOK, 0, 0);
       tableLayoutPanel2.Controls.Add(this.CmdCancel, 1, 0);
-      tableLayoutPanel2.Location = new System.Drawing.Point(269, 84);
+      tableLayoutPanel2.Location = new System.Drawing.Point(307, 78);
       tableLayoutPanel2.Name = "tableLayoutPanel2";
       tableLayoutPanel2.RowCount = 1;
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -155,6 +151,7 @@ namespace EllieWare.Common
       // CmdOK
       // 
       this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.CmdOK.Enabled = false;
       this.CmdOK.Location = new System.Drawing.Point(3, 3);
       this.CmdOK.Name = "CmdOK";
       this.CmdOK.Size = new System.Drawing.Size(75, 23);
@@ -172,16 +169,6 @@ namespace EllieWare.Common
       this.CmdCancel.Text = "Cancel";
       this.CmdCancel.UseVisualStyleBackColor = true;
       // 
-      // CmdBrowseFile
-      // 
-      this.CmdBrowseFile.Location = new System.Drawing.Point(3, 3);
-      this.CmdBrowseFile.Name = "CmdBrowseFile";
-      this.CmdBrowseFile.Size = new System.Drawing.Size(75, 23);
-      this.CmdBrowseFile.TabIndex = 0;
-      this.CmdBrowseFile.Text = "File...";
-      this.CmdBrowseFile.UseVisualStyleBackColor = true;
-      this.CmdBrowseFile.Click += new System.EventHandler(this.CmdBrowseFile_Click);
-      // 
       // FileSelector
       // 
       this.FileSelector.CheckPathExists = false;
@@ -189,21 +176,40 @@ namespace EllieWare.Common
       this.FileSelector.RestoreDirectory = true;
       this.FileSelector.Title = "Select File";
       // 
-      // tableLayoutPanel3
+      // splitButton1
       // 
-      this.tableLayoutPanel3.AutoSize = true;
-      this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.tableLayoutPanel3.ColumnCount = 2;
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Controls.Add(this.CmdDirectory, 1, 0);
-      this.tableLayoutPanel3.Controls.Add(this.CmdBrowseFile, 0, 0);
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(437, 29);
-      this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-      this.tableLayoutPanel3.RowCount = 1;
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 29);
-      this.tableLayoutPanel3.TabIndex = 9;
+      splitButton1.AutoSize = true;
+      splitButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      splitButton1.ContextMenuStrip = contextMenuStrip1;
+      splitButton1.Location = new System.Drawing.Point(475, 29);
+      splitButton1.Name = "splitButton1";
+      splitButton1.Size = new System.Drawing.Size(44, 23);
+      splitButton1.SplitMenuStrip = contextMenuStrip1;
+      splitButton1.TabIndex = 10;
+      splitButton1.Text = "...";
+      splitButton1.UseVisualStyleBackColor = true;
+      // 
+      // contextMenuStrip1
+      // 
+      contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            BrowseFile,
+            BrowseDirectory});
+      contextMenuStrip1.Name = "contextMenuStrip1";
+      contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
+      // 
+      // BrowseFile
+      // 
+      BrowseFile.Name = "BrowseFile";
+      BrowseFile.Size = new System.Drawing.Size(131, 22);
+      BrowseFile.Text = "File...";
+      BrowseFile.Click += new System.EventHandler(this.CmdBrowseFile_Click);
+      // 
+      // BrowseDirectory
+      // 
+      BrowseDirectory.Name = "BrowseDirectory";
+      BrowseDirectory.Size = new System.Drawing.Size(131, 22);
+      BrowseDirectory.Text = "Directory...";
+      BrowseDirectory.Click += new System.EventHandler(this.CmdDirectory_Click);
       // 
       // AddEditParameter
       // 
@@ -211,11 +217,11 @@ namespace EllieWare.Common
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdCancel;
-      this.ClientSize = new System.Drawing.Size(624, 140);
+      this.ClientSize = new System.Drawing.Size(544, 134);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.MaximumSize = new System.Drawing.Size(2000, 178);
-      this.MinimumSize = new System.Drawing.Size(480, 178);
+      this.MaximumSize = new System.Drawing.Size(2000, 172);
+      this.MinimumSize = new System.Drawing.Size(480, 172);
       this.Name = "AddEditParameter";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -223,7 +229,7 @@ namespace EllieWare.Common
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       tableLayoutPanel2.ResumeLayout(false);
-      this.tableLayoutPanel3.ResumeLayout(false);
+      contextMenuStrip1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -234,11 +240,8 @@ namespace EllieWare.Common
     private System.Windows.Forms.TextBox mDisplayName;
     private System.Windows.Forms.Button CmdCancel;
     private System.Windows.Forms.Button CmdOK;
-    private System.Windows.Forms.Button CmdBrowseFile;
-    private System.Windows.Forms.Button CmdDirectory;
     protected System.Windows.Forms.FolderBrowserDialog DirectorySelector;
     protected System.Windows.Forms.SaveFileDialog FileSelector;
     private System.Windows.Forms.HelpProvider AddEditParameterHelp;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
   }
 }

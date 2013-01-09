@@ -31,24 +31,31 @@ namespace EllieWare.Manager
       mRoot = root;
       if (!mRoot.IsLicensed)
       {
-        var dlg = new RequestLicense(mRoot.ApplicationName);
-        if (dlg.ShowDialog() == DialogResult.OK)
-        {
-          // attempt to register with provided info
-          Licensing.LicenseManager.Register(mRoot.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
-
-          var isLicensed = mRoot.IsLicensed;
-          var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                                  "  " + mRoot.ApplicationName + Environment.NewLine +
-                                                  "to:" + Environment.NewLine +
-                                                  "  " + dlg.UserName
-                                                  : "Information incorrect - product not registered");
-          MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-        }
+        DoRequestLicense();
       }
+
+      Text = mRoot.ApplicationName;
 
       RefreshSpecificationsList();
       UpdateButtons();
+    }
+
+    private void DoRequestLicense()
+    {
+      var dlg = new RequestLicense(mRoot.ApplicationName);
+      if (dlg.ShowDialog() == DialogResult.OK)
+      {
+        // attempt to register with provided info
+        Licensing.LicenseManager.Register(mRoot.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
+
+        var isLicensed = mRoot.IsLicensed;
+        var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
+                                             "  " + mRoot.ApplicationName + Environment.NewLine +
+                                             "to:" + Environment.NewLine +
+                                             "  " + dlg.UserName
+                                  : "Information incorrect - product not registered");
+        MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+      }
     }
 
     private string GetSelectedSpecificationPath()
@@ -82,14 +89,6 @@ namespace EllieWare.Manager
       UpdateButtons();
     }
 
-    private void CmdDebug_Click(object sender, EventArgs e)
-    {
-      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
-      dlg.ShowDialog();
-
-      UpdateButtons();
-    }
-
     #region IHost
 
     public void Run(string filePath)
@@ -116,7 +115,7 @@ namespace EllieWare.Manager
 
     private void UpdateButtons()
     {
-      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = CmdDebug.Enabled = FileOperations.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = FileOperations.Enabled = mSpecs.SelectedItems.Count > 0;
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)

@@ -48,8 +48,8 @@ namespace EllieWare.Common
       this.CmdBrowse = new System.Windows.Forms.Button();
       this.mPreview = new System.Windows.Forms.TextBox();
       this.mFileMask = new System.Windows.Forms.ComboBox();
-      this.SourceDirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
       this.mDisplayName = new System.Windows.Forms.TextBox();
+      this.SourceDirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
@@ -89,11 +89,10 @@ namespace EllieWare.Common
       tableLayoutPanel1.RowCount = 5;
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      tableLayoutPanel1.Size = new System.Drawing.Size(515, 306);
+      tableLayoutPanel1.Size = new System.Drawing.Size(515, 351);
       tableLayoutPanel1.TabIndex = 1;
       // 
       // label1
@@ -132,17 +131,17 @@ namespace EllieWare.Common
       // 
       tableLayoutPanel1.SetColumnSpan(this.mPreview, 3);
       this.mPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.mPreview.Location = new System.Drawing.Point(84, 59);
+      this.mPreview.Location = new System.Drawing.Point(84, 85);
       this.mPreview.Multiline = true;
       this.mPreview.Name = "mPreview";
       this.mPreview.ReadOnly = true;
-      this.mPreview.Size = new System.Drawing.Size(428, 209);
+      this.mPreview.Size = new System.Drawing.Size(428, 228);
       this.mPreview.TabIndex = 6;
       // 
       // label2
       // 
       label2.AutoSize = true;
-      label2.Location = new System.Drawing.Point(3, 62);
+      label2.Location = new System.Drawing.Point(3, 88);
       label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label2.Name = "label2";
       label2.Size = new System.Drawing.Size(45, 13);
@@ -154,12 +153,12 @@ namespace EllieWare.Common
       tableLayoutPanel2.AutoSize = true;
       tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       tableLayoutPanel2.ColumnCount = 2;
-      tableLayoutPanel1.SetColumnSpan(tableLayoutPanel2, 2);
       tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       tableLayoutPanel2.Controls.Add(CmdOK, 0, 0);
       tableLayoutPanel2.Controls.Add(CmdCancel, 1, 0);
-      tableLayoutPanel2.Location = new System.Drawing.Point(350, 274);
+      tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+      tableLayoutPanel2.Location = new System.Drawing.Point(318, 319);
       tableLayoutPanel2.Name = "tableLayoutPanel2";
       tableLayoutPanel2.RowCount = 1;
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -192,7 +191,7 @@ namespace EllieWare.Common
       label3.Location = new System.Drawing.Point(3, 61);
       label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label3.Name = "label3";
-      label3.Size = new System.Drawing.Size(55, 1);
+      label3.Size = new System.Drawing.Size(55, 13);
       label3.TabIndex = 6;
       label3.Text = "File Mask:";
       // 
@@ -235,10 +234,11 @@ namespace EllieWare.Common
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = CmdCancel;
-      this.ClientSize = new System.Drawing.Size(539, 330);
+      this.ClientSize = new System.Drawing.Size(539, 375);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "DirectoryBatchParameterEditor";
+      this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Edit";
       tableLayoutPanel1.ResumeLayout(false);

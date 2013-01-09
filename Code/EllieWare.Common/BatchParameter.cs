@@ -17,8 +17,8 @@ namespace EllieWare.Common
     {
     }
 
-    public BatchParameter(string name, string info) :
-      base(name, info)
+    public BatchParameter(string name) :
+      base(name, string.Empty)
     {
     }
 
