@@ -3,15 +3,8 @@
 <HEAD>
 <meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
 <!-- Sitemap 1.0 -->
-</HEAD>
-<BODY>
-<OBJECT type="text/site properties">
-</OBJECT>
+</HEAD><BODY>
 <UL>
-	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="RobotWare">
-		<param name="Local" value="index.html">
-		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="API">
 		<param name="Local" value="API.html">
@@ -20,6 +13,9 @@
 		<param name="Name" value="Parameters">
 		<param name="Local" value="Parameters.html">
 		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RobotWare">
+		<param name="Local" value="index.html">
+		</OBJECT>
 </UL>
-</BODY>
-</HTML>
+</BODY></HTML>
