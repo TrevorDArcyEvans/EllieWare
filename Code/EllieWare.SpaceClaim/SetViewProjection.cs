@@ -62,8 +62,6 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       var numStr = reader.GetAttribute("ViewProjection");
@@ -75,8 +73,6 @@ namespace EllieWare.SpaceClaim
     {
       writer.WriteAttributeString("ViewProjection", SelViewProjection.SelectedIndex.ToString(CultureInfo.InvariantCulture));
     }
-
-    #endregion
 
     public override Control ConfigurationUserInterface
     {

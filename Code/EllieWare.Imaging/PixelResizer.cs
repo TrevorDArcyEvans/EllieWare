@@ -24,8 +24,6 @@ namespace EllieWare.Imaging
       Label2.Text = "Pixels High:";
     }
 
-    #region Implementation of IRunnable
-
     public override string Summary
     {
       get
@@ -57,7 +55,5 @@ namespace EllieWare.Imaging
 
       return true;
     }
-
-    #endregion
   }
 }

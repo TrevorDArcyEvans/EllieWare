@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO

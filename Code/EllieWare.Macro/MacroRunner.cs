@@ -37,8 +37,6 @@ namespace EllieWare.Macro
       }
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       MacroFileName.Text = reader.GetAttribute("MacroFileName");
@@ -48,8 +46,6 @@ namespace EllieWare.Macro
     {
       writer.WriteAttributeString("MacroFileName", MacroFileName.Text);
     }
-
-    #endregion
 
     public override Control ConfigurationUserInterface
     {

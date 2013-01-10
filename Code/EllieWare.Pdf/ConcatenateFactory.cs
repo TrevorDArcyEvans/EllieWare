@@ -48,6 +48,5 @@ namespace EllieWare.Pdf
     {
       return new Concatenate(root, callback, mgr);
     }
-  
   }
 }

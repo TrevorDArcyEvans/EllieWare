@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 
@@ -29,6 +28,7 @@ namespace EllieWare.Logging
       get
       {
         var level = (LogLevel)mLevel.SelectedIndex;
+
         return string.Format("Log the current time at : {0}", level);
       }
     }

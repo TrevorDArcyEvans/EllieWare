@@ -15,7 +15,6 @@ namespace EllieWare.SpaceClaim
 {
   public partial class ExportToBitmap : SingleItemIOBase
   {
-
     public ExportToBitmap()
     {
     }

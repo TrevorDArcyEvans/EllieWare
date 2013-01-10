@@ -31,6 +31,5 @@ namespace EllieWare.Zip
                  };
       }
     }
-
   }
 }

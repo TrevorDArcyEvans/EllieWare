@@ -46,8 +46,6 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       var numStr = reader.GetAttribute("AreaThreshold");
@@ -64,8 +62,6 @@ namespace EllieWare.SpaceClaim
       writer.WriteAttributeString("AreaThreshold", AreaThreshold.Value.ToString(CultureInfo.InvariantCulture));
       writer.WriteAttributeString("Color", ColorTranslator.ToHtml(ColorDlg.Color));
     }
-
-    #endregion
 
     public override Control ConfigurationUserInterface
     {
