@@ -169,13 +169,6 @@ namespace EllieWare.Common
       this.CmdCancel.Text = "Cancel";
       this.CmdCancel.UseVisualStyleBackColor = true;
       // 
-      // FileSelector
-      // 
-      this.FileSelector.CheckPathExists = false;
-      this.FileSelector.OverwritePrompt = false;
-      this.FileSelector.RestoreDirectory = true;
-      this.FileSelector.Title = "Select File";
-      // 
       // splitButton1
       // 
       splitButton1.AutoSize = true;
@@ -188,6 +181,7 @@ namespace EllieWare.Common
       splitButton1.TabIndex = 10;
       splitButton1.Text = "...";
       splitButton1.UseVisualStyleBackColor = true;
+      splitButton1.Click += new System.EventHandler(this.CmdBrowseFile_Click);
       // 
       // contextMenuStrip1
       // 
@@ -210,6 +204,13 @@ namespace EllieWare.Common
       BrowseDirectory.Size = new System.Drawing.Size(131, 22);
       BrowseDirectory.Text = "Directory...";
       BrowseDirectory.Click += new System.EventHandler(this.CmdDirectory_Click);
+      // 
+      // FileSelector
+      // 
+      this.FileSelector.CheckPathExists = false;
+      this.FileSelector.OverwritePrompt = false;
+      this.FileSelector.RestoreDirectory = true;
+      this.FileSelector.Title = "Select File";
       // 
       // AddEditParameter
       // 

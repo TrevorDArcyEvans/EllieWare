@@ -153,6 +153,7 @@ namespace EllieWare.Common
       this.CmdSave.TabIndex = 1;
       this.CmdSave.Text = "Save";
       this.CmdSave.UseVisualStyleBackColor = true;
+      this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
       // 
       // SaveMenuStrip
       // 

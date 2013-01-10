@@ -35,6 +35,12 @@ namespace EllieWare.Common
       InitializeComponent();
 
       UpdateWidth();
+
+      // initially start with log window hidden
+      if (!mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
     }
 
     public Editor(IHost host, IRobotWare root, string filePath) :
@@ -187,6 +193,12 @@ namespace EllieWare.Common
 
     private void SetupForRun()
     {
+      // show log window
+      if (mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
+
       mCallback.Clear();
       mCallback.Log(LogLevel.Information, "Started");
     }

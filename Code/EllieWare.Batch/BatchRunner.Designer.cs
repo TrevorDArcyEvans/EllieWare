@@ -188,6 +188,7 @@ namespace EllieWare.Batch
       CmdBatchParameter.TabIndex = 7;
       CmdBatchParameter.Text = "Batch";
       CmdBatchParameter.UseVisualStyleBackColor = true;
+      CmdBatchParameter.Click += new System.EventHandler(this.BatchFile_Click);
       // 
       // BatchSummary
       // 
