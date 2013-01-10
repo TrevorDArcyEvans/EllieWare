@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using EllieWare.Support;
+using wyDay.Controls;
 
 namespace EllieWare.Common
 {
@@ -43,10 +44,13 @@ namespace EllieWare.Common
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.ToolTip EditorTips;
+      System.Windows.Forms.ContextMenuStrip SaveMenuStrip;
+      System.Windows.Forms.ToolStripMenuItem SplitCmdSave;
+      System.Windows.Forms.ToolStripMenuItem SplitCmdSaveAs;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
       this.mStepsContainer = new System.Windows.Forms.SplitContainer();
       this.mSteps = new EllieWare.Support.RefreshingListBox();
-      this.CmdSave = new System.Windows.Forms.Button();
+      this.CmdSave = new wyDay.Controls.SplitButton();
       this.CmdParameters = new System.Windows.Forms.Button();
       this.CmdHelp = new System.Windows.Forms.Button();
       this.CmdRun = new System.Windows.Forms.Button();
@@ -65,6 +69,9 @@ namespace EllieWare.Common
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       EditorTips = new System.Windows.Forms.ToolTip(this.components);
+      SaveMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+      SplitCmdSave = new System.Windows.Forms.ToolStripMenuItem();
+      SplitCmdSaveAs = new System.Windows.Forms.ToolStripMenuItem();
       tableLayoutPanel4.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).BeginInit();
       this.mStepsContainer.Panel1.SuspendLayout();
@@ -76,6 +83,7 @@ namespace EllieWare.Common
       this.mMainContainer.Panel1.SuspendLayout();
       this.mMainContainer.Panel2.SuspendLayout();
       this.mMainContainer.SuspendLayout();
+      SaveMenuStrip.SuspendLayout();
       this.SuspendLayout();
       // 
       // tableLayoutPanel4
@@ -137,14 +145,15 @@ namespace EllieWare.Common
       // 
       // CmdSave
       // 
+      this.CmdSave.ContextMenuStrip = SaveMenuStrip;
       this.CmdSave.Enabled = false;
       this.CmdSave.Location = new System.Drawing.Point(386, 489);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
+      this.CmdSave.SplitMenuStrip = SaveMenuStrip;
       this.CmdSave.TabIndex = 1;
       this.CmdSave.Text = "Save";
       this.CmdSave.UseVisualStyleBackColor = true;
-      this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
       // 
       // tableLayoutPanel3
       // 
@@ -346,6 +355,28 @@ namespace EllieWare.Common
       this.mCallback.Size = new System.Drawing.Size(240, 515);
       this.mCallback.TabIndex = 14;
       // 
+      // SaveMenuStrip
+      // 
+      SaveMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            SplitCmdSave,
+            SplitCmdSaveAs});
+      SaveMenuStrip.Name = "SaveMenuStrip";
+      SaveMenuStrip.Size = new System.Drawing.Size(124, 48);
+      // 
+      // SplitCmdSave
+      // 
+      SplitCmdSave.Name = "SplitCmdSave";
+      SplitCmdSave.Size = new System.Drawing.Size(123, 22);
+      SplitCmdSave.Text = "Save";
+      SplitCmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+      // 
+      // SplitCmdSaveAs
+      // 
+      SplitCmdSaveAs.Name = "SplitCmdSaveAs";
+      SplitCmdSaveAs.Size = new System.Drawing.Size(123, 22);
+      SplitCmdSaveAs.Text = "Save As...";
+      SplitCmdSaveAs.Click += new System.EventHandler(this.CmdSaveAs_Click);
+      // 
       // Editor
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,6 +404,7 @@ namespace EllieWare.Common
       this.mMainContainer.Panel2.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.mMainContainer)).EndInit();
       this.mMainContainer.ResumeLayout(false);
+      SaveMenuStrip.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -385,7 +417,7 @@ namespace EllieWare.Common
     private System.Windows.Forms.Button CmdDown;
     private System.Windows.Forms.Button CmdHelp;
     private System.Windows.Forms.Button CmdRun;
-    private System.Windows.Forms.Button CmdSave;
+    private SplitButton CmdSave;
     private System.Windows.Forms.SplitContainer mStepsContainer;
     private RefreshingListBox mSteps;
     private System.Windows.Forms.Button CmdStep;
