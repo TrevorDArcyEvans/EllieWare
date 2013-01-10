@@ -1,29 +1,30 @@
 [OPTIONS]
 Auto Index=Yes
-Binary TOC=No
-Binary Index=Yes
-Compatibility=1.1
-Compiled File=EllieWare.RobotWare.chm
-Contents File=EllieWare.RobotWare.hhc
-Default Topic=index.html
-Error log file=_errorlog.txt
-Index File=EllieWare.RobotWare.hhk
-Title=RobotWare
-Full-text search=Yes
-Display compile progress=Yes
-Display compile notes=Yes
+Compiled file=EllieWare.RobotWare.chm
+Contents file=EllieWare.RobotWare.hhc
 Default Window=main
-Default Font=
+Default topic=index.html
+Display compile progress=Yes
+Error log file=_errorlog.txt
+Full-text search=Yes
+Index file=EllieWare.RobotWare.hhk
 Language=0x409 English (United States)
-Create CHI file=No
-Full text search stop list file=
+Title=RobotWare
 
 [WINDOWS]
-main="RobotWare","EllieWare.RobotWare.hhc","EllieWare.RobotWare.hhk","index.html","index.html",,,,,0x23520,222,0x1046,[10,10,780,560],0xB0000,,,,,,0
+main="RobotWare","EllieWare.RobotWare.hhc","EllieWare.RobotWare.hhk","index.html","index.html",,,,,0x23520,222,0x1046,[10,10,780,560],0xb0000,,,,,,0
+
 
 [FILES]
 API.html
 common.css
 index.html
 Parameters.html
+BatchOperations.html
+Debugging.html
+Extending.html
+GettingStarted.html
+Installation.html
+
+[INFOTYPES]
 
