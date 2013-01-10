@@ -71,6 +71,7 @@ namespace EllieWare.Batch
       get
       {
         var descrip = string.Format("Run {0} other macro files with parameters", mSpecFileNames.Count);
+
         return descrip;
       }
     }

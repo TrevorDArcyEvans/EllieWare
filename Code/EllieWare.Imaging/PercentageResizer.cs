@@ -28,8 +28,6 @@ namespace EllieWare.Imaging
       Dimension1.Maximum = 1000;
     }
 
-    #region Implementation of IRunnable
-
     public override string Summary
     {
       get
@@ -68,8 +66,5 @@ namespace EllieWare.Imaging
 
       return true;
     }
-
-    #endregion
-
   }
 }

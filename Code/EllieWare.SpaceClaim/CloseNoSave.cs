@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -37,8 +36,6 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
     }
@@ -46,8 +43,6 @@ namespace EllieWare.SpaceClaim
     public override void WriteXml(XmlWriter writer)
     {
     }
-
-    #endregion
 
     public override Control ConfigurationUserInterface
     {

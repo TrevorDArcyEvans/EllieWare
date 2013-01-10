@@ -51,8 +51,6 @@ namespace EllieWare.Common
 
     #endregion
 
-    #region Implementation of IRunnable
-
     public virtual string Summary
     {
       get { throw new NotImplementedException(); }
@@ -68,8 +66,6 @@ namespace EllieWare.Common
       throw new NotImplementedException();
     }
 
-    #endregion
-
     protected void FireConfigurationChanged()
     {
       if (ConfigurationChanged != null)
@@ -78,10 +74,6 @@ namespace EllieWare.Common
       }
     }
 
-    #region Implementation of IMutableRunnable
-
     public event EventHandler ConfigurationChanged;
-
-    #endregion
   }
 }

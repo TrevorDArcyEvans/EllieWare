@@ -92,6 +92,7 @@ namespace EllieWare.Common
             retVal = retVal.Replace(encodedParamName, param.ParameterValue.ToString());
           }
         }
+
         return retVal;
       }
     }

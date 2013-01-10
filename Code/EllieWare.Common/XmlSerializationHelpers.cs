@@ -14,8 +14,6 @@ namespace EllieWare.Common
 {
   public class XmlSerializationHelpers
   {
-    #region Object serialisation helpers
-
     public static string XmlSerializeToString(object objectInstance)
     {
       var serializer = new XmlSerializer(objectInstance.GetType());
@@ -41,8 +39,5 @@ namespace EllieWare.Common
 
       return result;
     }
-
-    #endregion
-
   }
 }

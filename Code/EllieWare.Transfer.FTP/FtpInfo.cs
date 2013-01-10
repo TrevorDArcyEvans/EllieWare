@@ -58,6 +58,7 @@ namespace EllieWare.Transfer.FTP
           }
 
           var msg = string.Format("Successfully connected and logged in to {0}", Host.ResolvedValue);
+
           MessageBox.Show(msg, "FTP Information");
         }
         catch (Exception ex)
@@ -77,8 +78,6 @@ namespace EllieWare.Transfer.FTP
                };
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       Host.Text = reader.GetAttribute("Host");
@@ -92,8 +91,6 @@ namespace EllieWare.Transfer.FTP
       writer.WriteAttributeString("UserName", UserName.Text);
       writer.WriteAttributeString("Password", Password.Text);
     }
-
-    #endregion
 
     private void Host_TextChanged(object sender, EventArgs e)
     {
