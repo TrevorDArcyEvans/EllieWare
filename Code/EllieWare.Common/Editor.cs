@@ -127,20 +127,46 @@ namespace EllieWare.Common
       if (string.IsNullOrEmpty(mFilePath))
       {
         // new file, so get file name
-        var dlg = new FileSaveDialog(mRoot);
-        if (dlg.ShowDialog() != DialogResult.OK)
+        mFilePath = GetSaveFileName();
+        if (string.IsNullOrEmpty(mFilePath))
         {
           // user cancelled
           return;
         }
-
-        var filePath = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
-        mFilePath = Path.ChangeExtension(filePath, Utils.MacroFileExtension);
-
         UpdateTitle();
       }
       SaveToFile();
 
+      mHost.RefreshSpecificationsList();
+    }
+
+    private string GetSaveFileName()
+    {
+      var dlg = new FileSaveDialog(mRoot);
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        // user cancelled
+        return string.Empty;
+      }
+
+      var filePath = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
+      var retVal = Path.ChangeExtension(filePath, Utils.MacroFileExtension);
+
+      return retVal;
+    }
+
+    private void CmdSaveAs_Click(object sender, EventArgs e)
+    {
+      var newName = GetSaveFileName();
+      if (string.IsNullOrEmpty(newName))
+      {
+        // user cancelled
+        return;
+      }
+
+      mFilePath = newName;
+      UpdateTitle();
+      SaveToFile();
       mHost.RefreshSpecificationsList();
     }
 
@@ -369,11 +395,6 @@ namespace EllieWare.Common
       UpdateUserInterface();
 
       mSteps.SelectedIndex = selIndex + 1;
-    }
-
-    private void CmdHelp_Click(object sender, EventArgs e)
-    {
-      // TODO   Help
     }
 
     private void CmdParameters_Click(object sender, EventArgs e)

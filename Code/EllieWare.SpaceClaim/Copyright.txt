@@ -1,0 +1,22 @@
+RobotWare is a trademark of EllieWare.
+
+SpaceClaim is a registered trademark of SpaceClaim Corporation.
+
+Adobe and Acrobat are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.
+
+Autodesk, AutoCAD, and Autodesk Inventor are registered trademarks and RealDWG is a trademark of Autodesk, Inc.
+
+CATIA is a registered trademark of Dassault Systèmes.
+
+OpenDWG is a trademark of the Open Design Alliance.
+
+Pro/ENGINEER and PTC are registered trademarks of Parametric Technology Corporation.
+
+Rhinoceros is a registered trademark of Robert McNeel & Associates.
+
+SolidWorks is a registered trademark of SolidWorks Corporation.
+
+ACIS and SAT are registered trademarks of Spatial Corp.
+
+All other trademarks, trade names or company names referenced in RobotWare software, documentation and promotional materials are used for identification only and are the property of their respective owners.
+

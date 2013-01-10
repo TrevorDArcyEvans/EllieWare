@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using EllieWare.Support;
+using wyDay.Controls;
 
 namespace EllieWare.Common
 {
@@ -39,6 +40,9 @@ namespace EllieWare.Common
     {
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+      System.Windows.Forms.ContextMenuStrip SaveMenuStrip;
+      System.Windows.Forms.ToolStripMenuItem SplitCmdSave;
+      System.Windows.Forms.ToolStripMenuItem SplitCmdSaveAs;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -46,9 +50,8 @@ namespace EllieWare.Common
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
       this.mStepsContainer = new System.Windows.Forms.SplitContainer();
       this.mSteps = new EllieWare.Support.RefreshingListBox();
-      this.CmdSave = new System.Windows.Forms.Button();
+      this.CmdSave = new wyDay.Controls.SplitButton();
       this.CmdParameters = new System.Windows.Forms.Button();
-      this.CmdHelp = new System.Windows.Forms.Button();
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdStep = new System.Windows.Forms.Button();
       this.CmdLog = new System.Windows.Forms.Button();
@@ -61,6 +64,9 @@ namespace EllieWare.Common
       this.mMainContainer = new System.Windows.Forms.SplitContainer();
       this.mCallback = new EllieWare.Common.LogWindow();
       tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+      SaveMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+      SplitCmdSave = new System.Windows.Forms.ToolStripMenuItem();
+      SplitCmdSaveAs = new System.Windows.Forms.ToolStripMenuItem();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -69,6 +75,7 @@ namespace EllieWare.Common
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).BeginInit();
       this.mStepsContainer.Panel1.SuspendLayout();
       this.mStepsContainer.SuspendLayout();
+      SaveMenuStrip.SuspendLayout();
       tableLayoutPanel3.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
       tableLayoutPanel1.SuspendLayout();
@@ -137,14 +144,37 @@ namespace EllieWare.Common
       // 
       // CmdSave
       // 
+      this.CmdSave.ContextMenuStrip = SaveMenuStrip;
       this.CmdSave.Enabled = false;
       this.CmdSave.Location = new System.Drawing.Point(386, 489);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
+      this.CmdSave.SplitMenuStrip = SaveMenuStrip;
       this.CmdSave.TabIndex = 1;
       this.CmdSave.Text = "Save";
       this.CmdSave.UseVisualStyleBackColor = true;
-      this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+      // 
+      // SaveMenuStrip
+      // 
+      SaveMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            SplitCmdSave,
+            SplitCmdSaveAs});
+      SaveMenuStrip.Name = "SaveMenuStrip";
+      SaveMenuStrip.Size = new System.Drawing.Size(124, 48);
+      // 
+      // SplitCmdSave
+      // 
+      SplitCmdSave.Name = "SplitCmdSave";
+      SplitCmdSave.Size = new System.Drawing.Size(123, 22);
+      SplitCmdSave.Text = "Save";
+      SplitCmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+      // 
+      // SplitCmdSaveAs
+      // 
+      SplitCmdSaveAs.Name = "SplitCmdSaveAs";
+      SplitCmdSaveAs.Size = new System.Drawing.Size(123, 22);
+      SplitCmdSaveAs.Text = "Save As...";
+      SplitCmdSaveAs.Click += new System.EventHandler(this.CmdSaveAs_Click);
       // 
       // tableLayoutPanel3
       // 
@@ -153,14 +183,12 @@ namespace EllieWare.Common
       tableLayoutPanel3.ColumnCount = 1;
       tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel3.Controls.Add(this.CmdParameters, 0, 0);
-      tableLayoutPanel3.Controls.Add(this.CmdHelp, 0, 2);
       tableLayoutPanel3.Location = new System.Drawing.Point(548, 377);
       tableLayoutPanel3.Name = "tableLayoutPanel3";
-      tableLayoutPanel3.RowCount = 3;
+      tableLayoutPanel3.RowCount = 1;
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel3.Size = new System.Drawing.Size(46, 106);
+      tableLayoutPanel3.Size = new System.Drawing.Size(46, 40);
       tableLayoutPanel3.TabIndex = 13;
       // 
       // CmdParameters
@@ -173,17 +201,6 @@ namespace EllieWare.Common
       EditorTips.SetToolTip(this.CmdParameters, "Parameters...");
       this.CmdParameters.UseVisualStyleBackColor = true;
       this.CmdParameters.Click += new System.EventHandler(this.CmdParameters_Click);
-      // 
-      // CmdHelp
-      // 
-      this.CmdHelp.Image = global::EllieWare.Common.Properties.Resources.lifebelt_32x32;
-      this.CmdHelp.Location = new System.Drawing.Point(3, 63);
-      this.CmdHelp.Name = "CmdHelp";
-      this.CmdHelp.Size = new System.Drawing.Size(40, 40);
-      this.CmdHelp.TabIndex = 1;
-      EditorTips.SetToolTip(this.CmdHelp, "Help...");
-      this.CmdHelp.UseVisualStyleBackColor = true;
-      this.CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
       // 
       // tableLayoutPanel2
       // 
@@ -365,6 +382,7 @@ namespace EllieWare.Common
       this.mStepsContainer.Panel1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.mStepsContainer)).EndInit();
       this.mStepsContainer.ResumeLayout(false);
+      SaveMenuStrip.ResumeLayout(false);
       tableLayoutPanel3.ResumeLayout(false);
       tableLayoutPanel2.ResumeLayout(false);
       tableLayoutPanel1.ResumeLayout(false);
@@ -383,9 +401,8 @@ namespace EllieWare.Common
     private System.Windows.Forms.Button CmdDelete;
     private System.Windows.Forms.Button CmdUp;
     private System.Windows.Forms.Button CmdDown;
-    private System.Windows.Forms.Button CmdHelp;
     private System.Windows.Forms.Button CmdRun;
-    private System.Windows.Forms.Button CmdSave;
+    private SplitButton CmdSave;
     private System.Windows.Forms.SplitContainer mStepsContainer;
     private RefreshingListBox mSteps;
     private System.Windows.Forms.Button CmdStep;
