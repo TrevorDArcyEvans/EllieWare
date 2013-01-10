@@ -1,3 +1,10 @@
+/*
+  Copyright (C) 2013 EllieWare
+
+  All rights reserved
+
+  www.EllieWare.com
+*/
 
 *
 {
@@ -12,7 +19,6 @@ hr
 
 .app_img
 {
-  border: 1px solid;
   width: 128px;
   height: 128px;
 }
@@ -38,3 +44,7 @@ tbody
   font-size: 24pt;
 }
 
+.copyright
+{
+  font-size: x-small;
+}
