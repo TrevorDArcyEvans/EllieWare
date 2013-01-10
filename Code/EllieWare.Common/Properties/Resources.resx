@@ -160,9 +160,6 @@
   <data name="gears_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gears_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lifebelt_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lifebelt_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pencil_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pencil_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

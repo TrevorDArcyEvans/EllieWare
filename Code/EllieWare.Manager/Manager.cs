@@ -182,5 +182,10 @@ namespace EllieWare.Manager
 
       Process.Start("explorer.exe", selectionArgs);
     }
+
+    private void CmdHelp_Click(object sender, EventArgs e)
+    {
+      // TODO   Help
+    }
   }
 }

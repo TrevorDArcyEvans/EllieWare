@@ -397,11 +397,6 @@ namespace EllieWare.Common
       mSteps.SelectedIndex = selIndex + 1;
     }
 
-    private void CmdHelp_Click(object sender, EventArgs e)
-    {
-      // TODO   Help
-    }
-
     private void CmdParameters_Click(object sender, EventArgs e)
     {
       var dlg = new ParametersEditor(mSpecification.ParameterManager);
