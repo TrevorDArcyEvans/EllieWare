@@ -63,7 +63,6 @@ namespace EllieWare.Manager
       this.FileOpCopy = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpDelete = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpShow = new System.Windows.Forms.ToolStripMenuItem();
-      this.ManagerHelp = new System.Windows.Forms.HelpProvider();
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -286,7 +285,6 @@ namespace EllieWare.Manager
     private System.Windows.Forms.ListView mSpecs;
     private System.Windows.Forms.Button CmdDelete;
     private System.Windows.Forms.Button CmdAbout;
-    private System.Windows.Forms.HelpProvider ManagerHelp;
     private WaterMarkTextBox SearchBox;
     private System.Windows.Forms.ContextMenuStrip FileOperations;
     private System.Windows.Forms.ToolStripMenuItem FileOpCopy;

@@ -51,7 +51,6 @@ namespace EllieWare.Common
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
       this.lbSteps = new System.Windows.Forms.ListBox();
       this.ddlCategories = new System.Windows.Forms.ComboBox();
-      this.AdderHelp = new System.Windows.Forms.HelpProvider();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
       label3 = new System.Windows.Forms.Label();
@@ -261,6 +260,5 @@ namespace EllieWare.Common
     private System.Windows.Forms.TextBox txtDescription;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-    private System.Windows.Forms.HelpProvider AdderHelp;
   }
 }

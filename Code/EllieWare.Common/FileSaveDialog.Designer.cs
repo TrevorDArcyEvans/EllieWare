@@ -40,7 +40,6 @@ namespace EllieWare.Common
       System.Windows.Forms.Button CmdOK;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileSaveDialog));
       this.mFileNames = new System.Windows.Forms.ComboBox();
-      this.FileSaveHelp = new System.Windows.Forms.HelpProvider();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       CmdCancel = new System.Windows.Forms.Button();
       CmdOK = new System.Windows.Forms.Button();
@@ -126,6 +125,5 @@ namespace EllieWare.Common
     #endregion
 
     private System.Windows.Forms.ComboBox mFileNames;
-    private System.Windows.Forms.HelpProvider FileSaveHelp;
   }
 }

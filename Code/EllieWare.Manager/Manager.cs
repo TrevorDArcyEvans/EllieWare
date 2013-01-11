@@ -185,7 +185,7 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
-      // TODO   Help
+      Help.ShowHelp(this, "EllieWare.RobotWare.chm");
     }
   }
 }
