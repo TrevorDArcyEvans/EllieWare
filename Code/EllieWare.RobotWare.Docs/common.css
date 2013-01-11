@@ -26,36 +26,9 @@ a:link
   font-size: 24px;
 }
 
-button
-{
-  font-size: large;
-  height:32px;
-}
-
 hr
 {
   height: 2px;
   width: 100%;
-}
-
-table
-{
-  text-align: left;
-  width: 100%;"
-  border: 0;
-}
-
-tbody
-{
-  vertical-align: top;
-  text-align: center;
-  font-weight: bold;
-}
-
-.theader
-{
-  colspan: 4;
-  text-align: center;
-  font-size: 24pt;
 }
 

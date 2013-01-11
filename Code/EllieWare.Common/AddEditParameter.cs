@@ -37,7 +37,7 @@ namespace EllieWare.Common
 
       mDisplayName.TextChanged -= DisplayName_TextChanged;
       mDisplayName.Text = selParam.DisplayName;
-      mDisplayName.Enabled = false;
+      mDisplayName.ReadOnly = true;
 
       mEditParameterType = selParam.ParameterValue.GetType();
 
