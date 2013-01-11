@@ -241,6 +241,7 @@ namespace EllieWare.Common
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Add Step";
+      this.Shown += new System.EventHandler(this.Adder_Shown);
       tableLayoutPanel3.ResumeLayout(false);
       tableLayoutPanel3.PerformLayout();
       this.tableLayoutPanel2.ResumeLayout(false);

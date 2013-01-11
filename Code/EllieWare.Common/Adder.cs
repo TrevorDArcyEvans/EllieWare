@@ -79,7 +79,10 @@ namespace EllieWare.Common
       }
       else
       {
-        factsBySearch = from thisFact in factsByCat where thisFact.Keywords.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt) select thisFact;
+        factsBySearch = from thisFact in factsByCat where 
+                          (thisFact.Keywords.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt) || 
+                            thisFact.Title.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt))
+                        select thisFact;
       }
 
       lbSteps.DataSource = factsBySearch.ToList();
@@ -102,6 +105,11 @@ namespace EllieWare.Common
     {
       DialogResult = DialogResult.OK;
       Close();
+    }
+
+    private void Adder_Shown(object sender, EventArgs e)
+    {
+      SearchBox.Focus();
     }
   }
 }

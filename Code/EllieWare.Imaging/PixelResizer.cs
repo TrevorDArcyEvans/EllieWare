@@ -22,6 +22,7 @@ namespace EllieWare.Imaging
     {
       Label1.Text = "Pixels Wide:";
       Label2.Text = "Pixels High:";
+      Dimension1.Maximum = Dimension2.Maximum = 10000;
     }
 
     public override string Summary
