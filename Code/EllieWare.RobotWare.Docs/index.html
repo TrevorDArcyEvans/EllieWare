@@ -1,4 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--
+  Copyright (C) 2013 EllieWare
+
+  All rights reserved
+
+  www.EllieWare.com
+-->
+
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
@@ -11,12 +18,25 @@
   </Object>
 
   <h1>RobotWare</h1>
-  <h2>What is RobotWare?</h2>
-  <br>
-  <hr>
-  <h2>Getting started</h2>
-  <br>
-  <hr>
-  <a href="API.html">API</a>
+
+  RobotWare is a simple, 'code free' environment for automating tasks. It allows non-programmers to easily develop
+  macros to do repetitive tasks.<p>
+  At the lowest level is a <i>step</i> which is a small piece of functionality eg:
+  <ul>
+    <li>deleting a file on disk</li>
+    <li>copying a file</li>
+    <li>creating a zip archive</li>
+  </ul>
+  A variety of <i>steps</i> are then chained together to form a <i>specification</i> eg:
+  <ul>
+    <li>delete an image file</li>
+    <li>copy a new image file</li>
+    <li>resize image file</li>
+    <li>create a zip archive of image file</li>
+    <li>delete zip archive on FTP server</li>
+    <li>upload new zip archive to FTP server</li>
+    <li>play a sound</li>
+  </ul>
+  RobotWare will then execute each of these <i>steps</i> in the <i>specification</i> in sequence to automate a task.<p>
 </body>
 </html>

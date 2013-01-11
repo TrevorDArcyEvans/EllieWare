@@ -1,4 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--
+  Copyright (C) 2013 EllieWare
+
+  All rights reserved
+
+  www.EllieWare.com
+-->
+
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
@@ -11,12 +18,55 @@
   </Object>
 
   <h1>Getting Started</h1>
-  <h2>What are parameters?</h2>
-  <br>
-  <br>
-  <hr>
-  <br>
 
-  <br>
+  Let's automate a simple task to show how to use RobotWare:<br>
+  <ol>
+    <li>create a new directory</li>
+    <li>copy an existing image file to the new directory</li>
+    <li>resize the image to 400x400 pixels</li>
+    <li>save the resized image to a new name</li>
+    <li>play a system sound to let us know it is finished</li>
+  </ol>
+  <p>
+  Doing this in Windows is tedious but is easily done in RobotWare:
+  <ol>
+    <li>start RobotWare</li>
+    <li>click <i>New...</i> button</li>
+    <li><i>Editor</i> dialog is displayed</li>
+    <li>click <i>Add...</i> button</li>
+    <li><i>Add Step</i> dialog is displayed</li>
+    <li>in <i>Search</i> box, type <i>create</i></li>
+    <li>double click on <i>Create a directory</i> step</li>
+    <li><i>Add Step</i> dialog is closed and <i>Create a directory</i> step is added to <i>Editor</i></li>
+    <li>in <i>Source</i> box, type <i>c:\temp\RobotWare</i></li>
+    <li>click <i>Add...</i> button</li>
+    <li>in <i>Search</i> box, type <i>copy</i></li>
+    <li>double click <i>Copy a file</i> step</li>
+    <li><i>Add Step</i> dialog is closed and <i>Copy a file</i> step is added to <i>Editor</i></li>
+    <li>in <i>Source</i> box, use the button marked with <i>...</i> to browse for an image file</li>
+    <li>in <i>Destination</i> box, type <i>c:\temp\RobotWare\</i> and the name of the image file</li>
+    <li>click <i>Add...</i> button</li>
+    <li>in <i>Search</i> box, type <i>image</i></li>
+    <li>double click <i>Resize an image by pixels</i> step</li>
+    <li>in <i>Source</i> box, type <i>c:\temp\RobotWare\</i> and the name of the image file</li>
+    <li>in <i>Destination</i> box, type <i>c:\temp\RobotWare\</i> and a different image file name</li>
+    <li>in <i>Pixels Wide</i> and <i>Pixels High</i> boxes, type <i>400</i></li>
+    <li>click <i>Add...</i> button</li>
+    <li>in <i>Search</i> box, type <i>sound</i></li>
+    <li>double click <i>Play a Windows system sound</i> step</li>
+    <li>in <i>Play</i> drop down list, select <i>Exclamation</i></li>
+    <li>click <i>Save</i> button</li>
+    <li><i>Save</i> dialog is displayed</li>
+    <li>in box, enter <i>RobotWare Tutorial</i> and click <i>Add...</i> button</li>
+    <li>click <i>Run</i> button</li>
+    <li>each step is performed and a sound is played at the end</li>
+  </ol>
+  What we now have is a <i>Specification</i> which we can run again at a later time.
+  <p>
+  You may have noticed there was a lot of typing the same directory and file paths. If you changed
+  the original image, you then had to change the name in subsequent steps. This is both tedious
+  and error prone.
+  <p>
+  Luckily RobotWare allows you to setup and use <a href="Parameters.html"><i>Parameters</i></a> for exactly this situation.
 </body>
 </html>
