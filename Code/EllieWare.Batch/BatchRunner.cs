@@ -117,6 +117,18 @@ namespace EllieWare.Batch
       return true;
     }
 
+    private void AddOrUpdateParameter(IParameterManager paramMgr, IParameter param)
+    {
+      if (!paramMgr.Contains(param))
+      {
+        paramMgr.Add(param);
+      }
+      else
+      {
+        paramMgr.Update(param);
+      }
+    }
+
     private void AddOrUpdateParameter(ISpecification spec, IParameter param)
     {
       if (!spec.ParameterManager.Contains(param))
@@ -126,6 +138,20 @@ namespace EllieWare.Batch
       else
       {
         spec.ParameterManager.Update(param);
+      }
+
+      var batchParam = param as IDirectoryBatchParameter;
+      if (batchParam != null)
+      {
+        var batchDirDispName = batchParam.DisplayName + " [Directory]";
+        var batchDirValue = batchParam.Directory;
+        var batchDirParam = new BatchParameter(batchDirDispName, batchDirValue);
+        AddOrUpdateParameter(spec.ParameterManager, batchDirParam);
+
+        var batchFileNameDispName = batchParam.DisplayName + " [FileName]";
+        var batchFileNameValue = Path.GetFileNameWithoutExtension((string) batchParam.ParameterValue);
+        var batchFileNameParam = new BatchParameter(batchFileNameDispName, batchFileNameValue);
+        AddOrUpdateParameter(spec.ParameterManager, batchFileNameParam);
       }
     }
 
@@ -315,6 +341,18 @@ namespace EllieWare.Batch
 
       UpdateUserInterface();
       FireConfigurationChanged();
+    }
+
+    private void BatchParameter_Click(object sender, EventArgs e)
+    {
+      if (mBatchParam is IFileBatchParameter)
+      {
+        BatchFile_Click(sender, e);
+      }
+      else
+      {
+        BatchDirectory_Click(sender, e);
+      }
     }
   }
 }

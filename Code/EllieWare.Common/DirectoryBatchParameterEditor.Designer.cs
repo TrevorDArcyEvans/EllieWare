@@ -101,9 +101,9 @@ namespace EllieWare.Common
       label1.Location = new System.Drawing.Point(3, 32);
       label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label1.Name = "label1";
-      label1.Size = new System.Drawing.Size(26, 13);
+      label1.Size = new System.Drawing.Size(52, 13);
       label1.TabIndex = 2;
-      label1.Text = "File:";
+      label1.Text = "Directory:";
       // 
       // mDirectoryPath
       // 

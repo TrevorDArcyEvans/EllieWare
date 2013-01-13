@@ -22,7 +22,7 @@ namespace EllieWare.Common
     }
 
     public FileBatchParameter(string name, string filePath) :
-      base(name)
+      base(name, string.Empty)
     {
       FilePath = filePath;
     }
