@@ -36,8 +36,6 @@ namespace EllieWare.Batch
       mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       var specFileListStr = reader.GetAttribute("SpecificationFileNames");
@@ -61,10 +59,6 @@ namespace EllieWare.Batch
       writer.WriteAttributeString("BatchType", batchType);
       mBatchParam.WriteXml(writer);
     }
-
-    #endregion
-
-    #region Implementation of IRunnable
 
     public override string Summary
     {
@@ -122,8 +116,6 @@ namespace EllieWare.Batch
 
       return true;
     }
-
-    #endregion
 
     private void AddOrUpdateParameter(ISpecification spec, IParameter param)
     {
