@@ -225,6 +225,7 @@ namespace EllieWare.Common
       this.ddlCategories.Location = new System.Drawing.Point(72, 29);
       this.ddlCategories.Name = "ddlCategories";
       this.ddlCategories.Size = new System.Drawing.Size(359, 21);
+      this.ddlCategories.Sorted = true;
       this.ddlCategories.TabIndex = 3;
       this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
       // 
