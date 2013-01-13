@@ -31,6 +31,10 @@ namespace EllieWare.Common
 
     public string FileName
     {
+      set
+      {
+         mFileNames.Text = value;
+      }
       get
       {
         return mFileNames.Text;

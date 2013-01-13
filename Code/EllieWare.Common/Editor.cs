@@ -133,7 +133,7 @@ namespace EllieWare.Common
       if (string.IsNullOrEmpty(mFilePath))
       {
         // new file, so get file name
-        mFilePath = GetSaveFileName();
+        mFilePath = GetSaveFileName(string.Empty);
         if (string.IsNullOrEmpty(mFilePath))
         {
           // user cancelled
@@ -146,9 +146,9 @@ namespace EllieWare.Common
       mHost.RefreshSpecificationsList();
     }
 
-    private string GetSaveFileName()
+    private string GetSaveFileName(string fileName)
     {
-      var dlg = new FileSaveDialog(mRoot);
+      var dlg = new FileSaveDialog(mRoot) { FileName = fileName };
       if (dlg.ShowDialog() != DialogResult.OK)
       {
         // user cancelled
@@ -163,7 +163,7 @@ namespace EllieWare.Common
 
     private void CmdSaveAs_Click(object sender, EventArgs e)
     {
-      var newName = GetSaveFileName();
+      var newName = GetSaveFileName(Path.GetFileNameWithoutExtension(mFilePath));
       if (string.IsNullOrEmpty(newName))
       {
         // user cancelled
