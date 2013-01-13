@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Delete {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Delete {0} (if it exists)", SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +34,10 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      File.Delete(SourceFilePathResolvedValue);
+      if (File.Exists(SourceFilePathResolvedValue))
+      {
+        File.Delete(SourceFilePathResolvedValue);
+      }
 
       return true;
     }
