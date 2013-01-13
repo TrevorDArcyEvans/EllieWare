@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
@@ -191,6 +192,16 @@ namespace EllieWare.Common
       UpdateButtons();
     }
 
+    private void EnableDisableUI(bool isEnable)
+    {
+      CmdAdd.Enabled = CmdDelete.Enabled = CmdUp.Enabled = CmdDown.Enabled =
+        CmdRun.Enabled = CmdStep.Enabled = CmdLog.Enabled = CmdParameters.Enabled = 
+        CmdSave.Enabled = CmdClose.Enabled =
+        mStepsContainer.Enabled = mStepsContainer.Panel1.Enabled = mStepsContainer.Panel2.Enabled =
+        MaximizeBox = MinimizeBox = isEnable;
+      CloseButton.EnableDisable(this, isEnable);
+    }
+
     private void SetupForRun()
     {
       // show log window
@@ -199,6 +210,7 @@ namespace EllieWare.Common
         CmdLog_Click(null, null);
       }
 
+      EnableDisableUI(false);
       mCallback.Clear();
       mCallback.Log(LogLevel.Information, "Started");
     }
@@ -239,6 +251,8 @@ namespace EllieWare.Common
 
     private void TearDownForRun()
     {
+      EnableDisableUI(true);
+      UpdateButtons();
       mCurrentStep = 0;
       mCallback.Log(LogLevel.Information, "Finished");
     }
