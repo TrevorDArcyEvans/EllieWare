@@ -29,8 +29,8 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Remove all faces below {0} {1}^2", 
-                        AreaThreshold.Value, 
+        var descrip = string.Format("Remove all faces below {0} {1}^2",
+                        AreaThreshold.Value,
                         Window.ActiveWindow.Units.Length.Symbol);
 
         return descrip;
@@ -46,6 +46,10 @@ namespace EllieWare.SpaceClaim
                                 {
                                   var modFaces = from desFace in bodyAndFaces[desDody] select desFace.Shape;
                                   desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
+                                  //foreach (var thisModFace in modFaces)
+                                  //{
+                                  //  desDody.Shape.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+                                  //}
                                 }
                               });
 
