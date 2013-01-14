@@ -117,7 +117,7 @@ namespace EllieWare.Batch
       return true;
     }
 
-    private void AddOrUpdateParameter(IParameterManager paramMgr, IParameter param)
+    private void AddOrUpdateParameter(IParameterManager paramMgr, ISerializableParameter param)
     {
       if (!paramMgr.Contains(param))
       {
@@ -129,7 +129,7 @@ namespace EllieWare.Batch
       }
     }
 
-    private void AddOrUpdateParameter(ISpecification spec, IParameter param)
+    private void AddOrUpdateParameter(ISpecification spec, ISerializableParameter param)
     {
       if (!spec.ParameterManager.Contains(param))
       {
@@ -145,12 +145,14 @@ namespace EllieWare.Batch
       {
         var batchDirDispName = batchParam.DisplayName + " [Directory]";
         var batchDirValue = batchParam.Directory;
-        var batchDirParam = new BatchParameter(batchDirDispName, batchDirValue);
+        var batchDirParam = new TemporaryBatchParameter(batchDirDispName, batchDirValue);
         AddOrUpdateParameter(spec.ParameterManager, batchDirParam);
 
         var batchFileNameDispName = batchParam.DisplayName + " [FileName]";
-        var batchFileNameValue = Path.GetFileNameWithoutExtension((string) batchParam.ParameterValue);
-        var batchFileNameParam = new BatchParameter(batchFileNameDispName, batchFileNameValue);
+        var batchFileNameValue = ((string)batchParam.ParameterValue == string.Empty) ?
+                                    "[" + batchFileNameDispName+ ":FileName]" :
+                                    Path.GetFileNameWithoutExtension((string)batchParam.ParameterValue);
+        var batchFileNameParam = new TemporaryBatchParameter(batchFileNameDispName, batchFileNameValue);
         AddOrUpdateParameter(spec.ParameterManager, batchFileNameParam);
       }
     }
@@ -228,6 +230,11 @@ namespace EllieWare.Batch
       var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
 
       MergeParameters(dlg.Specification);
+      if (mBatchParam is IDirectoryBatchParameter)
+      {
+        mBatchParam.ParameterValue = "[" + mBatchParam.DisplayName + ":FileNameExtn]";
+        dlg.Specification.ParameterManager.Update(mBatchParam);
+      }
 
       dlg.ShowDialog();
     }

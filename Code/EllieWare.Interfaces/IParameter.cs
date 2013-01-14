@@ -12,7 +12,7 @@ namespace EllieWare.Interfaces
   /// <summary>
   /// A parameterized value
   /// </summary>
-  public interface IParameter : IXmlSerializable
+  public interface ISerializableParameter : IXmlSerializable
   {
     /// <summary>
     /// Unique name of parameter, suitable for display in a user interface

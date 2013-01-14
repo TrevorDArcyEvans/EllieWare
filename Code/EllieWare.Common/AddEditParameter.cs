@@ -15,7 +15,7 @@ namespace EllieWare.Common
 {
   public partial class AddEditParameter : Form
   {
-    private readonly IEnumerable<IParameter> mParameters;
+    private readonly IEnumerable<ISerializableParameter> mParameters;
     private readonly Type mEditParameterType = typeof(string);
 
     public AddEditParameter()
@@ -23,14 +23,14 @@ namespace EllieWare.Common
       InitializeComponent();
     }
 
-    public AddEditParameter(IEnumerable<IParameter> parameters) :
+    public AddEditParameter(IEnumerable<ISerializableParameter> parameters) :
       this()
     {
       mParameters = parameters;
     }
 
     // edit existing parameter
-    public AddEditParameter(IEnumerable<IParameter> parameters, IParameter selParam) :
+    public AddEditParameter(IEnumerable<ISerializableParameter> parameters, ISerializableParameter selParam) :
       this(parameters)
     {
       Text = "Edit Parameter";
@@ -45,7 +45,7 @@ namespace EllieWare.Common
       mParameterValue.Text = selParam.ParameterValue.ToString();
     }
 
-    public IParameter Parameter
+    public ISerializableParameter Parameter
     {
       get
       {

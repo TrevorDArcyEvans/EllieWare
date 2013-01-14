@@ -30,11 +30,11 @@ namespace EllieWare.Common
       }
     }
 
-    public IEnumerable<IParameter> Parameters
+    public IEnumerable<ISerializableParameter> Parameters
     {
       get
       {
-        return ParametersDisplay.Items.Cast<IParameter>();
+        return ParametersDisplay.Items.Cast<ISerializableParameter>();
       }
     }
 
