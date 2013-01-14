@@ -140,20 +140,20 @@ namespace EllieWare.Batch
         spec.ParameterManager.Update(param);
       }
 
-      var batchParam = param as IDirectoryBatchParameter;
-      if (batchParam != null)
+      var batchDirParam = param as IDirectoryBatchParameter;
+      if (batchDirParam != null)
       {
-        var batchDirDispName = batchParam.DisplayName + " [Directory]";
-        var batchDirValue = batchParam.Directory;
-        var batchDirParam = new TemporaryBatchParameter(batchDirDispName, batchDirValue);
-        AddOrUpdateParameter(spec.ParameterManager, batchDirParam);
+        var batchDirDispName = batchDirParam.DisplayName + " [Directory]";
+        var batchDirValue = batchDirParam.Directory;
+        var tempBatchDirParam = new TemporaryBatchParameter(batchDirDispName, batchDirValue);
+        AddOrUpdateParameter(spec.ParameterManager, tempBatchDirParam);
 
-        var batchFileNameDispName = batchParam.DisplayName + " [FileName]";
-        var batchFileNameValue = ((string)batchParam.ParameterValue == string.Empty) ?
-                                    "[" + batchParam.DisplayName + ":FileName]" :
-                                    Path.GetFileNameWithoutExtension((string)batchParam.ParameterValue);
-        var batchFileNameParam = new TemporaryBatchParameter(batchFileNameDispName, batchFileNameValue);
-        AddOrUpdateParameter(spec.ParameterManager, batchFileNameParam);
+        var batchDirFileNameDispName = batchDirParam.DisplayName + " [FileName]";
+        var batchDirFileNameValue = ((string)batchDirParam.ParameterValue == string.Empty) ?
+                                    "[" + batchDirParam.DisplayName + ":FileName]" :
+                                    Path.GetFileNameWithoutExtension((string)batchDirParam.ParameterValue);
+        var batchDirFileNameParam = new TemporaryBatchParameter(batchDirFileNameDispName, batchDirFileNameValue);
+        AddOrUpdateParameter(spec.ParameterManager, batchDirFileNameParam);
       }
     }
 
@@ -231,8 +231,13 @@ namespace EllieWare.Batch
 
       if (mBatchParam is IDirectoryBatchParameter)
       {
-        // reset if we have just run a batch spec
+        // reset if we have just run a batch spec, will be updated in merge
         mBatchParam.ParameterValue = string.Empty;
+      }
+      else if (mBatchParam is IFileBatchParameter)
+      {
+        // set to something informational for UI feedback
+        mBatchParam.ParameterValue = "[" + mBatchParam.DisplayName + ":Line]";
       }
 
       MergeParameters(dlg.Specification);
