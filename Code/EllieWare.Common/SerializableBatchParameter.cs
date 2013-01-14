@@ -34,7 +34,7 @@ namespace EllieWare.Common
         return summ;
       }
     }
-    public virtual IEnumerable<string> ResolvedValues
+    public override IEnumerable<string> ResolvedValues
     {
       get
       {

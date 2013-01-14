@@ -6,9 +6,12 @@
 //  www.EllieWare.com
 //
 
+using System.Collections.Generic;
+using EllieWare.Interfaces;
+
 namespace EllieWare.Common
 {
-  public class BatchParameter : Parameter
+  public class BatchParameter : Parameter, IBatchParameter
   {
     public BatchParameter() :
       base()
@@ -18,6 +21,14 @@ namespace EllieWare.Common
     public BatchParameter(string name, string paramValue) :
       base(name, paramValue)
     {
+    }
+
+    public virtual IEnumerable<string> ResolvedValues
+    {
+      get
+      {
+        return new List<string>();
+      }
     }
   }
 }
