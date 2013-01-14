@@ -135,6 +135,7 @@ namespace EllieWare.Common
       this.mPreview.Multiline = true;
       this.mPreview.Name = "mPreview";
       this.mPreview.ReadOnly = true;
+      this.mPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
       this.mPreview.Size = new System.Drawing.Size(428, 228);
       this.mPreview.TabIndex = 6;
       // 
