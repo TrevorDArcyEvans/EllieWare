@@ -130,6 +130,7 @@ namespace EllieWare.Common
       this.mParameterValue.Name = "mParameterValue";
       this.mParameterValue.Size = new System.Drawing.Size(422, 20);
       this.mParameterValue.TabIndex = 3;
+      this.mParameterValue.TextChanged += new System.EventHandler(this.ParameterValue_TextChanged);
       // 
       // tableLayoutPanel2
       // 
