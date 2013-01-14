@@ -48,6 +48,12 @@ namespace EllieWare.Batch
       mBatchParam.ReadXml(reader);
 
       UpdateUserInterface();
+
+      if (mSpecs.Items.Count > 0)
+      {
+        // select first spec
+        mSpecs.SelectedIndex = 0;
+      }
     }
 
     public override void WriteXml(XmlWriter writer)
@@ -131,14 +137,7 @@ namespace EllieWare.Batch
 
     private void AddOrUpdateParameter(ISpecification spec, IParameter param)
     {
-      if (!spec.ParameterManager.Contains(param))
-      {
-        spec.ParameterManager.Add(param);
-      }
-      else
-      {
-        spec.ParameterManager.Update(param);
-      }
+      AddOrUpdateParameter(spec.ParameterManager, param);
 
       var batchDirParam = param as IDirectoryBatchParameter;
       if (batchDirParam != null)
