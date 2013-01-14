@@ -12,21 +12,8 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class SerializableParameter : ISerializableParameter
+  public class SerializableParameter : Parameter, ISerializableParameter
   {
-    public string DisplayName { get; set; }
-    public object ParameterValue { get; set; }
-
-    public virtual string Summary
-    {
-      get
-      {
-        // TODO   support other data types ie number, array of string aka object
-        // TODO   use CultureInfo.InvariantCulture for numbers
-        return DisplayName + " --> " + ParameterValue;
-      }
-    }
-
     public SerializableParameter() :
       base()
     {

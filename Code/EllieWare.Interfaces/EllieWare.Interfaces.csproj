@@ -53,7 +53,7 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="IParameter.cs" />
-    <Compile Include="IBatchParameter.cs" />
+    <Compile Include="ISerializableBatchParameter.cs" />
     <Compile Include="ICallback.cs" />
     <Compile Include="IDirectoryBatchParameter.cs" />
     <Compile Include="IFactory.cs" />
