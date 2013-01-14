@@ -195,7 +195,7 @@ namespace EllieWare.Common
     private void EnableDisableUI(bool isEnable)
     {
       CmdAdd.Enabled = CmdDelete.Enabled = CmdUp.Enabled = CmdDown.Enabled =
-        CmdRun.Enabled = CmdStep.Enabled = CmdLog.Enabled = CmdParameters.Enabled = 
+        CmdRun.Enabled = CmdStep.Enabled = CmdLog.Enabled = CmdParameters.Enabled =
         CmdSave.Enabled = CmdClose.Enabled =
         mStepsContainer.Enabled = mStepsContainer.Panel1.Enabled = mStepsContainer.Panel2.Enabled =
         MaximizeBox = MinimizeBox = isEnable;
@@ -210,7 +210,6 @@ namespace EllieWare.Common
         CmdLog_Click(null, null);
       }
 
-      EnableDisableUI(false);
       mCallback.Clear();
       mCallback.Log(LogLevel.Information, "Started");
     }
@@ -225,33 +224,41 @@ namespace EllieWare.Common
 
     public bool Run()
     {
-      if (mCurrentStep == 0)
-      {
-        SetupForRun();
-      }
-
       var retVal = true;
-
-      // if user presses Run while Step(ping), run from current step
-      for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
+      var oldSaveEnabled = CmdSave.Enabled;
+      try
       {
-        if (!Run(mCurrentStep))
+        if (mCurrentStep == 0)
         {
-          ReportFailure();
-          retVal = false;
-
-          break;
+          EnableDisableUI(false);
+          SetupForRun();
         }
-      }
 
-      TearDownForRun();
+        // if user presses Run while Step(ping), run from current step
+        for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
+        {
+          if (!Run(mCurrentStep))
+          {
+            ReportFailure();
+            retVal = false;
+
+            break;
+          }
+        }
+
+        TearDownForRun();
+        EnableDisableUI(true);
+      }
+      finally
+      {
+        CmdSave.Enabled = oldSaveEnabled;
+      }
 
       return retVal;
     }
 
     private void TearDownForRun()
     {
-      EnableDisableUI(true);
       UpdateButtons();
       mCurrentStep = 0;
       mCallback.Log(LogLevel.Information, "Finished");
