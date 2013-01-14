@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
+using System.Xml.Serialization;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -84,11 +85,11 @@ namespace EllieWare.Common
         {
           var typeStr = reader.GetAttribute("Type");
           var objType = Type.GetType(typeStr);
-          var param = (ISerializableParameter)Activator.CreateInstance(objType);
+          var param = (IXmlSerializable)Activator.CreateInstance(objType);
 
           param.ReadXml(reader);
 
-          mParameters.Add(param);
+          mParameters.Add((IParameter)param);
         }
       }
     }
