@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace EllieWare.Common
 {
-  public class TemporaryBatchParameter : BatchParameter
+  public class TemporaryBatchParameter : SerializableBatchParameter
   {
     public TemporaryBatchParameter() :
       base()

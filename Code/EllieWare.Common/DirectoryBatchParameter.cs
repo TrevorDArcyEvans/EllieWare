@@ -13,7 +13,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class DirectoryBatchParameter : BatchParameter, IDirectoryBatchParameter
+  public class DirectoryBatchParameter : SerializableBatchParameter, IDirectoryBatchParameter
   {
     public string FileMask { get; set; }
     public string Directory { get; set; }
