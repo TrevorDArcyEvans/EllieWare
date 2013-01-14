@@ -49,6 +49,7 @@ namespace EllieWare.Common
 
       selParam.ParameterValue = dlg.Parameter.ParameterValue;
       ParametersDisplay.RefreshItem(ParametersDisplay.SelectedIndex);
+      CmdOK.Enabled = true;
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace EllieWare.Common
       }
 
       ParametersDisplay.Items.Add(dlg.Parameter);
+      CmdOK.Enabled = true;
     }
 
     private void CmdEdit_Click(object sender, EventArgs e)
@@ -70,6 +72,7 @@ namespace EllieWare.Common
     private void CmdDelete_Click(object sender, EventArgs e)
     {
       ParametersDisplay.Items.RemoveAt(ParametersDisplay.SelectedIndex);
+      CmdOK.Enabled = true;
     }
 
     private void Parameters_SelectedIndexChanged(object sender, EventArgs e)
