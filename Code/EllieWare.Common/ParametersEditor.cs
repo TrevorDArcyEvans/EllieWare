@@ -30,17 +30,17 @@ namespace EllieWare.Common
       }
     }
 
-    public IEnumerable<ISerializableParameter> Parameters
+    public IEnumerable<IParameter> Parameters
     {
       get
       {
-        return ParametersDisplay.Items.Cast<ISerializableParameter>();
+        return ParametersDisplay.Items.Cast<IParameter>();
       }
     }
 
     private void EditSelectedParameter()
     {
-      var selParam = (SerializableParameter)ParametersDisplay.SelectedItem;
+      var selParam = (IParameter)ParametersDisplay.SelectedItem;
       var dlg = new AddEditParameter(Parameters, selParam);
       if (dlg.ShowDialog() != DialogResult.OK)
       {
@@ -82,7 +82,7 @@ namespace EllieWare.Common
       }
 
       // cannot edit or delete batch parameters
-      var isBatchParam = ParametersDisplay.SelectedItem is ISerializableBatchParameter;
+      var isBatchParam = ParametersDisplay.SelectedItem is IBatchParameter;
       CmdEdit.Enabled = CmdDelete.Enabled = !isBatchParam;
     }
 

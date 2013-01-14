@@ -28,7 +28,7 @@ namespace EllieWare.Common
     {
     }
 
-    public Parameter(string name, string paramValue)
+    public Parameter(string name, object paramValue)
     {
       DisplayName = name;
       ParameterValue = paramValue;
