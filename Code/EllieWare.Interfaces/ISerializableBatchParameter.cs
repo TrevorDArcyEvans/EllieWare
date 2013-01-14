@@ -5,18 +5,14 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace EllieWare.Interfaces
 {
   /// <summary>
-  /// Base interface for all batch parameters
+  /// A batch parameter which can be serialized
   /// </summary>
-  public interface ISerializableBatchParameter : ISerializableParameter
+  public interface ISerializableBatchParameter : IBatchParameter, IXmlSerializable
   {
-    /// <summary>
-    /// A list of strings from the specific implementation/specialization of IBatchParameter
-    /// </summary>
-    IEnumerable<string> ResolvedValues { get; }
   }
 }

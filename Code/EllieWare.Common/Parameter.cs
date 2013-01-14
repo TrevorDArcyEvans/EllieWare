@@ -23,5 +23,15 @@ namespace EllieWare.Common
         return DisplayName + " --> " + ParameterValue;
       }
     }
+
+    public Parameter()
+    {
+    }
+
+    public Parameter(string name, string paramValue)
+    {
+      DisplayName = name;
+      ParameterValue = paramValue;
+    }
   }
 }

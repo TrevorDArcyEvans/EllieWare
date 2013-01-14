@@ -150,7 +150,7 @@ namespace EllieWare.Batch
 
         var batchFileNameDispName = batchParam.DisplayName + " [FileName]";
         var batchFileNameValue = ((string)batchParam.ParameterValue == string.Empty) ?
-                                    "[" + batchFileNameDispName+ ":FileName]" :
+                                    "[" + batchParam.DisplayName + ":FileName]" :
                                     Path.GetFileNameWithoutExtension((string)batchParam.ParameterValue);
         var batchFileNameParam = new TemporaryBatchParameter(batchFileNameDispName, batchFileNameValue);
         AddOrUpdateParameter(spec.ParameterManager, batchFileNameParam);
@@ -229,7 +229,14 @@ namespace EllieWare.Batch
     {
       var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
 
+      if (mBatchParam is IDirectoryBatchParameter)
+      {
+        // reset if we have just run a batch spec
+        mBatchParam.ParameterValue = string.Empty;
+      }
+
       MergeParameters(dlg.Specification);
+
       if (mBatchParam is IDirectoryBatchParameter)
       {
         mBatchParam.ParameterValue = "[" + mBatchParam.DisplayName + ":FileNameExtn]";

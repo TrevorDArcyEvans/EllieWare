@@ -52,6 +52,7 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="IBatchParameter.cs" />
     <Compile Include="IParameter.cs" />
     <Compile Include="ISerializableBatchParameter.cs" />
     <Compile Include="ICallback.cs" />

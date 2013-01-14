@@ -8,14 +8,14 @@
 
 namespace EllieWare.Common
 {
-  public class TemporaryBatchParameter : BatchParameter
+  public class BatchParameter : Parameter
   {
-    public TemporaryBatchParameter() :
+    public BatchParameter() :
       base()
     {
     }
 
-    public TemporaryBatchParameter(string name, string paramValue) :
+    public BatchParameter(string name, string paramValue) :
       base(name, paramValue)
     {
     }

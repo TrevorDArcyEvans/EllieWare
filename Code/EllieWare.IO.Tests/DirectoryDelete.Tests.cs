@@ -39,15 +39,14 @@ namespace EllieWare.IO.Tests
     #endregion
 
     [Test]
-    [ExpectedException(typeof(DirectoryNotFoundException))]
-    public void DirectoryDelete_DoesNotExist_ThrowsException()
+    public void DirectoryDelete_DoesNotExist_Succeeds()
     {
       var mockReader = Helper.GetMockReader(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), 1);
       var delDir = new DirectoryDelete();
 
       delDir.ReadXml(mockReader.Object);
 
-      var bRet = delDir.Run();
+      Assert.True(delDir.Run());
     }
 
     [Test]
