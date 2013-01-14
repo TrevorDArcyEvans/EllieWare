@@ -41,7 +41,7 @@ namespace EllieWare.Common
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       wyDay.Controls.SplitButton splitButton1;
-      System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+      System.Windows.Forms.ContextMenuStrip AddEditParameterStrip;
       System.Windows.Forms.ToolStripMenuItem BrowseFile;
       System.Windows.Forms.ToolStripMenuItem BrowseDirectory;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditParameter));
@@ -51,18 +51,17 @@ namespace EllieWare.Common
       this.CmdCancel = new System.Windows.Forms.Button();
       this.DirectorySelector = new System.Windows.Forms.FolderBrowserDialog();
       this.FileSelector = new System.Windows.Forms.SaveFileDialog();
-      this.AddEditParameterHelp = new System.Windows.Forms.HelpProvider();
       label2 = new System.Windows.Forms.Label();
       label1 = new System.Windows.Forms.Label();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       splitButton1 = new wyDay.Controls.SplitButton();
-      contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      AddEditParameterStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       BrowseFile = new System.Windows.Forms.ToolStripMenuItem();
       BrowseDirectory = new System.Windows.Forms.ToolStripMenuItem();
       tableLayoutPanel1.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
-      contextMenuStrip1.SuspendLayout();
+      AddEditParameterStrip.SuspendLayout();
       this.SuspendLayout();
       // 
       // label2
@@ -131,6 +130,7 @@ namespace EllieWare.Common
       this.mParameterValue.Name = "mParameterValue";
       this.mParameterValue.Size = new System.Drawing.Size(422, 20);
       this.mParameterValue.TabIndex = 3;
+      this.mParameterValue.TextChanged += new System.EventHandler(this.ParameterValue_TextChanged);
       // 
       // tableLayoutPanel2
       // 
@@ -169,47 +169,48 @@ namespace EllieWare.Common
       this.CmdCancel.Text = "Cancel";
       this.CmdCancel.UseVisualStyleBackColor = true;
       // 
-      // FileSelector
-      // 
-      this.FileSelector.CheckPathExists = false;
-      this.FileSelector.OverwritePrompt = false;
-      this.FileSelector.RestoreDirectory = true;
-      this.FileSelector.Title = "Select File";
-      // 
       // splitButton1
       // 
       splitButton1.AutoSize = true;
       splitButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      splitButton1.ContextMenuStrip = contextMenuStrip1;
+      splitButton1.ContextMenuStrip = AddEditParameterStrip;
       splitButton1.Location = new System.Drawing.Point(475, 29);
       splitButton1.Name = "splitButton1";
       splitButton1.Size = new System.Drawing.Size(44, 23);
-      splitButton1.SplitMenuStrip = contextMenuStrip1;
+      splitButton1.SplitMenuStrip = AddEditParameterStrip;
       splitButton1.TabIndex = 10;
       splitButton1.Text = "...";
       splitButton1.UseVisualStyleBackColor = true;
+      splitButton1.Click += new System.EventHandler(this.CmdBrowseFile_Click);
       // 
-      // contextMenuStrip1
+      // AddEditParameterStrip
       // 
-      contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      AddEditParameterStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             BrowseFile,
             BrowseDirectory});
-      contextMenuStrip1.Name = "contextMenuStrip1";
-      contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
+      AddEditParameterStrip.Name = "contextMenuStrip1";
+      AddEditParameterStrip.Size = new System.Drawing.Size(153, 70);
       // 
       // BrowseFile
       // 
       BrowseFile.Name = "BrowseFile";
-      BrowseFile.Size = new System.Drawing.Size(131, 22);
+      BrowseFile.Size = new System.Drawing.Size(152, 22);
       BrowseFile.Text = "File...";
       BrowseFile.Click += new System.EventHandler(this.CmdBrowseFile_Click);
       // 
       // BrowseDirectory
       // 
       BrowseDirectory.Name = "BrowseDirectory";
-      BrowseDirectory.Size = new System.Drawing.Size(131, 22);
+      BrowseDirectory.Size = new System.Drawing.Size(152, 22);
       BrowseDirectory.Text = "Directory...";
       BrowseDirectory.Click += new System.EventHandler(this.CmdDirectory_Click);
+      // 
+      // FileSelector
+      // 
+      this.FileSelector.CheckPathExists = false;
+      this.FileSelector.OverwritePrompt = false;
+      this.FileSelector.RestoreDirectory = true;
+      this.FileSelector.Title = "Select File";
       // 
       // AddEditParameter
       // 
@@ -229,7 +230,7 @@ namespace EllieWare.Common
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       tableLayoutPanel2.ResumeLayout(false);
-      contextMenuStrip1.ResumeLayout(false);
+      AddEditParameterStrip.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -242,6 +243,5 @@ namespace EllieWare.Common
     private System.Windows.Forms.Button CmdOK;
     protected System.Windows.Forms.FolderBrowserDialog DirectorySelector;
     protected System.Windows.Forms.SaveFileDialog FileSelector;
-    private System.Windows.Forms.HelpProvider AddEditParameterHelp;
   }
 }

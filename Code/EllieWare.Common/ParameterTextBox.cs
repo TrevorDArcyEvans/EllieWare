@@ -36,7 +36,8 @@ namespace EllieWare.Common
     {
       ParameterMenu.Items.Clear();
       var compatibleParamNames = from thisName in mParamMgr.Parameters
-                                 where mParamMgr.Get(thisName.DisplayName).ParameterValue.GetType() == typeof(string)
+                                 where (!string.IsNullOrEmpty(thisName.DisplayName) &&
+                                        mParamMgr.Get(thisName.DisplayName).ParameterValue.GetType() == typeof(string))
                                  select thisName;
       foreach (var compatibleName in compatibleParamNames)
       {
@@ -92,6 +93,7 @@ namespace EllieWare.Common
             retVal = retVal.Replace(encodedParamName, param.ParameterValue.ToString());
           }
         }
+
         return retVal;
       }
     }

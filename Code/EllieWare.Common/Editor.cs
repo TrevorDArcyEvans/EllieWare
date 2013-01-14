@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
@@ -35,6 +36,12 @@ namespace EllieWare.Common
       InitializeComponent();
 
       UpdateWidth();
+
+      // initially start with log window hidden
+      if (!mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
     }
 
     public Editor(IHost host, IRobotWare root, string filePath) :
@@ -127,7 +134,7 @@ namespace EllieWare.Common
       if (string.IsNullOrEmpty(mFilePath))
       {
         // new file, so get file name
-        mFilePath = GetSaveFileName();
+        mFilePath = GetSaveFileName(string.Empty);
         if (string.IsNullOrEmpty(mFilePath))
         {
           // user cancelled
@@ -140,9 +147,9 @@ namespace EllieWare.Common
       mHost.RefreshSpecificationsList();
     }
 
-    private string GetSaveFileName()
+    private string GetSaveFileName(string fileName)
     {
-      var dlg = new FileSaveDialog(mRoot);
+      var dlg = new FileSaveDialog(mRoot) { FileName = fileName };
       if (dlg.ShowDialog() != DialogResult.OK)
       {
         // user cancelled
@@ -157,7 +164,7 @@ namespace EllieWare.Common
 
     private void CmdSaveAs_Click(object sender, EventArgs e)
     {
-      var newName = GetSaveFileName();
+      var newName = GetSaveFileName(Path.GetFileNameWithoutExtension(mFilePath));
       if (string.IsNullOrEmpty(newName))
       {
         // user cancelled
@@ -185,8 +192,24 @@ namespace EllieWare.Common
       UpdateButtons();
     }
 
+    private void EnableDisableUI(bool isEnable)
+    {
+      CmdAdd.Enabled = CmdDelete.Enabled = CmdUp.Enabled = CmdDown.Enabled =
+        CmdRun.Enabled = CmdStep.Enabled = CmdLog.Enabled = CmdParameters.Enabled =
+        CmdSave.Enabled = CmdClose.Enabled =
+        mStepsContainer.Enabled = mStepsContainer.Panel1.Enabled = mStepsContainer.Panel2.Enabled =
+        MaximizeBox = MinimizeBox = isEnable;
+      CloseButton.EnableDisable(this, isEnable);
+    }
+
     private void SetupForRun()
     {
+      // show log window
+      if (mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
+
       mCallback.Clear();
       mCallback.Log(LogLevel.Information, "Started");
     }
@@ -201,32 +224,42 @@ namespace EllieWare.Common
 
     public bool Run()
     {
-      if (mCurrentStep == 0)
-      {
-        SetupForRun();
-      }
-
       var retVal = true;
-
-      // if user presses Run while Step(ping), run from current step
-      for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
+      var oldSaveEnabled = CmdSave.Enabled;
+      try
       {
-        if (!Run(mCurrentStep))
+        if (mCurrentStep == 0)
         {
-          ReportFailure();
-          retVal = false;
-
-          break;
+          EnableDisableUI(false);
+          SetupForRun();
         }
-      }
 
-      TearDownForRun();
+        // if user presses Run while Step(ping), run from current step
+        for (; mCurrentStep < mSteps.Items.Count; mCurrentStep++)
+        {
+          if (!Run(mCurrentStep))
+          {
+            ReportFailure();
+            retVal = false;
+
+            break;
+          }
+        }
+
+        TearDownForRun();
+        EnableDisableUI(true);
+      }
+      finally
+      {
+        CmdSave.Enabled = oldSaveEnabled;
+      }
 
       return retVal;
     }
 
     private void TearDownForRun()
     {
+      UpdateButtons();
       mCurrentStep = 0;
       mCallback.Log(LogLevel.Information, "Finished");
     }

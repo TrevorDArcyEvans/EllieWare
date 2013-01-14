@@ -63,5 +63,4 @@ namespace EllieWare.Transfer.FTP
       }
     }
   }
-
 }

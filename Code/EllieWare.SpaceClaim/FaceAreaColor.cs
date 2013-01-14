@@ -30,7 +30,7 @@ namespace EllieWare.SpaceClaim
     {
       InitializeComponent();
 
-      AreaUnits.Text = string.Format("{0}^2", Window.ActiveWindow.Units.Length.Symbol);
+      AreaUnits.Text = string.Format("{0}^2", (Window.ActiveWindow != null) ? Window.ActiveWindow.Units.Length.Symbol : "mm");
     }
 
     public override string Summary
@@ -45,8 +45,6 @@ namespace EllieWare.SpaceClaim
         return descrip;
       }
     }
-
-    #region Implementation of IXmlSerializable
 
     public override void ReadXml(XmlReader reader)
     {
@@ -65,8 +63,6 @@ namespace EllieWare.SpaceClaim
       writer.WriteAttributeString("Color", ColorTranslator.ToHtml(ColorDlg.Color));
     }
 
-    #endregion
-
     public override Control ConfigurationUserInterface
     {
       get
@@ -84,6 +80,16 @@ namespace EllieWare.SpaceClaim
       foreach (var thisBody in allParts.SelectMany(thisPart => thisPart.Bodies))
       {
         retval[thisBody] = from thisFace in thisBody.Faces where thisFace.Area * areaFactor < threshold select thisFace;
+        //var smallFaces = new List<DesignFace>();
+        //foreach (var thisFace in thisBody.Faces)
+        //{
+        //  var area = thisFace.Area;
+        //  if (area * areaFactor < threshold)
+        //  {
+        //    smallFaces.Add(thisFace);
+        //  }
+        //}
+        //retval[thisBody] = smallFaces;
       }
 
       return retval;

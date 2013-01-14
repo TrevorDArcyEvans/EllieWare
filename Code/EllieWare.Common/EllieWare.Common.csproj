@@ -64,6 +64,8 @@
       <DependentUpon>Adder.cs</DependentUpon>
     </Compile>
     <Compile Include="BatchParameter.cs" />
+    <Compile Include="Parameter.cs" />
+    <Compile Include="SerializableBatchParameter.cs" />
     <Compile Include="DirectoryBatchParameter.cs" />
     <Compile Include="BrowserTypes.cs" />
     <Compile Include="DirectoryBatchParameterEditor.cs">
@@ -110,7 +112,7 @@
     <Compile Include="MacroFileSelector.Designer.cs">
       <DependentUpon>MacroFileSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parameter.cs" />
+    <Compile Include="SerializableParameter.cs" />
     <Compile Include="ParameterCollection.cs" />
     <Compile Include="ParametersEditor.cs">
       <SubType>Form</SubType>
@@ -145,6 +147,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Specification.cs" />
+    <Compile Include="TemporaryBatchParameter.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="XmlSerializationHelpers.cs" />
   </ItemGroup>

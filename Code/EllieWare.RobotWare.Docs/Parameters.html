@@ -1,4 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!--
+  Copyright (C) 2013 EllieWare
+
+  All rights reserved
+
+  www.EllieWare.com
+-->
+
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
@@ -11,12 +18,124 @@
   </Object>
 
   <h1>Parameters</h1>
-  <h2>What are parameters?</h2>
-  <br>
-  <br>
-  <hr>
-  <br>
 
-  <br>
+  In the <a href="GettingStarted.html"><i>Getting Started</i></a> tutorial, we automated a simple task
+  but we noticed there was still a lot of typing.
+  <p>
+  RobotWare has <i>parameters</i> which is a way of referring to the same piece of text.  For example,
+  in the <a href="GettingStarted.html"><i>Getting Started</i></a> tutorial, the directory we created
+  (<i>c:\temp\RobotWare</i>) was used in several places.  If we changed our the directory name, we would
+  then have to change it everywhere it is used. <i>Parameters</i> allow you to change it in one place
+  and have it reflected everywhere it is used.
+  <p>
+  Let's automate the same simple task to show how to use RobotWare with <i>parameters</i>:<br>
+  <ol>
+    <li>delete an existing directory</li>
+    <li>create the directory again</li>
+    <li>copy an existing image file to the new directory</li>
+    <li>resize the image to 400x400 pixels</li>
+    <li>save the resized image to a new name</li>
+    <li>play a system sound to let us know it is finished</li>
+  </ol>
+  <p>
+  Doing this in Windows is tedious but is easily done in RobotWare:
+  <ol>
+    <li>start RobotWare</li>
+    <li>click <i>New...</i> button</li>
+    <li><i>Editor</i> dialog is displayed</li>
+    <p>
+    <li>click <i>Parameters...</i> button</li>
+    <li><i>Parameters Editor</i> dialog is displayed</li>
+    <p>
+    <li>click <i>Add...</i> button</li>
+    <li><i>Add Parameter</i> dialog is displayed</li>
+    <li>in <i>Name</i> box, type <i>ImageSourceDir</i></li>
+    <li>in <i>Value</i> box, type <i>c:\temp\RobotWare</i></li>
+    <li>this will be the directory we will delete and then recreate</li>
+    <li>click <i>OK</i> button</li>
+    <p>
+    <li>click <i>Add...</i> button again and create <i>parameters</i> for:</li><p>
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr style="font-weight:bold;">
+          <td>Name</td><td>Value</td><td>Comment</td>
+        </tr>
+        <tr>
+          <td>ImageSourceDir</td><td>c:\temp\RobotWare</td><td>directory we will delete and then recreate</td>
+        </tr>
+        <tr>
+          <td>OriginalImageName</td><td><i>[use browse button to select file]</i></td><td>file name of image to be resized</td>
+        </tr>
+        <tr>
+          <td>OriginalImageSourceDir</td><td><i>[use browse button to select directory]</i></td><td>directory of image to be resized</td>
+        </tr>
+        <tr>
+          <td>ResizedImageName</td><td><i>[enter a new image file name]</i></td><td>file name of resized image</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+    <li>we should now be in the <i>Parameters Editor</i> dialog, so click <i>OK</i> button to go back to the <i>Editor</i> dialog</li>
+    <p>
+    <li>click <i>Add...</i> button</li>
+    <li><i>Add Step</i> dialog is displayed</li>
+    <li>in <i>Search</i> box, type <i>delete</i></li>
+    <li>double click on <i>Delete a directory</i> step</li>
+    <li><i>Add Step</i> dialog is closed and <i>Delete a directory</i> step is added to <i>Editor</i></li>
+    <li>in <i>Source</i> box, right click</i></li>
+    <li>from the popup menu which appears, select <i>ImageSourceDir</i></li>
+    <li>in the box above, notice how the summary of the step says <i>Delete c:\temp\RobotWare and any subdirectories and files</i></li>
+    <p>
+    <li>click <i>Add...</i> button</li>
+    <li><i>Add Step</i> dialog is displayed</li>
+    <li>in <i>Search</i> box, type <i>create</i></li>
+    <li>double click on <i>Create a directory</i> step</li>
+    <li><i>Add Step</i> dialog is closed and <i>Create a directory</i> step is added to <i>Editor</i></li>
+    <li>in <i>Source</i> box, right click and select <i>ImageSourceDir</i></li>
+    <li>in the box above, notice how the summary of the step says <i>Create c:\temp\RobotWare</i></li>
+    <p>
+    <li>click <i>Add...</i> button</li>
+    <li>in <i>Search</i> box, type <i>copy</i></li>
+    <li>double click <i>Copy a file</i> step</li>
+    <li><i>Add Step</i> dialog is closed and <i>Copy a file</i> step is added to <i>Editor</i></li>
+    <li>in <i>Source</i> box, right click and select <i>OriginalImageSourceDir</i></li>
+    <li>in <i>Source</i> box, type <i>\</i></li>
+    <li>in <i>Source</i> box, right click and select <i>OriginalImageName</i></li>
+    <li>in <i>Destination</i> box, right click and select <i>ImageSourceDir</i></li>
+    <li>in Destination<i></i> box, type <i>\</i></li>
+    <li>in <i>Destination</i> box, right click and select <i>OriginalImageName</i></li>
+    <li>in the box above, notice how the summary of the step has updated with the values of the <i>parameters</i></li>
+    <p>
+    <li>click <i>Add...</i> button</li>
+    <li>in <i>Search</i> box, type <i>image</i></li>
+    <li>double click <i>Resize an image by pixels</i> step</li>
+    <li>in <i>Source</i> box, right click and select <i>ImageSourceDir</i></li>
+    <li>in <i>Source</i> box, type <i>\</i></li>
+    <li>in <i>Source</i> box, right click and select <i>OriginalImageName</i></li>
+    <li>in <i>Destination</i> box, right click and select <i>ImageSourceDir</i></li>
+    <li>in <i>Destination</i> box, type <i>\</i></li>
+    <li>in <i>Destination</i> box, right click and select <i>ResizedImageName</i></li>
+    <li>in the box above, notice how the summary of the step has updated with the values of the <i>parameters</i></li>
+    <li>in <i>Pixels Wide</i> and <i>Pixels High</i> boxes, type <i>400</i></li>
+    <p>
+    <li>click <i>Add...</i> button</li>
+    <li>in <i>Search</i> box, type <i>sound</i></li>
+    <li>double click <i>Play a Windows system sound</i> step</li>
+    <li>in <i>Play</i> drop down list, select <i>Exclamation</i></li>
+    <p>
+    <li>click <i>Save</i> button</li>
+    <li><i>Save</i> dialog is displayed</li>
+    <li>in box, enter <i>RobotWare Parameters Tutorial</i> and click <i>Add...</i> button</li>
+    <p>
+    <li>click <i>Run</i> button</li>
+    <li>each step is performed and a sound is played at the end</li>
+  </ol>
+  What we now have is a <i>Specification</i> which we can run again at a later time.
+  <p>
+  More importantly, we have a <i>Specification</i> which uses <i>parameters</i> to make
+  it easily modifiable if, for example, we would like to resize a different image file.
+  In this case, we only need to change one <i>parameters</i> in one place to make the
+  change.
+
 </body>
 </html>

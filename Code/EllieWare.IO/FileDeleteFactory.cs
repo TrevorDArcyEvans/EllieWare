@@ -24,7 +24,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "Delete a file";
+        return "Delete a file if it exists";
       }
     }
 

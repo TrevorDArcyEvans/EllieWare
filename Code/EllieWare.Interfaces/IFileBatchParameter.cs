@@ -11,7 +11,7 @@ namespace EllieWare.Interfaces
   /// <summary>
   /// A series of parameterized values, one per line, taken from a text file on disk
   /// </summary>
-  public interface IFileBatchParameter : IBatchParameter
+  public interface IFileBatchParameter : ISerializableBatchParameter
   {
     /// <summary>
     /// Fully qualified to text file on disk

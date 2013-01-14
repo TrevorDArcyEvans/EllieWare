@@ -53,12 +53,14 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="IBatchParameter.cs" />
+    <Compile Include="IParameter.cs" />
+    <Compile Include="ISerializableBatchParameter.cs" />
     <Compile Include="ICallback.cs" />
     <Compile Include="IDirectoryBatchParameter.cs" />
     <Compile Include="IFactory.cs" />
     <Compile Include="IFileBatchParameter.cs" />
     <Compile Include="IMutableRunnable.cs" />
-    <Compile Include="IParameter.cs" />
+    <Compile Include="ISerializableParameter.cs" />
     <Compile Include="IParameterManager.cs" />
     <Compile Include="IRobotWare.cs" />
     <Compile Include="IRunnable.cs" />

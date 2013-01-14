@@ -36,7 +36,7 @@ namespace EllieWare.Batch
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+      System.Windows.Forms.ContextMenuStrip BatchMenuStrip;
       System.Windows.Forms.ToolStripMenuItem BatchFile;
       System.Windows.Forms.ToolStripMenuItem BatchDirectory;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -48,22 +48,22 @@ namespace EllieWare.Batch
       this.CmdEdit = new System.Windows.Forms.Button();
       this.CmdUp = new System.Windows.Forms.Button();
       this.BatchSummary = new System.Windows.Forms.TextBox();
-      contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      BatchMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       BatchFile = new System.Windows.Forms.ToolStripMenuItem();
       BatchDirectory = new System.Windows.Forms.ToolStripMenuItem();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       CmdBatchParameter = new wyDay.Controls.SplitButton();
-      contextMenuStrip1.SuspendLayout();
+      BatchMenuStrip.SuspendLayout();
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // contextMenuStrip1
       // 
-      contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      BatchMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             BatchFile,
             BatchDirectory});
-      contextMenuStrip1.Name = "contextMenuStrip1";
-      contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
+      BatchMenuStrip.Name = "contextMenuStrip1";
+      BatchMenuStrip.Size = new System.Drawing.Size(132, 48);
       // 
       // BatchFile
       // 
@@ -180,14 +180,15 @@ namespace EllieWare.Batch
       // 
       // CmdBatchParameter
       // 
-      CmdBatchParameter.ContextMenuStrip = contextMenuStrip1;
+      CmdBatchParameter.ContextMenuStrip = BatchMenuStrip;
       CmdBatchParameter.Location = new System.Drawing.Point(420, 421);
       CmdBatchParameter.Name = "CmdBatchParameter";
       CmdBatchParameter.Size = new System.Drawing.Size(73, 23);
-      CmdBatchParameter.SplitMenuStrip = contextMenuStrip1;
+      CmdBatchParameter.SplitMenuStrip = BatchMenuStrip;
       CmdBatchParameter.TabIndex = 7;
       CmdBatchParameter.Text = "Batch";
       CmdBatchParameter.UseVisualStyleBackColor = true;
+      CmdBatchParameter.Click += new System.EventHandler(this.BatchParameter_Click);
       // 
       // BatchSummary
       // 
@@ -205,7 +206,7 @@ namespace EllieWare.Batch
       this.Controls.Add(tableLayoutPanel1);
       this.Name = "BatchRunner";
       this.Size = new System.Drawing.Size(498, 447);
-      contextMenuStrip1.ResumeLayout(false);
+      BatchMenuStrip.ResumeLayout(false);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       this.ResumeLayout(false);

@@ -17,7 +17,7 @@ namespace EllieWare.Common
   public interface ISpecification : IXmlSerializable
   {
     /// <summary>
-    /// A <seealso cref="IParameterManager"/> from which each <seealso cref="IRunnable"/> step can get its <seealso cref="IParameter"/>
+    /// A <seealso cref="IParameterManager"/> from which each <seealso cref="IRunnable"/> step can get its <seealso cref="ISerializableParameter"/>
     /// </summary>
     IParameterManager ParameterManager { get; }
 

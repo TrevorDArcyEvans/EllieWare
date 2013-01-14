@@ -12,7 +12,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class FileBatchParameter : BatchParameter, IFileBatchParameter
+  public class FileBatchParameter : SerializableBatchParameter, IFileBatchParameter
   {
     public string FilePath { get; set; }
 
@@ -22,7 +22,7 @@ namespace EllieWare.Common
     }
 
     public FileBatchParameter(string name, string filePath) :
-      base(name)
+      base(name, string.Empty)
     {
       FilePath = filePath;
     }

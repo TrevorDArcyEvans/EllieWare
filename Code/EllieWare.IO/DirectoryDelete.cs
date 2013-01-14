@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Delete {0} and any subdirectories and files", SourceFilePathResolvedValue);
+        var descrip = string.Format("Delete {0} (if it exists) and any subdirectories and files", SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +34,10 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      Directory.Delete(SourceFilePathResolvedValue, true);
+      if (Directory.Exists(SourceFilePathResolvedValue))
+      {
+        Directory.Delete(SourceFilePathResolvedValue, true);
+      }
 
       return true;
     }

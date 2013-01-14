@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
+using System.Xml.Serialization;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -29,7 +30,7 @@ namespace EllieWare.Common
 
     public bool Contains(IParameter parameter)
     {
-      return mParameters.Where(x => x.DisplayName.Equals(parameter.DisplayName)).Count() == 1;
+      return mParameters.Where(x => !string.IsNullOrEmpty(x.DisplayName) && x.DisplayName.Equals(parameter.DisplayName)).Count() == 1;
     }
 
     public void Add(IParameter parameter)
@@ -60,7 +61,7 @@ namespace EllieWare.Common
 
     public IParameter Get(string displayName)
     {
-      return mParameters[displayName];
+      return string.IsNullOrEmpty(displayName) ? null : mParameters[displayName];
     }
 
     private void FireParameterChanged()
@@ -84,11 +85,11 @@ namespace EllieWare.Common
         {
           var typeStr = reader.GetAttribute("Type");
           var objType = Type.GetType(typeStr);
-          var param = (IParameter)Activator.CreateInstance(objType);
+          var param = (IXmlSerializable)Activator.CreateInstance(objType);
 
           param.ReadXml(reader);
 
-          mParameters.Add(param);
+          mParameters.Add((IParameter)param);
         }
       }
     }
@@ -99,12 +100,16 @@ namespace EllieWare.Common
 
       foreach (var param in mParameters)
       {
-        writer.WriteStartElement("Parameter");
+        var serParam = param as ISerializableParameter;
+        if (serParam != null)
+        {
+          writer.WriteStartElement("Parameter");
 
-        writer.WriteAttributeString("Type", param.GetType().ToString());
-        param.WriteXml(writer);
+          writer.WriteAttributeString("Type", serParam.GetType().ToString());
+          serParam.WriteXml(writer);
 
-        writer.WriteEndElement();
+          writer.WriteEndElement();
+        }
       }
 
       writer.WriteEndElement();

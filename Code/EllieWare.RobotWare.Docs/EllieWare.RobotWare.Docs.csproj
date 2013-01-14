@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
 
   <Target Name="Build">
-    <ChmCompiler ProjectFile="RobotWare.hhp" />  
+    <ChmCompiler ProjectFile="EllieWare.RobotWare.hhp" />  
   </Target>
   <Target Name="Clean">
     <Delete Files="EllieWare.RobotWare.chm" />

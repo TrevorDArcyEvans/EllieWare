@@ -298,11 +298,14 @@ namespace Controls.Development
       if (me.Index >= 0 && me.Index < base.Items.Count)
       {
         var item = (ImageListBoxItem)base.Items[me.Index];
-        var stringSize = me.Graphics.MeasureString(item.Text, Font);
+        if (!string.IsNullOrEmpty(item.Text))
+        {
+          var stringSize = me.Graphics.MeasureString(item.Text, Font);
 
-        // NOTE:  padding on height so images do not overlap
-        me.ItemHeight = (int)stringSize.Height + 7;
-        me.ItemWidth = (int)stringSize.Width + 1;
+          // NOTE:  padding on height so images do not overlap
+          me.ItemHeight = (int)stringSize.Height + 7;
+          me.ItemWidth = (int)stringSize.Width + 1;
+        }
       }
     }
   }

@@ -185,7 +185,27 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
-      // TODO   Help
+      Help.ShowHelp(this, "EllieWare.RobotWare.chm");
+    }
+
+    private void FileOpRename_Click(object sender, EventArgs e)
+    {
+      var selSpecPath = GetSelectedSpecificationPath();
+      var dlg = new FileSaveDialog(mRoot) { FileName = Path.GetFileNameWithoutExtension(selSpecPath) };
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      var filePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
+      var filePath = Path.ChangeExtension(filePathNoExtn, Utils.MacroFileExtension);
+
+      if (File.Exists(filePath))
+      {
+        File.Delete(filePath);
+      }
+      File.Move(selSpecPath, filePath);
+      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
     }
   }
 }

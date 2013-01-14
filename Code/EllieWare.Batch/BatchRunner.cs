@@ -19,7 +19,7 @@ namespace EllieWare.Batch
   {
     private readonly List<string> mSpecFileNames = new List<string>();
 
-    private IBatchParameter mBatchParam;
+    private ISerializableBatchParameter mBatchParam;
 
     public BatchRunner() :
       base()
@@ -36,8 +36,6 @@ namespace EllieWare.Batch
       mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       var specFileListStr = reader.GetAttribute("SpecificationFileNames");
@@ -46,10 +44,16 @@ namespace EllieWare.Batch
 
       var batchTypeStr = reader.GetAttribute("BatchType");
       var batchType = Type.GetType(batchTypeStr);
-      mBatchParam = (IBatchParameter)Activator.CreateInstance(batchType);
+      mBatchParam = (ISerializableBatchParameter)Activator.CreateInstance(batchType);
       mBatchParam.ReadXml(reader);
 
       UpdateUserInterface();
+
+      if (mSpecs.Items.Count > 0)
+      {
+        // select first spec
+        mSpecs.SelectedIndex = 0;
+      }
     }
 
     public override void WriteXml(XmlWriter writer)
@@ -62,15 +66,12 @@ namespace EllieWare.Batch
       mBatchParam.WriteXml(writer);
     }
 
-    #endregion
-
-    #region Implementation of IRunnable
-
     public override string Summary
     {
       get
       {
         var descrip = string.Format("Run {0} other macro files with parameters", mSpecFileNames.Count);
+
         return descrip;
       }
     }
@@ -122,17 +123,36 @@ namespace EllieWare.Batch
       return true;
     }
 
-    #endregion
-
-    private void AddOrUpdateParameter(ISpecification spec, IParameter param)
+    private void AddOrUpdateParameter(IParameterManager paramMgr, IParameter param)
     {
-      if (!spec.ParameterManager.Contains(param))
+      if (!paramMgr.Contains(param))
       {
-        spec.ParameterManager.Add(param);
+        paramMgr.Add(param);
       }
       else
       {
-        spec.ParameterManager.Update(param);
+        paramMgr.Update(param);
+      }
+    }
+
+    private void AddOrUpdateParameter(ISpecification spec, IParameter param)
+    {
+      AddOrUpdateParameter(spec.ParameterManager, param);
+
+      var batchDirParam = param as IDirectoryBatchParameter;
+      if (batchDirParam != null)
+      {
+        var batchDirDispName = batchDirParam.DisplayName + " [Directory]";
+        var batchDirValue = batchDirParam.Directory;
+        var tempBatchDirParam = new TemporaryBatchParameter(batchDirDispName, batchDirValue);
+        AddOrUpdateParameter(spec.ParameterManager, tempBatchDirParam);
+
+        var batchDirFileNameDispName = batchDirParam.DisplayName + " [FileName]";
+        var batchDirFileNameValue = ((string)batchDirParam.ParameterValue == string.Empty) ?
+                                    "[" + batchDirParam.DisplayName + ":FileName]" :
+                                    Path.GetFileNameWithoutExtension((string)batchDirParam.ParameterValue);
+        var batchDirFileNameParam = new TemporaryBatchParameter(batchDirFileNameDispName, batchDirFileNameValue);
+        AddOrUpdateParameter(spec.ParameterManager, batchDirFileNameParam);
       }
     }
 
@@ -208,7 +228,24 @@ namespace EllieWare.Batch
     {
       var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
 
+      if (mBatchParam is IDirectoryBatchParameter)
+      {
+        // reset if we have just run a batch spec, will be updated in merge
+        mBatchParam.ParameterValue = string.Empty;
+      }
+      else if (mBatchParam is IFileBatchParameter)
+      {
+        // set to something informational for UI feedback
+        mBatchParam.ParameterValue = "[" + mBatchParam.DisplayName + ":Line]";
+      }
+
       MergeParameters(dlg.Specification);
+
+      if (mBatchParam is IDirectoryBatchParameter)
+      {
+        mBatchParam.ParameterValue = "[" + mBatchParam.DisplayName + ":FileNameExtn]";
+        dlg.Specification.ParameterManager.Update(mBatchParam);
+      }
 
       dlg.ShowDialog();
     }
@@ -322,6 +359,18 @@ namespace EllieWare.Batch
 
       UpdateUserInterface();
       FireConfigurationChanged();
+    }
+
+    private void BatchParameter_Click(object sender, EventArgs e)
+    {
+      if (mBatchParam is IFileBatchParameter)
+      {
+        BatchFile_Click(sender, e);
+      }
+      else
+      {
+        BatchDirectory_Click(sender, e);
+      }
     }
   }
 }

@@ -13,8 +13,6 @@ namespace EllieWare.Pdf
 {
   public abstract class PdfFactoryBase
   {
-    #region Implementation of IFactory
-
     public abstract string Title { get; }
     public abstract string Description { get; }
 
@@ -40,7 +38,5 @@ namespace EllieWare.Pdf
 
     public abstract Type CreatedType { get; }
     public abstract IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
-
-    #endregion
   }
 }

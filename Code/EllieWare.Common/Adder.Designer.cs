@@ -51,7 +51,6 @@ namespace EllieWare.Common
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
       this.lbSteps = new System.Windows.Forms.ListBox();
       this.ddlCategories = new System.Windows.Forms.ComboBox();
-      this.AdderHelp = new System.Windows.Forms.HelpProvider();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
       label3 = new System.Windows.Forms.Label();
@@ -226,6 +225,7 @@ namespace EllieWare.Common
       this.ddlCategories.Location = new System.Drawing.Point(72, 29);
       this.ddlCategories.Name = "ddlCategories";
       this.ddlCategories.Size = new System.Drawing.Size(359, 21);
+      this.ddlCategories.Sorted = true;
       this.ddlCategories.TabIndex = 3;
       this.ddlCategories.SelectedIndexChanged += new System.EventHandler(this.Categories_SelectedIndexChanged);
       // 
@@ -242,6 +242,7 @@ namespace EllieWare.Common
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Add Step";
+      this.Shown += new System.EventHandler(this.Adder_Shown);
       tableLayoutPanel3.ResumeLayout(false);
       tableLayoutPanel3.PerformLayout();
       this.tableLayoutPanel2.ResumeLayout(false);
@@ -261,6 +262,5 @@ namespace EllieWare.Common
     private System.Windows.Forms.TextBox txtDescription;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-    private System.Windows.Forms.HelpProvider AdderHelp;
   }
 }

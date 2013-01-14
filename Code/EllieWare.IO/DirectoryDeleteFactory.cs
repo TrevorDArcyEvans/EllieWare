@@ -24,7 +24,7 @@ namespace EllieWare.IO
     {
       get
       {
-        return "Delete a directory and any subdirectories and files";
+        return "Delete a directory and any subdirectories and files if it exists";
       }
     }
 

@@ -63,8 +63,8 @@ namespace EllieWare.Manager
       this.FileOpCopy = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpDelete = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpShow = new System.Windows.Forms.ToolStripMenuItem();
-      this.ManagerHelp = new System.Windows.Forms.HelpProvider();
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
+      this.FileOpRename = new System.Windows.Forms.ToolStripMenuItem();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -221,10 +221,11 @@ namespace EllieWare.Manager
       // 
       this.FileOperations.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileOpCopy,
+            this.FileOpRename,
             this.FileOpDelete,
             this.FileOpShow});
       this.FileOperations.Name = "FileOperations";
-      this.FileOperations.Size = new System.Drawing.Size(162, 70);
+      this.FileOperations.Size = new System.Drawing.Size(162, 114);
       this.FileOperations.Opening += new System.ComponentModel.CancelEventHandler(this.FileOperations_Opening);
       // 
       // FileOpCopy
@@ -259,6 +260,13 @@ namespace EllieWare.Manager
       this.SearchBox.WaterMarkText = "Search...";
       this.SearchBox.TextChanged += new System.EventHandler(this.Search_TextChanged);
       // 
+      // FileOpRename
+      // 
+      this.FileOpRename.Name = "FileOpRename";
+      this.FileOpRename.Size = new System.Drawing.Size(161, 22);
+      this.FileOpRename.Text = "Rename...";
+      this.FileOpRename.Click += new System.EventHandler(this.FileOpRename_Click);
+      // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,12 +294,12 @@ namespace EllieWare.Manager
     private System.Windows.Forms.ListView mSpecs;
     private System.Windows.Forms.Button CmdDelete;
     private System.Windows.Forms.Button CmdAbout;
-    private System.Windows.Forms.HelpProvider ManagerHelp;
     private WaterMarkTextBox SearchBox;
     private System.Windows.Forms.ContextMenuStrip FileOperations;
     private System.Windows.Forms.ToolStripMenuItem FileOpCopy;
     private System.Windows.Forms.ToolStripMenuItem FileOpDelete;
     private System.Windows.Forms.ToolStripMenuItem FileOpShow;
     private System.Windows.Forms.Button CmdHelp;
+    private System.Windows.Forms.ToolStripMenuItem FileOpRename;
   }
 }

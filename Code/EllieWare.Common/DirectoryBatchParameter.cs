@@ -6,12 +6,14 @@
 //  www.EllieWare.com
 //
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Xml;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class DirectoryBatchParameter : BatchParameter, IDirectoryBatchParameter
+  public class DirectoryBatchParameter : SerializableBatchParameter, IDirectoryBatchParameter
   {
     public string FileMask { get; set; }
     public string Directory { get; set; }
@@ -22,7 +24,7 @@ namespace EllieWare.Common
     }
 
     public DirectoryBatchParameter(string name, string directory, string fileMask) :
-      base(name)
+      base(name, string.Empty)
     {
       FileMask = fileMask;
       Directory = directory;
@@ -58,7 +60,7 @@ namespace EllieWare.Common
     {
       get
       {
-        return System.IO.Directory.EnumerateFiles(Directory, FileMask);
+        return from thisFile in System.IO.Directory.EnumerateFiles(Directory, FileMask) select Path.GetFileName(thisFile);
       }
     }
   }

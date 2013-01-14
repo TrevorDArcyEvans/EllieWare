@@ -26,7 +26,6 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
     }
 
-
     public override string Summary
     {
       get
@@ -37,8 +36,6 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
     }
@@ -46,8 +43,6 @@ namespace EllieWare.SpaceClaim
     public override void WriteXml(XmlWriter writer)
     {
     }
-
-    #endregion
 
     public override Control ConfigurationUserInterface
     {

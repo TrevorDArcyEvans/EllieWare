@@ -10,18 +10,21 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Process
 {
-  public class ProcessStart : SingleItemIOBase
+  public class ProcessStart : DualItemIOBase
   {
     public ProcessStart(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
+      SetDestinationLabel("Arguments:");
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Start process: {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Start process: {0} {1}", 
+                        SourceFilePathResolvedValue,
+                        DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -29,7 +32,7 @@ namespace EllieWare.Process
 
     public override bool Run()
     {
-      var newProc = System.Diagnostics.Process.Start(SourceFilePathResolvedValue);
+      var newProc = System.Diagnostics.Process.Start(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
       return newProc != null;
     }

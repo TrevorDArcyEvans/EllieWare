@@ -47,8 +47,6 @@ namespace EllieWare.Transfer.FTP
       }
     }
 
-    #region Implementation of IXmlSerializable
-
     public override void ReadXml(XmlReader reader)
     {
       mFtpInfo.ReadXml(reader);
@@ -60,8 +58,6 @@ namespace EllieWare.Transfer.FTP
       mFtpInfo.WriteXml(writer);
       mDualItemIO.WriteXml(writer);
     }
-
-    #endregion
 
     private void OnConfigurationChanged(object sender, EventArgs e)
     {

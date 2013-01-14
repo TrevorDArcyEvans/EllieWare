@@ -37,6 +37,7 @@ namespace EllieWare.Common
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -49,12 +50,11 @@ namespace EllieWare.Common
       this.CmdCancel = new System.Windows.Forms.Button();
       this.CmdOK = new System.Windows.Forms.Button();
       this.ParametersDisplay = new EllieWare.Support.RefreshingListBox();
-      this.ParametersEditorHelp = new System.Windows.Forms.HelpProvider();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      ParametersEditorTips = new System.Windows.Forms.ToolTip();
+      ParametersEditorTips = new System.Windows.Forms.ToolTip(this.components);
       tableLayoutPanel1.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
       tableLayoutPanel4.SuspendLayout();
@@ -178,6 +178,7 @@ namespace EllieWare.Common
       // CmdOK
       // 
       this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.CmdOK.Enabled = false;
       this.CmdOK.Location = new System.Drawing.Point(3, 3);
       this.CmdOK.Name = "CmdOK";
       this.CmdOK.Size = new System.Drawing.Size(75, 23);
@@ -228,6 +229,5 @@ namespace EllieWare.Common
     private System.Windows.Forms.Button CmdOK;
     private RefreshingListBox ParametersDisplay;
     private System.Windows.Forms.Button CmdEdit;
-    private System.Windows.Forms.HelpProvider ParametersEditorHelp;
   }
 }
