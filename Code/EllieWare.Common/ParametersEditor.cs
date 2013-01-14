@@ -40,7 +40,7 @@ namespace EllieWare.Common
 
     private void EditSelectedParameter()
     {
-      var selParam = (Parameter)ParametersDisplay.SelectedItem;
+      var selParam = (SerializableParameter)ParametersDisplay.SelectedItem;
       var dlg = new AddEditParameter(Parameters, selParam);
       if (dlg.ShowDialog() != DialogResult.OK)
       {
@@ -82,7 +82,7 @@ namespace EllieWare.Common
       }
 
       // cannot edit or delete batch parameters
-      var isBatchParam = ParametersDisplay.SelectedItem is IBatchParameter;
+      var isBatchParam = ParametersDisplay.SelectedItem is ISerializableBatchParameter;
       CmdEdit.Enabled = CmdDelete.Enabled = !isBatchParam;
     }
 

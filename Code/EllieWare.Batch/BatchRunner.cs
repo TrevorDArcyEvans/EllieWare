@@ -19,7 +19,7 @@ namespace EllieWare.Batch
   {
     private readonly List<string> mSpecFileNames = new List<string>();
 
-    private IBatchParameter mBatchParam;
+    private ISerializableBatchParameter mBatchParam;
 
     public BatchRunner() :
       base()
@@ -44,7 +44,7 @@ namespace EllieWare.Batch
 
       var batchTypeStr = reader.GetAttribute("BatchType");
       var batchType = Type.GetType(batchTypeStr);
-      mBatchParam = (IBatchParameter)Activator.CreateInstance(batchType);
+      mBatchParam = (ISerializableBatchParameter)Activator.CreateInstance(batchType);
       mBatchParam.ReadXml(reader);
 
       UpdateUserInterface();
@@ -117,7 +117,7 @@ namespace EllieWare.Batch
       return true;
     }
 
-    private void AddOrUpdateParameter(IParameterManager paramMgr, ISerializableParameter param)
+    private void AddOrUpdateParameter(IParameterManager paramMgr, IParameter param)
     {
       if (!paramMgr.Contains(param))
       {
@@ -129,7 +129,7 @@ namespace EllieWare.Batch
       }
     }
 
-    private void AddOrUpdateParameter(ISpecification spec, ISerializableParameter param)
+    private void AddOrUpdateParameter(ISpecification spec, IParameter param)
     {
       if (!spec.ParameterManager.Contains(param))
       {

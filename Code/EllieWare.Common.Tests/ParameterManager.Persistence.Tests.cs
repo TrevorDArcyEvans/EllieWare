@@ -78,8 +78,8 @@ namespace EllieWare.Common.Tests
     public void ParameterManager_Persistence_String()
     {
       // string
-      mParamMgr.Add(new Parameter("Key1", "Param1"));
-      mParamMgr.Add(new Parameter("Key2", "Param2"));
+      mParamMgr.Add(new SerializableParameter("Key1", "Param1"));
+      mParamMgr.Add(new SerializableParameter("Key2", "Param2"));
 
       var newParamMgr = CreateParameterManager(GetXml());
 
@@ -99,8 +99,8 @@ namespace EllieWare.Common.Tests
     public void ParameterManager_Persistence_Boolean()
     {
       // boolean
-      mParamMgr.Add(new Parameter("Key1", true));
-      mParamMgr.Add(new Parameter("Key2", false));
+      mParamMgr.Add(new SerializableParameter("Key1", true));
+      mParamMgr.Add(new SerializableParameter("Key2", false));
 
       var newParamMgr = CreateParameterManager(GetXml());
 
@@ -120,8 +120,8 @@ namespace EllieWare.Common.Tests
     public void ParameterManager_Persistence_Number()
     {
       // number
-      mParamMgr.Add(new Parameter("Key1", 6));
-      mParamMgr.Add(new Parameter("Key2", 7.21f));
+      mParamMgr.Add(new SerializableParameter("Key1", 6));
+      mParamMgr.Add(new SerializableParameter("Key2", 7.21f));
 
       var newParamMgr = CreateParameterManager(GetXml());
 
@@ -141,8 +141,8 @@ namespace EllieWare.Common.Tests
     public void ParameterManager_Persistence_DateTime()
     {
       // date-time
-      mParamMgr.Add(new Parameter("Key1", new DateTime(2006, 02, 20)));
-      mParamMgr.Add(new Parameter("Key2", new DateTime(1963, 10, 19)));
+      mParamMgr.Add(new SerializableParameter("Key1", new DateTime(2006, 02, 20)));
+      mParamMgr.Add(new SerializableParameter("Key2", new DateTime(1963, 10, 19)));
 
       var newParamMgr = CreateParameterManager(GetXml());
 
@@ -162,8 +162,8 @@ namespace EllieWare.Common.Tests
     public void ParameterManager_Persistence_StringArray()
     {
       // string array
-      mParamMgr.Add(new Parameter("Key1", new[] { "Key1.1", "Key1.2", "Key1.3" }));
-      mParamMgr.Add(new Parameter("Key2", new[] { "Key2.1", "Key2.2", "Key2.3" }));
+      mParamMgr.Add(new SerializableParameter("Key1", new[] { "Key1.1", "Key1.2", "Key1.3" }));
+      mParamMgr.Add(new SerializableParameter("Key2", new[] { "Key2.1", "Key2.2", "Key2.3" }));
 
       var newParamMgr = CreateParameterManager(GetXml());
 

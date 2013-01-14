@@ -12,7 +12,7 @@ namespace EllieWare.Interfaces
   /// <summary>
   /// Base interface for all batch parameters
   /// </summary>
-  public interface IBatchParameter : ISerializableParameter
+  public interface ISerializableBatchParameter : ISerializableParameter
   {
     /// <summary>
     /// A list of strings from the specific implementation/specialization of IBatchParameter

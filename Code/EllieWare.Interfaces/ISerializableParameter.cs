@@ -10,23 +10,9 @@ using System.Xml.Serialization;
 namespace EllieWare.Interfaces
 {
   /// <summary>
-  /// A parameterized value
+  /// A parameterized value which can be serialized
   /// </summary>
-  public interface ISerializableParameter : IXmlSerializable
+  public interface ISerializableParameter : IParameter, IXmlSerializable
   {
-    /// <summary>
-    /// Unique name of parameter, suitable for display in a user interface
-    /// </summary>
-    string DisplayName { get; set; }
-
-    /// <summary>
-    /// Resolved value of the parameter
-    /// </summary>
-    object ParameterValue { get; set; }
-
-    /// <summary>
-    /// Additional information about the parameter, suitable for display in a complimentary user interface
-    /// </summary>
-    string Summary { get; }
   }
 }

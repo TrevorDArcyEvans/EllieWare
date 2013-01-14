@@ -12,7 +12,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class Parameter : ISerializableParameter
+  public class SerializableParameter : ISerializableParameter
   {
     public string DisplayName { get; set; }
     public object ParameterValue { get; set; }
@@ -27,12 +27,12 @@ namespace EllieWare.Common
       }
     }
 
-    public Parameter() :
+    public SerializableParameter() :
       base()
     {
     }
 
-    public Parameter(string name, object value)
+    public SerializableParameter(string name, object value)
     {
       DisplayName = name;
       ParameterValue = value;

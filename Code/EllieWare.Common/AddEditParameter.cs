@@ -51,7 +51,7 @@ namespace EllieWare.Common
       {
         var convertedVal = Convert.ChangeType(mParameterValue.Text, mEditParameterType);
 
-        return new Parameter(mDisplayName.Text, convertedVal);
+        return new SerializableParameter(mDisplayName.Text, convertedVal);
       }
     }
 

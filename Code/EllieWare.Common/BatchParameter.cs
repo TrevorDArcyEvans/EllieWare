@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class BatchParameter : Parameter, IBatchParameter
+  public class BatchParameter : SerializableParameter, ISerializableBatchParameter
   {
     public BatchParameter() :
       base()

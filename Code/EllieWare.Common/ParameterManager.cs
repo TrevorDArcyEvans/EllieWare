@@ -19,7 +19,7 @@ namespace EllieWare.Common
     // [DisplayName] --> [IParameter]
     private readonly ParameterCollection mParameters = new ParameterCollection();
 
-    public IEnumerable<ISerializableParameter> Parameters
+    public IEnumerable<IParameter> Parameters
     {
       get
       {
@@ -27,18 +27,18 @@ namespace EllieWare.Common
       }
     }
 
-    public bool Contains(ISerializableParameter parameter)
+    public bool Contains(IParameter parameter)
     {
       return mParameters.Where(x => !string.IsNullOrEmpty(x.DisplayName) && x.DisplayName.Equals(parameter.DisplayName)).Count() == 1;
     }
 
-    public void Add(ISerializableParameter parameter)
+    public void Add(IParameter parameter)
     {
       mParameters.Add(parameter);
       FireParameterChanged();
     }
 
-    public void Update(ISerializableParameter parameter)
+    public void Update(IParameter parameter)
     {
       if (mParameters[parameter.DisplayName].ParameterValue.GetType() != parameter.ParameterValue.GetType())
       {
@@ -48,7 +48,7 @@ namespace EllieWare.Common
       FireParameterChanged();
     }
 
-    public bool Remove(ISerializableParameter parameter)
+    public bool Remove(IParameter parameter)
     {
       var realParam = mParameters.Where(x => x.DisplayName.Equals(parameter.DisplayName)).SingleOrDefault();
       var retval = mParameters.Remove(realParam);
@@ -58,7 +58,7 @@ namespace EllieWare.Common
       return retval;
     }
 
-    public ISerializableParameter Get(string displayName)
+    public IParameter Get(string displayName)
     {
       return string.IsNullOrEmpty(displayName) ? null : mParameters[displayName];
     }
@@ -99,12 +99,16 @@ namespace EllieWare.Common
 
       foreach (var param in mParameters)
       {
-        writer.WriteStartElement("Parameter");
+        var serParam = param as ISerializableParameter;
+        if (serParam != null)
+        {
+          writer.WriteStartElement("Parameter");
 
-        writer.WriteAttributeString("Type", param.GetType().ToString());
-        param.WriteXml(writer);
+          writer.WriteAttributeString("Type", serParam.GetType().ToString());
+          serParam.WriteXml(writer);
 
-        writer.WriteEndElement();
+          writer.WriteEndElement();
+        }
       }
 
       writer.WriteEndElement();

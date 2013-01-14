@@ -10,9 +10,9 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class ParameterCollection : KeyedCollection<string, ISerializableParameter>
+  public class ParameterCollection : KeyedCollection<string, IParameter>
   {
-    protected override string GetKeyForItem(ISerializableParameter item)
+    protected override string GetKeyForItem(IParameter item)
     {
       return item.DisplayName;
     }
