@@ -68,6 +68,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PercentageResizerFactory.cs" />
+    <Compile Include="PixelBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="PixelResizer.cs">
       <SubType>UserControl</SubType>
     </Compile>

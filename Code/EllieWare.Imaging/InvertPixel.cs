@@ -5,14 +5,13 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
-using EllieWare.Common;
 using EllieWare.Interfaces;
+using Simplicode.Imaging.Filters;
 using Simplicode.Imaging.Filters.Pixel;
 
 namespace EllieWare.Imaging
 {
-  public class InvertPixel : DualItemIOBase
+  public class InvertPixel : PixelBase
   {
     public InvertPixel() :
       base()
@@ -20,40 +19,18 @@ namespace EllieWare.Imaging
     }
 
     public InvertPixel(IRobotWare root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+      base(root, callback, mgr)
     {
-      SetSourceFileSelectorFilter(Utils.ImageFilesFilter);
-      SetDestinationFileSelectorFilter(Utils.ImageFilesFilter);
     }
 
-    public override string Summary
+    public override string GetSummaryFormat()
     {
-      get
-      {
-        var summ = string.Format("Invert the pixels in {0} and save it as {1}",
-                                  SourceFilePathResolvedValue,
-                                  DestinationFilePathResolvedValue);
-        return summ;
-      }
+      return "Invert the pixels in {0} and save it as {1}";
     }
 
-    public override Control ConfigurationUserInterface
+    public override IImageFilter GetFilter()
     {
-      get
-      {
-        return this;
-      }
-    }
-
-    public override bool Run()
-    {
-      var processor = new Simplicode.Imaging.ImageProcessor { JpegCompression = 90L };
-      var filter = new InvertPixelFilter();
-
-      processor.AddFilter(filter);
-      processor.ProcessImage(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
-
-      return true;
+      return new InvertPixelFilter();
     }
   }
 }
