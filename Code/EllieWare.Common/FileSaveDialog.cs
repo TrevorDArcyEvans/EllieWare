@@ -33,7 +33,7 @@ namespace EllieWare.Common
     {
       set
       {
-         mFileNames.Text = value;
+        mFileNames.Text = value;
       }
       get
       {
@@ -65,6 +65,11 @@ namespace EllieWare.Common
     private void FileSaveDialog_Shown(object sender, EventArgs e)
     {
       mFileNames.Focus();
+    }
+
+    private void FileNames_TextChanged(object sender, EventArgs e)
+    {
+      CmdOK.Enabled = Utils.IsValidFileName(FileName);
     }
   }
 }

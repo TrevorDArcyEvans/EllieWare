@@ -37,12 +37,11 @@ namespace EllieWare.Common
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Button CmdCancel;
-      System.Windows.Forms.Button CmdOK;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileSaveDialog));
       this.mFileNames = new System.Windows.Forms.ComboBox();
+      this.CmdOK = new System.Windows.Forms.Button();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       CmdCancel = new System.Windows.Forms.Button();
-      CmdOK = new System.Windows.Forms.Button();
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -57,7 +56,7 @@ namespace EllieWare.Common
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.Controls.Add(this.mFileNames, 0, 0);
       tableLayoutPanel1.Controls.Add(CmdCancel, 2, 1);
-      tableLayoutPanel1.Controls.Add(CmdOK, 1, 1);
+      tableLayoutPanel1.Controls.Add(this.CmdOK, 1, 1);
       tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
       tableLayoutPanel1.RowCount = 2;
@@ -76,6 +75,7 @@ namespace EllieWare.Common
       this.mFileNames.Name = "mFileNames";
       this.mFileNames.Size = new System.Drawing.Size(393, 21);
       this.mFileNames.TabIndex = 0;
+      this.mFileNames.TextChanged += new System.EventHandler(this.FileNames_TextChanged);
       // 
       // CmdCancel
       // 
@@ -90,18 +90,18 @@ namespace EllieWare.Common
       // 
       // CmdOK
       // 
-      CmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      CmdOK.Location = new System.Drawing.Point(240, 33);
-      CmdOK.Name = "CmdOK";
-      CmdOK.Size = new System.Drawing.Size(75, 23);
-      CmdOK.TabIndex = 1;
-      CmdOK.Text = "OK";
-      CmdOK.UseVisualStyleBackColor = true;
+      this.CmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.CmdOK.Location = new System.Drawing.Point(240, 33);
+      this.CmdOK.Name = "CmdOK";
+      this.CmdOK.Size = new System.Drawing.Size(75, 23);
+      this.CmdOK.TabIndex = 1;
+      this.CmdOK.Text = "OK";
+      this.CmdOK.UseVisualStyleBackColor = true;
       // 
       // FileSaveDialog
       // 
-      this.AcceptButton = CmdOK;
+      this.AcceptButton = this.CmdOK;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = CmdCancel;
@@ -125,5 +125,6 @@ namespace EllieWare.Common
     #endregion
 
     private System.Windows.Forms.ComboBox mFileNames;
+    private System.Windows.Forms.Button CmdOK;
   }
 }
