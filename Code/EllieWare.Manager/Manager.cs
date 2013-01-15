@@ -185,7 +185,9 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
-      Help.ShowHelp(this, "EllieWare.RobotWare.chm");
+      // create an invisible form as help window parent,
+      // so help file is not topmost
+      Help.ShowHelp(new Form(), "EllieWare.RobotWare.chm");
     }
 
     private void FileOpRename_Click(object sender, EventArgs e)
