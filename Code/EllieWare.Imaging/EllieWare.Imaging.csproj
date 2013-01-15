@@ -55,7 +55,15 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ConversionFactory.cs" />
+    <Compile Include="GrayscalePixel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GrayscalePixelFactory.cs" />
     <Compile Include="ImagingFactoryBase.cs" />
+    <Compile Include="InvertPixel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvertPixelFactory.cs" />
     <Compile Include="PercentageResizer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +79,10 @@
     <Compile Include="ResizerBase.Designer.cs">
       <DependentUpon>ResizerBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="SepiaPixel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SepiaPixelFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
