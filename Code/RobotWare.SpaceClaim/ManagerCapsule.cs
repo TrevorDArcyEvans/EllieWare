@@ -50,7 +50,7 @@ namespace RobotWare.SpaceClaim
     protected override void OnUpdate(Command command)
     {
       // When a command is disabled, all UI components associated with the command are also disabled.
-      command.IsEnabled = Window.ActiveWindow != null;
+      command.IsEnabled = true;
     }
 
     protected override void OnExecute(Command command, ExecutionContext context, Rectangle buttonRect)
