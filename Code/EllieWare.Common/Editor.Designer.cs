@@ -376,6 +376,7 @@ namespace EllieWare.Common
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Editor";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
+      this.Shown += new System.EventHandler(this.Editor_Shown);
       this.SizeChanged += new System.EventHandler(this.Editor_SizeChanged);
       tableLayoutPanel4.ResumeLayout(false);
       tableLayoutPanel4.PerformLayout();

@@ -325,6 +325,10 @@ namespace EllieWare.Common
       var selIndex = mSteps.SelectedIndex;
       CmdUp.Enabled &= (selIndex > 0);
       CmdDown.Enabled &= (selIndex < mSteps.Items.Count - 1);
+
+      // block step/run if there are any batch parameters as we cannot resolve them here
+      var hasBatchParam = Specification.ParameterManager.Parameters.Any(x => x is IBatchParameter);
+      CmdRun.Enabled = CmdStep.Enabled = !hasBatchParam;
     }
 
     private void UpdateUserInterface()
@@ -529,6 +533,12 @@ namespace EllieWare.Common
     private void MainContainer_SplitterMoved(object sender, SplitterEventArgs e)
     {
       UpdateWidth();
+    }
+
+    private void Editor_Shown(object sender, EventArgs e)
+    {
+      // update button state as batch parameters may have been merged in
+      UpdateUserInterface();
     }
   }
 }
