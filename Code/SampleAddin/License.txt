@@ -1,0 +1,1 @@
+SampleAddin License Text which will appear in RobotWare 'About' box.
