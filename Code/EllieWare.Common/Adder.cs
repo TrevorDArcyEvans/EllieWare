@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
@@ -79,9 +81,10 @@ namespace EllieWare.Common
       }
       else
       {
-        factsBySearch = from thisFact in factsByCat where 
-                          (thisFact.Keywords.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt) || 
-                            thisFact.Title.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt))
+        factsBySearch = from thisFact in factsByCat
+                        where
+                          (thisFact.Keywords.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt) ||
+                          thisFact.Title.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt))
                         select thisFact;
       }
 
@@ -110,6 +113,16 @@ namespace EllieWare.Common
     private void Adder_Shown(object sender, EventArgs e)
     {
       SearchBox.Focus();
+    }
+
+    private void Adder_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void Adder_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

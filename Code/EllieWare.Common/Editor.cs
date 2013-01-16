@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -565,6 +566,16 @@ namespace EllieWare.Common
     private void CmdStop_Click(object sender, EventArgs e)
     {
       mKeepRunning = false;
+    }
+
+    private void Editor_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this, new[] { mMainContainer, mStepsContainer });
+    }
+
+    private void Editor_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this, new[] { mMainContainer, mStepsContainer });
     }
   }
 }

@@ -10,9 +10,11 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Manager
 {
@@ -208,6 +210,16 @@ namespace EllieWare.Manager
       }
       File.Move(selSpecPath, filePath);
       RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+    }
+
+    private void Manager_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void Manager_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(),this);
     }
   }
 }

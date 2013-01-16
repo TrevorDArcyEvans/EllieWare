@@ -213,6 +213,8 @@ namespace EllieWare.Common
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Parameters Editor";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParametersEditor_FormClosing);
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ParametersEditor_FormClosed);
+      this.Load += new System.EventHandler(this.ParametersEditor_Load);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel2.ResumeLayout(false);
       tableLayoutPanel2.PerformLayout();

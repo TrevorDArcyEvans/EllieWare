@@ -16,3 +16,4 @@ using EllieWare.Interfaces;
 
 [assembly: LicenseInformation("WaterMarkTextBox.CPOL.txt")]
 [assembly: LicenseInformation("SplitButton.License.txt")]
+[assembly: LicenseInformation("WindowSettings_License.txt")]

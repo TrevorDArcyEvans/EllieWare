@@ -8,7 +8,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
@@ -87,6 +89,16 @@ namespace EllieWare.Common
     private void FileMask_TextChanged(object sender, EventArgs e)
     {
       UpdatePreview();
+    }
+
+    private void DirectoryBatchParameterEditor_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void DirectoryBatchParameterEditor_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

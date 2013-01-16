@@ -68,6 +68,8 @@
     <Compile Include="WaterMarkTextBox\WaterMarkTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WindowPersister.cs" />
+    <Compile Include="WindowSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImageListBox\ImageListBox.resx">
@@ -80,6 +82,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="WindowSettings_License.txt" />
     <EmbeddedResource Include="SplitButton\License.txt" />
     <Content Include="WaterMarkTextBox\CPOL.htm" />
     <EmbeddedResource Include="WaterMarkTextBox\CPOL.txt" />
