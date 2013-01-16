@@ -11,27 +11,16 @@ namespace AutoUpdaterDotNET
 {
   public class AutoUpdater
   {
-
     private static String _title;
-
     private static String _changeLogUrl;
-
     private static String _downloadUrl;
-
     private static String _appCastUrl;
-
     private static String _appTitle;
-
     private static Version _currentVersion;
-
     private static Version _installedVersion;
-
     private static int _remindLaterAt;
-
     private static String _appCompany;
-
     private static String _registryLocation;
-
     private static Boolean _letUserSelectRemindLater;
 
     public enum RemindLaterFormat
@@ -43,9 +32,10 @@ namespace AutoUpdaterDotNET
 
     private static RemindLaterFormat _remindLaterFormat;
 
-    public static void Start(String appCast, bool letUserSelectRemindLater = true, int remindLaterAt = 1, RemindLaterFormat remindLaterFormat = RemindLaterFormat.Days)
+    public static void Start(String appCast, string appTitle = null, bool letUserSelectRemindLater = true, int remindLaterAt = 1, RemindLaterFormat remindLaterFormat = RemindLaterFormat.Days)
     {
       _appCastUrl = appCast;
+      _appTitle = appTitle;
       _remindLaterAt = remindLaterAt;
       _remindLaterFormat = remindLaterFormat;
       _letUserSelectRemindLater = letUserSelectRemindLater;
@@ -59,7 +49,7 @@ namespace AutoUpdaterDotNET
 
     public static void BackgroundWorkerDoWork(object sender, DoWorkEventArgs e)
     {
-      _appTitle = Assembly.GetEntryAssembly().GetName().Name;
+      _appTitle = _appTitle ?? Assembly.GetEntryAssembly().GetName().Name;
 
       Assembly currentAssembly = typeof(AutoUpdater).Assembly;
       object[] attribs = currentAssembly.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true);

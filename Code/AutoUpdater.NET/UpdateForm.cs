@@ -152,7 +152,7 @@ namespace AutoUpdaterDotNET
     private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
       _timer.Stop();
-      AutoUpdater.Start(_appCast, _letUserSelectRemindLater, _remindLaterAt, _remindLaterFormat);
+      AutoUpdater.Start(_appCast, _appTitle, _letUserSelectRemindLater, _remindLaterAt, _remindLaterFormat);
     }
   }
 }
