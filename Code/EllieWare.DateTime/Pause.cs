@@ -7,7 +7,6 @@
 //
 using System;
 using System.Globalization;
-using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -50,15 +49,9 @@ namespace EllieWare.DateTime
 
     public override bool Run()
     {
-      var now = System.DateTime.Now;
       var pause = new TimeSpan(mTimeSpan.Value.Hour, mTimeSpan.Value.Minute, mTimeSpan.Value.Second);
-      var end = now.Add(pause);
-      while (System.DateTime.Now < end)
-      {
-        Application.DoEvents();
-        Thread.Sleep(100);
-        Application.DoEvents();
-      }
+
+      Utils.Wait(pause);
 
       return true;
     }

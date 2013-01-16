@@ -5,11 +5,14 @@
 //
 //  www.EllieWare.com
 //
+using System;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
+using Application = System.Windows.Forms.Application;
 
 namespace EllieWare.SpaceClaim
 {
@@ -54,9 +57,18 @@ namespace EllieWare.SpaceClaim
 
     public override bool Run()
     {
-      WriteBlock.AppendTask(() => Window.ActiveWindow.ZoomExtents());
+      var evt = new AutoResetEvent(false);
 
-      return true;
+      WriteBlock.AppendTask(() =>
+                              {
+                                Window.ActiveWindow.ZoomExtents();
+                                Common.Utils.Wait(3000);
+                                evt.Set();
+                              });
+
+      var bret = evt.WaitOne(10000);
+
+      return bret;
     }
   }
 }
