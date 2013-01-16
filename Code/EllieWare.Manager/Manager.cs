@@ -11,7 +11,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
+using AutoUpdaterDotNET;
+using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using EllieWare.Support;
@@ -38,8 +41,33 @@ namespace EllieWare.Manager
 
       Text = mRoot.ApplicationName;
 
+      // http://crashreporterdotnet.codeplex.com/documentation
+      Application.ThreadException += ApplicationThreadException;
+
+      // http://autoupdaterdotnet.codeplex.com/documentation
+      const string EllieWare = @"http://www.EllieWare.com";
+      var appCast = mRoot.ApplicationName.Replace(' ', '_') + ".xml";
+      var appCastUrl = EllieWare + @"/" + appCast;
+      AutoUpdater.Start(appCastUrl);
+
       RefreshSpecificationsList();
       UpdateButtons();
+    }
+
+    private void ApplicationThreadException(object sender, ThreadExceptionEventArgs e)
+    {
+      var reportCrash = new ReportCrash
+                              {
+                                FromEmail = "Your gmail address",
+                                ToEmail = "Email address where you want to send crash report",
+                                SMTPHost = "smtp.gmail.com",
+                                Port = 587,
+                                UserName = "Your gmail address",
+                                Password = "Your password",
+                                EnableSSL = true,
+                              };
+
+      reportCrash.Send(e.Exception);
     }
 
     private void DoRequestLicense()
@@ -219,7 +247,7 @@ namespace EllieWare.Manager
 
     private void Manager_FormClosed(object sender, FormClosedEventArgs e)
     {
-      WindowPersister.Record(Assembly.GetExecutingAssembly(),this);
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }
