@@ -26,7 +26,7 @@ namespace EllieWare.Imaging
       SetDestinationFileSelectorFilter(Utils.ImageFilesFilter);
     }
 
-    public string Summary
+    public override string Summary
     {
       get
       {
