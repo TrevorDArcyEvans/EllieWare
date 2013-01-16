@@ -30,6 +30,8 @@ namespace EllieWare.Common
 
     private int mCurrentStep;
     private int mLastLogWidth;
+    private bool mKeepRunning = true;
+    private bool mIsRunning;
 
     public Editor()
     {
@@ -212,6 +214,9 @@ namespace EllieWare.Common
 
       mCallback.Clear();
       mCallback.Log(LogLevel.Information, "Started");
+
+      mIsRunning = true;
+      mKeepRunning = true;
     }
 
     private void ReportFailure()
@@ -262,6 +267,9 @@ namespace EllieWare.Common
       UpdateButtons();
       mCurrentStep = 0;
       mCallback.Log(LogLevel.Information, "Finished");
+
+      mIsRunning = false;
+      mKeepRunning = true;
     }
 
     private void CmdRun_Click(object sender, EventArgs e)
@@ -305,6 +313,17 @@ namespace EllieWare.Common
         return false;
       }
 
+      if (!mKeepRunning)
+      {
+        var msg = string.Format("Interrupted by user.");
+
+        mCallback.Log(LogLevel.Severe, msg);
+
+        mKeepRunning = true;
+
+        return false;
+      }
+
       var step = (IRunnable)mSteps.Items[stepNum];
       try
       {
@@ -322,13 +341,15 @@ namespace EllieWare.Common
     {
       CmdDelete.Enabled = CmdRun.Enabled = CmdStep.Enabled = CmdUp.Enabled = CmdDown.Enabled = mSpecification.Steps.Count > 0;
 
+      CmdStop.Enabled = mIsRunning;
+
       var selIndex = mSteps.SelectedIndex;
       CmdUp.Enabled &= (selIndex > 0);
       CmdDown.Enabled &= (selIndex < mSteps.Items.Count - 1);
 
       // block step/run if there are any batch parameters as we cannot resolve them here
       var hasBatchParam = Specification.ParameterManager.Parameters.Any(x => x is IBatchParameter);
-      CmdRun.Enabled = CmdStep.Enabled = !hasBatchParam;
+      CmdRun.Enabled = CmdStep.Enabled = CmdStop.Enabled = !hasBatchParam;
     }
 
     private void UpdateUserInterface()
@@ -539,6 +560,11 @@ namespace EllieWare.Common
     {
       // update button state as batch parameters may have been merged in
       UpdateUserInterface();
+    }
+
+    private void CmdStop_Click(object sender, EventArgs e)
+    {
+      mKeepRunning = false;
     }
   }
 }
