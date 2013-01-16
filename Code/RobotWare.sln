@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdater.NET", "AutoUpda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrashReporter.NET", "CrashReporter.NET\CrashReporter.NET.csproj", "{67912BDA-1572-46B0-8623-5872D9DADBC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAddin", "SampleAddin\SampleAddin.csproj", "{06301824-D367-4DBF-9498-7936675DD008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -408,6 +410,16 @@ Global
 		{67912BDA-1572-46B0-8623-5872D9DADBC8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{67912BDA-1572-46B0-8623-5872D9DADBC8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{67912BDA-1572-46B0-8623-5872D9DADBC8}.Release|x86.ActiveCfg = Release|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{06301824-D367-4DBF-9498-7936675DD008}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
