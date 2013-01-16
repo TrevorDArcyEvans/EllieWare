@@ -55,7 +55,9 @@ namespace EllieWare.DateTime
       var end = now.Add(pause);
       while (System.DateTime.Now < end)
       {
-        Thread.Sleep(500);
+        Application.DoEvents();
+        Thread.Sleep(100);
+        Application.DoEvents();
       }
 
       return true;
