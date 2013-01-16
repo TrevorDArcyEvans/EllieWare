@@ -218,6 +218,8 @@ namespace EllieWare.Common
 
       mIsRunning = true;
       mKeepRunning = true;
+
+      UpdateButtons();
     }
 
     private void ReportFailure()
@@ -265,11 +267,12 @@ namespace EllieWare.Common
 
     private void TearDownForRun()
     {
+      mIsRunning = false;
+
       UpdateButtons();
       mCurrentStep = 0;
       mCallback.Log(LogLevel.Information, "Finished");
 
-      mIsRunning = false;
       mKeepRunning = true;
     }
 
@@ -340,7 +343,7 @@ namespace EllieWare.Common
 
     private void UpdateButtons()
     {
-      CmdDelete.Enabled = CmdRun.Enabled = CmdStep.Enabled = CmdUp.Enabled = CmdDown.Enabled = mSpecification.Steps.Count > 0;
+      CmdDelete.Enabled = CmdRun.Enabled = CmdStep.Enabled = CmdUp.Enabled = CmdDown.Enabled = mSpecification.Steps.Count > 0 && !mIsRunning;
 
       CmdStop.Enabled = mIsRunning;
 
@@ -350,7 +353,10 @@ namespace EllieWare.Common
 
       // block step/run if there are any batch parameters as we cannot resolve them here
       var hasBatchParam = Specification.ParameterManager.Parameters.Any(x => x is IBatchParameter);
-      CmdRun.Enabled = CmdStep.Enabled = CmdStop.Enabled = !hasBatchParam;
+      if (hasBatchParam)
+      {
+        CmdRun.Enabled = CmdStep.Enabled = CmdStop.Enabled = false;
+      }
     }
 
     private void UpdateUserInterface()
