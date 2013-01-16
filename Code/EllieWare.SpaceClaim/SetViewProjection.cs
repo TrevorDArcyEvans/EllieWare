@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -84,9 +85,16 @@ namespace EllieWare.SpaceClaim
 
     public override bool Run()
     {
-      WriteBlock.AppendTask(() => Window.ActiveWindow.SetProjection(SupportedViewprojections[SelViewProjection.SelectedIndex].Value, false, true));
+      var evt = new AutoResetEvent(false);
 
-      return true;
+      WriteBlock.AppendTask(() =>
+                              {
+                                Window.ActiveWindow.SetProjection(SupportedViewprojections[SelViewProjection.SelectedIndex].Value, false, true);
+                                Common.Utils.Wait(3000);
+                                evt.Set();
+                              });
+
+      return evt.WaitOne(10000);
     }
 
     private void SelViewProjection_SelectedIndexChanged(object sender, EventArgs e)

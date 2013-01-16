@@ -5,14 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
-using Application = System.Windows.Forms.Application;
 
 namespace EllieWare.SpaceClaim
 {
@@ -66,9 +64,7 @@ namespace EllieWare.SpaceClaim
                                 evt.Set();
                               });
 
-      var bret = evt.WaitOne(10000);
-
-      return bret;
+      return evt.WaitOne(10000);
     }
   }
 }
