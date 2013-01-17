@@ -112,6 +112,10 @@
       <DependentUpon>FaceAreaColor.cs</DependentUpon>
     </Compile>
     <Compile Include="FaceAreaColorFactory.cs" />
+    <Compile Include="FaceAreaPercentColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaPercentColorFactory.cs" />
     <Compile Include="FaceAreaRemove.cs">
       <SubType>UserControl</SubType>
     </Compile>
