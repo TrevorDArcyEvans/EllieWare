@@ -207,11 +207,7 @@ namespace EllieWare.Common
 
     private void SetupForRun()
     {
-      // show log window
-      if (mMainContainer.Panel2Collapsed)
-      {
-        CmdLog_Click(null, null);
-      }
+      ShowLogWindow();
 
       mCallback.Clear();
       mCallback.Log(LogLevel.Information, "Started");
@@ -220,6 +216,22 @@ namespace EllieWare.Common
       mKeepRunning = true;
 
       UpdateButtons();
+    }
+
+    private void ShowLogWindow()
+    {
+      if (mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
+    }
+
+    private void HideLogWindow()
+    {
+      if (!mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
     }
 
     private void ReportFailure()
@@ -493,6 +505,8 @@ namespace EllieWare.Common
     {
       if (!CmdSave.Enabled)
       {
+        HideLogWindow();
+
         return;
       }
 
@@ -507,6 +521,8 @@ namespace EllieWare.Common
       if (retVal == DialogResult.Yes)
       {
         CmdSave_Click(sender, e);
+        HideLogWindow();
+
         return;
       }
     }
@@ -576,12 +592,12 @@ namespace EllieWare.Common
 
     private void Editor_Load(object sender, EventArgs e)
     {
-      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this, new[] { mMainContainer, mStepsContainer });
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
     }
 
     private void Editor_FormClosed(object sender, FormClosedEventArgs e)
     {
-      WindowPersister.Record(Assembly.GetExecutingAssembly(), this, new[] { mMainContainer, mStepsContainer });
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }
