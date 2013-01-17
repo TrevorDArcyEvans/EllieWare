@@ -64,7 +64,7 @@ namespace EllieWare.SpaceClaim
                             allFacesOrdered.IndexOf(designFace) >= 0.90 * allFacesOrdered.Count &&
                             allFacesOrdered.IndexOf(designFace) <= 0.95 * allFacesOrdered.Count
                           select designFace;
-        var largestFaceArea = allTopFaces.Aggregate(0d, (x, df) => x + df.Area);
+        var largestFaceArea = allTopFaces.Aggregate(0d, (x, df) => x + df.Area) / allTopFaces.Count();
 
         foreach (var face in allFacesOrdered.Where(x => x.Area < largestFaceArea * (double)AreaThreshold.Value / 100d))
         {
