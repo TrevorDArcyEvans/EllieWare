@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrashReporter.NET", "CrashR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAddin", "SampleAddin\SampleAddin.csproj", "{06301824-D367-4DBF-9498-7936675DD008}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Transfer.Email", "EllieWare.Transfer.Email\EllieWare.Transfer.Email.csproj", "{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -420,6 +422,16 @@ Global
 		{06301824-D367-4DBF-9498-7936675DD008}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{06301824-D367-4DBF-9498-7936675DD008}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{06301824-D367-4DBF-9498-7936675DD008}.Release|x86.ActiveCfg = Release|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

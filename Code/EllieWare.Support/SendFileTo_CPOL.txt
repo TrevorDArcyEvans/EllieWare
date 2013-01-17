@@ -1,5 +1,5 @@
-WaterMarkTextBox
-Copyright (c) Wael Alghool 2008
+SendFileTo
+Copyright (c) David M Brooks 2007
 
  The Code Project Open License (CPOL)
 

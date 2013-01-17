@@ -155,6 +155,10 @@
       <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
       <Name>EllieWare.Support</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Transfer.Email\EllieWare.Transfer.Email.csproj">
+      <Project>{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}</Project>
+      <Name>EllieWare.Transfer.Email</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Transfer.FTP\EllieWare.Transfer.FTP.csproj">
       <Project>{6148FE29-F616-4501-931B-27A04C3E9B60}</Project>
       <Name>EllieWare.Transfer.FTP</Name>

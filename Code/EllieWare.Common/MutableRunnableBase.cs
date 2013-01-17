@@ -19,7 +19,8 @@ namespace EllieWare.Common
     protected readonly ICallback mCallback;
     protected readonly IParameterManager mParamMgr;
 
-    public MutableRunnableBase()
+    public MutableRunnableBase() :
+      base()
     {
       InitializeComponent();
     }
