@@ -109,7 +109,9 @@ namespace EllieWare.Transfer.Email
 
     public override bool Run()
     {
+#if false
       var mapi = GetEmail();
+#endif
 
       var retVal = true;
 
