@@ -37,23 +37,18 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override void DoRun()
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                var bodyAndFaces = GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value);
-                                foreach (var desDody in bodyAndFaces.Keys)
-                                {
-                                  var modFaces = from desFace in bodyAndFaces[desDody] select desFace.Shape;
-                                  desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
-                                  //foreach (var thisModFace in modFaces)
-                                  //{
-                                  //  desDody.Shape.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
-                                  //}
-                                }
-                              });
-
-      return true;
+      var bodyAndFaces = GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value);
+      foreach (var desDody in bodyAndFaces.Keys)
+      {
+        var modFaces = from desFace in bodyAndFaces[desDody] select desFace.Shape;
+        desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
+        //foreach (var thisModFace in modFaces)
+        //{
+        //  desDody.Shape.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+        //}
+      }
     }
   }
 }
