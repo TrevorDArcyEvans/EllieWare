@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="EllieWareAddin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpaceClaimTestAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Manifest.xml">
