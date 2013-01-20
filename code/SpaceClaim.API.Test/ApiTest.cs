@@ -7,10 +7,12 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using SpaceClaim.Api.V10;
+using SpaceClaim.Api.V10.Modeler;
 
 namespace SpaceClaim.API.Test
 {
@@ -43,12 +45,12 @@ namespace SpaceClaim.API.Test
       mi.Invoke(this, null);
     }
 
-    #region TestReload
+    #region Reload
 
     private string mFilePath;
 
     [SpaceClaimTestAttribute]
-    private void TestReload()
+    private void Reload()
     {
       WriteBlock.AppendTask(() =>
       {
@@ -69,6 +71,46 @@ namespace SpaceClaim.API.Test
       {
         Document.Open(mFilePath, null);
       });
+    }
+
+    #endregion
+
+    #region RemoveFace
+
+    [SpaceClaimTestAttribute]
+    private void RemoveFace()
+    {
+      WriteBlock.AppendTask(() =>
+                              {
+                                var ctx = Window.ActiveWindow.ActiveContext;
+                                var selection = ctx.Selection;
+                                var desFaces = selection.OfType<DesignFace>();
+                                var modFaces = from thisDesFace in desFaces select thisDesFace.Shape;
+                                foreach (var thisModFace in modFaces)
+                                {
+                                  var desBody = thisModFace.Body;
+                                  desBody.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+                                }
+                              });
+    }
+
+    #endregion
+
+    #region ColorFaceRed
+
+    [SpaceClaimTestAttribute]
+    private void ColorFaceRed()
+    {
+      WriteBlock.AppendTask(() =>
+                              {
+                                var ctx = Window.ActiveWindow.ActiveContext;
+                                var selection = ctx.Selection;
+                                var desFaces = selection.OfType<DesignFace>();
+                                foreach (var thisDesFace in desFaces)
+                                {
+                                  thisDesFace.SetColor(null, Color.Red);
+                                }
+                              });
     }
 
     #endregion
