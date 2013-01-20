@@ -5,10 +5,9 @@
 //
 //  www.EllieWare.com
 //
-using System.Linq;
+using System.Collections.Generic;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
-using SpaceClaim.Api.V10.Modeler;
 
 namespace EllieWare.SpaceClaim
 {
@@ -37,18 +36,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override void DoRun()
+    protected override void ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
-      var bodyAndFaces = GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value);
-      foreach (var desDody in bodyAndFaces.Keys)
-      {
-        var modFaces = from desFace in bodyAndFaces[desDody] select desFace.Shape;
-        desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
-        //foreach (var thisModFace in modFaces)
-        //{
-        //  desDody.Shape.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
-        //}
-      }
+      RemoveFaces(smallFaces);
     }
   }
 }
