@@ -32,7 +32,7 @@ namespace EllieWare.SpaceClaim
       AreaThreshold.Maximum = 100;
     }
 
-    protected bool IsSliverFace(DesignFace desFace)
+    protected override bool IsSmallFace(DesignFace desFace)
     {
       // From:
       //    http://www.cfd-online.com/Forums/cfx/19977-sliver-face.html

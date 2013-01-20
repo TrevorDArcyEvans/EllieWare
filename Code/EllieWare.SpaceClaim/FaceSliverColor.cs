@@ -5,9 +5,7 @@
 //
 //  www.EllieWare.com
 //
-using System.Linq;
 using EllieWare.Interfaces;
-using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
@@ -31,14 +29,6 @@ namespace EllieWare.SpaceClaim
                         ColorDlg.Color);
 
         return descrip;
-      }
-    }
-
-    protected override void DoRun()
-    {
-      foreach (var face in GetFacesBelowThreshold(Window.ActiveWindow.Document, IsSliverFace).Values.SelectMany(bodyFaces => bodyFaces))
-      {
-        face.SetColor(null, ColorDlg.Color);
       }
     }
   }

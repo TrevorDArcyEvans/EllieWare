@@ -14,6 +14,8 @@ namespace EllieWare.SpaceClaim
 {
   public class FaceAreaPercentBase : FaceAreaColor
   {
+    private double mLargestFaceArea;
+
     public FaceAreaPercentBase() :
       base()
     {
@@ -33,7 +35,7 @@ namespace EllieWare.SpaceClaim
       AreaThreshold.Maximum = 25;
     }
 
-    protected double GetLargestFaceArea(List<DesignFace> allFacesOrdered)
+    private double GetLargestFaceArea(List<DesignFace> allFacesOrdered)
     {
       // define the 'largest' face to be the average of faces in the top 90-95%
       var allTopFaces = from designFace in allFacesOrdered
@@ -44,9 +46,37 @@ namespace EllieWare.SpaceClaim
       return allTopFaces.Aggregate(0d, (x, df) => x + df.Area) / allTopFaces.Count();
     }
 
-    protected List<DesignFace> GetAllFacesOrdered(Document doc)
+    private List<DesignFace> GetAllFacesOrdered(Document doc)
     {
-      return GetFacesBelowThreshold(doc, double.MaxValue).Values.SelectMany(bodyFaces => bodyFaces).OrderBy(x => x.Area).ToList();
+      return GetAllFaces(doc).Values.SelectMany(bodyFaces => bodyFaces).OrderBy(x => x.Area).ToList();
+    }
+
+    private void CalculateLargestFaceArea(List<DesignFace> allFacesOrdered)
+    {
+      mLargestFaceArea = GetLargestFaceArea(allFacesOrdered);
+    }
+
+    protected override bool CanDoRun(Document doc)
+    {
+      var allFacesOrdered = GetAllFacesOrdered(doc);
+
+      if (allFacesOrdered.Count < 10)
+      {
+        return false;
+      }
+
+      CalculateLargestFaceArea(allFacesOrdered);
+
+      return true;
+    }
+
+    protected override bool IsSmallFace(DesignFace desFace)
+    {
+      var doc = desFace.Document;
+      var lengthFactor = doc.Units.Length.ConversionFactor;
+      var areaFactor = lengthFactor * lengthFactor;
+
+      return desFace.Area < mLargestFaceArea * areaFactor * (double)AreaThreshold.Value / 100d;
     }
   }
 }

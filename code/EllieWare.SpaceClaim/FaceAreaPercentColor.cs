@@ -5,9 +5,7 @@
 //
 //  www.EllieWare.com
 //
-using System.Linq;
 using EllieWare.Interfaces;
-using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
@@ -31,26 +29,6 @@ namespace EllieWare.SpaceClaim
                         ColorDlg.Color);
 
         return descrip;
-      }
-    }
-
-    protected override void DoRun()
-    {
-      var doc = Window.ActiveWindow.Document;
-      var allFacesOrdered = GetAllFacesOrdered(doc);
-
-      if (allFacesOrdered.Count < 10)
-      {
-        return;
-      }
-
-      var largestFaceArea = GetLargestFaceArea(allFacesOrdered);
-      var lengthFactor = doc.Units.Length.ConversionFactor;
-      var areaFactor = lengthFactor * lengthFactor;
-      var smallFaces = GetFacesBelowThreshold(doc, largestFaceArea * areaFactor * (double)AreaThreshold.Value / 100d);
-      foreach (var smallFace in smallFaces.Keys.SelectMany(desBody => smallFaces[desBody]))
-      {
-        smallFace.SetColor(null, ColorDlg.Color);
       }
     }
   }
