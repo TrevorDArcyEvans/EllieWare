@@ -61,10 +61,10 @@ namespace EllieWare.Manager
       this.mSpecs = new System.Windows.Forms.ListView();
       this.FileOperations = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.FileOpCopy = new System.Windows.Forms.ToolStripMenuItem();
+      this.FileOpRename = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpDelete = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpShow = new System.Windows.Forms.ToolStripMenuItem();
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
-      this.FileOpRename = new System.Windows.Forms.ToolStripMenuItem();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -225,7 +225,7 @@ namespace EllieWare.Manager
             this.FileOpDelete,
             this.FileOpShow});
       this.FileOperations.Name = "FileOperations";
-      this.FileOperations.Size = new System.Drawing.Size(162, 114);
+      this.FileOperations.Size = new System.Drawing.Size(162, 92);
       this.FileOperations.Opening += new System.ComponentModel.CancelEventHandler(this.FileOperations_Opening);
       // 
       // FileOpCopy
@@ -234,6 +234,13 @@ namespace EllieWare.Manager
       this.FileOpCopy.Size = new System.Drawing.Size(161, 22);
       this.FileOpCopy.Text = "Copy";
       this.FileOpCopy.Click += new System.EventHandler(this.FileOpCopy_Click);
+      // 
+      // FileOpRename
+      // 
+      this.FileOpRename.Name = "FileOpRename";
+      this.FileOpRename.Size = new System.Drawing.Size(161, 22);
+      this.FileOpRename.Text = "Rename...";
+      this.FileOpRename.Click += new System.EventHandler(this.FileOpRename_Click);
       // 
       // FileOpDelete
       // 
@@ -260,13 +267,6 @@ namespace EllieWare.Manager
       this.SearchBox.WaterMarkText = "Search...";
       this.SearchBox.TextChanged += new System.EventHandler(this.Search_TextChanged);
       // 
-      // FileOpRename
-      // 
-      this.FileOpRename.Name = "FileOpRename";
-      this.FileOpRename.Size = new System.Drawing.Size(161, 22);
-      this.FileOpRename.Text = "Rename...";
-      this.FileOpRename.Click += new System.EventHandler(this.FileOpRename_Click);
-      // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +278,8 @@ namespace EllieWare.Manager
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Manager";
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Manager_FormClosed);
+      this.Load += new System.EventHandler(this.Manager_Load);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel2.ResumeLayout(false);
       tableLayoutPanel2.PerformLayout();

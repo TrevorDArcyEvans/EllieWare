@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -54,9 +55,16 @@ namespace EllieWare.SpaceClaim
 
     public override bool Run()
     {
-      WriteBlock.AppendTask(() => Window.ActiveWindow.ZoomExtents());
+      var evt = new AutoResetEvent(false);
 
-      return true;
+      WriteBlock.AppendTask(() =>
+                              {
+                                Window.ActiveWindow.ZoomExtents();
+                                Common.Utils.Wait(3000);
+                                evt.Set();
+                              });
+
+      return evt.WaitOne(10000);
     }
   }
 }

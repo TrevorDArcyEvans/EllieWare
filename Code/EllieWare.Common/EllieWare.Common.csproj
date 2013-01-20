@@ -210,9 +210,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\step_32x321.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\step_stop_32x32.png" />
   </ItemGroup>
   <ItemGroup>

@@ -221,6 +221,8 @@ namespace EllieWare.Common
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Edit";
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileBatchParameterEditor_FormClosed);
+      this.Load += new System.EventHandler(this.FileBatchParameterEditor_Load);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       tableLayoutPanel2.ResumeLayout(false);

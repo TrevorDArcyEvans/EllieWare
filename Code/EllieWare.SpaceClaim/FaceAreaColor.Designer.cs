@@ -145,7 +145,7 @@ namespace EllieWare.SpaceClaim
 
     #endregion
 
-    private System.Windows.Forms.ColorDialog ColorDlg;
+    protected System.Windows.Forms.ColorDialog ColorDlg;
     protected System.Windows.Forms.Label ColorLabel;
     protected System.Windows.Forms.PictureBox ColorSwatch;
     protected System.Windows.Forms.NumericUpDown AreaThreshold;

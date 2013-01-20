@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -95,17 +96,31 @@ namespace EllieWare.SpaceClaim
       return retval;
     }
 
+    protected virtual void DoRun()
+    {
+      foreach (var face in GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value).Values.SelectMany(bodyFaces => bodyFaces))
+      {
+        face.SetColor(null, ColorDlg.Color);
+      }
+    }
+
     public override bool Run()
     {
+      var evt = new AutoResetEvent(false);
+
       WriteBlock.AppendTask(() =>
                               {
-                                foreach (var face in GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value).Values.SelectMany(bodyFaces => bodyFaces))
+                                try
                                 {
-                                  face.SetColor(null, ColorDlg.Color);
+                                  DoRun();
+                                }
+                                finally
+                                {
+                                  evt.Set();
                                 }
                               });
 
-      return true;
+      return evt.WaitOne(30000);
     }
 
     private void SetSwatchColor()

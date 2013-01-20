@@ -8,13 +8,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
   public partial class ParametersEditor : Form
   {
+    private bool mIsDirty;
+
     public ParametersEditor()
     {
       InitializeComponent();
@@ -49,7 +53,7 @@ namespace EllieWare.Common
 
       selParam.ParameterValue = dlg.Parameter.ParameterValue;
       ParametersDisplay.RefreshItem(ParametersDisplay.SelectedIndex);
-      CmdOK.Enabled = true;
+      CmdOK.Enabled = mIsDirty = true;
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
@@ -61,7 +65,7 @@ namespace EllieWare.Common
       }
 
       ParametersDisplay.Items.Add(dlg.Parameter);
-      CmdOK.Enabled = true;
+      CmdOK.Enabled = mIsDirty = true;
     }
 
     private void CmdEdit_Click(object sender, EventArgs e)
@@ -72,7 +76,7 @@ namespace EllieWare.Common
     private void CmdDelete_Click(object sender, EventArgs e)
     {
       ParametersDisplay.Items.RemoveAt(ParametersDisplay.SelectedIndex);
-      CmdOK.Enabled = true;
+      CmdOK.Enabled = mIsDirty = true;
     }
 
     private void Parameters_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,6 +101,38 @@ namespace EllieWare.Common
       }
 
       EditSelectedParameter();
+    }
+
+    private void ParametersEditor_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (!mIsDirty || DialogResult == DialogResult.OK)
+      {
+        return;
+      }
+
+      var msg = string.Format("You have unsaved changes.\nDo you want to save them?");
+      var retVal = MessageBox.Show(msg, "Confirm", MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+      if (retVal == DialogResult.Cancel)
+      {
+        e.Cancel = true;
+        return;
+      }
+      if (retVal == DialogResult.Yes)
+      {
+        DialogResult = DialogResult.OK;
+        return;
+      }
+    }
+
+    private void ParametersEditor_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void ParametersEditor_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

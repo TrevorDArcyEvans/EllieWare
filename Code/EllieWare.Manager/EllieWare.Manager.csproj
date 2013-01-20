@@ -92,6 +92,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutoUpdater.NET\AutoUpdater.NET.csproj">
+      <Project>{FB9E7E6B-B19F-4F37-A708-2996190CEF13}</Project>
+      <Name>AutoUpdater.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrashReporter.NET\CrashReporter.NET.csproj">
+      <Project>{67912BDA-1572-46B0-8623-5872D9DADBC8}</Project>
+      <Name>CrashReporter.NET</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>

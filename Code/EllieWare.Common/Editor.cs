@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -30,6 +31,8 @@ namespace EllieWare.Common
 
     private int mCurrentStep;
     private int mLastLogWidth;
+    private bool mKeepRunning = true;
+    private bool mIsRunning;
 
     public Editor()
     {
@@ -204,14 +207,31 @@ namespace EllieWare.Common
 
     private void SetupForRun()
     {
-      // show log window
+      ShowLogWindow();
+
+      mCallback.Clear();
+      mCallback.Log(LogLevel.Information, "Started");
+
+      mIsRunning = true;
+      mKeepRunning = true;
+
+      UpdateButtons();
+    }
+
+    private void ShowLogWindow()
+    {
       if (mMainContainer.Panel2Collapsed)
       {
         CmdLog_Click(null, null);
       }
+    }
 
-      mCallback.Clear();
-      mCallback.Log(LogLevel.Information, "Started");
+    private void HideLogWindow()
+    {
+      if (!mMainContainer.Panel2Collapsed)
+      {
+        CmdLog_Click(null, null);
+      }
     }
 
     private void ReportFailure()
@@ -259,9 +279,13 @@ namespace EllieWare.Common
 
     private void TearDownForRun()
     {
+      mIsRunning = false;
+
       UpdateButtons();
       mCurrentStep = 0;
       mCallback.Log(LogLevel.Information, "Finished");
+
+      mKeepRunning = true;
     }
 
     private void CmdRun_Click(object sender, EventArgs e)
@@ -305,6 +329,17 @@ namespace EllieWare.Common
         return false;
       }
 
+      if (!mKeepRunning)
+      {
+        var msg = string.Format("Interrupted by user.");
+
+        mCallback.Log(LogLevel.Severe, msg);
+
+        mKeepRunning = true;
+
+        return false;
+      }
+
       var step = (IRunnable)mSteps.Items[stepNum];
       try
       {
@@ -320,11 +355,20 @@ namespace EllieWare.Common
 
     private void UpdateButtons()
     {
-      CmdDelete.Enabled = CmdRun.Enabled = CmdStep.Enabled = CmdUp.Enabled = CmdDown.Enabled = mSpecification.Steps.Count > 0;
+      CmdDelete.Enabled = CmdRun.Enabled = CmdStep.Enabled = CmdUp.Enabled = CmdDown.Enabled = mSpecification.Steps.Count > 0 && !mIsRunning;
+
+      CmdStop.Enabled = mIsRunning;
 
       var selIndex = mSteps.SelectedIndex;
       CmdUp.Enabled &= (selIndex > 0);
       CmdDown.Enabled &= (selIndex < mSteps.Items.Count - 1);
+
+      // block step/run if there are any batch parameters as we cannot resolve them here
+      var hasBatchParam = Specification.ParameterManager.Parameters.Any(x => x is IBatchParameter);
+      if (hasBatchParam)
+      {
+        CmdRun.Enabled = CmdStep.Enabled = CmdStop.Enabled = false;
+      }
     }
 
     private void UpdateUserInterface()
@@ -461,6 +505,8 @@ namespace EllieWare.Common
     {
       if (!CmdSave.Enabled)
       {
+        HideLogWindow();
+
         return;
       }
 
@@ -475,6 +521,8 @@ namespace EllieWare.Common
       if (retVal == DialogResult.Yes)
       {
         CmdSave_Click(sender, e);
+        HideLogWindow();
+
         return;
       }
     }
@@ -529,6 +577,27 @@ namespace EllieWare.Common
     private void MainContainer_SplitterMoved(object sender, SplitterEventArgs e)
     {
       UpdateWidth();
+    }
+
+    private void Editor_Shown(object sender, EventArgs e)
+    {
+      // update button state as batch parameters may have been merged in
+      UpdateUserInterface();
+    }
+
+    private void CmdStop_Click(object sender, EventArgs e)
+    {
+      mKeepRunning = false;
+    }
+
+    private void Editor_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void Editor_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

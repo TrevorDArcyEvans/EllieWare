@@ -189,19 +189,19 @@ namespace EllieWare.Common
             BrowseFile,
             BrowseDirectory});
       AddEditParameterStrip.Name = "contextMenuStrip1";
-      AddEditParameterStrip.Size = new System.Drawing.Size(153, 70);
+      AddEditParameterStrip.Size = new System.Drawing.Size(132, 48);
       // 
       // BrowseFile
       // 
       BrowseFile.Name = "BrowseFile";
-      BrowseFile.Size = new System.Drawing.Size(152, 22);
+      BrowseFile.Size = new System.Drawing.Size(131, 22);
       BrowseFile.Text = "File...";
       BrowseFile.Click += new System.EventHandler(this.CmdBrowseFile_Click);
       // 
       // BrowseDirectory
       // 
       BrowseDirectory.Name = "BrowseDirectory";
-      BrowseDirectory.Size = new System.Drawing.Size(152, 22);
+      BrowseDirectory.Size = new System.Drawing.Size(131, 22);
       BrowseDirectory.Text = "Directory...";
       BrowseDirectory.Click += new System.EventHandler(this.CmdDirectory_Click);
       // 
@@ -227,6 +227,8 @@ namespace EllieWare.Common
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Add Parameter";
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddEditParameter_FormClosed);
+      this.Load += new System.EventHandler(this.AddEditParameter_Load);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       tableLayoutPanel2.ResumeLayout(false);

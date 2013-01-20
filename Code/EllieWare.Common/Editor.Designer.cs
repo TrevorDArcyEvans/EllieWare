@@ -55,6 +55,7 @@ namespace EllieWare.Common
       this.CmdRun = new System.Windows.Forms.Button();
       this.CmdStep = new System.Windows.Forms.Button();
       this.CmdLog = new System.Windows.Forms.Button();
+      this.CmdStop = new System.Windows.Forms.Button();
       this.CmdAdd = new System.Windows.Forms.Button();
       this.CmdDelete = new System.Windows.Forms.Button();
       this.CmdUp = new System.Windows.Forms.Button();
@@ -183,7 +184,7 @@ namespace EllieWare.Common
       tableLayoutPanel3.ColumnCount = 1;
       tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel3.Controls.Add(this.CmdParameters, 0, 0);
-      tableLayoutPanel3.Location = new System.Drawing.Point(548, 377);
+      tableLayoutPanel3.Location = new System.Drawing.Point(548, 423);
       tableLayoutPanel3.Name = "tableLayoutPanel3";
       tableLayoutPanel3.RowCount = 1;
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -210,14 +211,16 @@ namespace EllieWare.Common
       tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel2.Controls.Add(this.CmdRun, 0, 0);
       tableLayoutPanel2.Controls.Add(this.CmdStep, 0, 1);
-      tableLayoutPanel2.Controls.Add(this.CmdLog, 0, 2);
+      tableLayoutPanel2.Controls.Add(this.CmdLog, 0, 3);
+      tableLayoutPanel2.Controls.Add(this.CmdStop, 0, 2);
       tableLayoutPanel2.Location = new System.Drawing.Point(548, 213);
       tableLayoutPanel2.Name = "tableLayoutPanel2";
-      tableLayoutPanel2.RowCount = 3;
+      tableLayoutPanel2.RowCount = 4;
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel2.Size = new System.Drawing.Size(46, 138);
+      tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel2.Size = new System.Drawing.Size(46, 184);
       tableLayoutPanel2.TabIndex = 11;
       // 
       // CmdRun
@@ -233,7 +236,7 @@ namespace EllieWare.Common
       // 
       // CmdStep
       // 
-      this.CmdStep.Image = global::EllieWare.Common.Properties.Resources.step_32x321;
+      this.CmdStep.Image = global::EllieWare.Common.Properties.Resources.step_32x32;
       this.CmdStep.Location = new System.Drawing.Point(3, 49);
       this.CmdStep.Name = "CmdStep";
       this.CmdStep.Size = new System.Drawing.Size(40, 40);
@@ -245,13 +248,23 @@ namespace EllieWare.Common
       // CmdLog
       // 
       this.CmdLog.Image = global::EllieWare.Common.Properties.Resources.scroll2_32x32;
-      this.CmdLog.Location = new System.Drawing.Point(3, 95);
+      this.CmdLog.Location = new System.Drawing.Point(3, 141);
       this.CmdLog.Name = "CmdLog";
       this.CmdLog.Size = new System.Drawing.Size(40, 40);
-      this.CmdLog.TabIndex = 2;
+      this.CmdLog.TabIndex = 3;
       EditorTips.SetToolTip(this.CmdLog, "Toggle log window");
       this.CmdLog.UseVisualStyleBackColor = true;
       this.CmdLog.Click += new System.EventHandler(this.CmdLog_Click);
+      // 
+      // CmdStop
+      // 
+      this.CmdStop.Image = global::EllieWare.Common.Properties.Resources.step_stop_32x32;
+      this.CmdStop.Location = new System.Drawing.Point(3, 95);
+      this.CmdStop.Name = "CmdStop";
+      this.CmdStop.Size = new System.Drawing.Size(40, 40);
+      this.CmdStop.TabIndex = 2;
+      this.CmdStop.UseVisualStyleBackColor = true;
+      this.CmdStop.Click += new System.EventHandler(this.CmdStop_Click);
       // 
       // tableLayoutPanel1
       // 
@@ -376,6 +389,9 @@ namespace EllieWare.Common
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Editor";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Editor_FormClosing);
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Editor_FormClosed);
+      this.Load += new System.EventHandler(this.Editor_Load);
+      this.Shown += new System.EventHandler(this.Editor_Shown);
       this.SizeChanged += new System.EventHandler(this.Editor_SizeChanged);
       tableLayoutPanel4.ResumeLayout(false);
       tableLayoutPanel4.PerformLayout();
@@ -411,5 +427,6 @@ namespace EllieWare.Common
     private LogWindow mCallback;
     private System.Windows.Forms.SplitContainer mMainContainer;
     private System.Windows.Forms.Button CmdLog;
+    private System.Windows.Forms.Button CmdStop;
   }
 }

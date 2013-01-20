@@ -10,9 +10,14 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
+using AutoUpdaterDotNET;
+using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Manager
 {
@@ -36,8 +41,33 @@ namespace EllieWare.Manager
 
       Text = mRoot.ApplicationName;
 
+      // http://crashreporterdotnet.codeplex.com/documentation
+      Application.ThreadException += ApplicationThreadException;
+
+      // http://autoupdaterdotnet.codeplex.com/documentation
+      const string EllieWare = @"http://www.EllieWare.com";
+      var appCast = mRoot.ApplicationName.Replace(' ', '_') + ".xml";
+      var appCastUrl = EllieWare + @"/" + appCast;
+      AutoUpdater.Start(appCastUrl, mRoot.ApplicationName);
+
       RefreshSpecificationsList();
       UpdateButtons();
+    }
+
+    private void ApplicationThreadException(object sender, ThreadExceptionEventArgs e)
+    {
+      var reportCrash = new ReportCrash
+                              {
+                                FromEmail = "Your gmail address",
+                                ToEmail = "Email address where you want to send crash report",
+                                SMTPHost = "smtp.gmail.com",
+                                Port = 587,
+                                UserName = "Your gmail address",
+                                Password = "Your password",
+                                EnableSSL = true,
+                              };
+
+      reportCrash.Send(e.Exception);
     }
 
     private void DoRequestLicense()
@@ -185,7 +215,9 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
-      Help.ShowHelp(this, "EllieWare.RobotWare.chm");
+      // create an invisible form as help window parent,
+      // so help file is not topmost
+      Help.ShowHelp(new Form(), "EllieWare.RobotWare.chm");
     }
 
     private void FileOpRename_Click(object sender, EventArgs e)
@@ -206,6 +238,16 @@ namespace EllieWare.Manager
       }
       File.Move(selSpecPath, filePath);
       RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+    }
+
+    private void Manager_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void Manager_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

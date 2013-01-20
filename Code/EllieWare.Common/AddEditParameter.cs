@@ -8,13 +8,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
   public partial class AddEditParameter : Form
   {
+    private readonly bool mIsEditing;
     private readonly IEnumerable<IParameter> mParameters;
     private readonly Type mEditParameterType = typeof(string);
 
@@ -37,7 +40,7 @@ namespace EllieWare.Common
 
       mDisplayName.TextChanged -= DisplayName_TextChanged;
       mDisplayName.Text = selParam.DisplayName;
-      mDisplayName.ReadOnly = true;
+      mDisplayName.ReadOnly = mIsEditing = true;
 
       mEditParameterType = selParam.ParameterValue.GetType();
 
@@ -85,11 +88,21 @@ namespace EllieWare.Common
     private void ParameterValue_TextChanged(object sender, EventArgs e)
     {
       CmdOK.Enabled = true;
-      if (!mDisplayName.ReadOnly)
+      if (mIsEditing)
       {
         // new parameter, so further check if name is OK
         DisplayName_TextChanged(sender, e);
       }
+    }
+
+    private void AddEditParameter_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void AddEditParameter_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

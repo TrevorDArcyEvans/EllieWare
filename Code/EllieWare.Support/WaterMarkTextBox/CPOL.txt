@@ -1,3 +1,6 @@
+WaterMarkTextBox
+Copyright (c) Wael Alghool 2008
+
  The Code Project Open License (CPOL)
 
 

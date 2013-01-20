@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows.Forms;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -41,6 +44,30 @@ namespace EllieWare.Common
       }
 
       return retVal;
+    }
+
+    public static bool IsValidFileName(string expression)
+    {
+      const string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
+
+      return (Regex.IsMatch(expression, sPattern, RegexOptions.CultureInvariant));
+    }
+
+    public static void Wait(TimeSpan pause)
+    {
+      var now = DateTime.Now;
+      var end = now.Add(pause);
+      while (DateTime.Now < end)
+      {
+        Application.DoEvents();
+        Thread.Sleep(100);
+        Application.DoEvents();
+      }
+    }
+
+    public static void Wait(int milliSecs)
+    {
+      Wait(new TimeSpan(0, 0, 0,0, milliSecs));
     }
   }
 }

@@ -8,7 +8,9 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using EllieWare.Support;
 
 namespace EllieWare.Common
 {
@@ -64,6 +66,16 @@ namespace EllieWare.Common
 
       var tempParam = new FileBatchParameter("temp", mFilePath.Text);
       mPreview.Lines = tempParam.ResolvedValues.ToArray();
+    }
+
+    private void FileBatchParameterEditor_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void FileBatchParameterEditor_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }
