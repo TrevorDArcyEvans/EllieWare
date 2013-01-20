@@ -28,7 +28,7 @@ namespace EllieWare.SpaceClaim
 
     private void Initialise()
     {
-      AreaLabel.Text = "Threshold";
+      AreaLabel.Text = "Threshold:";
       AreaUnits.Text = "%";
       AreaThreshold.Maximum = 25;
     }

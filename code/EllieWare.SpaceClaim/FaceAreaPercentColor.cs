@@ -26,7 +26,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Color all faces below {0}% of the largest face {1}",
+        var descrip = string.Format("Change color of all faces below {0}% of the largest face to {1}",
                         AreaThreshold.Value,
                         ColorDlg.Color);
 

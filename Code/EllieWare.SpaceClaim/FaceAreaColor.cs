@@ -38,7 +38,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Make all faces below {0} {1}^2 {2}",
+        var descrip = string.Format("Change color of all faces below {0} {1}^2 to {2}",
                         AreaThreshold.Value,
                         Window.ActiveWindow.Units.Length.Symbol,
                         ColorDlg.Color);
@@ -70,6 +70,18 @@ namespace EllieWare.SpaceClaim
       {
         return this;
       }
+    }
+
+    protected Dictionary<DesignBody, IEnumerable<DesignFace>> GetFacesBelowThreshold(Document doc, Func<DesignFace, bool> criteria)
+    {
+      var retval = new Dictionary<DesignBody, IEnumerable<DesignFace>>();
+      var allParts = doc.Parts;
+      foreach (var thisBody in allParts.SelectMany(thisPart => thisPart.Bodies))
+      {
+        retval[thisBody] = from thisFace in thisBody.Faces where criteria(thisFace) select thisFace;
+      }
+
+      return retval;
     }
 
     protected Dictionary<DesignBody, IEnumerable<DesignFace>> GetFacesBelowThreshold(Document doc, double threshold)
