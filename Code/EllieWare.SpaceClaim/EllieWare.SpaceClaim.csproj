@@ -76,6 +76,10 @@
       <DependentUpon>CloseNoSave.cs</DependentUpon>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
+    <Compile Include="Difference.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DifferenceFactory.cs" />
     <Compile Include="EdgeLengthSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>
