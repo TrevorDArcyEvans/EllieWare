@@ -35,9 +35,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override void ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    protected override bool ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
-      RemoveFaces(smallFaces);
+      return RemoveFaces(smallFaces);
     }
   }
 }

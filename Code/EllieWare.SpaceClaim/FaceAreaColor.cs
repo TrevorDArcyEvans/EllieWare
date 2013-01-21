@@ -109,31 +109,44 @@ namespace EllieWare.SpaceClaim
       return true;
     }
 
-    protected void ColorFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    protected bool ColorFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
       foreach (var face in smallFaces.Values.SelectMany(bodyFaces => bodyFaces))
       {
         face.SetColor(null, ColorDlg.Color);
       }
+
+      return true;
     }
 
-    protected void RemoveFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    protected bool RemoveFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
+      try
+      {
       foreach (var desDody in smallFaces.Keys)
       {
         var modFaces = from desFace in smallFaces[desDody] select desFace.Shape;
         desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
       }
+      }
+      catch (InvalidOperationException)
+      {
+        // Body.DeleteFaces() throws InvalidOperationException on failure
+        return false;
+      }
+
+      return true;
     }
 
-    protected virtual void ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    protected virtual bool ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
-      ColorFaces(smallFaces);
+      return ColorFaces(smallFaces);
     }
 
     public override bool Run()
     {
       var evt = new AutoResetEvent(false);
+      var retVal = false;
 
       WriteBlock.AppendTask(() =>
                               {
@@ -146,7 +159,7 @@ namespace EllieWare.SpaceClaim
                                   }
 
                                   var smallFaces = GetSmallFaces(doc);
-                                  ProcessFaces(smallFaces);
+                                  retVal = ProcessFaces(smallFaces);
                                 }
                                 finally
                                 {
@@ -154,7 +167,7 @@ namespace EllieWare.SpaceClaim
                                 }
                               });
 
-      return evt.WaitOne(30000);
+      return evt.WaitOne(30000) && retVal;
     }
 
     private void SetSwatchColor()
