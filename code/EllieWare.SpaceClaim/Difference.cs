@@ -6,9 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -160,7 +158,7 @@ namespace EllieWare.SpaceClaim
                                 }
                               });
 
-      return evt.WaitOne(30000) && retVal;
+      return evt.WaitOne(60000) && retVal;
     }
   }
 }
