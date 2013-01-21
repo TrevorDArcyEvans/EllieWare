@@ -22,7 +22,7 @@ namespace EllieWare.SpaceClaim
       base(root, callback, mgr)
     {
       AreaLabel.Text = "Length:";
-      AreaUnits.Text = Window.ActiveWindow.Units.Length.Symbol;
+      AreaUnits.Text = string.Format("{0}", (Window.ActiveWindow != null) ? Window.ActiveWindow.Units.Length.Symbol : "mm");
     }
 
     public override string Summary
@@ -50,14 +50,19 @@ namespace EllieWare.SpaceClaim
       return retval;
     }
 
+    protected virtual void ProcessEdges(IEnumerable<DesignEdge> smallEdges)
+    {
+      Window.ActiveWindow.ActiveContext.Selection = smallEdges.Cast<IDocObject>().ToList();
+    }
+
     public override bool Run()
     {
       WriteBlock.AppendTask(() =>
                               {
                                 var bodyAndEdges = GetEdgesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value);
-                                var allEdges = bodyAndEdges.SelectMany(thisBody => thisBody.Value);
+                                var smallEdges = bodyAndEdges.SelectMany(thisBody => thisBody.Value);
 
-                                Window.ActiveWindow.ActiveContext.Selection = allEdges.Cast<IDocObject>().ToList();
+                                ProcessEdges(smallEdges);
                               });
 
       return true;
