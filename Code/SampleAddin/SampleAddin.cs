@@ -69,6 +69,11 @@ namespace SampleAddin
       }
     }
 
+    public bool CanRun
+    {
+      get { return true; }
+    }
+
     public bool Run()
     {
       MessageBox.Show(mText.Text);

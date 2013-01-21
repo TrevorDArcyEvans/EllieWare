@@ -5,25 +5,22 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
+using Application = SpaceClaim.Api.V10.Application;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class Reload : MutableRunnableBase
+  public class Reload : MutableRunnableBase
   {
     public Reload()
     {
-      InitializeComponent();
     }
 
     public Reload(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
     }
 
     public override string Summary
@@ -36,19 +33,23 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override void ReadXml(XmlReader reader)
-    {
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-    }
-
-    public override Control ConfigurationUserInterface
+    public override bool CanRun
     {
       get
       {
-        return this;
+        // EllieWare.SpaceClaim.Reload borked due to SpaceClaim API bug
+        var appVer = Application.Version;
+        var retVal = appVer.ReleaseNumber >= 6 && appVer.ServicePack >= 1;
+        if (!retVal)
+        {
+          var msg = string.Format("This is broken with SpaceClaim Release {0} Service Pack {1}",
+                                  appVer.ReleaseNumber,
+                                  appVer.ServicePack);
+
+          mCallback.Log(LogLevel.Severe, msg);
+        }
+
+        return retVal;
       }
     }
 

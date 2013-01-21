@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using EllieWare.Common;
@@ -13,20 +12,16 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public partial class DirectoryUpload : FtpDualItemIOBase
+  public class DirectoryUpload : FtpDualItemIOBase
   {
     public DirectoryUpload()
     {
-      InitializeComponent();
-
       Initialise();
     }
 
     public DirectoryUpload(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
-      InitializeComponent();
-
       Initialise();
     }
 

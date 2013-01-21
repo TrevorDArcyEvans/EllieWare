@@ -11,20 +11,16 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public partial class FileDownload : FtpDualItemIOBase
+  public class FileDownload : FtpDualItemIOBase
   {
     public FileDownload()
     {
-      InitializeComponent();
-
       Initialise();
     }
 
     public FileDownload(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      InitializeComponent();
-
       Initialise();
     }
 

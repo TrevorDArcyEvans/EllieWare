@@ -5,25 +5,21 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class NewDesign : MutableRunnableBase
+  public class NewDesign : MutableRunnableBase
   {
     public NewDesign()
     {
-      InitializeComponent();
     }
 
     public NewDesign(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
     }
 
     public override string Summary
@@ -33,22 +29,6 @@ namespace EllieWare.SpaceClaim
         var descrip = string.Format("Create a new empty design document");
 
         return descrip;
-      }
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 

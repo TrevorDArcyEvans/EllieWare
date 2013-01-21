@@ -13,17 +13,16 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class SaveAll : MutableRunnableBase
+  public class SaveAll : MutableRunnableBase
   {
-    public SaveAll()
+    public SaveAll() :
+      base()
     {
-      InitializeComponent();
     }
 
     public SaveAll(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
     }
 
     public override string Summary
@@ -33,22 +32,6 @@ namespace EllieWare.SpaceClaim
         var descrip = string.Format("Save all documents");
 
         return descrip;
-      }
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 

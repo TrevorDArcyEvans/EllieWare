@@ -12,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class ExportToPdf : SingleItemIOBase
+  public class ExportToPdf : SingleItemIOBase
   {
     public ExportToPdf()
     {

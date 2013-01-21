@@ -5,25 +5,22 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class CloseAllNoSave : MutableRunnableBase
+  public class CloseAllNoSave : MutableRunnableBase
   {
-    public CloseAllNoSave()
+    public CloseAllNoSave() :
+      base()
     {
-      InitializeComponent();
     }
 
     public CloseAllNoSave(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
     }
 
     public override string Summary
@@ -33,22 +30,6 @@ namespace EllieWare.SpaceClaim
         var descrip = string.Format("Close all documents without saving");
 
         return descrip;
-      }
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 

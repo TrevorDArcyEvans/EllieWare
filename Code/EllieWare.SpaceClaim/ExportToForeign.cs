@@ -13,7 +13,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class ExportToForeign : SingleItemIOBase
+  public class ExportToForeign : SingleItemIOBase
   {
     public ExportToForeign()
     {

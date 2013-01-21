@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Modeler;
+using Application = SpaceClaim.Api.V10.Application;
 
 namespace SpaceClaim.API.Test
 {
@@ -110,6 +111,23 @@ namespace SpaceClaim.API.Test
                                 {
                                   thisDesFace.SetColor(null, Color.Red);
                                 }
+                              });
+    }
+
+    #endregion
+
+    #region ApplicationVersion
+
+    [SpaceClaimTestAttribute]
+    private void ApplicationVersion()
+    {
+      WriteBlock.AppendTask(() =>
+                              {
+                                var appVer = Application.Version;
+                                MessageBox.Show(
+                                  "ReleaseNumber = " + appVer.ReleaseNumber + Environment.NewLine +
+                                  "ServicePack   = " + appVer.ServicePack,
+                                "Application.Version");
                               });
     }
 

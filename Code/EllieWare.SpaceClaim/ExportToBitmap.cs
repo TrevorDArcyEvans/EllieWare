@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class ExportToBitmap : SingleItemIOBase
+  public class ExportToBitmap : SingleItemIOBase
   {
     public ExportToBitmap()
     {
