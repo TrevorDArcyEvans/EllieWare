@@ -11,14 +11,14 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaRemove : FaceAreaColor
+  public class FaceSliverRemove : FaceSliverColor
   {
-    public FaceAreaRemove()
+    public FaceSliverRemove()
     {
       ColorLabel.Visible = ColorSwatch.Visible = false;
     }
 
-    public FaceAreaRemove(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public FaceSliverRemove(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
       ColorLabel.Visible = ColorSwatch.Visible = false;
@@ -28,9 +28,8 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Remove all faces below {0} {1}^2",
-                        AreaThreshold.Value,
-                        Window.ActiveWindow.Units.Length.Symbol);
+        var descrip = string.Format("Remove all faces above {0} aspect ratio",
+                        AreaThreshold.Value);
 
         return descrip;
       }

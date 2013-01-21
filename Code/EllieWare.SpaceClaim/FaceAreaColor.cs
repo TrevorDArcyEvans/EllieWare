@@ -16,6 +16,7 @@ using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
+using SpaceClaim.Api.V10.Modeler;
 
 namespace EllieWare.SpaceClaim
 {
@@ -38,7 +39,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Make all faces below {0} {1}^2 {2}",
+        var descrip = string.Format("Change color of all faces below {0} {1}^2 to {2}",
                         AreaThreshold.Value,
                         Window.ActiveWindow.Units.Length.Symbol,
                         ColorDlg.Color);
@@ -72,36 +73,62 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected Dictionary<DesignBody, IEnumerable<DesignFace>> GetFacesBelowThreshold(Document doc, double threshold)
+    private Dictionary<DesignBody, IEnumerable<DesignFace>> GetSmallFaces(Document doc, Func<DesignFace, bool> criteria)
     {
       var retval = new Dictionary<DesignBody, IEnumerable<DesignFace>>();
-      var lengthFactor = doc.Units.Length.ConversionFactor;
-      var areaFactor = lengthFactor * lengthFactor;
       var allParts = doc.Parts;
       foreach (var thisBody in allParts.SelectMany(thisPart => thisPart.Bodies))
       {
-        retval[thisBody] = from thisFace in thisBody.Faces where thisFace.Area * areaFactor < threshold select thisFace;
-        //var smallFaces = new List<DesignFace>();
-        //foreach (var thisFace in thisBody.Faces)
-        //{
-        //  var area = thisFace.Area;
-        //  if (area * areaFactor < threshold)
-        //  {
-        //    smallFaces.Add(thisFace);
-        //  }
-        //}
-        //retval[thisBody] = smallFaces;
+        retval[thisBody] = from thisFace in thisBody.Faces where criteria(thisFace) select thisFace;
       }
 
       return retval;
     }
 
-    protected virtual void DoRun()
+    private Dictionary<DesignBody, IEnumerable<DesignFace>> GetSmallFaces(Document doc)
     {
-      foreach (var face in GetFacesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value).Values.SelectMany(bodyFaces => bodyFaces))
+      return GetSmallFaces(doc, IsSmallFace);
+    }
+
+    protected Dictionary<DesignBody, IEnumerable<DesignFace>> GetAllFaces(Document doc)
+    {
+      return GetSmallFaces(doc, df => true);
+    }
+
+    protected virtual bool IsSmallFace(DesignFace desFace)
+    {
+      var doc = desFace.Document;
+      var lengthFactor = doc.Units.Length.ConversionFactor;
+      var areaFactor = lengthFactor * lengthFactor;
+
+      return desFace.Area * areaFactor < (double)AreaThreshold.Value;
+    }
+
+    protected virtual bool CanDoRun(Document doc)
+    {
+      return true;
+    }
+
+    protected void ColorFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    {
+      foreach (var face in smallFaces.Values.SelectMany(bodyFaces => bodyFaces))
       {
         face.SetColor(null, ColorDlg.Color);
       }
+    }
+
+    protected void RemoveFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    {
+      foreach (var desDody in smallFaces.Keys)
+      {
+        var modFaces = from desFace in smallFaces[desDody] select desFace.Shape;
+        desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
+      }
+    }
+
+    protected virtual void ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    {
+      ColorFaces(smallFaces);
     }
 
     public override bool Run()
@@ -112,7 +139,14 @@ namespace EllieWare.SpaceClaim
                               {
                                 try
                                 {
-                                  DoRun();
+                                  var doc = Window.ActiveWindow.Document;
+                                  if (!CanDoRun(doc))
+                                  {
+                                    return;
+                                  }
+
+                                  var smallFaces = GetSmallFaces(doc);
+                                  ProcessFaces(smallFaces);
                                 }
                                 finally
                                 {

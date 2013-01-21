@@ -9,13 +9,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaPercentColor : FaceAreaPercentBase
+  public class FaceSliverColor : FaceSliverBase
   {
-    public FaceAreaPercentColor()
+    public FaceSliverColor()
     {
     }
 
-    public FaceAreaPercentColor(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public FaceSliverColor(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
     }
@@ -24,7 +24,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Change color of all faces below {0}% of the largest face to {1}",
+        var descrip = string.Format("Change color of all faces above {0} aspect ratio to {1}",
                         AreaThreshold.Value,
                         ColorDlg.Color);
 
