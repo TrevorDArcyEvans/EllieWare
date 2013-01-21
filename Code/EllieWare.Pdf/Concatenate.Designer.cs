@@ -35,12 +35,12 @@ namespace EllieWare.Pdf
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
+      System.Windows.Forms.Label label1;
       this.ConcatenateMain = new System.Windows.Forms.TableLayoutPanel();
       this.mOutputFilePath = new EllieWare.Common.ParameterTextBox();
-      this.label1 = new System.Windows.Forms.Label();
       this.CmdOutputBrowse = new System.Windows.Forms.Button();
       this.OutputFileSelector = new System.Windows.Forms.SaveFileDialog();
+      label1 = new System.Windows.Forms.Label();
       this.ConcatenateMain.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -54,7 +54,7 @@ namespace EllieWare.Pdf
       this.ConcatenateMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.ConcatenateMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.ConcatenateMain.Controls.Add(this.mOutputFilePath, 1, 0);
-      this.ConcatenateMain.Controls.Add(this.label1, 0, 0);
+      this.ConcatenateMain.Controls.Add(label1, 0, 0);
       this.ConcatenateMain.Controls.Add(this.CmdOutputBrowse, 2, 0);
       this.ConcatenateMain.Location = new System.Drawing.Point(0, 58);
       this.ConcatenateMain.Name = "ConcatenateMain";
@@ -74,13 +74,13 @@ namespace EllieWare.Pdf
       // 
       // label1
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(3, 6);
-      this.label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(42, 13);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "Output:";
+      label1.AutoSize = true;
+      label1.Location = new System.Drawing.Point(3, 6);
+      label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      label1.Name = "label1";
+      label1.Size = new System.Drawing.Size(42, 13);
+      label1.TabIndex = 0;
+      label1.Text = "Output:";
       // 
       // CmdOutputBrowse
       // 
@@ -117,7 +117,6 @@ namespace EllieWare.Pdf
     #endregion
 
     private System.Windows.Forms.TableLayoutPanel ConcatenateMain;
-    private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button CmdOutputBrowse;
     private Common.ParameterTextBox mOutputFilePath;
     private System.Windows.Forms.SaveFileDialog OutputFileSelector;
