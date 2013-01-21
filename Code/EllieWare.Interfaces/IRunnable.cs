@@ -28,6 +28,18 @@ namespace EllieWare.Interfaces
     Control ConfigurationUserInterface { get; }
 
     /// <summary>
+    /// If the step can be executed with its current parameters
+    /// </summary>
+    /// <remarks>
+    /// <list type="bullet">
+    /// <item>Called immediately before <see cref="Run"/></item>
+    /// <item>Returning false will stop execution of this step and any subsequent steps</item>
+    /// </list>
+    /// 
+    /// </remarks>
+    bool CanRun { get; }
+
+    /// <summary>
     /// Execute the step with its current parameters
     /// </summary>
     /// <returns>true if step successfully completes</returns>

@@ -42,12 +42,10 @@ namespace EllieWare.Common
 
     public virtual void ReadXml(XmlReader reader)
     {
-      throw new NotImplementedException();
     }
 
     public virtual void WriteXml(XmlWriter writer)
     {
-      throw new NotImplementedException();
     }
 
     #endregion
@@ -59,7 +57,18 @@ namespace EllieWare.Common
 
     public virtual Control ConfigurationUserInterface
     {
-      get { throw new NotImplementedException(); }
+      get
+      {
+        return this;
+      }
+    }
+
+    public virtual bool CanRun
+    {
+      get
+      {
+        return true;
+      }
     }
 
     public virtual bool Run()

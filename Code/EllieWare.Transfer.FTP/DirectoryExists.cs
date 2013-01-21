@@ -9,17 +9,15 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public partial class DirectoryExists : FtpSingleItemExistsIOBase
+  public class DirectoryExists : FtpSingleItemExistsIOBase
   {
     public DirectoryExists()
     {
-      InitializeComponent();
     }
 
     public DirectoryExists(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
     }
 
     public override string Summary

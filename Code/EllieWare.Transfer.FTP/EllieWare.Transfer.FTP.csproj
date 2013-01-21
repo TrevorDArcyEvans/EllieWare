@@ -57,64 +57,37 @@
     <Compile Include="DirectoryCreate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DirectoryCreate.Designer.cs">
-      <DependentUpon>DirectoryCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="DirectoryCreateFactory.cs" />
     <Compile Include="DirectoryDelete.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryDelete.Designer.cs">
-      <DependentUpon>DirectoryDelete.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectoryDeleteFactory.cs" />
     <Compile Include="DirectoryDownload.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DirectoryDownload.Designer.cs">
-      <DependentUpon>DirectoryDownload.cs</DependentUpon>
-    </Compile>
     <Compile Include="DirectoryDownloadFactory.cs" />
     <Compile Include="DirectoryExists.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DirectoryExists.Designer.cs">
-      <DependentUpon>DirectoryExists.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectoryExistsFactory.cs" />
     <Compile Include="DirectoryUpload.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DirectoryUpload.Designer.cs">
-      <DependentUpon>DirectoryUpload.cs</DependentUpon>
-    </Compile>
     <Compile Include="DirectoryUploadFactory.cs" />
     <Compile Include="FileDelete.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileDelete.Designer.cs">
-      <DependentUpon>FileDelete.cs</DependentUpon>
     </Compile>
     <Compile Include="FileDeleteFactory.cs" />
     <Compile Include="FileDownload.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FileDownload.Designer.cs">
-      <DependentUpon>FileDownload.cs</DependentUpon>
-    </Compile>
     <Compile Include="FileDownloadFactory.cs" />
     <Compile Include="FileExists.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FileExists.Designer.cs">
-      <DependentUpon>FileExists.cs</DependentUpon>
-    </Compile>
     <Compile Include="FileExistsFactory.cs" />
     <Compile Include="FileUpload.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileUpload.Designer.cs">
-      <DependentUpon>FileUpload.cs</DependentUpon>
     </Compile>
     <Compile Include="FileUploadFactory.cs" />
     <Compile Include="FtpClientExtensions.cs" />

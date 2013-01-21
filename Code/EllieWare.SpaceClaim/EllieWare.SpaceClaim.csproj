@@ -58,22 +58,13 @@
     <Compile Include="AppExit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AppExit.Designer.cs">
-      <DependentUpon>AppExit.cs</DependentUpon>
-    </Compile>
     <Compile Include="AppExitFactory.cs" />
     <Compile Include="CloseAllNoSave.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CloseAllNoSave.Designer.cs">
-      <DependentUpon>CloseAllNoSave.cs</DependentUpon>
-    </Compile>
     <Compile Include="CloseAllNoSaveFactory.cs" />
     <Compile Include="CloseNoSave.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CloseNoSave.Designer.cs">
-      <DependentUpon>CloseNoSave.cs</DependentUpon>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
     <Compile Include="Difference.cs">
@@ -91,22 +82,13 @@
     <Compile Include="ExportToBitmap.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExportToBitmap.Designer.cs">
-      <DependentUpon>ExportToBitmap.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExportToBitmapFactory.cs" />
     <Compile Include="ExportToForeign.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExportToForeign.Designer.cs">
-      <DependentUpon>ExportToForeign.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExportToForeignFactory.cs" />
     <Compile Include="ExportToPdf.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ExportToPdf.Designer.cs">
-      <DependentUpon>ExportToPdf.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportToPdfFactory.cs" />
     <Compile Include="FaceAreaColor.cs">
@@ -145,15 +127,9 @@
     <Compile Include="ImportFromForeign.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImportFromForeign.Designer.cs">
-      <DependentUpon>ImportFromForeign.cs</DependentUpon>
-    </Compile>
     <Compile Include="ImportFromForeignFactory.cs" />
     <Compile Include="NewDesign.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NewDesign.Designer.cs">
-      <DependentUpon>NewDesign.cs</DependentUpon>
     </Compile>
     <Compile Include="NewDesignFactory.cs" />
     <Compile Include="OpenNative.cs">
@@ -164,21 +140,12 @@
     <Compile Include="Reload.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Reload.Designer.cs">
-      <DependentUpon>Reload.cs</DependentUpon>
-    </Compile>
     <Compile Include="ReloadFactory.cs" />
     <Compile Include="Save.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Save.Designer.cs">
-      <DependentUpon>Save.cs</DependentUpon>
-    </Compile>
     <Compile Include="SaveAll.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SaveAll.Designer.cs">
-      <DependentUpon>SaveAll.cs</DependentUpon>
     </Compile>
     <Compile Include="SaveAllFactory.cs" />
     <Compile Include="SaveAs.cs">
@@ -197,15 +164,9 @@
     <Compile Include="ZoomExtents.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ZoomExtents.Designer.cs">
-      <DependentUpon>ZoomExtents.cs</DependentUpon>
-    </Compile>
     <Compile Include="ZoomExtentsFactory.cs" />
     <Compile Include="ZoomSelection.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ZoomSelection.Designer.cs">
-      <DependentUpon>ZoomSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="ZoomSelectionFactory.cs" />
   </ItemGroup>

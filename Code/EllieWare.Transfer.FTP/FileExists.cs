@@ -12,11 +12,10 @@ using System.Globalization;
 
 namespace EllieWare.Transfer.FTP
 {
-  public partial class FileExists : FtpSingleItemExistsIOBase
+  public class FileExists : FtpSingleItemExistsIOBase
   {
     public FileExists()
     {
-      InitializeComponent();
     }
 
     public FileExists(IRobotWare root, ICallback callback, IParameterManager mgr) :

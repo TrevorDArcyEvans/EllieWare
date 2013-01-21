@@ -341,6 +341,12 @@ namespace EllieWare.Common
       }
 
       var step = (IRunnable)mSteps.Items[stepNum];
+      if (!step.CanRun)
+      {
+        // caller will report error
+        return false;
+      }
+
       try
       {
         return step.Run();

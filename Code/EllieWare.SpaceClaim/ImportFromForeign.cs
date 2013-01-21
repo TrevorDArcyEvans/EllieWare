@@ -13,7 +13,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class ImportFromForeign : SingleItemIOBase
+  public class ImportFromForeign : SingleItemIOBase
   {
     public ImportFromForeign()
     {
