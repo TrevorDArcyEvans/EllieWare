@@ -30,6 +30,7 @@ namespace EllieWare.SpaceClaim
       AreaLabel.Text = "Sliver ratio:";
       AreaUnits.Text = "";
       AreaThreshold.Maximum = 100;
+      AreaThreshold.Value = 25;
     }
 
     protected override bool IsSmallFace(DesignFace desFace)
