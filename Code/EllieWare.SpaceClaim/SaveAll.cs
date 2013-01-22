@@ -5,8 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
