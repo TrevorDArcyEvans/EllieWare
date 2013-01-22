@@ -5,14 +5,13 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using Application = SpaceClaim.Api.V10.Application;
 
 namespace EllieWare.SpaceClaim
 {
-  public class Reload : MutableRunnableBase
+  public class Reload : SpaceClaimMutableRunnableBase
   {
     public Reload()
     {
@@ -56,18 +55,15 @@ namespace EllieWare.SpaceClaim
 
     private string mFilePath;
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                Document.DocumentRemoved += Document_DocumentRemoved;
-                                mFilePath = Window.ActiveWindow.Document.Path;
-                                var allWindows = Window.GetWindows(Window.ActiveWindow.Document);
-                                foreach (var thisWindow in allWindows)
-                                {
-                                  thisWindow.Close();
-                                }
-                              });
+      Document.DocumentRemoved += Document_DocumentRemoved;
+      mFilePath = Window.ActiveWindow.Document.Path;
+      var allWindows = Window.GetWindows(Window.ActiveWindow.Document);
+      foreach (var thisWindow in allWindows)
+      {
+        thisWindow.Close();
+      }
 
       return true;
     }

@@ -164,6 +164,9 @@
       <DependentUpon>SetViewProjection.cs</DependentUpon>
     </Compile>
     <Compile Include="SetViewProjectionFactory.cs" />
+    <Compile Include="SpaceClaimMutableRunnableBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SpaceClaimSingleItemIOBase.cs">
       <SubType>UserControl</SubType>
     </Compile>

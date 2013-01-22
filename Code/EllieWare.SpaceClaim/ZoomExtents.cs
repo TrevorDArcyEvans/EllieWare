@@ -5,14 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using System.Threading;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ZoomExtents : MutableRunnableBase
+  public class ZoomExtents : SpaceClaimMutableRunnableBase
   {
     public ZoomExtents()
     {
@@ -33,18 +31,12 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      var evt = new AutoResetEvent(false);
+      Window.ActiveWindow.ZoomExtents();
+      Common.Utils.Wait(3000);
 
-      WriteBlock.AppendTask(() =>
-                              {
-                                Window.ActiveWindow.ZoomExtents();
-                                Common.Utils.Wait(3000);
-                                evt.Set();
-                              });
-
-      return evt.WaitOne(10000);
+      return true;
     }
   }
 }

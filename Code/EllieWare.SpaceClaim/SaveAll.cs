@@ -5,13 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class SaveAll : MutableRunnableBase
+  public class SaveAll : SpaceClaimMutableRunnableBase
   {
     public SaveAll() :
       base()
@@ -33,15 +32,12 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                foreach (var window in Window.AllWindows)
-                                {
-                                  window.Document.Save();
-                                }
-                              });
+      foreach (var window in Window.AllWindows)
+      {
+        window.Document.Save();
+      }
 
       return true;
     }
