@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ExportToBitmap : SingleItemIOBase
+  public class ExportToBitmap : SpaceClaimSingleItemIOBase
   {
     public ExportToBitmap()
     {
@@ -51,16 +51,13 @@ namespace EllieWare.SpaceClaim
       return Utils.RasterFormats.First(x => x.Value == fmt).Key;
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                var fmt = Format(SourceFilePathResolvedValue);
-                                var extn = Extension(fmt);
-                                var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+      var fmt = Format(SourceFilePathResolvedValue);
+      var extn = Extension(fmt);
+      var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
 
-                                Window.ActiveWindow.Export(fmt, fileName);
-                              });
+      Window.ActiveWindow.Export(fmt, fileName);
 
       return true;
     }

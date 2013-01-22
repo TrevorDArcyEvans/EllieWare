@@ -13,7 +13,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ImportFromForeign : SingleItemIOBase
+  public class ImportFromForeign : SpaceClaimSingleItemIOBase
   {
     public ImportFromForeign()
     {
@@ -51,22 +51,19 @@ namespace EllieWare.SpaceClaim
       return Utils.BrepFormats.First(x => x.Value == fmt).Key;
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                var fmt = Format(SourceFilePathResolvedValue);
-                                var extn = Extension(fmt);
-                                var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
-                                var opts = ImportOptions.Create();
+      var fmt = Format(SourceFilePathResolvedValue);
+      var extn = Extension(fmt);
+      var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+      var opts = ImportOptions.Create();
 
-                                opts.Acis.CreateAssembly = true;
-                                opts.ImportCurves = true;
-                                opts.ImportNames = true;
-                                opts.ImportPoints = true;
+      opts.Acis.CreateAssembly = true;
+      opts.ImportCurves = true;
+      opts.ImportNames = true;
+      opts.ImportPoints = true;
 
-                                Document.Open(fileName, opts);
-                              });
+      Document.Open(fileName, opts);
 
       return true;
     }

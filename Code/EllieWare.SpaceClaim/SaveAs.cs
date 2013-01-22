@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class SaveAs : SingleItemIOBase
+  public class SaveAs : SpaceClaimSingleItemIOBase
   {
     public SaveAs()
     {
@@ -33,9 +33,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() => Window.ActiveWindow.Document.SaveAs(SourceFilePathResolvedValue));
+      doc.SaveAs(SourceFilePathResolvedValue);
 
       return true;
     }
