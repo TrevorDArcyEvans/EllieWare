@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class OpenNative : SingleItemIOBase
+  public class OpenNative : SpaceClaimSingleItemIOBase
   {
     public OpenNative()
     {
@@ -33,9 +33,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() => Document.Open(SourceFilePathResolvedValue, null));
+      Document.Open(SourceFilePathResolvedValue, null);
 
       return true;
     }
