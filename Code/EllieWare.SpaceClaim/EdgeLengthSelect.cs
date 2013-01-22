@@ -68,6 +68,11 @@ namespace EllieWare.SpaceClaim
 
     public override bool Run()
     {
+      if (!CanDoRun(Window.ActiveWindow.Document))
+      {
+        return false;
+      }
+
       var evt = new AutoResetEvent(false);
       var retVal = false;
 
