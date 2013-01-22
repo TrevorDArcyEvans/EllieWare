@@ -8,17 +8,15 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Geometry;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class SetViewProjection : MutableRunnableBase
+  public partial class SetViewProjection : SpaceClaimMutableRunnableBase
   {
     private readonly List<KeyValuePair<string, Matrix>> SupportedViewprojections = new List<KeyValuePair<string, Matrix>>
                                                                                      {
@@ -83,18 +81,12 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      var evt = new AutoResetEvent(false);
+      Window.ActiveWindow.SetProjection(SupportedViewprojections[SelViewProjection.SelectedIndex].Value, false, true);
+      Common.Utils.Wait(3000);
 
-      WriteBlock.AppendTask(() =>
-                              {
-                                Window.ActiveWindow.SetProjection(SupportedViewprojections[SelViewProjection.SelectedIndex].Value, false, true);
-                                Common.Utils.Wait(3000);
-                                evt.Set();
-                              });
-
-      return evt.WaitOne(10000);
+      return true;
     }
 
     private void SelViewProjection_SelectedIndexChanged(object sender, EventArgs e)

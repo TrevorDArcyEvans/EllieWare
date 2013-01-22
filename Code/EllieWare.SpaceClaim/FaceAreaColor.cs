@@ -10,17 +10,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Modeler;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class FaceAreaColor : MutableRunnableBase
+  public partial class FaceAreaColor : SpaceClaimMutableRunnableBase
   {
     public FaceAreaColor()
     {
@@ -104,11 +102,6 @@ namespace EllieWare.SpaceClaim
       return desFace.Area * areaFactor < (double)AreaThreshold.Value;
     }
 
-    protected virtual bool CanDoRun(Document doc)
-    {
-      return true;
-    }
-
     protected bool ColorFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
       foreach (var face in smallFaces.Values.SelectMany(bodyFaces => bodyFaces))
@@ -123,11 +116,11 @@ namespace EllieWare.SpaceClaim
     {
       try
       {
-      foreach (var desDody in smallFaces.Keys)
-      {
-        var modFaces = from desFace in smallFaces[desDody] select desFace.Shape;
-        desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
-      }
+        foreach (var desDody in smallFaces.Keys)
+        {
+          var modFaces = from desFace in smallFaces[desDody] select desFace.Shape;
+          desDody.Shape.DeleteFaces(modFaces.ToList(), RepairAction.GrowSurrounding);
+        }
       }
       catch (InvalidOperationException)
       {
@@ -143,31 +136,11 @@ namespace EllieWare.SpaceClaim
       return ColorFaces(smallFaces);
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      var evt = new AutoResetEvent(false);
-      var retVal = false;
+      var smallFaces = GetSmallFaces(doc);
 
-      WriteBlock.AppendTask(() =>
-                              {
-                                try
-                                {
-                                  var doc = Window.ActiveWindow.Document;
-                                  if (!CanDoRun(doc))
-                                  {
-                                    return;
-                                  }
-
-                                  var smallFaces = GetSmallFaces(doc);
-                                  retVal = ProcessFaces(smallFaces);
-                                }
-                                finally
-                                {
-                                  evt.Set();
-                                }
-                              });
-
-      return evt.WaitOne(30000) && retVal;
+      return ProcessFaces(smallFaces);
     }
 
     private void SetSwatchColor()

@@ -13,14 +13,14 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class SpaceClaimSingleItemIOBase : SingleItemIOBase
+  public class SpaceClaimMutableRunnableBase : MutableRunnableBase
   {
-    public SpaceClaimSingleItemIOBase()
+    public SpaceClaimMutableRunnableBase()
     {
     }
 
-    public SpaceClaimSingleItemIOBase(IRobotWare root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
-      base(root, callback, mgr, browsers)
+    public SpaceClaimMutableRunnableBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
+      base(root, callback, mgr)
     {
     }
 

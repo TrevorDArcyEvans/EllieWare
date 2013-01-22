@@ -5,13 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class NewDesign : MutableRunnableBase
+  public class NewDesign : SpaceClaimMutableRunnableBase
   {
     public NewDesign()
     {
@@ -32,9 +31,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() => Document.Create());
+      Document.Create();
 
       return true;
     }

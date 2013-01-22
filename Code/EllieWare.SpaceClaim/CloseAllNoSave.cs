@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class CloseAllNoSave : MutableRunnableBase
+  public class CloseAllNoSave : SpaceClaimMutableRunnableBase
   {
     public CloseAllNoSave() :
       base()
@@ -33,15 +33,12 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                while (Window.ActiveWindow != null)
-                                {
-                                  Window.ActiveWindow.Close();
-                                }
-                              });
+      while (Window.ActiveWindow != null)
+      {
+        Window.ActiveWindow.Close();
+      }
 
       return true;
     }

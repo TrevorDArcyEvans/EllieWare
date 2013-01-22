@@ -8,7 +8,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
@@ -66,32 +65,12 @@ namespace EllieWare.SpaceClaim
       return true;
     }
 
-    public override bool Run()
+    protected override bool DoRun(Document doc)
     {
-      if (!CanDoRun(Window.ActiveWindow.Document))
-      {
-        return false;
-      }
+      var bodyAndEdges = GetEdges(Window.ActiveWindow.Document, IsSmallEdge);
+      var smallEdges = bodyAndEdges.SelectMany(thisBody => thisBody.Value);
 
-      var evt = new AutoResetEvent(false);
-      var retVal = false;
-
-      WriteBlock.AppendTask(() =>
-                              {
-                                try
-                                {
-                                var bodyAndEdges = GetEdges(Window.ActiveWindow.Document, IsSmallEdge);
-                                var smallEdges = bodyAndEdges.SelectMany(thisBody => thisBody.Value);
-
-                                retVal = ProcessEdges(smallEdges);
-                                }
-                                finally
-                                {
-                                  evt.Set();
-                                }
-                              });
-
-      return evt.WaitOne(30000) && retVal;
+      return ProcessEdges(smallEdges);
     }
   }
 }
