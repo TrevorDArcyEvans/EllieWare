@@ -71,6 +71,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DifferenceFactory.cs" />
+    <Compile Include="EdgeLengthPercentSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EdgeLengthPercentSelectFactory.cs" />
     <Compile Include="EdgeLengthSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>

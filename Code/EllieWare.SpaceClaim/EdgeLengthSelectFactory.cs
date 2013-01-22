@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "SpaceClaim, area, geometry";
+        return "SpaceClaim, length,edge,  geometry";
       }
     }
 
