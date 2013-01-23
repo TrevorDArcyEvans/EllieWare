@@ -60,18 +60,22 @@ namespace EllieWare.SpaceClaim
       return GetEdges(doc, de => true).Values.SelectMany(de => de).OrderBy(de => de.Shape.Length).ToList();
     }
 
-    protected override bool CanDoRun(Document doc)
+    public override bool CanRun
     {
-      var allEdgesOrdered = GetAllEdgesOrdered(doc);
-
-      if (allEdgesOrdered.Count < 10)
+      get
       {
-        return false;
+        var allEdgesOrdered = GetAllEdgesOrdered(Window.ActiveWindow.Document);
+
+        if (allEdgesOrdered.Count < 10)
+        {
+          return false;
+        }
+
+        CalculateLongestEdge(allEdgesOrdered);
+
+        return true;
+
       }
-
-      CalculateLongestEdge(allEdgesOrdered);
-
-      return true;
     }
 
     protected override bool IsSmallEdge(DesignEdge desEdge)
