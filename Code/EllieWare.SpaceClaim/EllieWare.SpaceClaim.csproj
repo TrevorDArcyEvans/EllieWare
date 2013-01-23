@@ -128,6 +128,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceAreaPercentRemoveFactory.cs" />
+    <Compile Include="FaceAreaPercentSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaPercentSelectFactory.cs" />
     <Compile Include="FaceAreaRemove.cs">
       <SubType>UserControl</SubType>
     </Compile>
