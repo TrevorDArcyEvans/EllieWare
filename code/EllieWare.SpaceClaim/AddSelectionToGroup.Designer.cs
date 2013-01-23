@@ -79,6 +79,7 @@ namespace EllieWare.SpaceClaim
       this.SelectedGroup.Size = new System.Drawing.Size(215, 21);
       this.SelectedGroup.TabIndex = 1;
       this.SelectedGroup.SelectedIndexChanged += new System.EventHandler(this.SelectedGroup_SelectedIndexChanged);
+      this.SelectedGroup.TextChanged += new System.EventHandler(this.SelectedGroup_TextChanged);
       // 
       // AddSelectionToGroup
       // 

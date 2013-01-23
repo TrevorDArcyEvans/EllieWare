@@ -38,7 +38,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Add the current selection(s) to {0}", SelectedGroup.SelectedItem);
+        var descrip = string.Format("Add the current selection(s) to {0}", SelectedGroup.Text);
 
         return descrip;
       }
@@ -46,12 +46,12 @@ namespace EllieWare.SpaceClaim
 
     public override void ReadXml(XmlReader reader)
     {
-      SelectedGroup.SelectedItem = reader.GetAttribute("SelectedGroup");
+      SelectedGroup.Text = reader.GetAttribute("SelectedGroup");
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      writer.WriteAttributeString("SelectedGroup", (string)SelectedGroup.SelectedItem);
+      writer.WriteAttributeString("SelectedGroup", SelectedGroup.Text);
     }
 
     public override Control ConfigurationUserInterface
@@ -66,7 +66,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var retVal = Window.ActiveWindow.Groups.Count(g => g.Name == (string)SelectedGroup.SelectedItem) == 1;
+        var retVal = Window.ActiveWindow.Groups.Count(g => g.Name == SelectedGroup.Text) == 1;
 
         return retVal;
       }
@@ -74,17 +74,25 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun(Document doc)
     {
-      var selGroup = Window.ActiveWindow.Groups.Single(g => g.Name == (string) SelectedGroup.SelectedItem);
+      var selGroup = Window.ActiveWindow.Groups.Single(g => g.Name == SelectedGroup.Text);
       var currSel = Window.ActiveWindow.ActiveContext.Selection;
       foreach (var docObject in currSel)
       {
-        selGroup.Members.Add(docObject);
+        if (!selGroup.Members.IsReadOnly)
+        {
+          selGroup.Members.Add(docObject);
+        }
       }
 
       return true;
     }
 
     private void SelectedGroup_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
+    }
+
+    private void SelectedGroup_TextChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
     }
