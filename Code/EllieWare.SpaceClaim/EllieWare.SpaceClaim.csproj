@@ -132,6 +132,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceAreaRemoveFactory.cs" />
+    <Compile Include="FaceAreaSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaSelectFactory.cs" />
     <Compile Include="FaceSliverBase.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -112,6 +112,14 @@ namespace EllieWare.SpaceClaim
       return true;
     }
 
+    protected bool SelectFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    {
+      var allFaces = smallFaces.SelectMany(db => db.Value.ToList());
+      Window.ActiveWindow.ActiveContext.Selection = allFaces.Cast<IDocObject>().ToList();
+
+      return true;
+    }
+
     protected bool RemoveFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
       try
