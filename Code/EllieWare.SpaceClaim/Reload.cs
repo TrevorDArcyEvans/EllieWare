@@ -36,7 +36,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        // TODO   chnage message and version numbers when fixed by SpaceClaim
+        // TODO   change message and version numbers when fixed by SpaceClaim
         // EllieWare.SpaceClaim.Reload borked due to SpaceClaim API bug
         var appVer = Application.Version;
         var retVal = appVer.ReleaseNumber >= 6 && appVer.ServicePack >= 1;

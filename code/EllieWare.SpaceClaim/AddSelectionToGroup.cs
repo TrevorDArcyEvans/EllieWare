@@ -6,9 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Interfaces;
@@ -40,7 +38,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Clear the current selection(s)");
+        var descrip = string.Format("Add the current selection(s) to {0}", SelectedGroup.SelectedItem);
 
         return descrip;
       }

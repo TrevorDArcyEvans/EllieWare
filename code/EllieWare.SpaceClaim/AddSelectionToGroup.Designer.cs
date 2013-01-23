@@ -94,6 +94,6 @@ namespace EllieWare.SpaceClaim
 
     #endregion
 
-    private System.Windows.Forms.ComboBox SelectedGroup;
+    protected System.Windows.Forms.ComboBox SelectedGroup;
   }
 }

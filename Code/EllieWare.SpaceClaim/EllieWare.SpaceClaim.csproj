@@ -78,6 +78,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
+    <Compile Include="CreateGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreateGroupFactory.cs" />
     <Compile Include="Difference.cs">
       <SubType>UserControl</SubType>
     </Compile>

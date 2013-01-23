@@ -11,13 +11,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public class AddSelectionToGroupFactory : IFactory
+  public class CreateGroupFactory : IFactory
   {
     public string Title
     {
       get
       {
-        return "Add the current selection(s) to an existing group";
+        return "Create a group if it does not exist";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Add the current selection(s) to an existing group";
+        return "Create a group if it does not exist";
       }
     }
 
@@ -52,13 +52,13 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return typeof(AddSelectionToGroup);
+        return typeof(CreateGroup);
       }
     }
 
     public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new AddSelectionToGroup(root, callback, mgr);
+      return new CreateGroup(root, callback, mgr);
     }
   }
 }
