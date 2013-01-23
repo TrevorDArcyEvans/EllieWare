@@ -42,12 +42,12 @@ namespace EllieWare.SpaceClaim
     private double GetLongestEdge(List<DesignEdge> allEdgesOrdered)
     {
       // define the 'longest' edge to be the average of edges in the top 90-95%
-      var allTopFaces = from desEdge in allEdgesOrdered
+      var allTopEdges = from desEdge in allEdgesOrdered
                         where
                           allEdgesOrdered.IndexOf(desEdge) >= 0.90 * allEdgesOrdered.Count &&
                           allEdgesOrdered.IndexOf(desEdge) <= 0.95 * allEdgesOrdered.Count
                         select desEdge;
-      return allTopFaces.Aggregate(0d, (x, df) => x + df.Shape.Length) / allTopFaces.Count();
+      return allTopEdges.Aggregate(0d, (x, de) => x + de.Shape.Length) / allTopEdges.Count();
     }
 
     private void CalculateLongestEdge(List<DesignEdge> allEdgesOrdered)
@@ -80,10 +80,9 @@ namespace EllieWare.SpaceClaim
 
     protected override bool IsSmallEdge(DesignEdge desEdge)
     {
-      var doc = desEdge.Document;
-      var lengthFactor = doc.Units.Length.ConversionFactor;
+      var edgeLength = desEdge.Shape.Length;
 
-      return desEdge.Shape.Length < mLongestEdge * lengthFactor * (double)AreaThreshold.Value / 100d;
+      return edgeLength < mLongestEdge * (double)AreaThreshold.Value / 100d;
     }
   }
 }
