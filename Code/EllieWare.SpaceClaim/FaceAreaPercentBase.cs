@@ -75,11 +75,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool IsSmallFace(DesignFace desFace)
     {
-      var doc = desFace.Document;
-      var lengthFactor = doc.Units.Length.ConversionFactor;
-      var areaFactor = lengthFactor * lengthFactor;
-
-      return desFace.Area < mLargestFaceArea * areaFactor * (double)AreaThreshold.Value / 100d;
+      return desFace.Area < mLargestFaceArea * (double)AreaThreshold.Value / 100d;
     }
   }
 }
