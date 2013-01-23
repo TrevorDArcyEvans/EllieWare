@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun(Document doc)
     {
-      Window.ActiveWindow.ActiveContext.Selection.Clear();
+      Window.ActiveWindow.ActiveContext.Selection = null;
 
       return true;
     }
