@@ -76,7 +76,7 @@ namespace EllieWare.Manager
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
-        Licensing.LicenseManager.Register(mRoot.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
+        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version,dlg.UserName.Text, dlg.LicenseCode.Text);
 
         var isLicensed = mRoot.IsLicensed;
         var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
