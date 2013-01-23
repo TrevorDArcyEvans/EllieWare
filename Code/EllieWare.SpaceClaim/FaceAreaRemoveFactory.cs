@@ -60,6 +60,5 @@ namespace EllieWare.SpaceClaim
     {
       return new FaceAreaRemove(root, callback, mgr);
     }
-  
   }
 }
