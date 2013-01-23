@@ -59,7 +59,7 @@ namespace RobotWare.SpaceClaim
       {
         mManager = new Lazy<Manager>(() => new Manager(mLicenseWrapper));
       }
-      mManager.Value.Show(Application.MainWindow);
+      mManager.Value.Show();
     }
   }
 }
