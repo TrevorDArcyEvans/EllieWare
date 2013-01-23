@@ -72,7 +72,7 @@ namespace EllieWare.Manager
 
     private void DoRequestLicense()
     {
-      var dlg = new RequestLicense(mRoot.ApplicationName);
+      var dlg = new RequestLicense(mRoot);
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
