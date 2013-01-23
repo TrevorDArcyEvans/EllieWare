@@ -55,10 +55,21 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AddSelectionToGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddSelectionToGroup.Designer.cs">
+      <DependentUpon>AddSelectionToGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSelectionToGroupFactory.cs" />
     <Compile Include="AppExit.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AppExitFactory.cs" />
+    <Compile Include="ClearSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClearSelectionFactory.cs" />
     <Compile Include="CloseAllNoSave.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -195,6 +206,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddSelectionToGroup.resx">
+      <DependentUpon>AddSelectionToGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FaceAreaColor.resx">
       <DependentUpon>FaceAreaColor.cs</DependentUpon>
     </EmbeddedResource>
