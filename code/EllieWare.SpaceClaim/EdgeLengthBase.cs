@@ -46,7 +46,7 @@ namespace EllieWare.SpaceClaim
       return true;
     }
 
-    protected override sealed bool DoRun(Document doc)
+    protected override sealed bool DoRun()
     {
       var bodyAndEdges = GetEdges(Window.ActiveWindow.Document, IsSmallEdge);
       var smallEdges = bodyAndEdges.SelectMany(thisBody => thisBody.Value);

@@ -62,7 +62,7 @@ namespace EllieWare.SpaceClaim
       return Utils.BrepFormats.ContainsKey(extn.ToLowerInvariant());
     }
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
       if (IsBrepFormat(SourceFilePathResolvedValue))
       {
@@ -72,6 +72,8 @@ namespace EllieWare.SpaceClaim
 
         opts.ExportNames = true;
         opts.Step.ExportIdentifiers = true;
+
+        var doc = Window.ActiveWindow.Document;
 
         doc.MainPart.Export(fmt, SourceFilePathResolvedValue, true, opts);
       }

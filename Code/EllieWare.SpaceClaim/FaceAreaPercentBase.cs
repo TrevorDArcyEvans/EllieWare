@@ -60,6 +60,11 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
+        if (Window.ActiveWindow == null)
+        {
+          return false;
+        }
+
         var allFacesOrdered = GetAllFacesOrdered(Window.ActiveWindow.Document);
 
         if (allFacesOrdered.Count < 10)

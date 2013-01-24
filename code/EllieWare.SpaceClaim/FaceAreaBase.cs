@@ -99,8 +99,9 @@ namespace EllieWare.SpaceClaim
 
     protected abstract bool ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces);
 
-    protected override sealed bool DoRun(Document doc)
+    protected override sealed bool DoRun()
     {
+      var doc = Window.ActiveWindow.Document;
       var smallFaces = GetSmallFaces(doc);
 
       return ProcessFaces(smallFaces);

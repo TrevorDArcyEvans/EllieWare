@@ -64,6 +64,11 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
+        if (Window.ActiveWindow == null)
+        {
+          return false;
+        }
+
         var allEdgesOrdered = GetAllEdgesOrdered(Window.ActiveWindow.Document);
 
         if (allEdgesOrdered.Count < 10)

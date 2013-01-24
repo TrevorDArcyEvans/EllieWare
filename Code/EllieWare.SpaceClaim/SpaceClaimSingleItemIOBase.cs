@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Threading;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -13,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class SpaceClaimSingleItemIOBase : SingleItemIOBase
+  public abstract class SpaceClaimSingleItemIOBase : SingleItemIOBase
   {
     public SpaceClaimSingleItemIOBase()
     {
@@ -24,10 +23,17 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    protected virtual bool DoRun(Document doc)
+    public override bool CanRun
     {
-      throw new NotImplementedException();
+      get
+      {
+        // export functions require a document
+        // import functions do not require a document
+        return Window.ActiveWindow != null;
+      }
     }
+
+    protected abstract bool DoRun();
 
     public override sealed bool Run()
     {
@@ -38,7 +44,7 @@ namespace EllieWare.SpaceClaim
         {
           try
           {
-            retVal = DoRun(Window.ActiveWindow.Document);
+            retVal = DoRun();
           }
           finally
           {

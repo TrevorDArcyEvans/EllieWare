@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Interfaces;
+using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
@@ -50,6 +51,11 @@ namespace EllieWare.SpaceClaim
       {
         return this;
       }
+    }
+
+    protected override bool DoRun()
+    {
+      throw new NotImplementedException();
     }
 
     private void SetSwatchColor()

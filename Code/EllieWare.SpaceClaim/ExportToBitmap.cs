@@ -51,7 +51,7 @@ namespace EllieWare.SpaceClaim
       return Utils.RasterFormats.First(x => x.Value == fmt).Key;
     }
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
       var fmt = Format(SourceFilePathResolvedValue);
       var extn = Extension(fmt);
