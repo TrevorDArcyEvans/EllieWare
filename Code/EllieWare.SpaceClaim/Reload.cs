@@ -55,7 +55,7 @@ namespace EllieWare.SpaceClaim
 
     private string mFilePath;
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
       Document.DocumentRemoved += Document_DocumentRemoved;
       mFilePath = Window.ActiveWindow.Document.Path;

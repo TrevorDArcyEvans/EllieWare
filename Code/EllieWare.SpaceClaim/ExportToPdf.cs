@@ -34,7 +34,7 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
       var fileName = SourceFilePathResolvedValue;
       if (!fileName.ToLowerInvariant().EndsWith(".pdf"))

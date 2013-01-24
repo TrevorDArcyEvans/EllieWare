@@ -32,7 +32,7 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
       var allWindows = Window.GetWindows(Window.ActiveWindow.Document);
       foreach (var thisWindow in allWindows)

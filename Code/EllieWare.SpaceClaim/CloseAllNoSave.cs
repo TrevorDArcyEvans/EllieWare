@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
@@ -33,7 +32,15 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool DoRun(Document doc)
+    public override bool CanRun
+    {
+      get
+      {
+        return true;
+      }
+    }
+
+    protected override bool DoRun()
     {
       while (Window.ActiveWindow != null)
       {

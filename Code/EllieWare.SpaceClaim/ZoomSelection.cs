@@ -31,7 +31,7 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
       Window.ActiveWindow.ZoomSelection();
       Common.Utils.Wait(3000);

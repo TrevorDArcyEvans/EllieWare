@@ -33,7 +33,15 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool DoRun(Document doc)
+    public override bool CanRun
+    {
+      get
+      {
+        return true;
+      }
+    }
+
+    protected override bool DoRun()
     {
       Document.Open(SourceFilePathResolvedValue, null);
 

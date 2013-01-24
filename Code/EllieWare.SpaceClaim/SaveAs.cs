@@ -33,8 +33,9 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool DoRun(Document doc)
+    protected override bool DoRun()
     {
+      var doc = Window.ActiveWindow.Document;
       doc.SaveAs(SourceFilePathResolvedValue);
 
       return true;

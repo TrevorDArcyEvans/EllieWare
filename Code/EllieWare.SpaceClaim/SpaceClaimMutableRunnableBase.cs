@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Threading;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -13,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class SpaceClaimMutableRunnableBase : MutableRunnableBase
+  public abstract class SpaceClaimMutableRunnableBase : MutableRunnableBase
   {
     public SpaceClaimMutableRunnableBase()
     {
@@ -24,9 +23,15 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    protected virtual bool DoRun(Document doc)
+    protected abstract bool DoRun();
+
+    public override bool CanRun
     {
-      throw new NotImplementedException();
+      get
+      {
+        // most functions require a document
+        return Window.ActiveWindow != null;
+      }
     }
 
     public override sealed bool Run()
@@ -38,7 +43,7 @@ namespace EllieWare.SpaceClaim
         {
           try
           {
-            retVal = DoRun(Window.ActiveWindow.Document);
+            retVal = DoRun();
           }
           finally
           {
