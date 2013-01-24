@@ -43,6 +43,8 @@ namespace EllieWare.SpaceClaim
     {
       Window.ActiveWindow.ActiveContext.Selection = smallEdges.Cast<IDocObject>().ToList();
 
+      mCallback.Log(LogLevel.Information, string.Format("Selected {0} edges", smallEdges.Count()));
+
       return true;
     }
 

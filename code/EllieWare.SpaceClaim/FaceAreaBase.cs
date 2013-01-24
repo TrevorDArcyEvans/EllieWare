@@ -58,10 +58,14 @@ namespace EllieWare.SpaceClaim
 
     protected bool ColorFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
+      var totalFaces = 0;
       foreach (var face in smallFaces.Values.SelectMany(bodyFaces => bodyFaces))
       {
         face.SetColor(null, ColorDlg.Color);
+        totalFaces++;
       }
+
+      mCallback.Log(LogLevel.Information, string.Format("Changed color of {0} faces", totalFaces));
 
       return true;
     }
@@ -70,6 +74,8 @@ namespace EllieWare.SpaceClaim
     {
       var allFaces = smallFaces.SelectMany(db => db.Value.ToList());
       Window.ActiveWindow.ActiveContext.Selection = allFaces.Cast<IDocObject>().ToList();
+
+      mCallback.Log(LogLevel.Information, string.Format("Selected {0} faces", allFaces.Count()));
 
       return true;
     }
