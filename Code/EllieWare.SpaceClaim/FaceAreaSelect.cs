@@ -11,15 +11,14 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaPercentRemove : FaceAreaPercentBase
+  public class FaceAreaSelect : FaceAreaBase
   {
-    public FaceAreaPercentRemove() :
-      base()
+    public FaceAreaSelect()
     {
       ColorLabel.Visible = ColorSwatch.Visible = false;
     }
 
-    public FaceAreaPercentRemove(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public FaceAreaSelect(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
       ColorLabel.Visible = ColorSwatch.Visible = false;
@@ -29,7 +28,9 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Remove all faces below {0}% of the largest face", AreaThreshold.Value);
+        var descrip = string.Format("Select all faces below {0} {1}^2",
+                        AreaThreshold.Value,
+                        Window.ActiveWindow.Units.Length.Symbol);
 
         return descrip;
       }
@@ -37,7 +38,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
-      return RemoveFaces(smallFaces);
+      return SelectFaces(smallFaces);
     }
   }
 }

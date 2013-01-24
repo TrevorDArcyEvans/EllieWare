@@ -5,14 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
-using System.Linq;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class EdgeLengthSelect : FaceAreaRemove
+  public class EdgeLengthSelect : EdgeLengthBase
   {
     public EdgeLengthSelect()
     {
@@ -22,7 +20,7 @@ namespace EllieWare.SpaceClaim
       base(root, callback, mgr)
     {
       AreaLabel.Text = "Length:";
-      AreaUnits.Text = Window.ActiveWindow.Units.Length.Symbol;
+      AreaUnits.Text = string.Format("{0}", (Window.ActiveWindow != null) ? Window.ActiveWindow.Units.Length.Symbol : "mm");
     }
 
     public override string Summary
@@ -37,30 +35,12 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected Dictionary<DesignBody, IEnumerable<DesignEdge>> GetEdgesBelowThreshold(Document doc, double threshold)
+    protected override bool IsSmallEdge(DesignEdge desEdge)
     {
-      var retval = new Dictionary<DesignBody, IEnumerable<DesignEdge>>();
+      var doc = desEdge.Document;
       var lengthFactor = doc.Units.Length.ConversionFactor;
-      var allParts = doc.Parts;
-      foreach (var thisBody in allParts.SelectMany(thisPart => thisPart.Bodies))
-      {
-        retval[thisBody] = from thisEdge in thisBody.Edges where thisEdge.Shape.Length * lengthFactor < threshold select thisEdge;
-      }
 
-      return retval;
-    }
-
-    public override bool Run()
-    {
-      WriteBlock.AppendTask(() =>
-                              {
-                                var bodyAndEdges = GetEdgesBelowThreshold(Window.ActiveWindow.Document, (double)AreaThreshold.Value);
-                                var allEdges = bodyAndEdges.SelectMany(thisBody => thisBody.Value);
-
-                                Window.ActiveWindow.ActiveContext.Selection = allEdges.Cast<IDocObject>().ToList();
-                              });
-
-      return true;
+      return desEdge.Shape.Length * lengthFactor < (double)AreaThreshold.Value;
     }
   }
 }

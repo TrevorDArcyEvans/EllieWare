@@ -1,5 +1,5 @@
 ﻿//
-//  Copyright (C) 2013 EllieWare
+//  Copyright (C) 2012 EllieWare
 //
 //  All rights reserved
 //
@@ -11,13 +11,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public class EdgeLengthSelectFactory : IFactory
+  public class AssemblyDrawingsFactory : IFactory
   {
     public string Title
     {
       get
       {
-        return "Select all edges below a threshold length";
+        return "Create drawings from the current part or assembly";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Select all edges below a threshold length";
+        return "Create drawings from the current part or assembly";
       }
     }
 
@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "SpaceClaim, length,edge,  geometry";
+        return "SpaceClaim, drawing, assembly";
       }
     }
 
@@ -52,13 +52,13 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return typeof(EdgeLengthSelect);
+        return typeof(AssemblyDrawings);
       }
     }
 
     public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new EdgeLengthSelect(root, callback, mgr);
+      return new AssemblyDrawings(root, callback, mgr);
     }
   }
 }

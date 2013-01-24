@@ -11,13 +11,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public class EdgeLengthSelectFactory : IFactory
+  public class FaceAreaSelectFactory : IFactory
   {
     public string Title
     {
       get
       {
-        return "Select all edges below a threshold length";
+        return "Select all faces below a threshold area";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Select all edges below a threshold length";
+        return "Select all faces below a threshold area";
       }
     }
 
@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "SpaceClaim, length,edge,  geometry";
+        return "SpaceClaim, area, geometry";
       }
     }
 
@@ -52,13 +52,13 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return typeof(EdgeLengthSelect);
+        return typeof(FaceAreaSelect);
       }
     }
 
     public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new EdgeLengthSelect(root, callback, mgr);
+      return new FaceAreaSelect(root, callback, mgr);
     }
   }
 }

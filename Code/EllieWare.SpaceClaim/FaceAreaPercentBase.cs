@@ -12,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaPercentBase : FaceAreaColor
+  public abstract class FaceAreaPercentBase : FaceAreaBase
   {
     private double mLargestFaceArea;
 
@@ -56,27 +56,31 @@ namespace EllieWare.SpaceClaim
       mLargestFaceArea = GetLargestFaceArea(allFacesOrdered);
     }
 
-    protected override bool CanDoRun(Document doc)
+    public override bool CanRun
     {
-      var allFacesOrdered = GetAllFacesOrdered(doc);
-
-      if (allFacesOrdered.Count < 10)
+      get
       {
-        return false;
+        if (Window.ActiveWindow == null)
+        {
+          return false;
+        }
+
+        var allFacesOrdered = GetAllFacesOrdered(Window.ActiveWindow.Document);
+
+        if (allFacesOrdered.Count < 10)
+        {
+          return false;
+        }
+
+        CalculateLargestFaceArea(allFacesOrdered);
+
+        return true;
       }
-
-      CalculateLargestFaceArea(allFacesOrdered);
-
-      return true;
     }
 
-    protected override bool IsSmallFace(DesignFace desFace)
+    protected override sealed bool IsSmallFace(DesignFace desFace)
     {
-      var doc = desFace.Document;
-      var lengthFactor = doc.Units.Length.ConversionFactor;
-      var areaFactor = lengthFactor * lengthFactor;
-
-      return desFace.Area < mLargestFaceArea * areaFactor * (double)AreaThreshold.Value / 100d;
+      return desFace.Area < mLargestFaceArea * (double)AreaThreshold.Value / 100d;
     }
   }
 }

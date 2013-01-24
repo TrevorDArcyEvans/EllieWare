@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System.Windows.Forms;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Manager
 {
@@ -16,10 +17,11 @@ namespace EllieWare.Manager
       InitializeComponent();
     }
 
-    public RequestLicense(string appName) :
+    public RequestLicense(IRobotWare root) :
       this()
     {
-      Product.Text = appName;
+      Product.Text = root.ApplicationName;
+      Version.Text = root.Version.ToString(3);
     }
 
     private void RequestLicense_Shown(object sender, System.EventArgs e)

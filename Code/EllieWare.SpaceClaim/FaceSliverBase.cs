@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceSliverBase : FaceAreaColor
+  public abstract class FaceSliverBase : FaceAreaBase
   {
     public FaceSliverBase() :
       base()
@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
       AreaThreshold.Value = 25;
     }
 
-    protected override bool IsSmallFace(DesignFace desFace)
+    protected override sealed bool IsSmallFace(DesignFace desFace)
     {
       // From:
       //    http://www.cfd-online.com/Forums/cfx/19977-sliver-face.html

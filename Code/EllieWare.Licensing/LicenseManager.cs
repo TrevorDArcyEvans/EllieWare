@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Globalization;
 using System.Text;
 using Microsoft.Win32;
 
@@ -69,7 +70,7 @@ namespace EllieWare.Licensing
       ellieWare.DeleteSubKey(productName);
     }
 
-    public static bool IsLicensed(string productName)
+    public static bool IsLicensed(string productName, Version appVer)
     {
       var root = Registry.LocalMachine.OpenSubKey("SOFTWARE");
       var ellieWare = root.OpenSubKey(RegistryKey);
@@ -103,12 +104,12 @@ namespace EllieWare.Licensing
       }
 
       var regLicCode = (string)userNameKey.GetValue("Code");
-      var licCode = GetLicenceCode(productName, userName);
+      var licCode = GetLicenceCode(productName, appVer, userName);
 
       return regLicCode == licCode;
     }
 
-    public static void Register(string productName, string userName, string licCode)
+    public static void Register(string productName, Version appVer, string userName, string licCode)
     {
       // save user name to HKCU
       CreateUserName(productName, userName);
@@ -123,7 +124,7 @@ namespace EllieWare.Licensing
       userNameKey.SetValue("Code", licCode);
     }
 
-    public static void Unregister(string productName, string userName)
+    public static void Unregister(string productName, Version appVer, string userName)
     {
       // remove from HKCU
       UnregisterForCurrentUser(productName);
@@ -136,9 +137,10 @@ namespace EllieWare.Licensing
       productLicense.DeleteSubKey(userName);
     }
 
-    internal static string GetLicenceCode(string productName, string userName)
+    // products are licensed on major version number
+    internal static string GetLicenceCode(string productName, Version appVer, string userName)
     {
-      var data = Encoding.ASCII.GetBytes(productName + userName);
+      var data = Encoding.ASCII.GetBytes(productName + appVer.Major.ToString(CultureInfo.InvariantCulture) +userName);
       data = System.Security.Cryptography.SHA1.Create().ComputeHash(data);
 
       return Convert.ToBase64String(data);

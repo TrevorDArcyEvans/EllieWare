@@ -5,13 +5,12 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class CloseAllNoSave : MutableRunnableBase
+  public class CloseAllNoSave : SpaceClaimMutableRunnableBase
   {
     public CloseAllNoSave() :
       base()
@@ -33,15 +32,20 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    public override bool CanRun
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                while (Window.ActiveWindow != null)
-                                {
-                                  Window.ActiveWindow.Close();
-                                }
-                              });
+      get
+      {
+        return true;
+      }
+    }
+
+    protected override bool DoRun()
+    {
+      while (Window.ActiveWindow != null)
+      {
+        Window.ActiveWindow.Close();
+      }
 
       return true;
     }

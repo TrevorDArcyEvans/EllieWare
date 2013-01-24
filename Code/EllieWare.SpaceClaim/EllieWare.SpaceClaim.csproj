@@ -59,6 +59,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AppExitFactory.cs" />
+    <Compile Include="ClearSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClearSelectionFactory.cs" />
     <Compile Include="CloseAllNoSave.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +75,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DifferenceFactory.cs" />
+    <Compile Include="EdgeLengthBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EdgeLengthPercentSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EdgeLengthPercentSelectFactory.cs" />
     <Compile Include="EdgeLengthSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,11 +102,17 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ExportToPdfFactory.cs" />
+    <Compile Include="FaceAreaBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FaceAreaColor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FaceAreaColor.Designer.cs">
-      <DependentUpon>FaceAreaColor.cs</DependentUpon>
+    <Compile Include="FaceEdgeOperation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceEdgeOperation.Designer.cs">
+      <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </Compile>
     <Compile Include="FaceAreaColorFactory.cs" />
     <Compile Include="FaceAreaPercentBase.cs">
@@ -109,10 +126,18 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceAreaPercentRemoveFactory.cs" />
+    <Compile Include="FaceAreaPercentSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaPercentSelectFactory.cs" />
     <Compile Include="FaceAreaRemove.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceAreaRemoveFactory.cs" />
+    <Compile Include="FaceAreaSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceAreaSelectFactory.cs" />
     <Compile Include="FaceSliverBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +149,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceSliverRemoveFactory.cs" />
+    <Compile Include="FaceSliverSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceSliverSelectFactory.cs" />
     <Compile Include="ImportFromForeign.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -160,6 +189,12 @@
       <DependentUpon>SetViewProjection.cs</DependentUpon>
     </Compile>
     <Compile Include="SetViewProjectionFactory.cs" />
+    <Compile Include="SpaceClaimMutableRunnableBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SpaceClaimSingleItemIOBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="ZoomExtents.cs">
       <SubType>UserControl</SubType>
@@ -185,8 +220,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FaceAreaColor.resx">
-      <DependentUpon>FaceAreaColor.cs</DependentUpon>
+    <EmbeddedResource Include="FaceEdgeOperation.resx">
+      <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetViewProjection.resx">
       <DependentUpon>SetViewProjection.cs</DependentUpon>

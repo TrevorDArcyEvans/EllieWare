@@ -12,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ExportToAutoCAD : SingleItemIOBase
+  public class ExportToAutoCAD : SpaceClaimSingleItemIOBase
   {
     public ExportToAutoCAD()
     {
@@ -34,24 +34,21 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun()
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                var fileName = SourceFilePathResolvedValue;
-                                WindowExportFormat fmt;
-                                var extn = Path.GetExtension(fileName);
-                                if (extn == null || !Utils.VectorFormats.ContainsKey(extn.ToLowerInvariant()))
-                                {
-                                  fmt = WindowExportFormat.AutoCadDwg;
-                                }
-                                else
-                                {
-                                  fmt = Utils.VectorFormats[extn.ToLowerInvariant()];
-                                }
+      var fileName = SourceFilePathResolvedValue;
+      WindowExportFormat fmt;
+      var extn = Path.GetExtension(fileName);
+      if (extn == null || !Utils.VectorFormats.ContainsKey(extn.ToLowerInvariant()))
+      {
+        fmt = WindowExportFormat.AutoCadDwg;
+      }
+      else
+      {
+        fmt = Utils.VectorFormats[extn.ToLowerInvariant()];
+      }
 
-                                Window.ActiveWindow.Export(fmt, fileName);
-                              });
+      Window.ActiveWindow.Export(fmt, fileName);
 
       return true;
     }

@@ -5,14 +5,13 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using Application = SpaceClaim.Api.V10.Application;
 
 namespace EllieWare.SpaceClaim
 {
-  public class AppExit : MutableRunnableBase
+  public class AppExit : SpaceClaimMutableRunnableBase
   {
     public AppExit()
     {
@@ -33,9 +32,17 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    public override bool CanRun
     {
-      WriteBlock.AppendTask(Application.Exit);
+      get
+      {
+        return true;
+      }
+    }
+
+    protected override bool DoRun()
+    {
+      Application.Exit();
 
       return true;
     }
