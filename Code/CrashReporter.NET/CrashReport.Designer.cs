@@ -433,7 +433,7 @@
       this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.buttonCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
       this.buttonCancel.UseVisualStyleBackColor = true;
-      this.buttonCancel.Click += new System.EventHandler(this.ButtonCacelClick);
+      this.buttonCancel.Click += new System.EventHandler(this.ButtonCancelClick);
       // 
       // buttonSendReport
       // 

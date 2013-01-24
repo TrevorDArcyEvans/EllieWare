@@ -13,7 +13,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ExportToForeign : SingleItemIOBase
+  public class ExportToForeign : SpaceClaimSingleItemIOBase
   {
     public ExportToForeign()
     {
@@ -62,30 +62,29 @@ namespace EllieWare.SpaceClaim
       return Utils.BrepFormats.ContainsKey(extn.ToLowerInvariant());
     }
 
-    public override bool Run()
+    protected override bool DoRun()
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                if (IsBrepFormat(SourceFilePathResolvedValue))
-                                {
-                                  var extn = Path.GetExtension(SourceFilePathResolvedValue).ToLowerInvariant();
-                                  var fmt = Utils.BrepFormats[extn];
-                                  var opts = ExportOptions.Create();
+      if (IsBrepFormat(SourceFilePathResolvedValue))
+      {
+        var extn = Path.GetExtension(SourceFilePathResolvedValue).ToLowerInvariant();
+        var fmt = Utils.BrepFormats[extn];
+        var opts = ExportOptions.Create();
 
-                                  opts.ExportNames = true;
-                                  opts.Step.ExportIdentifiers = true;
+        opts.ExportNames = true;
+        opts.Step.ExportIdentifiers = true;
 
-                                  Window.ActiveWindow.Document.MainPart.Export(fmt, SourceFilePathResolvedValue, true, opts);
-                                }
-                                else
-                                {
-                                  var fmt = TessellatedFormat(SourceFilePathResolvedValue);
-                                  var extn = TessellatedExtension(fmt);
-                                  var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+        var doc = Window.ActiveWindow.Document;
 
-                                  Window.ActiveWindow.ExportPart(fmt, fileName);
-                                }
-                              });
+        doc.MainPart.Export(fmt, SourceFilePathResolvedValue, true, opts);
+      }
+      else
+      {
+        var fmt = TessellatedFormat(SourceFilePathResolvedValue);
+        var extn = TessellatedExtension(fmt);
+        var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+
+        Window.ActiveWindow.ExportPart(fmt, fileName);
+      }
 
       return true;
     }

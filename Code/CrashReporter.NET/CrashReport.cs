@@ -3,11 +3,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.IO;
 using CrashReporterDotNET.Properties;
+using SendFileTo;
 
 namespace CrashReporterDotNET
 {
@@ -20,10 +22,6 @@ namespace CrashReporterDotNET
     private readonly String _appVersion;
 
     private readonly String _windowsVersion;
-
-    private readonly SmtpClient _smtpClient;
-
-    private MailAddress _fromAddress;
 
     private readonly MailAddress _toAddress;
 
@@ -77,16 +75,13 @@ namespace CrashReporterDotNET
       return isWow64;
     }
 
-
-    public CrashReport(Exception exception, MailAddress fromAddress, MailAddress toAddress, SmtpClient smtpClient)
+    public CrashReport(Exception exception, MailAddress toAddress)
     {
       InitializeComponent();
       _appTitle = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
       _appVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
       Text = string.Format("{0} {1} crashed", _appTitle, _appVersion);
       _exception = exception;
-      _smtpClient = smtpClient;
-      _fromAddress = fromAddress;
       _toAddress = toAddress;
       textBoxException.Text = exception.GetType().ToString();
       saveFileDialog.FileName = _appTitle + " " + _appVersion + " Crash Report";
@@ -145,6 +140,14 @@ namespace CrashReporterDotNET
 
     private void ButtonSendReportClick(object sender, EventArgs e)
     {
+      // send email in a non-blocking dialog in a separate thread
+      var thread = new Thread(SendMailPopup);
+      thread.SetApartmentState(ApartmentState.STA);
+      thread.Start();
+    }
+
+    private void SendMailPopup()
+    {
       var regex = new Regex(@"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
                            + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
                                     [0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
@@ -154,26 +157,22 @@ namespace CrashReporterDotNET
       string subject;
       if (!String.IsNullOrEmpty(textBoxEmail.Text) && regex.IsMatch(textBoxEmail.Text))
       {
-        _fromAddress = new MailAddress(textBoxEmail.Text);
         subject = string.Format("{0} {1} Crash Report by {2}", _appTitle, _appVersion, textBoxEmail.Text);
       }
       else
       {
         subject = string.Format("{0} {1} Crash Report", _appTitle, _appVersion);
       }
-      var message = new MailMessage(_fromAddress, _toAddress)
-      {
-        IsBodyHtml = true,
-        Subject = subject,
-        Body = HtmlReport()
-      };
+
+      var mapi = new MAPI();
+      mapi.AddRecipientTo(_toAddress.Address);
+
       if (File.Exists(string.Format("{0}\\{1}CrashScreenshot.png", Path.GetTempPath(), _appTitle)) && checkBoxIncludeScreenshot.Checked)
       {
-        message.Attachments.Add(new Attachment(string.Format("{0}\\{1}CrashScreenshot.png", Path.GetTempPath(), _appTitle)));
+        mapi.AddAttachment(string.Format("{0}\\{1}CrashScreenshot.png", Path.GetTempPath(), _appTitle));
       }
-      const string crashReport = "Crash report";
-      _smtpClient.SendCompleted += SmtpClientSendCompleted;
-      _smtpClient.SendAsync(message, crashReport);
+
+      mapi.SendMailPopup(subject, HtmlReport());
     }
 
     public string HtmlReport()
@@ -241,6 +240,7 @@ namespace CrashReporterDotNET
                             </div>", HttpUtility.HtmlEncode(textBoxUserMessage.Text.Trim()));
       }
       report += "</body></html>";
+
       return report;
     }
 
@@ -292,19 +292,8 @@ namespace CrashReporterDotNET
                         </div>", CreateReport(exception.InnerException));
       }
       report += "<br/>";
-      return report;
-    }
 
-    void SmtpClientSendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-    {
-      if (e.Error != null)
-      {
-        MessageBox.Show(e.Error.Message, e.Error.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-      }
-      else
-      {
-        MessageBox.Show(string.Format("Crassh report of {0} {1} is sent to the developer. Thanks for your support.", _appTitle, _appVersion), Resources.CrashReport_Crash_report_sent, MessageBoxButtons.OK, MessageBoxIcon.Information);
-      }
+      return report;
     }
 
     private void CrashReportLoad(object sender, EventArgs e)
@@ -328,7 +317,7 @@ namespace CrashReporterDotNET
       File.WriteAllText(saveFileDialog.FileName, HtmlReport());
     }
 
-    private void ButtonCacelClick(object sender, EventArgs e)
+    private void ButtonCancelClick(object sender, EventArgs e)
     {
       if (File.Exists(string.Format("{0}\\{1}CrashScreenshot.png", Path.GetTempPath(), _appTitle)))
       {

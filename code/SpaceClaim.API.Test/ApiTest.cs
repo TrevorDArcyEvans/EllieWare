@@ -83,14 +83,22 @@ namespace SpaceClaim.API.Test
     {
       WriteBlock.AppendTask(() =>
                               {
-                                var ctx = Window.ActiveWindow.ActiveContext;
-                                var selection = ctx.Selection;
-                                var desFaces = selection.OfType<DesignFace>();
-                                var modFaces = from thisDesFace in desFaces select thisDesFace.Shape;
-                                foreach (var thisModFace in modFaces)
+                                try
                                 {
-                                  var desBody = thisModFace.Body;
-                                  desBody.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+                                  var ctx = Window.ActiveWindow.ActiveContext;
+                                  var selection = ctx.Selection;
+                                  var desFaces = selection.OfType<DesignFace>();
+                                  var modFaces = from thisDesFace in desFaces select thisDesFace.Shape;
+                                  foreach (var thisModFace in modFaces)
+                                  {
+                                    var desBody = thisModFace.Body;
+                                    desBody.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+                                  }
+                                }
+                                catch (InvalidOperationException ex)
+                                {
+                                  // Body.DeleteFaces() throws InvalidOperationException on failure
+                                  MessageBox.Show(ex.Message);
                                 }
                               });
     }

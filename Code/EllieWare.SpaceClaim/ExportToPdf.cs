@@ -12,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ExportToPdf : SingleItemIOBase
+  public class ExportToPdf : SpaceClaimSingleItemIOBase
   {
     public ExportToPdf()
     {
@@ -34,18 +34,15 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    public override bool Run()
+    protected override bool DoRun()
     {
-      WriteBlock.AppendTask(() =>
-                              {
-                                var fileName = SourceFilePathResolvedValue;
-                                if (!fileName.ToLowerInvariant().EndsWith(".pdf"))
-                                {
-                                  fileName = Path.ChangeExtension(fileName, ".pdf");
+      var fileName = SourceFilePathResolvedValue;
+      if (!fileName.ToLowerInvariant().EndsWith(".pdf"))
+      {
+        fileName = Path.ChangeExtension(fileName, ".pdf");
 
-                                }
-                                Window.ActiveWindow.ExportDrawingSheet(DrawingSheetWindowExportFormat.Pdf, fileName);
-                              });
+      }
+      Window.ActiveWindow.ExportDrawingSheet(DrawingSheetWindowExportFormat.Pdf, fileName);
 
       return true;
     }

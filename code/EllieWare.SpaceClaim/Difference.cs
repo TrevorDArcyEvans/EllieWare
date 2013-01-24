@@ -147,16 +147,16 @@ namespace EllieWare.SpaceClaim
       var retVal = false;
 
       WriteBlock.AppendTask(() =>
-                              {
-                                try
-                                {
-                                  retVal = DoRun();
-                                }
-                                finally
-                                {
-                                  evt.Set();
-                                }
-                              });
+        {
+          try
+          {
+            retVal = DoRun();
+          }
+          finally
+          {
+            evt.Set();
+          }
+        });
 
       return evt.WaitOne(60000) && retVal;
     }

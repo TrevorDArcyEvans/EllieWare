@@ -40,7 +40,7 @@ namespace AutoUpdaterDotNET
       _registryLocation = registryLocation;
       _letUserSelectRemindLater = letUserSelectRemindLater;
       labelUpdate.Text = string.Format("A new version of {0} is available!", appTitle);
-      labelDescription.Text = string.Format("{0} {1} is now available. You have version {2} installed. Would you like to download it now?", appTitle, currentVersion, installedVersion);
+      labelDescription.Text = string.Format("{0} {1} is now available. You have version {2} installed. Would you like to download it now?", appTitle, currentVersion, installedVersion.ToString(3));
     }
 
     public override sealed string Text

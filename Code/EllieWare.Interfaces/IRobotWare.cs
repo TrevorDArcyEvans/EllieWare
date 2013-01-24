@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System;
 using System.Collections.Generic;
 
 namespace EllieWare.Interfaces
@@ -28,6 +29,11 @@ namespace EllieWare.Interfaces
     /// Specific RobotWare application name eg 'RobotWare for Windows'
     /// </summary>
     string ApplicationName { get; }
+
+    /// <summary>
+    /// Version number of the specific RobotWare application
+    /// </summary>
+    Version Version { get; }
 
     /// <summary>
     /// A list of all specifications in the <see cref="UserSpecificationFolder"/> without a file extension

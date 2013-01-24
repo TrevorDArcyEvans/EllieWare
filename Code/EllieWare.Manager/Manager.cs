@@ -58,13 +58,7 @@ namespace EllieWare.Manager
     {
       var reportCrash = new ReportCrash
                               {
-                                FromEmail = "Your gmail address",
-                                ToEmail = "Email address where you want to send crash report",
-                                SMTPHost = "smtp.gmail.com",
-                                Port = 587,
-                                UserName = "Your gmail address",
-                                Password = "Your password",
-                                EnableSSL = true,
+                                ToEmail = "support@EllieWare.com"
                               };
 
       reportCrash.Send(e.Exception);
@@ -72,11 +66,11 @@ namespace EllieWare.Manager
 
     private void DoRequestLicense()
     {
-      var dlg = new RequestLicense(mRoot.ApplicationName);
+      var dlg = new RequestLicense(mRoot);
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
-        Licensing.LicenseManager.Register(mRoot.ApplicationName, dlg.UserName.Text, dlg.LicenseCode.Text);
+        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version,dlg.UserName.Text, dlg.LicenseCode.Text);
 
         var isLicensed = mRoot.IsLicensed;
         var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
