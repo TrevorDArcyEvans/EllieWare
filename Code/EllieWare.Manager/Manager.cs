@@ -58,13 +58,7 @@ namespace EllieWare.Manager
     {
       var reportCrash = new ReportCrash
                               {
-                                FromEmail = "Your gmail address",
-                                ToEmail = "Email address where you want to send crash report",
-                                SMTPHost = "smtp.gmail.com",
-                                Port = 587,
-                                UserName = "Your gmail address",
-                                Password = "Your password",
-                                EnableSSL = true,
+                                ToEmail = "support@EllieWare.com"
                               };
 
       reportCrash.Send(e.Exception);
