@@ -76,15 +76,19 @@ namespace EllieWare.SpaceClaim
 
     protected bool RemoveFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
+      var totalFaces = 0;
+      var successfulFaces = 0;
       foreach (var desBody in smallFaces.Keys)
       {
         var modFaces = from desFace in smallFaces[desBody] select desFace.Shape;
         foreach (var thisModFace in modFaces)
         {
+          totalFaces++;
           try
           {
             // try to remove each face individually
             desBody.Shape.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+            successfulFaces++;
           }
           catch (InvalidOperationException)
           {
@@ -93,6 +97,8 @@ namespace EllieWare.SpaceClaim
           }
         }
       }
+
+      mCallback.Log(LogLevel.Information, string.Format("Removed {0} / {1} faces", successfulFaces, totalFaces));
 
       return true;
     }
