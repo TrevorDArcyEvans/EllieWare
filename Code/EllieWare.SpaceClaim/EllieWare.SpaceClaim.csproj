@@ -55,13 +55,6 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="AddSelectionToGroup.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AddSelectionToGroup.Designer.cs">
-      <DependentUpon>AddSelectionToGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddSelectionToGroupFactory.cs" />
     <Compile Include="AppExit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,14 +71,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
-    <Compile Include="CreateGroup.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CreateGroupFactory.cs" />
     <Compile Include="Difference.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DifferenceFactory.cs" />
+    <Compile Include="EdgeLengthBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="EdgeLengthPercentSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,11 +102,17 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ExportToPdfFactory.cs" />
+    <Compile Include="FaceAreaBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FaceAreaColor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FaceAreaColor.Designer.cs">
-      <DependentUpon>FaceAreaColor.cs</DependentUpon>
+    <Compile Include="FaceEdgeOperation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceEdgeOperation.Designer.cs">
+      <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </Compile>
     <Compile Include="FaceAreaColorFactory.cs" />
     <Compile Include="FaceAreaPercentBase.cs">
@@ -151,6 +149,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceSliverRemoveFactory.cs" />
+    <Compile Include="FaceSliverSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceSliverSelectFactory.cs" />
     <Compile Include="ImportFromForeign.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,11 +220,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddSelectionToGroup.resx">
-      <DependentUpon>AddSelectionToGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FaceAreaColor.resx">
-      <DependentUpon>FaceAreaColor.cs</DependentUpon>
+    <EmbeddedResource Include="FaceEdgeOperation.resx">
+      <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetViewProjection.resx">
       <DependentUpon>SetViewProjection.cs</DependentUpon>

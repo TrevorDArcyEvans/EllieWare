@@ -12,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class EdgeLengthPercentSelect : EdgeLengthSelect
+  public class EdgeLengthPercentSelect : EdgeLengthBase
   {
     private double mLongestEdge;
 
@@ -64,17 +64,16 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-      var allEdgesOrdered = GetAllEdgesOrdered(Window.ActiveWindow.Document);
+        var allEdgesOrdered = GetAllEdgesOrdered(Window.ActiveWindow.Document);
 
-      if (allEdgesOrdered.Count < 10)
-      {
-        return false;
-      }
+        if (allEdgesOrdered.Count < 10)
+        {
+          return false;
+        }
 
-      CalculateLongestEdge(allEdgesOrdered);
+        CalculateLongestEdge(allEdgesOrdered);
 
-      return true;
-        
+        return true;
       }
     }
 

@@ -12,7 +12,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaPercentBase : FaceAreaColor
+  public abstract class FaceAreaPercentBase : FaceAreaBase
   {
     private double mLargestFaceArea;
 
@@ -73,7 +73,7 @@ namespace EllieWare.SpaceClaim
       }
     }
 
-    protected override bool IsSmallFace(DesignFace desFace)
+    protected override sealed bool IsSmallFace(DesignFace desFace)
     {
       return desFace.Area < mLargestFaceArea * (double)AreaThreshold.Value / 100d;
     }

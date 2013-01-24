@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceSliverRemove : FaceSliverColor
+  public class FaceSliverRemove : FaceSliverBase
   {
     public FaceSliverRemove()
     {

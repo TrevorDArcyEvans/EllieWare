@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaSelect : FaceAreaColor
+  public class FaceAreaSelect : FaceAreaBase
   {
     public FaceAreaSelect()
     {

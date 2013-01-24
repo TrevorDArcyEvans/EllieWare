@@ -5,7 +5,9 @@
 //
 //  www.EllieWare.com
 //
+using System.Collections.Generic;
 using EllieWare.Interfaces;
+using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
@@ -30,6 +32,11 @@ namespace EllieWare.SpaceClaim
 
         return descrip;
       }
+    }
+
+    protected override bool ProcessFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
+    {
+      return ColorFaces(smallFaces);
     }
   }
 }

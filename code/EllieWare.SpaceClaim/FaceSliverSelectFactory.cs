@@ -11,13 +11,13 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public class AddSelectionToGroupFactory : IFactory
+  public class FaceSliverSelectFactory : IFactory
   {
     public string Title
     {
       get
       {
-        return "Add the current selection(s) to an existing group";
+        return "Select all faces below a threshold aspect ratio";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Add the current selection(s) to an existing group";
+        return "Select all faces below a threshold aspect ratio";
       }
     }
 
@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "SpaceClaim, selection, group";
+        return "SpaceClaim, area, perimeter, geometry";
       }
     }
 
@@ -52,13 +52,13 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return typeof(AddSelectionToGroup);
+        return typeof(FaceSliverSelect);
       }
     }
 
     public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new AddSelectionToGroup(root, callback, mgr);
+      return new FaceSliverSelect(root, callback, mgr);
     }
   }
 }

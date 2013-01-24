@@ -11,7 +11,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class FaceAreaRemove : FaceAreaColor
+  public class FaceAreaRemove : FaceAreaBase
   {
     public FaceAreaRemove()
     {
