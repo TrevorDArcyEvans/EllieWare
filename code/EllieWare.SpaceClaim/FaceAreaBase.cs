@@ -58,10 +58,14 @@ namespace EllieWare.SpaceClaim
 
     protected bool ColorFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
+      var totalFaces = 0;
       foreach (var face in smallFaces.Values.SelectMany(bodyFaces => bodyFaces))
       {
         face.SetColor(null, ColorDlg.Color);
+        totalFaces++;
       }
+
+      mCallback.Log(LogLevel.Information, string.Format("Changed color of {0} faces", totalFaces));
 
       return true;
     }
@@ -71,20 +75,26 @@ namespace EllieWare.SpaceClaim
       var allFaces = smallFaces.SelectMany(db => db.Value.ToList());
       Window.ActiveWindow.ActiveContext.Selection = allFaces.Cast<IDocObject>().ToList();
 
+      mCallback.Log(LogLevel.Information, string.Format("Selected {0} faces", allFaces.Count()));
+
       return true;
     }
 
     protected bool RemoveFaces(Dictionary<DesignBody, IEnumerable<DesignFace>> smallFaces)
     {
+      var totalFaces = 0;
+      var successfulFaces = 0;
       foreach (var desBody in smallFaces.Keys)
       {
         var modFaces = from desFace in smallFaces[desBody] select desFace.Shape;
         foreach (var thisModFace in modFaces)
         {
+          totalFaces++;
           try
           {
             // try to remove each face individually
             desBody.Shape.DeleteFaces(new[] { thisModFace }, RepairAction.GrowSurrounding);
+            successfulFaces++;
           }
           catch (InvalidOperationException)
           {
@@ -93,6 +103,8 @@ namespace EllieWare.SpaceClaim
           }
         }
       }
+
+      mCallback.Log(LogLevel.Information, string.Format("Removed {0} / {1} faces", successfulFaces, totalFaces));
 
       return true;
     }

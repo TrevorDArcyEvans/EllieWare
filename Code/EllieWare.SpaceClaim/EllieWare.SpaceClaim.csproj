@@ -59,6 +59,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AppExitFactory.cs" />
+    <Compile Include="AssemblyDrawings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssemblyDrawings.Designer.cs">
+      <DependentUpon>AssemblyDrawings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyDrawingsFactory.cs" />
     <Compile Include="ClearSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +145,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FaceAreaSelectFactory.cs" />
+    <Compile Include="FaceSelectedRemove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceSelectedRemoveFactory.cs" />
     <Compile Include="FaceSliverBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -220,6 +231,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AssemblyDrawings.resx">
+      <DependentUpon>AssemblyDrawings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FaceEdgeOperation.resx">
       <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </EmbeddedResource>
