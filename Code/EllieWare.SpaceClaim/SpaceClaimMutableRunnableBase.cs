@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System;
 using System.Threading;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -12,7 +13,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public abstract class SpaceClaimMutableRunnableBase : MutableRunnableBase
+  public class SpaceClaimMutableRunnableBase : MutableRunnableBase
   {
     public SpaceClaimMutableRunnableBase()
     {
@@ -23,7 +24,10 @@ namespace EllieWare.SpaceClaim
     {
     }
 
-    protected abstract bool DoRun();
+    protected virtual bool DoRun()
+    {
+      throw new NotImplementedException();
+    }
 
     public override bool CanRun
     {
