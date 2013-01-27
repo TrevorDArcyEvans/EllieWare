@@ -17,7 +17,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Create drawings from the current assembly";
+        return "Create drawings from the current part or assembly";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Create drawings from the current assembly";
+        return "Create drawings from the current part or assembly";
       }
     }
 

@@ -27,7 +27,7 @@ namespace EllieWare.SpaceClaim
                                                                                       new KeyValuePair<string, DrawingViewStyle >("Hidden Edges Removed", DrawingViewStyle.HiddenEdgesRemoved)
                                                                                     };
 
-    private string TemplateDir = @"C:\Program Files\SpaceClaim\Library\DrawingFormats";
+    private const string TemplateDir = @"Library\DrawingFormats";
     private const string SpaceClaimFileExtn = ".scdoc";
 
     public AssemblyDrawings() :
@@ -42,7 +42,8 @@ namespace EllieWare.SpaceClaim
       InitializeComponent();
 
       // populate templates
-      var templates = from thisTemplate in Directory.EnumerateFiles(TemplateDir, "*" + SpaceClaimFileExtn)
+      var templateFullDirPath = Path.Combine(Utils.GetSpaceClaimInstallDirectory(), TemplateDir);
+      var templates = from thisTemplate in Directory.EnumerateFiles(templateFullDirPath, "*" + SpaceClaimFileExtn)
                       select Path.GetFileNameWithoutExtension(thisTemplate);
       Template.DataSource = templates.ToList();
       if (Template.Items.Count > 0)
@@ -64,7 +65,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Create drawings from the current assembly");
+        var descrip = string.Format("Create drawings from the current part or assembly");
 
         return descrip;
       }
@@ -106,19 +107,49 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var templatePath = Path.Combine(TemplateDir, (string)Template.SelectedItem);
+      var templatePath = Path.Combine(Utils.GetSpaceClaimInstallDirectory(), TemplateDir, (string)Template.SelectedItem);
       var templateFilePath = Path.ChangeExtension(templatePath, SpaceClaimFileExtn);
       var templateDoc = Document.Load(templateFilePath);
       var templateSheet = templateDoc.DrawingSheets.First();
-
       var doc = Window.ActiveWindow.Document;
-      var parts = doc.Parts;
-      foreach (var part in parts.Where(p => !p.Equals(doc.MainPart) && p.Components.Count == 0))
+      var rootPart = doc.MainPart;
+
+      // We have a collection of parts, which are in general occurrences.  We only want to 
+      // create a drawing of each master part we have.
+      var masters = new HashSet<Part>();
+      foreach (var part in WalkParts(rootPart))
       {
-        ProcessPart(doc, part, templateSheet);
+        var partMaster = part.Master;
+
+        // only want parts that have bodies
+        if (partMaster.Bodies.Count == 0)
+        {
+          continue;
+        }
+
+        if (!masters.Contains(partMaster))
+        {
+          masters.Add(partMaster);
+        }
+      }
+
+      foreach (var thisMaster in masters)
+      {
+        ProcessPart(doc, thisMaster, templateSheet);
       }
 
       return true;
+    }
+
+    private static IEnumerable<IPart> WalkParts(Part part)
+    {
+      // GetDescendants goes not include the object itself
+      yield return part;
+
+      foreach (IPart descendant in part.GetDescendants<IPart>())
+      {
+        yield return descendant;
+      }
     }
 
     private void Template_SelectedIndexChanged(object sender, System.EventArgs e)

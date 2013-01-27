@@ -6,6 +6,9 @@
 //  www.EllieWare.com
 //
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
@@ -118,5 +121,16 @@ namespace EllieWare.SpaceClaim
                           "SpaceClaim files (*.scdoc)|*.scdoc|";
 
     public const string NativeFilter = InternalNativeFilter + AllFilesFilter;
+
+    public static string GetSpaceClaimInstallDirectory()
+    {
+      // work out where SpaceClaim lives
+      var procs = Process.GetProcessesByName("SpaceClaim");
+      var sc = procs.First();
+      var scPath = sc.MainModule.FileName;
+      var retVal = Path.GetDirectoryName(scPath);
+
+      return retVal;
+    }
   }
 }
