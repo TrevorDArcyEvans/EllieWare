@@ -95,8 +95,8 @@ namespace EllieWare.SpaceClaim
       var frontOrigin = PointUV.Create(0.1 * sheetMajorDim, 0.1 * sheetMajorDim);
       var viewFront = DrawingView.CreateGeneralView(sheet, part, ViewProjection.Front, frontOrigin);
       var frontBox = viewFront.Extent;
-      var viewTop = DrawingView.CreateProjectedView(viewFront, PointUV.Create(frontBox.Center.U, frontBox.Center.V + frontBox.RangeV.Span / 1d));
-      var viewRight = DrawingView.CreateProjectedView(viewFront, PointUV.Create(frontBox.Center.U + frontBox.RangeU.Span / 1d, frontBox.Center.V));
+      var viewTop = DrawingView.CreateProjectedView(viewFront, PointUV.Create(frontBox.Center.U, frontBox.Center.V + frontBox.RangeV.Span));
+      var viewRight = DrawingView.CreateProjectedView(viewFront, PointUV.Create(frontBox.Center.U + frontBox.RangeU.Span, frontBox.Center.V));
 
       var isoOrigin = PointUV.Create(0.75 * sheetMajorDim, 0.75 * sheetMajorDim);
       var viewIso = DrawingView.CreateGeneralView(sheet, part, ViewProjection.Isometric, isoOrigin);
