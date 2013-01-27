@@ -112,52 +112,21 @@ namespace EllieWare.SpaceClaim
       var templateDoc = Document.Load(templateFilePath);
       var templateSheet = templateDoc.DrawingSheets.First();
       var doc = Window.ActiveWindow.Document;
-      var rootPart = doc.MainPart;
-
-      // We have a collection of parts, which are in general occurrences.  We only want to 
-      // create a drawing of each master part we have.
-      var masters = new HashSet<Part>();
-      foreach (var part in WalkParts(rootPart))
+      var allParts = doc.Parts;
+      foreach (var part in allParts)
       {
-        var partMaster = part.Master;
-
-        // only want parts that have bodies
-        if (partMaster.Bodies.Count == 0)
-        {
-          continue;
-        }
-
-        if (!masters.Contains(partMaster))
-        {
-          masters.Add(partMaster);
-        }
-      }
-
-      foreach (var thisMaster in masters)
-      {
-        ProcessPart(doc, thisMaster, templateSheet);
+        ProcessPart(doc, part, templateSheet);
       }
 
       return true;
     }
 
-    private static IEnumerable<IPart> WalkParts(Part part)
-    {
-      // GetDescendants goes not include the object itself
-      yield return part;
-
-      foreach (IPart descendant in part.GetDescendants<IPart>())
-      {
-        yield return descendant;
-      }
-    }
-
-    private void Template_SelectedIndexChanged(object sender, System.EventArgs e)
+    private void Template_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
     }
 
-    private void DrawingStyle_SelectedIndexChanged(object sender, System.EventArgs e)
+    private void DrawingStyle_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
     }
