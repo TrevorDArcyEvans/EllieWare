@@ -65,6 +65,10 @@ Document.DrawingSheets
     DrawingSheet.Views
       -DrawingView.CreateGeneralView
 
+Drawing sheet formats live in:
+
+  C:\Program Files\SpaceClaim\Library\DrawingFormats
+
 ---------------------------------------------------------
 
 // export (thumbnail?) images of drawing sheet views
