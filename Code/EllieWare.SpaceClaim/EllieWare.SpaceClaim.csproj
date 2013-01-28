@@ -94,6 +94,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EdgeLengthSelectFactory.cs" />
+    <Compile Include="ExportAllToAutoCAD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportAllToAutoCAD.Designer.cs">
+      <DependentUpon>ExportAllToAutoCAD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportAllToAutoCADFactory.cs" />
     <Compile Include="ExportAllToPdf.cs">
       <SubType>UserControl</SubType>
     </Compile>
