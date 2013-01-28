@@ -74,6 +74,10 @@
       <DependentUpon>Protect.cs</DependentUpon>
     </Compile>
     <Compile Include="ProtectFactory.cs" />
+    <Compile Include="Split.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SplitFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
