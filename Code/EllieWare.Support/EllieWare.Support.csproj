@@ -51,6 +51,7 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AutoFile.cs" />
     <Compile Include="CloseButton.cs" />
     <Compile Include="ImageListBox\ImageListBox.cs">
       <SubType>Component</SubType>

@@ -66,6 +66,7 @@
       <DependentUpon>AssemblyDrawings.cs</DependentUpon>
     </Compile>
     <Compile Include="AssemblyDrawingsFactory.cs" />
+    <Compile Include="AutoWindow.cs" />
     <Compile Include="ClearSelection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +94,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EdgeLengthSelectFactory.cs" />
+    <Compile Include="ExportAllToPdf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportAllToPdfFactory.cs" />
     <Compile Include="ExportToAutoCAD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +233,10 @@
     <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
       <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
       <Name>EllieWare.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PdfSharp\PdfSharp.csproj">
+      <Project>{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}</Project>
+      <Name>PdfSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

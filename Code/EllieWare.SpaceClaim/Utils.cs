@@ -117,6 +117,8 @@ namespace EllieWare.SpaceClaim
 
     public const string PdfFilesFilter = InternalPdfFilesFilter + AllFilesFilter;
 
+    public const string PdfFileExtension = ".pdf";
+
     private const string InternalNativeFilter =
                           "SpaceClaim files (*.scdoc)|*.scdoc|";
 

@@ -363,14 +363,24 @@ namespace PdfSharp.Pdf
         if (kids == null)
         {
           PdfReference xref3 = kid.Elements["/Kids"] as PdfReference;
-          kids = xref3.Value as PdfArray;
+          if (xref3 != null)
+          {
+            kids = xref3.Value as PdfArray;
+          }
         }
-        //newTHHO 15.10.2007 end
-        foreach (PdfReference xref2 in kids)
-          list.AddRange(GetKids(xref2, values, kid));
-        int count = list.Count;
-        Debug.Assert(count == kid.Elements.GetInteger("/Count"));
-        //return (PdfDictionary[])list.ToArray(typeof(PdfDictionary));
+
+        if (kids != null)
+        {
+          //newTHHO 15.10.2007 end
+          foreach (PdfReference xref2 in kids)
+          {
+            list.AddRange(GetKids(xref2, values, kid));
+          }
+          //int count = list.Count;
+          //Debug.Assert(count == kid.Elements.GetInteger("/Count"));
+          //return (PdfDictionary[])list.ToArray(typeof(PdfDictionary));
+        }
+
         return list.ToArray();
       }
     }
