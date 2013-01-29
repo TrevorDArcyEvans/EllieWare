@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Export all drawing sheets to AutoCAD dwg or dxf file and put them in a directory";
+        return "Export all drawing sheets to AutoCAD dwg or dxf files and put them in a directory";
       }
     }
 

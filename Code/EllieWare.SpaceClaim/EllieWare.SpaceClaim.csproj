@@ -250,6 +250,9 @@
     <EmbeddedResource Include="AssemblyDrawings.resx">
       <DependentUpon>AssemblyDrawings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExportAllToAutoCAD.resx">
+      <DependentUpon>ExportAllToAutoCAD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FaceEdgeOperation.resx">
       <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </EmbeddedResource>
