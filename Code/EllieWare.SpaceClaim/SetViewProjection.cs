@@ -84,7 +84,6 @@ namespace EllieWare.SpaceClaim
     protected override bool DoRun()
     {
       Window.ActiveWindow.SetProjection(SupportedViewprojections[SelViewProjection.SelectedIndex].Value, false, true);
-      Common.Utils.Wait(3000);
 
       return true;
     }
