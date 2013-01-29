@@ -75,6 +75,7 @@ namespace EllieWare.SpaceClaim
       this.FileFormat.Name = "FileFormat";
       this.FileFormat.Size = new System.Drawing.Size(389, 21);
       this.FileFormat.TabIndex = 1;
+      this.FileFormat.SelectedIndexChanged += new System.EventHandler(FileFormat_SelectedIndexChanged); 
       // 
       // ExportAllToAutoCAD
       // 
