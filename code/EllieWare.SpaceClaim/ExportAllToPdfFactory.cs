@@ -17,7 +17,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Export all drawing sheets to a single PDF";
+        return "Export all drawing sheets to PDF";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Export all drawing sheets to a single PDF";
+        return "Export all drawing sheets to PDF files and put them in a directory";
       }
     }
 
