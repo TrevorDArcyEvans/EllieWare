@@ -98,7 +98,7 @@ namespace EllieWare.SpaceClaim
       return true;
     }
 
-    private void FileFormat_SelectedIndexChanged(object sender, System.EventArgs e)
+    private void FileFormat_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
     }

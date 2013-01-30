@@ -241,10 +241,6 @@
       <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
       <Name>EllieWare.Support</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PdfSharp\PdfSharp.csproj">
-      <Project>{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}</Project>
-      <Name>PdfSharp</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssemblyDrawings.resx">
