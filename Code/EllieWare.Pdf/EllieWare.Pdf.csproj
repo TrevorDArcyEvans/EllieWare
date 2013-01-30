@@ -57,6 +57,10 @@
     <Compile Include="Concatenate.Designer.cs">
       <DependentUpon>Concatenate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConcatenateAll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConcatenateAllFactory.cs" />
     <Compile Include="ConcatenateFactory.cs" />
     <Compile Include="PdfFactoryBase.cs" />
     <Compile Include="Print.cs">
