@@ -8,7 +8,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
@@ -127,8 +126,7 @@ namespace EllieWare.SpaceClaim
     public static string GetSpaceClaimInstallDirectory()
     {
       // work out where SpaceClaim lives
-      var procs = Process.GetProcessesByName("SpaceClaim");
-      var sc = procs.First();
+      var sc = Process.GetProcessById(Session.CurrentProcess.ProcessId);
       var scPath = sc.MainModule.FileName;
       var retVal = Path.GetDirectoryName(scPath);
 
