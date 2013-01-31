@@ -127,6 +127,21 @@
     <Compile Include="FaceAreaColor.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="FaceCurvatureBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceCurvatureColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceCurvatureColorFactory.cs" />
+    <Compile Include="FaceCurvatureRemove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceCurvatureRemoveFactory.cs" />
+    <Compile Include="FaceCurvatureSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FaceCurvatureSelectFactory.cs" />
     <Compile Include="FaceEdgeOperation.cs">
       <SubType>UserControl</SubType>
     </Compile>
