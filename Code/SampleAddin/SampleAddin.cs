@@ -15,15 +15,25 @@ namespace SampleAddin
 {
   public partial class SampleAddin : UserControl, IMutableRunnable
   {
+    // retain these for future use
     private readonly IRobotWare mRoot;
     private readonly ICallback mCallback;
     private readonly IParameterManager mParamMgr;
 
+    // default constructor required for:
+    //    Microsoft Visual Studio designer
+    //    IXmlSerializable infrastructure
     public SampleAddin()
     {
       InitializeComponent();
     }
 
+    // called by RobotWare when:
+    //    adding step to a specification
+    //    loading or running specification
+    //
+    // All initialisation should be done here and everything
+    // should be set to a safe state.
     public SampleAddin(IRobotWare root, ICallback callback, IParameterManager mgr) :
       this()
     {
@@ -34,16 +44,21 @@ namespace SampleAddin
 
     #region Implementation of IXmlSerializable
 
+    // must return null - see MSDN documentation
     public XmlSchema GetSchema()
     {
       return null;
     }
 
+    // called by RobotWare when loading or running specification
+    // so addin can read settings from specification file
     public void ReadXml(XmlReader reader)
     {
       mText.Text = reader.GetAttribute("Message");
     }
 
+    // called by RobotWare when loading or running specification
+    // so addin can save settings to specification file
     public void WriteXml(XmlWriter writer)
     {
       writer.WriteAttributeString("Message", mText.Text);
@@ -71,7 +86,11 @@ namespace SampleAddin
 
     public bool CanRun
     {
-      get { return true; }
+      get
+      {
+        // could do a licensing check here...
+        return true;
+      }
     }
 
     public bool Run()
@@ -89,6 +108,8 @@ namespace SampleAddin
 
     #endregion
 
+    // changing message should mark specification as dirty,
+    // so notify RobotWare which will enable 'Save' button in 'Editor'
     private void Text_TextChanged(object sender, EventArgs e)
     {
       if (ConfigurationChanged != null)
