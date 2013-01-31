@@ -82,6 +82,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SplitFactory.cs" />
+    <Compile Include="Unprotect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnprotectFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
