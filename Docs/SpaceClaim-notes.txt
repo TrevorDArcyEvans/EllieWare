@@ -139,3 +139,12 @@ CommandData<T>
 
 ---------------------------------------------------------
 
+// faces below a threshold curvature
+  DesignFace.Shape as Face as ISurfaceShape
+  ISurfaceShape.Geometry As Surface
+  Surface.Parameterization
+  Surface.Evaluate
+  SurfaceEvaluation.MinCurvature
+
+---------------------------------------------------------
+

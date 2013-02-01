@@ -11,7 +11,6 @@ using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Interfaces;
-using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {

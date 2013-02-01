@@ -35,48 +35,46 @@ namespace EllieWare.Pdf
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.Label label1;
-      System.Windows.Forms.Label label2;
-      System.Windows.Forms.Label label3;
+      this.components = new System.ComponentModel.Container();
+      this.OwnerPasswordLabel = new System.Windows.Forms.Label();
+      this.UserPasswordLabel = new System.Windows.Forms.Label();
+      this.OptionsLabel = new System.Windows.Forms.Label();
       this.ProtectMain = new System.Windows.Forms.TableLayoutPanel();
       this.Options = new System.Windows.Forms.CheckedListBox();
       this.OwnerPassword = new EllieWare.Common.ParameterTextBox();
       this.UserPassword = new EllieWare.Common.ParameterTextBox();
-      label1 = new System.Windows.Forms.Label();
-      label2 = new System.Windows.Forms.Label();
-      label3 = new System.Windows.Forms.Label();
       this.ProtectMain.SuspendLayout();
       this.SuspendLayout();
       // 
-      // label1
+      // OwnerPasswordLabel
       // 
-      label1.AutoSize = true;
-      label1.Location = new System.Drawing.Point(3, 6);
-      label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      label1.Name = "label1";
-      label1.Size = new System.Drawing.Size(90, 13);
-      label1.TabIndex = 0;
-      label1.Text = "Owner Password:";
+      this.OwnerPasswordLabel.AutoSize = true;
+      this.OwnerPasswordLabel.Location = new System.Drawing.Point(3, 6);
+      this.OwnerPasswordLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      this.OwnerPasswordLabel.Name = "OwnerPasswordLabel";
+      this.OwnerPasswordLabel.Size = new System.Drawing.Size(90, 13);
+      this.OwnerPasswordLabel.TabIndex = 0;
+      this.OwnerPasswordLabel.Text = "Owner Password:";
       // 
-      // label2
+      // UserPasswordLabel
       // 
-      label2.AutoSize = true;
-      label2.Location = new System.Drawing.Point(3, 32);
-      label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      label2.Name = "label2";
-      label2.Size = new System.Drawing.Size(81, 13);
-      label2.TabIndex = 1;
-      label2.Text = "User Password:";
+      this.UserPasswordLabel.AutoSize = true;
+      this.UserPasswordLabel.Location = new System.Drawing.Point(3, 32);
+      this.UserPasswordLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      this.UserPasswordLabel.Name = "UserPasswordLabel";
+      this.UserPasswordLabel.Size = new System.Drawing.Size(81, 13);
+      this.UserPasswordLabel.TabIndex = 1;
+      this.UserPasswordLabel.Text = "User Password:";
       // 
-      // label3
+      // OptionsLabel
       // 
-      label3.AutoSize = true;
-      label3.Location = new System.Drawing.Point(3, 58);
-      label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      label3.Name = "label3";
-      label3.Size = new System.Drawing.Size(46, 13);
-      label3.TabIndex = 5;
-      label3.Text = "Options:";
+      this.OptionsLabel.AutoSize = true;
+      this.OptionsLabel.Location = new System.Drawing.Point(3, 58);
+      this.OptionsLabel.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      this.OptionsLabel.Name = "OptionsLabel";
+      this.OptionsLabel.Size = new System.Drawing.Size(46, 13);
+      this.OptionsLabel.TabIndex = 5;
+      this.OptionsLabel.Text = "Options:";
       // 
       // ProtectMain
       // 
@@ -86,12 +84,12 @@ namespace EllieWare.Pdf
       this.ProtectMain.ColumnCount = 2;
       this.ProtectMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.ProtectMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.ProtectMain.Controls.Add(label1, 0, 0);
-      this.ProtectMain.Controls.Add(label2, 0, 1);
+      this.ProtectMain.Controls.Add(this.OwnerPasswordLabel, 0, 0);
+      this.ProtectMain.Controls.Add(this.UserPasswordLabel, 0, 1);
       this.ProtectMain.Controls.Add(this.Options, 1, 2);
       this.ProtectMain.Controls.Add(this.OwnerPassword, 1, 0);
       this.ProtectMain.Controls.Add(this.UserPassword, 1, 1);
-      this.ProtectMain.Controls.Add(label3, 0, 2);
+      this.ProtectMain.Controls.Add(this.OptionsLabel, 0, 2);
       this.ProtectMain.Location = new System.Drawing.Point(3, 58);
       this.ProtectMain.Name = "ProtectMain";
       this.ProtectMain.RowCount = 3;
@@ -153,9 +151,12 @@ namespace EllieWare.Pdf
 
     #endregion
 
-    private System.Windows.Forms.TableLayoutPanel ProtectMain;
-    private System.Windows.Forms.CheckedListBox Options;
-    private Common.ParameterTextBox OwnerPassword;
-    private Common.ParameterTextBox UserPassword;
+    protected System.Windows.Forms.TableLayoutPanel ProtectMain;
+    protected System.Windows.Forms.CheckedListBox Options;
+    protected Common.ParameterTextBox OwnerPassword;
+    protected Common.ParameterTextBox UserPassword;
+    protected System.Windows.Forms.Label OwnerPasswordLabel;
+    protected System.Windows.Forms.Label OptionsLabel;
+    protected System.Windows.Forms.Label UserPasswordLabel;
   }
 }

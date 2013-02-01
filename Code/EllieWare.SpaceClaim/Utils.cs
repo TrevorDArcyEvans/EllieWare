@@ -8,7 +8,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
@@ -117,6 +116,8 @@ namespace EllieWare.SpaceClaim
 
     public const string PdfFilesFilter = InternalPdfFilesFilter + AllFilesFilter;
 
+    public const string PdfFileExtension = ".pdf";
+
     private const string InternalNativeFilter =
                           "SpaceClaim files (*.scdoc)|*.scdoc|";
 
@@ -125,8 +126,7 @@ namespace EllieWare.SpaceClaim
     public static string GetSpaceClaimInstallDirectory()
     {
       // work out where SpaceClaim lives
-      var procs = Process.GetProcessesByName("SpaceClaim");
-      var sc = procs.First();
+      var sc = Process.GetProcessById(Session.CurrentProcess.ProcessId);
       var scPath = sc.MainModule.FileName;
       var retVal = Path.GetDirectoryName(scPath);
 

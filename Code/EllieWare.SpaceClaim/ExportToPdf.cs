@@ -37,10 +37,9 @@ namespace EllieWare.SpaceClaim
     protected override bool DoRun()
     {
       var fileName = SourceFilePathResolvedValue;
-      if (!fileName.ToLowerInvariant().EndsWith(".pdf"))
+      if (!fileName.ToLowerInvariant().EndsWith(Utils.PdfFileExtension))
       {
-        fileName = Path.ChangeExtension(fileName, ".pdf");
-
+        fileName = Path.ChangeExtension(fileName, Utils.PdfFileExtension);
       }
       Window.ActiveWindow.ExportDrawingSheet(DrawingSheetWindowExportFormat.Pdf, fileName);
 

@@ -57,6 +57,10 @@
     <Compile Include="Concatenate.Designer.cs">
       <DependentUpon>Concatenate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConcatenateAll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConcatenateAllFactory.cs" />
     <Compile Include="ConcatenateFactory.cs" />
     <Compile Include="PdfFactoryBase.cs" />
     <Compile Include="Print.cs">
@@ -74,6 +78,14 @@
       <DependentUpon>Protect.cs</DependentUpon>
     </Compile>
     <Compile Include="ProtectFactory.cs" />
+    <Compile Include="Split.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SplitFactory.cs" />
+    <Compile Include="Unprotect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnprotectFactory.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
