@@ -41,23 +41,34 @@ namespace EllieWare.SpaceClaim
       var surfParams = surf.Parameterization;
       var uParam = surfParams.U;
       var vParam = surfParams.V;
+      double midU;
+      double midV;
 
-      if (!uParam.Bounds.Start.HasValue || !uParam.Bounds.End.HasValue ||
-          !vParam.Bounds.Start.HasValue || !vParam.Bounds.End.HasValue)
+      if (!uParam.Bounds.Start.HasValue || !uParam.Bounds.End.HasValue)
       {
-        // parameterisation infinite in some direction
-        return false;
+        midU = 0d;
+      }
+      else
+      {
+        midU = (uParam.Bounds.Start.Value + uParam.Bounds.End.Value) / 2d;
       }
 
-      var midU = (uParam.Bounds.Start.Value + uParam.Bounds.End.Value) / 2d;
-      var midV = (vParam.Bounds.Start.Value + vParam.Bounds.End.Value) / 2d;
+      if (!vParam.Bounds.Start.HasValue || !vParam.Bounds.End.HasValue)
+      {
+        midV = 0;
+      }
+      else
+      {
+        midV = (vParam.Bounds.Start.Value + vParam.Bounds.End.Value) / 2d;
+      }
+
       var midParam = PointUV.Create(midU, midV);
       var eval = surf.Evaluate(midParam);
-      var minCurve = eval.MinCurvature;
+      var maxCurve = eval.MaxCurvature;
       var doc = desFace.Document;
       var lengthFactor = doc.Units.Length.ConversionFactor;
 
-      return minCurve * lengthFactor < (double)AreaThreshold.Value;
+      return 1d / maxCurve * lengthFactor < (double)AreaThreshold.Value;
     }
   }
 }
