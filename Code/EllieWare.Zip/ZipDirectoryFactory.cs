@@ -24,7 +24,7 @@ namespace EllieWare.Zip
     {
       get
       {
-        return "Compress a directory and all subdirectories into a zip archive in the same directory";
+        return "Compress a directory and all subdirectories into a zip archive";
       }
     }
 

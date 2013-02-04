@@ -11,10 +11,10 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Zip
 {
-  public class ZipDirectory : SingleItemIOBase
+  public class ZipDirectory : DualItemIOBase
   {
     public ZipDirectory(IRobotWare root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothDirectory)
+      base(root, callback, mgr, BrowserTypes.DirectoryFile)
     {
     }
 
@@ -22,7 +22,9 @@ namespace EllieWare.Zip
     {
       get
       {
-        var descrip = string.Format("Compress {0} and all subdirectories to a zip file", SourceFilePathResolvedValue);
+        var descrip = string.Format("Compress {0} and all subdirectories to {1}", 
+                        SourceFilePathResolvedValue,
+                        DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -30,7 +32,7 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      var zipFileName = Path.ChangeExtension(SourceFilePathResolvedValue, ".zip");
+      var zipFileName = Path.ChangeExtension(DestinationFilePathResolvedValue, ".zip");
       using (var zip = new Ionic.Zip.ZipFile(zipFileName))
       {
         var files = Directory.EnumerateFiles(SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
