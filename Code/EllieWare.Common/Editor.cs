@@ -343,7 +343,10 @@ namespace EllieWare.Common
 
       try
       {
-        return step.Run();
+        using (new AutoWaitCursor())
+        {
+          return step.Run();
+        }
       }
       catch (Exception ex)
       {
