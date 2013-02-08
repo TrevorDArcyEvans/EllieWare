@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Linq;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using Application = SpaceClaim.Api.V10.Application;
@@ -73,7 +74,9 @@ namespace EllieWare.SpaceClaim
       Document.DocumentRemoved -= Document_DocumentRemoved;
       WriteBlock.AppendTask(() =>
                               {
-                                Document.Open(mFilePath, null);
+                                var windows = Document.Open(mFilePath, null);
+
+                                Window.ActiveWindow = windows.First();
                               });
     }
   }

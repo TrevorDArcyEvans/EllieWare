@@ -1,5 +1,5 @@
 ﻿//
-//  Copyright (C) 2012 EllieWare
+//  Copyright (C) 2013 EllieWare
 //
 //  All rights reserved
 //
@@ -9,15 +9,15 @@ using System;
 using System.Collections.Generic;
 using EllieWare.Interfaces;
 
-namespace EllieWare.SpaceClaim
+namespace BottleSlicer
 {
-  public class AssemblyDrawingsFactory : IFactory
+  public class BottleSlicerPluginFactory : IFactory
   {
     public string Title
     {
       get
       {
-        return "Create drawings from the current part or assembly";
+        return "Section a bottle and calculate the volumes";
       }
     }
 
@@ -25,7 +25,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "Create drawings from the current part or assembly";
+        return "Section a bottle, calculate the volume of each section and write the results to a *.csv file for import to Microsoft Excel";
       }
     }
 
@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return "SpaceClaim, drawing, assembly";
+        return "SpaceClaim, area, geometry, bottle";
       }
     }
 
@@ -52,13 +52,13 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        return typeof(AssemblyDrawings);
+        return typeof(BottleSlicerPlugin);
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+     public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new AssemblyDrawings(root, callback, mgr);
+      return new BottleSlicerPlugin(root, callback, mgr);
     }
-  }
+ }
 }
