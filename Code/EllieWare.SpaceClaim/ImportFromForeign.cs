@@ -71,7 +71,9 @@ namespace EllieWare.SpaceClaim
       opts.ImportNames = true;
       opts.ImportPoints = true;
 
-      Document.Open(fileName, opts);
+      var windows = Document.Open(fileName, opts);
+
+      Window.ActiveWindow = windows.First();
 
       return true;
     }

@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Linq;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
@@ -43,7 +44,9 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      Document.Open(SourceFilePathResolvedValue, null);
+      var windows = Document.Open(SourceFilePathResolvedValue, null);
+
+      Window.ActiveWindow = windows.First();
 
       return true;
     }
