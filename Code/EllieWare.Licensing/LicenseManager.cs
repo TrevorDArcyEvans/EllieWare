@@ -14,61 +14,14 @@ namespace EllieWare.Licensing
 {
   public class LicenseManager
   {
-    // HKCU
-    //  Software
-    //    EllieWare
-    //      [ProductName]
-    //        {UserName}
-
     // HKLM
     //  SOFTWARE
     //    EllieWare
     //      [ProductName]
     //        License
-    //          UserName1
-    //            {Code} --> LicenseCode
-    //          UserName2
-    //            {Code} --> LicenseCode
-    //          UserNameX
-    //            {Code} --> LicenseCode
+    //          {Code} --> LicenseCode
 
     private const string RegistryKey = "EllieWare";
-
-    public static string GetUserName(string productName)
-    {
-      var currentUser = Registry.CurrentUser.OpenSubKey("SOFTWARE");
-      var ellieWare = currentUser.OpenSubKey(RegistryKey);
-      if (ellieWare == null)
-      {
-        return string.Empty;
-      }
-
-      var product = ellieWare.OpenSubKey(productName);
-      if (product == null)
-      {
-        return string.Empty;
-      }
-
-      var userName = (string)product.GetValue("UserName");
-
-      return userName ?? string.Empty;
-    }
-
-    public static void CreateUserName(string productName, string userName)
-    {
-      var currentUser = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
-      var ellieWare = currentUser.OpenSubKey(RegistryKey, true) ?? currentUser.CreateSubKey(RegistryKey);
-      var product = ellieWare.OpenSubKey(productName, true) ?? ellieWare.CreateSubKey(productName);
-
-      product.SetValue("UserName", userName);
-    }
-
-    public static void UnregisterForCurrentUser(string productName)
-    {
-      var currentUser = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
-      var ellieWare = currentUser.OpenSubKey(RegistryKey, true);
-      ellieWare.DeleteSubKey(productName);
-    }
 
     public static bool IsLicensed(string productName, Version appVer)
     {
@@ -91,56 +44,36 @@ namespace EllieWare.Licensing
         return false;
       }
 
-      var userName = GetUserName(productName);
-      if (string.IsNullOrEmpty(userName))
-      {
-        return false;
-      }
-
-      var userNameKey = productLicense.OpenSubKey(userName);
-      if (userNameKey == null)
-      {
-        return false;
-      }
-
-      var regLicCode = (string)userNameKey.GetValue("Code");
-      var licCode = GetLicenceCode(productName, appVer, userName);
+      var regLicCode = (string)productLicense.GetValue("Code");
+      var licCode = GetLicenceCode(productName, appVer);
 
       return regLicCode == licCode;
     }
 
-    public static void Register(string productName, Version appVer, string userName, string licCode)
+    public static void Register(string productName, Version appVer, string licCode)
     {
-      // save user name to HKCU
-      CreateUserName(productName, userName);
-
       // all license code (and user names) are saved to HKLM
       var root = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
       var ellieWare = root.OpenSubKey(RegistryKey, true) ?? root.CreateSubKey(RegistryKey);
       var product = ellieWare.OpenSubKey(productName, true) ?? ellieWare.CreateSubKey(productName);
       var productLicense = product.OpenSubKey("License", true) ?? product.CreateSubKey("License");
-      var userNameKey = productLicense.OpenSubKey(userName, true) ?? productLicense.CreateSubKey(userName);
 
-      userNameKey.SetValue("Code", licCode);
+      productLicense.SetValue("Code", licCode);
     }
 
-    public static void Unregister(string productName, Version appVer, string userName)
+    public static void Unregister(string productName, Version appVer)
     {
-      // remove from HKCU
-      UnregisterForCurrentUser(productName);
-
       var root = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
       var ellieWare = root.OpenSubKey(RegistryKey, true);
       var product = ellieWare.OpenSubKey(productName, true);
-      var productLicense = product.OpenSubKey("License", true);
 
-      productLicense.DeleteSubKey(userName);
+      product.DeleteSubKey("License");
     }
 
     // products are licensed on major version number
-    internal static string GetLicenceCode(string productName, Version appVer, string userName)
+    internal static string GetLicenceCode(string productName, Version appVer)
     {
-      var data = Encoding.ASCII.GetBytes(productName + appVer.Major.ToString(CultureInfo.InvariantCulture) +userName);
+      var data = Encoding.ASCII.GetBytes(productName + appVer.Major.ToString(CultureInfo.InvariantCulture));
       data = System.Security.Cryptography.SHA1.Create().ComputeHash(data);
 
       return Convert.ToBase64String(data);
