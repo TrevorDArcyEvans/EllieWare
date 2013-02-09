@@ -40,7 +40,7 @@ namespace EllieWare.Common
     {
       get
       {
-        var allSpecsWithExtn = Directory.EnumerateFiles(UserSpecificationFolder, "*" + Utils.MacroFileExtension);
+        var allSpecsWithExtn = Directory.EnumerateFiles(UserSpecificationFolder, "*" + FileExtensions.MacroFileExtension);
         var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
 
         return allSpecsNoExten;

@@ -38,7 +38,7 @@ namespace EllieWare.Common
       get
       {
         var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
-        var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
+        var retVal = Path.ChangeExtension(pathNoExtn, FileExtensions.MacroFileExtension);
 
         return retVal;
       }
@@ -48,7 +48,7 @@ namespace EllieWare.Common
     {
       mSpecs.Items.Clear();
 
-      var allSpecsWithExtn = Directory.EnumerateFiles(mRoot.UserSpecificationFolder, "*" + Utils.MacroFileExtension);
+      var allSpecsWithExtn = Directory.EnumerateFiles(mRoot.UserSpecificationFolder, "*" + FileExtensions.MacroFileExtension);
       var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
       var filteredSpecsNoExten = from specNoExtn in allSpecsNoExten where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
 

@@ -1,19 +1,18 @@
 ﻿//
-//  Copyright (C) 2012 EllieWare
+//  Copyright (C) 2013 EllieWare
 //
 //  All rights reserved
 //
 //  www.EllieWare.com
 //
-using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Zip
 {
-  public class ZipFile : DualItemIOBase
+  public class AddToZip : DualItemIOBase
   {
-    public ZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public AddToZip(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
       SetSourceFileSelectorFilter(FileExtensions.AllFilesFilter);
@@ -24,9 +23,7 @@ namespace EllieWare.Zip
     {
       get
       {
-        var descrip = string.Format("Compress {0} into {1}",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+        var descrip = string.Format("Add {0} to {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +31,7 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      using (var zip = new Ionic.Zip.ZipFile(DestinationFilePathResolvedValue))
+      using (var zip = Ionic.Zip.ZipFile.Read(DestinationFilePathResolvedValue))
       {
         zip.AddFile(SourceFilePathResolvedValue);
         zip.Save();

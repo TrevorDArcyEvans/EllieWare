@@ -20,8 +20,8 @@ namespace EllieWare.Imaging
     public Conversion(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.ImageFilesFilter);
-      SetDestinationFileSelectorFilter(Utils.ImageFilesFilter);
+      SetSourceFileSelectorFilter(FileExtensions.ImageFilesFilter);
+      SetDestinationFileSelectorFilter(FileExtensions.ImageFilesFilter);
     }
 
     public override string Summary

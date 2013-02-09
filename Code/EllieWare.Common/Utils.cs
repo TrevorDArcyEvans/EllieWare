@@ -19,8 +19,6 @@ namespace EllieWare.Common
 {
   public class Utils
   {
-    public const string MacroFileExtension = ".mxml";
-
     public static IEnumerable<IFactory> GetFactories()
     {
       var retVal = new List<IFactory>();
