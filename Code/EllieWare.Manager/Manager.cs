@@ -83,7 +83,7 @@ namespace EllieWare.Manager
     private string GetSelectedSpecificationPath()
     {
       var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
-      var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
+      var retVal = Path.ChangeExtension(pathNoExtn, FileExtensions.MacroFileExtension);
 
       return retVal;
     }
@@ -222,7 +222,7 @@ namespace EllieWare.Manager
       }
 
       var filePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
-      var filePath = Path.ChangeExtension(filePathNoExtn, Utils.MacroFileExtension);
+      var filePath = Path.ChangeExtension(filePathNoExtn, FileExtensions.MacroFileExtension);
 
       if (File.Exists(filePath))
       {

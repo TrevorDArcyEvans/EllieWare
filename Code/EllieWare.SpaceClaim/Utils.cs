@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using SpaceClaim.Api.V10;
+using EllieWare.Common;
 
 namespace EllieWare.SpaceClaim
 {
@@ -44,8 +45,6 @@ namespace EllieWare.SpaceClaim
                                                 {".xaml", PartWindowExportFormat.Xaml}
                                               };
 
-    private const string AllFilesFilter = "All files (*.*)|*.*";
-
     private const string InternalPartExportFilter =
                           "Catia V5 part files (*.CATPart)|*.CATPart|" +
                           "Catia V5 assembly files (*.CATProduct)|*.CATProduct|" +
@@ -64,7 +63,7 @@ namespace EllieWare.SpaceClaim
                           "3D PDF files (*.pdf)|*.pdf|" +
                           "SketchUp files (*.skp)|*.skp|";
 
-    public const string PartExportFilter = InternalPartExportFilter + AllFilesFilter;
+    public const string PartExportFilter = InternalPartExportFilter + FileExtensions.AllFilesFilter;
 
     private const string InternalPartWindowExportFilter =
                           "VRML files (*.wrl)|*.wrl|" +
@@ -74,9 +73,9 @@ namespace EllieWare.SpaceClaim
                           "Wavefront image files (*.obj)|*.obj|" +
                           "Luxion KeyShot scene files (*.bip)|*.bip|";
 
-    public const string PartWindowExportFilter = InternalPartWindowExportFilter + AllFilesFilter;
+    public const string PartWindowExportFilter = InternalPartWindowExportFilter + FileExtensions.AllFilesFilter;
 
-    public const string AllPartExportFilter = InternalPartExportFilter + InternalPartWindowExportFilter + AllFilesFilter;
+    public const string AllPartExportFilter = InternalPartExportFilter + InternalPartWindowExportFilter + FileExtensions.AllFilesFilter;
 
     public static readonly Dictionary<string, WindowExportFormat> RasterFormats = new Dictionary<string, WindowExportFormat>
                                                                                   {
@@ -98,30 +97,14 @@ namespace EllieWare.SpaceClaim
                           "AutoCAD DWG files (*.dwg)|*.dwg|" +
                           "AutoCAD DXF files (*.dxf)|*.dxf|";
 
-    private const string InternalWindowRasterExportFilter =
-                          "Windows bitmap files (*.bmp)|*.bmp|" +
-                          "JPEG image files (*.jpg)|*.jpg|" +
-                          "JPEG image files (*.jpeg)|*.jpeg|" +
-                          "PNG image files (*.png)|*.png|" +
-                          "TIFF image files (*.tif)|*.tif|" +
-                          "TIFF image files (*.tiff)|*.tiff|" +
-                          "GIF image files (*.gif)|*.gif|";
-
-    public const string WindowVectorExportFilter = InternalWindowVectorExportFilter + AllFilesFilter;
-    public const string WindowRasterExportFilter = InternalWindowRasterExportFilter + AllFilesFilter;
-    public const string AllWindowRasterExportFilter = InternalWindowVectorExportFilter + InternalWindowRasterExportFilter + AllFilesFilter;
-
-    private const string InternalPdfFilesFilter = 
-                          "Adobe PDF files (*.pdf)|*.pdf|";
-
-    public const string PdfFilesFilter = InternalPdfFilesFilter + AllFilesFilter;
-
-    public const string PdfFileExtension = ".pdf";
+    public const string WindowVectorExportFilter = InternalWindowVectorExportFilter + FileExtensions.AllFilesFilter;
+    public const string WindowRasterExportFilter = FileExtensions.ImageFilesFilter;
+    public const string AllWindowRasterExportFilter = InternalWindowVectorExportFilter + FileExtensions.InternalImageFilesFilter + FileExtensions.AllFilesFilter;
 
     private const string InternalNativeFilter =
                           "SpaceClaim files (*.scdoc)|*.scdoc|";
 
-    public const string NativeFilter = InternalNativeFilter + AllFilesFilter;
+    public const string NativeFilter = InternalNativeFilter + FileExtensions.AllFilesFilter;
 
     public static string GetSpaceClaimInstallDirectory()
     {

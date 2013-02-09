@@ -154,7 +154,7 @@ namespace EllieWare.Common
       }
 
       var filePath = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
-      var retVal = Path.ChangeExtension(filePath, Utils.MacroFileExtension);
+      var retVal = Path.ChangeExtension(filePath, FileExtensions.MacroFileExtension);
 
       return retVal;
     }

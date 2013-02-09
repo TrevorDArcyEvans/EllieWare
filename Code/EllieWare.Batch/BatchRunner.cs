@@ -97,7 +97,7 @@ namespace EllieWare.Batch
         foreach (var specFileName in mSpecFileNames)
         {
           var specFilePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, specFileName);
-          var specFilePath = Path.ChangeExtension(specFilePathNoExtn, Utils.MacroFileExtension);
+          var specFilePath = Path.ChangeExtension(specFilePathNoExtn, FileExtensions.MacroFileExtension);
           var spec = new Specification(mRoot, mCallback, factories);
           using (var fs = new FileStream(specFilePath, FileMode.Open))
           {
@@ -168,7 +168,7 @@ namespace EllieWare.Batch
     private string GetSelectedSpecificationPath()
     {
       var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, (string)mSpecs.SelectedValue);
-      var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
+      var retVal = Path.ChangeExtension(pathNoExtn, FileExtensions.MacroFileExtension);
 
       return retVal;
     }

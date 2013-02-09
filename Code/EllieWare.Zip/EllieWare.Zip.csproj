@@ -50,6 +50,10 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AddToZip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddToZipFactory.cs" />
     <Compile Include="UnZipFile.cs">
       <SubType>UserControl</SubType>
     </Compile>
