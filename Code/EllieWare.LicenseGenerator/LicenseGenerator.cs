@@ -21,7 +21,7 @@ namespace EllieWare.LicenseGenerator
 
     private void CmdGenerate_Click(object sender, EventArgs e)
     {
-      LicenseCode.Text = Licensing.LicenseManager.GetLicenceCode(Product.Text, ApplicationVersion, UserName.Text);
+      LicenseCode.Text = Licensing.LicenseManager.GetLicenceCode(Product.Text, ApplicationVersion);
     }
 
     private void Product_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,23 +36,20 @@ namespace EllieWare.LicenseGenerator
 
     private void CmdRegister_Click(object sender, EventArgs e)
     {
-      Licensing.LicenseManager.Register(Product.Text, ApplicationVersion, UserName.Text, LicenseCode.Text);
+      Licensing.LicenseManager.Register(Product.Text, ApplicationVersion, LicenseCode.Text);
     }
 
     private void CmdUnregister_Click(object sender, EventArgs e)
     {
-      Licensing.LicenseManager.Unregister(Product.Text, ApplicationVersion, UserName.Text);
+      Licensing.LicenseManager.Unregister(Product.Text, ApplicationVersion);
     }
 
     private void CmdIsRegistered_Click(object sender, EventArgs e)
     {
       var isLicensed = Licensing.LicenseManager.IsLicensed(Product.Text, ApplicationVersion);
-      var prodUserName = Licensing.LicenseManager.GetUserName(Product.Text);
 
       MessageBox.Show(Product.Text + Environment.NewLine +
-                      "    is " + (isLicensed ? string.Empty : "not ") + "licensed to " + Environment.NewLine +
-                      prodUserName,
-                      "License Status");
+                      "    is " + (isLicensed ? string.Empty : "not ") + "licensed");
     }
 
     private Version ApplicationVersion

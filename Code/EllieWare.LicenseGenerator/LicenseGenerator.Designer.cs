@@ -37,13 +37,11 @@ namespace EllieWare.LicenseGenerator
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Label label1;
-      System.Windows.Forms.Label label2;
       System.Windows.Forms.Label label3;
       System.Windows.Forms.Button CmdGenerate;
       System.Windows.Forms.Label label4;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LicenseGenerator));
       this.Product = new System.Windows.Forms.ComboBox();
-      this.UserName = new System.Windows.Forms.TextBox();
       this.LicenseCode = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.CmdRegister = new System.Windows.Forms.Button();
@@ -52,7 +50,6 @@ namespace EllieWare.LicenseGenerator
       this.Version = new System.Windows.Forms.ComboBox();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
-      label2 = new System.Windows.Forms.Label();
       label3 = new System.Windows.Forms.Label();
       CmdGenerate = new System.Windows.Forms.Button();
       label4 = new System.Windows.Forms.Label();
@@ -67,24 +64,22 @@ namespace EllieWare.LicenseGenerator
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.Controls.Add(label1, 0, 0);
-      tableLayoutPanel1.Controls.Add(label2, 0, 2);
       tableLayoutPanel1.Controls.Add(this.Product, 1, 0);
-      tableLayoutPanel1.Controls.Add(this.UserName, 1, 2);
-      tableLayoutPanel1.Controls.Add(this.LicenseCode, 1, 3);
-      tableLayoutPanel1.Controls.Add(label3, 0, 3);
-      tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 4);
+      tableLayoutPanel1.Controls.Add(this.LicenseCode, 1, 2);
+      tableLayoutPanel1.Controls.Add(label3, 0, 2);
+      tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 3);
       tableLayoutPanel1.Controls.Add(label4, 0, 1);
       tableLayoutPanel1.Controls.Add(this.Version, 1, 1);
       tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
-      tableLayoutPanel1.RowCount = 5;
+      tableLayoutPanel1.RowCount = 4;
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(450, 142);
+      tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      tableLayoutPanel1.Size = new System.Drawing.Size(450, 117);
       tableLayoutPanel1.TabIndex = 0;
       // 
       // label1
@@ -97,16 +92,6 @@ namespace EllieWare.LicenseGenerator
       label1.TabIndex = 0;
       label1.Text = "Product:";
       // 
-      // label2
-      // 
-      label2.AutoSize = true;
-      label2.Location = new System.Drawing.Point(3, 60);
-      label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-      label2.Name = "label2";
-      label2.Size = new System.Drawing.Size(63, 13);
-      label2.TabIndex = 1;
-      label2.Text = "User Name:";
-      // 
       // Product
       // 
       tableLayoutPanel1.SetColumnSpan(this.Product, 2);
@@ -116,36 +101,26 @@ namespace EllieWare.LicenseGenerator
       this.Product.Items.AddRange(new object[] {
             "RobotWare for Windows",
             "RobotWare for SpaceClaim"});
-      this.Product.Location = new System.Drawing.Point(72, 3);
+      this.Product.Location = new System.Drawing.Point(56, 3);
       this.Product.Name = "Product";
-      this.Product.Size = new System.Drawing.Size(375, 21);
+      this.Product.Size = new System.Drawing.Size(391, 21);
       this.Product.TabIndex = 2;
       this.Product.SelectedIndexChanged += new System.EventHandler(this.Product_SelectedIndexChanged);
-      // 
-      // UserName
-      // 
-      tableLayoutPanel1.SetColumnSpan(this.UserName, 2);
-      this.UserName.Dock = System.Windows.Forms.DockStyle.Top;
-      this.UserName.Location = new System.Drawing.Point(72, 57);
-      this.UserName.Name = "UserName";
-      this.UserName.Size = new System.Drawing.Size(375, 20);
-      this.UserName.TabIndex = 3;
-      this.UserName.TextChanged += new System.EventHandler(this.UserName_TextChanged);
       // 
       // LicenseCode
       // 
       tableLayoutPanel1.SetColumnSpan(this.LicenseCode, 2);
       this.LicenseCode.Dock = System.Windows.Forms.DockStyle.Top;
-      this.LicenseCode.Location = new System.Drawing.Point(72, 83);
+      this.LicenseCode.Location = new System.Drawing.Point(56, 57);
       this.LicenseCode.Name = "LicenseCode";
       this.LicenseCode.ReadOnly = true;
-      this.LicenseCode.Size = new System.Drawing.Size(375, 20);
+      this.LicenseCode.Size = new System.Drawing.Size(391, 20);
       this.LicenseCode.TabIndex = 4;
       // 
       // label3
       // 
       label3.AutoSize = true;
-      label3.Location = new System.Drawing.Point(3, 86);
+      label3.Location = new System.Drawing.Point(3, 60);
       label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       label3.Name = "label3";
       label3.Size = new System.Drawing.Size(35, 13);
@@ -166,11 +141,11 @@ namespace EllieWare.LicenseGenerator
       this.tableLayoutPanel2.Controls.Add(this.CmdUnregister, 1, 0);
       this.tableLayoutPanel2.Controls.Add(this.CmdIsRegistered, 0, 0);
       this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(123, 109);
+      this.tableLayoutPanel2.Location = new System.Drawing.Point(123, 83);
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 1;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(324, 30);
+      this.tableLayoutPanel2.Size = new System.Drawing.Size(324, 31);
       this.tableLayoutPanel2.TabIndex = 7;
       // 
       // CmdGenerate
@@ -231,9 +206,9 @@ namespace EllieWare.LicenseGenerator
       this.Version.Items.AddRange(new object[] {
             "1.0.0",
             "2.0.0"});
-      this.Version.Location = new System.Drawing.Point(72, 30);
+      this.Version.Location = new System.Drawing.Point(56, 30);
       this.Version.Name = "Version";
-      this.Version.Size = new System.Drawing.Size(375, 21);
+      this.Version.Size = new System.Drawing.Size(391, 21);
       this.Version.TabIndex = 9;
       // 
       // LicenseGenerator
@@ -241,13 +216,13 @@ namespace EllieWare.LicenseGenerator
       this.AcceptButton = CmdGenerate;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(450, 142);
+      this.ClientSize = new System.Drawing.Size(450, 117);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
-      this.MaximumSize = new System.Drawing.Size(2000, 180);
+      this.MaximumSize = new System.Drawing.Size(2000, 155);
       this.MinimizeBox = false;
-      this.MinimumSize = new System.Drawing.Size(466, 180);
+      this.MinimumSize = new System.Drawing.Size(466, 155);
       this.Name = "LicenseGenerator";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
       this.Text = "EllieWare License Generator";
@@ -261,7 +236,6 @@ namespace EllieWare.LicenseGenerator
     #endregion
 
     private System.Windows.Forms.ComboBox Product;
-    private System.Windows.Forms.TextBox UserName;
     private System.Windows.Forms.TextBox LicenseCode;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.Button CmdRegister;

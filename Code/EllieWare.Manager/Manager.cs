@@ -70,13 +70,11 @@ namespace EllieWare.Manager
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
-        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version,dlg.UserName.Text, dlg.LicenseCode.Text);
+        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version, dlg.LicenseCode.Text);
 
         var isLicensed = mRoot.IsLicensed;
         var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                             "  " + mRoot.ApplicationName + Environment.NewLine +
-                                             "to:" + Environment.NewLine +
-                                             "  " + dlg.UserName
+                                             "  " + mRoot.ApplicationName
                                   : "Information incorrect - product not registered");
         MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
       }
