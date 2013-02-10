@@ -16,7 +16,13 @@ namespace EllieWare.Common
 {
   public class RobotWareWrapper : IRobotWare
   {
-    public bool IsLicensed { get; private set; }
+    public bool IsLicensed
+    {
+      get
+      {
+        return Licensing.LicenseManager.IsLicensed(ApplicationName, Version);
+      }
+    }
     public string UserSpecificationFolder { get; private set; }
     public string ApplicationName { get; private set; }
     public Version Version
@@ -30,7 +36,6 @@ namespace EllieWare.Common
     public RobotWareWrapper(string appName)
     {
       ApplicationName = appName;
-      IsLicensed = Licensing.LicenseManager.IsLicensed(ApplicationName, Version);
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);

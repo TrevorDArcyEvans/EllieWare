@@ -26,7 +26,8 @@ namespace EllieWare.Manager
 
     private void RequestLicense_Shown(object sender, System.EventArgs e)
     {
-      LicenseCode.Focus();
+      UserName.Focus();
     }
   }
 }
+
