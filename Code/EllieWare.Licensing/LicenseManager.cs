@@ -20,6 +20,7 @@ namespace EllieWare.Licensing
     //      [ProductName]
     //        License
     //          {Code} --> LicenseCode
+    //          {UserName} --> UserName
 
     private const string RegistryKey = "EllieWare";
 
@@ -45,12 +46,13 @@ namespace EllieWare.Licensing
       }
 
       var regLicCode = (string)productLicense.GetValue("Code");
-      var licCode = GetLicenceCode(productName, appVer);
+      var userName = (string)productLicense.GetValue("UserName");
+      var licCode = GetLicenceCode(productName, appVer, userName);
 
       return regLicCode == licCode;
     }
 
-    public static void Register(string productName, Version appVer, string licCode)
+    public static void Register(string productName, Version appVer, string userName, string licCode)
     {
       // all license code (and user names) are saved to HKLM
       var root = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
@@ -59,9 +61,10 @@ namespace EllieWare.Licensing
       var productLicense = product.OpenSubKey("License", true) ?? product.CreateSubKey("License");
 
       productLicense.SetValue("Code", licCode);
+      productLicense.SetValue("UserName", userName);
     }
 
-    public static void Unregister(string productName, Version appVer)
+    public static void Unregister(string productName, Version appVer, string userName)
     {
       var root = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
       var ellieWare = root.OpenSubKey(RegistryKey, true);
@@ -71,9 +74,9 @@ namespace EllieWare.Licensing
     }
 
     // products are licensed on major version number
-    internal static string GetLicenceCode(string productName, Version appVer)
+    internal static string GetLicenceCode(string productName, Version appVer, string userName)
     {
-      var data = Encoding.ASCII.GetBytes(productName + appVer.Major.ToString(CultureInfo.InvariantCulture));
+      var data = Encoding.ASCII.GetBytes(productName + userName + appVer.Major.ToString(CultureInfo.InvariantCulture));
       data = System.Security.Cryptography.SHA1.Create().ComputeHash(data);
 
       return Convert.ToBase64String(data);
