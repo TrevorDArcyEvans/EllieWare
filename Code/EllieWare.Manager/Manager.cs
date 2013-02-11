@@ -207,9 +207,16 @@ namespace EllieWare.Manager
 
     private void CmdHelp_Click(object sender, EventArgs e)
     {
+      // TODO   help for RobotWare plugins
+      // help file lives next to assy
+      var assy = Assembly.GetExecutingAssembly();
+      var assyPath = assy.Location;
+      var assyDir = Path.GetDirectoryName(assyPath);
+      var helpFilePath = Path.Combine(assyDir, "EllieWare.RobotWare.chm");
+
       // create an invisible form as help window parent,
       // so help file is not topmost
-      Help.ShowHelp(new Form(), "EllieWare.RobotWare.chm");
+      Help.ShowHelp(new Form(), helpFilePath);
     }
 
     private void FileOpRename_Click(object sender, EventArgs e)
