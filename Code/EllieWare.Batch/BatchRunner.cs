@@ -84,6 +84,20 @@ namespace EllieWare.Batch
       }
     }
 
+    public override bool CanRun
+    {
+      get
+      {
+        var retVal = base.CanRun && mRoot.IsLicensed;
+        if (!retVal)
+        {
+          mCallback.Log(LogLevel.Critical, "Batch capability is only available to licensed users");
+        }
+
+        return retVal;
+      }
+    }
+
     public override bool Run()
     {
       var factories = Utils.GetFactories();
