@@ -19,5 +19,49 @@
 
   <h1>Batch Operations</h1>
 
+  <i>Batch operations</i> combines the ideas of <a href="Parameters.html"><i>parameters</i></a>
+  and running other specifications.  It allows you to run a series of specifications, with
+  the <a href="Parameters.html"><i>parameters</i></a> coming from:<p>
+
+  <ul>
+    <li>files in a directory</li>
+    <li>lines in a text file</li>
+  </ul><p>
+
+  For example, this can be used to perform the same series of operations on all
+  files in a directory:<p>
+  <ul>
+    <li>resize image file</li>
+    <li>convert image file to grayscale</li>
+    <li>convert image file to a different format</li>
+    <li>move converted image file</li>
+  </ul><p>
+
+  To add a <i>batch operation</i>, add a <i>step</i> to your <i>specification</i> and
+  select <i>Batch</i> from the <i>Category</i> dropdown.  There should only be one
+  <i>step</i> listed.<p>
+
+  The configuration user interface for <i>batch operation</i> allows you to:<p>
+
+  <ul>
+    <li>add/remove and reorder other <i>specifications</i></li>
+    <li>select a directory or file for the batch parameters</li>
+  </ul><p>
+
+  Once you have added other <i>specifications</i>, when you edit one of the
+  specifications, additional context menu items are available:<p>
+
+  <ul>
+    <li><b>Batch Parameter</b></li><br>
+    [Directory] name of file including extension eg MyImage.png<br>
+    [File] line of text from file eg c:\Documents\MyDocuments\MyImage.png<br>
+    <p>
+    <li><b>Batch Parameter [Directory]</b></li><br>
+    [Directory] fully qualified path to directory not including trailing backslash eg c:\Documents\MyDocuments<br>
+    <p>
+    <li><b>Batch Parameter [FileName]</b></li><br>
+    [Directory] name of file not including extension eg MyImage<br>
+  </ul><p>
+
 </body>
 </html>
