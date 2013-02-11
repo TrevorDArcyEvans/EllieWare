@@ -43,7 +43,8 @@ namespace EllieWare.Batch
       {
         return new[]
                      {
-                       "Macro"
+                       "Macro",
+                       "Batch"
                      };
       }
     }
