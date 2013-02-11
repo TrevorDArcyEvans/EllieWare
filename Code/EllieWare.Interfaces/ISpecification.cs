@@ -7,22 +7,21 @@
 //
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using EllieWare.Interfaces;
 
-namespace EllieWare.Common
+namespace EllieWare.Interfaces
 {
   /// <summary>
-  /// A <seealso cref="IParameterManager"/> and a series of <seealso cref="IRunnable"/> steps which are serializable
+  /// A <see cref="IParameterManager"/> and a series of <see cref="IRunnable"/> steps which are serializable
   /// </summary>
   public interface ISpecification : IXmlSerializable
   {
     /// <summary>
-    /// A <seealso cref="IParameterManager"/> from which each <seealso cref="IRunnable"/> step can get its <seealso cref="ISerializableParameter"/>
+    /// A <see cref="IParameterManager"/> from which each <see cref="IRunnable"/> step can get its <see cref="ISerializableParameter"/>
     /// </summary>
     IParameterManager ParameterManager { get; }
 
     /// <summary>
-    /// A series of <seealso cref="IRunnable"/> steps which are run in order
+    /// A series of <see cref="IRunnable"/> steps which are run in order
     /// </summary>
     List<IRunnable> Steps { get; }
   }
