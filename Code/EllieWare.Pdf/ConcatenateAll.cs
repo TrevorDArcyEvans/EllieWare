@@ -22,7 +22,7 @@ namespace EllieWare.Pdf
     public ConcatenateAll(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.DirectoryFile)
     {
-      SetDestinationFileSelectorFilter(Utils.PdfFilesFilter);
+      SetDestinationFileSelectorFilter(FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary
