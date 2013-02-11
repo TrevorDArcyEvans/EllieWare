@@ -70,13 +70,11 @@ namespace EllieWare.Manager
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
-        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version,dlg.UserName.Text, dlg.LicenseCode.Text);
+        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version, dlg.UserName.Text, dlg.LicenseCode.Text);
 
         var isLicensed = mRoot.IsLicensed;
         var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                             "  " + mRoot.ApplicationName + Environment.NewLine +
-                                             "to:" + Environment.NewLine +
-                                             "  " + dlg.UserName
+                                             "  " + mRoot.ApplicationName
                                   : "Information incorrect - product not registered");
         MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
       }
@@ -85,7 +83,7 @@ namespace EllieWare.Manager
     private string GetSelectedSpecificationPath()
     {
       var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
-      var retVal = Path.ChangeExtension(pathNoExtn, Utils.MacroFileExtension);
+      var retVal = Path.ChangeExtension(pathNoExtn, FileExtensions.MacroFileExtension);
 
       return retVal;
     }
@@ -224,7 +222,7 @@ namespace EllieWare.Manager
       }
 
       var filePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
-      var filePath = Path.ChangeExtension(filePathNoExtn, Utils.MacroFileExtension);
+      var filePath = Path.ChangeExtension(filePathNoExtn, FileExtensions.MacroFileExtension);
 
       if (File.Exists(filePath))
       {

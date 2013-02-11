@@ -21,7 +21,7 @@ namespace EllieWare.SpaceClaim
     public ExportToPdf(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.PdfFilesFilter);
+      SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary
@@ -37,9 +37,9 @@ namespace EllieWare.SpaceClaim
     protected override bool DoRun()
     {
       var fileName = SourceFilePathResolvedValue;
-      if (!fileName.ToLowerInvariant().EndsWith(Utils.PdfFileExtension))
+      if (!fileName.ToLowerInvariant().EndsWith(FileExtensions.PdfFileExtension))
       {
-        fileName = Path.ChangeExtension(fileName, Utils.PdfFileExtension);
+        fileName = Path.ChangeExtension(fileName, FileExtensions.PdfFileExtension);
       }
       Window.ActiveWindow.ExportDrawingSheet(DrawingSheetWindowExportFormat.Pdf, fileName);
 

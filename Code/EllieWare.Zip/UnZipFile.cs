@@ -16,13 +16,16 @@ namespace EllieWare.Zip
     public UnZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
+      SetSourceFileSelectorFilter(FileExtensions.ZipFileExtension);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Uncompress {0} to {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+        var descrip = string.Format("Uncompress {0} to {1}",
+                        SourceFilePathResolvedValue,
+                        DestinationFilePathResolvedValue);
 
         return descrip;
       }

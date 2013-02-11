@@ -64,6 +64,7 @@
       <DependentUpon>Adder.cs</DependentUpon>
     </Compile>
     <Compile Include="BatchParameter.cs" />
+    <Compile Include="FileExtensions.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="SerializableBatchParameter.cs" />
     <Compile Include="DirectoryBatchParameter.cs" />

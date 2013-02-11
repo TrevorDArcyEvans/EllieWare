@@ -47,11 +47,9 @@ namespace EllieWare.LicenseGenerator
     private void CmdIsRegistered_Click(object sender, EventArgs e)
     {
       var isLicensed = Licensing.LicenseManager.IsLicensed(Product.Text, ApplicationVersion);
-      var prodUserName = Licensing.LicenseManager.GetUserName(Product.Text);
 
       MessageBox.Show(Product.Text + Environment.NewLine +
-                      "    is " + (isLicensed ? string.Empty : "not ") + "licensed to " + Environment.NewLine +
-                      prodUserName,
+                      "    is " + (isLicensed ? string.Empty : "not ") + "licensed",
                       "License Status");
     }
 
@@ -64,3 +62,4 @@ namespace EllieWare.LicenseGenerator
     }
   }
 }
+
