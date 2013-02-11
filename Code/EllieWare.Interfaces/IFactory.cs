@@ -64,7 +64,6 @@ namespace EllieWare.Interfaces
     /// <param name="callback">logging - see <see cref="ICallback"/></param>
     /// <param name="mgr">parameter manager - see <see cref="IParameterManager"/></param>
     /// <returns>A fully constructed <see cref="IRunnable"/> or <see cref="IMutableRunnable"/></returns>
-    /// <remarks><paramref name="root"/> depends on the application domain/s and can be null - BEWARE!</remarks>
     IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
   }
 }

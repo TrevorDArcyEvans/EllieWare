@@ -86,7 +86,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UnprotectFactory.cs" />
-    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
