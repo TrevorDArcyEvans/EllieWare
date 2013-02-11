@@ -12,11 +12,20 @@
 
   <h1>API</h1>
   <h2>Supported Interfaces</h2>
-  <br>
-  <br>
-  <hr>
-  <br>
 
-  <br>
+  There are only two interfaces you need to implement to create your own RobotWare plugin:<p>
+  <ul>
+    <li><b>IFactory</b></li><br>
+    A lightweight interface which tells RobotWare only enough information for it
+    to display an option for the plugin to the user
+    <li><b>IRunnable</b> or <b>IMutableRunnable</b></li><br>
+    Most of the work will be done in this interface.  Implement <b>IMutableRunnable</b>
+    if your plugin has settings which the user can change through the plugin
+    user interface.
+  </ul>
+  <p>
+
+  For more information, see the <b>EllieWare.Interfaces.Docs.chm</b> help file.
+
 </body>
 </html>
