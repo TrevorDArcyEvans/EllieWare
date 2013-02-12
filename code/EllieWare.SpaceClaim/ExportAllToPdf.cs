@@ -22,7 +22,7 @@ namespace EllieWare.SpaceClaim
     public ExportAllToPdf(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothDirectory)
     {
-      SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary
@@ -46,7 +46,7 @@ namespace EllieWare.SpaceClaim
         using (new AutoWindow(Window.Create(drawingSheet)))
         {
           var drawingFileNameNoExtn = String.Format("{0} - Sheet {1}", fileName, idx);
-          var drawingFileName = Path.ChangeExtension(drawingFileNameNoExtn, FileExtensions.PdfFileExtension);
+          var drawingFileName = Path.ChangeExtension(drawingFileNameNoExtn, Common.FileExtensions.PdfFileExtension);
           var outputFilePath = Path.Combine(SourceFilePathResolvedValue, drawingFileName);
 
           Window.ActiveWindow.ExportDrawingSheet(DrawingSheetWindowExportFormat.Pdf, outputFilePath);
