@@ -132,7 +132,10 @@ namespace EllieWare.Manager
     {
       mSpecs.Items.Clear();
 
-      var filteredSpecsNoExten = from specNoExtn in mRoot.Specifications where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
+      var filteredSpecsNoExten = from specWithExtn in mRoot.Specifications 
+                                 let specNoExtn = Path.GetFileNameWithoutExtension(specWithExtn)
+                                 where specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt) 
+                                 select new ListViewItem(specNoExtn);
       mSpecs.Items.AddRange(filteredSpecsNoExten.ToArray());
     }
 

@@ -7,6 +7,7 @@
 //
 using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
@@ -26,7 +27,7 @@ namespace EllieWare.Common
       this()
     {
       mRoot = root;
-      mFileNames.DataSource = mRoot.Specifications.ToList();
+      mFileNames.DataSource = (from specWithExtn in mRoot.Specifications select Path.GetFileNameWithoutExtension(specWithExtn)).ToList();
     }
 
     public string FileName
@@ -48,7 +49,7 @@ namespace EllieWare.Common
         return;
       }
 
-      var lowerCaseFileNames = from thisFileName in mRoot.Specifications select thisFileName.ToLower(CultureInfo.CurrentCulture);
+      var lowerCaseFileNames = from thisFileName in mRoot.Specifications select Path.GetFileNameWithoutExtension(thisFileName).ToLower(CultureInfo.CurrentCulture);
       if (lowerCaseFileNames.Contains(FileName.ToLower(CultureInfo.CurrentCulture)))
       {
         var msg = string.Format("{0} already exists.\nDo you want to overwrite?", FileName);
