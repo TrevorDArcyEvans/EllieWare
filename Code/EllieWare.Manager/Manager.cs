@@ -18,6 +18,7 @@ using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using EllieWare.Support;
+using FileExtensions = EllieWare.Interfaces.FileExtensions;
 
 namespace EllieWare.Manager
 {

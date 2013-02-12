@@ -23,7 +23,7 @@ namespace EllieWare.Pdf
     public Split(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
-      SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary

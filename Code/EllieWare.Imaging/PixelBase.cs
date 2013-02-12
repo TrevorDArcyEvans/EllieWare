@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Simplicode.Imaging.Filters;
+using FileExtensions = EllieWare.Common.FileExtensions;
 
 namespace EllieWare.Imaging
 {

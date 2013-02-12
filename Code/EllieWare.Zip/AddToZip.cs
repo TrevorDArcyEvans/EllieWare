@@ -15,8 +15,8 @@ namespace EllieWare.Zip
     public AddToZip(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(FileExtensions.AllFilesFilter);
-      SetDestinationFileSelectorFilter(FileExtensions.ZipFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.AllFilesFilter);
+      SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
     }
 
     public override string Summary

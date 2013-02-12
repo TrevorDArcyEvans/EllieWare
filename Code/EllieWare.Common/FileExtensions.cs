@@ -10,8 +10,6 @@ namespace EllieWare.Common
 {
   public class FileExtensions
   {
-    public const string MacroFileExtension = ".mxml";
-
     public const string AllFilesFilter = "All files (*.*)|*.*";
 
     private const string InternalPdfFilesFilter = 

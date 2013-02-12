@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.IO;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -16,8 +15,8 @@ namespace EllieWare.Zip
     public ZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(FileExtensions.AllFilesFilter);
-      SetDestinationFileSelectorFilter(FileExtensions.ZipFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.AllFilesFilter);
+      SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
     }
 
     public override string Summary

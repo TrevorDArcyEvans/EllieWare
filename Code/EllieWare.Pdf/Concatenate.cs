@@ -34,9 +34,9 @@ namespace EllieWare.Pdf
       SetSourceLabel("File 1:");
       SetDestinationLabel("File 2:");
 
-      SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
-      SetDestinationFileSelectorFilter(FileExtensions.PdfFilesFilter);
-      OutputFileSelector.Filter = FileExtensions.PdfFilesFilter;
+      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      SetDestinationFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      OutputFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
     }
 
     public override void ReadXml(XmlReader reader)

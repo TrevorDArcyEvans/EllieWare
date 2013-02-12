@@ -37,7 +37,7 @@ namespace EllieWare.Pdf
         Printers.Items.Add(printer);
       }
 
-      SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary

@@ -27,8 +27,8 @@ namespace EllieWare.Imaging
 
       ResizerMain.BringToFront();
 
-      SetSourceFileSelectorFilter(FileExtensions.ImageFilesFilter);
-      SetDestinationFileSelectorFilter(FileExtensions.ImageFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
+      SetDestinationFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
     }
 
     public override void ReadXml(XmlReader reader)

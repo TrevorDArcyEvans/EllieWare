@@ -59,7 +59,7 @@ namespace EllieWare.Macro
     {
       var factories = Utils.GetFactories();
       var specFilePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, MacroFileName.ResolvedValue);
-      var specFilePath = Path.ChangeExtension(specFilePathNoExtn, FileExtensions.MacroFileExtension);
+      var specFilePath = Path.ChangeExtension(specFilePathNoExtn, Interfaces.FileExtensions.MacroFileExtension);
       var spec = new Specification(mRoot, mCallback, factories);
       using (var fs = new FileStream(specFilePath, FileMode.Open))
       {

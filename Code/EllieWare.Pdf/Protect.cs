@@ -30,8 +30,8 @@ namespace EllieWare.Pdf
 
       ProtectMain.BringToFront();
 
-      SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
-      SetDestinationFileSelectorFilter(FileExtensions.PdfFilesFilter);
+      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      SetDestinationFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override void ReadXml(XmlReader reader)

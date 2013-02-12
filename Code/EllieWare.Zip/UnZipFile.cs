@@ -16,7 +16,7 @@ namespace EllieWare.Zip
     public UnZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
-      SetSourceFileSelectorFilter(FileExtensions.ZipFileExtension);
+      SetSourceFileSelectorFilter(Common.FileExtensions.ZipFileExtension);
     }
 
     public override string Summary

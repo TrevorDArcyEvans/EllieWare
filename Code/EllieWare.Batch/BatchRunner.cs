@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using FileExtensions = EllieWare.Interfaces.FileExtensions;
 
 namespace EllieWare.Batch
 {
