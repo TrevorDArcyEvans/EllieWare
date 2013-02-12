@@ -2,6 +2,8 @@
 - MSBuild Community Tasks
 - Sandcastle Help File Builder
 - MS HTML Help Workshop
+- WiX
+- WiXedit
 
 - nUnit
 - Moq
