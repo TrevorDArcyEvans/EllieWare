@@ -139,7 +139,7 @@
                 <File Id="_D99D45BB0D3F2A0E66BFBABF53E55578" Name="EllieWare.Macro.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_D99D45BB0D3F2A0E66BFBABF53E55578" AssemblyApplication="_D99D45BB0D3F2A0E66BFBABF53E55578" DiskId="1" Source="..\EllieWare.Macro\bin\$(var.Configuration)\EllieWare.Macro.dll" />
               </Component>
               <Component Id="SpaceClaim.Api.V10.dll" Guid="{F5028140-5281-FE79-AD1F-2ADCAB35B459}">
-                <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="..\..\..\..\..\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
+                <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="c:\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
               </Component>
               <Component Id="EULA.rtf" Guid="{121300F3-5F43-4547-A637-1F59F3FF03C0}">
                 <File Id="_E31C07D35B2843AA85295C0BA59930F7" Name="EULA.rtf" KeyPath="yes" DiskId="1" Source="EULA.rtf" />
