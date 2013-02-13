@@ -51,7 +51,7 @@ namespace EllieWare.Common
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);
 
       // read work group folder out of registry for the moment
-      var root = Registry.LocalMachine.OpenSubKey("SOFTWARE");
+      var root = Registry.CurrentUser.OpenSubKey("SOFTWARE");
       var ellieWare = root.OpenSubKey(RegistryKey);
       if (ellieWare == null)
       {
