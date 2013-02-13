@@ -32,10 +32,11 @@ namespace AutoUpdaterDotNET
 
     private static RemindLaterFormat _remindLaterFormat;
 
-    public static void Start(String appCast, string appTitle = null, bool letUserSelectRemindLater = true, int remindLaterAt = 1, RemindLaterFormat remindLaterFormat = RemindLaterFormat.Days)
+    public static void Start(String appCast, string appTitle, Version installedVersion, bool letUserSelectRemindLater = true, int remindLaterAt = 1, RemindLaterFormat remindLaterFormat = RemindLaterFormat.Days)
     {
       _appCastUrl = appCast;
       _appTitle = appTitle;
+      _installedVersion = installedVersion;
       _remindLaterAt = remindLaterAt;
       _remindLaterFormat = remindLaterFormat;
       _letUserSelectRemindLater = letUserSelectRemindLater;
@@ -83,8 +84,6 @@ namespace AutoUpdaterDotNET
           }
         }
       }
-
-      _installedVersion = Assembly.GetEntryAssembly().GetName().Version;
 
       WebRequest webRequest = WebRequest.Create(_appCastUrl);
 

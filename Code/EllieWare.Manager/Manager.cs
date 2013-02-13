@@ -49,7 +49,7 @@ namespace EllieWare.Manager
       const string EllieWare = @"http://www.EllieWare.com";
       var appCast = mRoot.ApplicationName.Replace(' ', '_') + ".xml";
       var appCastUrl = EllieWare + @"/" + appCast;
-      AutoUpdater.Start(appCastUrl, mRoot.ApplicationName);
+      AutoUpdater.Start(appCastUrl, mRoot.ApplicationName, mRoot.Version);
 
       RefreshSpecificationsList();
       UpdateButtons();

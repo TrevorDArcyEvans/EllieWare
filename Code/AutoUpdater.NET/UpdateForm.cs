@@ -11,6 +11,7 @@ namespace AutoUpdaterDotNET
     private readonly string _downloadUrl;
 
     private readonly Version _currentVersion;
+    private readonly Version _installedVersion;
 
     private int _remindLaterAt;
 
@@ -34,6 +35,7 @@ namespace AutoUpdaterDotNET
       _appTitle = appTitle;
       _downloadUrl = downloadUrl;
       _currentVersion = currentVersion;
+      _installedVersion = installedVersion;
       _remindLaterAt = remindLaterAt;
       _remindLaterFormat = remindLaterFormat;
       _appCast = appCast;
@@ -152,7 +154,7 @@ namespace AutoUpdaterDotNET
     private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
     {
       _timer.Stop();
-      AutoUpdater.Start(_appCast, _appTitle, _letUserSelectRemindLater, _remindLaterAt, _remindLaterFormat);
+      AutoUpdater.Start(_appCast, _appTitle, _installedVersion,_letUserSelectRemindLater, _remindLaterAt, _remindLaterFormat);
     }
   }
 }
