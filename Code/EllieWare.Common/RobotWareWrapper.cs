@@ -33,8 +33,31 @@ namespace EllieWare.Common
       }
     }
     public string UserSpecificationFolder { get; private set; }
-    public string WorkGroupSpecificationFolder { get; private set; }
+
+    public string WorkGroupSpecificationFolder
+    {
+      get
+      {
+        // read work group folder out of registry for the moment
+        var root = Registry.CurrentUser.OpenSubKey("SOFTWARE");
+        var ellieWare = root.OpenSubKey(RegistryKey);
+        if (ellieWare == null)
+        {
+          return null;
+        }
+
+        var product = ellieWare.OpenSubKey(ApplicationName);
+        if (product == null)
+        {
+          return null;
+        }
+
+        return (string)product.GetValue("WorkGroupSpecificationFolder");
+      }
+    }
+
     public string ApplicationName { get; private set; }
+
     public Version Version
     {
       get
@@ -49,22 +72,6 @@ namespace EllieWare.Common
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);
-
-      // read work group folder out of registry for the moment
-      var root = Registry.CurrentUser.OpenSubKey("SOFTWARE");
-      var ellieWare = root.OpenSubKey(RegistryKey);
-      if (ellieWare == null)
-      {
-        return;
-      }
-
-      var product = ellieWare.OpenSubKey(appName);
-      if (product == null)
-      {
-        return;
-      }
-
-      WorkGroupSpecificationFolder = (string)product.GetValue("WorkGroupSpecificationFolder");
     }
 
     public IEnumerable<string> Specifications
