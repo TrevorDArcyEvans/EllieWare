@@ -197,24 +197,24 @@
     <Compile Include="net\HostNameResolver.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="util\debug\Appender.cs">
+    <Compile Include="util\debugging\Appender.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="util\debug\FileAppender.cs">
+    <Compile Include="util\debugging\FileAppender.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="util\debug\Level.cs">
+    <Compile Include="util\debugging\Level.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="util\debug\Logger.cs">
+    <Compile Include="util\debugging\Logger.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="util\debug\MemoryAppender.cs" />
-    <Compile Include="util\debug\RollingFileAppender.cs" />
-    <Compile Include="util\debug\StandardOutputAppender.cs">
+    <Compile Include="util\debugging\MemoryAppender.cs" />
+    <Compile Include="util\debugging\RollingFileAppender.cs" />
+    <Compile Include="util\debugging\StandardOutputAppender.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="util\debug\TraceAppender.cs">
+    <Compile Include="util\debugging\TraceAppender.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="util\PathUtil.cs" />
