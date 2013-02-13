@@ -137,6 +137,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RobotWare for Windows", "Ro
 		{B041F5F3-FA67-4510-B372-71C8A5EA6373} = {B041F5F3-FA67-4510-B372-71C8A5EA6373}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceClaimSampleAddin", "SpaceClaimSampleAddin\SpaceClaimSampleAddin.csproj", "{25CB14B3-3A63-4B29-8364-778D49623740}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -504,6 +506,16 @@ Global
 		{EC18ABBD-0348-40FC-9037-0A89621CD4F4}.Release|Mixed Platforms.Build.0 = Release|x86
 		{EC18ABBD-0348-40FC-9037-0A89621CD4F4}.Release|x86.ActiveCfg = Release|x86
 		{EC18ABBD-0348-40FC-9037-0A89621CD4F4}.Release|x86.Build.0 = Release|x86
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{25CB14B3-3A63-4B29-8364-778D49623740}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
