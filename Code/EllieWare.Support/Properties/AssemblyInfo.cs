@@ -18,3 +18,4 @@ using EllieWare.Interfaces;
 [assembly: LicenseInformation("SplitButton.License.txt")]
 [assembly: LicenseInformation("WindowSettings_License.txt")]
 [assembly: LicenseInformation("SendFileTo_CPOL.txt")]
+[assembly: LicenseInformation("ImagedComboBox.ImagedComboBox_CPOL.txt")]

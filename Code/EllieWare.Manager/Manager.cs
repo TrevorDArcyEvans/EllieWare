@@ -83,7 +83,10 @@ namespace EllieWare.Manager
 
     private string GetSelectedSpecificationPath()
     {
-      var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
+      var specFolder = mSpecs.SelectedItems[0].ImageIndex == 0
+                         ? mRoot.UserSpecificationFolder
+                         : mRoot.WorkGroupSpecificationFolder;
+      var pathNoExtn = Path.Combine(specFolder, mSpecs.SelectedItems[0].Text);
       var retVal = Path.ChangeExtension(pathNoExtn, FileExtensions.MacroFileExtension);
 
       return retVal;
@@ -132,16 +135,28 @@ namespace EllieWare.Manager
     {
       mSpecs.Items.Clear();
 
-      var filteredSpecsNoExten = from specWithExtn in mRoot.Specifications 
-                                 let specNoExtn = Path.GetFileNameWithoutExtension(specWithExtn)
-                                 where specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt) 
-                                 select new ListViewItem(specNoExtn);
-      mSpecs.Items.AddRange(filteredSpecsNoExten.ToArray());
+      var filteredSpecsWithExten = from specWithExtn in mRoot.Specifications
+                                   let specNoExtn = Path.GetFileNameWithoutExtension(specWithExtn)
+                                   where specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)
+                                   select specWithExtn;
+
+
+      foreach (var specWithExtn in filteredSpecsWithExten)
+      {
+        var imgIndex = Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, specWithExtn) ? 0 : 1;
+        var lvi = new ListViewItem(Path.GetFileNameWithoutExtension(specWithExtn), imgIndex);
+        mSpecs.Items.Add(lvi);
+      }
     }
 
     private void UpdateButtons()
     {
-      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = FileOperations.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = FileOperations.Enabled = CmdRun.Enabled = mSpecs.SelectedItems.Count > 0;
+
+      if (mSpecs.SelectedItems.Count > 0)
+      {
+        CmdDelete.Enabled = FileOperations.Enabled = Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, GetSelectedSpecificationPath());
+      } 
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)

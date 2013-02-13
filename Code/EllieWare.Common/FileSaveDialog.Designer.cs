@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+using ComboxExtended;
+
 namespace EllieWare.Common
 {
   partial class FileSaveDialog
@@ -35,11 +37,13 @@ namespace EllieWare.Common
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Button CmdCancel;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileSaveDialog));
-      this.mFileNames = new System.Windows.Forms.ComboBox();
       this.CmdOK = new System.Windows.Forms.Button();
+      this.mImages = new System.Windows.Forms.ImageList(this.components);
+      this.mFileNames = new ComboxExtended.ImagedComboBox();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       CmdCancel = new System.Windows.Forms.Button();
       tableLayoutPanel1.SuspendLayout();
@@ -65,18 +69,6 @@ namespace EllieWare.Common
       tableLayoutPanel1.Size = new System.Drawing.Size(399, 59);
       tableLayoutPanel1.TabIndex = 3;
       // 
-      // mFileNames
-      // 
-      this.mFileNames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      tableLayoutPanel1.SetColumnSpan(this.mFileNames, 3);
-      this.mFileNames.FormattingEnabled = true;
-      this.mFileNames.Location = new System.Drawing.Point(3, 3);
-      this.mFileNames.Name = "mFileNames";
-      this.mFileNames.Size = new System.Drawing.Size(393, 21);
-      this.mFileNames.TabIndex = 0;
-      this.mFileNames.TextChanged += new System.EventHandler(this.FileNames_TextChanged);
-      // 
       // CmdCancel
       // 
       CmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -98,6 +90,26 @@ namespace EllieWare.Common
       this.CmdOK.TabIndex = 1;
       this.CmdOK.Text = "OK";
       this.CmdOK.UseVisualStyleBackColor = true;
+      // 
+      // mImages
+      // 
+      this.mImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("mImages.ImageStream")));
+      this.mImages.TransparentColor = System.Drawing.Color.Transparent;
+      this.mImages.Images.SetKeyName(0, "house_16x16.png");
+      this.mImages.Images.SetKeyName(1, "clients_16x16.png");
+      // 
+      // mFileNames
+      // 
+      this.mFileNames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      tableLayoutPanel1.SetColumnSpan(this.mFileNames, 3);
+      this.mFileNames.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+      this.mFileNames.FormattingEnabled = true;
+      this.mFileNames.Location = new System.Drawing.Point(3, 3);
+      this.mFileNames.Name = "mFileNames";
+      this.mFileNames.Size = new System.Drawing.Size(393, 21);
+      this.mFileNames.TabIndex = 0;
+      this.mFileNames.TextChanged += new System.EventHandler(this.FileNames_TextChanged);
       // 
       // FileSaveDialog
       // 
@@ -124,7 +136,8 @@ namespace EllieWare.Common
 
     #endregion
 
-    private System.Windows.Forms.ComboBox mFileNames;
+    private ImagedComboBox mFileNames;
     private System.Windows.Forms.Button CmdOK;
+    private System.Windows.Forms.ImageList mImages;
   }
 }

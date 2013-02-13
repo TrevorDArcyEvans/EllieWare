@@ -7,6 +7,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -66,6 +67,11 @@ namespace EllieWare.Common
     public static void Wait(int milliSecs)
     {
       Wait(new TimeSpan(0, 0, 0,0, milliSecs));
+    }
+
+    public static bool IsLocalSpecification(string userFolder, string filePath)
+    {
+      return filePath.ToLower(CultureInfo.CurrentCulture).StartsWith(userFolder.ToLower(CultureInfo.CurrentCulture));
     }
   }
 }

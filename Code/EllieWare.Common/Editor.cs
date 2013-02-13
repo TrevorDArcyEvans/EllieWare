@@ -25,7 +25,7 @@ namespace EllieWare.Common
     private readonly IHost mHost;
     private readonly IRobotWare mRoot;
     private readonly ISpecification mSpecification;
-    private string mFilePath;
+    private string mFilePath = string.Empty;
     private readonly Adder mAddDlg;
     private readonly List<IFactory> mFactories;
 
@@ -400,7 +400,12 @@ namespace EllieWare.Common
         mSteps.SelectedIndexChanged += Steps_SelectedIndexChanged;
       }
 
-      CmdSave.Enabled = true;
+      CmdSave.Enabled = IsSaveableFile(mFilePath);
+    }
+
+    private bool IsSaveableFile(string filePath)
+    {
+      return string.IsNullOrEmpty(filePath) || Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, filePath);
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
@@ -420,7 +425,7 @@ namespace EllieWare.Common
       }
 
       mSpecification.Steps.Add(step);
-      CmdSave.Enabled = true;
+      CmdSave.Enabled = IsSaveableFile(mFilePath);
 
       UpdateUserInterface();
 
@@ -436,7 +441,7 @@ namespace EllieWare.Common
       }
 
       mSpecification.Steps.RemoveAt(selIndex);
-      CmdSave.Enabled = true;
+      CmdSave.Enabled = IsSaveableFile(mFilePath);
       mStepsContainer.Panel2.Controls.Clear();
       UpdateUserInterface();
     }
@@ -452,7 +457,7 @@ namespace EllieWare.Common
       var tmp = mSpecification.Steps[selIndex];
       mSpecification.Steps[selIndex] = mSpecification.Steps[selIndex - 1];
       mSpecification.Steps[selIndex - 1] = tmp;
-      CmdSave.Enabled = true;
+      CmdSave.Enabled = IsSaveableFile(mFilePath);
 
       UpdateUserInterface();
 
@@ -470,7 +475,7 @@ namespace EllieWare.Common
       var tmp = mSpecification.Steps[selIndex];
       mSpecification.Steps[selIndex] = mSpecification.Steps[selIndex + 1];
       mSpecification.Steps[selIndex + 1] = tmp;
-      CmdSave.Enabled = true;
+      CmdSave.Enabled = IsSaveableFile(mFilePath);
 
       UpdateUserInterface();
 
@@ -484,7 +489,7 @@ namespace EllieWare.Common
       {
         return;
       }
-      CmdSave.Enabled = true;
+      CmdSave.Enabled = IsSaveableFile(mFilePath);
 
       var paramMgr = mSpecification.ParameterManager;
 

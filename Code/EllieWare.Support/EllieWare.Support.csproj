@@ -55,6 +55,11 @@
     <Compile Include="AutoFile.cs" />
     <Compile Include="AutoWaitCursor.cs" />
     <Compile Include="CloseButton.cs" />
+    <Compile Include="ImagedComboBox\ComboBoxItem.cs" />
+    <Compile Include="ImagedComboBox\ComboCollection.cs" />
+    <Compile Include="ImagedComboBox\ImagedComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ImageListBox\ImageListBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -89,6 +94,7 @@
     <EmbeddedResource Include="WindowSettings_License.txt" />
     <EmbeddedResource Include="SplitButton\License.txt" />
     <EmbeddedResource Include="SendFileTo_CPOL.txt" />
+    <EmbeddedResource Include="ImagedComboBox\ImagedComboBox_CPOL.txt" />
     <Content Include="WaterMarkTextBox\CPOL.htm" />
     <EmbeddedResource Include="WaterMarkTextBox\CPOL.txt" />
   </ItemGroup>

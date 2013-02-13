@@ -8,13 +8,23 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using EllieWare.Interfaces;
+using Microsoft.Win32;
 
 namespace EllieWare.Common
 {
   public class RobotWareWrapper : IRobotWare
   {
+    // HKCU
+    //  SOFTWARE
+    //    EllieWare
+    //      [ProductName]
+    //        {WorkGroupSpecificationFolder} --> WorkGroupSpecificationFolder
+
+    private const string RegistryKey = "EllieWare";
+
     public bool IsLicensed
     {
       get
@@ -23,6 +33,7 @@ namespace EllieWare.Common
       }
     }
     public string UserSpecificationFolder { get; private set; }
+    public string WorkGroupSpecificationFolder { get; private set; }
     public string ApplicationName { get; private set; }
     public Version Version
     {
@@ -38,15 +49,38 @@ namespace EllieWare.Common
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);
+
+      // read work group folder out of registry for the moment
+      var root = Registry.LocalMachine.OpenSubKey("SOFTWARE");
+      var ellieWare = root.OpenSubKey(RegistryKey);
+      if (ellieWare == null)
+      {
+        return;
+      }
+
+      var product = ellieWare.OpenSubKey(appName);
+      if (product == null)
+      {
+        return;
+      }
+
+      WorkGroupSpecificationFolder = (string)product.GetValue("WorkGroupSpecificationFolder");
     }
 
     public IEnumerable<string> Specifications
     {
       get
       {
-        var allSpecsWithExtn = Directory.EnumerateFiles(UserSpecificationFolder, "*" + Interfaces.FileExtensions.MacroFileExtension);
+        var allUserSpecsWithExtn = Directory.EnumerateFiles(UserSpecificationFolder, "*" + Interfaces.FileExtensions.MacroFileExtension);
+        var retVal = allUserSpecsWithExtn.ToList();
 
-        return allSpecsWithExtn;
+        if (!string.IsNullOrEmpty(WorkGroupSpecificationFolder))
+        {
+          var allWorkGroupWithExtn = Directory.EnumerateFiles(WorkGroupSpecificationFolder, "*" + Interfaces.FileExtensions.MacroFileExtension);
+          retVal.AddRange(allWorkGroupWithExtn);
+        }
+
+        return retVal;
       }
     }
   }

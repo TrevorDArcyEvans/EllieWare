@@ -65,6 +65,7 @@ namespace EllieWare.Manager
       this.FileOpDelete = new System.Windows.Forms.ToolStripMenuItem();
       this.FileOpShow = new System.Windows.Forms.ToolStripMenuItem();
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
+      this.mImages = new System.Windows.Forms.ImageList(this.components);
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -210,6 +211,7 @@ namespace EllieWare.Manager
       this.mSpecs.MultiSelect = false;
       this.mSpecs.Name = "mSpecs";
       this.mSpecs.Size = new System.Drawing.Size(613, 366);
+      this.mSpecs.SmallImageList = this.mImages;
       this.mSpecs.Sorting = System.Windows.Forms.SortOrder.Ascending;
       this.mSpecs.TabIndex = 1;
       this.mSpecs.UseCompatibleStateImageBehavior = false;
@@ -267,6 +269,13 @@ namespace EllieWare.Manager
       this.SearchBox.WaterMarkText = "Search...";
       this.SearchBox.TextChanged += new System.EventHandler(this.Search_TextChanged);
       // 
+      // mImages
+      // 
+      this.mImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("mImages.ImageStream")));
+      this.mImages.TransparentColor = System.Drawing.Color.Transparent;
+      this.mImages.Images.SetKeyName(0, "house_16x16.png");
+      this.mImages.Images.SetKeyName(1, "clients_16x16.png");
+      // 
       // Manager
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,5 +312,6 @@ namespace EllieWare.Manager
     private System.Windows.Forms.ToolStripMenuItem FileOpShow;
     private System.Windows.Forms.Button CmdHelp;
     private System.Windows.Forms.ToolStripMenuItem FileOpRename;
+    private System.Windows.Forms.ImageList mImages;
   }
 }

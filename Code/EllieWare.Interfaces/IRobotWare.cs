@@ -26,6 +26,12 @@ namespace EllieWare.Interfaces
     string UserSpecificationFolder { get; }
 
     /// <summary>
+    /// Fully qualified path to shared work group specifications folder on disk.
+    /// All specifications here will be read-only through the RobotWare application.
+    /// </summary>
+    string WorkGroupSpecificationFolder { get; }
+
+    /// <summary>
     /// Specific RobotWare application name eg 'RobotWare for Windows'
     /// </summary>
     string ApplicationName { get; }

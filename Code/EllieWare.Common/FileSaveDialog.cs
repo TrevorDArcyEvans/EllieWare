@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using ComboxExtended;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -27,7 +28,19 @@ namespace EllieWare.Common
       this()
     {
       mRoot = root;
-      mFileNames.DataSource = (from specWithExtn in mRoot.Specifications select Path.GetFileNameWithoutExtension(specWithExtn)).ToList();
+      var localSpecsWtihExtn = from specWithExtn in mRoot.Specifications
+                               where Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, specWithExtn)
+                               select specWithExtn;
+      foreach (var specWithExtn in localSpecsWtihExtn)
+      {
+        var img =
+          specWithExtn.ToLower(CultureInfo.CurrentCulture).StartsWith(
+            mRoot.UserSpecificationFolder.ToLower(CultureInfo.CurrentCulture))
+            ? mImages.Images[0]
+            : mImages.Images[1];
+        var item = new ComboBoxItem(Path.GetFileNameWithoutExtension(specWithExtn), img);
+        mFileNames.Items.Add(item);
+      }
     }
 
     public string FileName

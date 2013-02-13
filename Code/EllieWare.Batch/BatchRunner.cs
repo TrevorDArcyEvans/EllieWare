@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
@@ -37,14 +38,28 @@ namespace EllieWare.Batch
       mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
 
+    private Type BatchTypeResolver(Assembly assy, string typeName, bool ignoreCase)
+    {
+      var assyLoc = Assembly.GetExecutingAssembly().Location;
+      var assyDir = Path.GetDirectoryName(assyLoc);
+      var commonFilePath = Path.Combine(assyDir, "EllieWare.Common.dll");
+      var commonAssy = Assembly.LoadFile(commonFilePath);
+      var retVal = commonAssy.GetType(typeName, true, ignoreCase);
+
+      return retVal;
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       var specFileListStr = reader.GetAttribute("SpecificationFileNames");
       var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
       mSpecFileNames.AddRange(tempList);
 
+      // we used to record the Type.AssemblyQualifiedName but this is sensitive to the assembly version,
+      // so we just record the type and resolve the type ourselves since we know that all batch related
+      // parameters are in EllieWare.Common.dll
       var batchTypeStr = reader.GetAttribute("BatchType");
-      var batchType = Type.GetType(batchTypeStr);
+      var batchType = Type.GetType(batchTypeStr, null, BatchTypeResolver);
       mBatchParam = (ISerializableBatchParameter)Activator.CreateInstance(batchType);
       mBatchParam.ReadXml(reader);
 
@@ -62,8 +77,8 @@ namespace EllieWare.Batch
       var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
       writer.WriteAttributeString("SpecificationFileNames", specFileList);
 
-      var batchType = mBatchParam.GetType().AssemblyQualifiedName;
-      writer.WriteAttributeString("BatchType", batchType);
+      var batchType = mBatchParam.GetType();
+      writer.WriteAttributeString("BatchType", batchType.ToString());
       mBatchParam.WriteXml(writer);
     }
 
