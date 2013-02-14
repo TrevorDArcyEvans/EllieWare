@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
@@ -121,7 +122,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public bool Run()
+    private bool DoRun()
     {
       var activeWindow = Window.ActiveWindow;
       var singleSelection = Window.ActiveWindow.ActiveContext.SingleSelection;
@@ -172,12 +173,33 @@ namespace SpaceClaimSampleAddin
                                  Math.Round(area, 3),
                                  activeWindow.Document.Units.Length.Symbol);
 
-        sb.Append(areaText);
+        sb.AppendLine(areaText);
         num++;
       }
       MessageBox.Show(sb.ToString());
 
       return true;
+    }
+
+    public bool Run()
+    {
+      var evt = new AutoResetEvent(false);
+      var retVal = false;
+
+      WriteBlock.AppendTask(() =>
+      {
+        try
+        {
+          retVal = DoRun();
+        }
+        finally
+        {
+          evt.Set();
+        }
+      });
+
+      // allow 1 hour for timeout
+      return evt.WaitOne(60 * 60 * 1000) && retVal;
     }
 
     #endregion
