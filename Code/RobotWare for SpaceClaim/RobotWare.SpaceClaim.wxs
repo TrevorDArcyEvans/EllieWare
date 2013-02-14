@@ -41,6 +41,15 @@
             <Component Id="EllieWare.Interfaces.Docs.chm" Guid="3B34A99E-3463-4395-A690-8E1B1F07AADA">
                 <File DiskId="1" KeyPath="yes" Name="EllieWare.Interfaces.Docs.chm" Source="..\EllieWare.Interfaces.Docs\Help\EllieWare.Interfaces.Docs.chm" Id="EllieWare.Interfaces.Docs.chm" />
             </Component>
+            <Component Id="EULA.rtf" Guid="{121300F3-5F43-4547-A637-1F59F3FF03C0}">
+                <File Id="_E31C07D35B2843AA85295C0BA59930F7" Name="EULA.rtf" KeyPath="yes" DiskId="1" Source="EULA.rtf" />
+            </Component>
+            <Component Id="robot.ico" Guid="{D359241C-AEDC-2FED-A577-EA1FDEC1BBB3}">
+                <File Id="_4605BBDDC1214645A8F3E06BB9DF5182" Name="robot.ico" KeyPath="yes" DiskId="1" Source="robot.ico" />
+            </Component>
+            <Component Id="robot.jpg" Guid="{150FD7D8-B914-57DE-86F9-9C1E29F48248}">
+                <File Id="_50BA897EA9DD4C5FA7B562F7CCFF2C37" Name="robot.jpg" KeyPath="yes" DiskId="1" Source="robot.jpg" />
+            </Component>
             <Directory Id="_B89CED181CA941618065D6FB815C76C3" Name="SampleAddin">
                 <Component Id="SampleAddin.csproj" Guid="{56BA70CD-F718-FBD2-5E98-F3828C2589C0}">
                     <File Id="_1F67A13BB2CFA6AEF87A48A7E0312F21" Name="SampleAddin.csproj" KeyPath="yes" DiskId="1" Source="..\SampleAddin\SampleAddin.csproj" />
@@ -76,6 +85,9 @@
                 <Component Id="FaceAreaFactory.cs" Guid="{DE189516-9CE8-4a82-AE1B-7A8CC141A8EE}">
                     <File Id="_045E9B50BA494d3eB02CDD21A227CC14" Name="FaceAreaFactory.cs" KeyPath="yes" DiskId="1" Source="..\SpaceClaimSampleAddin\FaceAreaFactory.cs" />
                 </Component>
+                <Component Id="SpaceClaim.License.txt" Guid="{8F206C51-2CBE-42bf-BCB0-1A85C0923E2F}">
+                    <File Id="_902B17B5D880498fB418C64E76B04BF2" Name="License.txt" KeyPath="yes" DiskId="1" Source="..\SpaceClaimSampleAddin\License.txt" />
+                </Component>
                 <Component Id="SpaceClaimSampleAddin.csproj" Guid="{19A085D9-64E9-47ef-A080-AE8D5BAF1C43}">
                     <File Id="_860096B7481C42b299CBDE7563E3190E" Name="SpaceClaimSampleAddin.csproj" KeyPath="yes" DiskId="1" Source="..\SpaceClaimSampleAddin\SpaceClaimSampleAddin.csproj" />
                 </Component>
@@ -104,17 +116,11 @@
                             <Component Id="Manifest.xml" Guid="{E8581169-4CF4-E626-B923-5FEADFC1AF35}">
                                 <File Id="_3F386C705EB345BCB1703D2BF8868736" Name="Manifest.xml" KeyPath="yes" DiskId="1" Source="..\RobotWare.SpaceClaim\Manifest.xml" />
                             </Component>
-                            <Component Id="robot.ico" Guid="{D359241C-AEDC-2FED-A577-EA1FDEC1BBB3}">
-                                <File Id="_4605BBDDC1214645A8F3E06BB9DF5182" Name="robot.ico" KeyPath="yes" DiskId="1" Source="robot.ico" />
-                            </Component>
                             <Component Id="PdfSharp.dll" Guid="{6D28DCEC-D9CF-3D62-E8DE-ACB71795B680}">
                                 <File Id="_4C36530C86C8ED1F252FED183B8D7533" Name="PdfSharp.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_4C36530C86C8ED1F252FED183B8D7533" AssemblyApplication="_4C36530C86C8ED1F252FED183B8D7533" DiskId="1" Source="..\PdfSharp\bin\$(var.Configuration)\PdfSharp.dll" />
                             </Component>
                             <Component Id="EllieWare.RobotWare.chm" Guid="{1A2000C7-5B88-60DF-F4DA-0C28297593BE}">
                                 <File Id="_4DA7723E72814466BCB788A466848BE0" Name="EllieWare.RobotWare.chm" KeyPath="yes" DiskId="1" Source="..\EllieWare.RobotWare.Docs\EllieWare.RobotWare.chm" />
-                            </Component>
-                            <Component Id="robot.jpg" Guid="{150FD7D8-B914-57DE-86F9-9C1E29F48248}">
-                                <File Id="_50BA897EA9DD4C5FA7B562F7CCFF2C37" Name="robot.jpg" KeyPath="yes" DiskId="1" Source="robot.jpg" />
                             </Component>
                             <Component Id="edtFTPnet.dll" Guid="{26EBB7B5-E9A8-CF78-A5DF-7DB1FFC0ABF8}">
                                 <File Id="_50F0A02C77D84D7EFF7CA9C0BAB9FA18" Name="edtFTPnet.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_50F0A02C77D84D7EFF7CA9C0BAB9FA18" AssemblyApplication="_50F0A02C77D84D7EFF7CA9C0BAB9FA18" DiskId="1" Source="..\edtftpnet\src\bin\$(var.Configuration)\edtFTPnet.dll" />
@@ -173,9 +179,6 @@
                             <Component Id="SpaceClaim.Api.V10.dll" Guid="{F5028140-5281-FE79-AD1F-2ADCAB35B459}">
                                 <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="c:\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
                             </Component>
-                            <Component Id="EULA.rtf" Guid="{121300F3-5F43-4547-A637-1F59F3FF03C0}">
-                                <File Id="_E31C07D35B2843AA85295C0BA59930F7" Name="EULA.rtf" KeyPath="yes" DiskId="1" Source="EULA.rtf" />
-                            </Component>
                             <Component Id="EllieWare.IO.dll" Guid="{DEA06B5A-3ADC-923C-F421-4130E9B3C8C0}">
                                 <File Id="_F757D16333652D805A6937693818E560" Name="EllieWare.IO.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_F757D16333652D805A6937693818E560" AssemblyApplication="_F757D16333652D805A6937693818E560" DiskId="1" Source="..\EllieWare.IO\bin\$(var.Configuration)\EllieWare.IO.dll" />
                             </Component>
@@ -199,6 +202,7 @@
             <ComponentRef Id="FaceArea.cs" />
             <ComponentRef Id="FaceArea.Designer.cs" />
             <ComponentRef Id="FaceAreaFactory.cs" />
+            <ComponentRef Id="SpaceClaim.License.txt" />
             <ComponentRef Id="SpaceClaimSampleAddin.csproj" />
             <ComponentRef Id="SpaceClaimSampleAddin.snk" />
             <ComponentRef Id="SpaceClaim.AssemblyInfo.cs" />
