@@ -21,13 +21,24 @@ namespace EllieWare.Interfaces
     bool IsLicensed { get; }
 
     /// <summary>
-    /// Fully qualified path to user specifications folder on disk
+    /// Fully qualified path to user specifications folder on disk.
+    /// This will be something like:
+    ///     [MyDocuments]\<see cref="ApplicationName"/>
     /// </summary>
     string UserSpecificationFolder { get; }
 
     /// <summary>
     /// Fully qualified path to shared work group specifications folder on disk.
     /// All specifications here will be read-only through the RobotWare application.
+    /// This is on a per user basis and stored in the following user registry setting:
+    ///     HKCU
+    ///      SOFTWARE
+    ///        EllieWare
+    ///          [<see cref="ApplicationName"/>]
+    ///            {WorkGroupSpecificationFolder} --> WorkGroupSpecificationFolder
+    /// <remarks>
+    /// This will be null if the shared work group specifications folder has not been set - BEWARE
+    /// </remarks>
     /// </summary>
     string WorkGroupSpecificationFolder { get; }
 
