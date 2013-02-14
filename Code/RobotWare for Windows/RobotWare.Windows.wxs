@@ -4,7 +4,7 @@
     # arguments for the WiX Toolset are stored here.
 
     candleArgs: "<projectfile>" -out "<projectname>.wixobj" <extensions> -dConfiguration=Release
-    lightArgs: 
+    lightArgs:
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="{82B60AFD-F212-4372-8F14-87D75FD8CB0F}" Codepage="1252" Language="1033" Manufacturer="EllieWare" Name="RobotWare for Windows" UpgradeCode="{72F22217-FBDC-47E0-9D01-30A8A09767B3}" Version="0.6.0.0">
@@ -32,6 +32,9 @@
       </Row>
     </CustomTable>
     <Directory Id="TARGETDIR" Name="SourceDir">
+      <Component Id="WorkgroupRegistryKey" Guid="DA73F786-7567-4210-ABFF-BE612F54BD69">
+        <File DiskId="1" KeyPath="yes" Name="WorkGroupSpecificationFolder.reg" Source="WorkGroupSpecificationFolder.reg" Id="WorkGroupSpecificationFolder.reg" />
+      </Component>
       <Component Id="RobotWare.Windows.exe" Guid="{17D31FFA-1DB3-BCDE-6B09-B97D5E8A117D}">
         <File Id="_A3B459DB13D6482F8C62507946135978" Name="RobotWare.Windows.exe" KeyPath="yes" Assembly=".net" AssemblyManifest="_008C0E8505BBA9662EF261AE50D69E06" AssemblyApplication="_008C0E8505BBA9662EF261AE50D69E06" DiskId="1" Source="..\RobotWare.Windows\bin\$(var.Configuration)\RobotWare.Windows.exe" />
       </Component>
@@ -170,6 +173,7 @@
       </Component>
     </DirectoryRef>
     <Feature Id="DefaultFeature" ConfigurableDirectory="TARGETDIR" Level="1">
+      <ComponentRef Id="WorkgroupRegistryKey" Primary="yes" />
       <ComponentRef Id="Ionic.Zip.dll" Primary="yes" />
       <ComponentRef Id="robot.ico" />
       <ComponentRef Id="EULA.rtf" />

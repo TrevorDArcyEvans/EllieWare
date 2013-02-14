@@ -28,6 +28,9 @@
       <Component Id="RegistryKey" Guid="BB4C6A65-BB92-412D-8499-B4540D576BC3">
         <RegistryKey Id="_F25857E31F334B0D9A007AFAE2D3092A" ForceDeleteOnUninstall="yes" Key="Software\[Manufacturer]\[ProductName]" Root="HKLM" />
       </Component>
+      <Component Id="WorkgroupRegistryKey" Guid="DA73F786-7567-4210-ABFF-BE612F54BD69">
+        <File DiskId="1" KeyPath="yes" Name="WorkGroupSpecificationFolder.reg" Source="WorkGroupSpecificationFolder.reg" Id="WorkGroupSpecificationFolder.reg" />
+      </Component>
       <Component Id="EllieWare.Interfaces.Docs.chm" Guid="3B34A99E-3463-4395-A690-8E1B1F07AADA">
         <File DiskId="1" KeyPath="yes" Name="EllieWare.Interfaces.Docs.chm" Source="..\EllieWare.Interfaces.Docs\Help\EllieWare.Interfaces.Docs.chm" Id="EllieWare.Interfaces.Docs.chm" />
       </Component>
@@ -164,6 +167,7 @@
       </Directory>
     </Directory>
     <Feature Id="DefaultFeature" ConfigurableDirectory="TARGETDIR" Level="1">
+      <ComponentRef Id="WorkgroupRegistryKey" Primary="yes" />
       <ComponentRef Id="EllieWare.Transfer.Email.dll" Primary="yes" />
       <ComponentRef Id="EllieWare.Zip.dll" Primary="yes" />
       <ComponentRef Id="Simplicode.Imaging.dll" Primary="yes" />
