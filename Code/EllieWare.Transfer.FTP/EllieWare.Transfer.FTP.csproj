@@ -37,9 +37,6 @@
     <AssemblyOriginatorKeyFile>..\EllieWare.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EllieWare.Interfaces">
-      <HintPath>..\EllieWare.Interfaces\bin\Debug\EllieWare.Interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -120,6 +117,10 @@
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
+      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
+      <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
