@@ -199,6 +199,15 @@
             </Directory>
         </Directory>
         <Feature Id="DefaultFeature" ConfigurableDirectory="TARGETDIR" Level="1">
+             <!-- [TARGETDIR] -->
+           <ComponentRef Id="RegistryKey" />
+            <ComponentRef Id="WorkgroupRegistryKey" Primary="yes" />
+            <ComponentRef Id="robot.ico" />
+            <ComponentRef Id="robot.jpg" />
+            <ComponentRef Id="EULA.rtf" />
+            <ComponentRef Id="EllieWare.Interfaces.Docs.chm" />
+
+            <!-- [TARGETDIR]\SpaceClaimSampleAddin -->
             <ComponentRef Id="FaceArea.cs" />
             <ComponentRef Id="FaceArea.Designer.cs" />
             <ComponentRef Id="FaceAreaFactory.cs" />
@@ -207,41 +216,7 @@
             <ComponentRef Id="SpaceClaimSampleAddin.snk" />
             <ComponentRef Id="SpaceClaim.AssemblyInfo.cs" />
 
-            <ComponentRef Id="WorkgroupRegistryKey" Primary="yes" />
-            <ComponentRef Id="EllieWare.Transfer.Email.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Zip.dll" Primary="yes" />
-            <ComponentRef Id="Simplicode.Imaging.dll" Primary="yes" />
-            <ComponentRef Id="Manifest.xml" Primary="yes" />
-            <ComponentRef Id="PdfSharp.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.RobotWare.chm" Primary="yes" />
-            <ComponentRef Id="edtFTPnet.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Interfaces.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.DateTime.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Pdf.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Support.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Licensing.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Logging.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Audio.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Batch.dll" Primary="yes" />
-            <ComponentRef Id="CrashReporterDotNET.dll" Primary="yes" />
-            <ComponentRef Id="AutoUpdaterDotNET.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Common.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Process.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Imaging.dll" Primary="yes" />
-            <ComponentRef Id="Ionic.Zip.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.SpaceClaim.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Transfer.FTP.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Macro.dll" Primary="yes" />
-            <ComponentRef Id="SpaceClaim.Api.V10.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.IO.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Manager.dll" Primary="yes" />
-            <ComponentRef Id="PdfSharp.resources.dll" Primary="yes" />
-            <ComponentRef Id="RobotWare.SpaceClaim.dll" Primary="yes" />
-            <ComponentRef Id="EllieWare.Interfaces.Docs.chm" />
-            <ComponentRef Id="RegistryKey" />
-            <ComponentRef Id="robot.ico" />
-            <ComponentRef Id="robot.jpg" />
-            <ComponentRef Id="EULA.rtf" />
+            <!-- [TARGETDIR]\SampleAddin -->
             <ComponentRef Id="SampleAddin.csproj" />
             <ComponentRef Id="SampleAddinFactory.cs" />
             <ComponentRef Id="Sample.AssemblyInfo.cs" />
@@ -249,6 +224,37 @@
             <ComponentRef Id="SampleAddin.cs" />
             <ComponentRef Id="Sample.License.txt" />
             <ComponentRef Id="SampleAddin.Designer.cs" />
+
+            <!-- [CommonAppData]\SpaceClaim\Addins\RobotWare for SpaceClaim -->
+            <ComponentRef Id="Manifest.xml" Primary="yes" />
+            <ComponentRef Id="EllieWare.RobotWare.chm" Primary="yes" />
+            <ComponentRef Id="AutoUpdaterDotNET.dll" Primary="yes" />
+            <ComponentRef Id="edtFTPnet.dll" Primary="yes" />
+            <ComponentRef Id="CrashReporterDotNET.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Transfer.Email.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Audio.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Batch.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Common.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.DateTime.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Imaging.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Interfaces.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Licensing.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Logging.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Macro.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Manager.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Pdf.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Support.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Process.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.IO.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.SpaceClaim.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Transfer.FTP.dll" Primary="yes" />
+            <ComponentRef Id="EllieWare.Zip.dll" Primary="yes" />
+            <ComponentRef Id="Ionic.Zip.dll" Primary="yes" />
+            <ComponentRef Id="PdfSharp.dll" Primary="yes" />
+            <ComponentRef Id="PdfSharp.resources.dll" Primary="yes" />
+            <ComponentRef Id="Simplicode.Imaging.dll" Primary="yes" />
+            <ComponentRef Id="SpaceClaim.Api.V10.dll" Primary="yes" />
+            <ComponentRef Id="RobotWare.SpaceClaim.dll" Primary="yes" />
         </Feature>
         <Media Id="1" Cabinet="_9E360776D0B507F33B511CEF848723E3" EmbedCab="yes" />
         <Property Id="VSDFrameworkVersion" Value="v4.0" />
