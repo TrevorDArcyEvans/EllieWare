@@ -37,10 +37,9 @@ namespace EllieWare.Common
     {
       get
       {
-        var pathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, mSpecs.SelectedItems[0].Text);
-        var retVal = Path.ChangeExtension(pathNoExtn, Interfaces.FileExtensions.MacroFileExtension);
+        var slvi = (SpecificationFileListViewItem)mSpecs.SelectedItems[0];
 
-        return retVal;
+        return slvi.FilePath;
       }
     }
 
@@ -48,11 +47,16 @@ namespace EllieWare.Common
     {
       mSpecs.Items.Clear();
 
-      var allSpecsWithExtn = Directory.EnumerateFiles(mRoot.UserSpecificationFolder, "*" + Interfaces.FileExtensions.MacroFileExtension);
-      var allSpecsNoExten = from specWithExtn in allSpecsWithExtn select Path.GetFileNameWithoutExtension(specWithExtn);
-      var filteredSpecsNoExten = from specNoExtn in allSpecsNoExten where (specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)) select new ListViewItem(specNoExtn);
+      var filteredSpecsWithExten = from specWithExtn in mRoot.Specifications
+                                   let specNoExtn = Path.GetFileNameWithoutExtension(specWithExtn)
+                                   where specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)
+                                   select specWithExtn;
 
-      mSpecs.Items.AddRange(filteredSpecsNoExten.ToArray());
+      foreach (var specWithExtn in filteredSpecsWithExten)
+      {
+        var lvi = new SpecificationFileListViewItem(mRoot, specWithExtn);
+        mSpecs.Items.Add(lvi);
+      }
     }
 
     private void UpdateButtons()

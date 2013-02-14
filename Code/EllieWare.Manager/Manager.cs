@@ -83,13 +83,9 @@ namespace EllieWare.Manager
 
     private string GetSelectedSpecificationPath()
     {
-      var specFolder = mSpecs.SelectedItems[0].ImageIndex == 0
-                         ? mRoot.UserSpecificationFolder
-                         : mRoot.WorkGroupSpecificationFolder;
-      var pathNoExtn = Path.Combine(specFolder, mSpecs.SelectedItems[0].Text);
-      var retVal = Path.ChangeExtension(pathNoExtn, FileExtensions.MacroFileExtension);
+      var slvi = (SpecificationFileListViewItem) mSpecs.SelectedItems[0];
 
-      return retVal;
+      return slvi.FilePath;
     }
 
     private void CmdNew_Click(object sender, EventArgs e)
@@ -140,11 +136,9 @@ namespace EllieWare.Manager
                                    where specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)
                                    select specWithExtn;
 
-
       foreach (var specWithExtn in filteredSpecsWithExten)
       {
-        var imgIndex = Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, specWithExtn) ? 0 : 1;
-        var lvi = new ListViewItem(Path.GetFileNameWithoutExtension(specWithExtn), imgIndex);
+        var lvi = new SpecificationFileListViewItem(mRoot, specWithExtn);
         mSpecs.Items.Add(lvi);
       }
     }
@@ -155,7 +149,7 @@ namespace EllieWare.Manager
 
       if (mSpecs.SelectedItems.Count > 0)
       {
-        CmdDelete.Enabled = FileOperations.Enabled = Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, GetSelectedSpecificationPath());
+        CmdDelete.Enabled = FileOperations.Enabled = Utils.IsLocalSpecification(mRoot, GetSelectedSpecificationPath());
       } 
     }
 

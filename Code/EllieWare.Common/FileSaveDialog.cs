@@ -10,7 +10,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using ComboxExtended;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -29,16 +28,11 @@ namespace EllieWare.Common
     {
       mRoot = root;
       var localSpecsWtihExtn = from specWithExtn in mRoot.Specifications
-                               where Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, specWithExtn)
+                               where Utils.IsLocalSpecification(mRoot, specWithExtn)
                                select specWithExtn;
       foreach (var specWithExtn in localSpecsWtihExtn)
       {
-        var img =
-          specWithExtn.ToLower(CultureInfo.CurrentCulture).StartsWith(
-            mRoot.UserSpecificationFolder.ToLower(CultureInfo.CurrentCulture))
-            ? mImages.Images[0]
-            : mImages.Images[1];
-        var item = new ComboBoxItem(Path.GetFileNameWithoutExtension(specWithExtn), img);
+        var item = new SpecificationComboBoxItem(mRoot, specWithExtn, mImages);
         mFileNames.Items.Add(item);
       }
     }
@@ -62,7 +56,9 @@ namespace EllieWare.Common
         return;
       }
 
-      var lowerCaseFileNames = from thisFileName in mRoot.Specifications select Path.GetFileNameWithoutExtension(thisFileName).ToLower(CultureInfo.CurrentCulture);
+      var lowerCaseFileNames = from specWithExtn in mRoot.Specifications
+                               where Utils.IsLocalSpecification(mRoot, specWithExtn)
+                               select Path.GetFileNameWithoutExtension(specWithExtn).ToLower(CultureInfo.CurrentCulture);
       if (lowerCaseFileNames.Contains(FileName.ToLower(CultureInfo.CurrentCulture)))
       {
         var msg = string.Format("{0} already exists.\nDo you want to overwrite?", FileName);

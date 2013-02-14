@@ -148,6 +148,8 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Specification.cs" />
+    <Compile Include="SpecificationComboBoxItem.cs" />
+    <Compile Include="SpecificationFileListViewItem.cs" />
     <Compile Include="TemporaryBatchParameter.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="XmlSerializationHelpers.cs" />

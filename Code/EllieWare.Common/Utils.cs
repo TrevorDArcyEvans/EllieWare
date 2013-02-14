@@ -69,9 +69,10 @@ namespace EllieWare.Common
       Wait(new TimeSpan(0, 0, 0,0, milliSecs));
     }
 
-    public static bool IsLocalSpecification(string userFolder, string filePath)
+    public static bool IsLocalSpecification(IRobotWare root, string filePath)
     {
-      return filePath.ToLower(CultureInfo.CurrentCulture).StartsWith(userFolder.ToLower(CultureInfo.CurrentCulture));
+      // use IRobotWare.UserSpecificationFolder as IRobotWare.WorkGroupSpecificationFolder can be null
+      return filePath.ToLower(CultureInfo.CurrentCulture).StartsWith(root.UserSpecificationFolder.ToLower(CultureInfo.CurrentCulture));
     }
   }
 }

@@ -37,6 +37,7 @@ namespace EllieWare.Common
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Spec1",
@@ -54,6 +55,7 @@ namespace EllieWare.Common
       this.SearchBox = new wmgCMS.WaterMarkTextBox();
       this.CmdCancel = new System.Windows.Forms.Button();
       this.CmdOK = new System.Windows.Forms.Button();
+      this.mImages = new System.Windows.Forms.ImageList(this.components);
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -99,6 +101,7 @@ namespace EllieWare.Common
       this.mSpecs.MultiSelect = false;
       this.mSpecs.Name = "mSpecs";
       this.mSpecs.Size = new System.Drawing.Size(566, 261);
+      this.mSpecs.SmallImageList = this.mImages;
       this.mSpecs.Sorting = System.Windows.Forms.SortOrder.Ascending;
       this.mSpecs.TabIndex = 2;
       this.mSpecs.UseCompatibleStateImageBehavior = false;
@@ -160,6 +163,13 @@ namespace EllieWare.Common
       this.CmdOK.Text = "OK";
       this.CmdOK.UseVisualStyleBackColor = true;
       // 
+      // mImages
+      // 
+      this.mImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("mImages.ImageStream")));
+      this.mImages.TransparentColor = System.Drawing.Color.Transparent;
+      this.mImages.Images.SetKeyName(0, "house_16x16.png");
+      this.mImages.Images.SetKeyName(1, "clients_16x16.png");
+      // 
       // MacroFileSelector
       // 
       this.AcceptButton = this.CmdOK;
@@ -188,5 +198,6 @@ namespace EllieWare.Common
     private System.Windows.Forms.Button CmdCancel;
     private WaterMarkTextBox SearchBox;
     private System.Windows.Forms.ListView mSpecs;
+    private System.Windows.Forms.ImageList mImages;
   }
 }

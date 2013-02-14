@@ -405,7 +405,7 @@ namespace EllieWare.Common
 
     private bool IsSaveableFile(string filePath)
     {
-      return string.IsNullOrEmpty(filePath) || Utils.IsLocalSpecification(mRoot.UserSpecificationFolder, filePath);
+      return string.IsNullOrEmpty(filePath) || Utils.IsLocalSpecification(mRoot, filePath);
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
