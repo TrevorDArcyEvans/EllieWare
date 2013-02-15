@@ -14,19 +14,21 @@ namespace EllieWare.Licensing
 {
   public class LicenseManager
   {
-    // HKLM
+    // HKCU
     //  SOFTWARE
     //    EllieWare
     //      [ProductName]
     //        License
     //          {Code} --> LicenseCode
     //          {UserName} --> UserName
+    //
+    // Note:  we use HKCU so the user is guaranteed write access
 
     private const string RegistryKey = "EllieWare";
 
     public static bool IsLicensed(string productName, Version appVer)
     {
-      var root = Registry.LocalMachine.OpenSubKey("SOFTWARE");
+      var root = GetRootKey();
       var ellieWare = root.OpenSubKey(RegistryKey);
       if (ellieWare == null)
       {
@@ -52,10 +54,15 @@ namespace EllieWare.Licensing
       return regLicCode == licCode;
     }
 
+    private static RegistryKey GetRootKey(bool writable = false)
+    {
+      return Registry.CurrentUser.OpenSubKey("SOFTWARE", writable);
+    }
+
     public static void Register(string productName, Version appVer, string userName, string licCode)
     {
-      // all license code (and user names) are saved to HKLM
-      var root = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
+      // all license code (and user names) are saved to HKCU
+      var root = GetRootKey(true);
       var ellieWare = root.OpenSubKey(RegistryKey, true) ?? root.CreateSubKey(RegistryKey);
       var product = ellieWare.OpenSubKey(productName, true) ?? ellieWare.CreateSubKey(productName);
       var productLicense = product.OpenSubKey("License", true) ?? product.CreateSubKey("License");
@@ -66,7 +73,7 @@ namespace EllieWare.Licensing
 
     public static void Unregister(string productName, Version appVer, string userName)
     {
-      var root = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
+      var root = GetRootKey(true);
       var ellieWare = root.OpenSubKey(RegistryKey, true);
       var product = ellieWare.OpenSubKey(productName, true);
 
