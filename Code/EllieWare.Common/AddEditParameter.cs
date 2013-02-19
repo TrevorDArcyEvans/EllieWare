@@ -88,7 +88,7 @@ namespace EllieWare.Common
     private void ParameterValue_TextChanged(object sender, EventArgs e)
     {
       CmdOK.Enabled = true;
-      if (mIsEditing)
+      if (!mIsEditing)
       {
         // new parameter, so further check if name is OK
         DisplayName_TextChanged(sender, e);
