@@ -7,6 +7,8 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,6 +16,8 @@ using System.Xml;
 using System.Xml.Schema;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
+using SpaceClaim.Api.V10.Geometry;
+using SpaceClaim.Api.V10.Modeler;
 
 namespace SheetMetalEstimator
 {
@@ -43,10 +47,15 @@ namespace SheetMetalEstimator
 
     public void ReadXml(XmlReader reader)
     {
+      ExcelFilePath.Text = reader.GetAttribute("ExcelFilePath");
+      var isChecked = reader.GetAttribute("OptGenerateDXF");
+      OptGenerateDXF.Checked = bool.Parse(isChecked);
     }
 
     public void WriteXml(XmlWriter writer)
     {
+      writer.WriteAttributeString("ExcelFilePath", ExcelFilePath.Text);
+      writer.WriteAttributeString("OptGenerateDXF", OptGenerateDXF.Checked.ToString(CultureInfo.InvariantCulture));
     }
 
     public string Summary
@@ -111,15 +120,52 @@ namespace SheetMetalEstimator
       var areaFactor = lengthFactor * lengthFactor;
       var area = largestFace.Area;
       var perimeter = largestFace.Perimeter;
-      var msg = string.Format("Area = {0} {1}^2\nPerimeter = {2} {3}",
-                              area * areaFactor,
-                              lengthUnit.Symbol,
-                              perimeter * lengthFactor,
-                              lengthUnit.Symbol);
+      var numHoles = largestFace.Loops.Where(x => !x.IsOuter).Count();
+      var msg = string.Format("{0},{1},{2},{3},{4}",
+                              Path.GetFileName(doc.Path),
+                              Math.Round(area * areaFactor, 1),
+                              Math.Round(perimeter * lengthFactor, 1),
+                              flatPattern.BendFaces.Count(),
+                              numHoles);
+      var path = ExcelFilePath.Text;
+      using (var sw = File.Exists(path) ? File.AppendText(path) : File.CreateText(path))
+      {
+        sw.WriteLine(msg);
+      }
 
-      MessageBox.Show(msg);
+      if (OptGenerateDXF.Checked)
+      {
+        var dxfFilePath = Path.ChangeExtension(doc.Path, ".dxf");
+        CreateFlatPatternDXF(dxfFilePath, firstBody);
+      }
 
       return true;
+    }
+
+    private void CreateFlatPatternDXF(string dxfFilePath, Body firstBody)
+    {
+      Face largestFace = firstBody.Faces.OrderBy(x => x.Area).Last();
+      var tempDoc = Document.Create();
+      var tempPart = tempDoc.MainPart;
+      var tempMasterUnused = DesignBody.Create(tempPart, "Flat Pattern", firstBody);
+      var largestSurface = largestFace.Geometry;
+      var box = largestFace.BoxUV;
+      var centre = box.Center;
+      var surfEval = largestSurface.Evaluate(centre);
+      var normal = surfEval.Normal;
+      var origin = surfEval.Point;
+      var frame = Frame.Create(origin, normal);
+      var viewProj = Matrix.CreateMapping(frame);
+      var firstTempWindow = Window.GetWindows(tempDoc).First();
+
+      firstTempWindow.SetProjection(viewProj, true, false);
+      firstTempWindow.Export(WindowExportFormat.AutoCadDxf, dxfFilePath);
+
+      var allTempWindows = Window.GetWindows(tempDoc);
+      foreach (var thisWindow in allTempWindows)
+      {
+        thisWindow.Close();
+      }
     }
 
     public bool Run()
@@ -150,6 +196,26 @@ namespace SheetMetalEstimator
       {
         ConfigurationChanged(this, new EventArgs());
       }
+    }
+
+    private void ExcelFilePath_TextChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
+    }
+
+    private void OptGenerateDXF_CheckedChanged(object sender, EventArgs e)
+    {
+      FireConfigurationChanged();
+    }
+
+    private void BtnBrowse_Click(object sender, EventArgs e)
+    {
+      if (DlgOpenFile.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      ExcelFilePath.Text = DlgOpenFile.FileName;
     }
   }
 }
