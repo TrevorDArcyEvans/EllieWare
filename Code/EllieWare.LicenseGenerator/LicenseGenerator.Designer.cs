@@ -59,9 +59,9 @@ namespace EllieWare.LicenseGenerator
       tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.SuspendLayout();
-      //
+      // 
       // tableLayoutPanel1
-      //
+      // 
       tableLayoutPanel1.ColumnCount = 3;
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -86,9 +86,9 @@ namespace EllieWare.LicenseGenerator
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.Size = new System.Drawing.Size(450, 142);
       tableLayoutPanel1.TabIndex = 0;
-      //
+      // 
       // label1
-      //
+      // 
       label1.AutoSize = true;
       label1.Location = new System.Drawing.Point(3, 6);
       label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -96,9 +96,9 @@ namespace EllieWare.LicenseGenerator
       label1.Size = new System.Drawing.Size(47, 13);
       label1.TabIndex = 0;
       label1.Text = "Product:";
-      //
+      // 
       // label2
-      //
+      // 
       label2.AutoSize = true;
       label2.Location = new System.Drawing.Point(3, 60);
       label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -106,24 +106,24 @@ namespace EllieWare.LicenseGenerator
       label2.Size = new System.Drawing.Size(63, 13);
       label2.TabIndex = 1;
       label2.Text = "User Name:";
-      //
+      // 
       // Product
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.Product, 2);
       this.Product.Dock = System.Windows.Forms.DockStyle.Top;
       this.Product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.Product.FormattingEnabled = true;
       this.Product.Items.AddRange(new object[] {
-            "RobotWare for Windows",
-            "RobotWare for SpaceClaim"});
+            "RobotWare for SpaceClaim",
+            "RobotWare for Windows"});
       this.Product.Location = new System.Drawing.Point(72, 3);
       this.Product.Name = "Product";
       this.Product.Size = new System.Drawing.Size(375, 21);
       this.Product.TabIndex = 2;
       this.Product.SelectedIndexChanged += new System.EventHandler(this.Product_SelectedIndexChanged);
-      //
+      // 
       // UserName
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.UserName, 2);
       this.UserName.Dock = System.Windows.Forms.DockStyle.Top;
       this.UserName.Location = new System.Drawing.Point(72, 57);
@@ -131,9 +131,9 @@ namespace EllieWare.LicenseGenerator
       this.UserName.Size = new System.Drawing.Size(375, 20);
       this.UserName.TabIndex = 3;
       this.UserName.TextChanged += new System.EventHandler(this.UserName_TextChanged);
-      //
+      // 
       // LicenseCode
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.LicenseCode, 2);
       this.LicenseCode.Dock = System.Windows.Forms.DockStyle.Top;
       this.LicenseCode.Location = new System.Drawing.Point(72, 83);
@@ -141,9 +141,9 @@ namespace EllieWare.LicenseGenerator
       this.LicenseCode.ReadOnly = true;
       this.LicenseCode.Size = new System.Drawing.Size(375, 20);
       this.LicenseCode.TabIndex = 4;
-      //
+      // 
       // label3
-      //
+      // 
       label3.AutoSize = true;
       label3.Location = new System.Drawing.Point(3, 86);
       label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -151,9 +151,9 @@ namespace EllieWare.LicenseGenerator
       label3.Size = new System.Drawing.Size(35, 13);
       label3.TabIndex = 6;
       label3.Text = "Code:";
-      //
+      // 
       // tableLayoutPanel2
-      //
+      // 
       this.tableLayoutPanel2.AutoSize = true;
       this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.tableLayoutPanel2.ColumnCount = 4;
@@ -172,9 +172,9 @@ namespace EllieWare.LicenseGenerator
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel2.Size = new System.Drawing.Size(324, 30);
       this.tableLayoutPanel2.TabIndex = 7;
-      //
+      // 
       // CmdGenerate
-      //
+      // 
       CmdGenerate.Location = new System.Drawing.Point(246, 3);
       CmdGenerate.Name = "CmdGenerate";
       CmdGenerate.Size = new System.Drawing.Size(75, 23);
@@ -182,9 +182,9 @@ namespace EllieWare.LicenseGenerator
       CmdGenerate.Text = "Generate";
       CmdGenerate.UseVisualStyleBackColor = true;
       CmdGenerate.Click += new System.EventHandler(this.CmdGenerate_Click);
-      //
+      // 
       // CmdRegister
-      //
+      // 
       this.CmdRegister.Location = new System.Drawing.Point(165, 3);
       this.CmdRegister.Name = "CmdRegister";
       this.CmdRegister.Size = new System.Drawing.Size(75, 23);
@@ -192,9 +192,9 @@ namespace EllieWare.LicenseGenerator
       this.CmdRegister.Text = "Register";
       this.CmdRegister.UseVisualStyleBackColor = true;
       this.CmdRegister.Click += new System.EventHandler(this.CmdRegister_Click);
-      //
+      // 
       // CmdUnregister
-      //
+      // 
       this.CmdUnregister.Location = new System.Drawing.Point(84, 3);
       this.CmdUnregister.Name = "CmdUnregister";
       this.CmdUnregister.Size = new System.Drawing.Size(75, 23);
@@ -202,9 +202,9 @@ namespace EllieWare.LicenseGenerator
       this.CmdUnregister.Text = "Unregister";
       this.CmdUnregister.UseVisualStyleBackColor = true;
       this.CmdUnregister.Click += new System.EventHandler(this.CmdUnregister_Click);
-      //
+      // 
       // CmdIsRegistered
-      //
+      // 
       this.CmdIsRegistered.Location = new System.Drawing.Point(3, 3);
       this.CmdIsRegistered.Name = "CmdIsRegistered";
       this.CmdIsRegistered.Size = new System.Drawing.Size(75, 23);
@@ -212,9 +212,9 @@ namespace EllieWare.LicenseGenerator
       this.CmdIsRegistered.Text = "Check";
       this.CmdIsRegistered.UseVisualStyleBackColor = true;
       this.CmdIsRegistered.Click += new System.EventHandler(this.CmdIsRegistered_Click);
-      //
+      // 
       // label4
-      //
+      // 
       label4.AutoSize = true;
       label4.Location = new System.Drawing.Point(3, 33);
       label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -222,22 +222,23 @@ namespace EllieWare.LicenseGenerator
       label4.Size = new System.Drawing.Size(45, 13);
       label4.TabIndex = 8;
       label4.Text = "Version:";
-      //
+      // 
       // Version
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.Version, 2);
       this.Version.Dock = System.Windows.Forms.DockStyle.Top;
       this.Version.FormattingEnabled = true;
       this.Version.Items.AddRange(new object[] {
+            "0.0.0",
             "1.0.0",
             "2.0.0"});
       this.Version.Location = new System.Drawing.Point(72, 30);
       this.Version.Name = "Version";
       this.Version.Size = new System.Drawing.Size(375, 21);
       this.Version.TabIndex = 9;
-      //
+      // 
       // LicenseGenerator
-      //
+      // 
       this.AcceptButton = CmdGenerate;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
