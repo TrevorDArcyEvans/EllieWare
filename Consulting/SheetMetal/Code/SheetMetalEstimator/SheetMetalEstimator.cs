@@ -14,6 +14,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Geometry;
@@ -128,7 +129,18 @@ namespace SheetMetalEstimator
                               flatPattern.BendFaces.Count(),
                               numHoles);
       var path = ExcelFilePath.Text;
-      using (var sw = File.Exists(path) ? File.AppendText(path) : File.CreateText(path))
+
+      if (!File.Exists(path))
+      {
+        const string header = @"Part Name,Area,Perimeter,No of Bends,No of Holes/Piercings";
+
+        using (var sw = File.CreateText(path))
+        {
+          sw.WriteLine(header);
+        }
+      }
+
+      using (var sw = File.AppendText(path))
       {
         sw.WriteLine(msg);
       }
@@ -137,6 +149,9 @@ namespace SheetMetalEstimator
       {
         var dxfFilePath = Path.ChangeExtension(doc.Path, ".dxf");
         CreateFlatPatternDXF(dxfFilePath, firstBody);
+
+      // IMDFWI
+        Utils.Wait(5000);
       }
 
       return true;
@@ -166,6 +181,9 @@ namespace SheetMetalEstimator
       {
         thisWindow.Close();
       }
+
+      // IMDFWI
+      Utils.Wait(5000);
     }
 
     public bool Run()
