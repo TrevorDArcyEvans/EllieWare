@@ -56,7 +56,7 @@ namespace EllieWare.SpaceClaim
           }
         });
 
-      return evt.WaitOne(60000) && retVal;
+      return evt.WaitOne(60 * 1000) && retVal;
     }
   }
 }

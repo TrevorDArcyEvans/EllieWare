@@ -142,7 +142,7 @@ namespace SheetMetalEstimator
       return true;
     }
 
-    private void CreateFlatPatternDXF(string dxfFilePath, Body firstBody)
+    private bool CreateFlatPatternDXF(string dxfFilePath, Body firstBody)
     {
       Face largestFace = firstBody.Faces.OrderBy(x => x.Area).Last();
       var tempDoc = Document.Create();
@@ -161,11 +161,16 @@ namespace SheetMetalEstimator
       firstTempWindow.SetProjection(viewProj, true, false);
       firstTempWindow.Export(WindowExportFormat.AutoCadDxf, dxfFilePath);
 
+      var evt = new AutoResetEvent(false);
+      tempDoc.Closed += (s, e) => evt.Set();
+
       var allTempWindows = Window.GetWindows(tempDoc);
       foreach (var thisWindow in allTempWindows)
       {
         thisWindow.Close();
       }
+
+      return evt.WaitOne(60 * 1000);
     }
 
     public bool Run()

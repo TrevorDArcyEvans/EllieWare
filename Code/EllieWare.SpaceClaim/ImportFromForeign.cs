@@ -7,6 +7,7 @@
 //
 using System.IO;
 using System.Linq;
+using System.Threading;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
@@ -72,10 +73,21 @@ namespace EllieWare.SpaceClaim
       opts.ImportPoints = true;
 
       var windows = Document.Open(fileName, opts);
+      var firstWindow = windows.First();
+      var evt = new AutoResetEvent(false);
+      var doc = firstWindow.Document;
 
-      Window.ActiveWindow = windows.First();
+      Document.DocumentCompleted += (s, e) =>
+                                      {
+                                        if (e.Subject == doc)
+                                        {
+                                          evt.Set();
+                                        }
+                                      };
 
-      return true;
+      Window.ActiveWindow = firstWindow;
+
+      return evt.WaitOne(5 * 60 * 1000);
     }
   }
 }

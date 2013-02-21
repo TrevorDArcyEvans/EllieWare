@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+using System.Threading;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 
@@ -34,13 +35,18 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var allWindows = Window.GetWindows(Window.ActiveWindow.Document);
+      var evt = new AutoResetEvent(false);
+      var doc = Window.ActiveWindow.Document;
+
+      doc.Closed += (s, e) => evt.Set();
+
+      var allWindows = Window.GetWindows(doc);
       foreach (var thisWindow in allWindows)
       {
         thisWindow.Close();
       }
 
-      return true;
+      return evt.WaitOne(60 * 1000);
     }
   }
 }
