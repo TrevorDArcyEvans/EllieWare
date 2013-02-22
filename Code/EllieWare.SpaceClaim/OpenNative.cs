@@ -45,18 +45,19 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var windows = Document.Open(SourceFilePathResolvedValue, null);
-      var firstWindow = windows.First();
       var evt = new AutoResetEvent(false);
-      var doc = firstWindow.Document;
 
       Document.DocumentCompleted += (s, e) =>
                                       {
-                                        if (e.Subject == doc)
+                                        if (e.Subject.Path == SourceFilePathResolvedValue)
                                         {
                                           evt.Set();
                                         }
                                       };
+
+      var windows = Document.Open(SourceFilePathResolvedValue, null);
+      var firstWindow = windows.First();
+      var doc = firstWindow.Document;
 
       Window.ActiveWindow = firstWindow;
 
