@@ -14,7 +14,6 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Geometry;
@@ -149,15 +148,12 @@ namespace SheetMetalEstimator
       {
         var dxfFilePath = Path.ChangeExtension(doc.Path, ".dxf");
         CreateFlatPatternDXF(dxfFilePath, firstBody);
-
-      // IMDFWI
-        Utils.Wait(5000);
       }
 
       return true;
     }
 
-    private void CreateFlatPatternDXF(string dxfFilePath, Body firstBody)
+    private bool CreateFlatPatternDXF(string dxfFilePath, Body firstBody)
     {
       Face largestFace = firstBody.Faces.OrderBy(x => x.Area).Last();
       var tempDoc = Document.Create();
@@ -176,14 +172,16 @@ namespace SheetMetalEstimator
       firstTempWindow.SetProjection(viewProj, true, false);
       firstTempWindow.Export(WindowExportFormat.AutoCadDxf, dxfFilePath);
 
+      var evt = new AutoResetEvent(false);
+      tempDoc.Closed += (s, e) => evt.Set();
+
       var allTempWindows = Window.GetWindows(tempDoc);
       foreach (var thisWindow in allTempWindows)
       {
         thisWindow.Close();
       }
 
-      // IMDFWI
-      Utils.Wait(5000);
+      return evt.WaitOne(60 * 1000);
     }
 
     public bool Run()
