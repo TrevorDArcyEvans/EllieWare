@@ -122,7 +122,7 @@ namespace EllieWare.Manager
 
     public void RefreshSpecificationsList()
     {
-      RefreshSpecificationsList(string.Empty);
+      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
     }
 
     #endregion
