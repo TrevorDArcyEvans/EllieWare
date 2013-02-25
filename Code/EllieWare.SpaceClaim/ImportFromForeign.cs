@@ -73,21 +73,10 @@ namespace EllieWare.SpaceClaim
       opts.ImportPoints = true;
 
       var windows = Document.Open(fileName, opts);
-      var firstWindow = windows.First();
-      var evt = new AutoResetEvent(false);
-      var doc = firstWindow.Document;
 
-      Document.DocumentCompleted += (s, e) =>
-                                      {
-                                        if (e.Subject == doc)
-                                        {
-                                          evt.Set();
-                                        }
-                                      };
+      Window.ActiveWindow = windows.First();
 
-      Window.ActiveWindow = firstWindow;
-
-      return evt.WaitOne(5 * 60 * 1000);
+      return true;
     }
   }
 }
