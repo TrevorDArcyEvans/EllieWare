@@ -155,7 +155,7 @@ namespace SheetMetalEstimator
 
     private bool CreateFlatPatternDXF(string dxfFilePath, Body firstBody)
     {
-      Face largestFace = firstBody.Faces.OrderBy(x => x.Area).Last();
+      var largestFace = firstBody.Faces.OrderBy(x => x.Area).Last();
       var tempDoc = Document.Create();
       var tempPart = tempDoc.MainPart;
       var tempMasterUnused = DesignBody.Create(tempPart, "Flat Pattern", firstBody);
@@ -172,16 +172,13 @@ namespace SheetMetalEstimator
       firstTempWindow.SetProjection(viewProj, true, false);
       firstTempWindow.Export(WindowExportFormat.AutoCadDxf, dxfFilePath);
 
-      var evt = new AutoResetEvent(false);
-      tempDoc.Closed += (s, e) => evt.Set();
-
       var allTempWindows = Window.GetWindows(tempDoc);
       foreach (var thisWindow in allTempWindows)
       {
         thisWindow.Close();
       }
 
-      return evt.WaitOne(60 * 1000);
+      return true;
     }
 
     public bool Run()
