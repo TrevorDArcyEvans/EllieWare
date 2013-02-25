@@ -76,6 +76,7 @@ namespace SheetMetalEstimator
       this.OptGenerateDXF.TabIndex = 0;
       this.OptGenerateDXF.Text = "Generate AutoCad DXF";
       this.OptGenerateDXF.UseVisualStyleBackColor = true;
+      this.OptGenerateDXF.Visible = false;
       this.OptGenerateDXF.CheckedChanged += new System.EventHandler(this.OptGenerateDXF_CheckedChanged);
       // 
       // label1
