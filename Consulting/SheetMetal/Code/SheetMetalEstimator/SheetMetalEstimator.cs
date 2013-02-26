@@ -114,24 +114,29 @@ namespace SheetMetalEstimator
       allBodies.Remove(firstBody);
       firstBody.Unite(allBodies);
 
-      var largestFace = firstBody.Faces.OrderBy(x => x.Area).Last();
+      var orderedFaces = firstBody.Faces.OrderBy(x => x.Area).ToList();
+      var largestFace = orderedFaces[orderedFaces.Count - 1];
+      var opositeLargestFace = orderedFaces[orderedFaces.Count - 2];
+      var separation = largestFace.GetClosestSeparation(opositeLargestFace);
+      var thickness = separation.Distance;
       var lengthUnit = doc.Units.Length;
       var lengthFactor = lengthUnit.ConversionFactor;
       var areaFactor = lengthFactor * lengthFactor;
       var area = largestFace.Area;
       var perimeter = largestFace.Perimeter;
       var numHoles = largestFace.Loops.Where(x => !x.IsOuter).Count();
-      var msg = string.Format("{0},{1},{2},{3},{4}",
+      var msg = string.Format("{0},{1},{2},{3},{4},{5}",
                               Path.GetFileName(doc.Path),
                               Math.Round(area * areaFactor, 1),
                               Math.Round(perimeter * lengthFactor, 1),
                               flatPattern.BendFaces.Count(),
-                              numHoles);
+                              numHoles,
+                              Math.Round(thickness * lengthFactor, 2));
       var path = ExcelFilePath.Text;
 
       if (!File.Exists(path))
       {
-        const string header = @"Part Name,Area,Perimeter,No of Bends,No of Holes/Piercings";
+        const string header = @"Part Name,Area,Perimeter,No of Bends,No of Holes/Piercings,Thickness";
 
         using (var sw = File.CreateText(path))
         {
