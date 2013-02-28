@@ -117,6 +117,7 @@ namespace SheetMetalEstimator
       var orderedFaces = firstBody.Faces.OrderBy(x => x.Area).ToList();
       var largestFace = orderedFaces[orderedFaces.Count - 1];
       var opositeLargestFace = orderedFaces[orderedFaces.Count - 2];
+      var bbox = largestFace.GetBoundingBox(Matrix.Identity);
       var separation = largestFace.GetClosestSeparation(opositeLargestFace);
       var thickness = separation.Distance;
       var lengthUnit = doc.Units.Length;
@@ -125,18 +126,20 @@ namespace SheetMetalEstimator
       var area = largestFace.Area;
       var perimeter = largestFace.Perimeter;
       var numHoles = largestFace.Loops.Where(x => !x.IsOuter).Count();
-      var msg = string.Format("{0},{1},{2},{3},{4},{5}",
+      var msg = string.Format("{0},{1},{2},{3},{4},{5},{6},{7}",
                               Path.GetFileName(doc.Path),
                               Math.Round(area * areaFactor, 1),
                               Math.Round(perimeter * lengthFactor, 1),
                               flatPattern.BendFaces.Count(),
                               numHoles,
-                              Math.Round(thickness * lengthFactor, 2));
+                              Math.Round(thickness * lengthFactor, 2),
+                              Math.Round(bbox.Size.X * lengthFactor, 1),
+                              Math.Round(bbox.Size.Y * lengthFactor, 1));
       var path = ExcelFilePath.Text;
 
       if (!File.Exists(path))
       {
-        const string header = @"Part Name,Area,Perimeter,No of Bends,No of Holes/Piercings,Thickness";
+        const string header = @"Part Name,Area,Perimeter,No of Bends,No of Holes/Piercings,Thickness,LAR Width,LAR Height";
 
         using (var sw = File.CreateText(path))
         {
@@ -172,9 +175,10 @@ namespace SheetMetalEstimator
       var origin = surfEval.Point;
       var frame = Frame.Create(origin, normal);
       var viewProj = Matrix.CreateMapping(frame);
+      var viewProjInv = viewProj.Inverse;
       var firstTempWindow = Window.GetWindows(tempDoc).First();
 
-      firstTempWindow.SetProjection(viewProj, true, false);
+      firstTempWindow.SetProjection(viewProjInv, true, false);
       firstTempWindow.Export(WindowExportFormat.AutoCadDxf, dxfFilePath);
 
       var allTempWindows = Window.GetWindows(tempDoc);
