@@ -13,7 +13,9 @@ using System.Reflection;
 using System.Windows.Forms;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Modeler;
+using SpaceClaim.API.Test.Properties;
 using Application = SpaceClaim.Api.V10.Application;
+using Panel = SpaceClaim.Api.V10.Panel;
 
 namespace SpaceClaim.API.Test
 {
@@ -136,6 +138,42 @@ namespace SpaceClaim.API.Test
                                   "ReleaseNumber = " + appVer.ReleaseNumber + Environment.NewLine +
                                   "ServicePack   = " + appVer.ServicePack,
                                 "Application.Version");
+                              });
+    }
+
+    #endregion
+
+    #region WindowTab
+
+    [SpaceClaimTestAttribute]
+    private void CreateWindowTab()
+    {
+      WriteBlock.AppendTask(() =>
+                              {
+                                var command = Command.Create(Guid.NewGuid().ToString());
+                                command.Image = Resources.robot;
+                                command.Text = "WindowTab Created by EllieWare";
+                                command.IsVisible = true;
+
+                                var tab = WindowTab.Create(command, new TextBox(), null);
+                              });
+    }
+
+    #endregion
+
+    #region WindowTab
+
+    [SpaceClaimTestAttribute]
+    private void CreatePanelTab()
+    {
+      WriteBlock.AppendTask(() =>
+                              {
+                                var command = Command.Create(Guid.NewGuid().ToString());
+                                command.Image = Resources.robot;
+                                command.Text = "PanelTab Created by EllieWare";
+                                command.IsVisible = true;
+
+                                var tab = PanelTab.Create(command, new TextBox(), Panel.Structure);
                               });
     }
 
