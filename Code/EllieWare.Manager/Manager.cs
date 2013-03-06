@@ -111,14 +111,14 @@ namespace EllieWare.Manager
       UpdateButtons();
     }
 
-    #region IHost
-
-    public void Run(string filePath)
+    private void Run(string filePath)
     {
       var dlg = new Editor(this, mRoot, filePath);
       dlg.Show(this);
       dlg.Run();
     }
+
+    #region IHost
 
     public void RefreshSpecificationsList()
     {
