@@ -88,23 +88,6 @@ namespace RobotWare.SpaceClaim.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;customUI xmlns=&quot;http://schemas.spaceclaim.com/customui&quot;&gt;
-        ///  &lt;ribbon&gt;
-        ///    &lt;tabs&gt;
-        ///      &lt;tab id=&quot;RobotWare.RibbonTab&quot; command=&quot;RobotWare.RibbonTab&quot;&gt;
-        ///        &lt;!-- 
-        ///          For the &apos;tab&apos; and &apos;group&apos; elements, you can either specify a &apos;label&apos; attribute, or you can
-        ///          specify a &apos;command&apos; attribute.  The &apos;command&apos; attribute gives the name of a command that you
-        ///          create, whose Text property will be used for the label.  This approach allows for localiza [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Ribbon {
-            get {
-                return ResourceManager.GetString("Ribbon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to RobotWare.
         /// </summary>
         internal static string RibbonTabText {

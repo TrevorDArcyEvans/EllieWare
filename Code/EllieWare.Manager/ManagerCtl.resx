@@ -134,7 +134,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADY
-        BwAAAk1TRnQBSQFMAgEBAgEAASABAAEgAQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        BwAAAk1TRnQBSQFMAgEBAgEAAUABAAFAAQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEYBgABDB4AA/wB7gLtAc4BzQHMAbMCsAF1AnQDfgP+KgADvwOuA80D0AN3A6pmAAPu
         AdABzwHOAbACrAGeAZwBmwHAAboBuQHmAd8B4AH3AfEB8AHkAt4DdAOBA/0PAAO/A64DzQPQA3cDqgYA
         A3UDqwOYA5ADyANzZgABgAKBAdcC0wH/Af0B+wH/AfwB+wHiAd4B3QH6AfQB8wH3AfEB8AHpAeQB4wN+
@@ -178,5 +178,8 @@
   </metadata>
   <metadata name="ManagerTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>151, 22</value>
+  </metadata>
+  <metadata name="Favourites.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>374, 22</value>
   </metadata>
 </root>

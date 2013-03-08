@@ -74,5 +74,7 @@ namespace EllieWare.Common
       // use IRobotWare.UserSpecificationFolder as IRobotWare.WorkGroupSpecificationFolder can be null
       return filePath.ToLower(CultureInfo.CurrentCulture).StartsWith(root.UserSpecificationFolder.ToLower(CultureInfo.CurrentCulture));
     }
+
+    public const string RegistryKey = "EllieWare";
   }
 }

@@ -7,6 +7,7 @@
 //
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,8 @@ using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using Microsoft.Win32;
+using FileExtensions = EllieWare.Interfaces.FileExtensions;
 
 namespace EllieWare.Manager
 {
@@ -88,7 +91,7 @@ namespace EllieWare.Manager
 
     private string GetSelectedSpecificationPath()
     {
-      var slvi = (SpecificationFileListViewItem) mSpecs.SelectedItems[0];
+      var slvi = (SpecificationFileListViewItem)mSpecs.SelectedItems[0];
 
       return slvi.FilePath;
     }
@@ -103,7 +106,10 @@ namespace EllieWare.Manager
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var dlg = new Editor(this, mRoot, GetSelectedSpecificationPath());
+      var filePath = GetSelectedSpecificationPath();
+      var fileName = Path.GetFileNameWithoutExtension(filePath);
+      AddToFavourites(filePath);
+      var dlg = new Editor(this, mRoot, filePath);
       dlg.ShowDialog();
 
       UpdateButtons();
@@ -119,6 +125,8 @@ namespace EllieWare.Manager
     private void Run(string filePath)
     {
       var dlg = new Editor(this, mRoot, filePath);
+      var fileName = Path.GetFileNameWithoutExtension(filePath);
+      AddToFavourites(filePath);
       dlg.Show(this);
       dlg.Run();
     }
@@ -139,16 +147,97 @@ namespace EllieWare.Manager
       }
 
       UpdateButtons();
+      LoadFavourites();
+    }
+
+    private void AddToFavourites(string filePath)
+    {
+      if (Favourites.Items.ContainsKey(filePath))
+      {
+        // move to top of list
+        var index = Favourites.Items.IndexOfKey(filePath);
+        var existItem = Favourites.Items[index];
+
+        Favourites.Items.RemoveAt(index);
+        Favourites.Items.Insert(0, existItem);
+      }
+      else
+      {
+        Favourites.Items.Insert(0, CreateFileToolStripMenuItem(filePath));
+      }
+
+      if (Favourites.Items.Count > 10)
+      {
+        Favourites.Items.RemoveAt(Favourites.Items.Count - 1);
+      }
+
+      SaveFavourites();
+    }
+
+    private void LoadFavourites()
+    {
+      var root = Registry.CurrentUser.OpenSubKey("SOFTWARE");
+      var ellieWare = root.OpenSubKey(Utils.RegistryKey);
+      if (ellieWare == null)
+      {
+        return;
+      }
+
+      var product = ellieWare.OpenSubKey(mRoot.ApplicationName);
+      if (product == null)
+      {
+        return;
+      }
+
+      var favsStr = (string)product.GetValue("Favourites");
+      if (favsStr == null)
+      {
+        return;
+      }
+
+      var favFilePaths = favsStr.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x)).ToList();
+
+      // only add serialised spec if it still exists
+      var favExistFilePaths = from thisFavFilePath in favFilePaths
+                              where mRoot.Specifications.Contains(thisFavFilePath)
+                              select thisFavFilePath;
+
+      var favExistItem = from favExistFileName in favExistFilePaths select CreateFileToolStripMenuItem(favExistFileName);
+
+      Favourites.Items.Clear();
+      Favourites.Items.AddRange(favExistItem.ToArray());
+    }
+
+    private void SaveFavourites()
+    {
+      var root = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
+      var ellieWare = root.OpenSubKey(Utils.RegistryKey, true);
+      if (ellieWare == null)
+      {
+        return;
+      }
+
+      var product = ellieWare.OpenSubKey(mRoot.ApplicationName, true) ?? ellieWare.CreateSubKey(mRoot.ApplicationName);
+      if (product == null)
+      {
+        return;
+      }
+
+      var favFileNames = from ToolStripMenuItem item in Favourites.Items select item.Name;
+      var favStr = string.Join(";", favFileNames);
+
+      product.SetValue("Favourites", favStr);
     }
 
     private void UpdateButtons()
     {
+      CmdFavourites.Enabled = Favourites.Items.Count > 0;
       CmdEdit.Enabled = CmdDelete.Enabled = FileOperations.Enabled = CmdRun.Enabled = mSpecs.SelectedItems.Count > 0;
 
       if (mSpecs.SelectedItems.Count > 0)
       {
         CmdDelete.Enabled = FileOperations.Enabled = Utils.IsLocalSpecification(mRoot, GetSelectedSpecificationPath());
-      } 
+      }
     }
 
     private void Specs_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,6 +337,30 @@ namespace EllieWare.Manager
       }
       File.Move(selSpecPath, filePath);
       RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+    }
+
+    private void CmdFavourites_Click(object sender, EventArgs e)
+    {
+      Favourites.Show(CmdFavourites, new Point(CmdFavourites.Width, 0));
+    }
+
+    private void Favourites_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    {
+      var filePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, e.ClickedItem.Name);
+      var filePath = Path.ChangeExtension(filePathNoExtn, FileExtensions.MacroFileExtension);
+
+      Run(filePath);
+    }
+
+    private ToolStripMenuItem CreateFileToolStripMenuItem(string filePath)
+    {
+      var retVal = new ToolStripMenuItem(Path.GetFileNameWithoutExtension(filePath))
+                     {
+                       Name = filePath,
+                       Image = Utils.IsLocalSpecification(mRoot, filePath) ? mImages.Images[0] : mImages.Images[1]
+                     };
+
+      return retVal;
     }
   }
 }

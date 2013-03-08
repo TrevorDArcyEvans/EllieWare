@@ -23,8 +23,6 @@ namespace EllieWare.Common
     //      [ProductName]
     //        {WorkGroupSpecificationFolder} --> WorkGroupSpecificationFolder
 
-    private const string RegistryKey = "EllieWare";
-
     public bool IsLicensed
     {
       get
@@ -40,7 +38,7 @@ namespace EllieWare.Common
       {
         // read work group folder out of registry for the moment
         var root = Registry.CurrentUser.OpenSubKey("SOFTWARE");
-        var ellieWare = root.OpenSubKey(RegistryKey);
+        var ellieWare = root.OpenSubKey(Utils.RegistryKey);
         if (ellieWare == null)
         {
           return null;
