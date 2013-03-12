@@ -53,7 +53,8 @@ namespace EllieWare.Interfaces
     Version Version { get; }
 
     /// <summary>
-    /// A list of all specifications in the <see cref="UserSpecificationFolder"/> with <see cref="FileExtensions.MacroFileExtension"/>.
+    /// A list of all specifications in the <see cref="UserSpecificationFolder"/> and <see cref="WorkGroupSpecificationFolder"/>
+    /// with <see cref="FileExtensions.MacroFileExtension"/>.
     /// Each specification is a fully qualified path to the specification on disk.
     /// </summary>
     IEnumerable<string> Specifications { get; }
