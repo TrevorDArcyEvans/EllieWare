@@ -81,6 +81,21 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CloseNoSaveFactory.cs" />
+    <Compile Include="ComponentClose.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComponentCloseFactory.cs" />
+    <Compile Include="ComponentOpen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComponentOpenFactory.cs" />
+    <Compile Include="ComponentOperationBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComponentOperationBase.Designer.cs">
+      <DependentUpon>ComponentOperationBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentOperationBaseFactory.cs" />
     <Compile Include="Difference.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -262,6 +277,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AssemblyDrawings.resx">
       <DependentUpon>AssemblyDrawings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComponentOperationBase.resx">
+      <DependentUpon>ComponentOperationBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportAllToAutoCAD.resx">
       <DependentUpon>ExportAllToAutoCAD.cs</DependentUpon>
