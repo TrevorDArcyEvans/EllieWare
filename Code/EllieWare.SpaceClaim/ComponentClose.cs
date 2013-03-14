@@ -24,7 +24,9 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("TODO");
+        var descrip = string.Format("Close all components for the current assembly{0}{1}",
+                        ChkRecursive.Checked ? " and any sub-assemblies" : string.Empty,
+                        ChkSave.Checked ? " and save any changes" : string.Empty);
 
         return descrip;
       }
@@ -32,6 +34,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
+      // TODO   ComponentClose
       return true;
     }
   }

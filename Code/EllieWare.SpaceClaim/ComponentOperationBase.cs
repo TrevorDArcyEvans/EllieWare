@@ -31,7 +31,7 @@ namespace EllieWare.SpaceClaim
       var recursive = bool.Parse(recursiveStr);
       ChkRecursive.Checked = recursive;
 
-      var saveStr = reader.GetAttribute("RecurSavesive");
+      var saveStr = reader.GetAttribute("Save");
       var save = bool.Parse(saveStr);
       ChkSave.Checked = save;
     }
@@ -48,6 +48,16 @@ namespace EllieWare.SpaceClaim
       {
         return this;
       }
+    }
+
+    private void ChkRecursive_CheckedChanged(object sender, System.EventArgs e)
+    {
+      FireConfigurationChanged();
+    }
+
+    private void ChkSave_CheckedChanged(object sender, System.EventArgs e)
+    {
+      FireConfigurationChanged();
     }
   }
 }

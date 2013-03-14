@@ -25,7 +25,8 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("TODO");
+        var descrip = string.Format("Open all components for the current assembly{0}", 
+                        ChkRecursive.Checked ? " and any sub-assemblies" : string.Empty);
 
         return descrip;
       }
@@ -33,6 +34,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
+      // TODO   ComponentOpen
       return true;
     }
   }

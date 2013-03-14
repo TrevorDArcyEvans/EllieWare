@@ -66,6 +66,7 @@ namespace EllieWare.SpaceClaim
       this.ChkRecursive.TabIndex = 0;
       this.ChkRecursive.Text = "Recursive";
       this.ChkRecursive.UseVisualStyleBackColor = true;
+      this.ChkRecursive.CheckedChanged += new System.EventHandler(this.ChkRecursive_CheckedChanged);
       // 
       // ChkSave
       // 
@@ -76,13 +77,14 @@ namespace EllieWare.SpaceClaim
       this.ChkSave.TabIndex = 1;
       this.ChkSave.Text = "Save";
       this.ChkSave.UseVisualStyleBackColor = true;
+      this.ChkSave.CheckedChanged += new System.EventHandler(this.ChkSave_CheckedChanged);
       // 
-      // ComponentOperation
+      // ComponentOperationBase
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(tableLayoutPanel1);
-      this.Name = "ComponentOperation";
+      this.Name = "ComponentOperationBase";
       this.Size = new System.Drawing.Size(293, 229);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
