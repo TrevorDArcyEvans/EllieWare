@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public class ComponentOpenFactory : ComponentOperationBaseFactory, IFactory
+  public class ComponentOpenFactory : ComponentOperationBaseFactory//, IFactory
   {
     public string Title
     {
