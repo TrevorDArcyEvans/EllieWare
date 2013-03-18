@@ -7,7 +7,7 @@
     lightArgs: 
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{E03EFBD1-98B5-41F4-9571-9497D5F6B899}" Codepage="1252" Language="1033" Manufacturer="EllieWare" Name="RobotWare for SpaceClaim" UpgradeCode="{DE9925C6-352F-4254-B37F-B970CAAD4A38}" Version="0.6.1.0">
+  <Product Id="{E03EFBD1-98B5-41F4-9571-9497D5F6B899}" Codepage="1252" Language="1033" Manufacturer="EllieWare" Name="RobotWare for SpaceClaim" UpgradeCode="{DE9925C6-352F-4254-B37F-B970CAAD4A38}" Version="0.7.0.0">
     <Package Comments="SpaceClaim automation without the pain of code" Compressed="yes" InstallerVersion="200" Languages="1033" Manufacturer="EllieWare" Platform="x86" />
     <Binary Id="MSVBDPCADLL" SourceFile="MSVBDPCA.dll" />
     <Binary Id="VSDNETCFG" SourceFile="VSDNET.cfg" />
