@@ -13,7 +13,7 @@ using SpaceClaim.Api.V10.Extensibility;
 
 namespace EngIT.SheetMetalEstimator
 {
-  public class BatchCapsule : CommandCapsule
+  public class BatchCapsule : BaseCapsule
   {
     // The name must match the name specified in the ribbon bar XML.
     private const string CommandName = "EngIT.Batch";
@@ -23,27 +23,14 @@ namespace EngIT.SheetMetalEstimator
     {
     }
 
-    protected override void OnInitialize(Command command)
-    {
-      // Add a keyboard shortcut for this command.
-      // Show manager when Ctrl+B is pressed.
-      const Keys shortcut = Keys.Control | Keys.B;
-      if (Command.GetCommand(shortcut) == null) // else shortcut is already used by another command
-      {
-        command.Shortcuts = new[] { shortcut };
-      }
-    }
-
     protected override void OnUpdate(Command command)
     {
-      // When a command is disabled, all UI components associated with the command are also disabled.
-      // TODO
       command.IsEnabled = true;
     }
 
-    protected override void OnExecute(Command command, ExecutionContext context, Rectangle buttonRect)
+    protected override void OnExecuteInternal(Command command, ExecutionContext context, Rectangle buttonRect)
     {
-      // TODO
+      // TODO prompt for folder
     }
   }
 }

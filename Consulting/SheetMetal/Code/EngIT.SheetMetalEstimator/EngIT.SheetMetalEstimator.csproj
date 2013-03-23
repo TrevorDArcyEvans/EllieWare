@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCapsule.cs" />
     <Compile Include="BatchCapsule.cs" />
     <Compile Include="EngITAddin.cs" />
     <Compile Include="SingleCapsule.cs" />

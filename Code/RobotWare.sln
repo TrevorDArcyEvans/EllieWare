@@ -141,6 +141,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceClaimSampleAddin", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetMetalEstimator", "..\Consulting\SheetMetal\Code\SheetMetalEstimator\SheetMetalEstimator.csproj", "{CD7E364D-E59F-4F58-8E29-4B7DCDE35567}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngIT.SheetMetalEstimator", "..\Consulting\SheetMetal\Code\EngIT.SheetMetalEstimator\EngIT.SheetMetalEstimator.csproj", "{F7444A90-9680-44E3-AD65-7ED5443D4403}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -528,6 +530,16 @@ Global
 		{CD7E364D-E59F-4F58-8E29-4B7DCDE35567}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CD7E364D-E59F-4F58-8E29-4B7DCDE35567}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CD7E364D-E59F-4F58-8E29-4B7DCDE35567}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F7444A90-9680-44E3-AD65-7ED5443D4403}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
