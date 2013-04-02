@@ -6,11 +6,8 @@
 //  www.EllieWare.com
 //
 using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 using EngIT.SheetMetalEstimator.Properties;
 using SpaceClaim.Api.V10;
-using SpaceClaim.Api.V10.Extensibility;
 
 namespace EngIT.SheetMetalEstimator
 {
@@ -26,30 +23,23 @@ namespace EngIT.SheetMetalEstimator
 
     protected override void OnUpdate(Command command)
     {
-      var actWind = Window.ActiveWindow;
-      if (actWind == null)
+      if (Window.ActiveWindow == null)
       {
         command.IsEnabled = false;
 
         return;
       }
 
-      var doc = actWind.Document;
-      if (doc == null)
-      {
-        command.IsEnabled = false;
+      var doc = Window.ActiveWindow.Document;
 
-        return;
-      }
-
-      var parts = doc.Parts;
-      var allFlatParts = from thisPart in parts where thisPart.FlatPattern != null select thisPart;
-
-      command.IsEnabled = allFlatParts.SingleOrDefault() != null;
+      command.IsEnabled = IsSheetMetalPart(doc) && HasFlatPattern(doc);
     }
 
-    protected override void OnExecuteInternal(Command command, ExecutionContext context, Rectangle buttonRect)
+    protected override bool OnExecuteInternal(Command command, ExecutionContext context, Rectangle buttonRect)
     {
+      Calculate(Window.ActiveWindow.Document);
+
+      return true;
     }
   }
 }

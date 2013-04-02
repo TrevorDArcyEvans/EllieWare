@@ -6,10 +6,11 @@
 //  www.EllieWare.com
 //
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using EngIT.SheetMetalEstimator.Properties;
 using SpaceClaim.Api.V10;
-using SpaceClaim.Api.V10.Extensibility;
 
 namespace EngIT.SheetMetalEstimator
 {
@@ -28,9 +29,34 @@ namespace EngIT.SheetMetalEstimator
       command.IsEnabled = true;
     }
 
-    protected override void OnExecuteInternal(Command command, ExecutionContext context, Rectangle buttonRect)
+    protected override bool OnExecuteInternal(Command command, ExecutionContext context, Rectangle buttonRect)
     {
-      // TODO prompt for folder
+      var SourceDirectorySelector = new FolderBrowserDialog()
+                                      {
+                                        ShowNewFolderButton = false
+                                      };
+
+      if (SourceDirectorySelector.ShowDialog() != DialogResult.OK)
+      {
+        return false;
+      }
+
+      var scFiles = Directory.EnumerateFiles(SourceDirectorySelector.SelectedPath, "*.scdoc");
+      foreach (var thisSCfile in scFiles)
+      {
+        var windows = Document.Open(thisSCfile, null);
+        var firstWind = windows.First();
+        var doc = firstWind.Document;
+
+        Calculate(doc);
+
+        foreach (var wind in windows)
+        {
+          wind.Close();
+        }
+      }
+
+      return true;
     }
   }
 }

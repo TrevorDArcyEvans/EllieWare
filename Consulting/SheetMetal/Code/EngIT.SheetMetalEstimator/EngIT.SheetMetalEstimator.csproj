@@ -49,6 +49,7 @@
     <Compile Include="BaseCapsule.cs" />
     <Compile Include="BatchCapsule.cs" />
     <Compile Include="EngITAddin.cs" />
+    <Compile Include="SheetMetalResult.cs" />
     <Compile Include="SingleCapsule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
