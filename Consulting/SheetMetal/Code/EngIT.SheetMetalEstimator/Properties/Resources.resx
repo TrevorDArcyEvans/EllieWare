@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BatchHint" xml:space="preserve">
-    <value>BatchHint</value>
+    <value>Estimate all sheet metal parts in a folder</value>
   </data>
   <data name="BatchText" xml:space="preserve">
-    <value>BatchText</value>
+    <value>BATCH ESTIMATE</value>
   </data>
   <data name="ManagerGroupText" xml:space="preserve">
     <value>EngIT Sheet Metal Estimator</value>
@@ -134,10 +134,10 @@
     <value>EngIT Sheet Metal Estimator</value>
   </data>
   <data name="SingleHint" xml:space="preserve">
-    <value>SingleHint</value>
+    <value>Sheet metal estimate active part</value>
   </data>
   <data name="SingleText" xml:space="preserve">
-    <value>SingleText</value>
+    <value>PART ESTIMATE</value>
   </data>
   <data name="sm_estimate_current_part_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\sm-estimate-current-part_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -61,7 +61,7 @@ namespace EngIT.SheetMetalEstimator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BatchHint.
+        ///   Looks up a localized string similar to Estimate all sheet metal parts in a folder.
         /// </summary>
         internal static string BatchHint {
             get {
@@ -70,7 +70,7 @@ namespace EngIT.SheetMetalEstimator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BatchText.
+        ///   Looks up a localized string similar to BATCH ESTIMATE.
         /// </summary>
         internal static string BatchText {
             get {
@@ -122,7 +122,7 @@ namespace EngIT.SheetMetalEstimator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SingleHint.
+        ///   Looks up a localized string similar to Sheet metal estimate active part.
         /// </summary>
         internal static string SingleHint {
             get {
@@ -131,7 +131,7 @@ namespace EngIT.SheetMetalEstimator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SingleText.
+        ///   Looks up a localized string similar to PART ESTIMATE.
         /// </summary>
         internal static string SingleText {
             get {
