@@ -17,10 +17,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\ProgramData\SpaceClaim\Addins\EllieWare\Python\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,6 +53,10 @@
     </Reference>
     <Reference Include="Microsoft.Scripting.Metadata">
       <HintPath>..\IronLanguages\bin\Release\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceClaim.Api.V10, Version=10.1.6421.0, Culture=neutral, PublicKeyToken=7210645d4d5e3a39, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +96,8 @@
     <Compile Include="PyConsole.Designer.cs">
       <DependentUpon>PyConsole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Python.SpaceClaim.cs" />
+    <Compile Include="PythonCapsule.cs" />
     <Compile Include="PythonDictionaryPropertyDescriptor.cs" />
     <Compile Include="PythonDictionaryPropertyGridAdapter.cs" />
     <Compile Include="TextBoxWriter.cs" />
@@ -159,6 +166,11 @@
     <None Include="Resources\BookmarkNext.png" />
     <None Include="Resources\ArrangeWindowsHS.png" />
     <None Include="Resources\ArrangeSideBySideHS.png" />
+    <Content Include="Manifest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="python-32x32.png" />
+    <Content Include="Resources\Ribbon.xml" />
     <Content Include="test.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

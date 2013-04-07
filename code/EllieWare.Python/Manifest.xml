@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AddIns>
+  <!--
+  //
+  //  Copyright (C) 2013 EllieWare
+  //
+  //  All rights reserved
+  //
+  //  www.EllieWare.com
+  //
+  -->
+  <AddIn name="EngIT Sheet Metal Estimator"
+         description="EngIT Sheet Metal Estimator"
+         assembly="EllieWare.Python.dll"
+         typename="EllieWare.Python.EllieWarePythonAddin"
+         host="NewAppDomain"/>
+</AddIns>
