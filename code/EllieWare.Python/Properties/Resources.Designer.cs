@@ -269,5 +269,37 @@ namespace EllieWare.Python.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap python_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("python_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;customUI xmlns=&quot;http://schemas.spaceclaim.com/customui&quot;&gt;
+        ///  &lt;!--
+        ///  //
+        ///  //  Copyright (C) 2013 EllieWare
+        ///  //
+        ///  //  All rights reserved
+        ///  //
+        ///  //  www.EllieWare.com
+        ///  //
+        ///  --&gt;
+        ///  &lt;ribbon&gt;
+        ///    &lt;tabs&gt;
+        ///      &lt;tab id=&quot;EllieWare.Python.RibbonTab&quot; command=&quot;EllieWare.Python.RibbonTab&quot;&gt;
+        ///        &lt;!-- 
+        ///          For the &apos;tab&apos; and &apos;group&apos; elements, you can either specify a &apos;label&apos; attribute, or you can
+        ///          specify a &apos;command&apos; attribute.  The &apos;command&apos; attribu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Ribbon {
+            get {
+                return ResourceManager.GetString("Ribbon", resourceCulture);
+            }
+        }
     }
 }
