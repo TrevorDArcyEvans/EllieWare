@@ -16,6 +16,7 @@ using SpaceClaim.Api.V10.Extensibility;
 using SpaceClaim.Api.V10.Geometry;
 using SpaceClaim.Api.V10.Modeler;
 using Point = SpaceClaim.Api.V10.Geometry.Point;
+using System.Diagnostics;
 
 namespace EngIT.SheetMetalEstimator
 {
@@ -218,6 +219,23 @@ namespace EngIT.SheetMetalEstimator
 
       allBodies.Remove(firstBody);
       firstBody.Unite(allBodies);
+      //firstBody.Fuse(allBodies, false, null);
+      //firstBody.Stitch(allBodies, 0.01d, null);
+      Debug.Assert(firstBody.PieceCount == 1, "Cannot operate on disjoint bodies");
+      Debug.Assert(firstBody.IsClosed);
+      Debug.Assert(firstBody.IsManifold);
+
+#if true
+      // create new part to hold the result
+      var uniteDoc = Document.Create();
+      var unitePart = uniteDoc.MainPart;
+      var pieces = firstBody.SeparatePieces();
+      var i = 0;
+      foreach (var thisPiece in pieces)
+      {
+        DesignBody.Create(unitePart, "Unite " + i++, thisPiece);
+      }
+#endif
 
       var orderedFaces = firstBody.Faces.OrderBy(x => x.Area).ToList();
       var largestFace = orderedFaces[orderedFaces.Count - 1];
