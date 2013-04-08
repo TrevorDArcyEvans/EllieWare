@@ -13,9 +13,9 @@ using System.Text;
 using System.Windows.Forms;
 using EllieWare.Interfaces;
 
-namespace EllieWare.Manager
+namespace EllieWare.Common
 {
-  partial class AboutBox : Form
+  public partial class AboutBox : Form
   {
     private const string Separator = "=======================================================";
 
