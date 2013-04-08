@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Alsing.SourceCode;
+using EllieWare.Common;
 using Microsoft.Scripting;
 
 namespace EllieWare.Python
@@ -445,5 +446,12 @@ namespace EllieWare.Python
     }
 
     #endregion
+
+    private void mnuHelp_About_Click(object sender, EventArgs e)
+    {
+      // TODO   app name
+      var dlg = new AboutBox("Python");
+      dlg.ShowDialog();
+    }
   }
 }

@@ -49,6 +49,8 @@ namespace EllieWare.Python
       System.Windows.Forms.ToolStripMenuItem mnuWindow_TileHorizontal;
       System.Windows.Forms.ToolStripMenuItem mnuWindow_TileVertical;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PyConsole));
+      System.Windows.Forms.ToolStripMenuItem mnuHelp;
+      System.Windows.Forms.ToolStripMenuItem mnuHelp_About;
       this.MainMenu = new System.Windows.Forms.MenuStrip();
       this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuFile_Close = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,8 +88,103 @@ namespace EllieWare.Python
       mnuWindow_Cascade = new System.Windows.Forms.ToolStripMenuItem();
       mnuWindow_TileHorizontal = new System.Windows.Forms.ToolStripMenuItem();
       mnuWindow_TileVertical = new System.Windows.Forms.ToolStripMenuItem();
+      mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+      mnuHelp_About = new System.Windows.Forms.ToolStripMenuItem();
       this.MainMenu.SuspendLayout();
       this.SuspendLayout();
+      // 
+      // mnuFile_New
+      // 
+      mnuFile_New.Image = global::EllieWare.Python.Properties.Resources.FileNew;
+      mnuFile_New.Name = "mnuFile_New";
+      mnuFile_New.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+      mnuFile_New.Size = new System.Drawing.Size(149, 22);
+      mnuFile_New.Text = "New";
+      mnuFile_New.Click += new System.EventHandler(this.mnuFile_New_Click);
+      // 
+      // mnuFile_Open
+      // 
+      mnuFile_Open.Image = global::EllieWare.Python.Properties.Resources.FileOpen;
+      mnuFile_Open.Name = "mnuFile_Open";
+      mnuFile_Open.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+      mnuFile_Open.Size = new System.Drawing.Size(149, 22);
+      mnuFile_Open.Text = "&Open";
+      mnuFile_Open.Click += new System.EventHandler(this.mnuFile_Open_Click);
+      // 
+      // ToolStripMenuItem5
+      // 
+      ToolStripMenuItem5.Name = "ToolStripMenuItem5";
+      ToolStripMenuItem5.Size = new System.Drawing.Size(146, 6);
+      // 
+      // ToolStripMenuItem4
+      // 
+      ToolStripMenuItem4.Name = "ToolStripMenuItem4";
+      ToolStripMenuItem4.Size = new System.Drawing.Size(146, 6);
+      // 
+      // mnuFile_Exit
+      // 
+      mnuFile_Exit.Name = "mnuFile_Exit";
+      mnuFile_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+      mnuFile_Exit.Size = new System.Drawing.Size(149, 22);
+      mnuFile_Exit.Text = "&Exit";
+      mnuFile_Exit.Click += new System.EventHandler(this.mnuFile_Exit_Click);
+      // 
+      // ToolStripMenuItem12
+      // 
+      ToolStripMenuItem12.Name = "ToolStripMenuItem12";
+      ToolStripMenuItem12.Size = new System.Drawing.Size(207, 6);
+      // 
+      // ToolStripMenuItem17
+      // 
+      ToolStripMenuItem17.Name = "ToolStripMenuItem17";
+      ToolStripMenuItem17.Size = new System.Drawing.Size(207, 6);
+      // 
+      // ToolStripMenuItem19
+      // 
+      ToolStripMenuItem19.Name = "ToolStripMenuItem19";
+      ToolStripMenuItem19.Size = new System.Drawing.Size(207, 6);
+      // 
+      // mnuDebug_Run
+      // 
+      mnuDebug_Run.Image = global::EllieWare.Python.Properties.Resources.DebugRun;
+      mnuDebug_Run.Name = "mnuDebug_Run";
+      mnuDebug_Run.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
+      mnuDebug_Run.Size = new System.Drawing.Size(188, 22);
+      mnuDebug_Run.Text = "Run";
+      mnuDebug_Run.Click += new System.EventHandler(this.mnuDebug_Run_Click);
+      // 
+      // mnuDebug_Debug
+      // 
+      mnuDebug_Debug.Image = global::EllieWare.Python.Properties.Resources.DebugStart;
+      mnuDebug_Debug.Name = "mnuDebug_Debug";
+      mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
+      mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
+      mnuDebug_Debug.Text = "Start Debugging...";
+      mnuDebug_Debug.Click += new System.EventHandler(this.mnuDebug_Debug_Click);
+      // 
+      // mnuWindow_Cascade
+      // 
+      mnuWindow_Cascade.Image = global::EllieWare.Python.Properties.Resources.CascadeWindowsHS;
+      mnuWindow_Cascade.Name = "mnuWindow_Cascade";
+      mnuWindow_Cascade.Size = new System.Drawing.Size(151, 22);
+      mnuWindow_Cascade.Text = "Cascade";
+      mnuWindow_Cascade.Click += new System.EventHandler(this.mnuWindow_Cascade_Click);
+      // 
+      // mnuWindow_TileHorizontal
+      // 
+      mnuWindow_TileHorizontal.Image = global::EllieWare.Python.Properties.Resources.ArrangeWindowsHS;
+      mnuWindow_TileHorizontal.Name = "mnuWindow_TileHorizontal";
+      mnuWindow_TileHorizontal.Size = new System.Drawing.Size(151, 22);
+      mnuWindow_TileHorizontal.Text = "Tile Horizontal";
+      mnuWindow_TileHorizontal.Click += new System.EventHandler(this.mnuWindow_TileHorizontal_Click);
+      // 
+      // mnuWindow_TileVertical
+      // 
+      mnuWindow_TileVertical.Image = global::EllieWare.Python.Properties.Resources.ArrangeSideBySideHS;
+      mnuWindow_TileVertical.Name = "mnuWindow_TileVertical";
+      mnuWindow_TileVertical.Size = new System.Drawing.Size(151, 22);
+      mnuWindow_TileVertical.Text = "Tile Vertical";
+      mnuWindow_TileVertical.Click += new System.EventHandler(this.mnuWindow_TileVertical_Click);
       // 
       // MainMenu
       // 
@@ -95,7 +192,8 @@ namespace EllieWare.Python
             this.mnuFile,
             this.mnuEdit,
             this.mnuDebug,
-            this.mnuWindow});
+            this.mnuWindow,
+            mnuHelp});
       this.MainMenu.Location = new System.Drawing.Point(0, 0);
       this.MainMenu.MdiWindowListItem = this.mnuWindow;
       this.MainMenu.Name = "MainMenu";
@@ -120,29 +218,11 @@ namespace EllieWare.Python
       this.mnuFile.Text = "File";
       this.mnuFile.DropDownOpening += new System.EventHandler(this.mnuFile_Popup);
       // 
-      // mnuFile_New
-      // 
-      mnuFile_New.Image = global::EllieWare.Python.Properties.Resources.FileNew;
-      mnuFile_New.Name = "mnuFile_New";
-      mnuFile_New.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-      mnuFile_New.Size = new System.Drawing.Size(152, 22);
-      mnuFile_New.Text = "New";
-      mnuFile_New.Click += new System.EventHandler(this.mnuFile_New_Click);
-      // 
-      // mnuFile_Open
-      // 
-      mnuFile_Open.Image = global::EllieWare.Python.Properties.Resources.FileOpen;
-      mnuFile_Open.Name = "mnuFile_Open";
-      mnuFile_Open.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-      mnuFile_Open.Size = new System.Drawing.Size(152, 22);
-      mnuFile_Open.Text = "&Open";
-      mnuFile_Open.Click += new System.EventHandler(this.mnuFile_Open_Click);
-      // 
       // mnuFile_Close
       // 
       this.mnuFile_Close.Name = "mnuFile_Close";
       this.mnuFile_Close.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-      this.mnuFile_Close.Size = new System.Drawing.Size(152, 22);
+      this.mnuFile_Close.Size = new System.Drawing.Size(149, 22);
       this.mnuFile_Close.Text = "Close";
       this.mnuFile_Close.Click += new System.EventHandler(this.mnuFile_Close_Click);
       // 
@@ -151,27 +231,22 @@ namespace EllieWare.Python
       this.mnuFile_Save.Image = global::EllieWare.Python.Properties.Resources.FileSave;
       this.mnuFile_Save.Name = "mnuFile_Save";
       this.mnuFile_Save.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-      this.mnuFile_Save.Size = new System.Drawing.Size(152, 22);
+      this.mnuFile_Save.Size = new System.Drawing.Size(149, 22);
       this.mnuFile_Save.Text = "&Save";
       this.mnuFile_Save.Click += new System.EventHandler(this.mnuFile_Save_Click);
       // 
       // mnuFile_SaveAs
       // 
       this.mnuFile_SaveAs.Name = "mnuFile_SaveAs";
-      this.mnuFile_SaveAs.Size = new System.Drawing.Size(152, 22);
+      this.mnuFile_SaveAs.Size = new System.Drawing.Size(149, 22);
       this.mnuFile_SaveAs.Text = "Save &As";
       this.mnuFile_SaveAs.Click += new System.EventHandler(this.mnuFile_SaveAs_Click);
-      // 
-      // ToolStripMenuItem5
-      // 
-      ToolStripMenuItem5.Name = "ToolStripMenuItem5";
-      ToolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
       // 
       // mnuFile_PrintPreview
       // 
       this.mnuFile_PrintPreview.Image = global::EllieWare.Python.Properties.Resources.PrintPreviewHS;
       this.mnuFile_PrintPreview.Name = "mnuFile_PrintPreview";
-      this.mnuFile_PrintPreview.Size = new System.Drawing.Size(152, 22);
+      this.mnuFile_PrintPreview.Size = new System.Drawing.Size(149, 22);
       this.mnuFile_PrintPreview.Text = "Print Preview";
       this.mnuFile_PrintPreview.Click += new System.EventHandler(this.mnuFile_PrintPreview_Click);
       // 
@@ -180,22 +255,9 @@ namespace EllieWare.Python
       this.mnuFile_Print.Image = global::EllieWare.Python.Properties.Resources.PrintHS;
       this.mnuFile_Print.Name = "mnuFile_Print";
       this.mnuFile_Print.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-      this.mnuFile_Print.Size = new System.Drawing.Size(152, 22);
+      this.mnuFile_Print.Size = new System.Drawing.Size(149, 22);
       this.mnuFile_Print.Text = "Print";
       this.mnuFile_Print.Click += new System.EventHandler(this.mnuFile_Print_Click);
-      // 
-      // ToolStripMenuItem4
-      // 
-      ToolStripMenuItem4.Name = "ToolStripMenuItem4";
-      ToolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
-      // 
-      // mnuFile_Exit
-      // 
-      mnuFile_Exit.Name = "mnuFile_Exit";
-      mnuFile_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-      mnuFile_Exit.Size = new System.Drawing.Size(152, 22);
-      mnuFile_Exit.Text = "&Exit";
-      mnuFile_Exit.Click += new System.EventHandler(this.mnuFile_Exit_Click);
       // 
       // mnuEdit
       // 
@@ -236,11 +298,6 @@ namespace EllieWare.Python
       this.mnuEdit_Redo.Text = "Redo";
       this.mnuEdit_Redo.Click += new System.EventHandler(this.mnuEdit_Redo_Click);
       // 
-      // ToolStripMenuItem12
-      // 
-      ToolStripMenuItem12.Name = "ToolStripMenuItem12";
-      ToolStripMenuItem12.Size = new System.Drawing.Size(207, 6);
-      // 
       // mnuEdit_Copy
       // 
       this.mnuEdit_Copy.Image = global::EllieWare.Python.Properties.Resources.EditCopy;
@@ -276,11 +333,6 @@ namespace EllieWare.Python
       this.mnuEdit_Delete.Text = "Delete";
       this.mnuEdit_Delete.Click += new System.EventHandler(this.mnuEdit_Delete_Click);
       // 
-      // ToolStripMenuItem17
-      // 
-      ToolStripMenuItem17.Name = "ToolStripMenuItem17";
-      ToolStripMenuItem17.Size = new System.Drawing.Size(207, 6);
-      // 
       // mnuEdit_SelectAll
       // 
       this.mnuEdit_SelectAll.Name = "mnuEdit_SelectAll";
@@ -288,11 +340,6 @@ namespace EllieWare.Python
       this.mnuEdit_SelectAll.Size = new System.Drawing.Size(210, 22);
       this.mnuEdit_SelectAll.Text = "Select All";
       this.mnuEdit_SelectAll.Click += new System.EventHandler(this.mnuEdit_SelectAll_Click);
-      // 
-      // ToolStripMenuItem19
-      // 
-      ToolStripMenuItem19.Name = "ToolStripMenuItem19";
-      ToolStripMenuItem19.Size = new System.Drawing.Size(207, 6);
       // 
       // mnuEdit_ToggleBookmark
       // 
@@ -331,24 +378,6 @@ namespace EllieWare.Python
       this.mnuDebug.Text = "Debug";
       this.mnuDebug.DropDownOpening += new System.EventHandler(this.mnuDebug_Popup);
       // 
-      // mnuDebug_Run
-      // 
-      mnuDebug_Run.Image = global::EllieWare.Python.Properties.Resources.DebugRun;
-      mnuDebug_Run.Name = "mnuDebug_Run";
-      mnuDebug_Run.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
-      mnuDebug_Run.Size = new System.Drawing.Size(188, 22);
-      mnuDebug_Run.Text = "Run";
-      mnuDebug_Run.Click += new System.EventHandler(this.mnuDebug_Run_Click);
-      // 
-      // mnuDebug_Debug
-      // 
-      mnuDebug_Debug.Image = global::EllieWare.Python.Properties.Resources.DebugStart;
-      mnuDebug_Debug.Name = "mnuDebug_Debug";
-      mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
-      mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
-      mnuDebug_Debug.Text = "Start Debugging...";
-      mnuDebug_Debug.Click += new System.EventHandler(this.mnuDebug_Debug_Click);
-      // 
       // mnuWindow
       // 
       this.mnuWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -359,30 +388,6 @@ namespace EllieWare.Python
       this.mnuWindow.Size = new System.Drawing.Size(63, 20);
       this.mnuWindow.Text = "Window";
       this.mnuWindow.DropDownOpening += new System.EventHandler(this.mnuWindow_Popup);
-      // 
-      // mnuWindow_Cascade
-      // 
-      mnuWindow_Cascade.Image = global::EllieWare.Python.Properties.Resources.CascadeWindowsHS;
-      mnuWindow_Cascade.Name = "mnuWindow_Cascade";
-      mnuWindow_Cascade.Size = new System.Drawing.Size(152, 22);
-      mnuWindow_Cascade.Text = "Cascade";
-      mnuWindow_Cascade.Click += new System.EventHandler(this.mnuWindow_Cascade_Click);
-      // 
-      // mnuWindow_TileHorizontal
-      // 
-      mnuWindow_TileHorizontal.Image = global::EllieWare.Python.Properties.Resources.ArrangeWindowsHS;
-      mnuWindow_TileHorizontal.Name = "mnuWindow_TileHorizontal";
-      mnuWindow_TileHorizontal.Size = new System.Drawing.Size(152, 22);
-      mnuWindow_TileHorizontal.Text = "Tile Horizontal";
-      mnuWindow_TileHorizontal.Click += new System.EventHandler(this.mnuWindow_TileHorizontal_Click);
-      // 
-      // mnuWindow_TileVertical
-      // 
-      mnuWindow_TileVertical.Image = global::EllieWare.Python.Properties.Resources.ArrangeSideBySideHS;
-      mnuWindow_TileVertical.Name = "mnuWindow_TileVertical";
-      mnuWindow_TileVertical.Size = new System.Drawing.Size(152, 22);
-      mnuWindow_TileVertical.Text = "Tile Vertical";
-      mnuWindow_TileVertical.Click += new System.EventHandler(this.mnuWindow_TileVertical_Click);
       // 
       // dlgPrintPreview
       // 
@@ -397,6 +402,21 @@ namespace EllieWare.Python
       // dlgOpen
       // 
       this.dlgOpen.Title = "Select a file to open";
+      // 
+      // mnuHelp
+      // 
+      mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            mnuHelp_About});
+      mnuHelp.Name = "mnuHelp";
+      mnuHelp.Size = new System.Drawing.Size(44, 20);
+      mnuHelp.Text = "Help";
+      // 
+      // mnuHelp_About
+      // 
+      mnuHelp_About.Name = "mnuHelp_About";
+      mnuHelp_About.Size = new System.Drawing.Size(152, 22);
+      mnuHelp_About.Text = "About";
+      mnuHelp_About.Click += new System.EventHandler(this.mnuHelp_About_Click);
       // 
       // PyConsole
       // 
