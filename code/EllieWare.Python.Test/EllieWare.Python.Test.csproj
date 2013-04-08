@@ -79,9 +79,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EllieWare.Python\EllieWare.Python.csproj">
+    <ProjectReference Include="..\EllieWare.Python\PythonWare.Manager.csproj">
       <Project>{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}</Project>
-      <Name>EllieWare.Python</Name>
+      <Name>PythonWare.Manager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
