@@ -231,9 +231,9 @@ namespace EllieWare.Manager
 
     #endregion
 
-    internal System.Windows.Forms.TextBox Product;
-    internal System.Windows.Forms.TextBox UserName;
-    internal System.Windows.Forms.TextBox LicenseCode;
-    internal System.Windows.Forms.TextBox Version;
+    public System.Windows.Forms.TextBox Product;
+    public System.Windows.Forms.TextBox UserName;
+    public System.Windows.Forms.TextBox LicenseCode;
+    public System.Windows.Forms.TextBox Version;
   }
 }
