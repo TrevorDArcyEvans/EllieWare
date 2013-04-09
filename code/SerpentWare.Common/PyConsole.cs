@@ -15,7 +15,6 @@ using Alsing.SourceCode;
 using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
-using EllieWare.Interfaces;
 using Microsoft.Scripting;
 using SerpentWare.Interfaces;
 using EWC = EllieWare.Common;
