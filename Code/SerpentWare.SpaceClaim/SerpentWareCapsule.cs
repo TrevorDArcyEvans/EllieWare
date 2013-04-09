@@ -11,12 +11,12 @@ using SerpentWare.Common.Properties;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.SpaceClaim
 {
   public class PythonCapsule : CommandCapsule
   {
     public PythonCapsule()
-      : base("SerpentWare.Manager.Console", "Python", Resources.python_32x32, "Run a Python script")
+      : base("SerpentWare.SpaceClaim.Console", "Python", Resources.python_32x32, "Run a Python script")
     {
     }
 

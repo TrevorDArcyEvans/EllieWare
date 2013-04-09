@@ -8,14 +8,14 @@
 
 using SpaceClaim.Api.V10.Extensibility;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.SpaceClaim
 {
-  public class EllieWarePythonAddin : AddIn, IExtensibility, ICommandExtensibility, IRibbonExtensibility
+  public class SerpentWareAddin : AddIn, IExtensibility, ICommandExtensibility, IRibbonExtensibility
   {
     private readonly CommandCapsule[] mCapsules = new[]
                                                    {
-                                                     new CommandCapsule("SerpentWare.Manager.RibbonTab", "EllieWare Python"),
-                                                     new CommandCapsule("SerpentWare.Manager.ManagerGroup", "Python"),
+                                                     new CommandCapsule("SerpentWare.SpaceClaim.RibbonTab", "SerpentWare Python"),
+                                                     new CommandCapsule("SerpentWare.SpaceClaim.ManagerGroup", "Python"),
                                                      new PythonCapsule()
                                                    };
 

@@ -9,9 +9,9 @@
   //  www.EllieWare.com
   //
   -->
-  <AddIn name="EngIT Sheet Metal Estimator"
-         description="EngIT Sheet Metal Estimator"
-         assembly="SerpentWare.Manager.dll"
-         typename="SerpentWare.Manager.EllieWarePythonAddin"
+  <AddIn name="SerpentWare Python Interpreter"
+         description="Run Python scripts inside SpaceClaim"
+         assembly="SerpentWare.SpaceClaim.dll"
+         typename="SerpentWare.SpaceClaim.SerpentWareAddin"
          host="NewAppDomain"/>
 </AddIns>
