@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Alsing.SourceCode;
 using Microsoft.Scripting;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public partial class EditForm : Form
   {

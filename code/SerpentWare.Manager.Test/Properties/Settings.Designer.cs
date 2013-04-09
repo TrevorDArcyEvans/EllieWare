@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EllieWare.Python.Test.Properties {
+namespace SerpentWare.Manager.Test.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

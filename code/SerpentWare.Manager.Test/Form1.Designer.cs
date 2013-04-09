@@ -5,7 +5,7 @@
 //
 //  www.EllieWare.com
 //
-namespace EllieWare.Python.Test
+namespace SerpentWare.Manager.Test
 {
   partial class Form1
   {

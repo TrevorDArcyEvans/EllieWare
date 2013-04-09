@@ -6,7 +6,7 @@
 //  www.EllieWare.com
 //
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public class Document
   {

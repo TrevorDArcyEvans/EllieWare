@@ -5,17 +5,17 @@
 //
 //  www.EllieWare.com
 //
-using EllieWare.Python.Properties;
+using SerpentWare.Manager.Properties;
 using SpaceClaim.Api.V10.Extensibility;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public class EllieWarePythonAddin : AddIn, IExtensibility, ICommandExtensibility, IRibbonExtensibility
   {
     private readonly CommandCapsule[] mCapsules = new[]
                                                    {
-                                                     new CommandCapsule("EllieWare.Python.RibbonTab", "EllieWare Python"),
-                                                     new CommandCapsule("EllieWare.Python.ManagerGroup", "Python"),
+                                                     new CommandCapsule("SerpentWare.Manager.RibbonTab", "EllieWare Python"),
+                                                     new CommandCapsule("SerpentWare.Manager.ManagerGroup", "Python"),
                                                      new PythonCapsule()
                                                    };
 

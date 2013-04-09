@@ -8,8 +8,8 @@
     <ProjectGuid>{5284F61F-71A1-4973-B56F-D88390A952CA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EllieWare.Python.Test</RootNamespace>
-    <AssemblyName>EllieWare.Python.Test</AssemblyName>
+    <RootNamespace>SerpentWare.Manager.Test</RootNamespace>
+    <AssemblyName>SerpentWare.Manager.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public class PythonDictionaryPropertyDescriptor : PropertyDescriptor
   {

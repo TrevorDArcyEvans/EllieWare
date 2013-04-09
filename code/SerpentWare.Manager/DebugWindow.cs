@@ -18,7 +18,7 @@ using IronPython.Runtime.Exceptions;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public partial class DebugWindow : EditForm
   {

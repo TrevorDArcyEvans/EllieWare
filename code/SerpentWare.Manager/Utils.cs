@@ -12,7 +12,7 @@ using System.Text;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Win32;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public class Utils
   {

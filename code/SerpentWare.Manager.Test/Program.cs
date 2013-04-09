@@ -8,7 +8,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace EllieWare.Python.Test
+namespace SerpentWare.Manager.Test
 {
   static class Program
   {

@@ -5,7 +5,7 @@
 //
 //  www.EllieWare.com
 //
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   partial class PyConsole
   {
@@ -95,7 +95,7 @@ namespace EllieWare.Python
       // 
       // mnuFile_New
       // 
-      mnuFile_New.Image = global::EllieWare.Python.Properties.Resources.FileNew;
+      mnuFile_New.Image = global::SerpentWare.Manager.Properties.Resources.FileNew;
       mnuFile_New.Name = "mnuFile_New";
       mnuFile_New.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
       mnuFile_New.Size = new System.Drawing.Size(149, 22);
@@ -104,7 +104,7 @@ namespace EllieWare.Python
       // 
       // mnuFile_Open
       // 
-      mnuFile_Open.Image = global::EllieWare.Python.Properties.Resources.FileOpen;
+      mnuFile_Open.Image = global::SerpentWare.Manager.Properties.Resources.FileOpen;
       mnuFile_Open.Name = "mnuFile_Open";
       mnuFile_Open.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
       mnuFile_Open.Size = new System.Drawing.Size(149, 22);
@@ -146,7 +146,7 @@ namespace EllieWare.Python
       // 
       // mnuDebug_Run
       // 
-      mnuDebug_Run.Image = global::EllieWare.Python.Properties.Resources.DebugRun;
+      mnuDebug_Run.Image = global::SerpentWare.Manager.Properties.Resources.DebugRun;
       mnuDebug_Run.Name = "mnuDebug_Run";
       mnuDebug_Run.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
       mnuDebug_Run.Size = new System.Drawing.Size(188, 22);
@@ -155,7 +155,7 @@ namespace EllieWare.Python
       // 
       // mnuDebug_Debug
       // 
-      mnuDebug_Debug.Image = global::EllieWare.Python.Properties.Resources.DebugStart;
+      mnuDebug_Debug.Image = global::SerpentWare.Manager.Properties.Resources.DebugStart;
       mnuDebug_Debug.Name = "mnuDebug_Debug";
       mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
       mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
@@ -164,7 +164,7 @@ namespace EllieWare.Python
       // 
       // mnuWindow_Cascade
       // 
-      mnuWindow_Cascade.Image = global::EllieWare.Python.Properties.Resources.CascadeWindowsHS;
+      mnuWindow_Cascade.Image = global::SerpentWare.Manager.Properties.Resources.CascadeWindowsHS;
       mnuWindow_Cascade.Name = "mnuWindow_Cascade";
       mnuWindow_Cascade.Size = new System.Drawing.Size(151, 22);
       mnuWindow_Cascade.Text = "Cascade";
@@ -172,7 +172,7 @@ namespace EllieWare.Python
       // 
       // mnuWindow_TileHorizontal
       // 
-      mnuWindow_TileHorizontal.Image = global::EllieWare.Python.Properties.Resources.ArrangeWindowsHS;
+      mnuWindow_TileHorizontal.Image = global::SerpentWare.Manager.Properties.Resources.ArrangeWindowsHS;
       mnuWindow_TileHorizontal.Name = "mnuWindow_TileHorizontal";
       mnuWindow_TileHorizontal.Size = new System.Drawing.Size(151, 22);
       mnuWindow_TileHorizontal.Text = "Tile Horizontal";
@@ -180,7 +180,7 @@ namespace EllieWare.Python
       // 
       // mnuWindow_TileVertical
       // 
-      mnuWindow_TileVertical.Image = global::EllieWare.Python.Properties.Resources.ArrangeSideBySideHS;
+      mnuWindow_TileVertical.Image = global::SerpentWare.Manager.Properties.Resources.ArrangeSideBySideHS;
       mnuWindow_TileVertical.Name = "mnuWindow_TileVertical";
       mnuWindow_TileVertical.Size = new System.Drawing.Size(151, 22);
       mnuWindow_TileVertical.Text = "Tile Vertical";
@@ -228,7 +228,7 @@ namespace EllieWare.Python
       // 
       // mnuFile_Save
       // 
-      this.mnuFile_Save.Image = global::EllieWare.Python.Properties.Resources.FileSave;
+      this.mnuFile_Save.Image = global::SerpentWare.Manager.Properties.Resources.FileSave;
       this.mnuFile_Save.Name = "mnuFile_Save";
       this.mnuFile_Save.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
       this.mnuFile_Save.Size = new System.Drawing.Size(149, 22);
@@ -244,7 +244,7 @@ namespace EllieWare.Python
       // 
       // mnuFile_PrintPreview
       // 
-      this.mnuFile_PrintPreview.Image = global::EllieWare.Python.Properties.Resources.PrintPreviewHS;
+      this.mnuFile_PrintPreview.Image = global::SerpentWare.Manager.Properties.Resources.PrintPreviewHS;
       this.mnuFile_PrintPreview.Name = "mnuFile_PrintPreview";
       this.mnuFile_PrintPreview.Size = new System.Drawing.Size(149, 22);
       this.mnuFile_PrintPreview.Text = "Print Preview";
@@ -252,7 +252,7 @@ namespace EllieWare.Python
       // 
       // mnuFile_Print
       // 
-      this.mnuFile_Print.Image = global::EllieWare.Python.Properties.Resources.PrintHS;
+      this.mnuFile_Print.Image = global::SerpentWare.Manager.Properties.Resources.PrintHS;
       this.mnuFile_Print.Name = "mnuFile_Print";
       this.mnuFile_Print.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
       this.mnuFile_Print.Size = new System.Drawing.Size(149, 22);
@@ -282,7 +282,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_Undo
       // 
-      this.mnuEdit_Undo.Image = global::EllieWare.Python.Properties.Resources.EditUndo;
+      this.mnuEdit_Undo.Image = global::SerpentWare.Manager.Properties.Resources.EditUndo;
       this.mnuEdit_Undo.Name = "mnuEdit_Undo";
       this.mnuEdit_Undo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
       this.mnuEdit_Undo.Size = new System.Drawing.Size(210, 22);
@@ -291,7 +291,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_Redo
       // 
-      this.mnuEdit_Redo.Image = global::EllieWare.Python.Properties.Resources.EditRedo;
+      this.mnuEdit_Redo.Image = global::SerpentWare.Manager.Properties.Resources.EditRedo;
       this.mnuEdit_Redo.Name = "mnuEdit_Redo";
       this.mnuEdit_Redo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
       this.mnuEdit_Redo.Size = new System.Drawing.Size(210, 22);
@@ -300,7 +300,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_Copy
       // 
-      this.mnuEdit_Copy.Image = global::EllieWare.Python.Properties.Resources.EditCopy;
+      this.mnuEdit_Copy.Image = global::SerpentWare.Manager.Properties.Resources.EditCopy;
       this.mnuEdit_Copy.Name = "mnuEdit_Copy";
       this.mnuEdit_Copy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
       this.mnuEdit_Copy.Size = new System.Drawing.Size(210, 22);
@@ -309,7 +309,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_Cut
       // 
-      this.mnuEdit_Cut.Image = global::EllieWare.Python.Properties.Resources.EditCut;
+      this.mnuEdit_Cut.Image = global::SerpentWare.Manager.Properties.Resources.EditCut;
       this.mnuEdit_Cut.Name = "mnuEdit_Cut";
       this.mnuEdit_Cut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
       this.mnuEdit_Cut.Size = new System.Drawing.Size(210, 22);
@@ -318,7 +318,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_Paste
       // 
-      this.mnuEdit_Paste.Image = global::EllieWare.Python.Properties.Resources.EditPaste;
+      this.mnuEdit_Paste.Image = global::SerpentWare.Manager.Properties.Resources.EditPaste;
       this.mnuEdit_Paste.Name = "mnuEdit_Paste";
       this.mnuEdit_Paste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
       this.mnuEdit_Paste.Size = new System.Drawing.Size(210, 22);
@@ -327,7 +327,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_Delete
       // 
-      this.mnuEdit_Delete.Image = global::EllieWare.Python.Properties.Resources.EditDelete;
+      this.mnuEdit_Delete.Image = global::SerpentWare.Manager.Properties.Resources.EditDelete;
       this.mnuEdit_Delete.Name = "mnuEdit_Delete";
       this.mnuEdit_Delete.Size = new System.Drawing.Size(210, 22);
       this.mnuEdit_Delete.Text = "Delete";
@@ -343,7 +343,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_ToggleBookmark
       // 
-      this.mnuEdit_ToggleBookmark.Image = global::EllieWare.Python.Properties.Resources.BookmarkToggle;
+      this.mnuEdit_ToggleBookmark.Image = global::SerpentWare.Manager.Properties.Resources.BookmarkToggle;
       this.mnuEdit_ToggleBookmark.Name = "mnuEdit_ToggleBookmark";
       this.mnuEdit_ToggleBookmark.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F2)));
       this.mnuEdit_ToggleBookmark.Size = new System.Drawing.Size(210, 22);
@@ -352,7 +352,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_NextBookmark
       // 
-      this.mnuEdit_NextBookmark.Image = global::EllieWare.Python.Properties.Resources.BookmarkNext;
+      this.mnuEdit_NextBookmark.Image = global::SerpentWare.Manager.Properties.Resources.BookmarkNext;
       this.mnuEdit_NextBookmark.Name = "mnuEdit_NextBookmark";
       this.mnuEdit_NextBookmark.ShortcutKeys = System.Windows.Forms.Keys.F2;
       this.mnuEdit_NextBookmark.Size = new System.Drawing.Size(210, 22);
@@ -361,7 +361,7 @@ namespace EllieWare.Python
       // 
       // mnuEdit_PrevBookmark
       // 
-      this.mnuEdit_PrevBookmark.Image = global::EllieWare.Python.Properties.Resources.BookmarkPrevious;
+      this.mnuEdit_PrevBookmark.Image = global::SerpentWare.Manager.Properties.Resources.BookmarkPrevious;
       this.mnuEdit_PrevBookmark.Name = "mnuEdit_PrevBookmark";
       this.mnuEdit_PrevBookmark.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F2)));
       this.mnuEdit_PrevBookmark.Size = new System.Drawing.Size(210, 22);

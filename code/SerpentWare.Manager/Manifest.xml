@@ -11,7 +11,7 @@
   -->
   <AddIn name="EngIT Sheet Metal Estimator"
          description="EngIT Sheet Metal Estimator"
-         assembly="EllieWare.Python.dll"
-         typename="EllieWare.Python.EllieWarePythonAddin"
+         assembly="SerpentWare.Manager.dll"
+         typename="SerpentWare.Manager.EllieWarePythonAddin"
          host="NewAppDomain"/>
 </AddIns>

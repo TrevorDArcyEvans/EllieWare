@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EllieWare.Python.Properties {
+namespace SerpentWare.Manager.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace EllieWare.Python.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EllieWare.Python.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SerpentWare.Manager.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -291,7 +291,7 @@ namespace EllieWare.Python.Properties {
         ///  --&gt;
         ///  &lt;ribbon&gt;
         ///    &lt;tabs&gt;
-        ///      &lt;tab id=&quot;EllieWare.Python.RibbonTab&quot; command=&quot;EllieWare.Python.RibbonTab&quot;&gt;
+        ///      &lt;tab id=&quot;SerpentWare.Manager.RibbonTab&quot; command=&quot;SerpentWare.Manager.RibbonTab&quot;&gt;
         ///        &lt;!-- 
         ///          For the &apos;tab&apos; and &apos;group&apos; elements, you can either specify a &apos;label&apos; attribute, or you can
         ///          specify a &apos;command&apos; attribute.  The &apos;command&apos; attribu [rest of string was truncated]&quot;;.

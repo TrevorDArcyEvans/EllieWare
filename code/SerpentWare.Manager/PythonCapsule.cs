@@ -6,16 +6,16 @@
 //  www.EllieWare.com
 //
 using System.Drawing;
-using EllieWare.Python.Properties;
+using SerpentWare.Manager.Properties;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public class PythonCapsule : CommandCapsule
   {
     public PythonCapsule()
-      : base("EllieWare.Python.Console", "Python", Resources.python_32x32, "Run a Python script")
+      : base("SerpentWare.Manager.Console", "Python", Resources.python_32x32, "Run a Python script")
     {
     }
 

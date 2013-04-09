@@ -9,7 +9,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   public class TextBoxWriter : TextWriter
   {

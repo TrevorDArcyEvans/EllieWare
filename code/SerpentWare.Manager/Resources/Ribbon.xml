@@ -11,7 +11,7 @@
   -->
   <ribbon>
     <tabs>
-      <tab id="EllieWare.Python.RibbonTab" command="EllieWare.Python.RibbonTab">
+      <tab id="SerpentWare.Manager.RibbonTab" command="SerpentWare.Manager.RibbonTab">
         <!-- 
           For the 'tab' and 'group' elements, you can either specify a 'label' attribute, or you can
           specify a 'command' attribute.  The 'command' attribute gives the name of a command that you
@@ -20,7 +20,7 @@
           attribute, and the remaining 'group' elements use a 'label' attribute.  If you specify both
           attributes, the 'label' attribute is overridden by the 'command' attribute.
         -->
-        <group id="EllieWare.Python.ManagerGroup" command="EllieWare.Python.ManagerGroup">
+        <group id="SerpentWare.Manager.ManagerGroup" command="SerpentWare.Manager.ManagerGroup">
           <!-- 
             Command names match the names of Command objects created by the add-in in its 
             ICommandExtensibility.Initialize method, or the names of built-in commands. Command names
@@ -35,7 +35,7 @@
             the image can only be specified if you use the 'command' attribute.  The Image property 
             of the Command object is used.
           -->
-          <button id="EllieWare.Python.Console" size="large" command="EllieWare.Python.Console" />
+          <button id="SerpentWare.Manager.Console" size="large" command="SerpentWare.Manager.Console" />
         </group>
       </tab>
     </tabs>

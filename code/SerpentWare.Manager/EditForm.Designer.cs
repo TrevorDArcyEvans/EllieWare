@@ -5,7 +5,7 @@
 //
 //  www.EllieWare.com
 //
-namespace EllieWare.Python
+namespace SerpentWare.Manager
 {
   partial class EditForm
   {
