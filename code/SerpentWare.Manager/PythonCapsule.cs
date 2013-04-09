@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System.Drawing;
+using SerpentWare.Common;
 using SerpentWare.Manager.Properties;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
