@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="PythonDictionaryPropertyDescriptor.cs" />
     <Compile Include="PythonDictionaryPropertyGridAdapter.cs" />
+    <Compile Include="SerpentWareWrapper.cs" />
     <Compile Include="TextBoxWriter.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
@@ -125,6 +126,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutoUpdater.NET\AutoUpdater.NET.csproj">
+      <Project>{FB9E7E6B-B19F-4F37-A708-2996190CEF13}</Project>
+      <Name>AutoUpdater.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrashReporter.NET\CrashReporter.NET.csproj">
+      <Project>{67912BDA-1572-46B0-8623-5872D9DADBC8}</Project>
+      <Name>CrashReporter.NET</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>
@@ -132,6 +141,14 @@
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Licensing\EllieWare.Licensing.csproj">
+      <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
+      <Name>EllieWare.Licensing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerpentWare.Interfaces\SerpentWare.Interfaces.csproj">
+      <Project>{2175F59B-D0E0-4619-805B-5D152C597175}</Project>
+      <Name>SerpentWare.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj">
       <Project>{19EF75B2-B414-4EB0-9486-160FAF93E62C}</Project>

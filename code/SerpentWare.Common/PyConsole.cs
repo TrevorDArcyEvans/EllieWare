@@ -9,18 +9,23 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using Alsing.SourceCode;
+using AutoUpdaterDotNET;
+using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Microsoft.Scripting;
+using SerpentWare.Interfaces;
+using EWC = EllieWare.Common;
 
 namespace SerpentWare.Common
 {
   public partial class PyConsole : Form
   {
     private readonly SyntaxDefinitionList Languages = new SyntaxDefinitionList();
-    private readonly IRobotWare mRoot;
+    private readonly ISerpentWare mRoot;
 
     public PyConsole()
     {
@@ -46,12 +51,35 @@ namespace SerpentWare.Common
       dlgOpen.FilterIndex = dlgSave.FilterIndex = 2;
     }
 
-    public PyConsole(IRobotWare root) :
+    public PyConsole(ISerpentWare root) :
       this()
     {
       mRoot = root;
+      if (!mRoot.IsLicensed)
+      {
+        EWC.Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, () => mRoot.IsLicensed);
+      }
+
+      // http://crashreporterdotnet.codeplex.com/documentation
+      Application.ThreadException += ApplicationThreadException;
+
+      // http://autoupdaterdotnet.codeplex.com/documentation
+      const string EllieWare = @"http://www.EllieWare.com";
+      var appCast = mRoot.ApplicationName.Replace(' ', '_') + ".xml";
+      var appCastUrl = EllieWare + @"/" + appCast;
+      AutoUpdater.Start(appCastUrl, mRoot.ApplicationName, mRoot.Version);
 
       Text = mRoot.ApplicationName;
+    }
+
+    private void ApplicationThreadException(object sender, ThreadExceptionEventArgs e)
+    {
+      var reportCrash = new ReportCrash
+      {
+        ToEmail = "support@EllieWare.com"
+      };
+
+      reportCrash.Send(e.Exception);
     }
 
     private void ReportError(Exception ex)
@@ -365,7 +393,7 @@ namespace SerpentWare.Common
       }
 
       var ef = (EditForm)ActiveMdiChild;
-      var engine = Utils.CreateEngine(ef);
+      var engine = Utils.CreateEngine(mRoot, ef.Output, ef.Doc.Path);
       try
       {
         var sourceLines = Utils.GetSourceLines(ef);
@@ -402,7 +430,7 @@ namespace SerpentWare.Common
         return;
       }
 
-      var dlg = new DebugWindow(ef);
+      var dlg = new DebugWindow(mRoot, ef);
       dlg.ShowDialog();
     }
 

@@ -17,6 +17,7 @@ using IronPython.Runtime;
 using IronPython.Runtime.Exceptions;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
+using SerpentWare.Interfaces;
 
 namespace SerpentWare.Common
 {
@@ -36,11 +37,28 @@ namespace SerpentWare.Common
     private bool mBreaktrace = true;
     private TracebackDelegate mTraceback;
 
+    private readonly ISerpentWare mRoot;
+
     public DebugWindow()
     {
       InitializeComponent();
 
       DebugContainer.Panel2Collapsed = false;
+    }
+
+    public DebugWindow(ISerpentWare root, EditForm ef) :
+      this()
+    {
+      mRoot = root;
+
+      sBox.ReadOnly = true;
+      sBox.Document.Lines = File.ReadAllLines(ef.Doc.Path);
+      sBox.Document.Parser.Init(ef.sBox.Document.Parser.SyntaxDefinition);
+
+      Doc = ef.Doc;
+      Text = ef.Doc.Title;
+
+      mTracebackAction = new Action<TraceBackFrame, string, object>(OnTraceback);
     }
 
     private void Shutdown()
@@ -50,19 +68,6 @@ namespace SerpentWare.Common
         mEngine.Runtime.Shutdown();
         mEngine.SetTrace(null);
       }
-    }
-
-    public DebugWindow(EditForm ef) :
-      this()
-    {
-      sBox.ReadOnly = true;
-      sBox.Document.Lines = File.ReadAllLines(ef.Doc.Path);
-      sBox.Document.Parser.Init(ef.sBox.Document.Parser.SyntaxDefinition);
-
-      Doc = ef.Doc;
-      Text = ef.Doc.Title;
-
-      mTracebackAction = new Action<TraceBackFrame, string, object>(OnTraceback);
     }
 
     private void StartScript()
@@ -77,7 +82,7 @@ namespace SerpentWare.Common
       mEngine = null;
       mScope = null;
 
-      mEngine = Utils.CreateEngine(this);
+      mEngine = Utils.CreateEngine(mRoot, Output, Doc.Path);
       mScope = mEngine.CreateScope();
 
       mEngine.SetTrace(OnTracebackReceived);

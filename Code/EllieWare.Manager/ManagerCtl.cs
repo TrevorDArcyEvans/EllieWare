@@ -38,7 +38,7 @@ namespace EllieWare.Manager
       mRoot = root;
       if (!mRoot.IsLicensed)
       {
-        DoRequestLicense(mRoot);
+        Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, () => mRoot.IsLicensed);
       }
 
       // http://crashreporterdotnet.codeplex.com/documentation
@@ -71,22 +71,6 @@ namespace EllieWare.Manager
                               };
 
       reportCrash.Send(e.Exception);
-    }
-
-    public static void DoRequestLicense(IRobotWare root)
-    {
-      var dlg = new RequestLicense(root);
-      if (dlg.ShowDialog() == DialogResult.OK)
-      {
-        // attempt to register with provided info
-        Licensing.LicenseManager.Register(root.ApplicationName, root.Version, dlg.UserName.Text, dlg.LicenseCode.Text);
-
-        var isLicensed = root.IsLicensed;
-        var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                             "  " + root.ApplicationName
-                                  : "Information incorrect - product not registered");
-        MessageBox.Show(msg, root.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-      }
     }
 
     private string GetSelectedSpecificationPath()

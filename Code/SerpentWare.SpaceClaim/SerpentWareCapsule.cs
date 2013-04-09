@@ -10,6 +10,7 @@ using EllieWare.Common;
 using EllieWare.Interfaces;
 using SerpentWare.Common;
 using SerpentWare.Common.Properties;
+using SerpentWare.Interfaces;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
 
@@ -19,7 +20,7 @@ namespace SerpentWare.SpaceClaim
   {
     private const string ApplicationName = "SerpentWare for SpaceClaim";
 
-    private readonly IRobotWare mLicenseWrapper = new RobotWareWrapper(ApplicationName);
+    private readonly ISerpentWare mLicenseWrapper = new SerpentWareWrapper(ApplicationName);
 
     public PythonCapsule()
       : base("SerpentWare.SpaceClaim.Console", "Python", Resources.python_32x32, "Run a Python script")

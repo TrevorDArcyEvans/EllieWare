@@ -76,5 +76,20 @@ namespace EllieWare.Common
     }
 
     public const string RegistryKey = "EllieWare";
+
+    public static void DoRequestLicense(string appName, Version appVer, Func<bool> isLicensed)
+    {
+      var dlg = new RequestLicense(appName, appVer);
+      if (dlg.ShowDialog() == DialogResult.OK)
+      {
+        // attempt to register with provided info
+        Licensing.LicenseManager.Register(appName, appVer, dlg.UserName.Text, dlg.LicenseCode.Text);
+
+        var msg = string.Format(isLicensed() ? "Successfully registered:" + Environment.NewLine +
+                                             "  " + appName
+                                  : "Information incorrect - product not registered");
+        MessageBox.Show(msg, appName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+      }
+    }
   }
 }
