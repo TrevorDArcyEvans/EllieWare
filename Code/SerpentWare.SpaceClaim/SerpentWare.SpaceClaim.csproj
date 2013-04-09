@@ -56,8 +56,8 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Python.SpaceClaim.cs" />
-    <Compile Include="PythonCapsule.cs" />
+    <Compile Include="SerpentWare.SpaceClaim.cs" />
+    <Compile Include="SerpentWareCapsule.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
