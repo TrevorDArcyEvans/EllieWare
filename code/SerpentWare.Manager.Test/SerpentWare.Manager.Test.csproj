@@ -79,9 +79,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EllieWare.Python\PythonWare.Manager.csproj">
+    <ProjectReference Include="..\SerpentWare.Manager\SerpentWare.Manager.csproj">
       <Project>{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}</Project>
-      <Name>PythonWare.Manager</Name>
+      <Name>SerpentWare.Manager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
