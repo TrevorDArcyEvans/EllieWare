@@ -7,8 +7,10 @@
 //
 using System;
 using System.Windows.Forms;
+using SerpentWare.Common;
+using SerpentWare.Interfaces;
 
-namespace SerpentWare.Manager.Test
+namespace SerpentWare.Windows
 {
   static class Program
   {
@@ -18,9 +20,13 @@ namespace SerpentWare.Manager.Test
     [STAThread]
     static void Main()
     {
+      const string ApplicationName = "SerpentWare for SpaceClaim";
+
+      ISerpentWare mLicenseWrapper = new SerpentWareWrapper(ApplicationName);
+
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new Form1());
+      Application.Run(new PyConsole(mLicenseWrapper));
     }
   }
 }

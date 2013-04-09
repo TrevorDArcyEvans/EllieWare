@@ -74,6 +74,10 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Licensing\EllieWare.Licensing.csproj">
+      <Project>{639D40B5-8191-409A-A267-8A78D4D38452}</Project>
+      <Name>EllieWare.Licensing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SerpentWare.Common\SerpentWare.Common.csproj">
       <Project>{831A9A61-99A0-40AD-953D-99A677F2CA1C}</Project>
       <Name>SerpentWare.Common</Name>

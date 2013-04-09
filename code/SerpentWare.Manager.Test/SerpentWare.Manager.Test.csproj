@@ -82,9 +82,9 @@
       <Project>{831A9A61-99A0-40AD-953D-99A677F2CA1C}</Project>
       <Name>SerpentWare.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SerpentWare.Manager\SerpentWare.Manager.csproj">
+    <ProjectReference Include="..\SerpentWare.Manager\SerpentWare.Windows.csproj">
       <Project>{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}</Project>
-      <Name>SerpentWare.Manager</Name>
+      <Name>SerpentWare.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

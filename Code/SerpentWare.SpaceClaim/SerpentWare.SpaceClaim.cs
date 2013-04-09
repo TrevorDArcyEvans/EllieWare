@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-
 using SpaceClaim.Api.V10.Extensibility;
 
 namespace SerpentWare.SpaceClaim

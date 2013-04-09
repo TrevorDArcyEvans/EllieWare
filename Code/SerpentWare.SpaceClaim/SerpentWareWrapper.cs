@@ -5,44 +5,18 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using EllieWare;
 using Microsoft.Win32;
-using SerpentWare.Interfaces;
+using SerpentWare.Common;
 
-namespace SerpentWare.Common
+namespace SerpentWare.SpaceClaim
 {
-  public class SerpentWareWrapper : ISerpentWare
+  public class SerpentWareWrapper : SerpentWareWrapperBase
   {
-    // HKCU
-    //  SOFTWARE
-    //    EllieWare
-    //      [ProductName]
-    //        {WorkGroupSpecificationFolder} --> WorkGroupSpecificationFolder
-
-    public bool IsLicensed
-    {
-      get
-      {
-        return EllieWare.Licensing.LicenseManager.IsLicensed(ApplicationName, Version);
-      }
-    }
-
-    public string ApplicationName { get; private set; }
-
-    public Version Version
-    {
-      get
-      {
-        return Assembly.GetExecutingAssembly().GetName().Version;
-      }
-    }
-
-    public IEnumerable<Assembly> Assemblies
+    public override IEnumerable<Assembly> Assemblies
     {
       get
       {
@@ -70,9 +44,9 @@ namespace SerpentWare.Common
       }
     }
 
-    public SerpentWareWrapper(string appName)
+    public SerpentWareWrapper(string appName) :
+      base(appName)
     {
-      ApplicationName = appName;
     }
   }
 }

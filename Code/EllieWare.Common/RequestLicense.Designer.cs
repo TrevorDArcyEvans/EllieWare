@@ -59,11 +59,11 @@ namespace EllieWare.Common
       tableLayoutPanel1.SuspendLayout();
       tableLayoutPanel2.SuspendLayout();
       this.SuspendLayout();
-      //
+      // 
       // tableLayoutPanel1
-      //
-      tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+      // 
+      tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       tableLayoutPanel1.ColumnCount = 3;
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -88,9 +88,9 @@ namespace EllieWare.Common
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.Size = new System.Drawing.Size(505, 141);
       tableLayoutPanel1.TabIndex = 0;
-      //
+      // 
       // label1
-      //
+      // 
       label1.AutoSize = true;
       label1.Location = new System.Drawing.Point(3, 6);
       label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -98,9 +98,9 @@ namespace EllieWare.Common
       label1.Size = new System.Drawing.Size(47, 13);
       label1.TabIndex = 0;
       label1.Text = "Product:";
-      //
+      // 
       // label2
-      //
+      // 
       label2.AutoSize = true;
       label2.Location = new System.Drawing.Point(3, 58);
       label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -108,9 +108,9 @@ namespace EllieWare.Common
       label2.Size = new System.Drawing.Size(63, 13);
       label2.TabIndex = 2;
       label2.Text = "User Name:";
-      //
+      // 
       // label3
-      //
+      // 
       label3.AutoSize = true;
       label3.Location = new System.Drawing.Point(3, 84);
       label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -118,9 +118,9 @@ namespace EllieWare.Common
       label3.Size = new System.Drawing.Size(75, 13);
       label3.TabIndex = 4;
       label3.Text = "License Code:";
-      //
+      // 
       // Product
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.Product, 2);
       this.Product.Dock = System.Windows.Forms.DockStyle.Top;
       this.Product.Location = new System.Drawing.Point(84, 3);
@@ -128,27 +128,27 @@ namespace EllieWare.Common
       this.Product.ReadOnly = true;
       this.Product.Size = new System.Drawing.Size(418, 20);
       this.Product.TabIndex = 1;
-      //
+      // 
       // UserName
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.UserName, 2);
       this.UserName.Dock = System.Windows.Forms.DockStyle.Top;
       this.UserName.Location = new System.Drawing.Point(84, 55);
       this.UserName.Name = "UserName";
       this.UserName.Size = new System.Drawing.Size(418, 20);
       this.UserName.TabIndex = 3;
-      //
+      // 
       // LicenseCode
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.LicenseCode, 2);
       this.LicenseCode.Dock = System.Windows.Forms.DockStyle.Top;
       this.LicenseCode.Location = new System.Drawing.Point(84, 81);
       this.LicenseCode.Name = "LicenseCode";
       this.LicenseCode.Size = new System.Drawing.Size(418, 20);
       this.LicenseCode.TabIndex = 5;
-      //
+      // 
       // tableLayoutPanel2
-      //
+      // 
       tableLayoutPanel2.AutoSize = true;
       tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       tableLayoutPanel2.ColumnCount = 2;
@@ -163,9 +163,9 @@ namespace EllieWare.Common
       tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel2.Size = new System.Drawing.Size(162, 31);
       tableLayoutPanel2.TabIndex = 6;
-      //
+      // 
       // CmdCancel
-      //
+      // 
       CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       CmdCancel.Location = new System.Drawing.Point(84, 3);
       CmdCancel.Name = "CmdCancel";
@@ -173,9 +173,9 @@ namespace EllieWare.Common
       CmdCancel.TabIndex = 1;
       CmdCancel.Text = "Cancel";
       CmdCancel.UseVisualStyleBackColor = true;
-      //
+      // 
       // CmdOK
-      //
+      // 
       CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
       CmdOK.Location = new System.Drawing.Point(3, 3);
       CmdOK.Name = "CmdOK";
@@ -183,9 +183,9 @@ namespace EllieWare.Common
       CmdOK.TabIndex = 0;
       CmdOK.Text = "OK";
       CmdOK.UseVisualStyleBackColor = true;
-      //
+      // 
       // label4
-      //
+      // 
       label4.AutoSize = true;
       label4.Location = new System.Drawing.Point(3, 32);
       label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
@@ -193,9 +193,9 @@ namespace EllieWare.Common
       label4.Size = new System.Drawing.Size(45, 13);
       label4.TabIndex = 0;
       label4.Text = "Version:";
-      //
+      // 
       // Version
-      //
+      // 
       tableLayoutPanel1.SetColumnSpan(this.Version, 2);
       this.Version.Dock = System.Windows.Forms.DockStyle.Top;
       this.Version.Location = new System.Drawing.Point(84, 29);
@@ -203,9 +203,9 @@ namespace EllieWare.Common
       this.Version.ReadOnly = true;
       this.Version.Size = new System.Drawing.Size(418, 20);
       this.Version.TabIndex = 1;
-      //
+      // 
       // RequestLicense
-      //
+      // 
       this.AcceptButton = CmdOK;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

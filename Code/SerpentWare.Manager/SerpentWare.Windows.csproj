@@ -6,15 +6,21 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\EllieWare.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SerpentWare.Windows.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Python.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SerpentWare.Manager</RootNamespace>
-    <AssemblyName>SerpentWare.Manager</AssemblyName>
+    <RootNamespace>SerpentWare.Windows</RootNamespace>
+    <AssemblyName>SerpentWare.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -79,6 +85,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerpentWareWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
@@ -100,6 +107,10 @@
       <Project>{831A9A61-99A0-40AD-953D-99A677F2CA1C}</Project>
       <Name>SerpentWare.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SerpentWare.Interfaces\SerpentWare.Interfaces.csproj">
+      <Project>{2175F59B-D0E0-4619-805B-5D152C597175}</Project>
+      <Name>SerpentWare.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj">
       <Project>{19EF75B2-B414-4EB0-9486-160FAF93E62C}</Project>
       <Name>Alsing.SyntaxBox.NET</Name>
@@ -112,6 +123,7 @@
     <Content Include="HelloWorld.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Python.ico" />
     <Content Include="test.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

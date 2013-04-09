@@ -6,8 +6,6 @@
 //  www.EllieWare.com
 //
 using System.Drawing;
-using EllieWare.Common;
-using EllieWare.Interfaces;
 using SerpentWare.Common;
 using SerpentWare.Common.Properties;
 using SerpentWare.Interfaces;
