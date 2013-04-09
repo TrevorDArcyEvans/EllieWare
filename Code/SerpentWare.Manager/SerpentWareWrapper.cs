@@ -11,7 +11,7 @@ using SerpentWare.Common;
 
 namespace SerpentWare.Windows
 {
-  public class SerpentWareWrapper : SerpentWareWrapperBase
+  public class SerpentWareWindows : SerpentWareWrapperBase
   {
     public override IEnumerable<Assembly> Assemblies
     {
@@ -21,7 +21,7 @@ namespace SerpentWare.Windows
       }
     }
 
-    public SerpentWareWrapper(string appName) :
+    public SerpentWareWindows(string appName) :
       base(appName)
     {
     }

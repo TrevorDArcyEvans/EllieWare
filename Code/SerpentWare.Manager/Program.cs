@@ -22,7 +22,7 @@ namespace SerpentWare.Windows
     {
       const string ApplicationName = "SerpentWare for SpaceClaim";
 
-      ISerpentWare mLicenseWrapper = new SerpentWareWrapper(ApplicationName);
+      ISerpentWare mLicenseWrapper = new SerpentWareWindows(ApplicationName);
 
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
