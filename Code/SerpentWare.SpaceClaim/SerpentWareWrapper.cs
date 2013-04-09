@@ -14,7 +14,7 @@ using SerpentWare.Common;
 
 namespace SerpentWare.SpaceClaim
 {
-  public class SerpentWareWrapper : SerpentWareWrapperBase
+  public class SerpentWareSpaceClaim : SerpentWareWrapperBase
   {
     public override IEnumerable<Assembly> Assemblies
     {
@@ -44,7 +44,7 @@ namespace SerpentWare.SpaceClaim
       }
     }
 
-    public SerpentWareWrapper(string appName) :
+    public SerpentWareSpaceClaim(string appName) :
       base(appName)
     {
     }

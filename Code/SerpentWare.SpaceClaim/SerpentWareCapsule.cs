@@ -18,7 +18,7 @@ namespace SerpentWare.SpaceClaim
   {
     private const string ApplicationName = "SerpentWare for SpaceClaim";
 
-    private readonly ISerpentWare mLicenseWrapper = new SerpentWareWrapper(ApplicationName);
+    private readonly ISerpentWare mLicenseWrapper = new SerpentWareSpaceClaim(ApplicationName);
 
     public PythonCapsule()
       : base("SerpentWare.SpaceClaim.Console", "Python", Resources.python_32x32, "Run a Python script")
