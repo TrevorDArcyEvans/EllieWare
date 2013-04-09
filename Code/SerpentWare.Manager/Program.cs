@@ -20,7 +20,7 @@ namespace SerpentWare.Windows
     [STAThread]
     static void Main()
     {
-      const string ApplicationName = "SerpentWare for SpaceClaim";
+      const string ApplicationName = "SerpentWare for Windows";
 
       ISerpentWare mLicenseWrapper = new SerpentWareWindows(ApplicationName);
 

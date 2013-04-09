@@ -10,5 +10,5 @@ using System.Reflection;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SerpentWare.Manager")]
-[assembly: AssemblyProduct("SerpentWare.Manager")]
+[assembly: AssemblyTitle("SerpentWare.Windows")]
+[assembly: AssemblyProduct("SerpentWare.Windows")]
