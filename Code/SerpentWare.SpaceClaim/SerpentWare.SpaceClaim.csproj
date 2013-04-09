@@ -56,7 +56,7 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerpentWare.SpaceAddin.cs" />
+    <Compile Include="SerpentWare.Addin.cs" />
     <Compile Include="SerpentWareCapsule.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
