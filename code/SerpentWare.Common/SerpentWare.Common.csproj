@@ -100,7 +100,6 @@
     </Compile>
     <Compile Include="PythonDictionaryPropertyDescriptor.cs" />
     <Compile Include="PythonDictionaryPropertyGridAdapter.cs" />
-    <Compile Include="SerpentWareWrapper.cs" />
     <Compile Include="TextBoxWriter.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
