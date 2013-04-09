@@ -5,7 +5,7 @@
 //
 //  www.EllieWare.com
 //
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   partial class DebugWindow
   {
@@ -100,7 +100,7 @@ namespace SerpentWare.Manager
       // 
       // mnuDebug_Run
       // 
-      this.mnuDebug_Run.Image = global::SerpentWare.Manager.Properties.Resources.DebugStart;
+      this.mnuDebug_Run.Image = global::SerpentWare.Common.Properties.Resources.DebugStart;
       this.mnuDebug_Run.Name = "mnuDebug_Run";
       this.mnuDebug_Run.ShortcutKeys = System.Windows.Forms.Keys.F5;
       this.mnuDebug_Run.Size = new System.Drawing.Size(177, 22);
@@ -114,7 +114,7 @@ namespace SerpentWare.Manager
       // 
       // mnuDebug_StepInto
       // 
-      this.mnuDebug_StepInto.Image = global::SerpentWare.Manager.Properties.Resources.DebugStepInto;
+      this.mnuDebug_StepInto.Image = global::SerpentWare.Common.Properties.Resources.DebugStepInto;
       this.mnuDebug_StepInto.Name = "mnuDebug_StepInto";
       this.mnuDebug_StepInto.ShortcutKeys = System.Windows.Forms.Keys.F11;
       this.mnuDebug_StepInto.Size = new System.Drawing.Size(177, 22);
@@ -123,7 +123,7 @@ namespace SerpentWare.Manager
       // 
       // mnuDebug_StepOver
       // 
-      this.mnuDebug_StepOver.Image = global::SerpentWare.Manager.Properties.Resources.DebugStepOver;
+      this.mnuDebug_StepOver.Image = global::SerpentWare.Common.Properties.Resources.DebugStepOver;
       this.mnuDebug_StepOver.Name = "mnuDebug_StepOver";
       this.mnuDebug_StepOver.ShortcutKeys = System.Windows.Forms.Keys.F10;
       this.mnuDebug_StepOver.Size = new System.Drawing.Size(177, 22);
@@ -132,7 +132,7 @@ namespace SerpentWare.Manager
       // 
       // mnuDebug_StepOut
       // 
-      this.mnuDebug_StepOut.Image = global::SerpentWare.Manager.Properties.Resources.DebugStepOut;
+      this.mnuDebug_StepOut.Image = global::SerpentWare.Common.Properties.Resources.DebugStepOut;
       this.mnuDebug_StepOut.Name = "mnuDebug_StepOut";
       this.mnuDebug_StepOut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F11)));
       this.mnuDebug_StepOut.Size = new System.Drawing.Size(177, 22);
@@ -146,7 +146,7 @@ namespace SerpentWare.Manager
       // 
       // mnuDebug_Reset
       // 
-      this.mnuDebug_Reset.Image = global::SerpentWare.Manager.Properties.Resources.DebugStop;
+      this.mnuDebug_Reset.Image = global::SerpentWare.Common.Properties.Resources.DebugStop;
       this.mnuDebug_Reset.Name = "mnuDebug_Reset";
       this.mnuDebug_Reset.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F5)));
       this.mnuDebug_Reset.Size = new System.Drawing.Size(177, 22);

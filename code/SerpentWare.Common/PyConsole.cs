@@ -14,7 +14,7 @@ using Alsing.SourceCode;
 using EllieWare.Common;
 using Microsoft.Scripting;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   public partial class PyConsole : Form
   {

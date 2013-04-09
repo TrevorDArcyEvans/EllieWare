@@ -12,7 +12,7 @@ using System.Text;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Win32;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   public class Utils
   {

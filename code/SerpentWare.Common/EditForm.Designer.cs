@@ -5,7 +5,7 @@
 //
 //  www.EllieWare.com
 //
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   partial class EditForm
   {

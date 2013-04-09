@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   public class PythonDictionaryPropertyGridAdapter : ICustomTypeDescriptor
   {

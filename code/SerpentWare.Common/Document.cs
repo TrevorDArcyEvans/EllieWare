@@ -6,7 +6,7 @@
 //  www.EllieWare.com
 //
 
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   public class Document
   {

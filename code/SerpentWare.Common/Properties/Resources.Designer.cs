@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SerpentWare.Manager.Properties {
+namespace SerpentWare.Common.Properties {
     using System;
     
     

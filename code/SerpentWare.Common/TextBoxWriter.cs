@@ -9,7 +9,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   public class TextBoxWriter : TextWriter
   {

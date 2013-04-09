@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Alsing.SourceCode;
 using Microsoft.Scripting;
 
-namespace SerpentWare.Manager
+namespace SerpentWare.Common
 {
   public partial class EditForm : Form
   {

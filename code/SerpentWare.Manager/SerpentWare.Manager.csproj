@@ -78,19 +78,8 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Python.SpaceClaim.cs" />
     <Compile Include="PythonCapsule.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
@@ -102,7 +91,6 @@
     <None Include="Python.syn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\Python.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
@@ -125,40 +113,9 @@
     <Content Include="HelloWorld.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\PrintPreviewHS.png" />
-    <None Include="Resources\PrintHS.png" />
-    <None Include="Resources\FileSave.png" />
-    <None Include="Resources\FileOpen.png" />
-    <None Include="Resources\FileNew.png" />
-    <None Include="Resources\EditUndo.png" />
-    <None Include="Resources\EditRedo.png" />
-    <None Include="Resources\EditPaste.png" />
-    <None Include="Resources\EditDelete.png" />
-    <None Include="Resources\EditCut.png" />
-    <None Include="Resources\EditCopy.png" />
-    <None Include="Resources\DebugToggleBreakpoint.png" />
-    <None Include="Resources\DebugStop.png" />
-    <None Include="Resources\DebugStepOver.png" />
-    <None Include="Resources\DebugStepOut.png" />
-    <None Include="Resources\DebugStepInto.png" />
-    <None Include="Resources\DebugStart.png" />
-    <None Include="Resources\DebugRun.png" />
-    <None Include="Resources\DebugClearBreakpoints.png" />
-    <None Include="Resources\DebugBreak.png" />
-    <None Include="Resources\CascadeWindowsHS.png" />
-    <None Include="Resources\BuildSettings.png" />
-    <None Include="Resources\BuildScript.png" />
-    <None Include="Resources\BuildHostEnvironment.png" />
-    <None Include="Resources\BookmarkToggle.png" />
-    <None Include="Resources\BookmarkPrevious.png" />
-    <None Include="Resources\BookmarkNext.png" />
-    <None Include="Resources\ArrangeWindowsHS.png" />
-    <None Include="Resources\ArrangeSideBySideHS.png" />
     <Content Include="Manifest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="python-32x32.png" />
-    <Content Include="Resources\Ribbon.xml" />
     <Content Include="test.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
