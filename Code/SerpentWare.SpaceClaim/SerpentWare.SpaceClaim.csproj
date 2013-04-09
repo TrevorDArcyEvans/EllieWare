@@ -65,6 +65,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
+      <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
+      <Name>EllieWare.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
+      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
+      <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SerpentWare.Common\SerpentWare.Common.csproj">
       <Project>{831A9A61-99A0-40AD-953D-99A677F2CA1C}</Project>
       <Name>SerpentWare.Common</Name>

@@ -129,6 +129,10 @@
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
+      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
+      <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj">
       <Project>{19EF75B2-B414-4EB0-9486-160FAF93E62C}</Project>
       <Name>Alsing.SyntaxBox.NET</Name>

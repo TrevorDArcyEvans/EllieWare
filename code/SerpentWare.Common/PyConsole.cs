@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using Alsing.SourceCode;
 using EllieWare.Common;
+using EllieWare.Interfaces;
 using Microsoft.Scripting;
 
 namespace SerpentWare.Common
@@ -19,6 +20,7 @@ namespace SerpentWare.Common
   public partial class PyConsole : Form
   {
     private readonly SyntaxDefinitionList Languages = new SyntaxDefinitionList();
+    private readonly IRobotWare mRoot;
 
     public PyConsole()
     {
@@ -42,6 +44,14 @@ namespace SerpentWare.Common
       // apply the filter to the dialog
       dlgOpen.Filter = dlgSave.Filter = filter;
       dlgOpen.FilterIndex = dlgSave.FilterIndex = 2;
+    }
+
+    public PyConsole(IRobotWare root) :
+      this()
+    {
+      mRoot = root;
+
+      Text = mRoot.ApplicationName;
     }
 
     private void ReportError(Exception ex)
@@ -449,8 +459,7 @@ namespace SerpentWare.Common
 
     private void mnuHelp_About_Click(object sender, EventArgs e)
     {
-      // TODO   app name
-      var dlg = new AboutBox("Python");
+      var dlg = new AboutBox(mRoot != null ? mRoot.ApplicationName : "Python");
       dlg.ShowDialog();
     }
   }
