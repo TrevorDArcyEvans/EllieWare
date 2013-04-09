@@ -5,7 +5,7 @@
 //
 //  www.EllieWare.com
 //
-using SerpentWare.Manager.Properties;
+
 using SpaceClaim.Api.V10.Extensibility;
 
 namespace SerpentWare.Manager
@@ -48,7 +48,7 @@ namespace SerpentWare.Manager
 
     public string GetCustomUI()
     {
-      return Resources.Ribbon;
+      return SerpentWare.SpaceClaim.Properties.Resource.Ribbon;
     }
 
     #endregion

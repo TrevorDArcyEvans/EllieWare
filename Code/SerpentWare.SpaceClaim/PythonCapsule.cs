@@ -7,7 +7,7 @@
 //
 using System.Drawing;
 using SerpentWare.Common;
-using SerpentWare.Manager.Properties;
+using SerpentWare.Common.Properties;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
 
