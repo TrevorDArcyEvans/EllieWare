@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Windows", "SerpentWare.Manager\SerpentWare.Windows.csproj", "{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Windows", "SerpentWare.Windows\SerpentWare.Windows.csproj", "{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsing.SyntaxBox.NET", "SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj", "{19EF75B2-B414-4EB0-9486-160FAF93E62C}"
 EndProject
