@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Manager.Test", "SerpentWare.Manager.Test.csproj", "{5284F61F-71A1-4973-B56F-D88390A952CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PythonWare.Manager", "..\SerpentWare.Manager\SerpentWare.Manager.csproj", "{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Manager", "..\SerpentWare.Manager\SerpentWare.Manager.csproj", "{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsing.SyntaxBox.NET", "..\SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj", "{19EF75B2-B414-4EB0-9486-160FAF93E62C}"
 EndProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Support", "..\EllieWare.Support\EllieWare.Support.csproj", "{E1644A8E-CB78-4C41-873E-D743CECCCB0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Common", "..\EllieWare.Common\EllieWare.Common.csproj", "{72C5924A-0D73-45CE-8066-9F42B401F7A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Common", "..\SerpentWare.Common\SerpentWare.Common.csproj", "{831A9A61-99A0-40AD-953D-99A677F2CA1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -588,6 +590,81 @@ Global
 		{72C5924A-0D73-45CE-8066-9F42B401F7A1}.WP7Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{72C5924A-0D73-45CE-8066-9F42B401F7A1}.WP7Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{72C5924A-0D73-45CE-8066-9F42B401F7A1}.WP7Release|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidDebug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidDebug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidDebug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidRelease|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidRelease|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.AndroidRelease|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.FxCop|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.FxCop|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.FxCop|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.FxCop|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.FxCop|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Release|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Debug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Release|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight4Release|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Debug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Release|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Silverlight5Release|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Debug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Release|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.v2Release|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Debug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Release|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.Win8Release|x86.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Debug|x86.ActiveCfg = Debug|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Release|Any CPU.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{831A9A61-99A0-40AD-953D-99A677F2CA1C}.WP7Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
