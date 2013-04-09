@@ -156,6 +156,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Python.syn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\ArrangeSideBySideHS.png" />
   </ItemGroup>
   <ItemGroup>

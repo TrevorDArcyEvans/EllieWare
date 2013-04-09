@@ -91,12 +91,6 @@
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
-    <None Include="HelloWorld-SpaceClaim.py">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Python.syn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">

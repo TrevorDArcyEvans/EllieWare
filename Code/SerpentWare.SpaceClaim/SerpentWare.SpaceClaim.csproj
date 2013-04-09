@@ -91,6 +91,9 @@
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
+    <None Include="HelloWorld-SpaceClaim.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource.resx">
