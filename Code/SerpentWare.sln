@@ -1,26 +1,26 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Windows", "..\SerpentWare.Manager\SerpentWare.Windows.csproj", "{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Windows", "SerpentWare.Manager\SerpentWare.Windows.csproj", "{9450BD47-9A69-4C57-BF7B-F95C24C0DCA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsing.SyntaxBox.NET", "..\SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj", "{19EF75B2-B414-4EB0-9486-160FAF93E62C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alsing.SyntaxBox.NET", "SyntaxBox\Alsing.SyntaxBox\Alsing.SyntaxBox.NET.csproj", "{19EF75B2-B414-4EB0-9486-160FAF93E62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Interfaces", "..\EllieWare.Interfaces\EllieWare.Interfaces.csproj", "{6BC6C904-3CA4-494E-AF88-827394E14654}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Interfaces", "EllieWare.Interfaces\EllieWare.Interfaces.csproj", "{6BC6C904-3CA4-494E-AF88-827394E14654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Licensing", "..\EllieWare.Licensing\EllieWare.Licensing.csproj", "{639D40B5-8191-409A-A267-8A78D4D38452}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Licensing", "EllieWare.Licensing\EllieWare.Licensing.csproj", "{639D40B5-8191-409A-A267-8A78D4D38452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Support", "..\EllieWare.Support\EllieWare.Support.csproj", "{E1644A8E-CB78-4C41-873E-D743CECCCB0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Support", "EllieWare.Support\EllieWare.Support.csproj", "{E1644A8E-CB78-4C41-873E-D743CECCCB0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Common", "..\EllieWare.Common\EllieWare.Common.csproj", "{72C5924A-0D73-45CE-8066-9F42B401F7A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Common", "EllieWare.Common\EllieWare.Common.csproj", "{72C5924A-0D73-45CE-8066-9F42B401F7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Common", "..\SerpentWare.Common\SerpentWare.Common.csproj", "{831A9A61-99A0-40AD-953D-99A677F2CA1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Common", "SerpentWare.Common\SerpentWare.Common.csproj", "{831A9A61-99A0-40AD-953D-99A677F2CA1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.SpaceClaim", "..\SerpentWare.SpaceClaim\SerpentWare.SpaceClaim.csproj", "{AA8846CF-F71C-4C1E-991D-85877A433E65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.SpaceClaim", "SerpentWare.SpaceClaim\SerpentWare.SpaceClaim.csproj", "{AA8846CF-F71C-4C1E-991D-85877A433E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdater.NET", "..\AutoUpdater.NET\AutoUpdater.NET.csproj", "{FB9E7E6B-B19F-4F37-A708-2996190CEF13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdater.NET", "AutoUpdater.NET\AutoUpdater.NET.csproj", "{FB9E7E6B-B19F-4F37-A708-2996190CEF13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrashReporter.NET", "..\CrashReporter.NET\CrashReporter.NET.csproj", "{67912BDA-1572-46B0-8623-5872D9DADBC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrashReporter.NET", "CrashReporter.NET\CrashReporter.NET.csproj", "{67912BDA-1572-46B0-8623-5872D9DADBC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Interfaces", "..\SerpentWare.Interfaces\SerpentWare.Interfaces.csproj", "{2175F59B-D0E0-4619-805B-5D152C597175}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerpentWare.Interfaces", "SerpentWare.Interfaces\SerpentWare.Interfaces.csproj", "{2175F59B-D0E0-4619-805B-5D152C597175}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
