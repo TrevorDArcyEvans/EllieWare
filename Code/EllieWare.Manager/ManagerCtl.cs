@@ -38,7 +38,7 @@ namespace EllieWare.Manager
       mRoot = root;
       if (!mRoot.IsLicensed)
       {
-        DoRequestLicense();
+        DoRequestLicense(mRoot);
       }
 
       // http://crashreporterdotnet.codeplex.com/documentation
@@ -73,19 +73,19 @@ namespace EllieWare.Manager
       reportCrash.Send(e.Exception);
     }
 
-    private void DoRequestLicense()
+    public static void DoRequestLicense(IRobotWare root)
     {
-      var dlg = new RequestLicense(mRoot);
+      var dlg = new RequestLicense(root);
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
-        Licensing.LicenseManager.Register(mRoot.ApplicationName, mRoot.Version, dlg.UserName.Text, dlg.LicenseCode.Text);
+        Licensing.LicenseManager.Register(root.ApplicationName, root.Version, dlg.UserName.Text, dlg.LicenseCode.Text);
 
-        var isLicensed = mRoot.IsLicensed;
+        var isLicensed = root.IsLicensed;
         var msg = string.Format(isLicensed ? "Successfully registered:" + Environment.NewLine +
-                                             "  " + mRoot.ApplicationName
+                                             "  " + root.ApplicationName
                                   : "Information incorrect - product not registered");
-        MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+        MessageBox.Show(msg, root.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
       }
     }
 
