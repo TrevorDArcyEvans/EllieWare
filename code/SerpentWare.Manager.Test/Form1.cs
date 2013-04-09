@@ -7,6 +7,7 @@
 //
 using System;
 using System.Windows.Forms;
+using SerpentWare.Common;
 
 namespace SerpentWare.Manager.Test
 {
