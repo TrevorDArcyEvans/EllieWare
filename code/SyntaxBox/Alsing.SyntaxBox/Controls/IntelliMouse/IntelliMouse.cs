@@ -229,19 +229,19 @@ namespace Alsing.Windows.Forms.CoreLib
 
             if (dY > 16)
             {
-                var ms = new MemoryStream(Properties.Resources.MoveDown);
+                var ms = new MemoryStream(Puzzle.SyntaxBox.NET.Properties.Resources.MoveDown);
                 Cursor = new Cursor(ms);
                 CurrentDelta.Y -= 16;
             }
             else if (dY < -16)
             {
-                var ms = new MemoryStream(Properties.Resources.MoveUp);
+                var ms = new MemoryStream(Puzzle.SyntaxBox.NET.Properties.Resources.MoveUp);
                 Cursor = new Cursor(ms);
                 CurrentDelta.Y += 16;
             }
             else
             {
-                var ms = new MemoryStream(Properties.Resources.MoveUpDown);
+                var ms = new MemoryStream(Puzzle.SyntaxBox.NET.Properties.Resources.MoveUpDown);
                 Cursor = new Cursor(ms);
                 CurrentDelta = new Point(0, 0);
             }

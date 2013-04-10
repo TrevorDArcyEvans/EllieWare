@@ -11,15 +11,14 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>Puzzle.SyntaxBox.NET3.5</AssemblyName>
+    <AssemblyName>Puzzle.SyntaxBox.NET</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\EllieWare.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace>Puzzle.SyntaxBox.NET</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>
     </StartupObject>
@@ -433,7 +432,14 @@
     <None Include="MoveDown.cur" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="LGPL.txt" />
     <Content Include="Text\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
+      <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
+      <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

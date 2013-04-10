@@ -1038,7 +1038,7 @@ namespace Alsing.Windows.Forms.SyntaxBox
                     }
                     else
                     {
-                        var ms = new MemoryStream(Properties.Resources.FlippedCursor);
+                        var ms = new MemoryStream(Puzzle.SyntaxBox.NET.Properties.Resources.FlippedCursor);
                         Cursor = new Cursor(ms);
                     }
                 }
