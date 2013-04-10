@@ -254,6 +254,10 @@
   <ItemGroup>
     <None Include="python-powered-h-140x182.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IronPython-LICENSE1.txt" />
+    <EmbeddedResource Include="IronPython-License2.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
