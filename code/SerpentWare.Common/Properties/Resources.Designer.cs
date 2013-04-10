@@ -276,5 +276,12 @@ namespace SerpentWare.Common.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        public static System.Drawing.Bitmap python_powered_h_140x182 {
+            get {
+                object obj = ResourceManager.GetObject("python_powered_h_140x182", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
