@@ -44,13 +44,13 @@ namespace SerpentWare.Common
       System.Windows.Forms.ToolStripSeparator ToolStripMenuItem17;
       System.Windows.Forms.ToolStripSeparator ToolStripMenuItem19;
       System.Windows.Forms.ToolStripMenuItem mnuDebug_Run;
-      System.Windows.Forms.ToolStripMenuItem mnuDebug_Debug;
       System.Windows.Forms.ToolStripMenuItem mnuWindow_Cascade;
       System.Windows.Forms.ToolStripMenuItem mnuWindow_TileHorizontal;
       System.Windows.Forms.ToolStripMenuItem mnuWindow_TileVertical;
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PyConsole));
       System.Windows.Forms.ToolStripMenuItem mnuHelp;
       System.Windows.Forms.ToolStripMenuItem mnuHelp_About;
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PyConsole));
+      this.mnuDebug_Debug = new System.Windows.Forms.ToolStripMenuItem();
       this.MainMenu = new System.Windows.Forms.MenuStrip();
       this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuFile_Close = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +84,6 @@ namespace SerpentWare.Common
       ToolStripMenuItem17 = new System.Windows.Forms.ToolStripSeparator();
       ToolStripMenuItem19 = new System.Windows.Forms.ToolStripSeparator();
       mnuDebug_Run = new System.Windows.Forms.ToolStripMenuItem();
-      mnuDebug_Debug = new System.Windows.Forms.ToolStripMenuItem();
       mnuWindow_Cascade = new System.Windows.Forms.ToolStripMenuItem();
       mnuWindow_TileHorizontal = new System.Windows.Forms.ToolStripMenuItem();
       mnuWindow_TileVertical = new System.Windows.Forms.ToolStripMenuItem();
@@ -155,12 +154,12 @@ namespace SerpentWare.Common
       // 
       // mnuDebug_Debug
       // 
-      mnuDebug_Debug.Image = global::SerpentWare.Common.Properties.Resources.DebugStart;
-      mnuDebug_Debug.Name = "mnuDebug_Debug";
-      mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
-      mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
-      mnuDebug_Debug.Text = "Start Debugging...";
-      mnuDebug_Debug.Click += new System.EventHandler(this.mnuDebug_Debug_Click);
+      this.mnuDebug_Debug.Image = global::SerpentWare.Common.Properties.Resources.DebugStart;
+      this.mnuDebug_Debug.Name = "mnuDebug_Debug";
+      this.mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
+      this.mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
+      this.mnuDebug_Debug.Text = "Start Debugging...";
+      this.mnuDebug_Debug.Click += new System.EventHandler(this.mnuDebug_Debug_Click);
       // 
       // mnuWindow_Cascade
       // 
@@ -185,6 +184,21 @@ namespace SerpentWare.Common
       mnuWindow_TileVertical.Size = new System.Drawing.Size(151, 22);
       mnuWindow_TileVertical.Text = "Tile Vertical";
       mnuWindow_TileVertical.Click += new System.EventHandler(this.mnuWindow_TileVertical_Click);
+      // 
+      // mnuHelp
+      // 
+      mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            mnuHelp_About});
+      mnuHelp.Name = "mnuHelp";
+      mnuHelp.Size = new System.Drawing.Size(44, 20);
+      mnuHelp.Text = "Help";
+      // 
+      // mnuHelp_About
+      // 
+      mnuHelp_About.Name = "mnuHelp_About";
+      mnuHelp_About.Size = new System.Drawing.Size(107, 22);
+      mnuHelp_About.Text = "About";
+      mnuHelp_About.Click += new System.EventHandler(this.mnuHelp_About_Click);
       // 
       // MainMenu
       // 
@@ -372,7 +386,7 @@ namespace SerpentWare.Common
       // 
       this.mnuDebug.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             mnuDebug_Run,
-            mnuDebug_Debug});
+            this.mnuDebug_Debug});
       this.mnuDebug.Name = "mnuDebug";
       this.mnuDebug.Size = new System.Drawing.Size(54, 20);
       this.mnuDebug.Text = "Debug";
@@ -402,21 +416,6 @@ namespace SerpentWare.Common
       // dlgOpen
       // 
       this.dlgOpen.Title = "Select a file to open";
-      // 
-      // mnuHelp
-      // 
-      mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            mnuHelp_About});
-      mnuHelp.Name = "mnuHelp";
-      mnuHelp.Size = new System.Drawing.Size(44, 20);
-      mnuHelp.Text = "Help";
-      // 
-      // mnuHelp_About
-      // 
-      mnuHelp_About.Name = "mnuHelp_About";
-      mnuHelp_About.Size = new System.Drawing.Size(152, 22);
-      mnuHelp_About.Text = "About";
-      mnuHelp_About.Click += new System.EventHandler(this.mnuHelp_About_Click);
       // 
       // PyConsole
       // 
@@ -465,5 +464,6 @@ namespace SerpentWare.Common
     private System.Windows.Forms.ToolStripMenuItem mnuFile_SaveAs;
     private System.Windows.Forms.ToolStripMenuItem mnuFile_PrintPreview;
     private System.Windows.Forms.ToolStripMenuItem mnuFile_Print;
+    private System.Windows.Forms.ToolStripMenuItem mnuDebug_Debug;
   }
 }

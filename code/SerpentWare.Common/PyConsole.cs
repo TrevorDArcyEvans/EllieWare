@@ -383,6 +383,8 @@ namespace SerpentWare.Common
       {
         mi.Enabled = ActiveMdiChild != null;
       }
+
+      mnuDebug_Debug.Enabled = mRoot.IsLicensed;
     }
 
     private void mnuDebug_Run_Click(object sender, EventArgs e)
@@ -414,7 +416,7 @@ namespace SerpentWare.Common
 
     private void mnuDebug_Debug_Click(object sender, EventArgs e)
     {
-      if (ActiveMdiChild == null)
+      if (ActiveMdiChild == null || !mRoot.IsLicensed)
       {
         return;
       }
