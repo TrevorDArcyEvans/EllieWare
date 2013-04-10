@@ -18,6 +18,7 @@ using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using EllieWare.Manager.Properties;
 using Microsoft.Win32;
 using FileExtensions = EllieWare.Interfaces.FileExtensions;
 
@@ -38,7 +39,7 @@ namespace EllieWare.Manager
       mRoot = root;
       if (!mRoot.IsLicensed)
       {
-        Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, () => mRoot.IsLicensed);
+        Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, Resources.robot_32x32_icon, () => mRoot.IsLicensed);
       }
 
       // http://crashreporterdotnet.codeplex.com/documentation

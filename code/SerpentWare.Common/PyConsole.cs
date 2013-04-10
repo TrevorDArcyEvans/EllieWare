@@ -57,7 +57,7 @@ namespace SerpentWare.Common
       mRoot = root;
       if (!mRoot.IsLicensed)
       {
-        EWC.Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, () => mRoot.IsLicensed);
+        EWC.Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, Resources.Python, () => mRoot.IsLicensed);
       }
 
       // http://crashreporterdotnet.codeplex.com/documentation

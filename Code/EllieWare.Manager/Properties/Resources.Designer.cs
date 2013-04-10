@@ -102,6 +102,13 @@ namespace EllieWare.Manager.Properties {
             }
         }
         
+        internal static System.Drawing.Icon robot_32x32_icon {
+            get {
+                object obj = ResourceManager.GetObject("robot_32x32_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap star_yellow_32x32 {
             get {
                 object obj = ResourceManager.GetObject("star_yellow_32x32", resourceCulture);

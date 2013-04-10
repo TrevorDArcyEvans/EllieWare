@@ -7,6 +7,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -77,9 +78,9 @@ namespace EllieWare.Common
 
     public const string RegistryKey = "EllieWare";
 
-    public static void DoRequestLicense(string appName, Version appVer, Func<bool> isLicensed)
+    public static void DoRequestLicense(string appName, Version appVer, Icon appIcon, Func<bool> isLicensed)
     {
-      var dlg = new RequestLicense(appName, appVer);
+      var dlg = new RequestLicense(appName, appVer, appIcon);
       if (dlg.ShowDialog() == DialogResult.OK)
       {
         // attempt to register with provided info
