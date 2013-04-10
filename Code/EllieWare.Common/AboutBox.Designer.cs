@@ -35,19 +35,18 @@ namespace EllieWare.Common
     private void InitializeComponent()
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-      System.Windows.Forms.PictureBox logoPictureBox;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
       System.Windows.Forms.Button okButton;
+      this.AppImage = new System.Windows.Forms.PictureBox();
       this.labelProductName = new System.Windows.Forms.Label();
       this.labelVersion = new System.Windows.Forms.Label();
       this.labelCopyright = new System.Windows.Forms.Label();
       this.labelCompanyName = new System.Windows.Forms.Label();
       this.textBoxDescription = new System.Windows.Forms.TextBox();
       tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-      logoPictureBox = new System.Windows.Forms.PictureBox();
       okButton = new System.Windows.Forms.Button();
       tableLayoutPanel.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(logoPictureBox)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.AppImage)).BeginInit();
       this.SuspendLayout();
       // 
       // tableLayoutPanel
@@ -58,7 +57,7 @@ namespace EllieWare.Common
       tableLayoutPanel.ColumnCount = 2;
       tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
       tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      tableLayoutPanel.Controls.Add(logoPictureBox, 0, 0);
+      tableLayoutPanel.Controls.Add(this.AppImage, 0, 0);
       tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
       tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
       tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
@@ -77,17 +76,17 @@ namespace EllieWare.Common
       tableLayoutPanel.Size = new System.Drawing.Size(566, 278);
       tableLayoutPanel.TabIndex = 0;
       // 
-      // logoPictureBox
+      // AppImage
       // 
-      logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-      logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-      logoPictureBox.Location = new System.Drawing.Point(3, 3);
-      logoPictureBox.Name = "logoPictureBox";
-      tableLayoutPanel.SetRowSpan(logoPictureBox, 6);
-      logoPictureBox.Size = new System.Drawing.Size(174, 272);
-      logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      logoPictureBox.TabIndex = 12;
-      logoPictureBox.TabStop = false;
+      this.AppImage.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.AppImage.Image = ((System.Drawing.Image)(resources.GetObject("AppImage.Image")));
+      this.AppImage.Location = new System.Drawing.Point(3, 3);
+      this.AppImage.Name = "AppImage";
+      tableLayoutPanel.SetRowSpan(this.AppImage, 6);
+      this.AppImage.Size = new System.Drawing.Size(174, 272);
+      this.AppImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.AppImage.TabIndex = 12;
+      this.AppImage.TabStop = false;
       // 
       // labelProductName
       // 
@@ -180,7 +179,7 @@ namespace EllieWare.Common
       this.Text = "About";
       tableLayoutPanel.ResumeLayout(false);
       tableLayoutPanel.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(logoPictureBox)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.AppImage)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -192,5 +191,6 @@ namespace EllieWare.Common
     private System.Windows.Forms.Label labelCopyright;
     private System.Windows.Forms.Label labelCompanyName;
     private System.Windows.Forms.TextBox textBoxDescription;
+    private System.Windows.Forms.PictureBox AppImage;
   }
 }

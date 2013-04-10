@@ -16,6 +16,7 @@ using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
 using Microsoft.Scripting;
+using SerpentWare.Common.Properties;
 using SerpentWare.Interfaces;
 using EWC = EllieWare.Common;
 
@@ -486,7 +487,7 @@ namespace SerpentWare.Common
 
     private void mnuHelp_About_Click(object sender, EventArgs e)
     {
-      var dlg = new AboutBox(mRoot != null ? mRoot.ApplicationName : "Python");
+      var dlg = new AboutBox(mRoot != null ? mRoot.ApplicationName : "Python", Resources.python_powered_h_140x182);
       dlg.ShowDialog();
     }
   }

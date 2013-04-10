@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -38,6 +39,12 @@ namespace EllieWare.Common
     {
       Text = String.Format("About {0}", appName);
       labelProductName.Text = appName;
+    }
+
+    public AboutBox(string appName, Image img) :
+      this(appName)
+    {
+      AppImage.Image = img;
     }
 
     #region Assembly Attribute Accessors
