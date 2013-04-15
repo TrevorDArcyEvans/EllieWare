@@ -188,6 +188,9 @@
               <Component Id="RobotWare.SpaceClaim.dll" Guid="{90860E48-9C89-0017-3F11-6EA4F589022E}">
                 <File Id="_0E4049F9C2D7A7797CE949325A4E3561" Name="RobotWare.SpaceClaim.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_0E4049F9C2D7A7797CE949325A4E3561" AssemblyApplication="_0E4049F9C2D7A7797CE949325A4E3561" DiskId="1" Source="..\RobotWare.SpaceClaim\bin\$(var.Configuration)\RobotWare.SpaceClaim.dll" />
               </Component>
+              <Component Id="EllieWare.Python" Guid="8E841C3C-64E7-4508-BF09-03967EA52292">
+                <File Id="_0D1DDEAC9DB04F70BD8CFD6A86EC20D8" Name="EllieWare.Python" KeyPath="yes" Assembly=".net" AssemblyManifest="_0D1DDEAC9DB04F70BD8CFD6A86EC20D8" AssemblyApplication="_0D1DDEAC9DB04F70BD8CFD6A86EC20D8" DiskId="1" Source="..\EllieWare.Python\bin\$(var.Configuration)\EllieWare.Python.dll" />
+              </Component>
               <Directory Id="_C789412C3021405C9E141E6ED94F4F80" Name="de">
                 <Component Id="PdfSharp.resources.dll" Guid="{7A4714BC-CF2C-1C9D-CA72-E88396E9D7EE}">
                   <File Id="_E584C789B7E0781C9E273DC555DA6B10" Name="PdfSharp.resources.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E584C789B7E0781C9E273DC555DA6B10" AssemblyApplication="_E584C789B7E0781C9E273DC555DA6B10" DiskId="1" Source="..\PdfSharp\bin\$(var.Configuration)\de\PdfSharp.resources.dll" />
@@ -252,6 +255,7 @@
       <ComponentRef Id="Simplicode.Imaging.dll" Primary="yes" />
       <ComponentRef Id="SpaceClaim.Api.V10.dll" Primary="yes" />
       <ComponentRef Id="RobotWare.SpaceClaim.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Python" Primary="yes" />
     </Feature>
     <Media Id="1" Cabinet="_9E360776D0B507F33B511CEF848723E3" EmbedCab="yes" />
     <Property Id="VSDFrameworkVersion" Value="v4.0" />
