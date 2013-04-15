@@ -41,25 +41,45 @@ namespace SerpentWare.Common
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditForm));
       this.sBox = new Alsing.Windows.Forms.SyntaxBoxControl();
       this.sDoc = new Alsing.SourceCode.SyntaxDocument(this.components);
+      this.Output = new System.Windows.Forms.TextBox();
       this.Status = new System.Windows.Forms.StatusBar();
       this.DebugContainer = new System.Windows.Forms.SplitContainer();
       this.PyGrid = new System.Windows.Forms.PropertyGrid();
-      this.Output = new System.Windows.Forms.TextBox();
       statusBarPanel1 = new System.Windows.Forms.StatusBarPanel();
       splitContainer1 = new System.Windows.Forms.SplitContainer();
       ((System.ComponentModel.ISupportInitialize)(statusBarPanel1)).BeginInit();
-      this.DebugContainer.Panel1.SuspendLayout();
-      this.DebugContainer.Panel2.SuspendLayout();
-      this.DebugContainer.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(splitContainer1)).BeginInit();
       splitContainer1.Panel1.SuspendLayout();
       splitContainer1.Panel2.SuspendLayout();
       splitContainer1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.DebugContainer)).BeginInit();
+      this.DebugContainer.Panel1.SuspendLayout();
+      this.DebugContainer.Panel2.SuspendLayout();
+      this.DebugContainer.SuspendLayout();
       this.SuspendLayout();
       // 
       // statusBarPanel1
       // 
       statusBarPanel1.Name = "statusBarPanel1";
       statusBarPanel1.Width = 200;
+      // 
+      // splitContainer1
+      // 
+      splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+      splitContainer1.Location = new System.Drawing.Point(0, 0);
+      splitContainer1.Name = "splitContainer1";
+      splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+      // 
+      // splitContainer1.Panel1
+      // 
+      splitContainer1.Panel1.Controls.Add(this.sBox);
+      // 
+      // splitContainer1.Panel2
+      // 
+      splitContainer1.Panel2.Controls.Add(this.Output);
+      splitContainer1.Size = new System.Drawing.Size(850, 562);
+      splitContainer1.SplitterDistance = 281;
+      splitContainer1.TabIndex = 5;
       // 
       // sBox
       // 
@@ -104,6 +124,19 @@ namespace SerpentWare.Common
       this.sDoc.Change += new System.EventHandler(this.sDoc_Change);
       this.sDoc.ModifiedChanged += new System.EventHandler(this.sDoc_ModifiedChanged);
       // 
+      // Output
+      // 
+      this.Output.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.Output.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Output.Location = new System.Drawing.Point(0, 0);
+      this.Output.Multiline = true;
+      this.Output.Name = "Output";
+      this.Output.ReadOnly = true;
+      this.Output.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+      this.Output.Size = new System.Drawing.Size(850, 277);
+      this.Output.TabIndex = 0;
+      this.Output.WordWrap = false;
+      // 
       // Status
       // 
       this.Status.Location = new System.Drawing.Point(0, 562);
@@ -137,39 +170,8 @@ namespace SerpentWare.Common
       this.PyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
       this.PyGrid.Location = new System.Drawing.Point(0, 0);
       this.PyGrid.Name = "PyGrid";
-      this.PyGrid.Size = new System.Drawing.Size(401, 562);
+      this.PyGrid.Size = new System.Drawing.Size(96, 100);
       this.PyGrid.TabIndex = 0;
-      // 
-      // splitContainer1
-      // 
-      splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-      splitContainer1.Location = new System.Drawing.Point(0, 0);
-      splitContainer1.Name = "splitContainer1";
-      splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-      // 
-      // splitContainer1.Panel1
-      // 
-      splitContainer1.Panel1.Controls.Add(this.sBox);
-      // 
-      // splitContainer1.Panel2
-      // 
-      splitContainer1.Panel2.Controls.Add(this.Output);
-      splitContainer1.Size = new System.Drawing.Size(850, 562);
-      splitContainer1.SplitterDistance = 281;
-      splitContainer1.TabIndex = 5;
-      // 
-      // Output
-      // 
-      this.Output.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.Output.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.Output.Location = new System.Drawing.Point(0, 0);
-      this.Output.Multiline = true;
-      this.Output.Name = "Output";
-      this.Output.ReadOnly = true;
-      this.Output.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.Output.Size = new System.Drawing.Size(850, 277);
-      this.Output.TabIndex = 0;
-      this.Output.WordWrap = false;
       // 
       // EditForm
       // 
@@ -183,14 +185,18 @@ namespace SerpentWare.Common
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       this.Text = "EditForm";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditForm_FormClosing);
+      this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditForm_FormClosed);
+      this.Load += new System.EventHandler(this.EditForm_Load);
       ((System.ComponentModel.ISupportInitialize)(statusBarPanel1)).EndInit();
-      this.DebugContainer.Panel1.ResumeLayout(false);
-      this.DebugContainer.Panel2.ResumeLayout(false);
-      this.DebugContainer.ResumeLayout(false);
       splitContainer1.Panel1.ResumeLayout(false);
       splitContainer1.Panel2.ResumeLayout(false);
       splitContainer1.Panel2.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(splitContainer1)).EndInit();
       splitContainer1.ResumeLayout(false);
+      this.DebugContainer.Panel1.ResumeLayout(false);
+      this.DebugContainer.Panel2.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.DebugContainer)).EndInit();
+      this.DebugContainer.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }

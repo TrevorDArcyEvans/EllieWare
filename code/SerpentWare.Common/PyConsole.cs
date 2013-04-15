@@ -8,6 +8,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ using Alsing.SourceCode;
 using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
+using EllieWare.Support;
 using Microsoft.Scripting;
 using SerpentWare.Common.Properties;
 using SerpentWare.Interfaces;
@@ -466,7 +468,12 @@ namespace SerpentWare.Common
 
     #endregion
 
-    #region Form closing
+    #region Form loading/closing
+
+    private void PyConsole_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
 
     private void PyConsole_FormClosing(object sender, FormClosingEventArgs e)
     {
@@ -484,6 +491,7 @@ namespace SerpentWare.Common
 
     private void PyConsole_FormClosed(object sender, FormClosedEventArgs e)
     {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
 
     #endregion

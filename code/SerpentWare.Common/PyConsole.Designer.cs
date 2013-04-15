@@ -152,15 +152,6 @@ namespace SerpentWare.Common
       mnuDebug_Run.Text = "Run";
       mnuDebug_Run.Click += new System.EventHandler(this.mnuDebug_Run_Click);
       // 
-      // mnuDebug_Debug
-      // 
-      this.mnuDebug_Debug.Image = global::SerpentWare.Common.Properties.Resources.DebugStart;
-      this.mnuDebug_Debug.Name = "mnuDebug_Debug";
-      this.mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
-      this.mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
-      this.mnuDebug_Debug.Text = "Start Debugging...";
-      this.mnuDebug_Debug.Click += new System.EventHandler(this.mnuDebug_Debug_Click);
-      // 
       // mnuWindow_Cascade
       // 
       mnuWindow_Cascade.Image = global::SerpentWare.Common.Properties.Resources.CascadeWindowsHS;
@@ -199,6 +190,15 @@ namespace SerpentWare.Common
       mnuHelp_About.Size = new System.Drawing.Size(107, 22);
       mnuHelp_About.Text = "About";
       mnuHelp_About.Click += new System.EventHandler(this.mnuHelp_About_Click);
+      // 
+      // mnuDebug_Debug
+      // 
+      this.mnuDebug_Debug.Image = global::SerpentWare.Common.Properties.Resources.DebugStart;
+      this.mnuDebug_Debug.Name = "mnuDebug_Debug";
+      this.mnuDebug_Debug.ShortcutKeys = System.Windows.Forms.Keys.F5;
+      this.mnuDebug_Debug.Size = new System.Drawing.Size(188, 22);
+      this.mnuDebug_Debug.Text = "Start Debugging...";
+      this.mnuDebug_Debug.Click += new System.EventHandler(this.mnuDebug_Debug_Click);
       // 
       // MainMenu
       // 
@@ -431,6 +431,7 @@ namespace SerpentWare.Common
       this.Text = "PyConsole";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PyConsole_FormClosing);
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PyConsole_FormClosed);
+      this.Load += new System.EventHandler(this.PyConsole_Load);
       this.MainMenu.ResumeLayout(false);
       this.MainMenu.PerformLayout();
       this.ResumeLayout(false);

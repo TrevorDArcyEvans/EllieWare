@@ -46,6 +46,7 @@ namespace SerpentWare.Common
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.mnuDebug_Reset = new System.Windows.Forms.ToolStripMenuItem();
       menuStrip1 = new System.Windows.Forms.MenuStrip();
+      ((System.ComponentModel.ISupportInitialize)(this.DebugContainer)).BeginInit();
       this.DebugContainer.Panel2.SuspendLayout();
       this.DebugContainer.SuspendLayout();
       menuStrip1.SuspendLayout();
@@ -166,10 +167,12 @@ namespace SerpentWare.Common
       this.Text = "DebugWindow";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DebugWindow_FormClosing);
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DebugWindow_FormClosed);
+      this.Load += new System.EventHandler(this.DebugWindow_Load);
       this.Controls.SetChildIndex(this.Status, 0);
       this.Controls.SetChildIndex(menuStrip1, 0);
       this.Controls.SetChildIndex(this.DebugContainer, 0);
       this.DebugContainer.Panel2.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.DebugContainer)).EndInit();
       this.DebugContainer.ResumeLayout(false);
       menuStrip1.ResumeLayout(false);
       menuStrip1.PerformLayout();

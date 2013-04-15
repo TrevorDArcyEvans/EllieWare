@@ -7,9 +7,11 @@
 //
 using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Alsing.SourceCode;
+using EllieWare.Support;
 using Microsoft.Scripting;
 
 namespace SerpentWare.Common
@@ -143,6 +145,16 @@ namespace SerpentWare.Common
       }
 
       ReportError(ex.ToString());
+    }
+
+    private void EditForm_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
+    }
+
+    private void EditForm_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
   }
 }

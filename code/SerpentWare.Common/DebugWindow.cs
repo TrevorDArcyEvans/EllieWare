@@ -8,10 +8,12 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Alsing.SourceCode;
+using EllieWare.Support;
 using IronPython.Hosting;
 using IronPython.Runtime;
 using IronPython.Runtime.Exceptions;
@@ -108,6 +110,7 @@ namespace SerpentWare.Common
     private void DebugWindow_FormClosed(object sender, FormClosedEventArgs e)
     {
       Shutdown();
+      WindowPersister.Record(Assembly.GetExecutingAssembly(), this);
     }
 
     private void HighlightLine(int lineNum, Color background)
@@ -249,6 +252,11 @@ namespace SerpentWare.Common
     private void mnuDebug_Reset_Click(object sender, EventArgs e)
     {
       mHasStarted = false;
+    }
+
+    private void DebugWindow_Load(object sender, EventArgs e)
+    {
+      WindowPersister.Restore(Assembly.GetExecutingAssembly(), this);
     }
   }
 }
