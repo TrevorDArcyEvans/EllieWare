@@ -34,5 +34,10 @@ namespace EllieWare.Common
                             "Device Independent Bitmap (*.bmp)|*.bmp|";
 
     public const string ImageFilesFilter = InternalImageFilesFilter + AllFilesFilter;
+
+    private const string InternalPythonFilesFilter =
+                          "Python script files (*.py)|*.py|";
+
+    public const string PythonFilesFilter = InternalPythonFilesFilter + AllFilesFilter;
   }
 }
