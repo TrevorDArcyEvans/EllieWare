@@ -395,7 +395,8 @@ namespace SerpentWare.Common
       }
 
       var ef = (EditForm)ActiveMdiChild;
-      var engine = Utils.CreateEngine(mRoot, ef.Output, ef.Doc.Path);
+      var output = new TextBoxWriter(ef.Output);
+      var engine = Utils.CreateEngine(mRoot, output, ef.Doc.Path);
       try
       {
         var sourceLines = Utils.GetSourceLines(ef);

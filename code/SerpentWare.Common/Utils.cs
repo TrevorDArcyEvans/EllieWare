@@ -8,7 +8,6 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using Microsoft.Scripting.Hosting;
 using SerpentWare.Interfaces;
 
@@ -16,10 +15,9 @@ namespace SerpentWare.Common
 {
   public class Utils
   {
-    public static ScriptEngine CreateEngine(ISerpentWare root, TextBox txtOutput, string path)
+    public static ScriptEngine CreateEngine(ISerpentWare root, TextWriter output, string path)
     {
       var engine = IronPython.Hosting.Python.CreateEngine();
-      var output = new TextBoxWriter(txtOutput);
 
       // add directory of file to Python search path
       var paths = engine.GetSearchPaths();

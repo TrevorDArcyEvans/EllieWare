@@ -82,7 +82,7 @@ namespace SerpentWare.Common
       mEngine = null;
       mScope = null;
 
-      mEngine = Utils.CreateEngine(mRoot, Output, Doc.Path);
+      mEngine = Utils.CreateEngine(mRoot, new TextBoxWriter(Output), Doc.Path);
       mScope = mEngine.CreateScope();
 
       mEngine.SetTrace(OnTracebackReceived);
