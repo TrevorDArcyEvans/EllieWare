@@ -70,8 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyInfoCommon.cs">
-      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    <Compile Include="..\SW_AssemblyInfoCommon.cs">
+      <Link>Properties\SW_AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="DebugWindow.cs">
       <SubType>Form</SubType>

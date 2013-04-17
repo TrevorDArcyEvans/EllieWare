@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyInfoCommon.cs">
-      <Link>AssemblyInfoCommon.cs</Link>
+    <Compile Include="..\SW_AssemblyInfoCommon.cs">
+      <Link>Properties\SW_AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="ISerpentWare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
