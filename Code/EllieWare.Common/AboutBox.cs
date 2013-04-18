@@ -24,106 +24,101 @@ namespace EllieWare.Common
     {
       InitializeComponent();
 
-      Text = String.Format("About {0}", AssemblyTitle);
-      labelProductName.Text = AssemblyProduct;
-      labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-      labelCopyright.Text = AssemblyCopyright;
-      labelCompanyName.Text = AssemblyCompany;
-      textBoxDescription.Text = AssemblyDescription + Environment.NewLine + Environment.NewLine +
-                                  Separator + Environment.NewLine +
-                                  GetAllLicenseText();
+      Initialise(Assembly.GetExecutingAssembly());
     }
 
     public AboutBox(string appName) :
       this()
     {
+      Initialise(appName);
+    }
+
+    public AboutBox(string appName, Image img, Assembly infoAssy) :
+      this(appName)
+    {
+      AppImage.Image = img;
+
+      Initialise(infoAssy);
+      Initialise(appName);
+    }
+
+    private void Initialise(Assembly infoAssy)
+    {
+      Text = String.Format("About {0}", AssemblyTitle(infoAssy));
+      labelProductName.Text = AssemblyProduct(infoAssy);
+      labelVersion.Text = String.Format("Version {0}", AssemblyVersion(infoAssy));
+      labelCopyright.Text = AssemblyCopyright(infoAssy);
+      labelCompanyName.Text = AssemblyCompany(infoAssy);
+      textBoxDescription.Text = AssemblyDescription(infoAssy) + Environment.NewLine + Environment.NewLine +
+                                Separator + Environment.NewLine +
+                                GetAllLicenseText();
+    }
+
+    private void Initialise(string appName)
+    {
       Text = String.Format("About {0}", appName);
       labelProductName.Text = appName;
     }
 
-    public AboutBox(string appName, Image img) :
-      this(appName)
-    {
-      AppImage.Image = img;
-    }
-
     #region Assembly Attribute Accessors
 
-    private static string AssemblyTitle
+    private string AssemblyTitle(Assembly infoAssy)
     {
-      get
+      object[] attributes = infoAssy.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+      if (attributes.Length > 0)
       {
-        object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-        if (attributes.Length > 0)
+        var titleAttribute = (AssemblyTitleAttribute)attributes[0];
+        if (titleAttribute.Title != "")
         {
-          var titleAttribute = (AssemblyTitleAttribute)attributes[0];
-          if (titleAttribute.Title != "")
-          {
-            return titleAttribute.Title;
-          }
+          return titleAttribute.Title;
         }
-        return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
       }
+      return Path.GetFileNameWithoutExtension(infoAssy.CodeBase);
     }
 
-    private static string AssemblyVersion
+    private string AssemblyVersion(Assembly infoAssy)
     {
-      get
-      {
-        return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-      }
+      return infoAssy.GetName().Version.ToString();
     }
 
-    private static string AssemblyDescription
+    private string AssemblyDescription(Assembly infoAssy)
     {
-      get
+      object[] attributes = infoAssy.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+      if (attributes.Length == 0)
       {
-        object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-        if (attributes.Length == 0)
-        {
-          return "";
-        }
-        return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+        return "";
       }
+      return ((AssemblyDescriptionAttribute)attributes[0]).Description;
     }
 
-    private static string AssemblyProduct
+    private string AssemblyProduct(Assembly infoAssy)
     {
-      get
+      object[] attributes = infoAssy.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+      if (attributes.Length == 0)
       {
-        object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-        if (attributes.Length == 0)
-        {
-          return "";
-        }
-        return ((AssemblyProductAttribute)attributes[0]).Product;
+        return "";
       }
+      return ((AssemblyProductAttribute)attributes[0]).Product;
     }
 
-    private static string AssemblyCopyright
+    private string AssemblyCopyright(Assembly infoAssy)
     {
-      get
+      object[] attributes = infoAssy.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+      if (attributes.Length == 0)
       {
-        object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-        if (attributes.Length == 0)
-        {
-          return "";
-        }
-        return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+        return "";
       }
+      return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
     }
 
-    private static string AssemblyCompany
+    private string AssemblyCompany(Assembly infoAssy)
     {
-      get
+      object[] attributes = infoAssy.GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+      if (attributes.Length == 0)
       {
-        object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-        if (attributes.Length == 0)
-        {
-          return "";
-        }
-        return ((AssemblyCompanyAttribute)attributes[0]).Company;
+        return "";
       }
+      return ((AssemblyCompanyAttribute)attributes[0]).Company;
     }
 
     #endregion

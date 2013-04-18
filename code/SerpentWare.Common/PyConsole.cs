@@ -498,7 +498,7 @@ namespace SerpentWare.Common
 
     private void mnuHelp_About_Click(object sender, EventArgs e)
     {
-      var dlg = new AboutBox(mRoot != null ? mRoot.ApplicationName : "Python", Resources.python_powered_h_140x182);
+      var dlg = new AboutBox(mRoot != null ? mRoot.ApplicationName : "Python", Resources.python_powered_h_140x182, Assembly.GetExecutingAssembly());
       dlg.ShowDialog();
     }
   }
