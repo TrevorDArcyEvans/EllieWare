@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandConfigs xmlns="http://schemas.ellieware.com/commandconfig">
+  <CommandConfig Name="RobotWare.Runtime.00" Text="aaa" Image ="bbb" Hint ="ccc" SpecFilePath="ddd" />
+</CommandConfigs>

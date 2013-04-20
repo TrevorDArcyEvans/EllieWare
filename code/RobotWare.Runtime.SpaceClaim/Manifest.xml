@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AddIns>
+  <!--
+  //
+  //  Copyright (C) 2012 EllieWare
+  //
+  //  All rights reserved
+  //
+  //  www.EllieWare.com
+  //
+  -->
+  <AddIn name="RobotWare Runtime"
+         description="RobotWare Runtime - Automation without the pain of code"
+         assembly="RobotWare.Runtime.SpaceClaim.dll"
+         typename="RobotWare.Runtime.SpaceClaim.RuntimeAddin"
+         host="NewAppDomain"/>
+</AddIns>
