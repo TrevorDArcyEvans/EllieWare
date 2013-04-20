@@ -219,48 +219,37 @@ namespace EngIT.SheetMetalEstimator
       var firstBody = allBodies.First();
 
       allBodies.Remove(firstBody);
-      firstBody.Unite(allBodies);
+      try
+      {
+        firstBody.Unite(allBodies);
+      }
+      catch (Exception ex)
+      {
+        LogFlatteningError(doc.Path, "Body.Unite --> " + ex.Message);
+      }
       //firstBody.Fuse(allBodies, false, null);
       //firstBody.Stitch(allBodies, 0.01d, null);
       Debug.Assert(firstBody.PieceCount == 1, "Cannot operate on disjoint bodies");
       Debug.Assert(firstBody.IsClosed);
       Debug.Assert(firstBody.IsManifold);
 
-#if DEBUG
-      // create new part to hold the result
-      var uniteDoc = Document.Create();
-      var unitePart = uniteDoc.MainPart;
-      var pieces = firstBody.SeparatePieces().Where(x => x.IsManifold);
-      var i = 0;
-      foreach (var thisPiece in pieces)
-      {
-        DesignBody.Create(unitePart, "Unite " + i++, thisPiece);
-      }
-#endif
-
       if (firstBody.PieceCount != 1)
       {
-        var smrErr = new SheetMetalResult(doc.Path, "More than one body in flattened part");
-
-        WriteResult(smrErr);
+        LogFlatteningError(doc.Path, firstBody, "More than one body in flattened part");
 
         return;
       }
 
       if (!firstBody.IsClosed)
       {
-        var smrErr = new SheetMetalResult(doc.Path, "Open body in flattened part");
-
-        WriteResult(smrErr);
+        LogFlatteningError(doc.Path, firstBody, "Open body in flattened part");
 
         return;
       }
 
       if (!firstBody.IsManifold)
       {
-        var smrErr = new SheetMetalResult(doc.Path, "Non-manifold body in flattened part");
-
-        WriteResult(smrErr);
+        LogFlatteningError(doc.Path, firstBody, "Non-manifold body in flattened part");
 
         return;
       }
@@ -289,11 +278,43 @@ namespace EngIT.SheetMetalEstimator
 
       WriteResult(smr3);
 
+      // will only create diagnostic part in DEBUG
+      CreatePart(firstBody);
+
       if (false)
       {
         var dxfFilePath = Path.ChangeExtension(doc.Path, ".dxf");
         CreateFlatPatternDXF(dxfFilePath, firstBody);
       }
+    }
+
+    private void LogFlatteningError(string filePath, Body firstBody, string errMsg)
+    {
+      CreatePart(firstBody);
+
+      LogFlatteningError(filePath, errMsg);
+    }
+
+    private void LogFlatteningError(string filePath, string errMsg)
+    {
+      var smrErr = new SheetMetalResult(filePath, errMsg);
+
+      WriteResult(smrErr);
+    }
+
+    private void CreatePart(Body firstBody)
+    {
+#if DEBUG
+      // create new part to hold the result
+      var uniteDoc = Document.Create();
+      var unitePart = uniteDoc.MainPart;
+      var pieces = firstBody.SeparatePieces().Where(x => x.IsManifold);
+      var i = 0;
+      foreach (var thisPiece in pieces)
+      {
+        DesignBody.Create(unitePart, "Unite " + i++, thisPiece);
+      }
+#endif
     }
 
     protected virtual bool OnPreExecute(Command command, ExecutionContext context, Rectangle buttonRect)
