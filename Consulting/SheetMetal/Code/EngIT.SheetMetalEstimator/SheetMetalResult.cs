@@ -21,6 +21,7 @@ namespace EngIT.SheetMetalEstimator
 
     public bool IsSheetMetalPart { get; private set; }
     public bool HasFlatPattern { get; private set; }
+    public string Comment { get; private set; }
 
     private SheetMetalResult(
             string path,
@@ -45,6 +46,7 @@ namespace EngIT.SheetMetalEstimator
 
       IsSheetMetalPart = isSheet;
       HasFlatPattern = hasFlatPatt;
+      Comment = string.Empty;
     }
 
     public SheetMetalResult(
@@ -86,6 +88,17 @@ namespace EngIT.SheetMetalEstimator
           isSheet,
           hasFlatPatt)
     {
+    }
+
+    public SheetMetalResult(
+            string path,
+            string errMsg) :
+      this(
+        path,
+        false,
+        false)
+    {
+      Comment = errMsg;
     }
   }
 }

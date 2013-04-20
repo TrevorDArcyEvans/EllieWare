@@ -149,10 +149,11 @@ namespace EngIT.SheetMetalEstimator
 
     private void WriteResult(SheetMetalResult smr)
     {
-      var msg = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}",
+      var msg = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}",
                               Path.GetFileName(smr.Path),
                               smr.IsSheetMetalPart,
                               smr.HasFlatPattern,
+                              smr.Comment,
                               Math.Round(smr.Area, 1),
                               Math.Round(smr.Perimeter, 1),
                               smr.Bends,
@@ -164,7 +165,7 @@ namespace EngIT.SheetMetalEstimator
 
       if (!File.Exists(mResultsFilePath))
       {
-        const string header = @"Part Name,Sheet Metal,Flat Pattern,Area,Perimeter,No of Bends,No of Holes/Piercings,Thickness,LAR Width,LAR Height,Date-Time";
+        const string header = @"Part Name,Sheet Metal,Flat Pattern,Comment,Area,Perimeter,No of Bends,No of Holes/Piercings,Thickness,LAR Width,LAR Height,Date-Time";
 
         using (var sw = File.CreateText(mResultsFilePath))
         {
@@ -225,17 +226,44 @@ namespace EngIT.SheetMetalEstimator
       Debug.Assert(firstBody.IsClosed);
       Debug.Assert(firstBody.IsManifold);
 
-#if true
+#if DEBUG
       // create new part to hold the result
       var uniteDoc = Document.Create();
       var unitePart = uniteDoc.MainPart;
-      var pieces = firstBody.SeparatePieces();
+      var pieces = firstBody.SeparatePieces().Where(x => x.IsManifold);
       var i = 0;
       foreach (var thisPiece in pieces)
       {
         DesignBody.Create(unitePart, "Unite " + i++, thisPiece);
       }
 #endif
+
+      if (firstBody.PieceCount != 1)
+      {
+        var smrErr = new SheetMetalResult(doc.Path, "More than one body in flattened part");
+
+        WriteResult(smrErr);
+
+        return;
+      }
+
+      if (!firstBody.IsClosed)
+      {
+        var smrErr = new SheetMetalResult(doc.Path, "Open body in flattened part");
+
+        WriteResult(smrErr);
+
+        return;
+      }
+
+      if (!firstBody.IsManifold)
+      {
+        var smrErr = new SheetMetalResult(doc.Path, "Non-manifold body in flattened part");
+
+        WriteResult(smrErr);
+
+        return;
+      }
 
       var orderedFaces = firstBody.Faces.OrderBy(x => x.Area).ToList();
       var largestFace = orderedFaces[orderedFaces.Count - 1];
