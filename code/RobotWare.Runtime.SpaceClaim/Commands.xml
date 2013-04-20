@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<CommandConfigs xmlns="http://schemas.ellieware.com/commandconfig">
-  <CommandConfig Name="RobotWare.Runtime.00" Text="aaa" Image ="bbb" Hint ="ccc" SpecFilePath="ddd" />
-</CommandConfigs>
+<?xml version="1.0"?>
+<RuntimeConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CommandConfigs>
+    <CommandConfig>
+      <Name>RobotWare.Runtime.00</Name>
+      <Text>eee</Text>
+      <Image>robot.png</Image>
+      <Hint>aaa</Hint>
+      <SpecFilePath>ddd</SpecFilePath>
+    </CommandConfig>
+    <CommandConfig>
+      <Name>RobotWare.Runtime.01</Name>
+      <Text>kkk</Text>
+      <Image>robot.png</Image>
+      <Hint>fff</Hint>
+      <SpecFilePath>jjj</SpecFilePath>
+    </CommandConfig>
+  </CommandConfigs>
+</RuntimeConfig>

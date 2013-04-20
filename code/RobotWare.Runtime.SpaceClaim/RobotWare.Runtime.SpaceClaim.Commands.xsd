@@ -13,16 +13,16 @@
     targetNamespace="http://schemas.ellieware.com/commandconfig"
     xmlns="http://schemas.ellieware.com/commandconfig">
 
-  <xs:element name="CommandConfigs">
+  <xs:element name="RuntimeConfig">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="100" name="CommandConfig" type="CommandConfig" />
+      <xs:sequence minOccurs="0" maxOccurs="100">
+        <xs:element name="CommandConfigs" type="CommandConfig" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
 
   <xs:complexType name="CommandConfig">
-    <xs:attribute name="Name" type="xs:string" use="required" >
+    <xs:attribute name="Name" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
           Same command name as in Ribbon.xml
@@ -30,7 +30,7 @@
       </xs:annotation>
     </xs:attribute>
     
-    <xs:attribute name="Text" type="xs:string" use="required" >
+    <xs:attribute name="Text" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
           Name to appear under icon
@@ -38,7 +38,7 @@
       </xs:annotation>
     </xs:attribute>
     
-    <xs:attribute name="Image" type="xs:string" use="required" >
+    <xs:attribute name="Image" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
           File name (including extension) of 32x32 bitmap for icon
@@ -55,7 +55,7 @@
       </xs:annotation>
     </xs:attribute>
     
-    <xs:attribute name="SpecFilePath" type="xs:string" use="required" >
+    <xs:attribute name="SpecFilePath" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
           Fully qualified path to spec (including extension)

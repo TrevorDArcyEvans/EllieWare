@@ -58,10 +58,10 @@ namespace RobotWare.Runtime.SpaceClaim
       var execAssy = Assembly.GetExecutingAssembly();
       var execAssyDir = Path.GetDirectoryName(execAssy.Location);
       var cmdsXmlFilePath = Path.Combine(execAssyDir, "Commands.xml");
-      var cmds = CommandConfigs.LoadFromFile(cmdsXmlFilePath);
+      var cmds = RuntimeConfig.LoadFromFile(cmdsXmlFilePath);
 
       // create TemplateCapsule/s and add to list
-      foreach (var thisCmd in cmds.CommandConfig)
+      foreach (var thisCmd in cmds.CommandConfigs)
       {
         // load icon which should be next to dll
         var imgFilePath = Path.Combine(execAssyDir, thisCmd.Image);

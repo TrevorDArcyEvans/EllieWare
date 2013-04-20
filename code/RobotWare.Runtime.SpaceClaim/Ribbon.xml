@@ -37,14 +37,14 @@
           -->
           <button id="RobotWare.Runtime.00" size="large" command="RobotWare.Runtime.00" />
           <button id="RobotWare.Runtime.01" size="large" command="RobotWare.Runtime.01" />
-          <button id="RobotWare.Runtime.02" size="large" command="RobotWare.Runtime.02" />
+          <!--button id="RobotWare.Runtime.02" size="large" command="RobotWare.Runtime.02" />
           <button id="RobotWare.Runtime.03" size="large" command="RobotWare.Runtime.03" />
           <button id="RobotWare.Runtime.04" size="large" command="RobotWare.Runtime.04" />
           <button id="RobotWare.Runtime.05" size="large" command="RobotWare.Runtime.05" />
           <button id="RobotWare.Runtime.06" size="large" command="RobotWare.Runtime.06" />
           <button id="RobotWare.Runtime.07" size="large" command="RobotWare.Runtime.07" />
           <button id="RobotWare.Runtime.08" size="large" command="RobotWare.Runtime.08" />
-          <button id="RobotWare.Runtime.09" size="large" command="RobotWare.Runtime.09" />
+          <button id="RobotWare.Runtime.09" size="large" command="RobotWare.Runtime.09" /-->
         </group>
       </tab>
     </tabs>
