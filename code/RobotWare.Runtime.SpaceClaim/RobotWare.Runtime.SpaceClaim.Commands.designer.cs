@@ -20,6 +20,14 @@ namespace RobotWare.Runtime.SpaceClaim.Commands {
         
         private List<CommandConfig> commandConfigsField;
         
+        private string ribbonTextField;
+        
+        private string tabTextField;
+        
+        private string panelTextField;
+        
+        private string panelIconField;
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
         
         public RuntimeConfig() {
@@ -32,6 +40,42 @@ namespace RobotWare.Runtime.SpaceClaim.Commands {
             }
             set {
                 this.commandConfigsField = value;
+            }
+        }
+        
+        public string RibbonText {
+            get {
+                return this.ribbonTextField;
+            }
+            set {
+                this.ribbonTextField = value;
+            }
+        }
+        
+        public string TabText {
+            get {
+                return this.tabTextField;
+            }
+            set {
+                this.tabTextField = value;
+            }
+        }
+        
+        public string PanelText {
+            get {
+                return this.panelTextField;
+            }
+            set {
+                this.panelTextField = value;
+            }
+        }
+        
+        public string PanelIcon {
+            get {
+                return this.panelIconField;
+            }
+            set {
+                this.panelIconField = value;
             }
         }
         
@@ -199,7 +243,7 @@ namespace RobotWare.Runtime.SpaceClaim.Commands {
         
         private string hintField;
         
-        private string specFilePathField;
+        private string specFileNameField;
         
         private static System.Xml.Serialization.XmlSerializer serializer;
         
@@ -244,12 +288,12 @@ namespace RobotWare.Runtime.SpaceClaim.Commands {
             }
         }
         
-        public string SpecFilePath {
+        public string SpecFileName {
             get {
-                return this.specFilePathField;
+                return this.specFileNameField;
             }
             set {
-                this.specFilePathField = value;
+                this.specFileNameField = value;
             }
         }
         

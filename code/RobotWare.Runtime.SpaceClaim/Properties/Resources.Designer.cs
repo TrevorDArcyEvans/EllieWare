@@ -60,24 +60,6 @@ namespace RobotWare.Runtime.SpaceClaim.Properties {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Runtime.
-        /// </summary>
-        internal static string ManagerGroupText {
-            get {
-                return ResourceManager.GetString("ManagerGroupText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to RobotWare Runtime.
-        /// </summary>
-        internal static string RibbonTabText {
-            get {
-                return ResourceManager.GetString("RibbonTabText", resourceCulture);
-            }
-        }
-        
         internal static System.Drawing.Bitmap robot {
             get {
                 object obj = ResourceManager.GetObject("robot", resourceCulture);

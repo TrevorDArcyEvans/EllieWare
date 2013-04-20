@@ -18,6 +18,40 @@
       <xs:sequence minOccurs="0" maxOccurs="100">
         <xs:element name="CommandConfigs" type="CommandConfig" />
       </xs:sequence>
+
+      <xs:attribute name="RibbonText" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            String on ribbon title
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="TabText" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            String on ribbon tab
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="PanelText" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Title for RobotWare log panel
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
+      <xs:attribute name="PanelIcon" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            File name (including extension) of 32x32 bitmap for icon
+            The icon should be located in the same directory as RobotWare.Runtime.SpaceClaim.dll
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+
     </xs:complexType>
   </xs:element>
 
@@ -29,15 +63,15 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    
+
     <xs:attribute name="Text" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
-          Name to appear under icon
+          String to appear under icon
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    
+
     <xs:attribute name="Image" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
@@ -46,7 +80,7 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    
+
     <xs:attribute name="Hint" type="xs:string" use="optional" default="">
       <xs:annotation>
         <xs:documentation>
@@ -54,11 +88,11 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    
-    <xs:attribute name="SpecFilePath" type="xs:string" use="required">
+
+    <xs:attribute name="SpecFileName" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>
-          Fully qualified path to spec (including extension)
+          Name of spec (excluding extension) in IRobotWare.UserSpecificationFolder
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

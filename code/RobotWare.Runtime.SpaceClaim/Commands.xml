@@ -1,19 +1,23 @@
 <?xml version="1.0"?>
 <RuntimeConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RibbonText>RobotWare Runtime</RibbonText>
+  <TabText>RobotWare Macros</TabText>
+  <PanelText>RobotWare Log</PanelText>
+  <PanelIcon>robot.png</PanelIcon>
   <CommandConfigs>
     <CommandConfig>
       <Name>RobotWare.Runtime.00</Name>
-      <Text>eee</Text>
+      <Text>Close All (no save)</Text>
       <Image>robot.png</Image>
-      <Hint>aaa</Hint>
-      <SpecFilePath>ddd</SpecFilePath>
+      <Hint>Close all files without saving</Hint>
+      <SpecFileName>close-all-no-save</SpecFileName>
     </CommandConfig>
     <CommandConfig>
       <Name>RobotWare.Runtime.01</Name>
-      <Text>kkk</Text>
+      <Text>Close (no save)</Text>
       <Image>robot.png</Image>
-      <Hint>fff</Hint>
-      <SpecFilePath>jjj</SpecFilePath>
-    </CommandConfig>
+      <Hint>Close current file without saving</Hint>
+      <SpecFileName>close-no-save</SpecFileName>
+  </CommandConfig>
   </CommandConfigs>
 </RuntimeConfig>

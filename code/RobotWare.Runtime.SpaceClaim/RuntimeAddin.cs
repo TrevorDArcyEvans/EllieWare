@@ -10,7 +10,6 @@ using System.Reflection;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using RobotWare.Runtime.SpaceClaim.Commands;
-using RobotWare.Runtime.SpaceClaim.Properties;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
 
@@ -22,12 +21,6 @@ namespace RobotWare.Runtime.SpaceClaim
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
     private readonly LogWindow mCallback = new LogWindow();
-
-    private readonly List<CommandCapsule> mCapsules = new List<CommandCapsule>
-                                                             {
-                                                               new CommandCapsule("RobotWare.Runtime.RibbonTab", Resources.RibbonTabText),
-                                                               new CommandCapsule("RobotWare.Runtime.ManagerGroup", Resources.ManagerGroupText)
-                                                             };
 
     #region Implementation of IExtensibility
 
@@ -46,35 +39,44 @@ namespace RobotWare.Runtime.SpaceClaim
 
     public void Initialize()
     {
-      // create LogWindow and add it to Structure panel
-      var cmd = Command.Create("RobotWare.Runtime.SpaceClaim");
-      cmd.Image = Resources.robot;
-      cmd.Text = Resources.RibbonTabText;
-      cmd.IsVisible = true;
-
-      var rtTab = PanelTab.Create(cmd, mCallback, Panel.Structure);
-
       // load Commands.xml from disk
       var execAssy = Assembly.GetExecutingAssembly();
       var execAssyDir = Path.GetDirectoryName(execAssy.Location);
-      var cmdsXmlFilePath = Path.Combine(execAssyDir, "Commands.xml");
-      var cmds = RuntimeConfig.LoadFromFile(cmdsXmlFilePath);
+      var cfgXmlFilePath = Path.Combine(execAssyDir, "Commands.xml");
+      var cfg = RuntimeConfig.LoadFromFile(cfgXmlFilePath);
+      var capsules = new List<CommandCapsule>
+                              {
+                                new CommandCapsule("RobotWare.Runtime.RibbonTab", cfg.RibbonText),
+                                new CommandCapsule("RobotWare.Runtime.ManagerGroup", cfg.TabText)
+                              };
 
       // create TemplateCapsule/s and add to list
-      foreach (var thisCmd in cmds.CommandConfigs)
+      foreach (var thisCmd in cfg.CommandConfigs)
       {
         // load icon which should be next to dll
         var imgFilePath = Path.Combine(execAssyDir, thisCmd.Image);
         var img = System.Drawing.Image.FromFile(imgFilePath);
-        var newCmd = new TemplateCapsule(thisCmd.Name, thisCmd.Text, img, thisCmd.Hint, mRoot, mCallback, thisCmd.SpecFilePath);
+        var newCmd = new TemplateCapsule(thisCmd.Name, thisCmd.Text, img, thisCmd.Hint, mRoot, mCallback, thisCmd.SpecFileName);
 
-        mCapsules.Add(newCmd);
+        capsules.Add(newCmd);
       }
 
-      foreach (var commandCapsule in mCapsules)
+      foreach (var commandCapsule in capsules)
       {
         commandCapsule.Initialize();
       }
+
+      // load panel icon which should be next to dll
+      var icoFilePath = Path.Combine(execAssyDir, cfg.PanelIcon);
+      var ico = System.Drawing.Image.FromFile(icoFilePath);
+
+      // create LogWindow and add it to Structure panel
+      var cmd = Command.Create("RobotWare.Runtime.SpaceClaim");
+      cmd.Image = ico;
+      cmd.Text = cfg.PanelText;
+      cmd.IsVisible = true;
+
+      var rtTab = PanelTab.Create(cmd, mCallback, Panel.Structure);
     }
 
     #endregion
