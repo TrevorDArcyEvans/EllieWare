@@ -20,7 +20,7 @@ namespace RobotWare.SpaceClaim
   {
     private const string CommandName = "RobotWare.Manager";
 
-    private const string ApplicationName = "RobotWare for SpaceClaim";
+    public const string ApplicationName = "RobotWare for SpaceClaim";
 
     private readonly RobotWareWrapper mLicenseWrapper = new RobotWareWrapper(ApplicationName);
 

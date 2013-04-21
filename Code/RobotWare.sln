@@ -166,6 +166,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xsd2Code", "Xsd2Code\Xsd2Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xsd2Code.Library", "Xsd2Code\Xsd2Code.Library\Xsd2Code.Library.csproj", "{1B59FB12-699C-4927-ACA3-D7F0E0F79100}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.Runtime.SpaceClaim.Configurator", "RobotWare.Runtime.SpaceClaim.Configurator\RobotWare.Runtime.SpaceClaim.Configurator.csproj", "{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -663,6 +665,16 @@ Global
 		{1B59FB12-699C-4927-ACA3-D7F0E0F79100}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1B59FB12-699C-4927-ACA3-D7F0E0F79100}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1B59FB12-699C-4927-ACA3-D7F0E0F79100}.Release|x86.ActiveCfg = Release|Any CPU
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Debug|x86.ActiveCfg = Debug|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Debug|x86.Build.0 = Debug|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Release|Any CPU.ActiveCfg = Release|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Release|Mixed Platforms.Build.0 = Release|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Release|x86.ActiveCfg = Release|x86
+		{64CEE6D8-5FB7-434C-B329-4E1C9E19C659}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
