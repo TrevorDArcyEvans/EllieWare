@@ -22,7 +22,9 @@ namespace RobotWare.Runtime.SpaceClaim
 {
   public class RuntimeAddin : AddIn, IExtensibility, ICommandExtensibility, IRibbonExtensibility
   {
-    private const string ApplicationName = "RobotWare Runtime for SpaceClaim";
+    public const string ApplicationName = "RobotWare Runtime for SpaceClaim";
+    public const string RuntimeConfigFileName = "Commands.xml";
+    public const string CustomUIFileName = "Ribbon.xml";
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
     private readonly LogWindow mCallback = new LogWindow();
@@ -74,7 +76,7 @@ namespace RobotWare.Runtime.SpaceClaim
       // load Commands.xml from disk
       var execAssy = Assembly.GetExecutingAssembly();
       var execAssyDir = Path.GetDirectoryName(execAssy.Location);
-      var cfgXmlFilePath = Path.Combine(execAssyDir, "Commands.xml");
+      var cfgXmlFilePath = Path.Combine(execAssyDir, RuntimeConfigFileName);
       var cfg = RuntimeConfig.LoadFromFile(cfgXmlFilePath);
       var capsules = new List<CommandCapsule>
                               {
@@ -120,7 +122,7 @@ namespace RobotWare.Runtime.SpaceClaim
       // load Ribbon.xml from disk
       var execAssy = Assembly.GetExecutingAssembly();
       var execAssyDir = Path.GetDirectoryName(execAssy.Location);
-      var uiXmlFilePath = Path.Combine(execAssyDir, "Ribbon.xml");
+      var uiXmlFilePath = Path.Combine(execAssyDir, CustomUIFileName);
       var uiXml = File.ReadAllText(uiXmlFilePath);
 
       return uiXml;
