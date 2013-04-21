@@ -1,4 +1,5 @@
-﻿//  Copyright (C) 2013 EllieWare
+﻿//
+//  Copyright (C) 2013 EllieWare
 //
 //  All rights reserved
 //
