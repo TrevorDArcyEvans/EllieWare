@@ -7,6 +7,7 @@
 //
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using EllieWare.Interfaces;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
@@ -35,7 +36,9 @@ namespace RobotWare.Runtime.SpaceClaim
     protected sealed override void OnExecute(Command command, ExecutionContext context, Rectangle buttonRect)
     {
       var fileNameWithExtn = Path.ChangeExtension(mFileName, FileExtensions.MacroFileExtension);
-      var filePath = Path.Combine(mRoot.UserSpecificationFolder, fileNameWithExtn);
+      var execAssy = Assembly.GetExecutingAssembly();
+      var execAssyDir = Path.GetDirectoryName(execAssy.Location);
+      var filePath = Path.Combine(execAssyDir, fileNameWithExtn);
       var eng = new Engine(mRoot, mCallback, filePath);
       var retVal = eng.Run();
     }
