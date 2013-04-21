@@ -75,17 +75,125 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Consulting\SheetMetal\Code\SheetMetalEstimator\SheetMetalEstimator.csproj">
+      <Project>{CD7E364D-E59F-4F58-8E29-4B7DCDE35567}</Project>
+      <Name>SheetMetalEstimator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AutoUpdater.NET\AutoUpdater.NET.csproj">
+      <Project>{FB9E7E6B-B19F-4F37-A708-2996190CEF13}</Project>
+      <Name>AutoUpdater.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrashReporter.NET\CrashReporter.NET.csproj">
+      <Project>{67912BDA-1572-46B0-8623-5872D9DADBC8}</Project>
+      <Name>CrashReporter.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetZip\Zip\Zip DLL.csproj">
+      <Project>{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}</Project>
+      <Name>Zip DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\edtftpnet\src\edtFTPnet.csproj">
+      <Project>{E5AD8FAE-D003-45FE-A6BC-EF0619D445F4}</Project>
+      <Name>edtFTPnet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Audio\EllieWare.Audio.csproj">
+      <Project>{B576477E-C3E2-42A6-9C46-B523D9F6B834}</Project>
+      <Name>EllieWare.Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Batch\EllieWare.Batch.csproj">
+      <Project>{07855637-6DC5-4515-B1DB-D49BF498D933}</Project>
+      <Name>EllieWare.Batch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Common.Tests\EllieWare.Common.Tests.csproj">
+      <Project>{CEFDB921-6203-4CAA-88E2-A8A429CFF0C0}</Project>
+      <Name>EllieWare.Common.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.DateTime\EllieWare.DateTime.csproj">
+      <Project>{22ABAC35-D498-413E-A429-98D317142CB6}</Project>
+      <Name>EllieWare.DateTime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Imaging\EllieWare.Imaging.csproj">
+      <Project>{6EB7F82C-CA6D-4BA8-AE0A-0FEA5451A4B9}</Project>
+      <Name>EllieWare.Imaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.IO\EllieWare.IO.csproj">
+      <Project>{186AC2DD-F372-47F3-A279-F905F37DBA9D}</Project>
+      <Name>EllieWare.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Logging\EllieWare.Logging.csproj">
+      <Project>{0936AB33-EA50-48BE-84F3-0D9106EB2C6D}</Project>
+      <Name>EllieWare.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Macro\EllieWare.Macro.csproj">
+      <Project>{D6569BA5-350C-4A7A-B23C-5E9FCAA6DF21}</Project>
+      <Name>EllieWare.Macro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Pdf\EllieWare.Pdf.csproj">
+      <Project>{5BBEFC9F-BF24-42B2-8BE6-09E19DB5357C}</Project>
+      <Name>EllieWare.Pdf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Process\EllieWare.Process.csproj">
+      <Project>{6205CDC5-02F2-4122-A513-D779941DAC35}</Project>
+      <Name>EllieWare.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Python\EllieWare.Python.csproj">
+      <Project>{BA13E2F0-4CF8-44C1-AF09-7948CFF380EA}</Project>
+      <Name>EllieWare.Python</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.SpaceClaim\EllieWare.SpaceClaim.csproj">
+      <Project>{31F91FF5-7362-4C78-934E-3C6116FC8CBA}</Project>
+      <Name>EllieWare.SpaceClaim</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
+      <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
+      <Name>EllieWare.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Transfer.Email\EllieWare.Transfer.Email.csproj">
+      <Project>{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}</Project>
+      <Name>EllieWare.Transfer.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Transfer.FTP\EllieWare.Transfer.FTP.csproj">
+      <Project>{6148FE29-F616-4501-931B-27A04C3E9B60}</Project>
+      <Name>EllieWare.Transfer.FTP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Zip\EllieWare.Zip.csproj">
+      <Project>{3E09D8C1-FDC2-47ED-8195-27F8D61C5F9F}</Project>
+      <Name>EllieWare.Zip</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageProcessor\ImageProcessor.csproj">
+      <Project>{F90913DF-8E39-41EE-8A5B-5F72AF35A397}</Project>
+      <Name>ImageProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PdfSharp\PdfSharp.csproj">
+      <Project>{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}</Project>
+      <Name>PdfSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RobotWare.Runtime\RobotWare.Runtime.csproj">
       <Project>{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}</Project>
       <Name>RobotWare.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RobotWare.SpaceClaim\RobotWare.SpaceClaim.csproj">
+      <Project>{E717A0E2-3B92-4636-9A95-F0E10A93BD6F}</Project>
+      <Name>RobotWare.SpaceClaim</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RobotWare.Windows\RobotWare.Windows.csproj">
+      <Project>{AE021F3A-24BE-434B-832A-4AEF4F808FB5}</Project>
+      <Name>RobotWare.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerpentWare.Common\SerpentWare.Common.csproj">
+      <Project>{831A9A61-99A0-40AD-953D-99A677F2CA1C}</Project>
+      <Name>SerpentWare.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerpentWare.Interfaces\SerpentWare.Interfaces.csproj">
+      <Project>{2175F59B-D0E0-4619-805B-5D152C597175}</Project>
+      <Name>SerpentWare.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +214,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\robot_32x32.ico" />
     <None Include="Commands.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

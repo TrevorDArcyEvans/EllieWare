@@ -66,5 +66,12 @@ namespace RobotWare.Runtime.SpaceClaim.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Icon robot_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("robot_32x32", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

@@ -7,9 +7,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
+using AutoUpdaterDotNET;
+using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using RobotWare.Runtime.SpaceClaim.Commands;
+using RobotWare.Runtime.SpaceClaim.Properties;
 using SpaceClaim.Api.V10;
 using SpaceClaim.Api.V10.Extensibility;
 
@@ -21,6 +25,33 @@ namespace RobotWare.Runtime.SpaceClaim
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
     private readonly LogWindow mCallback = new LogWindow();
+
+    public RuntimeAddin()
+    {
+      if (!mRoot.IsLicensed)
+      {
+        Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, Resources.robot_32x32, () => mRoot.IsLicensed);
+      }
+
+      // http://crashreporterdotnet.codeplex.com/documentation
+      System.Windows.Forms.Application.ThreadException += ApplicationThreadException;
+
+      // http://autoupdaterdotnet.codeplex.com/documentation
+      const string EllieWare = @"http://www.EllieWare.com";
+      var appCast = mRoot.ApplicationName.Replace(' ', '_') + ".xml";
+      var appCastUrl = EllieWare + @"/" + appCast;
+      AutoUpdater.Start(appCastUrl, mRoot.ApplicationName, mRoot.Version);
+    }
+
+    private void ApplicationThreadException(object sender, ThreadExceptionEventArgs e)
+    {
+      var reportCrash = new ReportCrash
+                              {
+                                ToEmail = "support@EllieWare.com"
+                              };
+
+      reportCrash.Send(e.Exception);
+    }
 
     #region Implementation of IExtensibility
 
