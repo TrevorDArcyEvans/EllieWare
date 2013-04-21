@@ -56,6 +56,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdDown = new System.Windows.Forms.Button();
       this.CmdSave = new System.Windows.Forms.Button();
       this.BrowseIcon = new System.Windows.Forms.OpenFileDialog();
+      this.BrowseOutput = new System.Windows.Forms.FolderBrowserDialog();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
@@ -265,6 +266,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       // CmdSave
       // 
       this.CmdSave.Dock = System.Windows.Forms.DockStyle.Right;
+      this.CmdSave.Enabled = false;
       this.CmdSave.Location = new System.Drawing.Point(358, 336);
       this.CmdSave.Name = "CmdSave";
       this.CmdSave.Size = new System.Drawing.Size(75, 23);
@@ -272,6 +274,10 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdSave.Text = "Save";
       this.CmdSave.UseVisualStyleBackColor = true;
       this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+      // 
+      // BrowseOutput
+      // 
+      this.BrowseOutput.Description = "Select output folder";
       // 
       // Configurator
       // 
@@ -281,6 +287,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.ClientSize = new System.Drawing.Size(488, 362);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MinimumSize = new System.Drawing.Size(300, 380);
       this.Name = "Configurator";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       tableLayoutPanel1.ResumeLayout(false);
@@ -304,6 +311,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
     private System.Windows.Forms.Button CmdDelete;
     private System.Windows.Forms.Button CmdUp;
     private System.Windows.Forms.Button CmdDown;
+    private System.Windows.Forms.FolderBrowserDialog BrowseOutput;
   }
 }
 

@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
@@ -113,7 +114,57 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
 
     private void CmdSave_Click(object sender, EventArgs e)
     {
-      // TODO   save config
+      if (BrowseOutput.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      // make a copy of the command configs as we want to adjust various file paths
+      var copyCfgs = new List<CommandConfig>(mConfigs.Count);
+      for (var i = 0; i < mConfigs.Count; i++)
+      {
+        var thisCfg = mConfigs[i];
+        var cfg = new CommandConfig()
+                    {
+                      Hint = thisCfg.Hint,
+                      Image = thisCfg.Image,
+                      Name = string.Format("RobotWare.Runtime.{0:00}", i),
+                      SpecFileName = Path.GetFileNameWithoutExtension(thisCfg.SpecFileName),
+                      Text = thisCfg.Text
+                    };
+
+        // copy spec file
+        var specFilePathNoExtn = Path.Combine(BrowseOutput.SelectedPath, cfg.SpecFileName);
+        var specFilePathWithExtn = Path.ChangeExtension(specFilePathNoExtn, EllieWare.Interfaces.FileExtensions.MacroFileExtension);
+        File.Copy(thisCfg.SpecFileName, specFilePathWithExtn);
+
+        // copy command icon
+        var iconFileName = Path.GetFileName(cfg.Image);
+        var iconFilePath = Path.Combine(BrowseOutput.SelectedPath, iconFileName);
+        File.Copy(cfg.Image, iconFilePath);
+
+        // update icon path
+        cfg.Image = iconFileName;
+
+        copyCfgs.Add(cfg);
+      }
+
+      // copy panel icon
+      var panelIconFileName = Path.GetFileName(BrowseIcon.FileName);
+      var panelIconFilePath = Path.Combine(BrowseOutput.SelectedPath, panelIconFileName);
+      File.Copy(BrowseIcon.FileName, panelIconFilePath);
+
+      var rtCfg = new RuntimeConfig
+                    {
+                      PanelIcon = panelIconFileName,
+                      PanelText = PanelText.Text,
+                      RibbonText = RibbonText.Text,
+                      TabText = TabText.Text,
+                      CommandConfigs = copyCfgs
+                    };
+      var filePath = Path.Combine(BrowseOutput.SelectedPath, RuntimeAddin.RuntimeConfigFileName);
+
+      rtCfg.SaveToFile(filePath);
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
@@ -128,7 +179,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
                   {
                     Hint = dlg.CmdHint.Text,
                     Image = dlg.BrowseIcon.FileName,
-                    SpecFileName = (string) dlg.Macros.SelectedValue,
+                    SpecFileName = (string)dlg.Macros.SelectedValue,
                     Text = dlg.CmdText.Text
                   };
 
@@ -205,7 +256,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       // update config with new values
       cfg.Hint = dlg.CmdHint.Text;
       cfg.Image = dlg.BrowseIcon.FileName;
-      cfg.SpecFileName = (string) dlg.Macros.SelectedValue;
+      cfg.SpecFileName = (string)dlg.Macros.SelectedValue;
       cfg.Text = dlg.CmdText.Text;
 
       UpdateUserInterface();
