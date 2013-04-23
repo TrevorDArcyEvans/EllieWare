@@ -115,7 +115,9 @@ namespace EllieWare.LicenseGenerator
       this.Product.FormattingEnabled = true;
       this.Product.Items.AddRange(new object[] {
             "RobotWare for SpaceClaim",
-            "RobotWare for Windows"});
+            "RobotWare for Windows",
+            "RobotWare Runtime Configurator for SpaceClaim",
+            "RobotWare Runtime for SpaceClaim"});
       this.Product.Location = new System.Drawing.Point(72, 3);
       this.Product.Name = "Product";
       this.Product.Size = new System.Drawing.Size(375, 21);
