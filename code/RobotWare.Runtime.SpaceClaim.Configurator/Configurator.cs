@@ -206,6 +206,12 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       // copy panel icon
       CopyFile(BrowseIcon.FileName);
 
+      // copy Manifest.xml
+      var assy = Assembly.GetExecutingAssembly();
+      var assyDir = Path.GetDirectoryName(assy.Location);
+      var manifestFilePath = Path.Combine(assyDir, "Manifest.xml");
+      CopyFile(manifestFilePath);
+
       var rtCfg = new RuntimeConfig
                     {
                       PanelIcon = Path.GetFileName(BrowseIcon.FileName),
