@@ -37,6 +37,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Label label1;
       System.Windows.Forms.Label label2;
@@ -44,6 +45,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       System.Windows.Forms.Label label4;
       System.Windows.Forms.Label label5;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+      System.Windows.Forms.ToolTip CfgTip;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configurator));
       this.RibbonText = new System.Windows.Forms.TextBox();
       this.TabText = new System.Windows.Forms.TextBox();
@@ -65,6 +67,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       label4 = new System.Windows.Forms.Label();
       label5 = new System.Windows.Forms.Label();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+      CfgTip = new System.Windows.Forms.ToolTip(this.components);
       tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.PanelIcon)).BeginInit();
       tableLayoutPanel3.SuspendLayout();
@@ -179,6 +182,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.PanelIcon.Size = new System.Drawing.Size(32, 32);
       this.PanelIcon.TabIndex = 7;
       this.PanelIcon.TabStop = false;
+      CfgTip.SetToolTip(this.PanelIcon, "Select icon...");
       this.PanelIcon.Click += new System.EventHandler(this.PanelIcon_Click);
       // 
       // label5
@@ -233,6 +237,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdAdd.Name = "CmdAdd";
       this.CmdAdd.Size = new System.Drawing.Size(40, 40);
       this.CmdAdd.TabIndex = 1;
+      CfgTip.SetToolTip(this.CmdAdd, "Add...");
       this.CmdAdd.UseVisualStyleBackColor = true;
       this.CmdAdd.Click += new System.EventHandler(this.CmdAdd_Click);
       // 
@@ -244,6 +249,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdDelete.Name = "CmdDelete";
       this.CmdDelete.Size = new System.Drawing.Size(40, 40);
       this.CmdDelete.TabIndex = 2;
+      CfgTip.SetToolTip(this.CmdDelete, "Delete");
       this.CmdDelete.UseVisualStyleBackColor = true;
       this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
       // 
@@ -255,6 +261,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdUp.Name = "CmdUp";
       this.CmdUp.Size = new System.Drawing.Size(40, 40);
       this.CmdUp.TabIndex = 3;
+      CfgTip.SetToolTip(this.CmdUp, "Move up");
       this.CmdUp.UseVisualStyleBackColor = true;
       this.CmdUp.Click += new System.EventHandler(this.CmdUp_Click);
       // 
@@ -266,6 +273,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdDown.Name = "CmdDown";
       this.CmdDown.Size = new System.Drawing.Size(40, 40);
       this.CmdDown.TabIndex = 4;
+      CfgTip.SetToolTip(this.CmdDown, "Move down");
       this.CmdDown.UseVisualStyleBackColor = true;
       this.CmdDown.Click += new System.EventHandler(this.CmdDown_Click);
       // 
@@ -293,6 +301,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdEdit.Name = "CmdEdit";
       this.CmdEdit.Size = new System.Drawing.Size(40, 40);
       this.CmdEdit.TabIndex = 0;
+      CfgTip.SetToolTip(this.CmdEdit, "Edit...");
       this.CmdEdit.UseVisualStyleBackColor = true;
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 

@@ -35,11 +35,13 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Label label1;
       System.Windows.Forms.Label label2;
       System.Windows.Forms.Label label3;
       System.Windows.Forms.Label label4;
+      System.Windows.Forms.ToolTip EditorTip;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandConfigEditor));
       this.CmdText = new System.Windows.Forms.TextBox();
       this.CmdIco = new System.Windows.Forms.PictureBox();
@@ -54,6 +56,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       label2 = new System.Windows.Forms.Label();
       label3 = new System.Windows.Forms.Label();
       label4 = new System.Windows.Forms.Label();
+      EditorTip = new System.Windows.Forms.ToolTip(this.components);
       tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.CmdIco)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
@@ -146,6 +149,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdIco.Size = new System.Drawing.Size(32, 32);
       this.CmdIco.TabIndex = 5;
       this.CmdIco.TabStop = false;
+      EditorTip.SetToolTip(this.CmdIco, "Select icon...");
       this.CmdIco.Click += new System.EventHandler(this.CmdIco_Click);
       // 
       // CmdHint
