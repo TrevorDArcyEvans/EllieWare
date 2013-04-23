@@ -28,7 +28,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
 {
   public partial class Configurator : Form
   {
-    public const string ApplicationName = "RobotWare Runtime Configurator for SpaceClaim";
+    public const string ApplicationName = "RobotWare Runtime for SpaceClaim Configurator";
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
     private readonly IRobotWare mSpaceClaim = new RobotWareWrapper(ManagerCapsule.ApplicationName);
