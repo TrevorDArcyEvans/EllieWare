@@ -9,3 +9,5 @@ Thumbs.db
 Debug
 Release
 /SpaceClaim
+*.wixobj
+*.wixpdb
