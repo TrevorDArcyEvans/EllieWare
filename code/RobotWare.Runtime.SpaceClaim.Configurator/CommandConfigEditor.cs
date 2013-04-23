@@ -18,6 +18,11 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
     public CommandConfigEditor()
     {
       InitializeComponent();
+
+      BrowseIcon.Filter = EllieWare.Common.FileExtensions.ImageFilesFilter;
+
+      // default to png
+      BrowseIcon.FilterIndex = 3;
     }
 
     public CommandConfigEditor(IRobotWare root) :

@@ -9,8 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
@@ -52,6 +56,9 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
 
       BrowseIcon.Filter = FileExtensions.ImageFilesFilter;
 
+      // default to png
+      BrowseIcon.FilterIndex = 3;
+
       Macros.DataSource = mConfigs;
     }
 
@@ -72,11 +79,11 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
                         !string.IsNullOrWhiteSpace(PanelText.Text) &&
                         (PanelIcon.Image != null);
 
-      CmdDelete.Enabled = CmdUp.Enabled = CmdDown.Enabled = mConfigs.Count > 0;
-
       var selIndex = Macros.SelectedIndex;
-      CmdUp.Enabled &= (selIndex > 0);
-      CmdDown.Enabled &= (selIndex < Macros.Items.Count - 1);
+      CmdEdit.Enabled = selIndex >= 0;
+      CmdDelete.Enabled = selIndex >= 0;
+      CmdUp.Enabled = (selIndex <= Macros.Items.Count - 1) && (selIndex > 0);
+      CmdDown.Enabled = (selIndex >= 0) && (selIndex != Macros.Items.Count - 1);
     }
 
     private void UpdateUserInterface()
@@ -112,6 +119,28 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       UpdateUserInterface();
     }
 
+    private IEnumerable<string> GetReferencesAssembliesPaths(Type type)
+    {
+      yield return type.Assembly.Location;
+
+      foreach (var assemblyName in type.Assembly.GetReferencedAssemblies())
+      {
+        yield return Assembly.ReflectionOnlyLoad(assemblyName.FullName).Location;
+      }
+    }
+
+    private string GetCommandId(int index)
+    {
+      return string.Format("RobotWare.Runtime.{0:00}", index);
+    }
+
+    private void CopyFile(string filePath)
+    {
+      var fileName = Path.GetFileName(filePath);
+      var destFilePath = Path.Combine(BrowseOutput.SelectedPath, fileName);
+      File.Copy(filePath, destFilePath, true);
+    }
+
     private void CmdSave_Click(object sender, EventArgs e)
     {
       if (BrowseOutput.ShowDialog() != DialogResult.OK)
@@ -119,44 +148,67 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
         return;
       }
 
+      // generate Ribbon.xml
+      GenerateCustomUIFile();
+
+      var factories = Utils.GetFactories().ToList();
+      var depends = new HashSet<string>();
+
       // make a copy of the command configs as we want to adjust various file paths
       var copyCfgs = new List<CommandConfig>(mConfigs.Count);
       for (var i = 0; i < mConfigs.Count; i++)
       {
         var thisCfg = mConfigs[i];
-        var cfg = new CommandConfig()
+        var cfg = new CommandConfig
                     {
                       Hint = thisCfg.Hint,
-                      Image = thisCfg.Image,
-                      Name = string.Format("RobotWare.Runtime.{0:00}", i),
+                      Image = Path.GetFileName(thisCfg.Image),
+                      Name = GetCommandId(i),
                       SpecFileName = Path.GetFileNameWithoutExtension(thisCfg.SpecFileName),
                       Text = thisCfg.Text
                     };
 
+        // work out dependencies from each type in spec
+        using (var fs = new FileStream(thisCfg.SpecFileName, FileMode.Open))
+        {
+          var reader = XmlReader.Create(fs);
+
+          reader.ReadToDescendant("ParameterManager");
+          if (reader.ReadToNextSibling("Steps"))
+          {
+            while (reader.ReadToFollowing("Step"))
+            {
+              var stepType = reader.GetAttribute("Type");
+              var stepFactory = factories.First(x => x.CreatedType.ToString() == stepType);
+              var stepFactDep = GetReferencesAssembliesPaths(stepFactory.GetType());
+              foreach (var thisDep in stepFactDep)
+              {
+                if (!depends.Contains(thisDep))
+                {
+                  depends.Add(thisDep);
+                }
+              }
+            }
+          }
+        }
+
         // copy spec file
-        var specFilePathNoExtn = Path.Combine(BrowseOutput.SelectedPath, cfg.SpecFileName);
-        var specFilePathWithExtn = Path.ChangeExtension(specFilePathNoExtn, EllieWare.Interfaces.FileExtensions.MacroFileExtension);
-        File.Copy(thisCfg.SpecFileName, specFilePathWithExtn);
+        CopyFile(thisCfg.SpecFileName);
 
         // copy command icon
-        var iconFileName = Path.GetFileName(cfg.Image);
-        var iconFilePath = Path.Combine(BrowseOutput.SelectedPath, iconFileName);
-        File.Copy(cfg.Image, iconFilePath);
-
-        // update icon path
-        cfg.Image = iconFileName;
+        CopyFile(thisCfg.Image);
 
         copyCfgs.Add(cfg);
       }
 
+      CopyDependencies(depends);
+
       // copy panel icon
-      var panelIconFileName = Path.GetFileName(BrowseIcon.FileName);
-      var panelIconFilePath = Path.Combine(BrowseOutput.SelectedPath, panelIconFileName);
-      File.Copy(BrowseIcon.FileName, panelIconFilePath);
+      CopyFile(BrowseIcon.FileName);
 
       var rtCfg = new RuntimeConfig
                     {
-                      PanelIcon = panelIconFileName,
+                      PanelIcon = Path.GetFileName(BrowseIcon.FileName),
                       PanelText = PanelText.Text,
                       RibbonText = RibbonText.Text,
                       TabText = TabText.Text,
@@ -165,6 +217,67 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       var filePath = Path.Combine(BrowseOutput.SelectedPath, RuntimeAddin.RuntimeConfigFileName);
 
       rtCfg.SaveToFile(filePath);
+    }
+
+    private void CopyDependencies(IEnumerable<string> depends)
+    {
+      foreach (var thisDepend in depends)
+      {
+        // TODO   copy non-system dlls
+        CopyFile(thisDepend);
+      }
+    }
+
+    private void GenerateCustomUIFile()
+    {
+      var ribbonPath = Path.Combine(BrowseOutput.SelectedPath, RuntimeAddin.CustomUIFileName);
+      using (var writer = new XmlTextWriter(ribbonPath, Encoding.UTF8))
+      {
+        writer.WriteStartDocument();
+        writer.WriteStartElement("customUI");
+        writer.WriteStartElement("ribbon");
+        writer.WriteStartElement("tabs");
+        writer.WriteStartElement("tab");
+        writer.WriteAttributeString("id", RuntimeAddin.RibbonTabId);
+        writer.WriteAttributeString("command", RuntimeAddin.RibbonTabId);
+        writer.WriteStartElement("group");
+        writer.WriteAttributeString("id", RuntimeAddin.ManagerGroupId);
+        writer.WriteAttributeString("command", RuntimeAddin.ManagerGroupId);
+
+        for (var i = 0; i < mConfigs.Count; i++)
+        {
+          writer.WriteStartElement("button");
+          writer.WriteAttributeString("id", GetCommandId(i));
+          writer.WriteAttributeString("command", GetCommandId(i));
+          writer.WriteAttributeString("size", "large");
+          writer.WriteEndElement();
+        }
+
+        writer.WriteEndElement();
+        writer.WriteEndElement();
+        writer.WriteEndElement();
+        writer.WriteEndElement();
+        writer.WriteEndElement();
+        writer.WriteEndDocument();
+      }
+    }
+
+    private void CmdEdit_Click(object sender, EventArgs e)
+    {
+      var cfg = mConfigs[Macros.SelectedIndex];
+      var dlg = new CommandConfigEditor(mSpaceClaim, cfg);
+      if (dlg.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      // update config with new values
+      cfg.Hint = dlg.CmdHint.Text;
+      cfg.Image = dlg.BrowseIcon.FileName;
+      cfg.SpecFileName = (string)dlg.Macros.SelectedValue;
+      cfg.Text = dlg.CmdText.Text;
+
+      UpdateUserInterface();
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
@@ -246,20 +359,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
 
     private void Macros_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-      var cfg = mConfigs[Macros.SelectedIndex];
-      var dlg = new CommandConfigEditor(mSpaceClaim, cfg);
-      if (dlg.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-
-      // update config with new values
-      cfg.Hint = dlg.CmdHint.Text;
-      cfg.Image = dlg.BrowseIcon.FileName;
-      cfg.SpecFileName = (string)dlg.Macros.SelectedValue;
-      cfg.Text = dlg.CmdText.Text;
-
-      UpdateUserInterface();
+      CmdEdit_Click(sender, e);
     }
   }
 }
