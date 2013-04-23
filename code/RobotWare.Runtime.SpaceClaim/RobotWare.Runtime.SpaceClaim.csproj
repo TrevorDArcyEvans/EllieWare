@@ -71,7 +71,6 @@
     </None>
     <None Include="RobotWare.Runtime.SpaceClaim.Commands.xsd">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
