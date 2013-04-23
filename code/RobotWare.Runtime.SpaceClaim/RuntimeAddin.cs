@@ -23,8 +23,11 @@ namespace RobotWare.Runtime.SpaceClaim
   public class RuntimeAddin : AddIn, IExtensibility, ICommandExtensibility, IRibbonExtensibility
   {
     public const string ApplicationName = "RobotWare Runtime for SpaceClaim";
+
     public const string RuntimeConfigFileName = "Commands.xml";
     public const string CustomUIFileName = "Ribbon.xml";
+    public const string RibbonTabId = "RobotWare.Runtime.RibbonTab";
+    public const string ManagerGroupId = "RobotWare.Runtime.ManagerGroup";
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
     private readonly LogWindow mCallback = new LogWindow();
@@ -80,8 +83,8 @@ namespace RobotWare.Runtime.SpaceClaim
       var cfg = RuntimeConfig.LoadFromFile(cfgXmlFilePath);
       var capsules = new List<CommandCapsule>
                               {
-                                new CommandCapsule("RobotWare.Runtime.RibbonTab", cfg.RibbonText),
-                                new CommandCapsule("RobotWare.Runtime.ManagerGroup", cfg.TabText)
+                                new CommandCapsule(RibbonTabId, cfg.RibbonText),
+                                new CommandCapsule(ManagerGroupId, cfg.TabText)
                               };
 
       // create TemplateCapsule/s and add to list
