@@ -1,0 +1,9 @@
+AutoUpdaterDotNET.dll
+CrashReporterDotNET.dll
+EllieWare.Licensing.dll
+EllieWare.Manager.dll
+EllieWare.Support.dll
+RobotWare.Runtime.dll
+RobotWare.Runtime.SpaceClaim.dll
+RobotWare.SpaceClaim.dll
+

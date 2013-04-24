@@ -19,6 +19,7 @@ using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using EllieWare.Support;
 using RobotWare.Runtime.SpaceClaim.Commands;
 using RobotWare.Runtime.SpaceClaim.Configurator.Properties;
 using RobotWare.SpaceClaim;
@@ -148,81 +149,105 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
         return;
       }
 
-      // generate Ribbon.xml
-      GenerateCustomUIFile();
-
-      var factories = Utils.GetFactories().ToList();
-      var depends = new HashSet<string>();
-
-      // make a copy of the command configs as we want to adjust various file paths
-      var copyCfgs = new List<CommandConfig>(mConfigs.Count);
-      for (var i = 0; i < mConfigs.Count; i++)
+      using (new AutoWaitCursor())
       {
-        var thisCfg = mConfigs[i];
-        var cfg = new CommandConfig
-                    {
-                      Hint = thisCfg.Hint,
-                      Image = Path.GetFileName(thisCfg.Image),
-                      Name = GetCommandId(i),
-                      SpecFileName = Path.GetFileNameWithoutExtension(thisCfg.SpecFileName),
-                      Text = thisCfg.Text
-                    };
+        // generate Ribbon.xml
+        GenerateCustomUIFile();
 
-        // work out dependencies from each type in spec
-        using (var fs = new FileStream(thisCfg.SpecFileName, FileMode.Open))
+        var factories = Utils.GetFactories().ToList();
+        var depends = new HashSet<string>();
+
+        // make a copy of the command configs as we want to adjust various file paths
+        var copyCfgs = new List<CommandConfig>(mConfigs.Count);
+        for (var i = 0; i < mConfigs.Count; i++)
         {
-          var reader = XmlReader.Create(fs);
+          var thisCfg = mConfigs[i];
+          var cfg = new CommandConfig
+                      {
+                        Hint = thisCfg.Hint,
+                        Image = Path.GetFileName(thisCfg.Image),
+                        Name = GetCommandId(i),
+                        SpecFileName = Path.GetFileNameWithoutExtension(thisCfg.SpecFileName),
+                        Text = thisCfg.Text
+                      };
 
-          reader.ReadToDescendant("ParameterManager");
-          if (reader.ReadToNextSibling("Steps"))
+          // work out dependencies from each type in spec
+          using (var fs = new FileStream(thisCfg.SpecFileName, FileMode.Open))
           {
-            while (reader.ReadToFollowing("Step"))
+            var reader = XmlReader.Create(fs);
+
+            reader.ReadToDescendant("ParameterManager");
+            if (reader.ReadToNextSibling("Steps"))
             {
-              var stepType = reader.GetAttribute("Type");
-              var stepFactory = factories.First(x => x.CreatedType.ToString() == stepType);
-              var stepFactDep = GetReferencesAssembliesPaths(stepFactory.GetType());
-              foreach (var thisDep in stepFactDep)
+              while (reader.ReadToFollowing("Step"))
               {
-                if (!depends.Contains(thisDep))
+                var stepType = reader.GetAttribute("Type");
+                var stepFactory = factories.First(x => x.CreatedType.ToString() == stepType);
+                var stepFactDep = GetReferencesAssembliesPaths(stepFactory.GetType());
+                foreach (var thisDep in stepFactDep)
                 {
-                  depends.Add(thisDep);
+                  depends.SafeAdd(thisDep);
                 }
               }
             }
           }
+
+          // copy spec file
+          CopyFile(thisCfg.SpecFileName);
+
+          // copy command icon
+          CopyFile(thisCfg.Image);
+
+          copyCfgs.Add(cfg);
         }
 
-        // copy spec file
-        CopyFile(thisCfg.SpecFileName);
+        // add support files and their dependencies
+        var depFile = GetPathForLocal("Depends.txt");
+        var deps = from thisLine in File.ReadAllLines(depFile) where !string.IsNullOrWhiteSpace(thisLine) select thisLine;
+        foreach (var thisDep in deps)
+        {
+          GetDependenciesForLocal(thisDep, depends);
+        }
 
-        // copy command icon
-        CopyFile(thisCfg.Image);
+        CopyDependencies(depends);
 
-        copyCfgs.Add(cfg);
+        // copy panel icon
+        CopyFile(BrowseIcon.FileName);
+
+        // copy Manifest.xml
+        var manifestFilePath = GetPathForLocal("Manifest.xml");
+        CopyFile(manifestFilePath);
+
+        var rtCfg = new RuntimeConfig
+                      {
+                        PanelIcon = Path.GetFileName(BrowseIcon.FileName),
+                        PanelText = PanelText.Text,
+                        RibbonText = RibbonText.Text,
+                        TabText = TabText.Text,
+                        CommandConfigs = copyCfgs
+                      };
+        var filePath = Path.Combine(BrowseOutput.SelectedPath, RuntimeAddin.RuntimeConfigFileName);
+
+        rtCfg.SaveToFile(filePath);
       }
+    }
 
-      CopyDependencies(depends);
+    private void GetDependenciesForLocal(string fileName, HashSet<string> depends)
+    {
+      var assyPath = GetPathForLocal(fileName);
+      var depAssy = Assembly.ReflectionOnlyLoadFrom(assyPath);
+      var depTypes = depAssy.GetTypes();
+      foreach (var thisDep in depTypes.Select(GetReferencesAssembliesPaths).SelectMany(deps => deps))
+      {
+        depends.SafeAdd(thisDep);
+      }
+    }
 
-      // copy panel icon
-      CopyFile(BrowseIcon.FileName);
-
-      // copy Manifest.xml
+    private string GetPathForLocal(string fileName)
+    {
       var assy = Assembly.GetExecutingAssembly();
       var assyDir = Path.GetDirectoryName(assy.Location);
-      var manifestFilePath = Path.Combine(assyDir, "Manifest.xml");
-      CopyFile(manifestFilePath);
-
-      var rtCfg = new RuntimeConfig
-                    {
-                      PanelIcon = Path.GetFileName(BrowseIcon.FileName),
-                      PanelText = PanelText.Text,
-                      RibbonText = RibbonText.Text,
-                      TabText = TabText.Text,
-                      CommandConfigs = copyCfgs
-                    };
-      var filePath = Path.Combine(BrowseOutput.SelectedPath, RuntimeAddin.RuntimeConfigFileName);
-
-      rtCfg.SaveToFile(filePath);
+      return Path.Combine(assyDir, fileName);
     }
 
     private void CopyDependencies(IEnumerable<string> depends)
