@@ -41,6 +41,9 @@ namespace EllieWare.Common
         {
           // might not be a .NET dll but how?
         }
+        catch (ReflectionTypeLoadException)
+        {
+        }
       }
 
       return retVal;
