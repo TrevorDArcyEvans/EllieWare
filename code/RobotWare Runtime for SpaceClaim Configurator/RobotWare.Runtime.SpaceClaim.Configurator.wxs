@@ -16,7 +16,6 @@
     <Binary Id="UpFldrBtn" SourceFile="UpFldr.btn" />
     <Binary Id="NewFldrBtn" SourceFile="NewFldr.btn" />
     <CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="[ProgramFilesFolder][Manufacturer]\[ProductName]" Execute="firstSequence" />
-    <CustomAction Id="DIRCA_NEWPROPERTY1" Property="NEWPROPERTY1" Value="[CommonAppDataFolder]" Execute="firstSequence" />
     <CustomAction Id="DIRCA_CheckFX" BinaryKey="MSVBDPCADLL" DllEntry="CheckFX" />
     <CustomAction Id="VSDCA_VsdLaunchConditions" BinaryKey="MSVBDPCADLL" DllEntry="VsdLaunchConditions" />
     <CustomAction Id="ERRCA_CANCELNEWERVERSION" Error="[VSDVERSIONMSG]" />
@@ -44,54 +43,136 @@
       <Component Id="robot.jpg" Guid="{150FD7D8-B914-57DE-86F9-9C1E29F48248}">
         <File Id="_50BA897EA9DD4C5FA7B562F7CCFF2C37" Name="robot.jpg" KeyPath="yes" DiskId="1" Source="robot.jpg" />
       </Component>
-      <Directory Id="NEWPROPERTY1" Name="CommonAppData">
-        <Directory Id="_0B81ABEFE4AD48018F20249874D8B9BF" Name="RobotWare Runtime for SpaceClaim Configurator">
-          <Component Id="Manifest.xml" Guid="{E8581169-4CF4-E626-B923-5FEADFC1AF35}">
-            <File Id="_3F386C705EB345BCB1703D2BF8868736" Name="Manifest.xml" KeyPath="yes" DiskId="1" Source="..\RobotWare.Runtime.SpaceClaim\Manifest.xml" />
-          </Component>
-          <Component Id="EllieWare.Interfaces.dll" Guid="{E41B1070-1332-42CF-405B-5A3614775ED0}">
-            <File Id="_6529D185F6ECFF1BB6FB8C41A711F55D" Name="EllieWare.Interfaces.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6529D185F6ECFF1BB6FB8C41A711F55D" AssemblyApplication="_6529D185F6ECFF1BB6FB8C41A711F55D" DiskId="1" Source="..\EllieWare.Interfaces\bin\$(var.Configuration)\EllieWare.Interfaces.dll" />
-          </Component>
-          <Component Id="EllieWare.Support.dll" Guid="{CBF52EE8-EE9B-84A2-073A-508BA359235E}">
-            <File Id="_6E981F854CE7946DA7E5C66B0D57109F" Name="EllieWare.Support.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6E981F854CE7946DA7E5C66B0D57109F" AssemblyApplication="_6E981F854CE7946DA7E5C66B0D57109F" DiskId="1" Source="..\EllieWare.Support\bin\$(var.Configuration)\EllieWare.Support.dll" />
-          </Component>
-          <Component Id="EllieWare.Licensing.dll" Guid="{ECA17344-2170-D489-7FCF-346946D6C27F}">
-            <File Id="_79093A02D039D0545FE93386B5D85AA7" Name="EllieWare.Licensing.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_79093A02D039D0545FE93386B5D85AA7" AssemblyApplication="_79093A02D039D0545FE93386B5D85AA7" DiskId="1" Source="..\EllieWare.Licensing\bin\$(var.Configuration)\EllieWare.Licensing.dll" />
-          </Component>
-          <Component Id="CrashReporterDotNET.dll" Guid="{6BA95C85-0A7D-D799-D2C3-BCD2F7D4F9FB}">
-            <File Id="_8A9775BA3B04FD2B26DD2FCF04F05004" Name="CrashReporterDotNET.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_8A9775BA3B04FD2B26DD2FCF04F05004" AssemblyApplication="_8A9775BA3B04FD2B26DD2FCF04F05004" DiskId="1" Source="..\CrashReporter.NET\bin\$(var.Configuration)\CrashReporterDotNET.dll" />
-          </Component>
-          <Component Id="AutoUpdaterDotNET.dll" Guid="{22D054B5-D4FF-FF4A-7107-FF528BDD536F}">
-            <File Id="_96DF6584997E5CE1555FAEE768D74B09" Name="AutoUpdaterDotNET.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_96DF6584997E5CE1555FAEE768D74B09" AssemblyApplication="_96DF6584997E5CE1555FAEE768D74B09" DiskId="1" Source="..\AutoUpdater.NET\bin\$(var.Configuration)\AutoUpdaterDotNET.dll" />
-          </Component>
-          <Component Id="EllieWare.Common.dll" Guid="{0FDF92B5-8CA0-98B2-C7F8-41D1E2C3A905}">
-            <File Id="_B04A645475DC8D7D9A450972EBCAD9B2" Name="EllieWare.Common.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_B04A645475DC8D7D9A450972EBCAD9B2" AssemblyApplication="_B04A645475DC8D7D9A450972EBCAD9B2" DiskId="1" Source="..\EllieWare.Common\bin\$(var.Configuration)\EllieWare.Common.dll" />
-          </Component>
-          <Component Id="SpaceClaim.Api.V10.dll" Guid="{F5028140-5281-FE79-AD1F-2ADCAB35B459}">
-            <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="c:\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
-          </Component>
-          <Component Id="EllieWare.Manager.dll" Guid="{1728132F-CE19-CBDA-CF4D-FD49D47EECEB}">
-            <File Id="_FD4C2B7E90A123EFF94E1273951DBB2E" Name="EllieWare.Manager.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_FD4C2B7E90A123EFF94E1273951DBB2E" AssemblyApplication="_FD4C2B7E90A123EFF94E1273951DBB2E" DiskId="1" Source="..\EllieWare.Manager\bin\$(var.Configuration)\EllieWare.Manager.dll" />
-          </Component>
-          <Component Id="RobotWare.SpaceClaim.dll" Guid="{90860E48-9C89-0017-3F11-6EA4F589022E}">
-            <File Id="_0E4049F9C2D7A7797CE949325A4E3561" Name="RobotWare.SpaceClaim.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_0E4049F9C2D7A7797CE949325A4E3561" AssemblyApplication="_0E4049F9C2D7A7797CE949325A4E3561" DiskId="1" Source="..\RobotWare.SpaceClaim\bin\$(var.Configuration)\RobotWare.SpaceClaim.dll" />
-          </Component>
-          <Component Id="Commands.xml" Guid="{A4B12825-A401-4490-8933-29E891558540}">
-            <File Id="_9046E256DDC54FF881480B937A4DB848" Name="Commands.xml" DiskId="1" KeyPath="yes" Source="..\RobotWare.Runtime.SpaceClaim\Commands.xml" />
-          </Component>
-          <Component Id="Ribbon.xml" Guid="{BB0ABFE1-140B-4EA3-A31F-F878E311D70E}">
-            <File Id="_0816D5244D554784B910DD18D3DF24BD" Name="Ribbon.xml" DiskId="1" KeyPath="yes" Source="..\RobotWare.Runtime.SpaceClaim\Ribbon.xml" />
-          </Component>
-          <Component Id="RobotWare.Runtime.dll" Guid="{F36B48B2-084C-43C0-A4DA-E79CB9428930}">
-            <File Id="_298D3A7EC7F44536A715B4A90C39DBE5" Name="RobotWare.Runtime.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_298D3A7EC7F44536A715B4A90C39DBE5" AssemblyApplication="_298D3A7EC7F44536A715B4A90C39DBE5" DiskId="1" Source="..\RobotWare.Runtime\bin\$(var.Configuration)\RobotWare.Runtime.dll" />
-          </Component>
-          <Component Id="RobotWare.Runtime.SpaceClaim.dll" Guid="{FE23F6E7-ABA0-43E2-91D2-9BC6D8757192}">
-            <File Id="_915F6DDF57FE45F9A1C06C1A11029F02" Name="RobotWare.Runtime.SpaceClaim.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_915F6DDF57FE45F9A1C06C1A11029F02" AssemblyApplication="_915F6DDF57FE45F9A1C06C1A11029F02" DiskId="1" Source="..\RobotWare.Runtime.SpaceClaim\bin\$(var.Configuration)\RobotWare.Runtime.SpaceClaim.dll" />
-          </Component>
-          <Component Id="RobotWare.Runtime.SpaceClaim.Configurator.exe" Guid="{D70ECE41-91DA-4F0F-883F-27F47602F312}">
-            <File Id="_29272B5DFA6E4FB3809B6EBBA94E329E" Name="RobotWare.Runtime.SpaceClaim.Configurator.exe" KeyPath="yes" Assembly=".net" AssemblyManifest="_29272B5DFA6E4FB3809B6EBBA94E329E" AssemblyApplication="_29272B5DFA6E4FB3809B6EBBA94E329E" DiskId="1" Source="..\RobotWare.Runtime.SpaceClaim.Configurator\bin\$(var.Configuration)\RobotWare.Runtime.SpaceClaim.Configurator.exe" />
-          </Component>
-        </Directory>
+      <Component Id="AutoUpdaterDotNET.dll" Guid="{22D054B5-D4FF-FF4A-7107-FF528BDD536F}">
+        <File Id="_96DF6584997E5CE1555FAEE768D74B09" Name="AutoUpdaterDotNET.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_96DF6584997E5CE1555FAEE768D74B09" AssemblyApplication="_96DF6584997E5CE1555FAEE768D74B09" DiskId="1" Source="..\AutoUpdater.NET\bin\$(var.Configuration)\AutoUpdaterDotNET.dll" />
+      </Component>
+      <Component Id="Commands.xml" Guid="{A4B12825-A401-4490-8933-29E891558540}">
+        <File Id="_9046E256DDC54FF881480B937A4DB848" Name="Commands.xml" DiskId="1" KeyPath="yes" Source="..\RobotWare.Runtime.SpaceClaim\Commands.xml" />
+      </Component>
+      <Component Id="CrashReporterDotNET.dll" Guid="{6BA95C85-0A7D-D799-D2C3-BCD2F7D4F9FB}">
+        <File Id="_8A9775BA3B04FD2B26DD2FCF04F05004" Name="CrashReporterDotNET.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_8A9775BA3B04FD2B26DD2FCF04F05004" AssemblyApplication="_8A9775BA3B04FD2B26DD2FCF04F05004" DiskId="1" Source="..\CrashReporter.NET\bin\$(var.Configuration)\CrashReporterDotNET.dll" />
+      </Component>
+      <Component Id="Depends.txt" Guid="{55C89839-F1B8-4BE7-B6A3-08C22B2BD3AB}">
+        <File Id="_57C4D10632434583A3D6F2C1C7FD52C2" Name="Depends.txt" DiskId="1" KeyPath="yes" Source="..\RobotWare.Runtime.SpaceClaim.Configurator\Depends.txt" />
+      </Component>
+      <Component Id="edtFTPnet.dll" Guid="{26EBB7B5-E9A8-CF78-A5DF-7DB1FFC0ABF8}">
+        <File Id="_50F0A02C77D84D7EFF7CA9C0BAB9FA18" Name="edtFTPnet.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_50F0A02C77D84D7EFF7CA9C0BAB9FA18" AssemblyApplication="_50F0A02C77D84D7EFF7CA9C0BAB9FA18" DiskId="1" Source="..\edtftpnet\src\bin\$(var.Configuration)\edtFTPnet.dll" />
+      </Component>
+      <Component Id="EllieWare.Audio.dll" Guid="{A368B584-F9EC-F91A-9524-5D869148A8A5}">
+        <File Id="_802C851BD2C92981EA9FEDB11E526B4C" Name="EllieWare.Audio.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_802C851BD2C92981EA9FEDB11E526B4C" AssemblyApplication="_802C851BD2C92981EA9FEDB11E526B4C" DiskId="1" Source="..\EllieWare.Audio\bin\$(var.Configuration)\EllieWare.Audio.dll" />
+      </Component>
+      <Component Id="EllieWare.Batch.dll" Guid="{2512595A-0FF9-A011-6642-1834F6008A85}">
+        <File Id="_851C2FEA167D4B354C037C0152E9A4BF" Name="EllieWare.Batch.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_851C2FEA167D4B354C037C0152E9A4BF" AssemblyApplication="_851C2FEA167D4B354C037C0152E9A4BF" DiskId="1" Source="..\EllieWare.Batch\bin\$(var.Configuration)\EllieWare.Batch.dll" />
+      </Component>
+      <Component Id="EllieWare.Common.dll" Guid="{0FDF92B5-8CA0-98B2-C7F8-41D1E2C3A905}">
+        <File Id="_B04A645475DC8D7D9A450972EBCAD9B2" Name="EllieWare.Common.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_B04A645475DC8D7D9A450972EBCAD9B2" AssemblyApplication="_B04A645475DC8D7D9A450972EBCAD9B2" DiskId="1" Source="..\EllieWare.Common\bin\$(var.Configuration)\EllieWare.Common.dll" />
+      </Component>
+      <Component Id="EllieWare.DateTime.dll" Guid="{74EB084D-8A9B-BCEB-C7B8-F044088FD453}">
+        <File Id="_6866F3E7AAC0849E00DC955E044D413C" Name="EllieWare.DateTime.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6866F3E7AAC0849E00DC955E044D413C" AssemblyApplication="_6866F3E7AAC0849E00DC955E044D413C" DiskId="1" Source="..\EllieWare.DateTime\bin\$(var.Configuration)\EllieWare.DateTime.dll" />
+      </Component>
+      <Component Id="EllieWare.Imaging.dll" Guid="{0413C6DD-9D72-C2B8-DF8D-2614EA236FB9}">
+        <File Id="_C2657F2744AA8AC30D66E7B22F3337DA" Name="EllieWare.Imaging.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_C2657F2744AA8AC30D66E7B22F3337DA" AssemblyApplication="_C2657F2744AA8AC30D66E7B22F3337DA" DiskId="1" Source="..\EllieWare.Imaging\bin\$(var.Configuration)\EllieWare.Imaging.dll" />
+      </Component>
+      <Component Id="EllieWare.Interfaces.dll" Guid="{E41B1070-1332-42CF-405B-5A3614775ED0}">
+        <File Id="_6529D185F6ECFF1BB6FB8C41A711F55D" Name="EllieWare.Interfaces.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6529D185F6ECFF1BB6FB8C41A711F55D" AssemblyApplication="_6529D185F6ECFF1BB6FB8C41A711F55D" DiskId="1" Source="..\EllieWare.Interfaces\bin\$(var.Configuration)\EllieWare.Interfaces.dll" />
+      </Component>
+      <Component Id="EllieWare.IO.dll" Guid="{DEA06B5A-3ADC-923C-F421-4130E9B3C8C0}">
+        <File Id="_F757D16333652D805A6937693818E560" Name="EllieWare.IO.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_F757D16333652D805A6937693818E560" AssemblyApplication="_F757D16333652D805A6937693818E560" DiskId="1" Source="..\EllieWare.IO\bin\$(var.Configuration)\EllieWare.IO.dll" />
+      </Component>
+      <Component Id="EllieWare.Licensing.dll" Guid="{ECA17344-2170-D489-7FCF-346946D6C27F}">
+        <File Id="_79093A02D039D0545FE93386B5D85AA7" Name="EllieWare.Licensing.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_79093A02D039D0545FE93386B5D85AA7" AssemblyApplication="_79093A02D039D0545FE93386B5D85AA7" DiskId="1" Source="..\EllieWare.Licensing\bin\$(var.Configuration)\EllieWare.Licensing.dll" />
+      </Component>
+      <Component Id="EllieWare.Logging.dll" Guid="{F2912082-DCF9-93F8-20BA-723E9B72EFF0}">
+        <File Id="_7B3DA06B46D42C1CD4F015C9E3EDEF72" Name="EllieWare.Logging.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_7B3DA06B46D42C1CD4F015C9E3EDEF72" AssemblyApplication="_7B3DA06B46D42C1CD4F015C9E3EDEF72" DiskId="1" Source="..\EllieWare.Logging\bin\$(var.Configuration)\EllieWare.Logging.dll" />
+      </Component>
+      <Component Id="EllieWare.Macro.dll" Guid="{2EA41E2A-FF9C-9FEE-AEB3-093F77A946AE}">
+        <File Id="_D99D45BB0D3F2A0E66BFBABF53E55578" Name="EllieWare.Macro.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_D99D45BB0D3F2A0E66BFBABF53E55578" AssemblyApplication="_D99D45BB0D3F2A0E66BFBABF53E55578" DiskId="1" Source="..\EllieWare.Macro\bin\$(var.Configuration)\EllieWare.Macro.dll" />
+      </Component>
+      <Component Id="EllieWare.Manager.dll" Guid="{1728132F-CE19-CBDA-CF4D-FD49D47EECEB}">
+        <File Id="_FD4C2B7E90A123EFF94E1273951DBB2E" Name="EllieWare.Manager.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_FD4C2B7E90A123EFF94E1273951DBB2E" AssemblyApplication="_FD4C2B7E90A123EFF94E1273951DBB2E" DiskId="1" Source="..\EllieWare.Manager\bin\$(var.Configuration)\EllieWare.Manager.dll" />
+      </Component>
+      <Component Id="EllieWare.Pdf.dll" Guid="{6D770DF9-D7E2-4FD5-E3D0-50DB9C8CDCBE}">
+        <File Id="_6BA5AF1AD02C56071FDBC7BB1BEAFC50" Name="EllieWare.Pdf.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6BA5AF1AD02C56071FDBC7BB1BEAFC50" AssemblyApplication="_6BA5AF1AD02C56071FDBC7BB1BEAFC50" DiskId="1" Source="..\EllieWare.Pdf\bin\$(var.Configuration)\EllieWare.Pdf.dll" />
+      </Component>
+      <Component Id="EllieWare.Process.dll" Guid="{2D9D0C76-5B80-F4AA-D1A9-8399A0CDA496}">
+        <File Id="_B732B13D4F7EBDF8809D69BB5FF87F8F" Name="EllieWare.Process.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_B732B13D4F7EBDF8809D69BB5FF87F8F" AssemblyApplication="_B732B13D4F7EBDF8809D69BB5FF87F8F" DiskId="1" Source="..\EllieWare.Process\bin\$(var.Configuration)\EllieWare.Process.dll" />
+      </Component>
+      <Component Id="EllieWare.Python" Guid="8E841C3C-64E7-4508-BF09-03967EA52292">
+        <File Id="_0D1DDEAC9DB04F70BD8CFD6A86EC20D8" Name="EllieWare.Python" KeyPath="yes" Assembly=".net" AssemblyManifest="_0D1DDEAC9DB04F70BD8CFD6A86EC20D8" AssemblyApplication="_0D1DDEAC9DB04F70BD8CFD6A86EC20D8" DiskId="1" Source="..\EllieWare.Python\bin\$(var.Configuration)\EllieWare.Python.dll" />
+      </Component>
+      <Component Id="EllieWare.SpaceClaim.dll" Guid="{6DD49CDA-3CDC-88BF-4D54-CCCEF82ABD39}">
+        <File Id="_D8F0BB921832D627C9EEC204E3539B90" Name="EllieWare.SpaceClaim.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_D8F0BB921832D627C9EEC204E3539B90" AssemblyApplication="_D8F0BB921832D627C9EEC204E3539B90" DiskId="1" Source="..\EllieWare.SpaceClaim\bin\$(var.Configuration)\EllieWare.SpaceClaim.dll" />
+      </Component>
+      <Component Id="EllieWare.Support.dll" Guid="{CBF52EE8-EE9B-84A2-073A-508BA359235E}">
+        <File Id="_6E981F854CE7946DA7E5C66B0D57109F" Name="EllieWare.Support.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6E981F854CE7946DA7E5C66B0D57109F" AssemblyApplication="_6E981F854CE7946DA7E5C66B0D57109F" DiskId="1" Source="..\EllieWare.Support\bin\$(var.Configuration)\EllieWare.Support.dll" />
+      </Component>
+      <Component Id="EllieWare.Transfer.Email.dll" Guid="{185C4F39-C80A-E839-12F1-5E8B951D6B87}">
+        <File Id="_00DC3DF2575E5668D553060C89020322" Name="EllieWare.Transfer.Email.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_00DC3DF2575E5668D553060C89020322" AssemblyApplication="_00DC3DF2575E5668D553060C89020322" DiskId="1" Source="..\EllieWare.Transfer.Email\bin\$(var.Configuration)\EllieWare.Transfer.Email.dll" />
+      </Component>
+      <Component Id="EllieWare.Transfer.FTP.dll" Guid="{FFF52117-246B-5BCC-71DE-F8BA18333E8C}">
+        <File Id="_D9625B7739A1AFBFD56871E68A259343" Name="EllieWare.Transfer.FTP.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_D9625B7739A1AFBFD56871E68A259343" AssemblyApplication="_D9625B7739A1AFBFD56871E68A259343" DiskId="1" Source="..\EllieWare.Transfer.FTP\bin\$(var.Configuration)\EllieWare.Transfer.FTP.dll" />
+      </Component>
+      <Component Id="EllieWare.Zip.dll" Guid="{E40D4828-8B05-647C-0909-25C55EEFD9E1}">
+        <File Id="_1EB64355874D10FE398E273DA8BD2468" Name="EllieWare.Zip.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_1EB64355874D10FE398E273DA8BD2468" AssemblyApplication="_1EB64355874D10FE398E273DA8BD2468" DiskId="1" Source="..\EllieWare.Zip\bin\$(var.Configuration)\EllieWare.Zip.dll" />
+      </Component>
+      <Component Id="Ionic.Zip.dll" Guid="{71562D16-D92A-1A08-F28D-67576005B222}">
+        <File Id="_C6DEA4C9628EF23927BFA64341480022" Name="Ionic.Zip.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_C6DEA4C9628EF23927BFA64341480022" AssemblyApplication="_C6DEA4C9628EF23927BFA64341480022" DiskId="1" Source="..\DotNetZip\Zip\bin\$(var.Configuration)\Ionic.Zip.dll" />
+      </Component>
+      <Component Id="IronPython.dll" Guid="{D68CCBE0-0F72-4D3B-9FF9-215313EC6BF3}">
+        <File Id="_D9DBD11B503C451CB1D8A7B88637B2C6" Name="IronPython.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_D9DBD11B503C451CB1D8A7B88637B2C6" AssemblyApplication="_D9DBD11B503C451CB1D8A7B88637B2C6" DiskId="1" Source="..\IronLanguages\bin\$(var.Configuration)\IronPython.dll" />
+      </Component>
+      <Component Id="Manifest.xml" Guid="{E8581169-4CF4-E626-B923-5FEADFC1AF35}">
+        <File Id="_3F386C705EB345BCB1703D2BF8868736" Name="Manifest.xml" KeyPath="yes" DiskId="1" Source="..\RobotWare.Runtime.SpaceClaim\Manifest.xml" />
+      </Component>
+      <Component Id="Microsoft.Dynamic.dll" Guid="{4F898430-67E5-436B-8FC8-1EDBA7BF64C3}">
+        <File Id="_001EEC9C9C46424EB3BA1C201E61CA54" Name="Microsoft.Dynamic.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_001EEC9C9C46424EB3BA1C201E61CA54" AssemblyApplication="_001EEC9C9C46424EB3BA1C201E61CA54" DiskId="1" Source="..\IronLanguages\bin\$(var.Configuration)\Microsoft.Dynamic.dll" />
+      </Component>
+      <Component Id="Microsoft.Scripting.dll" Guid="{D4A761B0-6EFD-4810-80C9-1057FC8C0263}">
+        <File Id="_6226554A628445DA9DBAA981C5DC1801" Name="Microsoft.Scripting.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_6226554A628445DA9DBAA981C5DC1801" AssemblyApplication="_6226554A628445DA9DBAA981C5DC1801" DiskId="1" Source="..\IronLanguages\bin\$(var.Configuration)\Microsoft.Scripting.dll" />
+      </Component>
+      <Component Id="Microsoft.Scripting.Metadata.dll" Guid="{B97BF69F-BD2D-4CD6-B034-364150D1DBA3}">
+        <File Id="_80AA94A55B434FAE86F66C35D5F5C88F" Name="Microsoft.Scripting.Metadata.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_80AA94A55B434FAE86F66C35D5F5C88F" AssemblyApplication="_80AA94A55B434FAE86F66C35D5F5C88F" DiskId="1" Source="..\IronLanguages\bin\$(var.Configuration)\Microsoft.Scripting.Metadata.dll" />
+      </Component>
+      <Component Id="PdfSharp.dll" Guid="{6D28DCEC-D9CF-3D62-E8DE-ACB71795B680}">
+        <File Id="_4C36530C86C8ED1F252FED183B8D7533" Name="PdfSharp.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_4C36530C86C8ED1F252FED183B8D7533" AssemblyApplication="_4C36530C86C8ED1F252FED183B8D7533" DiskId="1" Source="..\PdfSharp\bin\$(var.Configuration)\PdfSharp.dll" />
+      </Component>
+      <Component Id="Puzzle.SyntaxBox.NET.dll" Guid="{CB5FF593-F4B6-4CB6-97E5-F2F1B903021D}">
+        <File Id="_FA0DB04DE8704189A8D128E12C3D2B19" Name="Puzzle.SyntaxBox.NET.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_FA0DB04DE8704189A8D128E12C3D2B19" AssemblyApplication="_FA0DB04DE8704189A8D128E12C3D2B19" DiskId="1" Source="..\SyntaxBox\Alsing.SyntaxBox\bin\$(var.Configuration)\Puzzle.SyntaxBox.NET.dll" />
+      </Component>
+      <Component Id="Python.syn" Guid="{E82AA59C-CB8C-43CA-BEAD-2ADB9989F528}">
+        <File Id="_BB69947B94534A8DBBEFD4234B583197" Name="Python.syn" DiskId="1" KeyPath="yes" Source="..\SerpentWare.Common\Python.syn" />
+      </Component>
+      <Component Id="Ribbon.xml" Guid="{BB0ABFE1-140B-4EA3-A31F-F878E311D70E}">
+        <File Id="_0816D5244D554784B910DD18D3DF24BD" Name="Ribbon.xml" DiskId="1" KeyPath="yes" Source="..\RobotWare.Runtime.SpaceClaim\Ribbon.xml" />
+      </Component>
+      <Component Id="RobotWare.Runtime.dll" Guid="{F36B48B2-084C-43C0-A4DA-E79CB9428930}">
+        <File Id="_298D3A7EC7F44536A715B4A90C39DBE5" Name="RobotWare.Runtime.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_298D3A7EC7F44536A715B4A90C39DBE5" AssemblyApplication="_298D3A7EC7F44536A715B4A90C39DBE5" DiskId="1" Source="..\RobotWare.Runtime\bin\$(var.Configuration)\RobotWare.Runtime.dll" />
+      </Component>
+      <Component Id="RobotWare.Runtime.SpaceClaim.Configurator.exe" Guid="{D70ECE41-91DA-4F0F-883F-27F47602F312}">
+        <File Id="_29272B5DFA6E4FB3809B6EBBA94E329E" Name="RobotWare.Runtime.SpaceClaim.Configurator.exe" KeyPath="yes" Assembly=".net" AssemblyManifest="_29272B5DFA6E4FB3809B6EBBA94E329E" AssemblyApplication="_29272B5DFA6E4FB3809B6EBBA94E329E" DiskId="1" Source="..\RobotWare.Runtime.SpaceClaim.Configurator\bin\$(var.Configuration)\RobotWare.Runtime.SpaceClaim.Configurator.exe" />
+      </Component>
+      <Component Id="RobotWare.Runtime.SpaceClaim.dll" Guid="{FE23F6E7-ABA0-43E2-91D2-9BC6D8757192}">
+        <File Id="_915F6DDF57FE45F9A1C06C1A11029F02" Name="RobotWare.Runtime.SpaceClaim.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_915F6DDF57FE45F9A1C06C1A11029F02" AssemblyApplication="_915F6DDF57FE45F9A1C06C1A11029F02" DiskId="1" Source="..\RobotWare.Runtime.SpaceClaim\bin\$(var.Configuration)\RobotWare.Runtime.SpaceClaim.dll" />
+      </Component>
+      <Component Id="RobotWare.SpaceClaim.dll" Guid="{90860E48-9C89-0017-3F11-6EA4F589022E}">
+        <File Id="_0E4049F9C2D7A7797CE949325A4E3561" Name="RobotWare.SpaceClaim.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_0E4049F9C2D7A7797CE949325A4E3561" AssemblyApplication="_0E4049F9C2D7A7797CE949325A4E3561" DiskId="1" Source="..\RobotWare.SpaceClaim\bin\$(var.Configuration)\RobotWare.SpaceClaim.dll" />
+      </Component>
+      <Component Id="SerpentWare.Common.dll" Guid="{99D57BF6-3354-4811-8A03-60A55E0C9D65}">
+        <File Id="_90C26A7876E24D53B8FB04E22CAB7386" Name="SerpentWare.Common.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_90C26A7876E24D53B8FB04E22CAB7386" AssemblyApplication="_90C26A7876E24D53B8FB04E22CAB7386" DiskId="1" Source="..\SerpentWare.Common\bin\$(var.Configuration)\SerpentWare.Common.dll" />
+      </Component>
+      <Component Id="SerpentWare.Interfaces.dll" Guid="{369F1966-B528-4587-9BBB-77C6D6DE4CCA}">
+        <File Id="_9379EFB937A6459691EE3806CD3901EF" Name="SerpentWare.Interfaces.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_9379EFB937A6459691EE3806CD3901EF" AssemblyApplication="_9379EFB937A6459691EE3806CD3901EF" DiskId="1" Source="..\SerpentWare.Interfaces\bin\$(var.Configuration)\SerpentWare.Interfaces.dll" />
+      </Component>
+      <Component Id="Simplicode.Imaging.dll" Guid="{47B49729-6FCD-C853-554A-01751E93D51C}">
+        <File Id="_3BB34BBD1B670CD293BF8CC1B503A5AF" Name="Simplicode.Imaging.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_3BB34BBD1B670CD293BF8CC1B503A5AF" AssemblyApplication="_3BB34BBD1B670CD293BF8CC1B503A5AF" DiskId="1" Source="..\ImageProcessor\bin\$(var.Configuration)\Simplicode.Imaging.dll" />
+      </Component>
+      <Component Id="SpaceClaim.Api.V10.dll" Guid="{F5028140-5281-FE79-AD1F-2ADCAB35B459}">
+        <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="c:\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
+      </Component>
+      <Directory Id="_C789412C3021405C9E141E6ED94F4F80" Name="de">
+        <Component Id="PdfSharp.resources.dll" Guid="{7A4714BC-CF2C-1C9D-CA72-E88396E9D7EE}">
+          <File Id="_E584C789B7E0781C9E273DC555DA6B10" Name="PdfSharp.resources.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E584C789B7E0781C9E273DC555DA6B10" AssemblyApplication="_E584C789B7E0781C9E273DC555DA6B10" DiskId="1" Source="..\PdfSharp\bin\$(var.Configuration)\de\PdfSharp.resources.dll" />
+        </Component>
       </Directory>
     </Directory>
     <Feature Id="DefaultFeature" ConfigurableDirectory="TARGETDIR" Level="1">
@@ -100,22 +181,49 @@
       <ComponentRef Id="robot.ico" />
       <ComponentRef Id="robot.jpg" />
       <ComponentRef Id="EULA.rtf" />
-      <!-- [CommonAppData]\SpaceClaim\Addins\RobotWare Runtime for SpaceClaim Configurator -->
-      <ComponentRef Id="Manifest.xml" Primary="yes" />
       <ComponentRef Id="AutoUpdaterDotNET.dll" Primary="yes" />
-      <ComponentRef Id="CrashReporterDotNET.dll" Primary="yes" />
-      <ComponentRef Id="EllieWare.Common.dll" Primary="yes" />
-      <ComponentRef Id="EllieWare.Interfaces.dll" Primary="yes" />
-      <ComponentRef Id="EllieWare.Licensing.dll" Primary="yes" />
-      <ComponentRef Id="EllieWare.Manager.dll" Primary="yes" />
-      <ComponentRef Id="EllieWare.Support.dll" Primary="yes" />
-      <ComponentRef Id="SpaceClaim.Api.V10.dll" Primary="yes" />
-      <ComponentRef Id="RobotWare.SpaceClaim.dll" Primary="yes" />
       <ComponentRef Id="Commands.xml" />
+      <ComponentRef Id="CrashReporterDotNET.dll" Primary="yes" />
+      <ComponentRef Id="Depends.txt" Primary="yes" />
+      <ComponentRef Id="edtFTPnet.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Audio.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Batch.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Common.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.DateTime.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Imaging.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Interfaces.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.IO.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Licensing.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Logging.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Macro.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Manager.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Pdf.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Process.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Python" Primary="yes" />
+      <ComponentRef Id="EllieWare.SpaceClaim.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Support.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Transfer.Email.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Transfer.FTP.dll" Primary="yes" />
+      <ComponentRef Id="EllieWare.Zip.dll" Primary="yes" />
+      <ComponentRef Id="Ionic.Zip.dll" Primary="yes" />
+      <ComponentRef Id="IronPython.dll" Primary="yes" />
+      <ComponentRef Id="Manifest.xml" Primary="yes" />
+      <ComponentRef Id="Microsoft.Dynamic.dll" Primary="yes" />
+      <ComponentRef Id="Microsoft.Scripting.dll" Primary="yes" />
+      <ComponentRef Id="Microsoft.Scripting.Metadata.dll" Primary="yes" />
+      <ComponentRef Id="PdfSharp.dll" Primary="yes" />
+      <ComponentRef Id="PdfSharp.resources.dll" Primary="yes" />
+      <ComponentRef Id="Puzzle.SyntaxBox.NET.dll" Primary="yes" />
+      <ComponentRef Id="Python.syn" Primary="yes" />
       <ComponentRef Id="Ribbon.xml" />
       <ComponentRef Id="RobotWare.Runtime.dll" />
-      <ComponentRef Id="RobotWare.Runtime.SpaceClaim.dll" />
       <ComponentRef Id="RobotWare.Runtime.SpaceClaim.Configurator.exe" />
+      <ComponentRef Id="RobotWare.Runtime.SpaceClaim.dll" />
+      <ComponentRef Id="RobotWare.SpaceClaim.dll" Primary="yes" />
+      <ComponentRef Id="SerpentWare.Common.dll" Primary="yes" />
+      <ComponentRef Id="SerpentWare.Interfaces.dll" Primary="yes" />
+      <ComponentRef Id="Simplicode.Imaging.dll" Primary="yes" />
+      <ComponentRef Id="SpaceClaim.Api.V10.dll" Primary="yes" />
     </Feature>
     <Media Id="1" Cabinet="_9E360776D0B507F33B511CEF848723E3" EmbedCab="yes" />
     <Property Id="VSDFrameworkVersion" Value="v4.0" />
@@ -756,7 +864,6 @@
       <Custom Action="ERRCA_CANCELNEWERVERSION" Sequence="201">NEWERPRODUCTFOUND AND NOT Installed</Custom>
       <Custom Action="VSDCA_VsdLaunchConditions" Sequence="399">NOT Installed</Custom>
       <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
-      <Custom Action="DIRCA_NEWPROPERTY1" Sequence="754">NEWPROPERTY1=""</Custom>
       <LaunchConditions Sequence="400">NOT Installed</LaunchConditions>
       <FindRelatedProducts Sequence="200" />
       <AppSearch Sequence="100" />
@@ -829,7 +936,6 @@
       <Custom Action="ERRCA_UIANDADVERTISED" Sequence="5">ProductState=1</Custom>
       <Custom Action="VSDCA_VsdLaunchConditions" Sequence="399">NOT Installed</Custom>
       <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
-      <Custom Action="DIRCA_NEWPROPERTY1" Sequence="754">NEWPROPERTY1=""</Custom>
       <Show Dialog="FatalErrorForm" OnExit="error">NOT HideFatalErrorForm</Show>
       <Show Dialog="UserExitForm" OnExit="cancel" />
       <Show Dialog="FinishedForm" OnExit="success" />
@@ -851,7 +957,6 @@
     </InstallUISequence>
     <AdminExecuteSequence>
       <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
-      <Custom Action="DIRCA_NEWPROPERTY1" Sequence="754">NEWPROPERTY1=""</Custom>
       <CostInitialize Sequence="800" />
       <FileCost Sequence="900" />
       <CostFinalize Sequence="1000" />
@@ -863,7 +968,6 @@
     </AdminExecuteSequence>
     <AdminUISequence>
       <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
-      <Custom Action="DIRCA_NEWPROPERTY1" Sequence="754">NEWPROPERTY1=""</Custom>
       <Show Dialog="AdminFatalErrorForm" OnExit="error" />
       <Show Dialog="AdminUserExitForm" OnExit="cancel" />
       <Show Dialog="AdminFinishedForm" OnExit="success" />
@@ -880,7 +984,6 @@
       <CostInitialize Sequence="800" />
       <CostFinalize Sequence="1000" />
       <Custom Action="DIRCA_TARGETDIR" Sequence="750">TARGETDIR=""</Custom>
-      <Custom Action="DIRCA_NEWPROPERTY1" Sequence="754">NEWPROPERTY1=""</Custom>
       <InstallValidate Sequence="1400" />
       <InstallInitialize Sequence="1500" />
       <CreateShortcuts Sequence="4500" />
