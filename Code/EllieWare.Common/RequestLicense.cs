@@ -7,7 +7,6 @@
 //
 using System;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace EllieWare.Common
@@ -18,10 +17,7 @@ namespace EllieWare.Common
     {
       InitializeComponent();
 
-      var unameData = Encoding.ASCII.GetBytes(Environment.UserName);
-      var unameDataHash = System.Security.Cryptography.SHA1.Create().ComputeHash(unameData);
-
-      UserName.Text = Convert.ToBase64String(unameDataHash);
+      UserName.Text = Environment.UserName;
     }
 
     public RequestLicense(string appName, Version appVer, Icon appIcon) :
