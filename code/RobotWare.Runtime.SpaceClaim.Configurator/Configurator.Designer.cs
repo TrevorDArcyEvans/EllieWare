@@ -46,6 +46,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       System.Windows.Forms.Label label5;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
       System.Windows.Forms.ToolTip CfgTip;
+      System.Windows.Forms.Button CmdHelp;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configurator));
       this.RibbonText = new System.Windows.Forms.TextBox();
       this.TabText = new System.Windows.Forms.TextBox();
@@ -56,10 +57,10 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdDelete = new System.Windows.Forms.Button();
       this.CmdUp = new System.Windows.Forms.Button();
       this.CmdDown = new System.Windows.Forms.Button();
+      this.CmdEdit = new System.Windows.Forms.Button();
       this.CmdSave = new System.Windows.Forms.Button();
       this.BrowseIcon = new System.Windows.Forms.OpenFileDialog();
       this.BrowseOutput = new System.Windows.Forms.FolderBrowserDialog();
-      this.CmdEdit = new System.Windows.Forms.Button();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       label2 = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       label5 = new System.Windows.Forms.Label();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       CfgTip = new System.Windows.Forms.ToolTip(this.components);
+      CmdHelp = new System.Windows.Forms.Button();
       tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.PanelIcon)).BeginInit();
       tableLayoutPanel3.SuspendLayout();
@@ -101,7 +103,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(488, 382);
+      tableLayoutPanel1.Size = new System.Drawing.Size(488, 433);
       tableLayoutPanel1.TabIndex = 0;
       // 
       // label1
@@ -202,7 +204,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.Macros.FormattingEnabled = true;
       this.Macros.Location = new System.Drawing.Point(77, 119);
       this.Macros.Name = "Macros";
-      this.Macros.Size = new System.Drawing.Size(356, 231);
+      this.Macros.Size = new System.Drawing.Size(356, 282);
       this.Macros.TabIndex = 8;
       this.Macros.SelectedIndexChanged += new System.EventHandler(this.Macros_SelectedIndexChanged);
       this.Macros.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Macros_MouseDoubleClick);
@@ -218,16 +220,18 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       tableLayoutPanel3.Controls.Add(this.CmdUp, 0, 3);
       tableLayoutPanel3.Controls.Add(this.CmdDown, 0, 4);
       tableLayoutPanel3.Controls.Add(this.CmdEdit, 0, 0);
+      tableLayoutPanel3.Controls.Add(CmdHelp, 0, 5);
       tableLayoutPanel3.Location = new System.Drawing.Point(439, 116);
       tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
       tableLayoutPanel3.Name = "tableLayoutPanel3";
-      tableLayoutPanel3.RowCount = 5;
+      tableLayoutPanel3.RowCount = 6;
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel3.Size = new System.Drawing.Size(46, 230);
+      tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      tableLayoutPanel3.Size = new System.Drawing.Size(46, 276);
       tableLayoutPanel3.TabIndex = 12;
       // 
       // CmdAdd
@@ -277,22 +281,6 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdDown.UseVisualStyleBackColor = true;
       this.CmdDown.Click += new System.EventHandler(this.CmdDown_Click);
       // 
-      // CmdSave
-      // 
-      this.CmdSave.Dock = System.Windows.Forms.DockStyle.Right;
-      this.CmdSave.Enabled = false;
-      this.CmdSave.Location = new System.Drawing.Point(358, 356);
-      this.CmdSave.Name = "CmdSave";
-      this.CmdSave.Size = new System.Drawing.Size(75, 23);
-      this.CmdSave.TabIndex = 9;
-      this.CmdSave.Text = "Save";
-      this.CmdSave.UseVisualStyleBackColor = true;
-      this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
-      // 
-      // BrowseOutput
-      // 
-      this.BrowseOutput.Description = "Select output folder";
-      // 
       // CmdEdit
       // 
       this.CmdEdit.Enabled = false;
@@ -305,15 +293,41 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdEdit.UseVisualStyleBackColor = true;
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 
+      // CmdSave
+      // 
+      this.CmdSave.Dock = System.Windows.Forms.DockStyle.Right;
+      this.CmdSave.Enabled = false;
+      this.CmdSave.Location = new System.Drawing.Point(358, 407);
+      this.CmdSave.Name = "CmdSave";
+      this.CmdSave.Size = new System.Drawing.Size(75, 23);
+      this.CmdSave.TabIndex = 9;
+      this.CmdSave.Text = "Save";
+      this.CmdSave.UseVisualStyleBackColor = true;
+      this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+      // 
+      // BrowseOutput
+      // 
+      this.BrowseOutput.Description = "Select output folder";
+      // 
+      // CmdHelp
+      // 
+      CmdHelp.Image = global::RobotWare.Runtime.SpaceClaim.Configurator.Properties.Resources.robot;
+      CmdHelp.Location = new System.Drawing.Point(3, 233);
+      CmdHelp.Name = "CmdHelp";
+      CmdHelp.Size = new System.Drawing.Size(40, 40);
+      CmdHelp.TabIndex = 5;
+      CmdHelp.UseVisualStyleBackColor = true;
+      CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
+      // 
       // Configurator
       // 
       this.AcceptButton = this.CmdSave;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(488, 382);
+      this.ClientSize = new System.Drawing.Size(488, 433);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.MinimumSize = new System.Drawing.Size(300, 420);
+      this.MinimumSize = new System.Drawing.Size(300, 471);
       this.Name = "Configurator";
       this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
       tableLayoutPanel1.ResumeLayout(false);

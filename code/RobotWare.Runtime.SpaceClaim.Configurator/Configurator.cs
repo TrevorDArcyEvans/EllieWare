@@ -378,6 +378,12 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       Macros.SelectedIndex = selIndex + 1;
     }
 
+    private void CmdHelp_Click(object sender, EventArgs e)
+    {
+      var dlg = new AboutBox(mRoot.ApplicationName);
+      dlg.ShowDialog();
+    }
+
     private void Macros_SelectedIndexChanged(object sender, EventArgs e)
     {
       if (Macros.SelectedIndex == -1)
