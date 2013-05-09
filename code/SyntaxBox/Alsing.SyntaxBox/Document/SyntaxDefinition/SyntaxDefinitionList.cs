@@ -10,60 +10,63 @@
 
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace Alsing.SourceCode
 {
+  /// <summary>
+  /// SyntaxDefinition list class
+  /// </summary>
+  public class SyntaxDefinitionList
+  {
+    private readonly List<SyntaxDefinition> languages;
+
+
     /// <summary>
-    /// SyntaxDefinition list class
+    /// 
     /// </summary>
-    public class SyntaxDefinitionList
+    public SyntaxDefinitionList()
     {
-        private readonly List<SyntaxDefinition> languages;
+      languages = new List<SyntaxDefinition>();
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public SyntaxDefinitionList()
-        {
-            languages = new List<SyntaxDefinition>();
-
-            string[] files = Directory.GetFiles(".", "*.syn");            
-            foreach (string file in files)
-            {
-                var loader = new SyntaxDefinitionLoader();
-                SyntaxDefinition syntax = loader.Load(file);
-                languages.Add(syntax);
-            }
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public SyntaxDefinition GetLanguageFromFile(string path)
-        {
-            string extension = Path.GetExtension(path);
-            foreach (SyntaxDefinition syntax in languages)
-            {
-                foreach (FileType ft in syntax.FileTypes)
-                {
-                    if (extension.ToLowerInvariant() == ft.Extension.ToLowerInvariant())
-                        return syntax;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<SyntaxDefinition> GetSyntaxDefinitions()
-        {
-            return languages;
-        }
+      var assy = Assembly.GetExecutingAssembly();
+      var assyDir = Path.GetDirectoryName(assy.Location);
+      string[] files = Directory.GetFiles(assyDir, "*.syn");
+      foreach (string file in files)
+      {
+        var loader = new SyntaxDefinitionLoader();
+        SyntaxDefinition syntax = loader.Load(file);
+        languages.Add(syntax);
+      }
     }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public SyntaxDefinition GetLanguageFromFile(string path)
+    {
+      string extension = Path.GetExtension(path);
+      foreach (SyntaxDefinition syntax in languages)
+      {
+        foreach (FileType ft in syntax.FileTypes)
+        {
+          if (extension.ToLowerInvariant() == ft.Extension.ToLowerInvariant())
+            return syntax;
+        }
+      }
+      return null;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public List<SyntaxDefinition> GetSyntaxDefinitions()
+    {
+      return languages;
+    }
+  }
 }
