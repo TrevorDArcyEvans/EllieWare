@@ -135,6 +135,7 @@ namespace EllieWare.Common
       this.UserName.Dock = System.Windows.Forms.DockStyle.Top;
       this.UserName.Location = new System.Drawing.Point(84, 55);
       this.UserName.Name = "UserName";
+      this.UserName.ReadOnly = true;
       this.UserName.Size = new System.Drawing.Size(418, 20);
       this.UserName.TabIndex = 3;
       // 
