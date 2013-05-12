@@ -45,8 +45,8 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       System.Windows.Forms.Label label4;
       System.Windows.Forms.Label label5;
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-      System.Windows.Forms.ToolTip CfgTip;
       System.Windows.Forms.Button CmdHelp;
+      System.Windows.Forms.ToolTip CfgTip;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configurator));
       this.RibbonText = new System.Windows.Forms.TextBox();
       this.TabText = new System.Windows.Forms.TextBox();
@@ -68,8 +68,8 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       label4 = new System.Windows.Forms.Label();
       label5 = new System.Windows.Forms.Label();
       tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      CfgTip = new System.Windows.Forms.ToolTip(this.components);
       CmdHelp = new System.Windows.Forms.Button();
+      CfgTip = new System.Windows.Forms.ToolTip(this.components);
       tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.PanelIcon)).BeginInit();
       tableLayoutPanel3.SuspendLayout();
@@ -293,6 +293,17 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       this.CmdEdit.UseVisualStyleBackColor = true;
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 
+      // CmdHelp
+      // 
+      CmdHelp.Image = global::RobotWare.Runtime.SpaceClaim.Configurator.Properties.Resources.robot;
+      CmdHelp.Location = new System.Drawing.Point(3, 233);
+      CmdHelp.Name = "CmdHelp";
+      CmdHelp.Size = new System.Drawing.Size(40, 40);
+      CmdHelp.TabIndex = 5;
+      CfgTip.SetToolTip(CmdHelp, "About...");
+      CmdHelp.UseVisualStyleBackColor = true;
+      CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
+      // 
       // CmdSave
       // 
       this.CmdSave.Dock = System.Windows.Forms.DockStyle.Right;
@@ -308,16 +319,6 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       // BrowseOutput
       // 
       this.BrowseOutput.Description = "Select output folder";
-      // 
-      // CmdHelp
-      // 
-      CmdHelp.Image = global::RobotWare.Runtime.SpaceClaim.Configurator.Properties.Resources.robot;
-      CmdHelp.Location = new System.Drawing.Point(3, 233);
-      CmdHelp.Name = "CmdHelp";
-      CmdHelp.Size = new System.Drawing.Size(40, 40);
-      CmdHelp.TabIndex = 5;
-      CmdHelp.UseVisualStyleBackColor = true;
-      CmdHelp.Click += new System.EventHandler(this.CmdHelp_Click);
       // 
       // Configurator
       // 

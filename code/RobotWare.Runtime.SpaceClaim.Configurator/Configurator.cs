@@ -78,7 +78,8 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       CmdSave.Enabled = !string.IsNullOrWhiteSpace(RibbonText.Text) &&
                         !string.IsNullOrWhiteSpace(TabText.Text) &&
                         !string.IsNullOrWhiteSpace(PanelText.Text) &&
-                        (PanelIcon.Image != null);
+                        (PanelIcon.Image != null) &&
+                        mRoot.IsLicensed;
 
       var selIndex = Macros.SelectedIndex;
       CmdEdit.Enabled = selIndex >= 0;
