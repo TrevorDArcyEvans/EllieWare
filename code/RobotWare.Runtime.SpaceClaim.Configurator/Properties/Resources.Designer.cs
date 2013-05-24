@@ -95,6 +95,27 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap exit_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("exit_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap floppy_disk_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("floppy_disk_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap folder_document_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("folder_document_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap robot {
             get {
                 object obj = ResourceManager.GetObject("robot", resourceCulture);

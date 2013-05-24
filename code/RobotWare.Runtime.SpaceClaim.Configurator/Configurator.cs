@@ -35,11 +35,14 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
     private readonly IRobotWare mSpaceClaim = new RobotWareWrapper(ManagerCapsule.ApplicationName);
     private readonly List<CommandConfig> mConfigs = new List<CommandConfig>();
 
+    private string mFilePath = string.Empty;
+    private bool mDirty;
+
     public Configurator()
     {
       InitializeComponent();
 
-      Text = ApplicationName;
+      UpdateTitle();
 
       if (!mRoot.IsLicensed)
       {
@@ -73,9 +76,14 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       reportCrash.Send(e.Exception);
     }
 
+    private void UpdateTitle()
+    {
+      Text = ApplicationName + " [" + Path.GetFileNameWithoutExtension(mFilePath) + "]";
+    }
+
     private void UpdateButtons()
     {
-      CmdSave.Enabled = !string.IsNullOrWhiteSpace(RibbonText.Text) &&
+      CmdCreate.Enabled = !string.IsNullOrWhiteSpace(RibbonText.Text) &&
                         !string.IsNullOrWhiteSpace(TabText.Text) &&
                         !string.IsNullOrWhiteSpace(PanelText.Text) &&
                         (PanelIcon.Image != null) &&
@@ -86,26 +94,32 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       CmdDelete.Enabled = selIndex >= 0;
       CmdUp.Enabled = (selIndex <= Macros.Items.Count - 1) && (selIndex > 0);
       CmdDown.Enabled = (selIndex >= 0) && (selIndex != Macros.Items.Count - 1);
+
+      CmdSave.Enabled = mDirty;
     }
 
     private void UpdateUserInterface()
     {
       Macros.RefreshItems();
       UpdateButtons();
+      UpdateTitle();
     }
 
     private void RibbonText_TextChanged(object sender, EventArgs e)
     {
+      mDirty = true;
       UpdateUserInterface();
     }
 
     private void TabText_TextChanged(object sender, EventArgs e)
     {
+      mDirty = true;
       UpdateUserInterface();
     }
 
     private void PanelText_TextChanged(object sender, EventArgs e)
     {
+      mDirty = true;
       UpdateUserInterface();
     }
 
@@ -116,9 +130,15 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
         return;
       }
 
-      PanelIcon.Image = Image.FromFile(BrowseIcon.FileName);
+      UpdatePanelIcon();
 
+      mDirty = true;
       UpdateUserInterface();
+    }
+
+    private void UpdatePanelIcon()
+    {
+      PanelIcon.Image = Image.FromFile(BrowseIcon.FileName);
     }
 
     private IEnumerable<string> GetReferencesAssembliesPaths(Type type)
@@ -143,7 +163,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       File.Copy(filePath, destFilePath, true);
     }
 
-    private void CmdSave_Click(object sender, EventArgs e)
+    private void CmdCreate_Click(object sender, EventArgs e)
     {
       if (BrowseOutput.ShowDialog() != DialogResult.OK)
       {
@@ -309,6 +329,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       cfg.SpecFileName = (string)dlg.Macros.SelectedValue;
       cfg.Text = dlg.CmdText.Text;
 
+      mDirty = true;
       UpdateUserInterface();
     }
 
@@ -330,6 +351,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
 
       mConfigs.Add(cfg);
 
+      mDirty = true;
       UpdateUserInterface();
     }
 
@@ -342,6 +364,8 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       }
 
       mConfigs.RemoveAt(selIndex);
+
+      mDirty = true;
       UpdateUserInterface();
     }
 
@@ -357,6 +381,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       mConfigs[selIndex] = mConfigs[selIndex - 1];
       mConfigs[selIndex - 1] = tmp;
 
+      mDirty = true;
       UpdateUserInterface();
 
       Macros.SelectedIndex = selIndex - 1;
@@ -374,15 +399,21 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
       mConfigs[selIndex] = mConfigs[selIndex + 1];
       mConfigs[selIndex + 1] = tmp;
 
+      mDirty = true;
       UpdateUserInterface();
 
       Macros.SelectedIndex = selIndex + 1;
     }
 
-    private void CmdHelp_Click(object sender, EventArgs e)
+    private void CmdAbout_Click(object sender, EventArgs e)
     {
       var dlg = new AboutBox(mRoot.ApplicationName);
       dlg.ShowDialog();
+    }
+
+    private void CmdExit_Click(object sender, EventArgs e)
+    {
+      Close();
     }
 
     private void Macros_SelectedIndexChanged(object sender, EventArgs e)
@@ -398,6 +429,113 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
     private void Macros_MouseDoubleClick(object sender, MouseEventArgs e)
     {
       CmdEdit_Click(sender, e);
+    }
+
+    private bool DoSave()
+    {
+      if (string.IsNullOrEmpty(mFilePath))
+      {
+        var res = SaveFileDlg.ShowDialog();
+        if (res != DialogResult.OK)
+        {
+          return false;
+        }
+
+        mFilePath = SaveFileDlg.FileName;
+      }
+
+      var rtCfg = new RuntimeConfig
+      {
+        PanelIcon = BrowseIcon.FileName,
+        PanelText = PanelText.Text,
+        RibbonText = RibbonText.Text,
+        TabText = TabText.Text,
+        CommandConfigs = mConfigs
+      };
+
+      rtCfg.SaveToFile(mFilePath);
+
+      mDirty = false;
+      UpdateUserInterface();
+
+      return true;
+    }
+
+    private void CmdSave_Click(object sender, EventArgs e)
+    {
+      DoSave();
+    }
+
+    private void CmdOpen_Click(object sender, EventArgs e)
+    {
+      if (mDirty)
+      {
+        var resSave = MessageBox.Show("Do you want to save your changes?", "Confirm", MessageBoxButtons.YesNo,
+                                  MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+        if (resSave == DialogResult.Yes)
+        {
+          if (!DoSave())
+          {
+            // user cancelled save
+            return;
+          }
+        }
+      }
+
+      // clear current filepath from open dialog so user does not get confused
+      OpenFileDlg.FileName = string.Empty;
+
+      var resOpen = OpenFileDlg.ShowDialog();
+      if (resOpen != DialogResult.OK)
+      {
+        return;
+      }
+
+      try
+      {
+        var rtCfg = RuntimeConfig.LoadFromFile(OpenFileDlg.FileName);
+
+        BrowseIcon.FileName = rtCfg.PanelIcon;
+        UpdatePanelIcon();
+
+        PanelText.Text = rtCfg.PanelText;
+        RibbonText.Text = rtCfg.RibbonText;
+        TabText.Text = rtCfg.TabText;
+
+        mConfigs.Clear();
+        mConfigs.AddRange(rtCfg.CommandConfigs);
+
+        // only update filepath if we have successfully loaded file
+        mFilePath = OpenFileDlg.FileName;
+
+        mDirty = false;
+        UpdateUserInterface();
+      }
+      catch
+      {
+        // ignore any errors, probably from incorrect xml file
+      }
+    }
+
+    private void Configurator_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (!mDirty)
+      {
+        return;
+      }
+
+      var resSave = MessageBox.Show("Do you want to save your changes?", "Confirm", MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+      if (resSave != DialogResult.Yes)
+      {
+        return;
+      }
+
+      if (!DoSave())
+      {
+        // user cancelled save, so cancel close
+        e.Cancel = true;
+      }
     }
   }
 }
