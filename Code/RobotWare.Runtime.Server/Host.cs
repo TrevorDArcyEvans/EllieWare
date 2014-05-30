@@ -14,14 +14,12 @@ using AutoUpdaterDotNET;
 using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using Quartz;
 
 namespace RobotWare.Runtime.Server
 {
   [EventLogPermission(SecurityAction.Demand)]
-  public class Host : ICallback
-#if false
-    , IJob
-#endif
+  public class Host : ICallback, IJob
   {
     private const string ApplicationName = "RobotWare Runtime for Windows Server";
 
@@ -86,13 +84,7 @@ namespace RobotWare.Runtime.Server
       EventLog.WriteEntry(ApplicationName, message, winLevel);
     }
 
-    // IJob.Execute(IJobExecutionContext)
-    public void Execute
-      (
-#if false
-      IJobExecutionContext context
-#endif
-      )
+    public void Execute(IJobExecutionContext context)
     {
       // From:
       //    http://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/more-about-jobs.html
@@ -102,10 +94,9 @@ namespace RobotWare.Runtime.Server
       // generally wrap the entire contents of the execute method with a 'try-catch' block. You should also spend
       // some time looking at the documentation for the JobExecutionException, as your job can use it to provide
       // the scheduler various directives as to how you want the exception to be handled.
-#if false
       try
       {
-        var logger = LogManager.GetLogger(typeof(Host));
+        var logger = Common.Logging.LogManager.GetLogger(typeof(Host));
         var macroFilePath = context.MergedJobDataMap.GetString("MacroFilePath");
         var engine = new Engine(mRoot, this, macroFilePath);
 
@@ -117,7 +108,6 @@ namespace RobotWare.Runtime.Server
       {
         throw new JobExecutionException(ex);
       }
-#endif
     }
   }
 }
