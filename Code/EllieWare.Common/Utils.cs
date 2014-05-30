@@ -95,5 +95,33 @@ namespace EllieWare.Common
         MessageBox.Show(msg, appName, MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
       }
     }
+
+    public static void GetDependenciesForLocal(string fileName, HashSet<string> depends)
+    {
+      var assyPath = GetPathForLocal(fileName);
+      var depAssy = Assembly.ReflectionOnlyLoadFrom(assyPath);
+      var depTypes = depAssy.GetTypes();
+      foreach (var thisDep in depTypes.Select(GetReferencesAssembliesPaths).SelectMany(deps => deps))
+      {
+        depends.SafeAdd(thisDep);
+      }
+    }
+
+    public static string GetPathForLocal(string fileName)
+    {
+      var assy = Assembly.GetExecutingAssembly();
+      var assyDir = Path.GetDirectoryName(assy.Location);
+      return Path.Combine(assyDir, fileName);
+    }
+
+    public static IEnumerable<string> GetReferencesAssembliesPaths(Type type)
+    {
+      yield return type.Assembly.Location;
+
+      foreach (var assemblyName in type.Assembly.GetReferencedAssemblies())
+      {
+        yield return Assembly.ReflectionOnlyLoad(assemblyName.FullName).Location;
+      }
+    }
   }
 }
