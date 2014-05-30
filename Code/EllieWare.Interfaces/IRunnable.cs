@@ -35,8 +35,6 @@ namespace EllieWare.Interfaces
     /// <item>Called immediately before <see cref="Run"/></item>
     /// <item>Returning false will stop execution of this step and any subsequent steps</item>
     /// </list>
-    /// 
-    /// </remarks>
     bool CanRun { get; }
 
     /// <summary>

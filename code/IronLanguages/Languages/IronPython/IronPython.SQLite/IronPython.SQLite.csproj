@@ -177,6 +177,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(CSharpTargets)" />
-  <Import Project="$(SolutionDir)Versioning.targets" />
+  <Import Project="$(ProjectDir)..\..\..\Solutions\Versioning.targets" />
   <Target Name="BeforeBuild" DependsOnTargets="GenerateBuildInfo" />
 </Project>

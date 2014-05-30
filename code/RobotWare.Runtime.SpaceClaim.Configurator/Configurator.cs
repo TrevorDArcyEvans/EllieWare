@@ -223,11 +223,11 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
         }
 
         // add support files and their dependencies
-        var depFile = GetPathForLocal("Depends.txt");
+        var depFile = Utils.GetPathForLocal("Depends.txt");
         var deps = from thisLine in File.ReadAllLines(depFile) where !string.IsNullOrWhiteSpace(thisLine) select thisLine;
         foreach (var thisDep in deps)
         {
-          GetDependenciesForLocal(thisDep, depends);
+          Utils.GetDependenciesForLocal(thisDep, depends);
         }
 
         CopyDependencies(depends);
@@ -236,7 +236,7 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
         CopyFile(BrowseIcon.FileName);
 
         // copy Manifest.xml
-        var manifestFilePath = GetPathForLocal("Manifest.xml");
+        var manifestFilePath = Utils.GetPathForLocal("Manifest.xml");
         CopyFile(manifestFilePath);
 
         var rtCfg = new RuntimeConfig
@@ -251,24 +251,6 @@ namespace RobotWare.Runtime.SpaceClaim.Configurator
 
         rtCfg.SaveToFile(filePath);
       }
-    }
-
-    private void GetDependenciesForLocal(string fileName, HashSet<string> depends)
-    {
-      var assyPath = GetPathForLocal(fileName);
-      var depAssy = Assembly.ReflectionOnlyLoadFrom(assyPath);
-      var depTypes = depAssy.GetTypes();
-      foreach (var thisDep in depTypes.Select(GetReferencesAssembliesPaths).SelectMany(deps => deps))
-      {
-        depends.SafeAdd(thisDep);
-      }
-    }
-
-    private string GetPathForLocal(string fileName)
-    {
-      var assy = Assembly.GetExecutingAssembly();
-      var assyDir = Path.GetDirectoryName(assy.Location);
-      return Path.Combine(assyDir, fileName);
     }
 
     private void CopyDependencies(IEnumerable<string> depends)

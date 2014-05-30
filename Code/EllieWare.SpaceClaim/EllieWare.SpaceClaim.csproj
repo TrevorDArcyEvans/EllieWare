@@ -39,9 +39,8 @@
     <AssemblyOriginatorKeyFile>..\EllieWare.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SpaceClaim.Api.V10, Version=10.1.6421.0, Culture=neutral, PublicKeyToken=7210645d4d5e3a39, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll</HintPath>
+    <Reference Include="SpaceClaim.Api.V10">
+      <HintPath>..\Ref\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

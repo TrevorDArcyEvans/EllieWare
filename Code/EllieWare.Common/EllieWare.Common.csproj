@@ -71,6 +71,7 @@
       <DependentUpon>Adder.cs</DependentUpon>
     </Compile>
     <Compile Include="BatchParameter.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FileExtensions.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="RequestLicense.cs">
