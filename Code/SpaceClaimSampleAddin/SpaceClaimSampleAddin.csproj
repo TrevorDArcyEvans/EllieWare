@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SpaceClaim.Api.V10">
-      <HintPath>..\..\..\..\..\ProgramData\SpaceClaim\AddIns\RobotWare\SpaceClaim.Api.V10.dll</HintPath>
+      <HintPath>..\Ref\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
