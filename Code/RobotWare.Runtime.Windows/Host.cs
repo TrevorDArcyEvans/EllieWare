@@ -77,7 +77,7 @@ namespace RobotWare.Runtime.Windows
     {
       if (mEngine == null)
       {
-        var msg = string.Format("Could not find a macro file to run.");
+        var msg = string.Format("Could not find a macro file (*{0}) to run.", FileExtensions.MacroFileExtension);
         MessageBox.Show(msg, mRoot.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 
         Close();
