@@ -6,7 +6,10 @@
 //  www.EllieWare.com
 //
 using System;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using EllieWare.Common;
 
 namespace EllieWare.LicenseGenerator
 {
@@ -15,6 +18,16 @@ namespace EllieWare.LicenseGenerator
     public LicenseGenerator()
     {
       InitializeComponent();
+
+      // populate Products
+      var prodFilePath = Utils.GetPathForLocal("Products.txt");
+      var products = from thisLine in File.ReadAllLines(prodFilePath).ToList() where !string.IsNullOrWhiteSpace(thisLine) select thisLine;
+      Product.DataSource = products.ToList();
+
+      // populate Versions
+      var versFilePath = Utils.GetPathForLocal("Versions.txt");
+      var versions = from thisLine in File.ReadAllLines(versFilePath).ToList() where !string.IsNullOrWhiteSpace(thisLine) select thisLine;
+      Version.DataSource = versions.ToList();
 
       Product.SelectedIndex = Version.SelectedIndex = 0;
     }

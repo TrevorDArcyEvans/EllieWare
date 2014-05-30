@@ -113,13 +113,6 @@ namespace EllieWare.LicenseGenerator
       this.Product.Dock = System.Windows.Forms.DockStyle.Top;
       this.Product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.Product.FormattingEnabled = true;
-      this.Product.Items.AddRange(new object[] {
-            "RobotWare for SpaceClaim",
-            "RobotWare for Windows",
-            "RobotWare Runtime for SpaceClaim Configurator",
-            "RobotWare Runtime for SpaceClaim",
-            "RobotWare Runtime for Windows Configurator",
-            "RobotWare Runtime for Windows"});
       this.Product.Location = new System.Drawing.Point(72, 3);
       this.Product.Name = "Product";
       this.Product.Size = new System.Drawing.Size(375, 21);
@@ -232,10 +225,6 @@ namespace EllieWare.LicenseGenerator
       tableLayoutPanel1.SetColumnSpan(this.Version, 2);
       this.Version.Dock = System.Windows.Forms.DockStyle.Top;
       this.Version.FormattingEnabled = true;
-      this.Version.Items.AddRange(new object[] {
-            "0.0.0",
-            "1.0.0",
-            "2.0.0"});
       this.Version.Location = new System.Drawing.Point(72, 30);
       this.Version.Name = "Version";
       this.Version.Size = new System.Drawing.Size(375, 21);
