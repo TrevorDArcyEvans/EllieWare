@@ -18,7 +18,7 @@ namespace RobotWare.Runtime.Server
 {
   public class Host : ICallback, IJob
   {
-    private const string ApplicationName = "RobotWare Runtime for Windows Server";
+    internal const string ApplicationName = "RobotWare Runtime for Windows Server";
 
     private static readonly Common.Logging.ILog mLogger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
@@ -26,11 +26,6 @@ namespace RobotWare.Runtime.Server
 
     public Host()
     {
-      if (!mRoot.IsLicensed)
-      {
-        return;
-      }
-
       // http://crashreporterdotnet.codeplex.com/documentation
       Application.ThreadException += ApplicationThreadException;
 
@@ -83,6 +78,12 @@ namespace RobotWare.Runtime.Server
 
     public void Execute(IJobExecutionContext context)
     {
+      if (!mRoot.IsLicensed)
+      {
+        mLogger.Fatal(string.Format("{0} is not licensed", ApplicationName));
+        return;
+      }
+
       // From:
       //    http://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/more-about-jobs.html
       //
@@ -96,7 +97,6 @@ namespace RobotWare.Runtime.Server
         var macroFilePath = context.MergedJobDataMap.GetString("MacroFilePath");
         var engine = new Engine(mRoot, this, macroFilePath);
 
-        mLogger.Trace(string.Format("{0} running {1} ...", ApplicationName, macroFilePath));
         var bRet = engine.Run();
         mLogger.Trace(string.Format("{0} finished {1} : {2}", ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
       }
