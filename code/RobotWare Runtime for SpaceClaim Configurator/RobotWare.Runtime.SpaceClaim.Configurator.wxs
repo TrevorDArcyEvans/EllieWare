@@ -167,7 +167,7 @@
         <File Id="_3BB34BBD1B670CD293BF8CC1B503A5AF" Name="Simplicode.Imaging.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_3BB34BBD1B670CD293BF8CC1B503A5AF" AssemblyApplication="_3BB34BBD1B670CD293BF8CC1B503A5AF" DiskId="1" Source="..\ImageProcessor\bin\$(var.Configuration)\Simplicode.Imaging.dll" />
       </Component>
       <Component Id="SpaceClaim.Api.V10.dll" Guid="{F5028140-5281-FE79-AD1F-2ADCAB35B459}">
-        <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="c:\Program Files\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
+        <File Id="_E22D56E53CC88B004DF0F83CDA048FC7" Name="SpaceClaim.Api.V10.dll" KeyPath="yes" Assembly=".net" AssemblyManifest="_E22D56E53CC88B004DF0F83CDA048FC7" AssemblyApplication="_E22D56E53CC88B004DF0F83CDA048FC7" DiskId="1" Source="..\Ref\SpaceClaim\SpaceClaim.Api.V10\SpaceClaim.Api.V10.dll" />
       </Component>
       <Directory Id="_C789412C3021405C9E141E6ED94F4F80" Name="de">
         <Component Id="PdfSharp.resources.dll" Guid="{7A4714BC-CF2C-1C9D-CA72-E88396E9D7EE}">
