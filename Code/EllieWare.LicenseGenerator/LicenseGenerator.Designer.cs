@@ -229,6 +229,7 @@ namespace EllieWare.LicenseGenerator
       this.Version.Name = "Version";
       this.Version.Size = new System.Drawing.Size(375, 21);
       this.Version.TabIndex = 9;
+      this.Version.TextChanged += new System.EventHandler(this.Version_TextChanged);
       // 
       // LicenseGenerator
       // 

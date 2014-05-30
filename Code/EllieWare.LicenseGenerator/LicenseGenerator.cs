@@ -42,6 +42,11 @@ namespace EllieWare.LicenseGenerator
       LicenseCode.Text = string.Empty;
     }
 
+    private void Version_TextChanged(object sender, EventArgs e)
+    {
+      LicenseCode.Text = string.Empty;
+    }
+
     private void UserName_TextChanged(object sender, EventArgs e)
     {
       LicenseCode.Text = string.Empty;
