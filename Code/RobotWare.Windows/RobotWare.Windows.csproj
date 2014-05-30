@@ -113,6 +113,10 @@
       <Project>{22ABAC35-D498-413E-A429-98D317142CB6}</Project>
       <Name>EllieWare.DateTime</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.EventLogger\EllieWare.EventLogger.csproj">
+      <Project>{4CEB3860-6167-4A0B-9EB9-064507620C51}</Project>
+      <Name>EllieWare.EventLogger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Imaging\EllieWare.Imaging.csproj">
       <Project>{6EB7F82C-CA6D-4BA8-AE0A-0FEA5451A4B9}</Project>
       <Name>EllieWare.Imaging</Name>
