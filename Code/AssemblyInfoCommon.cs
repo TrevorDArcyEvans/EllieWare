@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyDescription("RobotWare by EllieWare. Enabling automation without the pain of code.")]
 [assembly: AssemblyCompany("EllieWare")]
-[assembly: AssemblyCopyright("Copyright © EllieWare 2012")]
+[assembly: AssemblyCopyright("Copyright © EllieWare 2014")]
 [assembly: AssemblyTrademark("RobotWare is a trademark of EllieWare")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyConfiguration("")]
