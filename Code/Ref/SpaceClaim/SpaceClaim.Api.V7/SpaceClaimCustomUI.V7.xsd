@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Schema definition for SpaceClaim Ribbon Extensibility
+	Copyright (c) SpaceClaim Corporation.
+-->
+<xs:schema version="1.0 " attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.spaceclaim.com/customui" xmlns="http://schemas.spaceclaim.com/customui">
+	<xs:annotation>
+		<xs:documentation>
+			Schema definition for SpaceClaim Ribbon Extensibility
+		</xs:documentation>
+	</xs:annotation>
+	<xs:element name="customUI" type="CT_CustomUI">
+	</xs:element>
+	<xs:complexType name="CT_Button">
+		<xs:annotation>
+			<xs:documentation>
+				A button control.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:group minOccurs="0" maxOccurs="1000" ref="EG_SubmenuControls" />
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="style" type="ST_Style" use="optional" />
+		<xs:attribute name="size" type="ST_Size" use="optional" />
+		<xs:attribute name="command" type="ST_Command" use="optional" />
+    <xs:attribute name="commandAttributes" type="ST_CommandAttributes" use="optional" />
+    <xs:attribute name="position" type="ST_Position" use="optional" />
+    <xs:attribute name="label" type="ST_Label" />
+	</xs:complexType>
+	<xs:complexType name="CT_Label">
+		<xs:annotation>
+			<xs:documentation>
+				A label control.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="width" type="xs:int" use="required" />
+		<xs:attribute name="text" type="xs:string" use="required" />
+		<xs:attribute name="align" type="ST_StringAlignment" use="optional" />
+		<xs:attribute name="command" type="ST_Command" use="optional" />
+		<xs:attribute name="commandAttributes" type="ST_CommandAttributes" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="CT_Textbox">
+		<xs:annotation>
+			<xs:documentation>
+				A textbox control.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="width" type="xs:int" use="optional" />
+    <xs:attribute name="height" type="xs:int" use="optional" />
+    <xs:attribute name="multiline" type="xs:boolean" use="optional" />
+    <xs:attribute name="command" type="ST_Command" use="required" />
+		<xs:attribute name="commandAttributes" type="ST_CommandAttributes" use="optional" />
+	</xs:complexType>
+  
+	<xs:complexType name="CT_ItemContainer">
+		<xs:annotation>
+			<xs:documentation>
+				A container for UI components.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:group minOccurs="0" maxOccurs="1000" ref="EG_ContainerControls" />
+		<xs:attribute name="itemSpacing" type="xs:int" use="optional" />
+		<xs:attribute name="verticalAlign" use="optional" type="ST_VerticalAlignment" />
+		<xs:attribute name="isGroup" type="xs:boolean" use="optional" />
+		<xs:attribute name="layoutOrientation" type="ST_Orientation" use="optional" />
+		<xs:attribute name="id" type="ST_Id" use="required" />
+	</xs:complexType>
+  
+	<xs:complexType name="CT_Checkbox">
+		<xs:annotation>
+			<xs:documentation>
+				Checkbox control.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="text" type="xs:string" use="optional" />
+		<xs:attribute name="command" type="ST_Command" use="required" />
+	</xs:complexType>
+  <xs:complexType name="CT_Combobox">
+    <xs:annotation>
+      <xs:documentation>
+        Combobox control.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1000" name="item" type="CT_ComboboxItem"/>
+    </xs:sequence>    
+    <xs:attribute name="id" type="ST_Id" use="required" />
+    <xs:attribute name="width" type="xs:int" use="optional" />
+    <xs:attribute name="itemHeight" type="xs:int" use="optional" />
+    <xs:attribute name="command" type="ST_Command" use="required" />
+    <xs:attribute name="type" type="ST_ComboboxType" />
+    <xs:attribute name="textEditable" type="xs:boolean" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="CT_ComboboxItem">
+    <xs:annotation>
+      <xs:documentation>
+        Combobox item.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+    <xs:attribute name="label" type="ST_Label" use="required" />
+  </xs:complexType>
+  <xs:complexType name="CT_Group">
+		<xs:annotation>
+			<xs:documentation>
+				A group contains UI components.
+			</xs:documentation>
+		</xs:annotation>
+    <xs:group minOccurs="0" maxOccurs="1000" ref="EG_ContainerControls" />
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="label" type="ST_Label" use="optional" />
+		<xs:attribute name="layoutOrientation" type="ST_Orientation" use="optional" />
+		<xs:attribute name="itemSpacing" type="xs:int" use="optional" />
+		<xs:attribute name="command" type="ST_Command" use="optional" />
+    <xs:attribute name="showOptionsButton" type="xs:boolean" use="optional" />
+  </xs:complexType>
+	<xs:complexType name="CT_GalleryContainer">
+		<xs:annotation>
+			<xs:documentation>
+				Gallery control
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1000" name="container" type="CT_ItemContainer">
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1000" name="button" type="CT_Button" />
+		</xs:sequence>
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="width" type="xs:int" use="required" />
+		<xs:attribute name="height" type="xs:int" use="required" />
+		<xs:attribute name="minimumWidth" type="xs:int" use="optional" />
+		<xs:attribute name="minimumHeight" type="xs:int" use="optional" />
+		<xs:attribute name="popup" type="xs:boolean" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="CT_Tab">
+		<xs:annotation>
+			<xs:documentation>
+				A tab which contains groups.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="100" name="group" type="CT_Group">
+				<xs:annotation>
+					<xs:documentation>
+						A group contains UI controls like buttons, checkboxes, comboboxes, etc.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="ST_Id" use="required" />
+		<xs:attribute name="label" type="ST_Label" use="optional" />
+		<xs:attribute name="command" type="ST_Command" use="optional" />
+	</xs:complexType>
+  
+	<xs:complexType name="CT_Tabs">
+		<xs:annotation>
+			<xs:documentation>
+				The collection of Ribbon tabs.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="1" maxOccurs="100" name="tab" type="CT_Tab" />
+		</xs:sequence>
+	</xs:complexType>
+
+  <xs:complexType name="CT_Panel">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies Tool Options Panel customization for an add-in.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element name="group" type="CT_Group" minOccurs="0" maxOccurs="1" />
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="CT_Ribbon">
+		<xs:annotation>
+			<xs:documentation>
+				Specifies Ribbon customization for an add-in.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="tabs" type="CT_Tabs" minOccurs="0" maxOccurs="1" />
+		</xs:all>
+		<xs:attribute name="startFromScratch" type="xs:boolean" use="optional" />
+	</xs:complexType>
+  
+	<xs:complexType name="CT_CustomUI">
+		<xs:annotation>
+			<xs:documentation>
+				The root element of the SpaceClaim Ribbon customization file that is used to add or modify Ribbon UI components.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+      <xs:element name="ribbon" type="CT_Ribbon" />
+      <xs:element name="panel" type="CT_Panel" />
+    </xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="ST_Id">
+		<xs:annotation>
+			<xs:documentation>
+				The ID of the component.  The ID is in the form of NameOfAddIn.ComponentName{Type}
+				e.g. MyAddin.OpenDocumentButton
+				MyAddin.ViewTab
+				MyAddin.FontGroup
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="1024" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_Size">
+		<xs:annotation>
+			<xs:documentation>
+				The size of the button. Valid values are "small" or "large"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="small" />
+			<xs:enumeration value="large" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_Style">
+		<xs:annotation>
+			<xs:documentation>
+				The style of the button. Valid values are "default", "imageandtext", or "textonlyalways"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="default" />
+			<xs:enumeration value="imageandtext" />
+			<xs:enumeration value="textonlyalways" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_Label">
+		<xs:annotation>
+			<xs:documentation>
+				The text displayed on the component.  If a Command is associated with the component, the
+				Command's Text property will have precedence over the label attribute.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1024" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_Orientation">
+		<xs:annotation>
+			<xs:documentation>
+				The orientation of the UI component. Valid values are "horizontal" or "vertical"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="horizontal" />
+			<xs:enumeration value="vertical" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_VerticalAlignment">
+		<xs:annotation>
+			<xs:documentation>
+				The vertical alignment of the UI component. Valid values are "bottom", "middle", "top"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="bottom" />
+			<xs:enumeration value="middle" />
+			<xs:enumeration value="top" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_Command">
+		<xs:annotation>
+			<xs:documentation>
+				The name of the Command associated with the UI component
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1" />
+			<xs:maxLength value="1024" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_CommandAttributes">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Attributes that specify how the Command controls the UI component. Valid values can be a combination of
+				the items below separated by spaces.</p>
+				"formattext"	- Combine the UICommand Text and Hint for the component's Text
+				"striphtml"		- Remove any HTML formating from the UICommand Text property before it is applied to the component's Text
+				"noimage"		- Don't set the Image property on the component
+				"notext"		- Don't set the Text property on the component
+				"nokeytips"		- No KeyTips for this component
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1024" />
+			<xs:minLength value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_StringAlignment">
+		<xs:annotation>
+			<xs:documentation>
+				The alignment of a string, valid values are "near", "center", or "far"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="near" />
+			<xs:enumeration value="center" />
+			<xs:enumeration value="far" />
+		</xs:restriction>
+	</xs:simpleType>
+  <xs:simpleType name="ST_ComboboxType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="default" />
+      <xs:enumeration value="font" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ST_Position">
+    <xs:annotation>
+      <xs:documentation>
+        The position of the button in the Application menu. Valid values are "new", "open", "save", "print", or "close"
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="new" />
+      <xs:enumeration value="open" />
+      <xs:enumeration value="save" />
+      <xs:enumeration value="print" />
+      <xs:enumeration value="close" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:group name="EG_SubmenuControls">
+    <xs:choice>
+      <xs:element name="button" type="CT_Button" />
+      <xs:element name="label" type="CT_Label" />
+      <xs:element name="textBox" type="CT_Textbox" />
+      <xs:element name="checkBox" type="CT_Checkbox" />
+      <xs:element name="container" type="CT_ItemContainer" />
+      <xs:element name="comboBox" type="CT_Combobox" />
+    </xs:choice>
+  </xs:group>
+  <xs:group name="EG_ContainerControls">
+      <xs:choice>
+        <xs:element name="button" type="CT_Button" />
+        <xs:element name="label" type="CT_Label" />
+        <xs:element name="textBox" type="CT_Textbox" />
+        <xs:element name="checkBox" type="CT_Checkbox" />
+        <xs:element name="container" type="CT_ItemContainer" />
+        <xs:element name="comboBox" type="CT_Combobox" />
+        <xs:element name="galleryContainer" type="CT_GalleryContainer" />
+      </xs:choice>
+    </xs:group>
+</xs:schema>
