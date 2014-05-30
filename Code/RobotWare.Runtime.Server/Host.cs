@@ -6,8 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Diagnostics;
-using System.Security.Permissions;
 using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
@@ -18,10 +16,11 @@ using Quartz;
 
 namespace RobotWare.Runtime.Server
 {
-  [EventLogPermission(SecurityAction.Demand)]
   public class Host : ICallback, IJob
   {
     private const string ApplicationName = "RobotWare Runtime for Windows Server";
+
+    private static readonly Common.Logging.ILog mLogger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
 
@@ -54,34 +53,32 @@ namespace RobotWare.Runtime.Server
 
     public void Log(LogLevel level, string message)
     {
-      // map RobotWare levels to Windows levels
-      var winLevel = EventLogEntryType.Error;
+      // map RobotWare levels to Quartz.NET levels
       switch (level)
       {
         case LogLevel.Debug:
+          mLogger.Debug(message);
+          break;
+
         case LogLevel.Information:
-          winLevel = EventLogEntryType.Information;
+          mLogger.Info(message);
           break;
 
         case LogLevel.Warning:
-          winLevel = EventLogEntryType.Warning;
+          mLogger.Warn(message);
           break;
 
         case LogLevel.Severe:
+          mLogger.Error(message);
+          break;
+
         case LogLevel.Critical:
-          winLevel = EventLogEntryType.Error;
+          mLogger.Fatal(message);
           break;
 
         default:
           throw new ArgumentOutOfRangeException("Unknown enum value:" + level.ToString());
       }
-
-      if (!EventLog.SourceExists(ApplicationName))
-      {
-        EventLog.CreateEventSource(ApplicationName, "Application");
-      }
-
-      EventLog.WriteEntry(ApplicationName, message, winLevel);
     }
 
     public void Execute(IJobExecutionContext context)
@@ -96,13 +93,12 @@ namespace RobotWare.Runtime.Server
       // the scheduler various directives as to how you want the exception to be handled.
       try
       {
-        var logger = Common.Logging.LogManager.GetLogger(typeof(Host));
         var macroFilePath = context.MergedJobDataMap.GetString("MacroFilePath");
         var engine = new Engine(mRoot, this, macroFilePath);
 
-        logger.Trace(string.Format("{0} running {1} ...", ApplicationName, macroFilePath));
+        mLogger.Trace(string.Format("{0} running {1} ...", ApplicationName, macroFilePath));
         var bRet = engine.Run();
-        logger.Trace(string.Format("{0} finished {1} : {2}", ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
+        mLogger.Trace(string.Format("{0} finished {1} : {2}", ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
       }
       catch (Exception ex)
       {
