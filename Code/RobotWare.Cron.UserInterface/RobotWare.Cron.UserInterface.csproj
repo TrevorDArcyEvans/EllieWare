@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9EF4D85A-6283-409B-AC1F-9D58CD1F7F70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RobotWare.Cron.UserInterface</RootNamespace>
+    <AssemblyName>RobotWare.Cron.UserInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\EllieWare.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
+    <Compile Include="Cron.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Cron.Designer.cs">
+      <DependentUpon>Cron.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CronCtrlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CronCtrlBase.Designer.cs">
+      <DependentUpon>CronCtrlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DailyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DailyCtrl.Designer.cs">
+      <DependentUpon>DailyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HourlyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HourlyCtrl.Designer.cs">
+      <DependentUpon>HourlyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ICronBuilder.cs" />
+    <Compile Include="MinutesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MinutesCtrl.Designer.cs">
+      <DependentUpon>MinutesCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MonthlyCtrl.Designer.cs">
+      <DependentUpon>MonthlyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeeklyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WeeklyCtrl.Designer.cs">
+      <DependentUpon>WeeklyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YearlyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="YearlyCtrl.Designer.cs">
+      <DependentUpon>YearlyCtrl.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Cron.resx">
+      <DependentUpon>Cron.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CronCtrlBase.resx">
+      <DependentUpon>CronCtrlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyCtrl.resx">
+      <DependentUpon>DailyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HourlyCtrl.resx">
+      <DependentUpon>HourlyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MinutesCtrl.resx">
+      <DependentUpon>MinutesCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonthlyCtrl.resx">
+      <DependentUpon>MonthlyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeeklyCtrl.resx">
+      <DependentUpon>WeeklyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YearlyCtrl.resx">
+      <DependentUpon>YearlyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CronExpressionDescriptor\CronExpressionDescriptor\CronExpressionDescriptor.csproj">
+      <Project>{BD023841-603A-4B09-A3B1-522664C1E274}</Project>
+      <Name>CronExpressionDescriptor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\EllieWare.snk">
+      <Link>EllieWare.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
