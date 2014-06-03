@@ -38,7 +38,7 @@ namespace RobotWare.Cron.UserInterface
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
       System.Windows.Forms.Label label1;
       System.Windows.Forms.Label label3;
-      this.HourTimeValue = new System.Windows.Forms.DateTimePicker();
+      this.DailyTimeValue = new System.Windows.Forms.DateTimePicker();
       this.OptDay = new System.Windows.Forms.RadioButton();
       this.OptWeekDay = new System.Windows.Forms.RadioButton();
       this.DailyValue = new System.Windows.Forms.NumericUpDown();
@@ -55,7 +55,7 @@ namespace RobotWare.Cron.UserInterface
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      tableLayoutPanel1.Controls.Add(this.HourTimeValue, 1, 2);
+      tableLayoutPanel1.Controls.Add(this.DailyTimeValue, 1, 2);
       tableLayoutPanel1.Controls.Add(this.OptDay, 0, 0);
       tableLayoutPanel1.Controls.Add(this.OptWeekDay, 0, 1);
       tableLayoutPanel1.Controls.Add(this.DailyValue, 1, 0);
@@ -71,17 +71,17 @@ namespace RobotWare.Cron.UserInterface
       tableLayoutPanel1.Size = new System.Drawing.Size(357, 275);
       tableLayoutPanel1.TabIndex = 0;
       // 
-      // HourTimeValue
+      // DailyTimeValue
       // 
-      this.HourTimeValue.CustomFormat = "HH:mm";
-      this.HourTimeValue.Dock = System.Windows.Forms.DockStyle.Top;
-      this.HourTimeValue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-      this.HourTimeValue.Location = new System.Drawing.Point(115, 52);
-      this.HourTimeValue.Name = "HourTimeValue";
-      this.HourTimeValue.ShowUpDown = true;
-      this.HourTimeValue.Size = new System.Drawing.Size(198, 20);
-      this.HourTimeValue.TabIndex = 5;
-      this.HourTimeValue.ValueChanged += new System.EventHandler(this.FireExpressionChangedInternal);
+      this.DailyTimeValue.CustomFormat = "HH:mm";
+      this.DailyTimeValue.Dock = System.Windows.Forms.DockStyle.Top;
+      this.DailyTimeValue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+      this.DailyTimeValue.Location = new System.Drawing.Point(115, 52);
+      this.DailyTimeValue.Name = "DailyTimeValue";
+      this.DailyTimeValue.ShowUpDown = true;
+      this.DailyTimeValue.Size = new System.Drawing.Size(198, 20);
+      this.DailyTimeValue.TabIndex = 5;
+      this.DailyTimeValue.ValueChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // OptDay
       // 
@@ -169,6 +169,6 @@ namespace RobotWare.Cron.UserInterface
     private System.Windows.Forms.RadioButton OptDay;
     private System.Windows.Forms.RadioButton OptWeekDay;
     private System.Windows.Forms.NumericUpDown DailyValue;
-    private System.Windows.Forms.DateTimePicker HourTimeValue;
+    private System.Windows.Forms.DateTimePicker DailyTimeValue;
   }
 }

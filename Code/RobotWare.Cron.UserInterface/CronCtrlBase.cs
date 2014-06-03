@@ -7,10 +7,13 @@
 //
 using System;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace RobotWare.Cron.UserInterface
 {
-  public partial class CronCtrlBase : UserControl, ICronBuilder
+  public partial class CronCtrlBase : UserControl, ICronBuilder, IXmlSerializable
   {
     public CronCtrlBase()
     {
@@ -68,8 +71,27 @@ namespace RobotWare.Cron.UserInterface
     {
       get
       {
-        return string.Empty;
+        throw new NotImplementedException("Must override in derived class - not abstract for VS designer support");
       }
     }
+
+    #region Implementation of IXmlSerializable
+
+    public XmlSchema GetSchema()
+    {
+      return null;
+    }
+
+    public virtual void ReadXml(XmlReader reader)
+    {
+      throw new NotImplementedException("Must override in derived class - not abstract for VS designer support");
+    }
+
+    public virtual void WriteXml(XmlWriter writer)
+    {
+      throw new NotImplementedException("Must override in derived class - not abstract for VS designer support");
+    }
+
+    #endregion
   }
 }

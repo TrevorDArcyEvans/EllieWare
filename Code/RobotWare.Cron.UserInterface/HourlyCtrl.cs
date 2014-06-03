@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Xml;
+using System.Globalization;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -24,8 +26,8 @@ namespace RobotWare.Cron.UserInterface
 
     protected override void UpdateUserInterface()
     {
-      HourValue.Enabled = !OptTime.Checked;
-      HourTimeValue.Enabled = OptTime.Checked;
+      HourlyValue.Enabled = !OptTime.Checked;
+      HourlyTimeValue.Enabled = OptTime.Checked;
     }
 
     public override string Expression
@@ -34,11 +36,25 @@ namespace RobotWare.Cron.UserInterface
       {
         if (OptHours.Checked)
         {
-          return string.Format("0 0 0/{0} 1/1 * ? *", HourValue.Value);
+          return string.Format("0 0 0/{0} 1/1 * ? *", HourlyValue.Value);
         }
 
-        return string.Format("0 {1} {0} 1/1 * ? *", HourTimeValue.Value.Hour, HourTimeValue.Value.Minute);
+        return string.Format("0 {1} {0} 1/1 * ? *", HourlyTimeValue.Value.Hour, HourlyTimeValue.Value.Minute);
       }
     }
+
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+      // TODO
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      // TODO
+    }
+
+    #endregion
   }
 }

@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Xml;
+using System.Globalization;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -29,5 +31,20 @@ namespace RobotWare.Cron.UserInterface
         return string.Format("0 0/{0} * 1/1 * ? *", MinutesValue.Value);
       }
     }
+
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+      var valStr = reader.GetAttribute("MinutesValue");
+      MinutesValue.Value = decimal.Parse(valStr, CultureInfo.InvariantCulture);
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      writer.WriteAttributeString("MinutesValue", MinutesValue.Value.ToString(CultureInfo.InvariantCulture));
+    }
+
+    #endregion
   }
 }

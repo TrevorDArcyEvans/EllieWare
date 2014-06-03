@@ -39,12 +39,12 @@ namespace RobotWare.Cron.UserInterface
       System.Windows.Forms.Label label1;
       this.OptHours = new System.Windows.Forms.RadioButton();
       this.OptTime = new System.Windows.Forms.RadioButton();
-      this.HourValue = new System.Windows.Forms.NumericUpDown();
-      this.HourTimeValue = new System.Windows.Forms.DateTimePicker();
+      this.HourlyValue = new System.Windows.Forms.NumericUpDown();
+      this.HourlyTimeValue = new System.Windows.Forms.DateTimePicker();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       tableLayoutPanel1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.HourValue)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.HourlyValue)).BeginInit();
       this.SuspendLayout();
       // 
       // tableLayoutPanel1
@@ -55,9 +55,9 @@ namespace RobotWare.Cron.UserInterface
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.Controls.Add(this.OptHours, 0, 0);
       tableLayoutPanel1.Controls.Add(this.OptTime, 0, 1);
-      tableLayoutPanel1.Controls.Add(this.HourValue, 1, 0);
+      tableLayoutPanel1.Controls.Add(this.HourlyValue, 1, 0);
       tableLayoutPanel1.Controls.Add(label1, 2, 0);
-      tableLayoutPanel1.Controls.Add(this.HourTimeValue, 1, 1);
+      tableLayoutPanel1.Controls.Add(this.HourlyTimeValue, 1, 1);
       tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -92,29 +92,29 @@ namespace RobotWare.Cron.UserInterface
       this.OptTime.UseVisualStyleBackColor = true;
       this.OptTime.CheckedChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
-      // HourValue
+      // HourlyValue
       // 
-      this.HourValue.Dock = System.Windows.Forms.DockStyle.Top;
-      this.HourValue.Location = new System.Drawing.Point(61, 3);
-      this.HourValue.Maximum = new decimal(new int[] {
+      this.HourlyValue.Dock = System.Windows.Forms.DockStyle.Top;
+      this.HourlyValue.Location = new System.Drawing.Point(61, 3);
+      this.HourlyValue.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-      this.HourValue.Minimum = new decimal(new int[] {
+      this.HourlyValue.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-      this.HourValue.Name = "HourValue";
-      this.HourValue.Size = new System.Drawing.Size(238, 20);
-      this.HourValue.TabIndex = 1;
-      this.HourValue.Value = new decimal(new int[] {
+      this.HourlyValue.Name = "HourlyValue";
+      this.HourlyValue.Size = new System.Drawing.Size(238, 20);
+      this.HourlyValue.TabIndex = 1;
+      this.HourlyValue.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-      this.HourValue.ValueChanged += new System.EventHandler(this.FireExpressionChangedInternal);
+      this.HourlyValue.ValueChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // label1
       // 
@@ -126,18 +126,18 @@ namespace RobotWare.Cron.UserInterface
       label1.TabIndex = 2;
       label1.Text = "hour(s)";
       // 
-      // HourTimeValue
+      // HourlyTimeValue
       // 
-      this.HourTimeValue.CustomFormat = "HH:mm";
-      this.HourTimeValue.Dock = System.Windows.Forms.DockStyle.Top;
-      this.HourTimeValue.Enabled = false;
-      this.HourTimeValue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-      this.HourTimeValue.Location = new System.Drawing.Point(61, 29);
-      this.HourTimeValue.Name = "HourTimeValue";
-      this.HourTimeValue.ShowUpDown = true;
-      this.HourTimeValue.Size = new System.Drawing.Size(238, 20);
-      this.HourTimeValue.TabIndex = 4;
-      this.HourTimeValue.ValueChanged += new System.EventHandler(this.FireExpressionChangedInternal);
+      this.HourlyTimeValue.CustomFormat = "HH:mm";
+      this.HourlyTimeValue.Dock = System.Windows.Forms.DockStyle.Top;
+      this.HourlyTimeValue.Enabled = false;
+      this.HourlyTimeValue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+      this.HourlyTimeValue.Location = new System.Drawing.Point(61, 29);
+      this.HourlyTimeValue.Name = "HourlyTimeValue";
+      this.HourlyTimeValue.ShowUpDown = true;
+      this.HourlyTimeValue.Size = new System.Drawing.Size(238, 20);
+      this.HourlyTimeValue.TabIndex = 4;
+      this.HourlyTimeValue.ValueChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // HourlyCtrl
       // 
@@ -148,7 +148,7 @@ namespace RobotWare.Cron.UserInterface
       this.Size = new System.Drawing.Size(347, 217);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.HourValue)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.HourlyValue)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -157,7 +157,7 @@ namespace RobotWare.Cron.UserInterface
 
     private System.Windows.Forms.RadioButton OptHours;
     private System.Windows.Forms.RadioButton OptTime;
-    private System.Windows.Forms.NumericUpDown HourValue;
-    private System.Windows.Forms.DateTimePicker HourTimeValue;
+    private System.Windows.Forms.NumericUpDown HourlyValue;
+    private System.Windows.Forms.DateTimePicker HourlyTimeValue;
   }
 }

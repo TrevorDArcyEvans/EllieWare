@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Xml;
+using System.Globalization;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -44,6 +46,20 @@ namespace RobotWare.Cron.UserInterface
         return string.Format("0 {3} {2} ? 1/{4} {1}#{0} *", perInt, perDay, MonthlyTimeValue.Value.Hour, MonthlyTimeValue.Value.Minute, PeriodicMonth.Value);
       }
     }
+
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+      // TODO
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      // TODO
+    }
+
+    #endregion
 
     private string GetPeriodicInterval()
     {

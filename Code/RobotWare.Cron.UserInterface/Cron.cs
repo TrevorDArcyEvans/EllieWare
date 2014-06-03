@@ -9,10 +9,14 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using CronExpressionDescriptor;
+using System.Xml;
+using System.Globalization;
+using System.Xml.Serialization;
+using System.Xml.Schema;
 
 namespace RobotWare.Cron.UserInterface
 {
-  public partial class Cron : UserControl
+  public partial class Cron : UserControl, IXmlSerializable
   {
     public Cron()
     {
@@ -33,5 +37,67 @@ namespace RobotWare.Cron.UserInterface
       var selTab = CronTab.SelectedTab.Controls.OfType<CronCtrlBase>().Single();
       UpdateDescription(selTab, e);
     }
+
+    #region Implementation of IXmlSerializable
+
+    public XmlSchema GetSchema()
+    {
+      return null;
+    }
+
+    public void ReadXml(XmlReader reader)
+    {
+      // TODO
+      if (!reader.ReadToDescendant("CronTabs"))
+      {
+        throw new XmlException("Could not find CronTabs element");
+      }
+    }
+
+    public void WriteXml(XmlWriter writer)
+    {
+      // TODO
+      writer.WriteStartElement("CronTabs");
+
+      {
+        writer.WriteStartElement("Minutes");
+        MinutesValue.WriteXml(writer);
+        writer.WriteEndElement();
+      }
+
+      {
+        writer.WriteStartElement("Hourly");
+        HourlyValue.WriteXml(writer);
+        writer.WriteEndElement();
+      }
+
+      {
+        writer.WriteStartElement("Daily");
+        DailyValue.WriteXml(writer);
+        writer.WriteEndElement();
+      }
+
+      {
+        writer.WriteStartElement("Weekly");
+        WeeklyValue.WriteXml(writer);
+        writer.WriteEndElement();
+      }
+
+      {
+        writer.WriteStartElement("Monthly");
+        MonthlyValue.WriteXml(writer);
+        writer.WriteEndElement();
+      }
+
+      {
+        writer.WriteStartElement("Yearly");
+        YearlyValue.WriteXml(writer);
+        writer.WriteEndElement();
+      }
+
+      writer.WriteEndElement();
+    }
+
+    #endregion
   }
 }

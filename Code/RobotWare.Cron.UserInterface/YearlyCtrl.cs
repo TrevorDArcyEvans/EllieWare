@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Xml;
+using System.Globalization;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -43,5 +45,19 @@ namespace RobotWare.Cron.UserInterface
         return string.Format("0 {4} {3} ? {2} {1}#{0} *", PeriodicInterval.SelectedIndex + 1, perDay, PeriodicMonth.SelectedIndex + 1, YearlyTimeValue.Value.Hour, YearlyTimeValue.Value.Minute);
       }
     }
+
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+      // TODO
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      // TODO
+    }
+
+    #endregion
   }
 }

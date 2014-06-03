@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Xml;
+using System.Globalization;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -28,11 +30,25 @@ namespace RobotWare.Cron.UserInterface
       {
         if (OptDay.Checked)
         {
-          return string.Format("0 {2} {1} 1/{0} * ? *", DailyValue.Value, HourTimeValue.Value.Hour, HourTimeValue.Value.Minute);
+          return string.Format("0 {2} {1} 1/{0} * ? *", DailyValue.Value, DailyTimeValue.Value.Hour, DailyTimeValue.Value.Minute);
         }
 
-        return string.Format("0 {1} {0} ? * MON-FRI *", HourTimeValue.Value.Hour, HourTimeValue.Value.Minute);
+        return string.Format("0 {1} {0} ? * MON-FRI *", DailyTimeValue.Value.Hour, DailyTimeValue.Value.Minute);
       }
     }
+
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+       // TODO
+   }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      // TODO
+    }
+
+    #endregion
   }
 }

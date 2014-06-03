@@ -7,6 +7,8 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Xml;
+using System.Globalization;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -45,5 +47,19 @@ namespace RobotWare.Cron.UserInterface
 
       return retval;
     }
+
+    #region Implementation of IXmlSerializable
+
+    public override void ReadXml(XmlReader reader)
+    {
+      // TODO
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      // TODO
+    }
+
+    #endregion
   }
 }
