@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\..\EllieWare.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <Import Project="$(ProjectDir)..\..\Solutions\Common.proj" />
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
@@ -15,8 +21,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FxCop|AnyCPU' ">
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>bin\Debug\Microsoft.Dynamic.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\Microsoft.Dynamic.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Win8Debug|AnyCPU' ">
   </PropertyGroup>
@@ -43,9 +53,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AndroidRelease|AnyCPU' ">
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Hosts\Silverlight\SilverlightVersion.cs" Condition=" '$(IsSilverlight)' == 'true' ">
-      <Link>Properties\SilverlightVersion.cs</Link>
-    </Compile>
     <Compile Include="Actions\Calls\ActualArguments.cs" />
     <Compile Include="Actions\Calls\ApplicableCandidate.cs" />
     <Compile Include="Actions\Calls\ArgBuilder.cs" />
@@ -435,6 +442,9 @@
     <Content Include="zlib.net\history.txt" />
     <Content Include="zlib.net\license.txt" />
     <Content Include="zlib.net\readme.txt" />
+    <None Include="..\..\..\EllieWare.snk">
+      <Link>EllieWare.snk</Link>
+    </None>
     <None Include="Microsoft.Dynamic.ruleset" />
   </ItemGroup>
   <ItemGroup Condition=" '$(IsFullFramework)' == 'true' ">

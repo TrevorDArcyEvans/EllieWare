@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\IronLanguages\bin\Release\Microsoft.Scripting.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -63,6 +60,10 @@
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronLanguages\Runtime\Microsoft.Scripting\Microsoft.Scripting.csproj">
+      <Project>{02FF0909-F5AD-48CF-A86A-345E721B7E40}</Project>
+      <Name>Microsoft.Scripting</Name>
     </ProjectReference>
     <ProjectReference Include="..\SerpentWare.Common\SerpentWare.Common.csproj">
       <Project>{831A9A61-99A0-40AD-953D-99A677F2CA1C}</Project>
