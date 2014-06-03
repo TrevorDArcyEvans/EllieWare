@@ -6,8 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Xml;
 using System.Globalization;
+using System.Xml;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -51,12 +51,32 @@ namespace RobotWare.Cron.UserInterface
 
     public override void ReadXml(XmlReader reader)
     {
-      // TODO
+      var optDayStr = reader.GetAttribute("OptDay");
+      OptDay.Checked = bool.Parse(optDayStr);
+      OptPeriodic.Checked = !OptDay.Checked;
+      var dayValueStr = reader.GetAttribute("DayValue");
+      DayValue.Value = decimal.Parse(dayValueStr, CultureInfo.InvariantCulture);
+      var dayMonthStr = reader.GetAttribute("DayMonth");
+      DayMonth.Value = decimal.Parse(dayMonthStr, CultureInfo.InvariantCulture);
+      var perInt = reader.GetAttribute("PeriodicInterval");
+      PeriodicInterval.SelectedIndex = int.Parse(perInt, CultureInfo.InvariantCulture);
+      var perDay = reader.GetAttribute("PeriodicDay");
+      PeriodicDay.SelectedIndex = int.Parse(perDay, CultureInfo.InvariantCulture);
+      var perMonth = reader.GetAttribute("PeriodicMonth");
+      PeriodicMonth.Value = decimal.Parse(perMonth, CultureInfo.InvariantCulture);
+      var monthlyTimeValueStr = reader.GetAttribute("MonthlyTimeValue");
+      MonthlyTimeValue.Value = DateTime.ParseExact(monthlyTimeValueStr, "s", CultureInfo.InvariantCulture);
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      // TODO
+      writer.WriteAttributeString("OptDay", OptDay.Checked.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("DayValue", DayValue.Value.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("DayMonth", DayMonth.Value.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("PeriodicInterval", PeriodicInterval.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("PeriodicDay", PeriodicDay.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("PeriodicMonth", PeriodicMonth.Value.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("MonthlyTimeValue", MonthlyTimeValue.Value.ToString("s", CultureInfo.InvariantCulture));
     }
 
     #endregion

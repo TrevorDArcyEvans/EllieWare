@@ -6,8 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Xml;
 using System.Globalization;
+using System.Xml;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -22,6 +22,11 @@ namespace RobotWare.Cron.UserInterface
     private void FireExpressionChangedInternal(object sender, EventArgs e)
     {
       FireExpressionChanged(sender, e);
+    }
+
+    protected override void UpdateUserInterface()
+    {
+      DailyValue.Enabled = OptDay.Checked;
     }
 
     public override string Expression
@@ -41,12 +46,20 @@ namespace RobotWare.Cron.UserInterface
 
     public override void ReadXml(XmlReader reader)
     {
-       // TODO
-   }
+      var optDayStr = reader.GetAttribute("OptDay");
+      OptDay.Checked = bool.Parse(optDayStr);
+      OptWeekDay.Checked = !OptDay.Checked;
+      var dailyValueStr = reader.GetAttribute("DailyValue");
+      DailyValue.Value = decimal.Parse(dailyValueStr, CultureInfo.InvariantCulture);
+      var hourlyTimeValueStr = reader.GetAttribute("DailyTimeValue");
+      DailyTimeValue.Value = DateTime.ParseExact(hourlyTimeValueStr, "s", CultureInfo.InvariantCulture);
+    }
 
     public override void WriteXml(XmlWriter writer)
     {
-      // TODO
+      writer.WriteAttributeString("OptDay", OptDay.Checked.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("DailyValue", DailyValue.Value.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("DailyTimeValue", DailyTimeValue.Value.ToString("s", CultureInfo.InvariantCulture));
     }
 
     #endregion

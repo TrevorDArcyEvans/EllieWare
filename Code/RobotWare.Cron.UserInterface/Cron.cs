@@ -8,11 +8,10 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using CronExpressionDescriptor;
 using System.Xml;
-using System.Globalization;
-using System.Xml.Serialization;
 using System.Xml.Schema;
+using System.Xml.Serialization;
+using CronExpressionDescriptor;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -47,16 +46,50 @@ namespace RobotWare.Cron.UserInterface
 
     public void ReadXml(XmlReader reader)
     {
-      // TODO
       if (!reader.ReadToDescendant("CronTabs"))
       {
         throw new XmlException("Could not find CronTabs element");
       }
+
+      if (!reader.ReadToFollowing("Minutes"))
+      {
+        throw new XmlException("Could not find Minutes element");
+      }
+      MinutesValue.ReadXml(reader);
+
+      if (!reader.ReadToFollowing("Hourly"))
+      {
+        throw new XmlException("Could not find Hourly element");
+      }
+      HourlyValue.ReadXml(reader);
+
+      if (!reader.ReadToFollowing("Daily"))
+      {
+        throw new XmlException("Could not find Daily element");
+      }
+      DailyValue.ReadXml(reader);
+
+      if (!reader.ReadToFollowing("Weekly"))
+      {
+        throw new XmlException("Could not find Weekly element");
+      }
+      WeeklyValue.ReadXml(reader);
+
+      if (!reader.ReadToFollowing("Monthly"))
+      {
+        throw new XmlException("Could not find Monthly element");
+      }
+      MonthlyValue.ReadXml(reader);
+
+      if (!reader.ReadToFollowing("Yearly"))
+      {
+        throw new XmlException("Could not find Yearly element");
+      }
+      YearlyValue.ReadXml(reader);
     }
 
     public void WriteXml(XmlWriter writer)
     {
-      // TODO
       writer.WriteStartElement("CronTabs");
 
       {

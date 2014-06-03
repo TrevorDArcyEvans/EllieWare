@@ -7,8 +7,8 @@
 //
 using System;
 using System.Collections.Generic;
-using System.Xml;
 using System.Globalization;
+using System.Xml;
 
 namespace RobotWare.Cron.UserInterface
 {
@@ -53,11 +53,17 @@ namespace RobotWare.Cron.UserInterface
     public override void ReadXml(XmlReader reader)
     {
       // TODO
+      var weeklyDaysStr = reader.GetAttribute("WeeklyDays");
+      WeeklyDays.SelectedIndex = int.Parse(weeklyDaysStr, CultureInfo.InvariantCulture);
+      var weeklyTimeValueStr = reader.GetAttribute("WeeklyTimeValue");
+      WeeklyTimeValue.Value = DateTime.ParseExact(weeklyTimeValueStr, "s", CultureInfo.InvariantCulture);
     }
 
     public override void WriteXml(XmlWriter writer)
     {
       // TODO
+      writer.WriteAttributeString("WeeklyDays", WeeklyDays.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("WeeklyTimeValue", WeeklyTimeValue.Value.ToString("s", CultureInfo.InvariantCulture));
     }
 
     #endregion
