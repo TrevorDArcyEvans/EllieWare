@@ -25,8 +25,7 @@ namespace RobotWare.Cron.UserInterface
     private void UpdateDescription(object sender, EventArgs e)
     {
       var cb = (ICronBuilder)sender;
-      var ceh = new ExpressionDescriptor(cb.Expression, new Options());
-      Description.Text = ceh.GetDescription(DescriptionTypeEnum.FULL);
+      Description.Text = ExpressionDescriptor.GetDescription(cb.Expression);
     }
 
     private void CronTab_SelectedIndexChanged(object sender, EventArgs e)
