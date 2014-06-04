@@ -13,8 +13,7 @@ namespace RobotWare.Cron.UserInterface
 {
   public partial class YearlyCtrl : CronCtrlBase
   {
-    public YearlyCtrl() :
-      base()
+    public YearlyCtrl()
     {
       InitializeComponent();
 

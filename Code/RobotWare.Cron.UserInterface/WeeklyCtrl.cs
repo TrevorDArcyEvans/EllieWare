@@ -8,14 +8,14 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Xml;
 
 namespace RobotWare.Cron.UserInterface
 {
   public partial class WeeklyCtrl : CronCtrlBase
   {
-    public WeeklyCtrl() :
-      base()
+    public WeeklyCtrl()
     {
       InitializeComponent();
     }
@@ -38,10 +38,7 @@ namespace RobotWare.Cron.UserInterface
     private string GetDays()
     {
       var dayNames = new List<string>(WeeklyDays.CheckedIndices.Count);
-      foreach (int thisIndex in WeeklyDays.CheckedIndices)
-      {
-        dayNames.Add(GetDay(thisIndex));
-      }
+      dayNames.AddRange(from int thisIndex in WeeklyDays.CheckedIndices select GetDay(thisIndex));
 
       var retval = string.Join(",", dayNames.ToArray());
 

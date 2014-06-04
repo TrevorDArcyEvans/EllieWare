@@ -13,8 +13,7 @@ namespace RobotWare.Cron.UserInterface
 {
   public partial class DailyCtrl : CronCtrlBase
   {
-    public DailyCtrl() :
-      base()
+    public DailyCtrl()
     {
       InitializeComponent();
     }

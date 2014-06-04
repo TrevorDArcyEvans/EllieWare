@@ -13,8 +13,7 @@ namespace RobotWare.Cron.UserInterface
 {
   public partial class MinutesCtrl : CronCtrlBase
   {
-    public MinutesCtrl() :
-      base()
+    public MinutesCtrl()
     {
       InitializeComponent();
     }
