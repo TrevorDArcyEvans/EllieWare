@@ -46,5 +46,10 @@ namespace RobotWare.Cron.UserInterface.Test
         CronTab.ReadXml(reader);
       }
     }
+
+    private void CronTab_ExpressionChanged(object sender, System.EventArgs e)
+    {
+      Expression.Text = CronTab.Expression;
+    }
   }
 }

@@ -74,7 +74,7 @@ namespace RobotWare.Cron.UserInterface
       this.CronTab.SelectedIndex = 0;
       this.CronTab.Size = new System.Drawing.Size(491, 208);
       this.CronTab.TabIndex = 0;
-      this.CronTab.SelectedIndexChanged += new System.EventHandler(this.CronTab_SelectedIndexChanged);
+      this.CronTab.SelectedIndexChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // Minutes
       // 
@@ -94,7 +94,7 @@ namespace RobotWare.Cron.UserInterface
       this.MinutesValue.Name = "MinutesValue";
       this.MinutesValue.Size = new System.Drawing.Size(477, 176);
       this.MinutesValue.TabIndex = 0;
-      this.MinutesValue.ExpressionChanged += new System.EventHandler(this.UpdateDescription);
+      this.MinutesValue.ExpressionChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // Hourly
       // 
@@ -114,7 +114,7 @@ namespace RobotWare.Cron.UserInterface
       this.HourlyValue.Name = "HourlyValue";
       this.HourlyValue.Size = new System.Drawing.Size(477, 176);
       this.HourlyValue.TabIndex = 0;
-      this.HourlyValue.ExpressionChanged += new System.EventHandler(this.UpdateDescription);
+      this.HourlyValue.ExpressionChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // Daily
       // 
@@ -134,7 +134,7 @@ namespace RobotWare.Cron.UserInterface
       this.DailyValue.Name = "DailyValue";
       this.DailyValue.Size = new System.Drawing.Size(477, 176);
       this.DailyValue.TabIndex = 0;
-      this.DailyValue.ExpressionChanged += new System.EventHandler(this.UpdateDescription);
+      this.DailyValue.ExpressionChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // Weekly
       // 
@@ -154,7 +154,7 @@ namespace RobotWare.Cron.UserInterface
       this.WeeklyValue.Name = "WeeklyValue";
       this.WeeklyValue.Size = new System.Drawing.Size(477, 176);
       this.WeeklyValue.TabIndex = 0;
-      this.WeeklyValue.ExpressionChanged += new System.EventHandler(this.UpdateDescription);
+      this.WeeklyValue.ExpressionChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // Monthly
       // 
@@ -174,7 +174,7 @@ namespace RobotWare.Cron.UserInterface
       this.MonthlyValue.Name = "MonthlyValue";
       this.MonthlyValue.Size = new System.Drawing.Size(477, 176);
       this.MonthlyValue.TabIndex = 0;
-      this.MonthlyValue.ExpressionChanged += new System.EventHandler(this.UpdateDescription);
+      this.MonthlyValue.ExpressionChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // Yearly
       // 
@@ -194,7 +194,7 @@ namespace RobotWare.Cron.UserInterface
       this.YearlyValue.Name = "YearlyValue";
       this.YearlyValue.Size = new System.Drawing.Size(477, 176);
       this.YearlyValue.TabIndex = 0;
-      this.YearlyValue.ExpressionChanged += new System.EventHandler(this.UpdateDescription);
+      this.YearlyValue.ExpressionChanged += new System.EventHandler(this.FireExpressionChangedInternal);
       // 
       // tableLayoutPanel1
       // 
@@ -227,6 +227,7 @@ namespace RobotWare.Cron.UserInterface
       this.Controls.Add(this.tableLayoutPanel1);
       this.Name = "Cron";
       this.Size = new System.Drawing.Size(497, 240);
+      this.Load += new System.EventHandler(this.FireExpressionChangedInternal);
       this.CronTab.ResumeLayout(false);
       this.Minutes.ResumeLayout(false);
       this.Hourly.ResumeLayout(false);
@@ -244,7 +245,6 @@ namespace RobotWare.Cron.UserInterface
 
     private System.Windows.Forms.TabPage Minutes;
     private System.Windows.Forms.TabPage Hourly;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TextBox Description;
     private MinutesCtrl MinutesValue;
     private HourlyCtrl HourlyValue;
@@ -257,5 +257,6 @@ namespace RobotWare.Cron.UserInterface
     private MonthlyCtrl MonthlyValue;
     private YearlyCtrl YearlyValue;
     private System.Windows.Forms.TabControl CronTab;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
   }
 }

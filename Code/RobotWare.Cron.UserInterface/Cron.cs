@@ -15,41 +15,42 @@ using CronExpressionDescriptor;
 
 namespace RobotWare.Cron.UserInterface
 {
-  public partial class Cron : UserControl, IXmlSerializable
+  public partial class Cron : CronCtrlBase
   {
     public Cron()
     {
       InitializeComponent();
 
-      // update description
-      CronTab_SelectedIndexChanged(this, new EventArgs());
+      UpdateUserInterface();
     }
 
-    private void UpdateDescription(object sender, EventArgs e)
+    private void FireExpressionChangedInternal(object sender, EventArgs e)
     {
-      var cb = (ICronBuilder)sender;
+      FireExpressionChanged(sender, e);
+    }
+
+    protected override void UpdateUserInterface()
+    {
+      var cb = GetSelectedCronBuilder();
       Description.Text = ExpressionDescriptor.GetDescription(cb.Expression);
     }
 
-    private void CronTab_SelectedIndexChanged(object sender, EventArgs e)
+    private ICronBuilder GetSelectedCronBuilder()
     {
-      var selTab = CronTab.SelectedTab.Controls.OfType<CronCtrlBase>().Single();
-      UpdateDescription(selTab, e);
+      var selTab = CronTab.SelectedTab.Controls.OfType<ICronBuilder>().Single();
+      return selTab;
     }
 
     #region Implementation of IXmlSerializable
 
-    public XmlSchema GetSchema()
-    {
-      return null;
-    }
-
-    public void ReadXml(XmlReader reader)
+    public override void ReadXml(XmlReader reader)
     {
       if (!reader.ReadToDescendant("CronTabs"))
       {
         throw new XmlException("Could not find CronTabs element");
       }
+      var selTabName = reader.GetAttribute("SelectedCronBuilder");
+      CronTab.SelectedTab = CronTab.TabPages[selTabName];
 
       if (!reader.ReadToFollowing("Minutes"))
       {
@@ -88,9 +89,10 @@ namespace RobotWare.Cron.UserInterface
       YearlyValue.ReadXml(reader);
     }
 
-    public void WriteXml(XmlWriter writer)
+    public override void WriteXml(XmlWriter writer)
     {
       writer.WriteStartElement("CronTabs");
+      writer.WriteAttributeString("SelectedCronBuilder", CronTab.SelectedTab.Name);
 
       {
         writer.WriteStartElement("Minutes");
@@ -132,5 +134,13 @@ namespace RobotWare.Cron.UserInterface
     }
 
     #endregion
+
+    public override string Expression
+    {
+      get
+      {
+        return GetSelectedCronBuilder().Expression;
+      }
+    }
   }
 }

@@ -42,20 +42,15 @@ namespace RobotWare.Cron.UserInterface.Test
       this.CronTab = new RobotWare.Cron.UserInterface.Cron();
       this.DlgSave = new System.Windows.Forms.SaveFileDialog();
       this.DlgOpen = new System.Windows.Forms.OpenFileDialog();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.Expression = new System.Windows.Forms.TextBox();
       menuStrip1 = new System.Windows.Forms.MenuStrip();
       fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       CmdOpen = new System.Windows.Forms.ToolStripMenuItem();
       CmdSave = new System.Windows.Forms.ToolStripMenuItem();
       menuStrip1.SuspendLayout();
+      this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
-      // 
-      // CronTab
-      // 
-      this.CronTab.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.CronTab.Location = new System.Drawing.Point(0, 24);
-      this.CronTab.Name = "CronTab";
-      this.CronTab.Size = new System.Drawing.Size(491, 341);
-      this.CronTab.TabIndex = 0;
       // 
       // menuStrip1
       // 
@@ -79,16 +74,25 @@ namespace RobotWare.Cron.UserInterface.Test
       // CmdOpen
       // 
       CmdOpen.Name = "CmdOpen";
-      CmdOpen.Size = new System.Drawing.Size(152, 22);
+      CmdOpen.Size = new System.Drawing.Size(112, 22);
       CmdOpen.Text = "&Open...";
       CmdOpen.Click += new System.EventHandler(this.CmdOpen_Click);
       // 
       // CmdSave
       // 
       CmdSave.Name = "CmdSave";
-      CmdSave.Size = new System.Drawing.Size(152, 22);
+      CmdSave.Size = new System.Drawing.Size(112, 22);
       CmdSave.Text = "&Save...";
       CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
+      // 
+      // CronTab
+      // 
+      this.CronTab.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.CronTab.Location = new System.Drawing.Point(3, 3);
+      this.CronTab.Name = "CronTab";
+      this.CronTab.Size = new System.Drawing.Size(485, 309);
+      this.CronTab.TabIndex = 0;
+      this.CronTab.ExpressionChanged += new System.EventHandler(this.CronTab_ExpressionChanged);
       // 
       // DlgSave
       // 
@@ -100,18 +104,44 @@ namespace RobotWare.Cron.UserInterface.Test
       this.DlgOpen.FileName = "Test01.xml";
       this.DlgOpen.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
       // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.ColumnCount = 1;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.CronTab, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.Expression, 0, 1);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 2;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(491, 341);
+      this.tableLayoutPanel1.TabIndex = 2;
+      // 
+      // Expression
+      // 
+      this.Expression.Dock = System.Windows.Forms.DockStyle.Top;
+      this.Expression.Location = new System.Drawing.Point(3, 318);
+      this.Expression.Name = "Expression";
+      this.Expression.ReadOnly = true;
+      this.Expression.Size = new System.Drawing.Size(485, 20);
+      this.Expression.TabIndex = 1;
+      // 
       // Main
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(491, 365);
-      this.Controls.Add(this.CronTab);
+      this.Controls.Add(this.tableLayoutPanel1);
       this.Controls.Add(menuStrip1);
       this.MainMenuStrip = menuStrip1;
       this.Name = "Main";
       this.Text = "Cron Builder Tester";
       menuStrip1.ResumeLayout(false);
       menuStrip1.PerformLayout();
+      this.tableLayoutPanel1.ResumeLayout(false);
+      this.tableLayoutPanel1.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -122,6 +152,8 @@ namespace RobotWare.Cron.UserInterface.Test
     private Cron CronTab;
     private System.Windows.Forms.SaveFileDialog DlgSave;
     private System.Windows.Forms.OpenFileDialog DlgOpen;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.TextBox Expression;
   }
 }
 

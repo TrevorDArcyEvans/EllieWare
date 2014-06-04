@@ -49,17 +49,33 @@ namespace RobotWare.Cron.UserInterface
 
     public override void ReadXml(XmlReader reader)
     {
-      // TODO
+      // first clear all checked days of week
+      for (var i = 0; i < WeeklyDays.Items.Count; i++)
+      {
+        WeeklyDays.SetItemChecked(i, false);
+      }
+
       var weeklyDaysStr = reader.GetAttribute("WeeklyDays");
-      WeeklyDays.SelectedIndex = int.Parse(weeklyDaysStr, CultureInfo.InvariantCulture);
+      var checkedIndicies = weeklyDaysStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+      for (var i = 0; i < checkedIndicies.Length; i++)
+      {
+        var idx = int.Parse(checkedIndicies[i], CultureInfo.InvariantCulture);
+        WeeklyDays.SetItemChecked(idx, true);
+      }
+
       var weeklyTimeValueStr = reader.GetAttribute("WeeklyTimeValue");
       WeeklyTimeValue.Value = DateTime.ParseExact(weeklyTimeValueStr, "s", CultureInfo.InvariantCulture);
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      // TODO
-      writer.WriteAttributeString("WeeklyDays", WeeklyDays.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+      var checkedIndicies = string.Empty;
+      for (var i = 0; i < WeeklyDays.CheckedIndices.Count; i++)
+      {
+        checkedIndicies += (string.IsNullOrEmpty(checkedIndicies) ? string.Empty : ",") + WeeklyDays.CheckedIndices[i].ToString(CultureInfo.InvariantCulture);
+      }
+      writer.WriteAttributeString("WeeklyDays", checkedIndicies);
+
       writer.WriteAttributeString("WeeklyTimeValue", WeeklyTimeValue.Value.ToString("s", CultureInfo.InvariantCulture));
     }
 
