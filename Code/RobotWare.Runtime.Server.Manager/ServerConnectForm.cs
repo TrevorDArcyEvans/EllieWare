@@ -24,10 +24,11 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void ServerConnectForm_FormClosed(object sender, FormClosedEventArgs e)
     {
-      if (DialogResult == DialogResult.Cancel)
+      if (DialogResult != DialogResult.OK)
       {
         return;
       }
+
       Server = cboServer.Text;
       Port = int.Parse(txtPort.Text);
       Scheduler = txtScheduler.Text;

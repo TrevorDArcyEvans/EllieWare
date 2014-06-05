@@ -41,6 +41,7 @@ namespace RobotWare.Runtime.Server.Manager
       System.Windows.Forms.Label label2;
       System.Windows.Forms.Button CmdCancel;
       System.Windows.Forms.Button CmdConnect;
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerConnectForm));
       this.txtScheduler = new System.Windows.Forms.TextBox();
       this.cboServer = new System.Windows.Forms.ComboBox();
       this.txtPort = new System.Windows.Forms.TextBox();
@@ -78,7 +79,7 @@ namespace RobotWare.Runtime.Server.Manager
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(284, 110);
+      tableLayoutPanel1.Size = new System.Drawing.Size(284, 111);
       tableLayoutPanel1.TabIndex = 11;
       // 
       // label1
@@ -167,8 +168,9 @@ namespace RobotWare.Runtime.Server.Manager
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = CmdCancel;
-      this.ClientSize = new System.Drawing.Size(284, 110);
+      this.ClientSize = new System.Drawing.Size(284, 111);
       this.Controls.Add(tableLayoutPanel1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximumSize = new System.Drawing.Size(900, 149);
       this.MinimumSize = new System.Drawing.Size(300, 149);
       this.Name = "ServerConnectForm";
