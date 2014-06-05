@@ -61,7 +61,7 @@ namespace RobotWare.Cron.UserInterface
           return "SUN";
 
         default:
-          throw new IndexOutOfRangeException("Unknown day of week: " + selIndex.ToString());
+          throw new IndexOutOfRangeException("Unknown day of week: " + selIndex);
       }
     }
 

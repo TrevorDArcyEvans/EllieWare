@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Xml;
 
@@ -36,6 +37,7 @@ namespace RobotWare.Cron.UserInterface
     public override void ReadXml(XmlReader reader)
     {
       var valStr = reader.GetAttribute("MinutesValue");
+      Debug.Assert(valStr != null, "valStr != null");
       MinutesValue.Value = decimal.Parse(valStr, CultureInfo.InvariantCulture);
     }
 

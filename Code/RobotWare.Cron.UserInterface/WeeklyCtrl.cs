@@ -7,6 +7,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Xml;
@@ -56,10 +57,11 @@ namespace RobotWare.Cron.UserInterface
       }
 
       var weeklyDaysStr = reader.GetAttribute("WeeklyDays");
-      var checkedIndicies = weeklyDaysStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-      for (var i = 0; i < checkedIndicies.Length; i++)
+      Debug.Assert(weeklyDaysStr != null, "weeklyDaysStr != null");
+      var checkedIndicies = weeklyDaysStr.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+      foreach (var t in checkedIndicies)
       {
-        var idx = int.Parse(checkedIndicies[i], CultureInfo.InvariantCulture);
+        var idx = int.Parse(t, CultureInfo.InvariantCulture);
         WeeklyDays.SetItemChecked(idx, true);
       }
 

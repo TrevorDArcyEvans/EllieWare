@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Xml;
 
@@ -51,18 +52,28 @@ namespace RobotWare.Cron.UserInterface
     public override void ReadXml(XmlReader reader)
     {
       var optDayStr = reader.GetAttribute("OptDay");
+      Debug.Assert(optDayStr != null, "optDayStr != null");
       OptDay.Checked = bool.Parse(optDayStr);
       OptPeriodic.Checked = !OptDay.Checked;
+
       var dayValueStr = reader.GetAttribute("DayValue");
+      Debug.Assert(dayValueStr != null, "dayValueStr != null");
       DayValue.Value = decimal.Parse(dayValueStr, CultureInfo.InvariantCulture);
+
       var dayMonthStr = reader.GetAttribute("DayMonth");
+      Debug.Assert(dayMonthStr != null, "dayMonthStr != null");
       DayMonth.Value = decimal.Parse(dayMonthStr, CultureInfo.InvariantCulture);
+
       var perInt = reader.GetAttribute("PeriodicInterval");
       PeriodicInterval.SelectedIndex = int.Parse(perInt, CultureInfo.InvariantCulture);
+
       var perDay = reader.GetAttribute("PeriodicDay");
       PeriodicDay.SelectedIndex = int.Parse(perDay, CultureInfo.InvariantCulture);
+
       var perMonth = reader.GetAttribute("PeriodicMonth");
+      Debug.Assert(perMonth != null, "perMonth != null");
       PeriodicMonth.Value = decimal.Parse(perMonth, CultureInfo.InvariantCulture);
+
       var monthlyTimeValueStr = reader.GetAttribute("MonthlyTimeValue");
       MonthlyTimeValue.Value = DateTime.ParseExact(monthlyTimeValueStr, "s", CultureInfo.InvariantCulture);
     }
@@ -82,7 +93,7 @@ namespace RobotWare.Cron.UserInterface
 
     private string GetPeriodicInterval()
     {
-      return (PeriodicInterval.SelectedIndex + 1).ToString();
+      return (PeriodicInterval.SelectedIndex + 1).ToString(CultureInfo.InvariantCulture);
     }
   }
 }

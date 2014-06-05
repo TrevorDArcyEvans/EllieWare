@@ -7,10 +7,7 @@
 //
 using System;
 using System.Linq;
-using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 using CronExpressionDescriptor;
 
 namespace RobotWare.Cron.UserInterface
@@ -29,7 +26,7 @@ namespace RobotWare.Cron.UserInterface
       FireExpressionChanged(sender, e);
     }
 
-    protected override void UpdateUserInterface()
+    protected override sealed void UpdateUserInterface()
     {
       var cb = GetSelectedCronBuilder();
       Description.Text = ExpressionDescriptor.GetDescription(cb.Expression);

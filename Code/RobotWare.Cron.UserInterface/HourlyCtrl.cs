@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Xml;
 
@@ -47,9 +48,11 @@ namespace RobotWare.Cron.UserInterface
     public override void ReadXml(XmlReader reader)
     {
       var optHoursStr = reader.GetAttribute("OptHours");
+      Debug.Assert(optHoursStr != null, "optHoursStr != null");
       OptHours.Checked = bool.Parse(optHoursStr);
       OptTime.Checked = !OptHours.Checked;
       var hourlyValueStr = reader.GetAttribute("HourlyValue");
+      Debug.Assert(hourlyValueStr != null, "hourlyValueStr != null");
       HourlyValue.Value = decimal.Parse(hourlyValueStr, CultureInfo.InvariantCulture);
       var hourlyTimeValueStr = reader.GetAttribute("HourlyTimeValue");
       HourlyTimeValue.Value = DateTime.ParseExact(hourlyTimeValueStr, "s", CultureInfo.InvariantCulture);
