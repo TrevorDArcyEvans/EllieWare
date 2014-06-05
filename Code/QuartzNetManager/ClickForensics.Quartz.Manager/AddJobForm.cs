@@ -31,6 +31,7 @@ namespace ClickForensics.Quartz.Manager
         txtKey.Text = "command";
       }
     }
+
     private void loadJobAssemblies()
     {
       var assemblies = AssemblyRepository.GetAssemblies();
