@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.IO;
 using Quartz;
 
 namespace RobotWare.Quartz.Extensions
@@ -20,14 +21,16 @@ namespace RobotWare.Quartz.Extensions
     /// <summary>
     /// Type of object in <see cref="JobDataMap"/>
     /// </summary>
-    Type Type { get; }
+    Type DataType { get; }
 
     /// <summary>
     /// Type of editor to change the parameter
     /// <remarks>
-    /// This may be the same as <seealso cref="Type"/>
+    /// This may be the same as <seealso cref="DataType"/>
     /// This is intended to be used as a hint so that clients can
     /// provide an appropriate user interface to edit the parameter.
+    /// For a file path, use <see cref="FileInfo"/>
+    /// For a folder/directory, use <see cref="DirectoryInfo"/>
     /// </remarks>
     /// </summary>
     Type EditorType { get; }
