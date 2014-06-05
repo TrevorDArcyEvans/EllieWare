@@ -30,7 +30,8 @@ namespace EllieWare.Common
         return Licensing.LicenseManager.IsLicensed(ApplicationName, Version);
       }
     }
-    public string UserSpecificationFolder { get; private set; }
+
+    public string UserSpecificationFolder { get; protected set; }
 
     public string WorkGroupSpecificationFolder
     {

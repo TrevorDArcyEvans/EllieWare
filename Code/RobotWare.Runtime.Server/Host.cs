@@ -12,7 +12,6 @@ using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using CrashReporterDotNET;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using Quartz;
 using RobotWare.Quartz.Extensions;
@@ -21,12 +20,11 @@ namespace RobotWare.Runtime.Server
 {
   public class Host : ICallback, IJobInfo
   {
-    internal const string ApplicationName = "RobotWare Runtime for Windows Server";
     private const string MacroFilePath = "MacroFilePath";
 
     private static readonly Common.Logging.ILog Logger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
-    private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
+    private readonly IRobotWare mRoot = new RobotWareServerWrapper();
 
     public Host()
     {
@@ -84,7 +82,7 @@ namespace RobotWare.Runtime.Server
     {
       if (!mRoot.IsLicensed)
       {
-        Logger.Fatal(string.Format("{0} is not licensed", ApplicationName));
+        Logger.Fatal(string.Format("{0} is not licensed", mRoot.ApplicationName));
         return;
       }
 
@@ -102,7 +100,7 @@ namespace RobotWare.Runtime.Server
         var engine = new Engine(mRoot, this, macroFilePath);
 
         var bRet = engine.Run();
-        Logger.Trace(string.Format("{0} finished {1} : {2}", ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
+        Logger.Trace(string.Format("{0} finished {1} : {2}", mRoot.ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
       }
       catch (Exception ex)
       {
