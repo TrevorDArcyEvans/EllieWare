@@ -68,11 +68,11 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="Logger.cs">
+    <Compile Include="EventLogger.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Logger.Designer.cs">
-      <DependentUpon>Logger.cs</DependentUpon>
+    <Compile Include="EventLogger.Designer.cs">
+      <DependentUpon>EventLogger.cs</DependentUpon>
     </Compile>
     <Compile Include="LoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,8 +93,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Logger.resx">
-      <DependentUpon>Logger.cs</DependentUpon>
+    <EmbeddedResource Include="EventLogger.resx">
+      <DependentUpon>EventLogger.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
