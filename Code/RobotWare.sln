@@ -235,7 +235,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.2010", "Quartz.NET\s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.Server.2010", "Quartz.NET\server\Quartz.Server\Quartz.Server.2010.csproj", "{09082B9A-906C-4A17-A2E5-6C947DAC7C85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClickForensics.Quartz.Manager", "QuartzNetManager\ClickForensics.Quartz.Manager\ClickForensics.Quartz.Manager.csproj", "{D23DACFA-11A1-480E-A6C4-1F37B564523D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.Manager", "QuartzNetManager\ClickForensics.Quartz.Manager\Quartz.Manager.csproj", "{D23DACFA-11A1-480E-A6C4-1F37B564523D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topshelf", "Topshelf\src\Topshelf\Topshelf.csproj", "{A52AD64D-6455-4A22-8CCF-581851086578}"
 EndProject
