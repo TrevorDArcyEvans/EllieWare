@@ -7,6 +7,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -26,6 +27,7 @@ namespace EllieWare.Common
       var retVal = new List<IFactory>();
       var callAssyLoc = Assembly.GetCallingAssembly().Location;
       var callAssyDir = Path.GetDirectoryName(callAssyLoc);
+      Debug.Assert(callAssyDir != null);
       var dllFiles = Directory.EnumerateFiles(callAssyDir, "*.dll");
       foreach (var thisDllFile in dllFiles)
       {
@@ -51,9 +53,9 @@ namespace EllieWare.Common
 
     public static bool IsValidFileName(string expression)
     {
-      const string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
+      const string Pattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
 
-      return (Regex.IsMatch(expression, sPattern, RegexOptions.CultureInvariant));
+      return (Regex.IsMatch(expression, Pattern, RegexOptions.CultureInvariant));
     }
 
     public static void Wait(TimeSpan pause)
@@ -111,6 +113,7 @@ namespace EllieWare.Common
     {
       var assy = Assembly.GetExecutingAssembly();
       var assyDir = Path.GetDirectoryName(assy.Location);
+      Debug.Assert(assyDir != null);
       return Path.Combine(assyDir, fileName);
     }
 
