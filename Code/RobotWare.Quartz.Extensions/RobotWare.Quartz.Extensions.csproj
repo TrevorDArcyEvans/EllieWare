@@ -51,6 +51,7 @@
     </Compile>
     <Compile Include="IJobDataInfo.cs" />
     <Compile Include="IJobInfo.cs" />
+    <Compile Include="JobDataInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
