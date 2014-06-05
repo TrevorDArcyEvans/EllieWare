@@ -21,7 +21,7 @@ using RobotWare.Runtime.Windows.Configurator.Properties;
 
 namespace RobotWare.Runtime.Windows.Configurator
 {
-  public partial class Configurator : Form
+  public sealed partial class Configurator : Form
   {
     private const string ApplicationName = "RobotWare Runtime for Windows Configurator";
 

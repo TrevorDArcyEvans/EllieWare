@@ -19,7 +19,7 @@ namespace RobotWare.Runtime.Console
   {
     private const string ApplicationName = "RobotWare Runtime for Console";
 
-    private static readonly Common.Logging.ILog mLogger = Common.Logging.LogManager.GetLogger(typeof(Host));
+    private static readonly Common.Logging.ILog Logger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
     static int Main(string[] args)
     {
@@ -58,12 +58,12 @@ namespace RobotWare.Runtime.Console
       var assy = Assembly.GetExecutingAssembly();
       var assyFileName = Path.GetFileName(assy.Location);
 
-      System.Console.WriteLine("Usage:");
-      System.Console.WriteLine("  {0} [path to macro file (*{1})]", assyFileName, FileExtensions.MacroFileExtension);
+      System.Console.WriteLine(@"Usage:");
+      System.Console.WriteLine(@"  {0} [path to macro file (*{1})]", assyFileName, FileExtensions.MacroFileExtension);
       System.Console.WriteLine("");
-      System.Console.WriteLine("Returns:");
-      System.Console.WriteLine("  1 success");
-      System.Console.WriteLine("  0 failure");
+      System.Console.WriteLine(@"Returns:");
+      System.Console.WriteLine(@"  1 success");
+      System.Console.WriteLine(@"  0 failure");
       System.Console.ReadKey();
     }
 
@@ -73,23 +73,23 @@ namespace RobotWare.Runtime.Console
       switch (level)
       {
         case LogLevel.Debug:
-          mLogger.Debug(message);
+          Logger.Debug(message);
           break;
 
         case LogLevel.Information:
-          mLogger.Info(message);
+          Logger.Info(message);
           break;
 
         case LogLevel.Warning:
-          mLogger.Warn(message);
+          Logger.Warn(message);
           break;
 
         case LogLevel.Severe:
-          mLogger.Error(message);
+          Logger.Error(message);
           break;
 
         case LogLevel.Critical:
-          mLogger.Fatal(message);
+          Logger.Fatal(message);
           break;
 
         default:

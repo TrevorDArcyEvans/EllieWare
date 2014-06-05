@@ -20,7 +20,7 @@ namespace RobotWare.Runtime.Server
   {
     internal const string ApplicationName = "RobotWare Runtime for Windows Server";
 
-    private static readonly Common.Logging.ILog mLogger = Common.Logging.LogManager.GetLogger(typeof(Host));
+    private static readonly Common.Logging.ILog Logger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
     private readonly IRobotWare mRoot = new RobotWareWrapper(ApplicationName);
 
@@ -52,23 +52,23 @@ namespace RobotWare.Runtime.Server
       switch (level)
       {
         case LogLevel.Debug:
-          mLogger.Debug(message);
+          Logger.Debug(message);
           break;
 
         case LogLevel.Information:
-          mLogger.Info(message);
+          Logger.Info(message);
           break;
 
         case LogLevel.Warning:
-          mLogger.Warn(message);
+          Logger.Warn(message);
           break;
 
         case LogLevel.Severe:
-          mLogger.Error(message);
+          Logger.Error(message);
           break;
 
         case LogLevel.Critical:
-          mLogger.Fatal(message);
+          Logger.Fatal(message);
           break;
 
         default:
@@ -80,7 +80,7 @@ namespace RobotWare.Runtime.Server
     {
       if (!mRoot.IsLicensed)
       {
-        mLogger.Fatal(string.Format("{0} is not licensed", ApplicationName));
+        Logger.Fatal(string.Format("{0} is not licensed", ApplicationName));
         return;
       }
 
@@ -98,7 +98,7 @@ namespace RobotWare.Runtime.Server
         var engine = new Engine(mRoot, this, macroFilePath);
 
         var bRet = engine.Run();
-        mLogger.Trace(string.Format("{0} finished {1} : {2}", ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
+        Logger.Trace(string.Format("{0} finished {1} : {2}", ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
       }
       catch (Exception ex)
       {

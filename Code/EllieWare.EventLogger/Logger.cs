@@ -6,19 +6,13 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
+using System.Security.Permissions;
 using System.Windows.Forms;
+using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
-using System.Xml;
-using System.Globalization;
-using System.Diagnostics;
-using System.Security.Permissions;
 
 namespace EllieWare.EventLogger
 {
@@ -58,6 +52,7 @@ namespace EllieWare.EventLogger
     {
       mSource.Text = reader.GetAttribute("Source");
       var levelStr = reader.GetAttribute("Level");
+      Debug.Assert(levelStr != null, "levelStr != null");
       mLevel.SelectedIndex = mLevel.Items.IndexOf(levelStr);
       mMessage.Text = reader.GetAttribute("Message");
     }
@@ -119,7 +114,7 @@ namespace EllieWare.EventLogger
       return true;
     }
 
-    private void Source_SelectedIndexChanged(object sender, EventArgs e)
+    private void Source_TextChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
     }

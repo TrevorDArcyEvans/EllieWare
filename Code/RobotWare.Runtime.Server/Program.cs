@@ -17,11 +17,11 @@ namespace RobotWare.Runtime.Server
     [STAThread]
     static void Main()
     {
-      IRobotWare mRoot = new RobotWareWrapper(Host.ApplicationName);
+      IRobotWare root = new RobotWareWrapper(Host.ApplicationName);
 
-      if (!mRoot.IsLicensed)
+      if (!root.IsLicensed)
       {
-        Utils.DoRequestLicense(mRoot.ApplicationName, mRoot.Version, Resources.robot_32x32, () => mRoot.IsLicensed);
+        Utils.DoRequestLicense(root.ApplicationName, root.Version, Resources.robot_32x32, () => root.IsLicensed);
       }
     }
   }

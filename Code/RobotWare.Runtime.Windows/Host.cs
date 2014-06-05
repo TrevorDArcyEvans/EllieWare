@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,7 +21,7 @@ using FileExtensions = EllieWare.Interfaces.FileExtensions;
 
 namespace RobotWare.Runtime.Windows
 {
-  public partial class Host : Form
+  public sealed partial class Host : Form
   {
     private const string ApplicationName = "RobotWare Runtime for Windows";
 
@@ -46,6 +47,7 @@ namespace RobotWare.Runtime.Windows
         // check for one macro file
         var assy = Assembly.GetExecutingAssembly();
         var assyDir = Path.GetDirectoryName(assy.Location);
+        Debug.Assert(assyDir != null);
         mMacroFilePath = Directory.EnumerateFiles(assyDir, "*" + FileExtensions.MacroFileExtension).FirstOrDefault();
         if (!string.IsNullOrWhiteSpace(mMacroFilePath))
         {

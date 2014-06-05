@@ -67,8 +67,8 @@ namespace EllieWare.LicenseGenerator
       var isLicensed = Licensing.LicenseManager.IsLicensed(Product.Text, ApplicationVersion);
 
       MessageBox.Show(Product.Text + Environment.NewLine +
-                      "    is " + (isLicensed ? string.Empty : "not ") + "licensed",
-                      "License Status");
+                      @"    is " + (isLicensed ? string.Empty : "not ") + @"licensed",
+                      @"License Status");
     }
 
     private Version ApplicationVersion

@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -23,14 +22,13 @@ namespace RobotWare.Runtime
     private readonly IRobotWare mRoot;
     private readonly ISpecification mSpecification;
     private readonly ICallback mCallback;
-    private readonly List<IFactory> mFactories;
 
     public Engine(IRobotWare root, ICallback callback, string filePath)
     {
       mRoot = root;
       mCallback = callback;
-      mFactories = Utils.GetFactories().ToList();
-      mSpecification = new Specification(mRoot, mCallback, mFactories);
+      var factories = Utils.GetFactories().ToList();
+      mSpecification = new Specification(mRoot, mCallback, factories);
 
       using (var fs = new FileStream(filePath, FileMode.Open))
       {

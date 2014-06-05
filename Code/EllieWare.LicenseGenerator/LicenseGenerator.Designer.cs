@@ -84,7 +84,7 @@ namespace EllieWare.LicenseGenerator
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(450, 142);
+      tableLayoutPanel1.Size = new System.Drawing.Size(450, 141);
       tableLayoutPanel1.TabIndex = 0;
       // 
       // label1
@@ -174,7 +174,7 @@ namespace EllieWare.LicenseGenerator
       this.tableLayoutPanel2.Name = "tableLayoutPanel2";
       this.tableLayoutPanel2.RowCount = 1;
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(324, 30);
+      this.tableLayoutPanel2.Size = new System.Drawing.Size(324, 29);
       this.tableLayoutPanel2.TabIndex = 7;
       // 
       // CmdGenerate
@@ -240,13 +240,15 @@ namespace EllieWare.LicenseGenerator
       this.Version.Name = "Version";
       this.Version.Size = new System.Drawing.Size(375, 21);
       this.Version.TabIndex = 9;
+      this.Version.SelectedIndexChanged += new System.EventHandler(this.Version_TextChanged);
+      this.Version.TextChanged += new System.EventHandler(this.Version_TextChanged);
       // 
       // LicenseGenerator
       // 
       this.AcceptButton = CmdGenerate;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(450, 142);
+      this.ClientSize = new System.Drawing.Size(450, 141);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;

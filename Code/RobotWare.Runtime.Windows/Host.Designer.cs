@@ -7,7 +7,7 @@
 //
 namespace RobotWare.Runtime.Windows
 {
-  partial class Host
+  sealed partial class Host
   {
     /// <summary>
     /// Required designer variable.

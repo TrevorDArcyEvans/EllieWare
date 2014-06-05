@@ -7,7 +7,7 @@
 //
 namespace RobotWare.Runtime.Windows.Configurator
 {
-  partial class Configurator
+  sealed partial class Configurator
   {
     /// <summary>
     /// Required designer variable.

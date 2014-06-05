@@ -125,7 +125,7 @@ namespace EllieWare.EventLogger
       this.mSource.Name = "mSource";
       this.mSource.Size = new System.Drawing.Size(275, 20);
       this.mSource.TabIndex = 1;
-      this.mSource.TextChanged += new System.EventHandler(this.Message_TextChanged);
+      this.mSource.TextChanged += new System.EventHandler(this.Source_TextChanged);
       // 
       // Logger
       // 
