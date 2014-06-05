@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
@@ -13,12 +15,14 @@ using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Quartz;
+using RobotWare.Quartz.Extensions;
 
 namespace RobotWare.Runtime.Server
 {
-  public class Host : ICallback, IJob
+  public class Host : ICallback, IJobInfo
   {
     internal const string ApplicationName = "RobotWare Runtime for Windows Server";
+    private const string MacroFilePath = "MacroFilePath";
 
     private static readonly Common.Logging.ILog Logger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
@@ -72,7 +76,7 @@ namespace RobotWare.Runtime.Server
           break;
 
         default:
-          throw new ArgumentOutOfRangeException("Unknown enum value:" + level.ToString());
+          throw new ArgumentOutOfRangeException("Unknown enum value:" + level);
       }
     }
 
@@ -94,7 +98,7 @@ namespace RobotWare.Runtime.Server
       // the scheduler various directives as to how you want the exception to be handled.
       try
       {
-        var macroFilePath = context.MergedJobDataMap.GetString("MacroFilePath");
+        var macroFilePath = context.MergedJobDataMap.GetString(MacroFilePath);
         var engine = new Engine(mRoot, this, macroFilePath);
 
         var bRet = engine.Run();
@@ -103,6 +107,17 @@ namespace RobotWare.Runtime.Server
       catch (Exception ex)
       {
         throw new JobExecutionException(ex);
+      }
+    }
+
+    public IEnumerable<IJobDataInfo> JobDataInfos
+    {
+      get
+      {
+        return new[]
+                {
+                  new JobDataInfo(MacroFilePath, typeof (string), typeof (FileInfo), "")
+                };
       }
     }
   }

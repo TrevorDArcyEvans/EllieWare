@@ -121,6 +121,10 @@
       <Project>{AEF8823B-E45B-4B35-A4D0-C08C1196D017}</Project>
       <Name>Quartz.2010</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RobotWare.Quartz.Extensions\RobotWare.Quartz.Extensions.csproj">
+      <Project>{BAE4F7D3-C587-42D5-8012-61910A3EDB59}</Project>
+      <Name>RobotWare.Quartz.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RobotWare.Runtime\RobotWare.Runtime.csproj">
       <Project>{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}</Project>
       <Name>RobotWare.Runtime</Name>
