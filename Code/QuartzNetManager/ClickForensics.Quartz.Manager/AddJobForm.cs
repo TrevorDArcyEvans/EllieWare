@@ -57,14 +57,16 @@ namespace ClickForensics.Quartz.Manager
     public AddJobForm(TriggerNode node)
       : this()
     {
-      setTriggerData((CronTriggerImpl)node.Trigger);
+      setTriggerData(node.Trigger);
       setJobData(((JobNode)node.Parent.Parent).Detail);
     }
 
-    private void setTriggerData(CronTriggerImpl trigger)
+    private void setTriggerData(ITrigger trigger)
     {
       setTriggerType();
-      txtCronExpression.Text = trigger.CronExpressionString;
+      txtCronExpression.Text = (Trigger is CronTriggerImpl) ?
+                                ((CronTriggerImpl)trigger).CronExpressionString :
+                                "0 0/5 * 1/1 * ? *";  // every 5 mins
       txtTriggerDescription.Text = trigger.Description;
       txtTriggerGroup.Text = trigger.Key.Group;
       txtTriggerName.Text = trigger.Key.Name;
