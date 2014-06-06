@@ -265,5 +265,55 @@ namespace RobotWare.Runtime.Server.Manager
         btnPause.Enabled = false;
       }
     }
+
+    private void btnRunJobNow_Click(object sender, EventArgs e)
+    {
+      var node = (JobNode)jobGroupsTreeView.SelectedNode;
+      mScheduler.GetScheduler().TriggerJob(node.Detail.Key);
+    }
+
+    private void btnPause_Click(object sender, EventArgs e)
+    {
+      var node = (TriggerNode)jobGroupsTreeView.SelectedNode;
+      var sched = mScheduler.GetScheduler();
+      if (sched.GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
+      {
+        sched.ResumeTrigger(node.Trigger.Key);
+      }
+      else
+      {
+        sched.PauseTrigger(node.Trigger.Key);
+      }
+      SetPauseButtonText();
+    }
+
+    private void btnDeleteJob_Click(object sender, EventArgs e)
+    {
+      var sched = mScheduler.GetScheduler();
+      var selectedNode = jobGroupsTreeView.SelectedNode;
+      if (selectedNode is JobNode)
+      {
+        var node = (JobNode)jobGroupsTreeView.SelectedNode;
+        sched.DeleteJob(node.Detail.Key);
+        jobGroupsTreeView.SelectedNode.Remove();
+      }
+
+      var triggerNode = selectedNode as TriggerNode;
+      if (triggerNode != null)
+      {
+        sched.UnscheduleJob(triggerNode.Trigger.Key);
+        UpdateScheduledJobs();
+      }
+    }
+
+    private void btnEdit_Click(object sender, EventArgs e)
+    {
+      // TODO   edit macro
+    }
+
+    private void btnAddJob_Click(object sender, EventArgs e)
+    {
+      // TODO   add macro
+    }
   }
 }
