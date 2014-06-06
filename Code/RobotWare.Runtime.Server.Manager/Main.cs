@@ -6,23 +6,17 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using Common.Logging;
 using CrashReporterDotNET;
-using EllieWare.Common;
 using EllieWare.Interfaces;
 using EllieWare.Support;
 using Quartz;
-using Quartz.Core;
 using Quartz.Impl.Matchers;
 using RobotWare.Runtime.Server.Manager.Properties;
 
@@ -121,7 +115,7 @@ namespace RobotWare.Runtime.Server.Manager
       jobGroupsTreeView.Nodes.Add(schedulerNode);
       var jobGroupsNode = schedulerNode.Nodes.Add("Job Groups");
       var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
-      foreach (string jobGroup in jobGroups)
+      foreach (var jobGroup in jobGroups)
       {
         var jobGroupNode = jobGroupsNode.Nodes.Add(jobGroup);
         var jobsNode = jobGroupNode.Nodes.Add("Jobs");
@@ -130,10 +124,6 @@ namespace RobotWare.Runtime.Server.Manager
 
       jobGroupsTreeView.Nodes[0].Expand();
       jobGroupsNode.Expand();
-
-      //loadOrphanJobs(schedulerNode);
-      //loadStuckTriggers(schedulerNode);
-      //loadCalendars(schedulerNode);
     }
 
     private void AddJobNodes(TreeNode node)
@@ -161,7 +151,6 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddTriggerNodes(JobNode jobNode)
     {
-      //var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Text, jobNode.Parent.Parent.Text));
       var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Parent.Text));
       var triggersNode = jobNode.Nodes.Add("Triggers");
       foreach (var trigger in triggers)
@@ -190,6 +179,90 @@ namespace RobotWare.Runtime.Server.Manager
       using (new AutoCursor())
       {
         UpdateScheduledJobs();
+      }
+    }
+
+    private void JobDetailsToggle(bool isVisible)
+    {
+      if (isVisible == false)
+      {
+        pnlDetails.Controls.Clear();
+      }
+    }
+
+    private void SetPauseButtonText()
+    {
+      var node = (TriggerNode)jobGroupsTreeView.SelectedNode;
+      if (mScheduler.GetScheduler().GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
+      {
+        btnPause.Text = @"Resume";
+      }
+      else
+      {
+        btnPause.Text = @"Pause";
+      }
+    }
+
+    private void jobGroupsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+      JobDetailsToggle(false);
+      if (e.Node is TriggerNode || e.Node is JobNode)
+      {
+        btnDeleteJob.Enabled = true;
+      }
+      else
+      {
+        btnDeleteJob.Enabled = false;
+      }
+
+      var jobNode = e.Node as JobNode;
+      if (jobNode != null)
+      {
+        btnRunJobNow.Enabled = true;
+        var ctrl = new NativeJobDetailDisplay(jobNode.Detail)
+                    {
+                      Dock = DockStyle.Fill
+                    };
+        pnlDetails.Controls.Add(ctrl);
+        JobDetailsToggle(true);
+      }
+      else
+      {
+        btnRunJobNow.Enabled = false;
+      }
+
+      var triggerNode = e.Node as TriggerNode;
+      if (triggerNode != null)
+      {
+        btnPause.Enabled = true;
+        SetPauseButtonText();
+        var trigger = triggerNode.Trigger as ICronTrigger;
+        if (trigger != null)
+        {
+          var ctrl = new CronTriggerDisplay(trigger)
+                            {
+                              Dock = DockStyle.Fill
+                            };
+          pnlDetails.Controls.Add(ctrl);
+          JobDetailsToggle(true);
+        }
+
+        var simpleTrigger = triggerNode.Trigger as ISimpleTrigger;
+        if (simpleTrigger != null)
+        {
+          var ctrl = new SimpleTriggerDisplay(simpleTrigger)
+                          {
+                            Dock = DockStyle.Fill
+                          };
+          pnlDetails.Controls.Add(ctrl);
+          JobDetailsToggle(true);
+        }
+        btnEdit.Enabled = true;
+      }
+      else
+      {
+        btnEdit.Enabled = false;
+        btnPause.Enabled = false;
       }
     }
   }
