@@ -72,13 +72,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuartzSchedulerFacade.cs" />
-    <Compile Include="RegistryStore.cs" />
     <Compile Include="ServerConnectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ServerConnectForm.Designer.cs">
       <DependentUpon>ServerConnectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,9 +161,6 @@
       <Project>{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}</Project>
       <Name>RobotWare.Runtime</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\plug_add_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

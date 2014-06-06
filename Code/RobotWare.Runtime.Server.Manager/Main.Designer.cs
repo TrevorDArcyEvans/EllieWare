@@ -38,35 +38,21 @@ namespace RobotWare.Runtime.Server.Manager
       System.Windows.Forms.ToolStrip toolStrip1;
       System.Windows.Forms.StatusStrip statusStrip1;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-      this.CmdConnect = new System.Windows.Forms.ToolStripButton();
       this.ServerConnectStatus = new System.Windows.Forms.ToolStripStatusLabel();
       this.StripStatusLabel_Job_Groups = new System.Windows.Forms.ToolStripStatusLabel();
       this.StripStatusLabel_Jobs_Refresh_date = new System.Windows.Forms.ToolStripStatusLabel();
       toolStrip1 = new System.Windows.Forms.ToolStrip();
       statusStrip1 = new System.Windows.Forms.StatusStrip();
-      toolStrip1.SuspendLayout();
       statusStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // toolStrip1
       // 
-      toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CmdConnect});
       toolStrip1.Location = new System.Drawing.Point(0, 0);
       toolStrip1.Name = "toolStrip1";
       toolStrip1.Size = new System.Drawing.Size(547, 25);
       toolStrip1.TabIndex = 0;
       toolStrip1.Text = "toolStrip1";
-      // 
-      // CmdConnect
-      // 
-      this.CmdConnect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      this.CmdConnect.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.plug_add_32x32;
-      this.CmdConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.CmdConnect.Name = "CmdConnect";
-      this.CmdConnect.Size = new System.Drawing.Size(23, 22);
-      this.CmdConnect.ToolTipText = "Connect...";
-      this.CmdConnect.Click += new System.EventHandler(this.CmdConnect_Click);
       // 
       // statusStrip1
       // 
@@ -112,8 +98,6 @@ namespace RobotWare.Runtime.Server.Manager
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Main";
       this.Text = "Form1";
-      toolStrip1.ResumeLayout(false);
-      toolStrip1.PerformLayout();
       statusStrip1.ResumeLayout(false);
       statusStrip1.PerformLayout();
       this.ResumeLayout(false);
@@ -123,7 +107,6 @@ namespace RobotWare.Runtime.Server.Manager
 
     #endregion
 
-    private System.Windows.Forms.ToolStripButton CmdConnect;
     private System.Windows.Forms.ToolStripStatusLabel ServerConnectStatus;
     private System.Windows.Forms.ToolStripStatusLabel StripStatusLabel_Job_Groups;
     private System.Windows.Forms.ToolStripStatusLabel StripStatusLabel_Jobs_Refresh_date;

@@ -20,12 +20,14 @@ using CrashReporterDotNET;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Quartz.Core;
+using RobotWare.Runtime.Server.Manager.Properties;
 
 namespace RobotWare.Runtime.Server.Manager
 {
   public partial class Main : Form
   {
     private readonly IRobotWare mRoot = new RobotWareServerWrapper();
+    private readonly QuartzSchedulerFacade mScheduler;
 
     public Main()
     {
@@ -39,6 +41,16 @@ namespace RobotWare.Runtime.Server.Manager
       var appCast = mRoot.ApplicationName.Replace(' ', '_') + ".xml";
       var appCastUrl = EllieWare + @"/" + appCast;
       AutoUpdater.Start(appCastUrl, mRoot.ApplicationName, mRoot.Version);
+
+      try
+      {
+        mScheduler = new QuartzSchedulerFacade(Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
+        ServerConnectStatus.Text = string.Format("Connected to {0}", mScheduler.Address);
+      }
+      catch (SocketException ex)
+      {
+        var msg = string.Format("Unable to connect to scheduler {0} on {1}:{2}", Settings.Default.Scheduler, Settings.Default.Server, Settings.Default.Port);
+      }
     }
 
     public Main(IRobotWare root) :
@@ -57,28 +69,8 @@ namespace RobotWare.Runtime.Server.Manager
       reportCrash.Send(e.Exception);
     }
 
-    private void CmdConnect_Click(object sender, EventArgs e)
-    {
-      using (var form = new ServerConnectForm())
-      {
-        if (form.ShowDialog() != DialogResult.OK)
-        {
-          return;
-        }
-
-        try
-        {
-          var scheduler = new QuartzSchedulerFacade(form.Server, form.Port, form.Scheduler);
-          ServerConnectStatus.Text = string.Format("Connected to {0}", scheduler.Address);
-          //jobsToolStripMenuItem.Enabled = true;
-          //loadJobGroups(scheduler);
-          //updateRunningJobs();
-        }
-        catch (SocketException ex)
-        {
-          var msg = string.Format("Unable to connect to scheduler {0} on {1}:{2}", form.Scheduler, form.Server, form.Port);
-        }
-      }
-    }
+    //jobsToolStripMenuItem.Enabled = true;
+    //loadJobGroups(scheduler);
+    //updateRunningJobs();
   }
 }
