@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Audio
 {
-  public class SystemSoundFactory : SoundFactoryBase, IFactory
+  public class SystemSoundFactory : SoundFactoryBase
   {
     public override string Title
     {

@@ -48,6 +48,14 @@ namespace SheetMetalEstimator
       }
     }
 
+    public bool IsLicensed
+    {
+      get
+      {
+        return true;
+      }
+    }
+
     public Type CreatedType
     {
       get

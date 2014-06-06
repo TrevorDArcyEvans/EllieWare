@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public class FileDeleteFactory : FtpFactoryBase, IFactory
+  public class FileDeleteFactory : FtpFactoryBase
   {
     public override string Title
     {

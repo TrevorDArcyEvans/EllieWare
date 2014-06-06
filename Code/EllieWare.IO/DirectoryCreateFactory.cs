@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.IO
 {
-  public class DirectoryCreateFactory : IOFactoryBase, IFactory
+  public class DirectoryCreateFactory : IOFactoryBase
   {
     public override string Title
     {

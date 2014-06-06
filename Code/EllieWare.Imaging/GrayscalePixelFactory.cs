@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Imaging
 {
-  public class GrayscalePixelFactory : ImagingFactoryBase, IFactory
+  public class GrayscalePixelFactory : ImagingFactoryBase
   {
     public override string Title
     {

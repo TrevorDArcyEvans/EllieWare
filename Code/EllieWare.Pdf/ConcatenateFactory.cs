@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Pdf
 {
-  public class ConcatenateFactory : PdfFactoryBase, IFactory
+  public class ConcatenateFactory : PdfFactoryBase
   {
     public override string Title
     {

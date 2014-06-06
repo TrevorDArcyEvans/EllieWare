@@ -64,6 +64,10 @@ namespace EllieWare.Common
         {
           var stepType = reader.GetAttribute("Type");
           var stepFactory = mFactories.First(x => x.CreatedType.ToString() == stepType);
+          if (!stepFactory.IsLicensed)
+          {
+            continue;
+          }
           var step = stepFactory.Create(mRoot, mCallback, ParameterManager);
 
           step.ReadXml(reader);

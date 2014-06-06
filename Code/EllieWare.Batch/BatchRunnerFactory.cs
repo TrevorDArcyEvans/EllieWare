@@ -7,13 +7,14 @@
 //
 using System;
 using System.Collections.Generic;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Batch
 {
-  public class BatchRunnerFactory : IFactory
+  public class BatchRunnerFactory : FactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -21,7 +22,7 @@ namespace EllieWare.Batch
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -29,7 +30,7 @@ namespace EllieWare.Batch
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -37,7 +38,7 @@ namespace EllieWare.Batch
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -49,7 +50,7 @@ namespace EllieWare.Batch
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -57,7 +58,7 @@ namespace EllieWare.Batch
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new BatchRunner(root, callback, mgr);
     }

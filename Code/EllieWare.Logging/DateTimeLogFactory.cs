@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
 {
-  public class DateTimeLogFactory : LoggingFactoryBase, IFactory
+  public class DateTimeLogFactory : LoggingFactoryBase
   {
     public override string Title
     {

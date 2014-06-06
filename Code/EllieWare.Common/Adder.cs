@@ -18,7 +18,7 @@ namespace EllieWare.Common
 {
   public partial class Adder : Form
   {
-    private readonly IEnumerable<IFactory> mFactories;
+    private readonly IList<IFactory> mFactories;
 
     public Adder()
     {
@@ -28,7 +28,7 @@ namespace EllieWare.Common
     public Adder(IEnumerable<IFactory> factories) :
       this()
     {
-      mFactories = factories;
+      mFactories = factories.Where(x => x.IsLicensed).ToList();
 
       lbSteps.Items.Clear();
 

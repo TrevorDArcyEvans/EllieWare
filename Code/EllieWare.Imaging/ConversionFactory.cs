@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Imaging
 {
-  public class ConversionFactory : ImagingFactoryBase, IFactory
+  public class ConversionFactory : ImagingFactoryBase
   {
     public override string Title
     {

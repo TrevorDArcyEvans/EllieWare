@@ -7,13 +7,14 @@
 //
 using System;
 using System.Collections.Generic;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Python
 {
-  public class PythonScriptFactory : IFactory
+  public class PythonScriptFactory : FactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -21,7 +22,7 @@ namespace EllieWare.Python
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -29,7 +30,7 @@ namespace EllieWare.Python
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -37,7 +38,7 @@ namespace EllieWare.Python
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -50,7 +51,7 @@ namespace EllieWare.Python
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -58,7 +59,7 @@ namespace EllieWare.Python
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new PythonScript(root, callback, mgr);
     }

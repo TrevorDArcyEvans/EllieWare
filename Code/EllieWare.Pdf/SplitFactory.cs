@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Pdf
 {
-  public class SplitFactory: PdfFactoryBase, IFactory
+  public class SplitFactory: PdfFactoryBase
   {
     public override string Title
     {

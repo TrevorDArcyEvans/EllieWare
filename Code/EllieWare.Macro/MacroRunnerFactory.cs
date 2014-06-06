@@ -7,13 +7,14 @@
 //
 using System;
 using System.Collections.Generic;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Macro
 {
-  public class MacroRunnerFactory : IFactory
+  public class MacroRunnerFactory : FactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -21,7 +22,7 @@ namespace EllieWare.Macro
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -29,7 +30,7 @@ namespace EllieWare.Macro
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -37,7 +38,7 @@ namespace EllieWare.Macro
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -48,7 +49,7 @@ namespace EllieWare.Macro
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -56,7 +57,7 @@ namespace EllieWare.Macro
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new MacroRunner(root, callback, mgr);
     }

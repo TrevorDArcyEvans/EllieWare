@@ -5,18 +5,14 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Collections.Generic;
-using EllieWare.Interfaces;
+using EllieWare.Common;
 
 namespace EllieWare.Logging
 {
-  public abstract class LoggingFactoryBase
+  public abstract class LoggingFactoryBase : FactoryBase
   {
-    public abstract string Title { get; }
-    public abstract string Description { get; }
-
-    public virtual string Keywords
+    public override string Keywords
     {
       get
       {
@@ -24,7 +20,7 @@ namespace EllieWare.Logging
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -35,8 +31,5 @@ namespace EllieWare.Logging
                      };
       }
     }
-
-    public abstract Type CreatedType { get; }
-    public abstract IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
   }
 }

@@ -7,15 +7,14 @@
 //
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.Email
 {
-  public class EmailFactory : IFactory
+  public class EmailFactory : FactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -23,7 +22,7 @@ namespace EllieWare.Transfer.Email
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -31,7 +30,7 @@ namespace EllieWare.Transfer.Email
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -39,7 +38,7 @@ namespace EllieWare.Transfer.Email
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -50,7 +49,7 @@ namespace EllieWare.Transfer.Email
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -58,7 +57,7 @@ namespace EllieWare.Transfer.Email
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new Email(root, callback, mgr);
     }

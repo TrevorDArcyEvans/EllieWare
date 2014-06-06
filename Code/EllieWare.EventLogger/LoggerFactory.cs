@@ -7,13 +7,15 @@
 //
 using System;
 using System.Collections.Generic;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 
+// ReSharper disable once CheckNamespace
 namespace EllieWare.EventLogger
 {
-  public class LoggerFactory : IFactory
+  public class LoggerFactory : FactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -21,7 +23,7 @@ namespace EllieWare.EventLogger
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -29,7 +31,7 @@ namespace EllieWare.EventLogger
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -37,7 +39,7 @@ namespace EllieWare.EventLogger
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -50,7 +52,7 @@ namespace EllieWare.EventLogger
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -58,7 +60,7 @@ namespace EllieWare.EventLogger
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new Logger(root, callback, mgr);
     }

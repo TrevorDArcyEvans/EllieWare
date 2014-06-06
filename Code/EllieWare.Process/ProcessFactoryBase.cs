@@ -6,12 +6,13 @@
 //  www.EllieWare.com
 //
 using System.Collections.Generic;
+using EllieWare.Common;
 
 namespace EllieWare.Process
 {
-  public class ProcessFactoryBase
+  public abstract class ProcessFactoryBase : FactoryBase
   {
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -19,7 +20,7 @@ namespace EllieWare.Process
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {

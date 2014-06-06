@@ -5,18 +5,14 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Collections.Generic;
-using EllieWare.Interfaces;
+using EllieWare.Common;
 
 namespace EllieWare.IO
 {
-  public abstract class IOFactoryBase
+  public abstract class IOFactoryBase : FactoryBase
   {
-    public abstract string Title { get; }
-    public abstract string Description { get; }
-
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -24,7 +20,7 @@ namespace EllieWare.IO
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -35,8 +31,5 @@ namespace EllieWare.IO
                      };
       }
     }
-
-    public abstract Type CreatedType { get; }
-    public abstract IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
   }
 }

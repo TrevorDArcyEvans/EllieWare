@@ -92,7 +92,6 @@ namespace EllieWare.Manager
     private void CmdEdit_Click(object sender, EventArgs e)
     {
       var filePath = GetSelectedSpecificationPath();
-      var fileName = Path.GetFileNameWithoutExtension(filePath);
       AddToFavourites(filePath);
       var dlg = new Editor(this, mRoot, filePath);
       dlg.ShowDialog();
@@ -110,7 +109,6 @@ namespace EllieWare.Manager
     private void Run(string filePath)
     {
       var dlg = new Editor(this, mRoot, filePath);
-      var fileName = Path.GetFileNameWithoutExtension(filePath);
       AddToFavourites(filePath);
       dlg.Show(this);
       dlg.Run();
@@ -162,6 +160,7 @@ namespace EllieWare.Manager
     private void LoadFavourites()
     {
       var root = Registry.CurrentUser.OpenSubKey("SOFTWARE");
+      Debug.Assert(root != null);
       var ellieWare = root.OpenSubKey(Utils.RegistryKey);
       if (ellieWare == null)
       {
@@ -196,6 +195,7 @@ namespace EllieWare.Manager
     private void SaveFavourites()
     {
       var root = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
+      Debug.Assert(root != null);
       var ellieWare = root.OpenSubKey(Utils.RegistryKey, true);
       if (ellieWare == null)
       {
@@ -297,6 +297,7 @@ namespace EllieWare.Manager
       var assy = Assembly.GetExecutingAssembly();
       var assyPath = assy.Location;
       var assyDir = Path.GetDirectoryName(assyPath);
+      Debug.Assert(assyDir != null);
       var helpFilePath = Path.Combine(assyDir, "EllieWare.RobotWare.chm");
 
       // create an invisible form as help window parent,
@@ -314,7 +315,7 @@ namespace EllieWare.Manager
       }
 
       var filePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
-      var filePath = Path.ChangeExtension(filePathNoExtn, EllieWare.Interfaces.FileExtensions.MacroFileExtension);
+      var filePath = Path.ChangeExtension(filePathNoExtn, FileExtensions.MacroFileExtension);
 
       if (File.Exists(filePath))
       {

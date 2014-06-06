@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Imaging
 {
-  public class SepiaPixelFactory : ImagingFactoryBase, IFactory
+  public class SepiaPixelFactory : ImagingFactoryBase
   {
     public override string Title
     {

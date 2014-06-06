@@ -10,9 +10,9 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Process
 {
-  public class ProcessExistsFactory : ProcessFactoryBase, IFactory
+  public class ProcessExistsFactory : ProcessFactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -20,7 +20,7 @@ namespace EllieWare.Process
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -28,7 +28,7 @@ namespace EllieWare.Process
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -36,7 +36,7 @@ namespace EllieWare.Process
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new ProcessExists(root, callback, mgr);
     }
