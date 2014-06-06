@@ -12,7 +12,7 @@ namespace EllieWare.Zip
 {
   public class ZipFileFactory : ZipFactoryBase, IFactory
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -20,7 +20,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -28,7 +28,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -36,7 +36,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new ZipFile(root, callback, mgr);
     }

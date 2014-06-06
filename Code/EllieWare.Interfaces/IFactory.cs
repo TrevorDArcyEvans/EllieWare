@@ -52,6 +52,11 @@ namespace EllieWare.Interfaces
     IEnumerable<string> Categories { get; }
 
     /// <summary>
+    /// If this step is correctly licensed and can be created.
+    /// </summary>
+    bool IsLicensed { get; }
+
+    /// <summary>
     /// <see cref="Type"/> of <see cref="IRunnable"/> which will be created by <see cref="Create"/>
     /// </summary>
     Type CreatedType { get; }

@@ -10,9 +10,9 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Zip
 {
-  public class ZipDirectoryFactory : ZipFactoryBase, IFactory
+  public class ZipDirectoryFactory : ZipFactoryBase
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -20,7 +20,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -28,7 +28,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -36,7 +36,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new ZipDirectory(root, callback, mgr);
     }

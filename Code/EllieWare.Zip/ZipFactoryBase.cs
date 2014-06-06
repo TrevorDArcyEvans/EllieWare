@@ -6,12 +6,13 @@
 //  www.EllieWare.com
 //
 using System.Collections.Generic;
+using EllieWare.Common;
 
 namespace EllieWare.Zip
 {
-  public class ZipFactoryBase
+  public abstract class ZipFactoryBase : FactoryBase
   {
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -19,7 +20,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
