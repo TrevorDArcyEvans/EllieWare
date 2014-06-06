@@ -9,14 +9,13 @@
   </processing-directives>
 
   <schedule>
-
     <job>
-        <name>sampleJob</name>
-        <group>sampleGroup</group>
-        <description>Sample job for Quartz Server</description>
-        <job-type>Quartz.Server.SampleJob, Quartz.Server</job-type>
-        <durable>true</durable>
-        <recover>false</recover>
+      <name>sampleJob</name>
+      <group>sampleGroup</group>
+      <description>Sample job for Quartz Server</description>
+      <job-type>Quartz.Server.SampleJob, Quartz.Server</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
     </job>
 
     <trigger>
@@ -27,9 +26,27 @@
         <job-name>sampleJob</job-name>
         <job-group>sampleGroup</job-group>
         <misfire-instruction>SmartPolicy</misfire-instruction>
+
+        <!-- repeat forever -->
         <repeat-count>-1</repeat-count>
+
+        <!-- every 10 seconds -->
         <repeat-interval>10000</repeat-interval>
       </simple>
     </trigger>
+
+    <trigger>
+      <cron>
+        <name>CronTrigger</name>
+        <group>CronJobs</group>
+        <description>Run job on a cron schedule</description>
+        <job-name>sampleJob</job-name>
+        <job-group>sampleGroup</job-group>
+
+        <!-- every 5 minutes -->
+        <cron-expression>0 0/5 * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
   </schedule>
 </job-scheduling-data>
