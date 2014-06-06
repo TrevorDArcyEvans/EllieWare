@@ -135,7 +135,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
       catch (Exception ex)
       {
-        //TODO: Let the user know we couldn't load the running jobs.
+          MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
 
       return table;

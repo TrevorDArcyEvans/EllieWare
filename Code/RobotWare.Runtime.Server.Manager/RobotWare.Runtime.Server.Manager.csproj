@@ -63,6 +63,7 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="ConnectionInfo.cs" />
+    <Compile Include="JobNode.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,13 +73,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuartzSchedulerFacade.cs" />
-    <Compile Include="ServerConnectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ServerConnectForm.Designer.cs">
-      <DependentUpon>ServerConnectForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="SchedulerNode.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="TriggerNode.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,9 +89,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ServerConnectForm.resx">
-      <DependentUpon>ServerConnectForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
@@ -141,9 +135,17 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
+      <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>
+      <Name>EllieWare.Support</Name>
+    </ProjectReference>
     <ProjectReference Include="..\log4net\src\log4net.vs2010.csproj">
       <Project>{181FE707-E161-4722-9F38-6AAAB6FAA106}</Project>
       <Name>log4net.vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quartz.NET\server\Quartz.Server\Quartz.Server.2010.csproj">
+      <Project>{09082B9A-906C-4A17-A2E5-6C947DAC7C85}</Project>
+      <Name>Quartz.Server.2010</Name>
     </ProjectReference>
     <ProjectReference Include="..\Quartz.NET\src\Quartz\Quartz.2010.csproj">
       <Project>{AEF8823B-E45B-4B35-A4D0-C08C1196D017}</Project>
