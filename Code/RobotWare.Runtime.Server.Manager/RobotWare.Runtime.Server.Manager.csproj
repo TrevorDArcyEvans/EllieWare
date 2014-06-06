@@ -154,6 +154,10 @@
       <Project>{67912BDA-1572-46B0-8623-5872D9DADBC8}</Project>
       <Name>CrashReporter.NET</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CronExpressionDescriptor\CronExpressionDescriptor\CronExpressionDescriptor.csproj">
+      <Project>{BD023841-603A-4B09-A3B1-522664C1E274}</Project>
+      <Name>CronExpressionDescriptor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EllieWare.Common\EllieWare.Common.csproj">
       <Project>{72C5924A-0D73-45CE-8066-9F42B401F7A1}</Project>
       <Name>EllieWare.Common</Name>

@@ -7,6 +7,7 @@
 //
 using System;
 using System.Windows.Forms;
+using CronExpressionDescriptor;
 using Quartz;
 
 namespace RobotWare.Runtime.Server.Manager
@@ -30,6 +31,7 @@ namespace RobotWare.Runtime.Server.Manager
     void CronTriggerDisplay_Load(object sender, EventArgs e)
     {
       txtCronExpression.Text = mTrigger.CronExpressionString;
+      lblCronDescription.Text = ExpressionDescriptor.GetDescription(mTrigger.CronExpressionString);
       lblDescription.Text = mTrigger.Description;
       lblGroup.Text = mTrigger.Key.Group;
       lblName.Text = mTrigger.Key.Name;
@@ -39,7 +41,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
       else
       {
-        lblNextFireTime.Text = "Unknown";
+        lblNextFireTime.Text = @"Unknown";
       }
 
       if (mTrigger.GetPreviousFireTimeUtc().HasValue)
@@ -48,7 +50,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
       else
       {
-        lblPreviousFireTime.Text = "Unknown";
+        lblPreviousFireTime.Text = @"Unknown";
       }
     }
   }
