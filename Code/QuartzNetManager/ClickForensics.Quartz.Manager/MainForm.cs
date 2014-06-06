@@ -127,7 +127,6 @@ namespace ClickForensics.Quartz.Manager
 
     private void loadJobGroups(QuartzScheduler scheduler)
     {
-
       try
       {
         this.Cursor = Cursors.WaitCursor;
@@ -163,8 +162,6 @@ namespace ClickForensics.Quartz.Manager
       {
         this.Cursor = Cursors.Default;
       }
-
-
     }
 
     private static void loadCalendars(SchedulerNode schedulerNode)
@@ -209,7 +206,6 @@ namespace ClickForensics.Quartz.Manager
         }
       }
     }
-
 
     private void jobDetailsToggle(bool isVisible)
     {
@@ -377,8 +373,8 @@ namespace ClickForensics.Quartz.Manager
         QuartzScheduler scheduler = getScheduler(selectedNode);
         scheduler.GetScheduler().DeleteJob(node.Detail.Key);
         jobGroupsTreeView.SelectedNode.Remove();
-
       }
+
       if (selectedNode is TriggerNode)
       {
         QuartzScheduler scheduler = getScheduler(selectedNode);
@@ -455,6 +451,7 @@ namespace ClickForensics.Quartz.Manager
         form.Close();
       }
     }
+
     private static readonly ILog _Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
   }
 }
