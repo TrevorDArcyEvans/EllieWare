@@ -100,7 +100,7 @@ namespace RobotWare.Runtime.Server.Manager
       statusStrip1.Location = new System.Drawing.Point(0, 475);
       statusStrip1.Name = "statusStrip1";
       statusStrip1.Size = new System.Drawing.Size(547, 22);
-      statusStrip1.TabIndex = 2;
+      statusStrip1.TabIndex = 1;
       statusStrip1.Text = "statusStrip1";
       // 
       // ServerConnectStatus
@@ -139,7 +139,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.RunningJobs.Name = "RunningJobs";
       this.RunningJobs.Size = new System.Drawing.Size(535, 196);
       this.RunningJobs.Sorting = System.Windows.Forms.SortOrder.Ascending;
-      this.RunningJobs.TabIndex = 15;
+      this.RunningJobs.TabIndex = 0;
       this.RunningJobs.UseCompatibleStateImageBehavior = false;
       this.RunningJobs.View = System.Windows.Forms.View.Details;
       // 
@@ -159,7 +159,7 @@ namespace RobotWare.Runtime.Server.Manager
       groupBox1.Location = new System.Drawing.Point(3, 3);
       groupBox1.Name = "groupBox1";
       groupBox1.Size = new System.Drawing.Size(541, 215);
-      groupBox1.TabIndex = 16;
+      groupBox1.TabIndex = 0;
       groupBox1.TabStop = false;
       groupBox1.Text = "Running";
       // 
@@ -170,7 +170,7 @@ namespace RobotWare.Runtime.Server.Manager
       groupBox2.Location = new System.Drawing.Point(3, 3);
       groupBox2.Name = "groupBox2";
       groupBox2.Size = new System.Drawing.Size(541, 219);
-      groupBox2.TabIndex = 17;
+      groupBox2.TabIndex = 0;
       groupBox2.TabStop = false;
       groupBox2.Text = "Scheduled";
       // 
@@ -201,7 +201,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.jobGroupsTreeView.Location = new System.Drawing.Point(0, 0);
       this.jobGroupsTreeView.Name = "jobGroupsTreeView";
       this.jobGroupsTreeView.Size = new System.Drawing.Size(178, 200);
-      this.jobGroupsTreeView.TabIndex = 3;
+      this.jobGroupsTreeView.TabIndex = 0;
       this.jobGroupsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.jobGroupsTreeView_AfterSelect);
       // 
       // CmdRefreshScheduled
@@ -222,7 +222,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.pnlDetails.Location = new System.Drawing.Point(0, 0);
       this.pnlDetails.Name = "pnlDetails";
       this.pnlDetails.Size = new System.Drawing.Size(353, 200);
-      this.pnlDetails.TabIndex = 12;
+      this.pnlDetails.TabIndex = 0;
       // 
       // splitContainer2
       // 
