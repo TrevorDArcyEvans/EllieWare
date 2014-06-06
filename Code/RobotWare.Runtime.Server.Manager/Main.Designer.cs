@@ -44,20 +44,20 @@ namespace RobotWare.Runtime.Server.Manager
       System.Windows.Forms.SplitContainer splitContainer2;
       System.Windows.Forms.SplitContainer splitContainer1;
       this.CmdRefreshScheduled = new System.Windows.Forms.ToolStripButton();
-      this.btnRunJobNow = new System.Windows.Forms.ToolStripButton();
-      this.btnPause = new System.Windows.Forms.ToolStripButton();
-      this.btnDeleteJob = new System.Windows.Forms.ToolStripButton();
-      this.btnEdit = new System.Windows.Forms.ToolStripButton();
+      this.CmdRunJobNow = new System.Windows.Forms.ToolStripButton();
+      this.CmdPause = new System.Windows.Forms.ToolStripButton();
+      this.CmdDelete = new System.Windows.Forms.ToolStripButton();
+      this.CmdAdd = new System.Windows.Forms.ToolStripButton();
+      this.CmdEdit = new System.Windows.Forms.ToolStripButton();
       this.ServerConnectStatus = new System.Windows.Forms.ToolStripStatusLabel();
       this.StripStatusLabel_Job_Groups = new System.Windows.Forms.ToolStripStatusLabel();
       this.RefreshDate = new System.Windows.Forms.ToolStripStatusLabel();
       this.RunningJobs = new System.Windows.Forms.ListView();
       this.JobName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.JobDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.jobGroupsTreeView = new System.Windows.Forms.TreeView();
+      this.JobGroups = new System.Windows.Forms.TreeView();
       this.pnlDetails = new System.Windows.Forms.Panel();
       this.RefreshScheduler = new System.Windows.Forms.Timer(this.components);
-      this.btnAddJob = new System.Windows.Forms.ToolStripButton();
       toolStrip1 = new System.Windows.Forms.ToolStrip();
       statusStrip1 = new System.Windows.Forms.StatusStrip();
       groupBox1 = new System.Windows.Forms.GroupBox();
@@ -82,11 +82,11 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmdRefreshScheduled,
-            this.btnRunJobNow,
-            this.btnPause,
-            this.btnDeleteJob,
-            this.btnAddJob,
-            this.btnEdit});
+            this.CmdRunJobNow,
+            this.CmdPause,
+            this.CmdDelete,
+            this.CmdAdd,
+            this.CmdEdit});
       toolStrip1.Location = new System.Drawing.Point(0, 0);
       toolStrip1.Name = "toolStrip1";
       toolStrip1.Size = new System.Drawing.Size(547, 25);
@@ -104,49 +104,60 @@ namespace RobotWare.Runtime.Server.Manager
       this.CmdRefreshScheduled.ToolTipText = "Refresh scheduled jobs";
       this.CmdRefreshScheduled.Click += new System.EventHandler(this.CmdRefreshScheduled_Click);
       // 
-      // btnRunJobNow
+      // CmdRunJobNow
       // 
-      this.btnRunJobNow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnRunJobNow.Enabled = false;
-      this.btnRunJobNow.Image = ((System.Drawing.Image)(resources.GetObject("btnRunJobNow.Image")));
-      this.btnRunJobNow.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnRunJobNow.Name = "btnRunJobNow";
-      this.btnRunJobNow.Size = new System.Drawing.Size(32, 22);
-      this.btnRunJobNow.Text = "Run";
-      this.btnRunJobNow.Click += new System.EventHandler(this.btnRunJobNow_Click);
+      this.CmdRunJobNow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdRunJobNow.Enabled = false;
+      this.CmdRunJobNow.Image = ((System.Drawing.Image)(resources.GetObject("CmdRunJobNow.Image")));
+      this.CmdRunJobNow.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.CmdRunJobNow.Name = "CmdRunJobNow";
+      this.CmdRunJobNow.Size = new System.Drawing.Size(32, 22);
+      this.CmdRunJobNow.Text = "Run";
+      this.CmdRunJobNow.Click += new System.EventHandler(this.CmdRunJobNow_Click);
       // 
-      // btnPause
+      // CmdPause
       // 
-      this.btnPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnPause.Enabled = false;
-      this.btnPause.Image = ((System.Drawing.Image)(resources.GetObject("btnPause.Image")));
-      this.btnPause.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnPause.Name = "btnPause";
-      this.btnPause.Size = new System.Drawing.Size(42, 22);
-      this.btnPause.Text = "Pause";
-      this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+      this.CmdPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdPause.Enabled = false;
+      this.CmdPause.Image = ((System.Drawing.Image)(resources.GetObject("CmdPause.Image")));
+      this.CmdPause.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.CmdPause.Name = "CmdPause";
+      this.CmdPause.Size = new System.Drawing.Size(42, 22);
+      this.CmdPause.Text = "Pause";
+      this.CmdPause.Click += new System.EventHandler(this.CmdPause_Click);
       // 
-      // btnDeleteJob
+      // CmdDelete
       // 
-      this.btnDeleteJob.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnDeleteJob.Enabled = false;
-      this.btnDeleteJob.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteJob.Image")));
-      this.btnDeleteJob.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnDeleteJob.Name = "btnDeleteJob";
-      this.btnDeleteJob.Size = new System.Drawing.Size(44, 22);
-      this.btnDeleteJob.Text = "Delete";
-      this.btnDeleteJob.Click += new System.EventHandler(this.btnDeleteJob_Click);
+      this.CmdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdDelete.Enabled = false;
+      this.CmdDelete.Image = ((System.Drawing.Image)(resources.GetObject("CmdDelete.Image")));
+      this.CmdDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.CmdDelete.Name = "CmdDelete";
+      this.CmdDelete.Size = new System.Drawing.Size(44, 22);
+      this.CmdDelete.Text = "Delete";
+      this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
       // 
-      // btnEdit
+      // CmdAdd
       // 
-      this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnEdit.Enabled = false;
-      this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-      this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnEdit.Name = "btnEdit";
-      this.btnEdit.Size = new System.Drawing.Size(40, 22);
-      this.btnEdit.Text = "Edit...";
-      this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+      this.CmdAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdAdd.Enabled = false;
+      this.CmdAdd.Image = ((System.Drawing.Image)(resources.GetObject("CmdAdd.Image")));
+      this.CmdAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.CmdAdd.Name = "CmdAdd";
+      this.CmdAdd.Size = new System.Drawing.Size(42, 22);
+      this.CmdAdd.Text = "Add...";
+      this.CmdAdd.Click += new System.EventHandler(this.CmdAddJob_Click);
+      // 
+      // CmdEdit
+      // 
+      this.CmdEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdEdit.Enabled = false;
+      this.CmdEdit.Image = ((System.Drawing.Image)(resources.GetObject("CmdEdit.Image")));
+      this.CmdEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.CmdEdit.Name = "CmdEdit";
+      this.CmdEdit.Size = new System.Drawing.Size(40, 22);
+      this.CmdEdit.Text = "Edit...";
+      this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 
       // statusStrip1
       // 
@@ -234,24 +245,24 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       // splitContainer2.Panel1
       // 
-      splitContainer2.Panel1.Controls.Add(this.jobGroupsTreeView);
+      splitContainer2.Panel1.Controls.Add(this.JobGroups);
       // 
       // splitContainer2.Panel2
       // 
       splitContainer2.Panel2.Controls.Add(this.pnlDetails);
       splitContainer2.Size = new System.Drawing.Size(535, 200);
-      splitContainer2.SplitterDistance = 178;
+      splitContainer2.SplitterDistance = 245;
       splitContainer2.TabIndex = 13;
       // 
-      // jobGroupsTreeView
+      // JobGroups
       // 
-      this.jobGroupsTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.jobGroupsTreeView.HideSelection = false;
-      this.jobGroupsTreeView.Location = new System.Drawing.Point(0, 0);
-      this.jobGroupsTreeView.Name = "jobGroupsTreeView";
-      this.jobGroupsTreeView.Size = new System.Drawing.Size(178, 200);
-      this.jobGroupsTreeView.TabIndex = 0;
-      this.jobGroupsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.jobGroupsTreeView_AfterSelect);
+      this.JobGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.JobGroups.HideSelection = false;
+      this.JobGroups.Location = new System.Drawing.Point(0, 0);
+      this.JobGroups.Name = "JobGroups";
+      this.JobGroups.Size = new System.Drawing.Size(245, 200);
+      this.JobGroups.TabIndex = 0;
+      this.JobGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.JobGroups_AfterSelect);
       // 
       // pnlDetails
       // 
@@ -259,7 +270,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlDetails.Location = new System.Drawing.Point(0, 0);
       this.pnlDetails.Name = "pnlDetails";
-      this.pnlDetails.Size = new System.Drawing.Size(353, 200);
+      this.pnlDetails.Size = new System.Drawing.Size(286, 200);
       this.pnlDetails.TabIndex = 0;
       // 
       // splitContainer1
@@ -286,17 +297,6 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       this.RefreshScheduler.Interval = 5000;
       this.RefreshScheduler.Tick += new System.EventHandler(this.RefreshScheduler_Tick);
-      // 
-      // btnAddJob
-      // 
-      this.btnAddJob.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.btnAddJob.Enabled = false;
-      this.btnAddJob.Image = ((System.Drawing.Image)(resources.GetObject("btnAddJob.Image")));
-      this.btnAddJob.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.btnAddJob.Name = "btnAddJob";
-      this.btnAddJob.Size = new System.Drawing.Size(42, 22);
-      this.btnAddJob.Text = "Add...";
-      this.btnAddJob.Click += new System.EventHandler(this.btnAddJob_Click);
       // 
       // Main
       // 
@@ -337,14 +337,14 @@ namespace RobotWare.Runtime.Server.Manager
     private System.Windows.Forms.ColumnHeader JobName;
     private System.Windows.Forms.ColumnHeader JobDuration;
     private System.Windows.Forms.Timer RefreshScheduler;
-    private System.Windows.Forms.TreeView jobGroupsTreeView;
+    private System.Windows.Forms.TreeView JobGroups;
     private System.Windows.Forms.ToolStripButton CmdRefreshScheduled;
     private System.Windows.Forms.Panel pnlDetails;
-    private System.Windows.Forms.ToolStripButton btnRunJobNow;
-    private System.Windows.Forms.ToolStripButton btnPause;
-    private System.Windows.Forms.ToolStripButton btnDeleteJob;
-    private System.Windows.Forms.ToolStripButton btnEdit;
-    private System.Windows.Forms.ToolStripButton btnAddJob;
+    private System.Windows.Forms.ToolStripButton CmdRunJobNow;
+    private System.Windows.Forms.ToolStripButton CmdPause;
+    private System.Windows.Forms.ToolStripButton CmdDelete;
+    private System.Windows.Forms.ToolStripButton CmdEdit;
+    private System.Windows.Forms.ToolStripButton CmdAdd;
   }
 }
 

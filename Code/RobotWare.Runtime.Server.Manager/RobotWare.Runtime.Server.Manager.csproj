@@ -69,6 +69,7 @@
     <Compile Include="CronTriggerDisplay.Designer.cs">
       <DependentUpon>CronTriggerDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="JobGroupNode.cs" />
     <Compile Include="JobNode.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

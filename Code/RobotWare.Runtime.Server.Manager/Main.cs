@@ -108,21 +108,22 @@ namespace RobotWare.Runtime.Server.Manager
     private void UpdateScheduledJobs()
     {
       var schedulerNode = new SchedulerNode(mScheduler);
-      if (jobGroupsTreeView.Nodes.ContainsKey(schedulerNode.Name))
+      if (JobGroups.Nodes.ContainsKey(schedulerNode.Name))
       {
-        jobGroupsTreeView.Nodes.RemoveByKey(schedulerNode.Name);
+        JobGroups.Nodes.RemoveByKey(schedulerNode.Name);
       }
-      jobGroupsTreeView.Nodes.Add(schedulerNode);
+      JobGroups.Nodes.Add(schedulerNode);
       var jobGroupsNode = schedulerNode.Nodes.Add("Job Groups");
       var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
       foreach (var jobGroup in jobGroups)
       {
-        var jobGroupNode = jobGroupsNode.Nodes.Add(jobGroup);
+        var jobGroupNode = new JobGroupNode(jobGroup);
+        jobGroupsNode.Nodes.Add(jobGroupNode);
         var jobsNode = jobGroupNode.Nodes.Add("Jobs");
         AddJobNodes(jobsNode);
       }
 
-      jobGroupsTreeView.Nodes[0].Expand();
+      JobGroups.Nodes[0].Expand();
       jobGroupsNode.Expand();
     }
 
@@ -192,33 +193,28 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void SetPauseButtonText()
     {
-      var node = (TriggerNode)jobGroupsTreeView.SelectedNode;
+      var node = (TriggerNode)JobGroups.SelectedNode;
       if (mScheduler.GetScheduler().GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
       {
-        btnPause.Text = @"Resume";
+        CmdPause.Text = @"Resume";
       }
       else
       {
-        btnPause.Text = @"Pause";
+        CmdPause.Text = @"Pause";
       }
     }
 
-    private void jobGroupsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+    private void JobGroups_AfterSelect(object sender, TreeViewEventArgs e)
     {
       JobDetailsToggle(false);
-      if (e.Node is TriggerNode || e.Node is JobNode)
-      {
-        btnDeleteJob.Enabled = true;
-      }
-      else
-      {
-        btnDeleteJob.Enabled = false;
-      }
+
+      CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode;
 
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
       {
-        btnRunJobNow.Enabled = true;
+        CmdRunJobNow.Enabled = true;
         var ctrl = new NativeJobDetailDisplay(jobNode.Detail)
                     {
                       Dock = DockStyle.Fill
@@ -228,13 +224,13 @@ namespace RobotWare.Runtime.Server.Manager
       }
       else
       {
-        btnRunJobNow.Enabled = false;
+        CmdRunJobNow.Enabled = false;
       }
 
       var triggerNode = e.Node as TriggerNode;
       if (triggerNode != null)
       {
-        btnPause.Enabled = true;
+        CmdPause.Enabled = true;
         SetPauseButtonText();
         var trigger = triggerNode.Trigger as ICronTrigger;
         if (trigger != null)
@@ -257,24 +253,24 @@ namespace RobotWare.Runtime.Server.Manager
           pnlDetails.Controls.Add(ctrl);
           JobDetailsToggle(true);
         }
-        btnEdit.Enabled = true;
+        CmdEdit.Enabled = true;
       }
       else
       {
-        btnEdit.Enabled = false;
-        btnPause.Enabled = false;
+        CmdEdit.Enabled = false;
+        CmdPause.Enabled = false;
       }
     }
 
-    private void btnRunJobNow_Click(object sender, EventArgs e)
+    private void CmdRunJobNow_Click(object sender, EventArgs e)
     {
-      var node = (JobNode)jobGroupsTreeView.SelectedNode;
+      var node = (JobNode)JobGroups.SelectedNode;
       mScheduler.GetScheduler().TriggerJob(node.Detail.Key);
     }
 
-    private void btnPause_Click(object sender, EventArgs e)
+    private void CmdPause_Click(object sender, EventArgs e)
     {
-      var node = (TriggerNode)jobGroupsTreeView.SelectedNode;
+      var node = (TriggerNode)JobGroups.SelectedNode;
       var sched = mScheduler.GetScheduler();
       if (sched.GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
       {
@@ -287,15 +283,15 @@ namespace RobotWare.Runtime.Server.Manager
       SetPauseButtonText();
     }
 
-    private void btnDeleteJob_Click(object sender, EventArgs e)
+    private void CmdDelete_Click(object sender, EventArgs e)
     {
       var sched = mScheduler.GetScheduler();
-      var selectedNode = jobGroupsTreeView.SelectedNode;
+      var selectedNode = JobGroups.SelectedNode;
       if (selectedNode is JobNode)
       {
-        var node = (JobNode)jobGroupsTreeView.SelectedNode;
+        var node = (JobNode)JobGroups.SelectedNode;
         sched.DeleteJob(node.Detail.Key);
-        jobGroupsTreeView.SelectedNode.Remove();
+        JobGroups.SelectedNode.Remove();
       }
 
       var triggerNode = selectedNode as TriggerNode;
@@ -306,12 +302,14 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void btnEdit_Click(object sender, EventArgs e)
+    // edit trigger
+    private void CmdEdit_Click(object sender, EventArgs e)
     {
       // TODO   edit macro
     }
 
-    private void btnAddJob_Click(object sender, EventArgs e)
+    // add trigger or job
+    private void CmdAddJob_Click(object sender, EventArgs e)
     {
       // TODO   add macro
     }
