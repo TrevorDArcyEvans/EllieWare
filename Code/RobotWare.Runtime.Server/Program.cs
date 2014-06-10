@@ -12,10 +12,10 @@ using RobotWare.Runtime.Server.Properties;
 
 namespace RobotWare.Runtime.Server
 {
-  static class Program
+  internal static class Program
   {
     [STAThread]
-    static void Main()
+    private static int Main(string[] args)
     {
       IRobotWare root = new RobotWareServerWrapper();
 
@@ -23,6 +23,16 @@ namespace RobotWare.Runtime.Server
       {
         Utils.DoRequestLicense(root.ApplicationName, root.Version, Resources.robot_32x32, () => root.IsLicensed);
       }
+
+      if (!root.IsLicensed)
+      {
+        return 0;
+      }
+
+      var host = new Host();
+      var bRet = host.Run(args[0]);
+
+      return bRet ? 1 : 0;
     }
   }
 }

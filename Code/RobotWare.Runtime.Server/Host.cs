@@ -7,7 +7,9 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
@@ -20,7 +22,7 @@ namespace RobotWare.Runtime.Server
 {
   public class Host : ICallback, IJobInfo
   {
-    private const string MacroFilePath = "MacroFilePath";
+    public const string MacroFilePathKey = "MacroFilePath";
 
     private static readonly Common.Logging.ILog Logger = Common.Logging.LogManager.GetLogger(typeof(Host));
 
@@ -78,9 +80,19 @@ namespace RobotWare.Runtime.Server
       }
     }
 
+    public bool Run(string macroFilePath)
+    {
+      var engine = new Engine(mRoot, this, macroFilePath);
+
+      var bRet = engine.Run();
+      Logger.Trace(string.Format("{0} finished {1} : {2}", mRoot.ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
+
+      return bRet;
+    }
+
     public void Execute(IJobExecutionContext context)
     {
-      if (!mRoot.IsLicensed)
+     if (!mRoot.IsLicensed)
       {
         Logger.Fatal(string.Format("{0} is not licensed", mRoot.ApplicationName));
         return;
@@ -96,11 +108,13 @@ namespace RobotWare.Runtime.Server
       // the scheduler various directives as to how you want the exception to be handled.
       try
       {
-        var macroFilePath = context.MergedJobDataMap.GetString(MacroFilePath);
-        var engine = new Engine(mRoot, this, macroFilePath);
+        var macroFilePath = context.MergedJobDataMap.GetString(MacroFilePathKey);
+        var assy = Assembly.GetExecutingAssembly();
+        var assyPath = assy.Location;
+        var proc = Process.Start(assyPath, "\"" + macroFilePath + "\"");
 
-        var bRet = engine.Run();
-        Logger.Trace(string.Format("{0} finished {1} : {2}", mRoot.ApplicationName, macroFilePath, bRet ? "Succeeded" : "Failed"));
+        proc.WaitForExit();
+        var retVal = proc.ExitCode;
       }
       catch (Exception ex)
       {
@@ -114,7 +128,7 @@ namespace RobotWare.Runtime.Server
       {
         return new[]
                 {
-                  new JobDataInfo(MacroFilePath, typeof (string), typeof (FileInfo), "")
+                  new JobDataInfo(MacroFilePathKey, typeof (string), typeof (FileInfo), "")
                 };
       }
     }
