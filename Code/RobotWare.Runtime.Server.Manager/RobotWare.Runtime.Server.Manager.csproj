@@ -69,6 +69,12 @@
       <DependentUpon>AddJob.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionInfo.cs" />
+    <Compile Include="CronSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CronSelector.Designer.cs">
+      <DependentUpon>CronSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="CronTriggerDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -77,6 +83,7 @@
     </Compile>
     <Compile Include="JobGroupNode.cs" />
     <Compile Include="JobNode.cs" />
+    <Compile Include="JobsNode.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,9 +107,13 @@
     <Compile Include="SimpleTriggerDisplay.Designer.cs">
       <DependentUpon>SimpleTriggerDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="TriggerGroupNode.cs" />
     <Compile Include="TriggerNode.cs" />
     <EmbeddedResource Include="AddJob.resx">
       <DependentUpon>AddJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CronSelector.resx">
+      <DependentUpon>CronSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CronTriggerDisplay.resx">
       <DependentUpon>CronTriggerDisplay.cs</DependentUpon>
@@ -195,6 +206,10 @@
     <ProjectReference Include="..\Quartz.NET\src\Quartz\Quartz.2010.csproj">
       <Project>{AEF8823B-E45B-4B35-A4D0-C08C1196D017}</Project>
       <Name>Quartz.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RobotWare.Cron.UserInterface\RobotWare.Cron.UserInterface.csproj">
+      <Project>{9EF4D85A-6283-409B-AC1F-9D58CD1F7F70}</Project>
+      <Name>RobotWare.Cron.UserInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\RobotWare.Quartz.Extensions\RobotWare.Quartz.Extensions.csproj">
       <Project>{BAE4F7D3-C587-42D5-8012-61910A3EDB59}</Project>

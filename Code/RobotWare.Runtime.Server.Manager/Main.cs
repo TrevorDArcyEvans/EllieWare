@@ -7,6 +7,7 @@
 //
 using System;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using Common.Logging;
 using CrashReporterDotNET;
+using CronExpressionDescriptor;
 using EllieWare.Interfaces;
 using EllieWare.Manager;
 using EllieWare.Support;
@@ -128,7 +130,8 @@ namespace RobotWare.Runtime.Server.Manager
       {
         var jobGroupNode = new JobGroupNode(jobGroup);
         jobGroupsNode.Nodes.Add(jobGroupNode);
-        var jobsNode = jobGroupNode.Nodes.Add("Jobs");
+        var jobsNodeIdx = jobGroupNode.Nodes.Add(new JobsNode("Jobs"));
+        var jobsNode = jobGroupNode.Nodes[jobsNodeIdx];
         AddJobNodes(jobsNode);
       }
 
@@ -162,7 +165,8 @@ namespace RobotWare.Runtime.Server.Manager
     private void AddTriggerNodes(JobNode jobNode)
     {
       var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Parent.Text));
-      var triggersNode = jobNode.Nodes.Add("Triggers");
+      var triggersNodeIdx = jobNode.Nodes.Add(new TriggerGroupNode("Triggers"));
+      var triggersNode = jobNode.Nodes[triggersNodeIdx];
       foreach (var trigger in triggers)
       {
         var node = new TriggerNode(trigger);
@@ -218,7 +222,7 @@ namespace RobotWare.Runtime.Server.Manager
       JobDetailsToggle(false);
 
       CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
-      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is TriggerNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode ||  e.Node is JobsNode|| e.Node is TriggerGroupNode;
 
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
@@ -320,21 +324,52 @@ namespace RobotWare.Runtime.Server.Manager
     // add trigger or job
     private void CmdAdd_Click(object sender, EventArgs e)
     {
+      var sched = mScheduler.GetScheduler();
       var selectedNode = SchedulerView.SelectedNode;
-      if (selectedNode is JobGroupNode)
+      if (selectedNode is JobGroupNode || selectedNode is JobsNode)
       {
         var frm = new AddJob(mRoot);
         if (frm.ShowDialog() != DialogResult.OK)
         {
           return;
         }
-        // TODO   add macro
+        // add macro
         var selSpecPath = frm.SelectedSpecificationPath;
+        var jobData = new JobDataMap()
+                            {
+                              { Host.MacroFilePathKey, selSpecPath }
+                            };
+        var jobName = Path.GetFileNameWithoutExtension(selSpecPath);
+        var jobGroup =  selectedNode is JobsNode?
+                          (JobGroupNode)selectedNode.Parent : (JobGroupNode)selectedNode;
+        var job = JobBuilder.Create<Host>().
+                    WithDescription("TODO extract description from spec").
+                    WithIdentity(jobName, jobGroup.Name).
+                    SetJobData(jobData).
+                    StoreDurably().
+                    Build();
+        sched.AddJob(job, true);
+        UpdateScheduledJobs();
       }
 
-      if (selectedNode is TriggerNode)
+      if (selectedNode is TriggerGroupNode)
       {
-        // TODO   add macro
+        var frm = new CronSelector();
+        if (frm.ShowDialog() != DialogResult.OK)
+        {
+          return;
+        }
+        // add cron trigger
+        var cronStr = frm.Expression;
+        var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
+        var job = (JobNode)selectedNode.Parent;
+        var trigger = TriggerBuilder.Create().
+                              WithCronSchedule(cronStr).
+                              WithDescription(cronDescrip).
+                              ForJob(job.Detail).
+                              Build();
+        sched.ScheduleJob(trigger);
+        UpdateScheduledJobs();
       }
     }
   }
