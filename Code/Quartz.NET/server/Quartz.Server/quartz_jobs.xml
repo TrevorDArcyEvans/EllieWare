@@ -18,6 +18,15 @@
       <recover>false</recover>
     </job>
 
+    <job>
+      <name>AnotherSampleJob</name>
+      <group>AnotherSampleGroup</group>
+      <description>Sample job for Quartz Server</description>
+      <job-type>Quartz.Server.SampleJob, Quartz.Server</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+
     <trigger>
       <simple>
         <name>sampleSimpleTrigger</name>
