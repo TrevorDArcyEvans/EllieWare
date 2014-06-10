@@ -15,6 +15,7 @@ using AutoUpdaterDotNET;
 using Common.Logging;
 using CrashReporterDotNET;
 using EllieWare.Interfaces;
+using EllieWare.Manager;
 using EllieWare.Support;
 using Quartz;
 using Quartz.Impl.Matchers;
@@ -25,6 +26,7 @@ namespace RobotWare.Runtime.Server.Manager
   public sealed partial class Main : Form
   {
     private readonly IRobotWare mRoot = new RobotWareServerWrapper();
+    private readonly ManagerCtl mSpecifications;
     private readonly QuartzSchedulerFacade mScheduler;
     private static readonly ILog Log = LogManager.GetLogger(typeof(Main));
 
@@ -48,7 +50,7 @@ namespace RobotWare.Runtime.Server.Manager
           mScheduler = new QuartzSchedulerFacade(Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
           ServerConnectStatus.Text = string.Format("Connected to {0}", mScheduler.Address);
           UpdateScheduledJobs();
-          RefreshDate.Enabled = true;
+          RefreshScheduler.Enabled = true;
         }
         catch (SocketException)
         {
@@ -63,6 +65,13 @@ namespace RobotWare.Runtime.Server.Manager
     {
       mRoot = root;
       Text = mRoot.ApplicationName;
+
+      mSpecifications = new ManagerCtl(mRoot)
+                              {
+                                Dock = DockStyle.Fill
+                              };
+      SpecificationTab.Controls.Clear();
+      SpecificationTab.Controls.Add(mSpecifications);
     }
 
     private void ApplicationThreadException(object sender, ThreadExceptionEventArgs e)
@@ -108,11 +117,11 @@ namespace RobotWare.Runtime.Server.Manager
     private void UpdateScheduledJobs()
     {
       var schedulerNode = new SchedulerNode(mScheduler);
-      if (JobGroups.Nodes.ContainsKey(schedulerNode.Name))
+      if (SchedulerView.Nodes.ContainsKey(schedulerNode.Name))
       {
-        JobGroups.Nodes.RemoveByKey(schedulerNode.Name);
+        SchedulerView.Nodes.RemoveByKey(schedulerNode.Name);
       }
-      JobGroups.Nodes.Add(schedulerNode);
+      SchedulerView.Nodes.Add(schedulerNode);
       var jobGroupsNode = schedulerNode.Nodes.Add("Job Groups");
       var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
       foreach (var jobGroup in jobGroups)
@@ -123,7 +132,7 @@ namespace RobotWare.Runtime.Server.Manager
         AddJobNodes(jobsNode);
       }
 
-      JobGroups.Nodes[0].Expand();
+      SchedulerView.Nodes[0].Expand();
       jobGroupsNode.Expand();
     }
 
@@ -193,7 +202,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void SetPauseButtonText()
     {
-      var node = (TriggerNode)JobGroups.SelectedNode;
+      var node = (TriggerNode)SchedulerView.SelectedNode;
       if (mScheduler.GetScheduler().GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
       {
         CmdPause.Text = @"Resume";
@@ -204,12 +213,12 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void JobGroups_AfterSelect(object sender, TreeViewEventArgs e)
+    private void SchedulerView_AfterSelect(object sender, TreeViewEventArgs e)
     {
       JobDetailsToggle(false);
 
       CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
-      CmdAdd.Enabled = e.Node is JobGroupNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is TriggerNode;
 
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
@@ -264,13 +273,13 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void CmdRunJobNow_Click(object sender, EventArgs e)
     {
-      var node = (JobNode)JobGroups.SelectedNode;
+      var node = (JobNode)SchedulerView.SelectedNode;
       mScheduler.GetScheduler().TriggerJob(node.Detail.Key);
     }
 
     private void CmdPause_Click(object sender, EventArgs e)
     {
-      var node = (TriggerNode)JobGroups.SelectedNode;
+      var node = (TriggerNode)SchedulerView.SelectedNode;
       var sched = mScheduler.GetScheduler();
       if (sched.GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
       {
@@ -286,12 +295,12 @@ namespace RobotWare.Runtime.Server.Manager
     private void CmdDelete_Click(object sender, EventArgs e)
     {
       var sched = mScheduler.GetScheduler();
-      var selectedNode = JobGroups.SelectedNode;
+      var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is JobNode)
       {
-        var node = (JobNode)JobGroups.SelectedNode;
+        var node = (JobNode)SchedulerView.SelectedNode;
         sched.DeleteJob(node.Detail.Key);
-        JobGroups.SelectedNode.Remove();
+        SchedulerView.SelectedNode.Remove();
       }
 
       var triggerNode = selectedNode as TriggerNode;
@@ -309,9 +318,24 @@ namespace RobotWare.Runtime.Server.Manager
     }
 
     // add trigger or job
-    private void CmdAddJob_Click(object sender, EventArgs e)
+    private void CmdAdd_Click(object sender, EventArgs e)
     {
-      // TODO   add macro
+      var selectedNode = SchedulerView.SelectedNode;
+      if (selectedNode is JobGroupNode)
+      {
+        var frm = new AddJob(mRoot);
+        if (frm.ShowDialog() != DialogResult.OK)
+        {
+          return;
+        }
+        // TODO   add macro
+        var selSpecPath = frm.SelectedSpecificationPath;
+      }
+
+      if (selectedNode is TriggerNode)
+      {
+        // TODO   add macro
+      }
     }
   }
 }

@@ -8,7 +8,6 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -51,7 +50,18 @@ namespace EllieWare.Manager
       var appCastUrl = EllieWare + @"/" + appCast;
       AutoUpdater.Start(appCastUrl, mRoot.ApplicationName, mRoot.Version);
 
-      RefreshSpecificationsList();
+      // have to explicitly remove specification list otherwise we get a ghost version
+      MainTable.Controls.Remove(mSpecs);
+
+      // recreate specification list from the correct root aka location
+      mSpecs = new SpecificationCtl(mRoot)
+                      {
+                        Dock = DockStyle.Fill
+                      };
+      mSpecs.SelectedSpecificationChanged += Specs_SelectedSpecificationChanged;
+      mSpecs.SpecificationDoubleClick += Specs_SpecificationDoubleClick;
+      MainTable.Controls.Add(mSpecs, 0, 0);
+
       UpdateButtons();
     }
 
@@ -59,7 +69,7 @@ namespace EllieWare.Manager
 
     public void RefreshSpecificationsList()
     {
-      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
+      mSpecs.RefreshSpecificationsList();
     }
 
     #endregion
@@ -74,13 +84,6 @@ namespace EllieWare.Manager
       reportCrash.Send(e.Exception);
     }
 
-    private string GetSelectedSpecificationPath()
-    {
-      var slvi = (SpecificationFileListViewItem)mSpecs.SelectedItems[0];
-
-      return slvi.FilePath;
-    }
-
     private void CmdNew_Click(object sender, EventArgs e)
     {
       var dlg = new Editor(this, mRoot, string.Empty);
@@ -91,7 +94,7 @@ namespace EllieWare.Manager
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      var filePath = GetSelectedSpecificationPath();
+      var filePath = mSpecs.SelectedSpecificationPath;
       AddToFavourites(filePath);
       var dlg = new Editor(this, mRoot, filePath);
       dlg.ShowDialog();
@@ -101,7 +104,7 @@ namespace EllieWare.Manager
 
     private void CmdRun_Click(object sender, EventArgs e)
     {
-      Run(GetSelectedSpecificationPath());
+      Run(mSpecs.SelectedSpecificationPath);
 
       UpdateButtons();
     }
@@ -112,25 +115,6 @@ namespace EllieWare.Manager
       AddToFavourites(filePath);
       dlg.Show(this);
       dlg.Run();
-    }
-
-    private void RefreshSpecificationsList(string searchTxt)
-    {
-      mSpecs.Items.Clear();
-
-      var filteredSpecsWithExten = from specWithExtn in mRoot.Specifications
-                                   let specNoExtn = Path.GetFileNameWithoutExtension(specWithExtn)
-                                   where specNoExtn.ToLower(CultureInfo.CurrentCulture).Contains(searchTxt)
-                                   select specWithExtn;
-
-      foreach (var specWithExtn in filteredSpecsWithExten)
-      {
-        var lvi = new SpecificationFileListViewItem(mRoot, specWithExtn);
-        mSpecs.Items.Add(lvi);
-      }
-
-      UpdateButtons();
-      LoadFavourites();
     }
 
     private void AddToFavourites(string filePath)
@@ -217,28 +201,29 @@ namespace EllieWare.Manager
     private void UpdateButtons()
     {
       CmdFavourites.Enabled = Favourites.Items.Count > 0;
-      CmdEdit.Enabled = CmdDelete.Enabled = FileOperations.Enabled = CmdRun.Enabled = mSpecs.SelectedItems.Count > 0;
+      CmdEdit.Enabled = CmdDelete.Enabled = CmdRun.Enabled = mSpecs.SelectedSpecificationsCount > 0;
 
-      if (mSpecs.SelectedItems.Count > 0)
+      if (mSpecs.SelectedSpecificationsCount > 0)
       {
-        CmdDelete.Enabled = FileOperations.Enabled = Utils.IsLocalSpecification(mRoot, GetSelectedSpecificationPath());
+        CmdDelete.Enabled = Utils.IsLocalSpecification(mRoot, mSpecs.SelectedSpecificationPath);
       }
     }
 
-    private void Specs_SelectedIndexChanged(object sender, EventArgs e)
+    private void Specs_SelectedSpecificationChanged(object sender, EventArgs e)
     {
       UpdateButtons();
+      LoadFavourites();
     }
 
     private void CmdDelete_Click(object sender, EventArgs e)
     {
-      var selFilePath = GetSelectedSpecificationPath();
+      var selFilePath = mSpecs.SelectedSpecificationPath;
       File.Delete(selFilePath);
       RefreshSpecificationsList();
       UpdateButtons();
     }
 
-    private void Specs_MouseDoubleClick(object sender, MouseEventArgs e)
+    private void Specs_SpecificationDoubleClick(object sender, EventArgs e)
     {
       CmdEdit_Click(sender, e);
     }
@@ -247,47 +232,6 @@ namespace EllieWare.Manager
     {
       var dlg = new AboutBox(mRoot.ApplicationName);
       dlg.ShowDialog();
-    }
-
-    private void Search_TextChanged(object sender, EventArgs e)
-    {
-      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
-    }
-
-    private void FileOperations_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-      UpdateButtons();
-    }
-
-    private void FileOpCopy_Click(object sender, EventArgs e)
-    {
-      var selSpecPath = GetSelectedSpecificationPath();
-      var fileRoot = Path.GetFileNameWithoutExtension(selSpecPath);
-      var extension = Path.GetExtension(selSpecPath);
-      var fileName = String.Concat(string.Format("{0} - Copy", fileRoot), extension);
-      var fullPath = Path.Combine(mRoot.UserSpecificationFolder, fileName);
-      var number = 1;
-      while (File.Exists(fullPath))
-      {
-        fileName = String.Concat(string.Format("{0} - Copy ({1})", fileRoot, ++number), extension);
-        fullPath = Path.Combine(mRoot.UserSpecificationFolder, fileName);
-      }
-
-      File.Copy(selSpecPath, fullPath);
-      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
-    }
-
-    private void FileOpDelete_Click(object sender, EventArgs e)
-    {
-      File.Delete(GetSelectedSpecificationPath());
-      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
-    }
-
-    private void FileOpShow_Click(object sender, EventArgs e)
-    {
-      var selectionArgs = @"/select, " + "\"" + GetSelectedSpecificationPath() + "\"";
-
-      Process.Start("explorer.exe", selectionArgs);
     }
 
     private void CmdHelp_Click(object sender, EventArgs e)
@@ -303,26 +247,6 @@ namespace EllieWare.Manager
       // create an invisible form as help window parent,
       // so help file is not topmost
       Help.ShowHelp(new Form(), helpFilePath);
-    }
-
-    private void FileOpRename_Click(object sender, EventArgs e)
-    {
-      var selSpecPath = GetSelectedSpecificationPath();
-      var dlg = new FileSaveDialog(mRoot) { FileName = Path.GetFileNameWithoutExtension(selSpecPath) };
-      if (dlg.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-
-      var filePathNoExtn = Path.Combine(mRoot.UserSpecificationFolder, dlg.FileName);
-      var filePath = Path.ChangeExtension(filePathNoExtn, FileExtensions.MacroFileExtension);
-
-      if (File.Exists(filePath))
-      {
-        File.Delete(filePath);
-      }
-      File.Move(selSpecPath, filePath);
-      RefreshSpecificationsList(SearchBox.Text.ToLower(CultureInfo.CurrentCulture));
     }
 
     private void CmdFavourites_Click(object sender, EventArgs e)

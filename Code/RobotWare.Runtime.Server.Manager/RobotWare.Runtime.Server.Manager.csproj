@@ -62,6 +62,12 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AddJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddJob.Designer.cs">
+      <DependentUpon>AddJob.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionInfo.cs" />
     <Compile Include="CronTriggerDisplay.cs">
       <SubType>UserControl</SubType>
@@ -95,6 +101,9 @@
       <DependentUpon>SimpleTriggerDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="TriggerNode.cs" />
+    <EmbeddedResource Include="AddJob.resx">
+      <DependentUpon>AddJob.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CronTriggerDisplay.resx">
       <DependentUpon>CronTriggerDisplay.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +175,10 @@
     <ProjectReference Include="..\EllieWare.Interfaces\EllieWare.Interfaces.csproj">
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EllieWare.Manager\EllieWare.Manager.csproj">
+      <Project>{35F7C91E-90B7-4AE6-8998-8A6E3FBE2B69}</Project>
+      <Name>EllieWare.Manager</Name>
     </ProjectReference>
     <ProjectReference Include="..\EllieWare.Support\EllieWare.Support.csproj">
       <Project>{E1644A8E-CB78-4C41-873E-D743CECCCB0F}</Project>

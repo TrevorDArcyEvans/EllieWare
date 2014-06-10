@@ -87,6 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SpecificationCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SpecificationCtl.Designer.cs">
+      <DependentUpon>SpecificationCtl.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Manager.resx">
@@ -98,6 +104,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecificationCtl.resx">
+      <DependentUpon>SpecificationCtl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
