@@ -124,7 +124,8 @@ namespace RobotWare.Runtime.Server.Manager
         SchedulerView.Nodes.RemoveByKey(schedulerNode.Name);
       }
       SchedulerView.Nodes.Add(schedulerNode);
-      var jobGroupsNode = schedulerNode.Nodes.Add("Job Groups");
+      var jobGroupsIdx = schedulerNode.Nodes.Add(new JobGroupsNode("Job Groups"));
+      var jobGroupsNode = schedulerNode.Nodes[jobGroupsIdx];
       var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
       foreach (var jobGroup in jobGroups)
       {
@@ -222,7 +223,7 @@ namespace RobotWare.Runtime.Server.Manager
       JobDetailsToggle(false);
 
       CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
-      CmdAdd.Enabled = e.Node is JobGroupNode ||  e.Node is JobsNode|| e.Node is TriggerGroupNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobsNode || e.Node is JobNode || e.Node is TriggerGroupNode;
 
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
@@ -340,7 +341,7 @@ namespace RobotWare.Runtime.Server.Manager
                               { Host.MacroFilePathKey, selSpecPath }
                             };
         var jobName = Path.GetFileNameWithoutExtension(selSpecPath);
-        var jobGroup =  selectedNode is JobsNode?
+        var jobGroup = selectedNode is JobsNode ?
                           (JobGroupNode)selectedNode.Parent : (JobGroupNode)selectedNode;
         var job = JobBuilder.Create<Host>().
                     WithDescription("TODO extract description from spec").
@@ -352,7 +353,7 @@ namespace RobotWare.Runtime.Server.Manager
         UpdateScheduledJobs();
       }
 
-      if (selectedNode is TriggerGroupNode)
+      if (selectedNode is TriggerGroupNode || selectedNode is JobNode)
       {
         var frm = new CronSelector();
         if (frm.ShowDialog() != DialogResult.OK)
@@ -362,7 +363,7 @@ namespace RobotWare.Runtime.Server.Manager
         // add cron trigger
         var cronStr = frm.Expression;
         var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
-        var job = (JobNode)selectedNode.Parent;
+        var job = selectedNode is JobNode ? (JobNode)selectedNode : (JobNode)selectedNode.Parent;
         var trigger = TriggerBuilder.Create().
                               WithCronSchedule(cronStr).
                               WithDescription(cronDescrip).

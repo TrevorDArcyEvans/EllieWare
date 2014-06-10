@@ -82,6 +82,7 @@
       <DependentUpon>CronTriggerDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="JobGroupNode.cs" />
+    <Compile Include="JobGroupsNode.cs" />
     <Compile Include="JobNode.cs" />
     <Compile Include="JobsNode.cs" />
     <Compile Include="Main.cs">
