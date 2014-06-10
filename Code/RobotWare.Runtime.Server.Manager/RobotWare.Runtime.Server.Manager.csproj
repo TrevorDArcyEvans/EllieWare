@@ -109,7 +109,7 @@
     <Compile Include="SimpleTriggerDisplay.Designer.cs">
       <DependentUpon>SimpleTriggerDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="TriggerGroupNode.cs" />
+    <Compile Include="TriggersGroupNode.cs" />
     <Compile Include="TriggerNode.cs" />
     <EmbeddedResource Include="AddJob.resx">
       <DependentUpon>AddJob.cs</DependentUpon>

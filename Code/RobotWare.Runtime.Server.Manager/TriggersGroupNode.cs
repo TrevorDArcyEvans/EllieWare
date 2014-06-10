@@ -8,9 +8,9 @@
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class TriggerGroupNode : NodeBase
+  public class TriggersGroupNode : NodeBase
   {
-    public TriggerGroupNode(string text) :
+    public TriggersGroupNode(string text) :
       base(text)
     {
     }

@@ -166,7 +166,7 @@ namespace RobotWare.Runtime.Server.Manager
     private void AddTriggerNodes(JobNode jobNode)
     {
       var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Parent.Text));
-      var triggersNodeIdx = jobNode.Nodes.Add(new TriggerGroupNode("Triggers"));
+      var triggersNodeIdx = jobNode.Nodes.Add(new TriggersGroupNode("Triggers"));
       var triggersNode = jobNode.Nodes[triggersNodeIdx];
       foreach (var trigger in triggers)
       {
@@ -223,7 +223,7 @@ namespace RobotWare.Runtime.Server.Manager
       JobDetailsToggle(false);
 
       CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
-      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobsNode || e.Node is JobNode || e.Node is TriggerGroupNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobsNode || e.Node is JobNode || e.Node is TriggersGroupNode;
 
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
@@ -353,7 +353,7 @@ namespace RobotWare.Runtime.Server.Manager
         UpdateScheduledJobs();
       }
 
-      if (selectedNode is TriggerGroupNode || selectedNode is JobNode)
+      if (selectedNode is TriggersGroupNode || selectedNode is JobNode)
       {
         var frm = new CronSelector();
         if (frm.ShowDialog() != DialogResult.OK)
