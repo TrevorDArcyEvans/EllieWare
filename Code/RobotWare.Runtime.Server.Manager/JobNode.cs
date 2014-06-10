@@ -5,18 +5,17 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 using Quartz;
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class JobNode : TreeNode
+  public class JobNode : NodeBase
   {
     public IJobDetail Detail { get; private set; }
 
-    public JobNode(IJobDetail jobDetail)
+    public JobNode(IJobDetail jobDetail) :
+      base(jobDetail.Key.Name)
     {
-      Name = Text = jobDetail.Key.Name;
       Detail = jobDetail;
     }
   }

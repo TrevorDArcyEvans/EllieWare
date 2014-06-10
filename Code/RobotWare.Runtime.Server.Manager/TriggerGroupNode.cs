@@ -5,15 +5,14 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class TriggerGroupNode : TreeNode
+  public class TriggerGroupNode : NodeBase
   {
-    public TriggerGroupNode(string text)
+    public TriggerGroupNode(string text) :
+      base(text)
     {
-      Name = Text = text;
     }
   }
 }

@@ -5,14 +5,15 @@
 //
 //  www.EllieWare.com
 //
+using System.Windows.Forms;
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class JobsNode : NodeBase
+  public class NodeBase : TreeNode
   {
-    public JobsNode(string name) :
-      base(name)
+    public NodeBase(string name)
     {
+      Name = Text = name;
     }
   }
 }

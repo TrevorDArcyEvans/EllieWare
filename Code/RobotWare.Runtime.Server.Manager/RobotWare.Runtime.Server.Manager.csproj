@@ -96,6 +96,7 @@
     <Compile Include="NativeJobDetailDisplay.Designer.cs">
       <DependentUpon>NativeJobDetailDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="NodeBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuartzSchedulerFacade.cs" />

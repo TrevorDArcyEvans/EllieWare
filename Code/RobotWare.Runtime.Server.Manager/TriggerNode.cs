@@ -5,19 +5,18 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 using Quartz;
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class TriggerNode : TreeNode
+  public class TriggerNode : NodeBase
   {
     public ITrigger Trigger { get; private set; }
 
-    public TriggerNode(ITrigger trigger)
-    {
+    public TriggerNode(ITrigger trigger) :
       // use description if we have it
-      Name = Text = trigger.Description ?? trigger.Key.Name;
+      base(trigger.Description ?? trigger.Key.Name)
+    {
       Trigger = trigger;
     }
   }

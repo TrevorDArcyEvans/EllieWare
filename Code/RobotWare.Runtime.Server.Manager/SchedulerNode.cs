@@ -5,17 +5,16 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class SchedulerNode : TreeNode
+  public class SchedulerNode : NodeBase
   {
     public QuartzSchedulerFacade Scheduler { get; private set; }
 
-    public SchedulerNode(QuartzSchedulerFacade scheduler)
+    public SchedulerNode(QuartzSchedulerFacade scheduler) :
+      base(scheduler.Address)
     {
-      Name = Text = scheduler.Address;
       Scheduler = scheduler;
     }
   }
