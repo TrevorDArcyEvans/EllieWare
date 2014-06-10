@@ -16,7 +16,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     public JobNode(IJobDetail jobDetail)
     {
-      Text = jobDetail.Key.Name;
+      Name = Text = jobDetail.Key.Name;
       Detail = jobDetail;
     }
   }

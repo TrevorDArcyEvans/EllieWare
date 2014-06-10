@@ -16,7 +16,8 @@ namespace RobotWare.Runtime.Server.Manager
 
     public TriggerNode(ITrigger trigger)
     {
-      Text = trigger.Key.Name;
+      // use description if we have it
+      Name = Text = trigger.Description ?? trigger.Key.Name;
       Trigger = trigger;
     }
   }

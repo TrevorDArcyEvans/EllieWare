@@ -13,7 +13,7 @@ namespace RobotWare.Runtime.Server.Manager
   {
     public JobGroupNode(string jobGroup)
     {
-      Text = jobGroup;
+      Name = Text = jobGroup;
     }
   }
 }

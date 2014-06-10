@@ -15,7 +15,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     public SchedulerNode(QuartzSchedulerFacade scheduler)
     {
-      Text = Name = scheduler.Address;
+      Name = Text = scheduler.Address;
       Scheduler = scheduler;
     }
   }
