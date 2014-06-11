@@ -22,6 +22,7 @@ using EllieWare.Manager;
 using EllieWare.Support;
 using Quartz;
 using Quartz.Impl.Matchers;
+using Quartz.Job;
 using RobotWare.Runtime.Server.Manager.Properties;
 
 namespace RobotWare.Runtime.Server.Manager
@@ -199,10 +200,9 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void SetPauseButtonText()
+    private void SetPauseButtonText(TriggerNode triggerNode)
     {
-      var node = (TriggerNode)SchedulerView.SelectedNode;
-      CmdPause.Text = mScheduler.GetScheduler().GetTriggerState(node.Trigger.Key) == TriggerState.Paused ? @"Resume" : @"Pause";
+      CmdPause.Text = mScheduler.GetScheduler().GetTriggerState(triggerNode.Trigger.Key) == TriggerState.Paused ? @"Resume" : @"Pause";
     }
 
     private void SchedulerView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -210,7 +210,7 @@ namespace RobotWare.Runtime.Server.Manager
       JobDetailsToggle(false);
 
       CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
-      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobNode || e.Node is SchedulerNode;
 
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
@@ -232,7 +232,7 @@ namespace RobotWare.Runtime.Server.Manager
       if (triggerNode != null)
       {
         CmdPause.Enabled = true;
-        SetPauseButtonText();
+        SetPauseButtonText(triggerNode);
         var trigger = triggerNode.Trigger as ICronTrigger;
         if (trigger != null)
         {
@@ -281,12 +281,14 @@ namespace RobotWare.Runtime.Server.Manager
       {
         sched.PauseTrigger(node.Trigger.Key);
       }
-      SetPauseButtonText();
+      SetPauseButtonText(node);
     }
 
     private void NullUpdateAction()
     {
     }
+
+    #region Delete
 
     private void CmdDelete_Click(object sender, EventArgs e)
     {
@@ -327,6 +329,10 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
+    #endregion
+
+    #region Edit
+
     private void EditTrigger(TriggerNode selectedNode, Action updateAction)
     {
       var frm = new CronSelector();
@@ -349,6 +355,10 @@ namespace RobotWare.Runtime.Server.Manager
       AddTrigger(jobNode, frm, updateAction);
     }
 
+    #endregion
+
+    #region Add
+
     private void CmdAdd_Click(object sender, EventArgs e)
     {
       var selectedNode = SchedulerView.SelectedNode;
@@ -361,6 +371,11 @@ namespace RobotWare.Runtime.Server.Manager
       {
         AddTrigger((JobNode)selectedNode, UpdateScheduledJobs);
       }
+
+      if (selectedNode is SchedulerNode)
+      {
+        AddJobGroup((SchedulerNode) selectedNode, UpdateScheduledJobs);
+      }
     }
 
     private void AddTrigger(JobNode selectedNode, Action updateAction)
@@ -370,6 +385,7 @@ namespace RobotWare.Runtime.Server.Manager
       {
         return;
       }
+
       // add cron trigger
       AddTrigger(selectedNode, frm, NullUpdateAction);
       updateAction();
@@ -399,6 +415,7 @@ namespace RobotWare.Runtime.Server.Manager
       {
         return;
       }
+
       // add macro
       var selSpecPath = frm.SelectedSpecificationPath;
       var jobData = new JobDataMap
@@ -415,5 +432,26 @@ namespace RobotWare.Runtime.Server.Manager
       sched.AddJob(job, true);
       updateAction();
     }
+
+    private void AddJobGroup(SchedulerNode schedulerNode, Action updateAction)
+    {
+      var sched = mScheduler.GetScheduler();
+      var existJobGroups = sched.GetJobGroupNames();
+      var frm = new AddJobGroup(existJobGroups);
+      if (frm.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      var job = JobBuilder.Create<NoOpJob>().
+                  WithDescription(string.Format("Empty job to ensure that {0} is created", frm.JobGroupName)).
+                  WithIdentity("NoOp job", frm.JobGroupName).
+                  StoreDurably().
+                  Build();
+      sched.AddJob(job, true);
+      updateAction();
+    }
+
+    #endregion
   }
 }

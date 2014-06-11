@@ -103,6 +103,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.Controls.Add(this.MainTable);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "AddJob";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Add Job";
       this.MainTable.ResumeLayout(false);
       this.ResumeLayout(false);
