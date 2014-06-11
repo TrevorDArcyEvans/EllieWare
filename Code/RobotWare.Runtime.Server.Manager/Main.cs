@@ -308,13 +308,12 @@ namespace RobotWare.Runtime.Server.Manager
     // edit trigger
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      
       // TODO   edit cron
       var sched = mScheduler.GetScheduler();
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is TriggerNode)
       {
-        var triggerNode = (TriggerNode) selectedNode;
+        var triggerNode = (TriggerNode)selectedNode;
         var frm = new CronSelector();
         var trigger = triggerNode.Trigger;
         var jobData = trigger.JobDataMap;
@@ -336,53 +335,64 @@ namespace RobotWare.Runtime.Server.Manager
     // add trigger or job
     private void CmdAdd_Click(object sender, EventArgs e)
     {
-      var sched = mScheduler.GetScheduler();
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is JobGroupNode)
       {
-        var frm = new AddJob(mRoot);
-        if (frm.ShowDialog() != DialogResult.OK)
-        {
-          return;
-        }
-        // add macro
-        var selSpecPath = frm.SelectedSpecificationPath;
-        var jobData = new JobDataMap
-        {
-                              { Host.MacroFilePathKey, selSpecPath }
-                            };
-        var jobName = Path.GetFileNameWithoutExtension(selSpecPath);
-        var jobGroup = (JobGroupNode)selectedNode;
-        var job = JobBuilder.Create<Host>().
-                    WithDescription("TODO extract description from spec").
-                    WithIdentity(jobName, jobGroup.Name).
-                    SetJobData(jobData).
-                    StoreDurably().
-                    Build();
-        sched.AddJob(job, true);
-        UpdateScheduledJobs();
+        AddJob(selectedNode);
       }
 
       if (selectedNode is JobNode)
       {
-        var frm = new CronSelector();
-        if (frm.ShowDialog() != DialogResult.OK)
-        {
-          return;
-        }
-        // add cron trigger
-        var cronStr = frm.Expression;
-        var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
-        var job = (JobNode)selectedNode;
-        var trigger = TriggerBuilder.Create().
-                              WithCronSchedule(cronStr).
-                              WithDescription(cronDescrip).
-                              UsingJobData("TODO", "frm.WriteXml").
-                              ForJob(job.Detail).
-                              Build();
-        sched.ScheduleJob(trigger);
-        UpdateScheduledJobs();
+        AddTrigger(selectedNode);
       }
+    }
+
+    private void AddTrigger(TreeNode selectedNode)
+    {
+      var sched = mScheduler.GetScheduler();
+      var frm = new CronSelector();
+      if (frm.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+      // add cron trigger
+      var cronStr = frm.Expression;
+      var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
+      var job = (JobNode) selectedNode;
+      var trigger = TriggerBuilder.Create().
+                      WithCronSchedule(cronStr).
+                      WithDescription(cronDescrip).
+                      UsingJobData("TODO", "frm.WriteXml").
+                      ForJob(job.Detail).
+                      Build();
+      sched.ScheduleJob(trigger);
+      UpdateScheduledJobs();
+    }
+
+    private void AddJob(TreeNode selectedNode)
+    {
+      var sched = mScheduler.GetScheduler();
+      var frm = new AddJob(mRoot);
+      if (frm.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+      // add macro
+      var selSpecPath = frm.SelectedSpecificationPath;
+      var jobData = new JobDataMap
+      {
+        {Host.MacroFilePathKey, selSpecPath}
+      };
+      var jobName = Path.GetFileNameWithoutExtension(selSpecPath);
+      var jobGroup = (JobGroupNode)selectedNode;
+      var job = JobBuilder.Create<Host>().
+                  WithDescription("TODO extract description from spec").
+                  WithIdentity(jobName, jobGroup.Name).
+                  SetJobData(jobData).
+                  StoreDurably().
+                  Build();
+      sched.AddJob(job, true);
+      UpdateScheduledJobs();
     }
   }
 }
