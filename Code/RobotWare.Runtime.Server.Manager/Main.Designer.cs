@@ -164,6 +164,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.CmdEdit.Name = "CmdEdit";
       this.CmdEdit.Size = new System.Drawing.Size(48, 24);
       this.CmdEdit.Text = "Edit...";
+      this.CmdEdit.ToolTipText = "Edit trigger";
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 
       // statusStrip1
@@ -339,7 +340,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.SpecificationTab.Location = new System.Drawing.Point(4, 25);
       this.SpecificationTab.Name = "SpecificationTab";
       this.SpecificationTab.Padding = new System.Windows.Forms.Padding(3);
-      this.SpecificationTab.Size = new System.Drawing.Size(721, 531);
+      this.SpecificationTab.Size = new System.Drawing.Size(927, 564);
       this.SpecificationTab.TabIndex = 1;
       this.SpecificationTab.Text = "Jobs";
       this.SpecificationTab.UseVisualStyleBackColor = true;

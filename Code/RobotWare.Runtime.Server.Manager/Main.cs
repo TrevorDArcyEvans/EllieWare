@@ -212,6 +212,35 @@ namespace RobotWare.Runtime.Server.Manager
       CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
       CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobNode || e.Node is SchedulerNode;
 
+      #region ToolTips
+
+      // reset tooltips based on what is selected
+      CmdDelete.ToolTipText = CmdAdd.ToolTipText = string.Empty;
+
+      if (e.Node is TriggerNode)
+      {
+        CmdDelete.ToolTipText = @"Delete trigger";
+      }
+      if (e.Node is JobNode)
+      {
+        CmdDelete.ToolTipText = @"Delete job";
+      }
+
+      if (e.Node is JobGroupNode)
+      {
+        CmdAdd.ToolTipText = @"Add job";
+      }
+      if (e.Node is JobNode)
+      {
+        CmdAdd.ToolTipText = @"Add trigger";
+      }
+      if (e.Node is SchedulerNode)
+      {
+        CmdAdd.ToolTipText = @"Add job group";
+      }
+
+      #endregion
+
       var jobNode = e.Node as JobNode;
       if (jobNode != null)
       {
@@ -374,7 +403,7 @@ namespace RobotWare.Runtime.Server.Manager
 
       if (selectedNode is SchedulerNode)
       {
-        AddJobGroup((SchedulerNode) selectedNode, UpdateScheduledJobs);
+        AddJobGroup((SchedulerNode)selectedNode, UpdateScheduledJobs);
       }
     }
 
