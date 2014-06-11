@@ -120,6 +120,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.CmdRunJobNow.Name = "CmdRunJobNow";
       this.CmdRunJobNow.Size = new System.Drawing.Size(38, 24);
       this.CmdRunJobNow.Text = "Run";
+      this.CmdRunJobNow.ToolTipText = "Run selected job";
       this.CmdRunJobNow.Click += new System.EventHandler(this.CmdRunJobNow_Click);
       // 
       // CmdPause
