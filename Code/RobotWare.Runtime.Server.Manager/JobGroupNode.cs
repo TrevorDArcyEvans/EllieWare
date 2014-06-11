@@ -14,5 +14,13 @@ namespace RobotWare.Runtime.Server.Manager
       base(jobGroup)
     {
     }
+
+    public string Group
+    {
+      get
+      {
+        return Name;
+      }
+    }
   }
 }
