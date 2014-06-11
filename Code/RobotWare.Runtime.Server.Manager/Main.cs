@@ -284,92 +284,114 @@ namespace RobotWare.Runtime.Server.Manager
       SetPauseButtonText();
     }
 
+    private void NullUpdateAction()
+    {
+    }
+
     private void CmdDelete_Click(object sender, EventArgs e)
     {
-      var sched = mScheduler.GetScheduler();
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is JobNode)
       {
-        var jobNode = (JobNode)SchedulerView.SelectedNode;
-        var bRet = sched.DeleteJob(jobNode.Detail.Key);
-        Debug.Assert(bRet);
-        UpdateScheduledJobs();
+        DeleteJob((JobNode)selectedNode, UpdateScheduledJobs);
       }
 
       if (selectedNode is TriggerNode)
       {
-        var triggerNode = (TriggerNode)selectedNode;
-        var bRet = sched.UnscheduleJob(triggerNode.Trigger.Key);
-        Debug.Assert(bRet);
-        UpdateScheduledJobs();
+        DeleteTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
       }
     }
 
-    // edit trigger
+    private void DeleteTrigger(TriggerNode selectedNode, Action updateAction)
+    {
+      var sched = mScheduler.GetScheduler();
+      var bRet = sched.UnscheduleJob(selectedNode.Trigger.Key);
+      Debug.Assert(bRet);
+      updateAction();
+    }
+
+    private void DeleteJob(JobNode selectedNode, Action updateAction)
+    {
+      var sched = mScheduler.GetScheduler();
+      var bRet = sched.DeleteJob(selectedNode.Detail.Key);
+      Debug.Assert(bRet);
+      updateAction();
+    }
+
     private void CmdEdit_Click(object sender, EventArgs e)
     {
-      // TODO   edit cron
-      var sched = mScheduler.GetScheduler();
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is TriggerNode)
       {
-        var triggerNode = (TriggerNode)selectedNode;
-        var frm = new CronSelector();
-        var trigger = triggerNode.Trigger;
-        var jobData = trigger.JobDataMap;
-        if (jobData.ContainsKey(TriggerXml))
-        {
-          var oldCron = (string)jobData[TriggerXml];
-          frm.SetXml(oldCron);
-        }
-        if (frm.ShowDialog() != DialogResult.OK)
-        {
-          return;
-        }
-        var newCronXml = frm.GetXml();
-        jobData[TriggerXml] = newCronXml;
-        // TODO   persist JobData so it survives a refresh
+        EditTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
       }
     }
 
-    // add trigger or job
+    private void EditTrigger(TriggerNode selectedNode, Action updateAction)
+    {
+      var frm = new CronSelector();
+      var trigger = selectedNode.Trigger;
+      var jobData = trigger.JobDataMap;
+      if (jobData.ContainsKey(TriggerXml))
+      {
+        var oldCron = (string)jobData[TriggerXml];
+        frm.SetXml(oldCron);
+      }
+
+      if (frm.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      // delete and re-add trigger so it survives a refresh
+      DeleteTrigger(selectedNode, NullUpdateAction);
+      var jobNode = (JobNode)selectedNode.Parent;
+      AddTrigger(jobNode, frm, updateAction);
+    }
+
     private void CmdAdd_Click(object sender, EventArgs e)
     {
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is JobGroupNode)
       {
-        AddJob(selectedNode);
+        AddJob((JobGroupNode)selectedNode, UpdateScheduledJobs);
       }
 
       if (selectedNode is JobNode)
       {
-        AddTrigger(selectedNode);
+        AddTrigger((JobNode)selectedNode, UpdateScheduledJobs);
       }
     }
 
-    private void AddTrigger(TreeNode selectedNode)
+    private void AddTrigger(JobNode selectedNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
       var frm = new CronSelector();
       if (frm.ShowDialog() != DialogResult.OK)
       {
         return;
       }
       // add cron trigger
+      AddTrigger(selectedNode, frm, NullUpdateAction);
+      updateAction();
+    }
+
+    private void AddTrigger(JobNode selectedNode, CronSelector frm, Action updateAction)
+    {
+      var sched = mScheduler.GetScheduler();
       var cronStr = frm.Expression;
       var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
-      var job = (JobNode) selectedNode;
+      var newCronXml = frm.GetXml();
       var trigger = TriggerBuilder.Create().
                       WithCronSchedule(cronStr).
                       WithDescription(cronDescrip).
-                      UsingJobData("TODO", "frm.WriteXml").
-                      ForJob(job.Detail).
+                      UsingJobData(TriggerXml, newCronXml).
+                      ForJob(selectedNode.Detail).
                       Build();
       sched.ScheduleJob(trigger);
-      UpdateScheduledJobs();
+      updateAction();
     }
 
-    private void AddJob(TreeNode selectedNode)
+    private void AddJob(JobGroupNode selectedNode, Action updateAction)
     {
       var sched = mScheduler.GetScheduler();
       var frm = new AddJob(mRoot);
@@ -380,19 +402,18 @@ namespace RobotWare.Runtime.Server.Manager
       // add macro
       var selSpecPath = frm.SelectedSpecificationPath;
       var jobData = new JobDataMap
-      {
-        {Host.MacroFilePathKey, selSpecPath}
-      };
+                          {
+                            {Host.MacroFilePathKey, selSpecPath}
+                          };
       var jobName = Path.GetFileNameWithoutExtension(selSpecPath);
-      var jobGroup = (JobGroupNode)selectedNode;
       var job = JobBuilder.Create<Host>().
                   WithDescription("TODO extract description from spec").
-                  WithIdentity(jobName, jobGroup.Name).
+                  WithIdentity(jobName, selectedNode.Group).
                   SetJobData(jobData).
                   StoreDurably().
                   Build();
       sched.AddJob(job, true);
-      UpdateScheduledJobs();
+      updateAction();
     }
   }
 }
