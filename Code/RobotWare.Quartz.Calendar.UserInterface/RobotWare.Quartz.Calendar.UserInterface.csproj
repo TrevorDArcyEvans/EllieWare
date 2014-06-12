@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{67D87E3C-56DC-49D4-9AAF-9A9789BA1D8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RobotWare.Quartz.Calendar.UserInterface</RootNamespace>
+    <AssemblyName>RobotWare.Quartz.Calendar.UserInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\EllieWare.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RobotWare.Quartz.Calendar.UserInterface, Version=0.7.1.0, Culture=neutral, PublicKeyToken=1f9273993d681f28, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfoCommon.cs">
+      <Link>Properties\AssemblyInfoCommon.cs</Link>
+    </Compile>
+    <Compile Include="AnnualCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AnnualCtrl.Designer.cs">
+      <DependentUpon>AnnualCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarBase.Designer.cs">
+      <DependentUpon>CalendarBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarCtrl.Designer.cs">
+      <DependentUpon>CalendarCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DailyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DailyCtrl.Designer.cs">
+      <DependentUpon>DailyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MonthlyCtrl.Designer.cs">
+      <DependentUpon>MonthlyCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeeklyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WeeklyCtrl.Designer.cs">
+      <DependentUpon>WeeklyCtrl.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AnnualCtrl.resx">
+      <DependentUpon>AnnualCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarBase.resx">
+      <DependentUpon>CalendarBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarCtrl.resx">
+      <DependentUpon>CalendarCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyCtrl.resx">
+      <DependentUpon>DailyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonthlyCtrl.resx">
+      <DependentUpon>MonthlyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeeklyCtrl.resx">
+      <DependentUpon>WeeklyCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\C5\C5\C5.csproj">
+      <Project>{D02E0664-C56C-4C3F-98E5-C8EC881A8439}</Project>
+      <Name>C5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quartz.NET\src\Quartz\Quartz.2010.csproj">
+      <Project>{AEF8823B-E45B-4B35-A4D0-C08C1196D017}</Project>
+      <Name>Quartz.2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\EllieWare.snk">
+      <Link>EllieWare.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
