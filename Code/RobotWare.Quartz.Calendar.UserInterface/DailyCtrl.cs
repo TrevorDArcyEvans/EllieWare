@@ -13,7 +13,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
 {
   public partial class DailyCtrl : CalendarBase
   {
-    private readonly DailyCalendar mCalendar = new DailyCalendar(DateTime.Now.AddHours(-1), DateTime.Now);
+    private readonly DailyCalendar mCalendar = new DailyCalendar("09:00", "17:30");
 
     public DailyCtrl()
     {
@@ -41,7 +41,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       FireCalendarChanged(sender, e);
     }
 
-    protected override void UpdateUserInterface()
+    protected override sealed void UpdateUserInterface()
     {
       if (TimeFrom.Value >= TimeTo.Value)
       {

@@ -62,6 +62,12 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="AddCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCalendar.Designer.cs">
+      <DependentUpon>AddCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddJob.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
       <DependentUpon>SimpleTriggerDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="TriggerNode.cs" />
+    <EmbeddedResource Include="AddCalendar.resx">
+      <DependentUpon>AddCalendar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddJob.resx">
       <DependentUpon>AddJob.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +231,10 @@
     <ProjectReference Include="..\RobotWare.Cron.UserInterface\RobotWare.Cron.UserInterface.csproj">
       <Project>{9EF4D85A-6283-409B-AC1F-9D58CD1F7F70}</Project>
       <Name>RobotWare.Cron.UserInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RobotWare.Quartz.Calendar.UserInterface\RobotWare.Quartz.Calendar.UserInterface.csproj">
+      <Project>{67D87E3C-56DC-49D4-9AAF-9A9789BA1D8F}</Project>
+      <Name>RobotWare.Quartz.Calendar.UserInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\RobotWare.Quartz.Extensions\RobotWare.Quartz.Extensions.csproj">
       <Project>{BAE4F7D3-C587-42D5-8012-61910A3EDB59}</Project>

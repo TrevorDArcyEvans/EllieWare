@@ -43,6 +43,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Name = "CalendarBase";
       this.Size = new System.Drawing.Size(337, 274);
+      this.Load += new System.EventHandler(this.FireCalendarChanged);
       this.ResumeLayout(false);
 
     }
