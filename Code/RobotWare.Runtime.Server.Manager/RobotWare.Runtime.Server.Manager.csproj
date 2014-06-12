@@ -92,7 +92,6 @@
     <Compile Include="JobGroupNode.cs" />
     <Compile Include="JobGroupsNode.cs" />
     <Compile Include="JobNode.cs" />
-    <Compile Include="JobsNode.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,7 +118,6 @@
       <DependentUpon>SimpleTriggerDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="TriggerNode.cs" />
-    <Compile Include="TriggersGroupNode.cs" />
     <EmbeddedResource Include="AddJob.resx">
       <DependentUpon>AddJob.cs</DependentUpon>
     </EmbeddedResource>

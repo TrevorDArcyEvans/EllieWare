@@ -134,9 +134,7 @@ namespace RobotWare.Runtime.Server.Manager
       {
         var jobGroupNode = new JobGroupNode(jobGroup);
         jobGroupsNode.Nodes.Add(jobGroupNode);
-        var jobsNodeIdx = jobGroupNode.Nodes.Add(new JobsNode("Jobs"));
-        var jobsNode = (JobsNode)jobGroupNode.Nodes[jobsNodeIdx];
-        AddJobNodes(jobsNode);
+        AddJobNodes(jobGroupNode);
       }
 
       AddOrphanJobs(schedulerNode);
@@ -146,16 +144,17 @@ namespace RobotWare.Runtime.Server.Manager
       jobGroupsNode.Expand();
     }
 
-    private void AddJobNodes(JobsNode node)
+    private void AddJobNodes(JobGroupNode node)
     {
-      var group = node.Parent.Text;
+      var group = node.Name;
       var groupMatcher = GroupMatcher<JobKey>.GroupContains(group);
-      var jobKeys = mScheduler.GetScheduler().GetJobKeys(groupMatcher);
+      var sched = mScheduler.GetScheduler();
+      var jobKeys = sched.GetJobKeys(groupMatcher);
       foreach (var jobKey in jobKeys)
       {
         try
         {
-          var detail = mScheduler.GetScheduler().GetJobDetail(jobKey);
+          var detail = sched.GetJobDetail(jobKey);
           var jobNode = new JobNode(detail);
           node.Nodes.Add(jobNode);
           AddTriggerNodes(jobNode);
@@ -171,13 +170,12 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddTriggerNodes(JobNode jobNode)
     {
-      var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Parent.Text));
-      var triggersNodeIdx = jobNode.Nodes.Add(new TriggersGroupNode("Triggers"));
-      var triggersNode = jobNode.Nodes[triggersNodeIdx];
+      var sched = mScheduler.GetScheduler();
+      var triggers = sched.GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Text));
       foreach (var trigger in triggers)
       {
         var node = new TriggerNode(trigger);
-        triggersNode.Nodes.Add(node);
+        jobNode.Nodes.Add(node);
         AddCalendarNode(node);
       }
     }
@@ -267,9 +265,7 @@ namespace RobotWare.Runtime.Server.Manager
       CmdAdd.Enabled = e.Node is SchedulerNode ||
                        e.Node is JobGroupsNode ||
                        e.Node is JobGroupNode ||
-                       e.Node is JobsNode ||
                        e.Node is JobNode ||
-                       e.Node is TriggersGroupNode ||
                        e.Node is TriggerNode ||
                        e.Node is CalendarsNode;
       CmdEdit.Enabled = e.Node is CalendarNode;
@@ -296,11 +292,11 @@ namespace RobotWare.Runtime.Server.Manager
       {
         CmdAdd.ToolTipText = @"Add job group";
       }
-      if (e.Node is JobGroupNode || e.Node is JobsNode)
+      if (e.Node is JobGroupNode)
       {
         CmdAdd.ToolTipText = @"Add job";
       }
-      if (e.Node is JobNode || e.Node is TriggersGroupNode)
+      if (e.Node is JobNode)
       {
         CmdAdd.ToolTipText = @"Add trigger";
       }
@@ -371,6 +367,12 @@ namespace RobotWare.Runtime.Server.Manager
       else
       {
         CmdPause.Enabled = false;
+      }
+
+      var calendarNode = e.Node as CalendarNode;
+      if (calendarNode != null)
+      {
+        // TODO   display calendar
       }
     }
 
@@ -498,15 +500,15 @@ namespace RobotWare.Runtime.Server.Manager
     private void CmdAdd_Click(object sender, EventArgs e)
     {
       var selectedNode = SchedulerView.SelectedNode;
-      if (selectedNode is JobGroupNode || selectedNode is JobsNode)
+      if (selectedNode is JobGroupNode)
       {
-        var jobGroupNode = selectedNode is JobGroupNode ? (JobGroupNode)selectedNode : (JobGroupNode)selectedNode.Parent;
+        var jobGroupNode = (JobGroupNode)selectedNode;
         AddJob(jobGroupNode, UpdateScheduledJobs);
       }
 
-      if (selectedNode is TriggersGroupNode || selectedNode is JobNode)
+      if (selectedNode is JobNode)
       {
-        var jobNode = selectedNode is JobNode ? (JobNode)selectedNode : (JobNode)selectedNode.Parent;
+        var jobNode = (JobNode)selectedNode;
         AddTrigger(jobNode, UpdateScheduledJobs);
       }
 
