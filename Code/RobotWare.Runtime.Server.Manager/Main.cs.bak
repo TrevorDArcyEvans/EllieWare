@@ -21,7 +21,6 @@ using EllieWare.Interfaces;
 using EllieWare.Manager;
 using EllieWare.Support;
 using Quartz;
-using Quartz.Impl.Calendar;
 using Quartz.Impl.Matchers;
 using Quartz.Job;
 using RobotWare.Runtime.Server.Manager.Properties;
@@ -127,29 +126,21 @@ namespace RobotWare.Runtime.Server.Manager
         SchedulerView.Nodes.RemoveByKey(schedulerNode.Name);
       }
       SchedulerView.Nodes.Add(schedulerNode);
-      var jobGroupsIdx = schedulerNode.Nodes.Add(new JobGroupsNode("Job Groups"));
-      var jobGroupsNode = schedulerNode.Nodes[jobGroupsIdx];
       var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
       foreach (var jobGroup in jobGroups)
       {
         var jobGroupNode = new JobGroupNode(jobGroup);
-        jobGroupsNode.Nodes.Add(jobGroupNode);
-        var jobsNodeIdx = jobGroupNode.Nodes.Add(new JobsNode("Jobs"));
-        var jobsNode = (JobsNode)jobGroupNode.Nodes[jobsNodeIdx];
-        AddJobNodes(jobsNode);
+        schedulerNode.Nodes.Add(jobGroupNode);
+        AddJobNodes(jobGroupNode);
       }
 
-      AddOrphanJobs(schedulerNode);
-      AddCalendars(schedulerNode);
-
       SchedulerView.Nodes[0].Expand();
-      jobGroupsNode.Expand();
+      schedulerNode.Expand();
     }
 
-    private void AddJobNodes(JobsNode node)
+    private void AddJobNodes(JobGroupNode node)
     {
-      var group = node.Parent.Text;
-      var groupMatcher = GroupMatcher<JobKey>.GroupContains(group);
+      var groupMatcher = GroupMatcher<JobKey>.GroupContains(node.Group);
       var jobKeys = mScheduler.GetScheduler().GetJobKeys(groupMatcher);
       foreach (var jobKey in jobKeys)
       {
@@ -171,55 +162,12 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddTriggerNodes(JobNode jobNode)
     {
-      var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Parent.Text));
-      var triggersNodeIdx = jobNode.Nodes.Add(new TriggersGroupNode("Triggers"));
-      var triggersNode = jobNode.Nodes[triggersNodeIdx];
+      var triggers = mScheduler.GetScheduler().GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Name));
       foreach (var trigger in triggers)
       {
         var node = new TriggerNode(trigger);
-        triggersNode.Nodes.Add(node);
+        jobNode.Nodes.Add(node);
         AddCalendarNode(node);
-      }
-    }
-
-    private void AddOrphanJobs(SchedulerNode schedulerNode)
-    {
-      var orphanJobsIdx = schedulerNode.Nodes.Add(new OrphanJobsNode("Orphan Jobs"));
-      var orphanJobs = (OrphanJobsNode)schedulerNode.Nodes[orphanJobsIdx];
-      var sched = schedulerNode.Scheduler.GetScheduler();
-      var groupNames = sched.GetJobGroupNames();
-      foreach (var jobGroupName in groupNames)
-      {
-        var matcher = GroupMatcher<JobKey>.GroupEquals(jobGroupName);
-        var jobKeys = schedulerNode.Scheduler.GetScheduler().GetJobKeys(matcher);
-        foreach (var jobKey in jobKeys)
-        {
-          try
-          {
-            var triggers = schedulerNode.Scheduler.GetScheduler().GetTriggersOfJob(jobKey);
-            if (triggers.Count == 0)
-            {
-              var jobDetail = sched.GetJobDetail(jobKey);
-              orphanJobs.Nodes.Add(new JobNode(jobDetail));
-            }
-          }
-          catch (Exception ex)
-          {
-            Log.Error("Error loading orphan jobs.", ex);
-            schedulerNode.Nodes.Add(string.Format("Unable to add job {0})", jobKey.Name));
-          }
-        }
-      }
-    }
-
-    private void AddCalendars(SchedulerNode schedulerNode)
-    {
-      var calendarsIdx = schedulerNode.Nodes.Add(new CalendarsNode("Calendars"));
-      var calendarsNode = (CalendarsNode)schedulerNode.Nodes[calendarsIdx];
-      var sched = schedulerNode.Scheduler.GetScheduler();
-      foreach (var calendarName in sched.GetCalendarNames())
-      {
-        calendarsNode.Nodes.Add(new CalendarNode(calendarName));
       }
     }
 
@@ -261,18 +209,8 @@ namespace RobotWare.Runtime.Server.Manager
     {
       JobDetailsToggle(false);
 
-      CmdDelete.Enabled = e.Node is TriggerNode ||
-                            e.Node is JobNode ||
-                            e.Node is CalendarNode;
-      CmdAdd.Enabled = e.Node is SchedulerNode ||
-                       e.Node is JobGroupsNode ||
-                       e.Node is JobGroupNode ||
-                       e.Node is JobsNode ||
-                       e.Node is JobNode ||
-                       e.Node is TriggersGroupNode ||
-                       e.Node is TriggerNode ||
-                       e.Node is CalendarsNode;
-      CmdEdit.Enabled = e.Node is CalendarNode;
+      CmdDelete.Enabled = e.Node is TriggerNode || e.Node is JobNode;
+      CmdAdd.Enabled = e.Node is JobGroupNode || e.Node is JobNode || e.Node is SchedulerNode;
 
       #region ToolTips
 
@@ -287,39 +225,18 @@ namespace RobotWare.Runtime.Server.Manager
       {
         CmdDelete.ToolTipText = @"Delete job";
       }
-      if (e.Node is CalendarNode)
-      {
-        CmdDelete.ToolTipText = @"Delete calendar";
-      }
 
-      if (e.Node is SchedulerNode || e.Node is JobGroupsNode)
-      {
-        CmdAdd.ToolTipText = @"Add job group";
-      }
-      if (e.Node is JobGroupNode || e.Node is JobsNode)
+      if (e.Node is JobGroupNode)
       {
         CmdAdd.ToolTipText = @"Add job";
       }
-      if (e.Node is JobNode || e.Node is TriggersGroupNode)
+      if (e.Node is JobNode)
       {
         CmdAdd.ToolTipText = @"Add trigger";
       }
-      if (e.Node is TriggerNode)
+      if (e.Node is SchedulerNode)
       {
-        CmdAdd.ToolTipText = @"Add calendar";
-      }
-      if (e.Node is CalendarsNode)
-      {
-        CmdAdd.ToolTipText = @"Add calendar";
-      }
-
-      if (e.Node is CalendarNode)
-      {
-        CmdEdit.ToolTipText = @"Edit calendar";
-      }
-      if (e.Node is TriggerNode)
-      {
-        CmdEdit.ToolTipText = @"Edit trigger";
+        CmdAdd.ToolTipText = @"Add job group";
       }
 
       #endregion
@@ -370,6 +287,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
       else
       {
+        CmdEdit.Enabled = false;
         CmdPause.Enabled = false;
       }
     }
@@ -413,19 +331,6 @@ namespace RobotWare.Runtime.Server.Manager
       {
         DeleteTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
       }
-
-      if (selectedNode is CalendarNode)
-      {
-        DeleteCalendar((CalendarNode)selectedNode, UpdateScheduledJobs);
-      }
-    }
-
-    private void DeleteCalendar(CalendarNode selectedNode, Action updateAction)
-    {
-      var sched = mScheduler.GetScheduler();
-      var bRet = sched.DeleteCalendar(selectedNode.Name);
-      Debug.Assert(bRet);
-      updateAction();
     }
 
     private void DeleteTrigger(TriggerNode selectedNode, Action updateAction)
@@ -444,10 +349,6 @@ namespace RobotWare.Runtime.Server.Manager
       updateAction();
     }
 
-    #endregion
-
-    #region Edit
-
     private void CmdEdit_Click(object sender, EventArgs e)
     {
       var selectedNode = SchedulerView.SelectedNode;
@@ -455,19 +356,11 @@ namespace RobotWare.Runtime.Server.Manager
       {
         EditTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
       }
-
-      if (selectedNode is CalendarNode)
-      {
-        EditCalendar((CalendarNode)selectedNode, UpdateScheduledJobs);
-      }
     }
 
-    private void EditCalendar(CalendarNode selectedNode, Action updateAction)
-    {
-      // TODO   edit calendar
-      var sched = mScheduler.GetScheduler();
-      var cal = sched.GetCalendar(selectedNode.Name);
-    }
+    #endregion
+
+    #region Edit
 
     private void EditTrigger(TriggerNode selectedNode, Action updateAction)
     {
@@ -498,52 +391,20 @@ namespace RobotWare.Runtime.Server.Manager
     private void CmdAdd_Click(object sender, EventArgs e)
     {
       var selectedNode = SchedulerView.SelectedNode;
-      if (selectedNode is JobGroupNode || selectedNode is JobsNode)
+      if (selectedNode is JobGroupNode)
       {
-        var jobGroupNode = selectedNode is JobGroupNode ? (JobGroupNode)selectedNode : (JobGroupNode)selectedNode.Parent;
-        AddJob(jobGroupNode, UpdateScheduledJobs);
+        AddJob((JobGroupNode)selectedNode, UpdateScheduledJobs);
       }
 
-      if (selectedNode is TriggersGroupNode || selectedNode is JobNode)
+      if (selectedNode is JobNode)
       {
-        var jobNode = selectedNode is JobNode ? (JobNode)selectedNode : (JobNode)selectedNode.Parent;
-        AddTrigger(jobNode, UpdateScheduledJobs);
+        AddTrigger((JobNode)selectedNode, UpdateScheduledJobs);
       }
 
-      if (selectedNode is SchedulerNode || selectedNode is JobGroupsNode)
+      if (selectedNode is SchedulerNode)
       {
-        var schedNode = selectedNode is SchedulerNode ? (SchedulerNode)selectedNode : (SchedulerNode)selectedNode.Parent;
-        AddJobGroup(schedNode, UpdateScheduledJobs);
+        AddJobGroup((SchedulerNode)selectedNode, UpdateScheduledJobs);
       }
-
-      if (selectedNode is CalendarsNode)
-      {
-        var calNode = (CalendarsNode)selectedNode;
-        AddCalendar(calNode, UpdateScheduledJobs);
-      }
-
-      if (selectedNode is TriggerNode)
-      {
-        var triggerNode = (TriggerNode)selectedNode;
-        AddCalendar(triggerNode, UpdateScheduledJobs);
-      }
-    }
-
-    private void AddCalendar(TriggerNode triggerNode, Action updateAction)
-    {
-      // TODO   copy trigger
-      // TODO   remove trigger
-      // TODO   add copy of trigger with calendar
-      var sched = mScheduler.GetScheduler();
-      updateAction();
-    }
-
-    private void AddCalendar(CalendarsNode calNode, Action updateAction)
-    {
-      // TODO   add calendar
-      var sched = mScheduler.GetScheduler();
-      sched.AddCalendar("calName", new AnnualCalendar(), true, true);
-      updateAction();
     }
 
     private void AddTrigger(JobNode selectedNode, Action updateAction)
@@ -592,8 +453,8 @@ namespace RobotWare.Runtime.Server.Manager
                           };
       var jobName = Path.GetFileNameWithoutExtension(selSpecPath);
       var job = JobBuilder.Create<Host>().
-                  WithDescription("TODO extract description from spec").  // TODO extract description from spec
-                  WithIdentity(jobName, selectedNode.Name).
+                  WithDescription("TODO extract description from spec").
+                  WithIdentity(jobName, selectedNode.Group).
                   SetJobData(jobData).
                   StoreDurably().
                   Build();

@@ -8,10 +8,10 @@
 
 namespace RobotWare.Runtime.Server.Manager
 {
-  public class JobGroupNode : NodeBase
+  public class TriggersGroupNode : NodeBase
   {
-    public JobGroupNode(string jobGroup) :
-      base(jobGroup)
+    public TriggersGroupNode(string text) :
+      base(text)
     {
     }
   }
