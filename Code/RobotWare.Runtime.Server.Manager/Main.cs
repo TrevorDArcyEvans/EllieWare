@@ -22,7 +22,6 @@ using EllieWare.Manager;
 using EllieWare.Support;
 using Quartz;
 using Quartz.Collection;
-using Quartz.Impl.Calendar;
 using Quartz.Impl.Matchers;
 using Quartz.Job;
 using RobotWare.Runtime.Server.Manager.Properties;
@@ -226,8 +225,7 @@ namespace RobotWare.Runtime.Server.Manager
     {
       if (node.Trigger.CalendarName != null)
       {
-        //TODO: Convert this to a CalendarNode and implement CalendarDisplay controls
-        node.Nodes.Add(node.Trigger.CalendarName);
+        node.Nodes.Add(new CalendarNode(node.Trigger.CalendarName));
       }
       else
       {
