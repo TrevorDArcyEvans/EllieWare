@@ -18,6 +18,10 @@ namespace RobotWare.Quartz.Calendar.UserInterface
     public DailyCtrl()
     {
       InitializeComponent();
+
+      // synchronise calendar --> UI
+      TimeFrom.Value = new DateTime(2006, 2, 20, 9, 0, 0);
+      TimeTo.Value = new DateTime(2006, 2, 20, 17, 30, 0);
     }
 
     public override ICalendar Calendar
