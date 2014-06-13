@@ -37,12 +37,12 @@ namespace RobotWare.Runtime.Server.Manager
     {
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.ToolStrip toolStrip1;
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
       System.Windows.Forms.StatusStrip statusStrip1;
       System.Windows.Forms.GroupBox groupBox1;
       System.Windows.Forms.GroupBox groupBox2;
       System.Windows.Forms.SplitContainer splitContainer2;
       System.Windows.Forms.ImageList imageList1;
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
       System.Windows.Forms.SplitContainer splitContainer1;
       System.Windows.Forms.TabControl tabControl1;
       System.Windows.Forms.TabPage tabPage1;
@@ -89,6 +89,7 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       // toolStrip1
       // 
+      toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
       toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmdRefreshScheduled,
             this.CmdRunJobNow,
@@ -98,74 +99,74 @@ namespace RobotWare.Runtime.Server.Manager
             this.CmdEdit});
       toolStrip1.Location = new System.Drawing.Point(0, 0);
       toolStrip1.Name = "toolStrip1";
-      toolStrip1.Size = new System.Drawing.Size(935, 27);
+      toolStrip1.Size = new System.Drawing.Size(935, 39);
       toolStrip1.TabIndex = 0;
       toolStrip1.Text = "toolStrip1";
       // 
       // CmdRefreshScheduled
       // 
-      this.CmdRefreshScheduled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.CmdRefreshScheduled.Image = ((System.Drawing.Image)(resources.GetObject("CmdRefreshScheduled.Image")));
+      this.CmdRefreshScheduled.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      this.CmdRefreshScheduled.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.refresh_32x32;
       this.CmdRefreshScheduled.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.CmdRefreshScheduled.Name = "CmdRefreshScheduled";
-      this.CmdRefreshScheduled.Size = new System.Drawing.Size(62, 24);
+      this.CmdRefreshScheduled.Size = new System.Drawing.Size(36, 36);
       this.CmdRefreshScheduled.Text = "Refresh";
       this.CmdRefreshScheduled.ToolTipText = "Refresh scheduled jobs";
       this.CmdRefreshScheduled.Click += new System.EventHandler(this.CmdRefreshScheduled_Click);
       // 
       // CmdRunJobNow
       // 
-      this.CmdRunJobNow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdRunJobNow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.CmdRunJobNow.Enabled = false;
-      this.CmdRunJobNow.Image = ((System.Drawing.Image)(resources.GetObject("CmdRunJobNow.Image")));
+      this.CmdRunJobNow.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.media_play_green_32x32;
       this.CmdRunJobNow.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.CmdRunJobNow.Name = "CmdRunJobNow";
-      this.CmdRunJobNow.Size = new System.Drawing.Size(38, 24);
+      this.CmdRunJobNow.Size = new System.Drawing.Size(36, 36);
       this.CmdRunJobNow.Text = "Run";
       this.CmdRunJobNow.ToolTipText = "Run selected job";
       this.CmdRunJobNow.Click += new System.EventHandler(this.CmdRunJobNow_Click);
       // 
       // CmdPause
       // 
-      this.CmdPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdPause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.CmdPause.Enabled = false;
-      this.CmdPause.Image = ((System.Drawing.Image)(resources.GetObject("CmdPause.Image")));
+      this.CmdPause.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.media_pause_32x32;
       this.CmdPause.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.CmdPause.Name = "CmdPause";
-      this.CmdPause.Size = new System.Drawing.Size(51, 24);
+      this.CmdPause.Size = new System.Drawing.Size(36, 36);
       this.CmdPause.Text = "Pause";
       this.CmdPause.Click += new System.EventHandler(this.CmdPause_Click);
       // 
       // CmdDelete
       // 
-      this.CmdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.CmdDelete.Enabled = false;
-      this.CmdDelete.Image = ((System.Drawing.Image)(resources.GetObject("CmdDelete.Image")));
+      this.CmdDelete.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.delete_32x32;
       this.CmdDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.CmdDelete.Name = "CmdDelete";
-      this.CmdDelete.Size = new System.Drawing.Size(57, 24);
+      this.CmdDelete.Size = new System.Drawing.Size(36, 36);
       this.CmdDelete.Text = "Delete";
       this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
       // 
       // CmdAdd
       // 
-      this.CmdAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.CmdAdd.Enabled = false;
-      this.CmdAdd.Image = ((System.Drawing.Image)(resources.GetObject("CmdAdd.Image")));
+      this.CmdAdd.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.add_32x32;
       this.CmdAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.CmdAdd.Name = "CmdAdd";
-      this.CmdAdd.Size = new System.Drawing.Size(50, 24);
+      this.CmdAdd.Size = new System.Drawing.Size(36, 36);
       this.CmdAdd.Text = "Add...";
       this.CmdAdd.Click += new System.EventHandler(this.CmdAdd_Click);
       // 
       // CmdEdit
       // 
-      this.CmdEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CmdEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
       this.CmdEdit.Enabled = false;
-      this.CmdEdit.Image = ((System.Drawing.Image)(resources.GetObject("CmdEdit.Image")));
+      this.CmdEdit.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.pencil_32x32;
       this.CmdEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.CmdEdit.Name = "CmdEdit";
-      this.CmdEdit.Size = new System.Drawing.Size(48, 24);
+      this.CmdEdit.Size = new System.Drawing.Size(36, 36);
       this.CmdEdit.Text = "Edit...";
       this.CmdEdit.ToolTipText = "Edit trigger";
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
@@ -211,7 +212,7 @@ namespace RobotWare.Runtime.Server.Manager
       groupBox1.Margin = new System.Windows.Forms.Padding(4);
       groupBox1.Name = "groupBox1";
       groupBox1.Padding = new System.Windows.Forms.Padding(4);
-      groupBox1.Size = new System.Drawing.Size(913, 266);
+      groupBox1.Size = new System.Drawing.Size(913, 260);
       groupBox1.TabIndex = 0;
       groupBox1.TabStop = false;
       groupBox1.Text = "Running";
@@ -226,7 +227,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.RunningJobs.Location = new System.Drawing.Point(4, 19);
       this.RunningJobs.Margin = new System.Windows.Forms.Padding(4);
       this.RunningJobs.Name = "RunningJobs";
-      this.RunningJobs.Size = new System.Drawing.Size(905, 243);
+      this.RunningJobs.Size = new System.Drawing.Size(905, 237);
       this.RunningJobs.Sorting = System.Windows.Forms.SortOrder.Ascending;
       this.RunningJobs.TabIndex = 0;
       this.RunningJobs.UseCompatibleStateImageBehavior = false;
@@ -249,7 +250,7 @@ namespace RobotWare.Runtime.Server.Manager
       groupBox2.Margin = new System.Windows.Forms.Padding(4);
       groupBox2.Name = "groupBox2";
       groupBox2.Padding = new System.Windows.Forms.Padding(4);
-      groupBox2.Size = new System.Drawing.Size(913, 271);
+      groupBox2.Size = new System.Drawing.Size(913, 265);
       groupBox2.TabIndex = 0;
       groupBox2.TabStop = false;
       groupBox2.Text = "Scheduled";
@@ -268,7 +269,7 @@ namespace RobotWare.Runtime.Server.Manager
       // splitContainer2.Panel2
       // 
       splitContainer2.Panel2.Controls.Add(this.pnlDetails);
-      splitContainer2.Size = new System.Drawing.Size(905, 248);
+      splitContainer2.Size = new System.Drawing.Size(905, 242);
       splitContainer2.SplitterDistance = 413;
       splitContainer2.SplitterWidth = 5;
       splitContainer2.TabIndex = 13;
@@ -283,7 +284,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.SchedulerView.Margin = new System.Windows.Forms.Padding(4);
       this.SchedulerView.Name = "SchedulerView";
       this.SchedulerView.SelectedImageIndex = 0;
-      this.SchedulerView.Size = new System.Drawing.Size(413, 248);
+      this.SchedulerView.Size = new System.Drawing.Size(413, 242);
       this.SchedulerView.TabIndex = 0;
       this.SchedulerView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SchedulerView_AfterSelect);
       // 
@@ -298,6 +299,7 @@ namespace RobotWare.Runtime.Server.Manager
       imageList1.Images.SetKeyName(4, "users_family_16x16.png");
       imageList1.Images.SetKeyName(5, "date_time_16x16.png");
       imageList1.Images.SetKeyName(6, "schoolboy_16x16.png");
+      imageList1.Images.SetKeyName(7, "factory_16x16.png");
       // 
       // pnlDetails
       // 
@@ -306,7 +308,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.pnlDetails.Location = new System.Drawing.Point(0, 0);
       this.pnlDetails.Margin = new System.Windows.Forms.Padding(4);
       this.pnlDetails.Name = "pnlDetails";
-      this.pnlDetails.Size = new System.Drawing.Size(487, 248);
+      this.pnlDetails.Size = new System.Drawing.Size(487, 242);
       this.pnlDetails.TabIndex = 0;
       // 
       // splitContainer1
@@ -326,8 +328,8 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       splitContainer1.Panel2.Controls.Add(groupBox1);
       splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(4);
-      splitContainer1.Size = new System.Drawing.Size(921, 558);
-      splitContainer1.SplitterDistance = 279;
+      splitContainer1.Size = new System.Drawing.Size(921, 546);
+      splitContainer1.SplitterDistance = 273;
       splitContainer1.SplitterWidth = 5;
       splitContainer1.TabIndex = 18;
       // 
@@ -336,10 +338,10 @@ namespace RobotWare.Runtime.Server.Manager
       tabControl1.Controls.Add(tabPage1);
       tabControl1.Controls.Add(this.SpecificationTab);
       tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      tabControl1.Location = new System.Drawing.Point(0, 27);
+      tabControl1.Location = new System.Drawing.Point(0, 39);
       tabControl1.Name = "tabControl1";
       tabControl1.SelectedIndex = 0;
-      tabControl1.Size = new System.Drawing.Size(935, 593);
+      tabControl1.Size = new System.Drawing.Size(935, 581);
       tabControl1.TabIndex = 19;
       // 
       // tabPage1
@@ -348,7 +350,7 @@ namespace RobotWare.Runtime.Server.Manager
       tabPage1.Location = new System.Drawing.Point(4, 25);
       tabPage1.Name = "tabPage1";
       tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      tabPage1.Size = new System.Drawing.Size(927, 564);
+      tabPage1.Size = new System.Drawing.Size(927, 552);
       tabPage1.TabIndex = 0;
       tabPage1.Text = "Schedules";
       tabPage1.UseVisualStyleBackColor = true;
@@ -358,7 +360,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.SpecificationTab.Location = new System.Drawing.Point(4, 25);
       this.SpecificationTab.Name = "SpecificationTab";
       this.SpecificationTab.Padding = new System.Windows.Forms.Padding(3);
-      this.SpecificationTab.Size = new System.Drawing.Size(927, 564);
+      this.SpecificationTab.Size = new System.Drawing.Size(927, 552);
       this.SpecificationTab.TabIndex = 1;
       this.SpecificationTab.Text = "Jobs";
       this.SpecificationTab.UseVisualStyleBackColor = true;
