@@ -20,8 +20,37 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       InitializeComponent();
 
       // synchronise calendar --> UI
-      TimeFrom.Value = new DateTime(2006, 2, 20, 9, 0, 0);
-      TimeTo.Value = new DateTime(2006, 2, 20, 17, 30, 0);
+      var startNom = new DateTime(2006, 2, 20, 9, 0, 0);
+      var endNom = new DateTime(2006, 2, 20, 17, 30, 0);
+
+      // FFS!   have to fiddle times or we get a crash if hour offset bridges a day
+      var startCal = SystemTime.UtcNow();
+      var startOff = new DateTimeOffset(startCal.Year, startCal.Month, startCal.Day, startNom.Hour, startNom.Minute, startNom.Second, startNom.Millisecond, TimeSpan.Zero);
+
+      var endCal = SystemTime.UtcNow();
+      var endOff = new DateTimeOffset(endCal.Year, endCal.Month, endCal.Day, endNom.Hour, endNom.Minute, endNom.Second, endNom.Millisecond, TimeSpan.Zero);
+
+      try
+      {
+        TimeFrom.ValueChanged -= FireCalendarChangedInternal;
+        TimeTo.ValueChanged -= FireCalendarChangedInternal;
+
+        if (!(startOff < endOff))
+        {
+          TimeFrom.Value = endNom;
+          TimeTo.Value = startNom;
+        }
+        else
+        {
+          TimeFrom.Value = startNom;
+          TimeTo.Value = endNom;
+        }
+      }
+      finally
+      {
+        TimeFrom.ValueChanged += FireCalendarChangedInternal;
+        TimeTo.ValueChanged += FireCalendarChangedInternal;
+      }
     }
 
     public override ICalendar Calendar
@@ -51,7 +80,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       // time range is inverted: that is, all times outside the defined time range are excluded.
       mCalendar.Description = string.Format("{0} {1} to {2}",
                                 mCalendar.InvertTimeRange ? "Including" : "Excluding",
-                                mCalendar.GetTimeRangeStartingTimeUtc(new DateTimeOffset()).ToString(TimeFrom.CustomFormat), 
+                                mCalendar.GetTimeRangeStartingTimeUtc(new DateTimeOffset()).ToString(TimeFrom.CustomFormat),
                                 mCalendar.GetTimeRangeEndingTimeUtc(new DateTimeOffset()).ToString(TimeTo.CustomFormat));
     }
   }
