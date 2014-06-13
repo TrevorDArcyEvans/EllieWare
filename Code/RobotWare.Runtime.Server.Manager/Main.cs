@@ -21,6 +21,7 @@ using EllieWare.Interfaces;
 using EllieWare.Manager;
 using EllieWare.Support;
 using Quartz;
+using Quartz.Collection;
 using Quartz.Impl.Calendar;
 using Quartz.Impl.Matchers;
 using Quartz.Job;
@@ -545,10 +546,28 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddCalendar(TriggerNode triggerNode, Action updateAction)
     {
-      // TODO   copy trigger
-      // TODO   remove trigger
-      // TODO   add copy of trigger with calendar
       var sched = mScheduler.GetScheduler();
+      var allCals = sched.GetCalendarNames();
+      var frm = new CalendarSelector(allCals);
+      if (frm.ShowDialog() != DialogResult.OK)
+      {
+        return;
+      }
+
+      // unschedule existing job
+      var trigger = triggerNode.Trigger;
+      var bRet = sched.UnscheduleJob(trigger.Key);
+      Debug.Assert(bRet);
+
+      // reschedule it with new trigger
+      var newTrigger = trigger.GetTriggerBuilder().
+                          ModifiedByCalendar(frm.SelectedCalendar).
+                          Build();
+      var jobNode = (JobNode)triggerNode.Parent;
+
+      // NOTE:  for some reason we have to use this API or it hangs - go figure
+      sched.ScheduleJob(jobNode.Detail, new HashSet<ITrigger> { newTrigger }, true);
+
       updateAction();
     }
 

@@ -81,6 +81,12 @@
       <DependentUpon>AddJobGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="CalendarNode.cs" />
+    <Compile Include="CalendarSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalendarSelector.Designer.cs">
+      <DependentUpon>CalendarSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="CalendarsNode.cs" />
     <Compile Include="ConnectionInfo.cs" />
     <Compile Include="CronSelector.cs">
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddJobGroup.resx">
       <DependentUpon>AddJobGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarSelector.resx">
+      <DependentUpon>CalendarSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CronSelector.resx">
       <DependentUpon>CronSelector.cs</DependentUpon>
