@@ -51,7 +51,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
         mCalendar.DaysExcluded[i] = false;
       }
 
-      mCalendar.Description = "Excluding ";
+      mCalendar.Description = string.Format("Excluding {0}", DaysExcluded.CheckedIndices.Count > 0 ? string.Empty : "no days");
       foreach (int chk in DaysExcluded.CheckedIndices)
       {
         mCalendar.DaysExcluded[chk] = true;
