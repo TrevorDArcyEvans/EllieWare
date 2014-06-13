@@ -338,18 +338,24 @@ namespace RobotWare.Runtime.Server.Manager
                        e.Node is JobNode ||
                        e.Node is TriggerNode ||
                        e.Node is CalendarsNode;
-      CmdEdit.Enabled = e.Node is CalendarNode ||
-                          e.Node is TriggerNode;
+      CmdEdit.Enabled = e.Node is TriggerNode;
       CmdRunJobNow.Enabled = e.Node is JobNode;
       CmdPause.Enabled = e.Node is TriggerNode;
+
+      var sched = mScheduler.GetScheduler();
+
+      // check if there are any calendars
+      if (e.Node is TriggerNode)
+      {
+        CmdAdd.Enabled = sched.GetCalendarNames().Any();
+      }
 
       // trying to delete calendar from top level calendars node
       if (e.Node is CalendarNode && e.Node.Parent is CalendarsNode)
       {
         // cannot delete a calendar if it is referenced by a trigger
-        var sched = mScheduler.GetScheduler();
         var triggerMatcher = GroupMatcher<TriggerKey>.GroupContains("");
-        var calNode = (CalendarNode) e.Node;
+        var calNode = (CalendarNode)e.Node;
         var refTriggers = sched.GetTriggerKeys(triggerMatcher).Where(x => sched.GetTrigger(x).CalendarName == calNode.Name);
 
         CmdDelete.Enabled = !refTriggers.Any();
@@ -487,18 +493,6 @@ namespace RobotWare.Runtime.Server.Manager
       {
         EditTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
       }
-
-      if (selectedNode is CalendarNode)
-      {
-        EditCalendar((CalendarNode)selectedNode, UpdateScheduledJobs);
-      }
-    }
-
-    private void EditCalendar(CalendarNode selectedNode, Action updateAction)
-    {
-      // TODO   edit calendar
-      var sched = mScheduler.GetScheduler();
-      var cal = sched.GetCalendar(selectedNode.Name);
     }
 
     private void EditTrigger(TriggerNode selectedNode, Action updateAction)
