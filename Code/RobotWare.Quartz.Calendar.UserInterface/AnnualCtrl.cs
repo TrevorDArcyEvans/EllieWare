@@ -6,6 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Globalization;
 using System.Linq;
 using Quartz;
 using Quartz.Collection;
@@ -23,14 +24,6 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       InitializeComponent();
 
       DaysExcluded.DataSource = mExcludedDates.ToList();
-    }
-
-    public override Type CalendarType
-    {
-      get
-      {
-        return typeof(HolidayCalendar);
-      }
     }
 
     public override ICalendar Calendar
@@ -61,7 +54,12 @@ namespace RobotWare.Quartz.Calendar.UserInterface
         mCalendar.AddExcludedDate(excDate);
       }
 
-      mCalendar.Description = string.Format("Excluding {0} days", mCalendar.ExcludedDates.Count);
+      mCalendar.Description = string.Format("Excluding {0} dates: ", mCalendar.ExcludedDates.Count);
+      foreach (var excDate in mCalendar.ExcludedDates)
+      {
+        mCalendar.Description += excDate.Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern) + ", ";
+      }
+      mCalendar.Description = mCalendar.Description.TrimEnd(new[] { ',', ' ' });
     }
 
     private void CmdAdd_Click(object sender, EventArgs e)
