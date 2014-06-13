@@ -250,82 +250,98 @@ namespace RobotWare.Runtime.Server.Manager
     {
       pnlDetails.Controls.Clear();
 
+      UpdateButtons(e);
+      UpdateToolTips(e);
+
+      var jobNode = e.Node as JobNode;
+      if (jobNode != null)
+      {
+        UpdateDetails(jobNode);
+      }
+
+      var triggerNode = e.Node as TriggerNode;
+      if (triggerNode != null)
+      {
+        SetPauseButtonText(triggerNode);
+        var trigger = triggerNode.Trigger as ICronTrigger;
+        if (trigger != null)
+        {
+          UpdateDetails(trigger);
+        }
+
+        var simpleTrigger = triggerNode.Trigger as ISimpleTrigger;
+        if (simpleTrigger != null)
+        {
+          UpdateDetails(simpleTrigger);
+        }
+      }
+
+      var calendarNode = e.Node as CalendarNode;
+      if (calendarNode != null)
+      {
+        UpdateDetails(calendarNode);
+      }
+    }
+
+    private void UpdateDetails(JobNode jobNode)
+    {
+      var ctrl = new NativeJobDetailDisplay(jobNode.Detail)
+      {
+        Dock = DockStyle.Fill
+      };
+      pnlDetails.Controls.Clear();
+      pnlDetails.Controls.Add(ctrl);
+    }
+
+    private void UpdateDetails(ICronTrigger trigger)
+    {
+      var ctrl = new CronTriggerDisplay(trigger)
+      {
+        Dock = DockStyle.Fill
+      };
+      pnlDetails.Controls.Clear();
+      pnlDetails.Controls.Add(ctrl);
+    }
+
+    private void UpdateDetails(ISimpleTrigger simpleTrigger)
+    {
+      var ctrl = new SimpleTriggerDisplay(simpleTrigger)
+      {
+        Dock = DockStyle.Fill
+      };
+      pnlDetails.Controls.Clear();
+      pnlDetails.Controls.Add(ctrl);
+    }
+
+    private void UpdateDetails(CalendarNode calendarNode)
+    {
+      var sched = mScheduler.GetScheduler();
+      var cal = sched.GetCalendar(calendarNode.Name);
+      var ctrl = new TextBox
+      {
+        Dock = DockStyle.Fill,
+        ReadOnly = true,
+        Text = cal.Description
+      };
+      pnlDetails.Controls.Clear();
+      pnlDetails.Controls.Add(ctrl);
+    }
+
+    private void UpdateButtons(TreeViewEventArgs e)
+    {
       CmdDelete.Enabled = e.Node is TriggerNode ||
-                            e.Node is JobNode ||
-                            e.Node is CalendarNode;
+                          e.Node is JobNode ||
+                          e.Node is CalendarNode;
       CmdAdd.Enabled = e.Node is SchedulerNode ||
                        e.Node is JobGroupsNode ||
                        e.Node is JobGroupNode ||
                        e.Node is JobNode ||
                        e.Node is TriggerNode ||
                        e.Node is CalendarsNode;
-      CmdEdit.Enabled = e.Node is CalendarNode;
-
-      UpdateToolTips(e);
-
-      var jobNode = e.Node as JobNode;
-      if (jobNode != null)
-      {
-        CmdRunJobNow.Enabled = true;
-        var ctrl = new NativeJobDetailDisplay(jobNode.Detail)
-                    {
-                      Dock = DockStyle.Fill
-                    };
-        pnlDetails.Controls.Clear();
-        pnlDetails.Controls.Add(ctrl);
-      }
-      else
-      {
-        CmdRunJobNow.Enabled = false;
-      }
-
-      var triggerNode = e.Node as TriggerNode;
-      if (triggerNode != null)
-      {
-        CmdPause.Enabled = true;
-        SetPauseButtonText(triggerNode);
-        var trigger = triggerNode.Trigger as ICronTrigger;
-        if (trigger != null)
-        {
-          var ctrl = new CronTriggerDisplay(trigger)
-                            {
-                              Dock = DockStyle.Fill
-                            };
-          pnlDetails.Controls.Clear();
-          pnlDetails.Controls.Add(ctrl);
-        }
-
-        var simpleTrigger = triggerNode.Trigger as ISimpleTrigger;
-        if (simpleTrigger != null)
-        {
-          var ctrl = new SimpleTriggerDisplay(simpleTrigger)
-                          {
-                            Dock = DockStyle.Fill
-                          };
-          pnlDetails.Controls.Clear();
-          pnlDetails.Controls.Add(ctrl);
-        }
-        CmdEdit.Enabled = true;
-      }
-      else
-      {
-        CmdPause.Enabled = false;
-      }
-
-      var calendarNode = e.Node as CalendarNode;
-      if (calendarNode != null)
-      {
-        var sched = mScheduler.GetScheduler();
-        var cal = sched.GetCalendar(calendarNode.Name);
-        var ctrl = new TextBox
-                        {
-                          Dock = DockStyle.Fill,
-                          ReadOnly = true,
-                          Text = cal.Description
-                        };
-        pnlDetails.Controls.Clear();
-        pnlDetails.Controls.Add(ctrl);
-      }
+      CmdEdit.Enabled = e.Node is CalendarNode ||
+                          e.Node is TriggerNode;
+      CmdRunJobNow.Enabled = e.Node is JobNode;
+      CmdPause.Enabled = e.Node is TriggerNode;
     }
 
     private void UpdateToolTips(TreeViewEventArgs e)
