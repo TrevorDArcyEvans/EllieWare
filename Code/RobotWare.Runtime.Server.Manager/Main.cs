@@ -348,6 +348,7 @@ namespace RobotWare.Runtime.Server.Manager
                             {
                               Dock = DockStyle.Fill
                             };
+          pnlDetails.Controls.Clear();
           pnlDetails.Controls.Add(ctrl);
           JobDetailsToggle(true);
         }
@@ -359,6 +360,7 @@ namespace RobotWare.Runtime.Server.Manager
                           {
                             Dock = DockStyle.Fill
                           };
+          pnlDetails.Controls.Clear();
           pnlDetails.Controls.Add(ctrl);
           JobDetailsToggle(true);
         }
@@ -372,14 +374,24 @@ namespace RobotWare.Runtime.Server.Manager
       var calendarNode = e.Node as CalendarNode;
       if (calendarNode != null)
       {
-        // TODO   display calendar
+        var sched = mScheduler.GetScheduler();
+        var cal = sched.GetCalendar(calendarNode.Name);
+        var ctrl = new TextBox
+                        {
+                          Dock = DockStyle.Fill,
+                          ReadOnly = true,
+                          Text = cal.Description
+                        };
+        pnlDetails.Controls.Clear();
+        pnlDetails.Controls.Add(ctrl);
       }
     }
 
     private void CmdRunJobNow_Click(object sender, EventArgs e)
     {
       var node = (JobNode)SchedulerView.SelectedNode;
-      mScheduler.GetScheduler().TriggerJob(node.Detail.Key);
+      var sched = mScheduler.GetScheduler();
+      sched.TriggerJob(node.Detail.Key);
     }
 
     private void CmdPause_Click(object sender, EventArgs e)
