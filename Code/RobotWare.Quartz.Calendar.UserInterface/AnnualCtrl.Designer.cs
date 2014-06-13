@@ -72,7 +72,6 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       this.DaysExcluded.Location = new System.Drawing.Point(3, 3);
       this.DaysExcluded.Name = "DaysExcluded";
       this.DaysExcluded.Size = new System.Drawing.Size(306, 313);
-      this.DaysExcluded.Sorted = true;
       this.DaysExcluded.TabIndex = 0;
       this.DaysExcluded.SelectedIndexChanged += new System.EventHandler(this.FireCalendarChangedInternal);
       this.DaysExcluded.SelectedValueChanged += new System.EventHandler(this.FireCalendarChangedInternal);
