@@ -241,14 +241,6 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void JobDetailsToggle(bool isVisible)
-    {
-      if (isVisible == false)
-      {
-        pnlDetails.Controls.Clear();
-      }
-    }
-
     private void SetPauseButtonText(TriggerNode triggerNode)
     {
       CmdPause.Text = mScheduler.GetScheduler().GetTriggerState(triggerNode.Trigger.Key) == TriggerState.Paused ? @"Resume" : @"Pause";
@@ -256,7 +248,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void SchedulerView_AfterSelect(object sender, TreeViewEventArgs e)
     {
-      JobDetailsToggle(false);
+      pnlDetails.Controls.Clear();
 
       CmdDelete.Enabled = e.Node is TriggerNode ||
                             e.Node is JobNode ||
@@ -269,6 +261,75 @@ namespace RobotWare.Runtime.Server.Manager
                        e.Node is CalendarsNode;
       CmdEdit.Enabled = e.Node is CalendarNode;
 
+      UpdateToolTips(e);
+
+      var jobNode = e.Node as JobNode;
+      if (jobNode != null)
+      {
+        CmdRunJobNow.Enabled = true;
+        var ctrl = new NativeJobDetailDisplay(jobNode.Detail)
+                    {
+                      Dock = DockStyle.Fill
+                    };
+        pnlDetails.Controls.Clear();
+        pnlDetails.Controls.Add(ctrl);
+      }
+      else
+      {
+        CmdRunJobNow.Enabled = false;
+      }
+
+      var triggerNode = e.Node as TriggerNode;
+      if (triggerNode != null)
+      {
+        CmdPause.Enabled = true;
+        SetPauseButtonText(triggerNode);
+        var trigger = triggerNode.Trigger as ICronTrigger;
+        if (trigger != null)
+        {
+          var ctrl = new CronTriggerDisplay(trigger)
+                            {
+                              Dock = DockStyle.Fill
+                            };
+          pnlDetails.Controls.Clear();
+          pnlDetails.Controls.Add(ctrl);
+        }
+
+        var simpleTrigger = triggerNode.Trigger as ISimpleTrigger;
+        if (simpleTrigger != null)
+        {
+          var ctrl = new SimpleTriggerDisplay(simpleTrigger)
+                          {
+                            Dock = DockStyle.Fill
+                          };
+          pnlDetails.Controls.Clear();
+          pnlDetails.Controls.Add(ctrl);
+        }
+        CmdEdit.Enabled = true;
+      }
+      else
+      {
+        CmdPause.Enabled = false;
+      }
+
+      var calendarNode = e.Node as CalendarNode;
+      if (calendarNode != null)
+      {
+        var sched = mScheduler.GetScheduler();
+        var cal = sched.GetCalendar(calendarNode.Name);
+        var ctrl = new TextBox
+                        {
+                          Dock = DockStyle.Fill,
+                          ReadOnly = true,
+                          Text = cal.Description
+                        };
+        pnlDetails.Controls.Clear();
+        pnlDetails.Controls.Add(ctrl);
+      }
+    }
+
+    private void UpdateToolTips(TreeViewEventArgs e)
+    {
       #region ToolTips
 
       // reset tooltips based on what is selected
@@ -318,72 +379,6 @@ namespace RobotWare.Runtime.Server.Manager
       }
 
       #endregion
-
-      var jobNode = e.Node as JobNode;
-      if (jobNode != null)
-      {
-        CmdRunJobNow.Enabled = true;
-        var ctrl = new NativeJobDetailDisplay(jobNode.Detail)
-                    {
-                      Dock = DockStyle.Fill
-                    };
-        pnlDetails.Controls.Add(ctrl);
-        JobDetailsToggle(true);
-      }
-      else
-      {
-        CmdRunJobNow.Enabled = false;
-      }
-
-      var triggerNode = e.Node as TriggerNode;
-      if (triggerNode != null)
-      {
-        CmdPause.Enabled = true;
-        SetPauseButtonText(triggerNode);
-        var trigger = triggerNode.Trigger as ICronTrigger;
-        if (trigger != null)
-        {
-          var ctrl = new CronTriggerDisplay(trigger)
-                            {
-                              Dock = DockStyle.Fill
-                            };
-          pnlDetails.Controls.Clear();
-          pnlDetails.Controls.Add(ctrl);
-          JobDetailsToggle(true);
-        }
-
-        var simpleTrigger = triggerNode.Trigger as ISimpleTrigger;
-        if (simpleTrigger != null)
-        {
-          var ctrl = new SimpleTriggerDisplay(simpleTrigger)
-                          {
-                            Dock = DockStyle.Fill
-                          };
-          pnlDetails.Controls.Clear();
-          pnlDetails.Controls.Add(ctrl);
-          JobDetailsToggle(true);
-        }
-        CmdEdit.Enabled = true;
-      }
-      else
-      {
-        CmdPause.Enabled = false;
-      }
-
-      var calendarNode = e.Node as CalendarNode;
-      if (calendarNode != null)
-      {
-        var sched = mScheduler.GetScheduler();
-        var cal = sched.GetCalendar(calendarNode.Name);
-        var ctrl = new TextBox
-                        {
-                          Dock = DockStyle.Fill,
-                          ReadOnly = true,
-                          Text = cal.Description
-                        };
-        pnlDetails.Controls.Clear();
-        pnlDetails.Controls.Add(ctrl);
-      }
     }
 
     private void CmdRunJobNow_Click(object sender, EventArgs e)
