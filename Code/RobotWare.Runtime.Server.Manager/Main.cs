@@ -331,7 +331,7 @@ namespace RobotWare.Runtime.Server.Manager
     {
       CmdDelete.Enabled = e.Node is TriggerNode ||
                           e.Node is JobNode ||
-                          e.Node is CalendarNode;
+                          (e.Node is CalendarNode && !(e.Node.Parent is TriggerNode));  // only allow deleting calendars from Calendars node
       CmdAdd.Enabled = e.Node is SchedulerNode ||
                        e.Node is JobGroupsNode ||
                        e.Node is JobGroupNode ||
@@ -342,12 +342,22 @@ namespace RobotWare.Runtime.Server.Manager
                           e.Node is TriggerNode;
       CmdRunJobNow.Enabled = e.Node is JobNode;
       CmdPause.Enabled = e.Node is TriggerNode;
+
+      // trying to delete calendar from top level calendars node
+      if (e.Node is CalendarNode && e.Node.Parent is CalendarsNode)
+      {
+        // cannot delete a calendar if it is referenced by a trigger
+        var sched = mScheduler.GetScheduler();
+        var triggerMatcher = GroupMatcher<TriggerKey>.GroupContains("");
+        var calNode = (CalendarNode) e.Node;
+        var refTriggers = sched.GetTriggerKeys(triggerMatcher).Where(x => sched.GetTrigger(x).CalendarName == calNode.Name);
+
+        CmdDelete.Enabled = !refTriggers.Any();
+      }
     }
 
     private void UpdateToolTips(TreeViewEventArgs e)
     {
-      #region ToolTips
-
       // reset tooltips based on what is selected
       CmdDelete.ToolTipText = CmdAdd.ToolTipText = string.Empty;
 
@@ -393,8 +403,6 @@ namespace RobotWare.Runtime.Server.Manager
       {
         CmdEdit.ToolTipText = @"Edit trigger";
       }
-
-      #endregion
     }
 
     private void CmdRunJobNow_Click(object sender, EventArgs e)
