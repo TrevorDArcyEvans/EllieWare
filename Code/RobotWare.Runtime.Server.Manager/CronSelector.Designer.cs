@@ -44,16 +44,6 @@ namespace RobotWare.Runtime.Server.Manager
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
-      // mCron
-      // 
-      tableLayoutPanel1.SetColumnSpan(this.mCron, 3);
-      this.mCron.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.mCron.Location = new System.Drawing.Point(5, 5);
-      this.mCron.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-      this.mCron.Name = "mCron";
-      this.mCron.Size = new System.Drawing.Size(558, 358);
-      this.mCron.TabIndex = 0;
-      // 
       // tableLayoutPanel1
       // 
       tableLayoutPanel1.ColumnCount = 3;
@@ -69,13 +59,23 @@ namespace RobotWare.Runtime.Server.Manager
       tableLayoutPanel1.RowCount = 2;
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      tableLayoutPanel1.Size = new System.Drawing.Size(568, 401);
+      tableLayoutPanel1.Size = new System.Drawing.Size(619, 401);
       tableLayoutPanel1.TabIndex = 1;
+      // 
+      // mCron
+      // 
+      tableLayoutPanel1.SetColumnSpan(this.mCron, 3);
+      this.mCron.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.mCron.Location = new System.Drawing.Point(5, 5);
+      this.mCron.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+      this.mCron.Name = "mCron";
+      this.mCron.Size = new System.Drawing.Size(609, 358);
+      this.mCron.TabIndex = 0;
       // 
       // CmdOK
       // 
       this.CmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.CmdOK.Location = new System.Drawing.Point(418, 371);
+      this.CmdOK.Location = new System.Drawing.Point(469, 371);
       this.CmdOK.Name = "CmdOK";
       this.CmdOK.Size = new System.Drawing.Size(75, 27);
       this.CmdOK.TabIndex = 1;
@@ -85,7 +85,7 @@ namespace RobotWare.Runtime.Server.Manager
       // CmdCancel
       // 
       this.CmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.CmdCancel.Location = new System.Drawing.Point(499, 371);
+      this.CmdCancel.Location = new System.Drawing.Point(550, 371);
       this.CmdCancel.Name = "CmdCancel";
       this.CmdCancel.Size = new System.Drawing.Size(66, 27);
       this.CmdCancel.TabIndex = 2;
@@ -98,7 +98,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.CmdCancel;
-      this.ClientSize = new System.Drawing.Size(568, 401);
+      this.ClientSize = new System.Drawing.Size(619, 401);
       this.Controls.Add(tableLayoutPanel1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "CronSelector";
