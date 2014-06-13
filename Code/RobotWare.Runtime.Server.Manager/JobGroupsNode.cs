@@ -11,7 +11,7 @@ namespace RobotWare.Runtime.Server.Manager
   public class JobGroupsNode : NodeBase
   {
     public JobGroupsNode(string name) :
-      base(name)
+      base(name, 4)
     {
     }
   }

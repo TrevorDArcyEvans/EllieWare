@@ -13,7 +13,7 @@ namespace RobotWare.Runtime.Server.Manager
     public QuartzSchedulerFacade Scheduler { get; private set; }
 
     public SchedulerNode(QuartzSchedulerFacade scheduler) :
-      base(scheduler.Address)
+      base(scheduler.Address, 1)
     {
       Scheduler = scheduler;
     }

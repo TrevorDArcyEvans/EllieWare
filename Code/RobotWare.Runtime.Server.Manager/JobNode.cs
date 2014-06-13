@@ -14,7 +14,7 @@ namespace RobotWare.Runtime.Server.Manager
     public IJobDetail Detail { get; private set; }
 
     public JobNode(IJobDetail jobDetail) :
-      base(jobDetail.Key.Name)
+      base(jobDetail.Key.Name, 2)
     {
       Detail = jobDetail;
     }

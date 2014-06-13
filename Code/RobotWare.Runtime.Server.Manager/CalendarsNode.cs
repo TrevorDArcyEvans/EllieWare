@@ -11,7 +11,7 @@ namespace RobotWare.Runtime.Server.Manager
   public class CalendarsNode : NodeBase
   {
     public CalendarsNode(string name) :
-      base(name)
+      base(name, 5)
     {
     }
   }

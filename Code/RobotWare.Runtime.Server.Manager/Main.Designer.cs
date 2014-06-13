@@ -42,6 +42,7 @@ namespace RobotWare.Runtime.Server.Manager
       System.Windows.Forms.GroupBox groupBox1;
       System.Windows.Forms.GroupBox groupBox2;
       System.Windows.Forms.SplitContainer splitContainer2;
+      System.Windows.Forms.ImageList imageList1;
       System.Windows.Forms.SplitContainer splitContainer1;
       System.Windows.Forms.TabControl tabControl1;
       System.Windows.Forms.TabPage tabPage1;
@@ -66,6 +67,7 @@ namespace RobotWare.Runtime.Server.Manager
       groupBox1 = new System.Windows.Forms.GroupBox();
       groupBox2 = new System.Windows.Forms.GroupBox();
       splitContainer2 = new System.Windows.Forms.SplitContainer();
+      imageList1 = new System.Windows.Forms.ImageList(this.components);
       splitContainer1 = new System.Windows.Forms.SplitContainer();
       tabControl1 = new System.Windows.Forms.TabControl();
       tabPage1 = new System.Windows.Forms.TabPage();
@@ -275,12 +277,27 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       this.SchedulerView.Dock = System.Windows.Forms.DockStyle.Fill;
       this.SchedulerView.HideSelection = false;
+      this.SchedulerView.ImageIndex = 0;
+      this.SchedulerView.ImageList = imageList1;
       this.SchedulerView.Location = new System.Drawing.Point(0, 0);
       this.SchedulerView.Margin = new System.Windows.Forms.Padding(4);
       this.SchedulerView.Name = "SchedulerView";
+      this.SchedulerView.SelectedImageIndex = 0;
       this.SchedulerView.Size = new System.Drawing.Size(413, 248);
       this.SchedulerView.TabIndex = 0;
       this.SchedulerView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SchedulerView_AfterSelect);
+      // 
+      // imageList1
+      // 
+      imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+      imageList1.TransparentColor = System.Drawing.Color.Transparent;
+      imageList1.Images.SetKeyName(0, "calendar_16x16.png");
+      imageList1.Images.SetKeyName(1, "clock_16x16.png");
+      imageList1.Images.SetKeyName(2, "hardhat_16x16.png");
+      imageList1.Images.SetKeyName(3, "windup_key_6x16.png");
+      imageList1.Images.SetKeyName(4, "users_family_16x16.png");
+      imageList1.Images.SetKeyName(5, "date_time_16x16.png");
+      imageList1.Images.SetKeyName(6, "schoolboy_16x16.png");
       // 
       // pnlDetails
       // 

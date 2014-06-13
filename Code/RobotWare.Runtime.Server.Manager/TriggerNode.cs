@@ -15,7 +15,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     public TriggerNode(ITrigger trigger) :
       // use description if we have it
-      base(trigger.Description ?? trigger.Key.Name)
+      base(trigger.Description ?? trigger.Key.Name, 3)
     {
       Trigger = trigger;
     }

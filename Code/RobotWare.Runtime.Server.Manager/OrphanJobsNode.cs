@@ -11,7 +11,7 @@ namespace RobotWare.Runtime.Server.Manager
   public class OrphanJobsNode : NodeBase
   {
     public OrphanJobsNode(string name) :
-      base(name)
+      base(name, 6)
     {
     }
   }

@@ -11,9 +11,15 @@ namespace RobotWare.Runtime.Server.Manager
 {
   public class NodeBase : TreeNode
   {
-    public NodeBase(string name)
+    public NodeBase(string name, int imgIdx) :
+      base(name, imgIdx, imgIdx)
     {
       Name = Text = name;
+    }
+
+    public NodeBase(string name) :
+      this(name, 100)
+    {
     }
   }
 }

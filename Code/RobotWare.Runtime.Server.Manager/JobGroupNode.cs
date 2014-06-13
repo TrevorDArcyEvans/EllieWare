@@ -10,8 +10,9 @@ namespace RobotWare.Runtime.Server.Manager
 {
   public class JobGroupNode : NodeBase
   {
+    // TODO   remove
     public JobGroupNode(string jobGroup) :
-      base(jobGroup)
+      base(jobGroup, 4)
     {
     }
   }
