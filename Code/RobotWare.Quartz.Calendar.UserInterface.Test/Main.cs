@@ -21,5 +21,10 @@ namespace RobotWare.Quartz.Calendar.UserInterface.Test
     {
       Description.Text = CalCtrl.Calendar.Description;
     }
+
+    private void CmdViewOnly_Click(object sender, EventArgs e)
+    {
+      CalCtrl.Enabled = !CalCtrl.Enabled;
+    }
   }
 }

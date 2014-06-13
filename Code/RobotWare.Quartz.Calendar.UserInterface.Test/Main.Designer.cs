@@ -36,18 +36,21 @@ namespace RobotWare.Quartz.Calendar.UserInterface.Test
     private void InitializeComponent()
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-      this.Description = new System.Windows.Forms.TextBox();
       this.CalCtrl = new RobotWare.Quartz.Calendar.UserInterface.CalendarCtrl();
+      this.Description = new System.Windows.Forms.TextBox();
+      this.CmdViewOnly = new System.Windows.Forms.Button();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // tableLayoutPanel1
       // 
-      tableLayoutPanel1.ColumnCount = 1;
+      tableLayoutPanel1.ColumnCount = 2;
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       tableLayoutPanel1.Controls.Add(this.CalCtrl, 0, 0);
       tableLayoutPanel1.Controls.Add(this.Description, 0, 1);
+      tableLayoutPanel1.Controls.Add(this.CmdViewOnly, 1, 1);
       tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -57,23 +60,36 @@ namespace RobotWare.Quartz.Calendar.UserInterface.Test
       tableLayoutPanel1.Size = new System.Drawing.Size(493, 346);
       tableLayoutPanel1.TabIndex = 1;
       // 
-      // Description
-      // 
-      this.Description.Dock = System.Windows.Forms.DockStyle.Top;
-      this.Description.Location = new System.Drawing.Point(3, 321);
-      this.Description.Name = "Description";
-      this.Description.ReadOnly = true;
-      this.Description.Size = new System.Drawing.Size(487, 22);
-      this.Description.TabIndex = 1;
-      // 
       // CalCtrl
       // 
+      tableLayoutPanel1.SetColumnSpan(this.CalCtrl, 2);
       this.CalCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.CalCtrl.Location = new System.Drawing.Point(3, 3);
       this.CalCtrl.Name = "CalCtrl";
-      this.CalCtrl.Size = new System.Drawing.Size(487, 312);
+      this.CalCtrl.Size = new System.Drawing.Size(487, 307);
       this.CalCtrl.TabIndex = 0;
       this.CalCtrl.CalendarChanged += new System.EventHandler(this.CalCtrl_CalendarChanged);
+      // 
+      // Description
+      // 
+      this.Description.Dock = System.Windows.Forms.DockStyle.Top;
+      this.Description.Location = new System.Drawing.Point(3, 316);
+      this.Description.Name = "Description";
+      this.Description.ReadOnly = true;
+      this.Description.Size = new System.Drawing.Size(405, 22);
+      this.Description.TabIndex = 1;
+      // 
+      // CmdViewOnly
+      // 
+      this.CmdViewOnly.AutoSize = true;
+      this.CmdViewOnly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+      this.CmdViewOnly.Location = new System.Drawing.Point(414, 316);
+      this.CmdViewOnly.Name = "CmdViewOnly";
+      this.CmdViewOnly.Size = new System.Drawing.Size(76, 27);
+      this.CmdViewOnly.TabIndex = 2;
+      this.CmdViewOnly.Text = "ViewOnly";
+      this.CmdViewOnly.UseVisualStyleBackColor = true;
+      this.CmdViewOnly.Click += new System.EventHandler(this.CmdViewOnly_Click);
       // 
       // Main
       // 
@@ -94,6 +110,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface.Test
 
     private CalendarCtrl CalCtrl;
     private System.Windows.Forms.TextBox Description;
+    private System.Windows.Forms.Button CmdViewOnly;
   }
 }
 
