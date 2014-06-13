@@ -23,14 +23,6 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       DaysExcluded.DataSource = CultureInfo.CurrentCulture.DateTimeFormat.DayNames;
     }
 
-    public override Type CalendarType
-    {
-      get
-      {
-        return typeof(WeeklyCalendar);
-      }
-    }
-
     public override ICalendar Calendar
     {
       get

@@ -20,14 +20,6 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       InitializeComponent();
     }
 
-    public virtual Type CalendarType
-    {
-      get
-      {
-        throw new NotImplementedException("Must override in derived class - not abstract for VS designer support");
-      }
-    }
-
     public virtual ICalendar Calendar
     {
       get

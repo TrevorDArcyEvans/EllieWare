@@ -20,14 +20,6 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       InitializeComponent();
     }
 
-    public override Type CalendarType
-    {
-      get
-      {
-        return typeof (DailyCtrl);
-      }
-    }
-
     public override ICalendar Calendar
     {
       get

@@ -21,14 +21,6 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       InitializeComponent();
     }
 
-    public override Type CalendarType
-    {
-      get
-      {
-        return typeof(MonthlyCalendar);
-      }
-    }
-
     public override ICalendar Calendar
     {
       get
