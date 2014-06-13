@@ -18,6 +18,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Security;
 
@@ -46,13 +47,13 @@ namespace Quartz.Impl.Calendar
 		/// days. Only the month, day and year of the returned dates are
 		/// significant.
 		/// </summary>
-		public virtual ISortedSet<DateTime> ExcludedDates
+		public virtual System.Collections.Generic.ISet<DateTime> ExcludedDates
 		{
-			get { return new TreeSet<DateTime>(dates); }
+			get { return new SortedSet<DateTime>(dates); }
 		}
 
 		// A sorted set to store the holidays
-		private TreeSet<DateTime> dates = new TreeSet<DateTime>();
+    private SortedSet<DateTime> dates = new SortedSet<DateTime>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HolidayCalendar"/> class.
@@ -91,7 +92,7 @@ namespace Quartz.Impl.Calendar
             {
                 case 0:
                     object o = info.GetValue("dates", typeof(object));
-                    TreeSet oldTreeset = o as TreeSet;
+                    SortedSet<DateTime> oldTreeset = o as SortedSet<DateTime>;
                     if (oldTreeset != null)
                     {
                         foreach (DateTime dateTime in oldTreeset)
@@ -102,11 +103,11 @@ namespace Quartz.Impl.Calendar
                     else
                     {
                         // must be generic treeset 
-                        dates = (TreeSet<DateTime>) o;
+                      dates = (SortedSet<DateTime>)o;
                     }
                     break;
                 case 1:
-                    dates = (TreeSet<DateTime>) info.GetValue("dates", typeof(TreeSet<DateTime>));
+                    dates = (SortedSet<DateTime>)info.GetValue("dates", typeof(SortedSet<DateTime>));
                     break;
                 default:
                     throw new NotSupportedException("Unknown serialization version");
@@ -180,7 +181,7 @@ namespace Quartz.Impl.Calendar
 	    public override object Clone()
 	    {
             HolidayCalendar clone = (HolidayCalendar) base.Clone();
-            clone.dates = new TreeSet<DateTime>(dates);
+            clone.dates = new SortedSet<DateTime>(dates);
             return clone;
 	    }
 
