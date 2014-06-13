@@ -49,9 +49,14 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       }
       mCalendar.SetTimeRange(TimeFrom.Value, TimeTo.Value);
       mCalendar.InvertTimeRange = InvertRange.Checked;
-      mCalendar.Description = string.Format("From {0} to {1}",
-                                mCalendar.GetTimeRangeStartingTimeUtc(new DateTimeOffset()), 
-                                mCalendar.GetTimeRangeEndingTimeUtc(new DateTimeOffset()));
+
+      // If the property invertTimeRange is false(default), the time range defines a range 
+      // of times in which triggers are not allowed to fire. If invertTimeRange is true, the
+      // time range is inverted: that is, all times outside the defined time range are excluded.
+      mCalendar.Description = string.Format("{0} {1} to {2}",
+                                mCalendar.InvertTimeRange ? "Including" : "Excluding",
+                                mCalendar.GetTimeRangeStartingTimeUtc(new DateTimeOffset()).ToString(TimeFrom.CustomFormat), 
+                                mCalendar.GetTimeRangeEndingTimeUtc(new DateTimeOffset()).ToString(TimeTo.CustomFormat));
     }
   }
 }

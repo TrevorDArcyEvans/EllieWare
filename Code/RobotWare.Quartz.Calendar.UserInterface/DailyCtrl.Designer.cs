@@ -100,7 +100,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       // 
       // TimeFrom
       // 
-      this.TimeFrom.CustomFormat = "MMMM dd, yyyy HH:mm:ss";
+      this.TimeFrom.CustomFormat = "HH:mm:ss";
       this.TimeFrom.Dock = System.Windows.Forms.DockStyle.Top;
       this.TimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
       this.TimeFrom.Location = new System.Drawing.Point(120, 3);
@@ -111,7 +111,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       // 
       // TimeTo
       // 
-      this.TimeTo.CustomFormat = "MMMM dd, yyyy HH:mm:ss";
+      this.TimeTo.CustomFormat = "HH:mm:ss";
       this.TimeTo.Dock = System.Windows.Forms.DockStyle.Top;
       this.TimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
       this.TimeTo.Location = new System.Drawing.Point(120, 31);
