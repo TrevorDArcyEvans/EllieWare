@@ -94,6 +94,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
       this.ExcludeDay.Name = "ExcludeDay";
       this.ExcludeDay.Size = new System.Drawing.Size(200, 22);
       this.ExcludeDay.TabIndex = 2;
+      this.ExcludeDay.ValueChanged += new System.EventHandler(this.FireCalendarChangedInternal);
       // 
       // CmdDelete
       // 

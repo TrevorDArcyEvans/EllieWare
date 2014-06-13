@@ -49,6 +49,7 @@ namespace RobotWare.Quartz.Calendar.UserInterface
     protected override void UpdateUserInterface()
     {
       CmdDelete.Enabled = DaysExcluded.SelectedIndex > -1;
+      CmdAdd.Enabled = !mExcludedDates.Contains(ExcludeDay.Value.Date);
 
       foreach (var excDate in mCalendar.ExcludedDates)
       {
