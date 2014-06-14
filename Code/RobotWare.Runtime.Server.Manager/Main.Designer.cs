@@ -36,7 +36,7 @@ namespace RobotWare.Runtime.Server.Manager
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.ToolStrip toolStrip1;
+      System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
       System.Windows.Forms.StatusStrip statusStrip1;
       System.Windows.Forms.GroupBox groupBox1;
       System.Windows.Forms.GroupBox groupBox2;
@@ -44,8 +44,7 @@ namespace RobotWare.Runtime.Server.Manager
       System.Windows.Forms.ImageList imageList1;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
       System.Windows.Forms.SplitContainer splitContainer1;
-      System.Windows.Forms.TabControl tabControl1;
-      System.Windows.Forms.TabPage tabPage1;
+      this.ScheduleToolstrip = new System.Windows.Forms.ToolStrip();
       this.CmdRefreshScheduled = new System.Windows.Forms.ToolStripButton();
       this.CmdRunJobNow = new System.Windows.Forms.ToolStripButton();
       this.CmdPause = new System.Windows.Forms.ToolStripButton();
@@ -60,18 +59,18 @@ namespace RobotWare.Runtime.Server.Manager
       this.JobDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.SchedulerView = new System.Windows.Forms.TreeView();
       this.pnlDetails = new System.Windows.Forms.Panel();
+      this.MainTab = new System.Windows.Forms.TabControl();
+      this.SchedulesTab = new System.Windows.Forms.TabPage();
       this.SpecificationTab = new System.Windows.Forms.TabPage();
       this.RefreshScheduler = new System.Windows.Forms.Timer(this.components);
-      toolStrip1 = new System.Windows.Forms.ToolStrip();
+      toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       statusStrip1 = new System.Windows.Forms.StatusStrip();
       groupBox1 = new System.Windows.Forms.GroupBox();
       groupBox2 = new System.Windows.Forms.GroupBox();
       splitContainer2 = new System.Windows.Forms.SplitContainer();
       imageList1 = new System.Windows.Forms.ImageList(this.components);
       splitContainer1 = new System.Windows.Forms.SplitContainer();
-      tabControl1 = new System.Windows.Forms.TabControl();
-      tabPage1 = new System.Windows.Forms.TabPage();
-      toolStrip1.SuspendLayout();
+      this.ScheduleToolstrip.SuspendLayout();
       statusStrip1.SuspendLayout();
       groupBox1.SuspendLayout();
       groupBox2.SuspendLayout();
@@ -83,25 +82,26 @@ namespace RobotWare.Runtime.Server.Manager
       splitContainer1.Panel1.SuspendLayout();
       splitContainer1.Panel2.SuspendLayout();
       splitContainer1.SuspendLayout();
-      tabControl1.SuspendLayout();
-      tabPage1.SuspendLayout();
+      this.MainTab.SuspendLayout();
+      this.SchedulesTab.SuspendLayout();
       this.SuspendLayout();
       // 
-      // toolStrip1
+      // ScheduleToolstrip
       // 
-      toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-      toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.ScheduleToolstrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+      this.ScheduleToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CmdRefreshScheduled,
             this.CmdRunJobNow,
             this.CmdPause,
+            toolStripSeparator1,
             this.CmdDelete,
             this.CmdAdd,
             this.CmdEdit});
-      toolStrip1.Location = new System.Drawing.Point(0, 0);
-      toolStrip1.Name = "toolStrip1";
-      toolStrip1.Size = new System.Drawing.Size(935, 39);
-      toolStrip1.TabIndex = 0;
-      toolStrip1.Text = "toolStrip1";
+      this.ScheduleToolstrip.Location = new System.Drawing.Point(0, 0);
+      this.ScheduleToolstrip.Name = "ScheduleToolstrip";
+      this.ScheduleToolstrip.Size = new System.Drawing.Size(935, 39);
+      this.ScheduleToolstrip.TabIndex = 0;
+      this.ScheduleToolstrip.Text = "toolStrip1";
       // 
       // CmdRefreshScheduled
       // 
@@ -136,6 +136,11 @@ namespace RobotWare.Runtime.Server.Manager
       this.CmdPause.Size = new System.Drawing.Size(36, 36);
       this.CmdPause.Text = "Pause";
       this.CmdPause.Click += new System.EventHandler(this.CmdPause_Click);
+      // 
+      // toolStripSeparator1
+      // 
+      toolStripSeparator1.Name = "toolStripSeparator1";
+      toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
       // 
       // CmdDelete
       // 
@@ -333,27 +338,28 @@ namespace RobotWare.Runtime.Server.Manager
       splitContainer1.SplitterWidth = 5;
       splitContainer1.TabIndex = 18;
       // 
-      // tabControl1
+      // MainTab
       // 
-      tabControl1.Controls.Add(tabPage1);
-      tabControl1.Controls.Add(this.SpecificationTab);
-      tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      tabControl1.Location = new System.Drawing.Point(0, 39);
-      tabControl1.Name = "tabControl1";
-      tabControl1.SelectedIndex = 0;
-      tabControl1.Size = new System.Drawing.Size(935, 581);
-      tabControl1.TabIndex = 19;
+      this.MainTab.Controls.Add(this.SchedulesTab);
+      this.MainTab.Controls.Add(this.SpecificationTab);
+      this.MainTab.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.MainTab.Location = new System.Drawing.Point(0, 39);
+      this.MainTab.Name = "MainTab";
+      this.MainTab.SelectedIndex = 0;
+      this.MainTab.Size = new System.Drawing.Size(935, 581);
+      this.MainTab.TabIndex = 19;
+      this.MainTab.SelectedIndexChanged += new System.EventHandler(this.Tab_SelectedIndexChanged);
       // 
-      // tabPage1
+      // SchedulesTab
       // 
-      tabPage1.Controls.Add(splitContainer1);
-      tabPage1.Location = new System.Drawing.Point(4, 25);
-      tabPage1.Name = "tabPage1";
-      tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      tabPage1.Size = new System.Drawing.Size(927, 552);
-      tabPage1.TabIndex = 0;
-      tabPage1.Text = "Schedules";
-      tabPage1.UseVisualStyleBackColor = true;
+      this.SchedulesTab.Controls.Add(splitContainer1);
+      this.SchedulesTab.Location = new System.Drawing.Point(4, 25);
+      this.SchedulesTab.Name = "SchedulesTab";
+      this.SchedulesTab.Padding = new System.Windows.Forms.Padding(3);
+      this.SchedulesTab.Size = new System.Drawing.Size(927, 552);
+      this.SchedulesTab.TabIndex = 0;
+      this.SchedulesTab.Text = "Schedules";
+      this.SchedulesTab.UseVisualStyleBackColor = true;
       // 
       // SpecificationTab
       // 
@@ -375,15 +381,15 @@ namespace RobotWare.Runtime.Server.Manager
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(935, 645);
-      this.Controls.Add(tabControl1);
+      this.Controls.Add(this.MainTab);
       this.Controls.Add(statusStrip1);
-      this.Controls.Add(toolStrip1);
+      this.Controls.Add(this.ScheduleToolstrip);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "Main";
       this.Text = "Form1";
-      toolStrip1.ResumeLayout(false);
-      toolStrip1.PerformLayout();
+      this.ScheduleToolstrip.ResumeLayout(false);
+      this.ScheduleToolstrip.PerformLayout();
       statusStrip1.ResumeLayout(false);
       statusStrip1.PerformLayout();
       groupBox1.ResumeLayout(false);
@@ -396,8 +402,8 @@ namespace RobotWare.Runtime.Server.Manager
       splitContainer1.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(splitContainer1)).EndInit();
       splitContainer1.ResumeLayout(false);
-      tabControl1.ResumeLayout(false);
-      tabPage1.ResumeLayout(false);
+      this.MainTab.ResumeLayout(false);
+      this.SchedulesTab.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -420,6 +426,9 @@ namespace RobotWare.Runtime.Server.Manager
     private System.Windows.Forms.ToolStripButton CmdDelete;
     private System.Windows.Forms.ToolStripButton CmdEdit;
     private System.Windows.Forms.ToolStripButton CmdAdd;
+    private System.Windows.Forms.TabControl MainTab;
+    private System.Windows.Forms.ToolStrip ScheduleToolstrip;
+    private System.Windows.Forms.TabPage SchedulesTab;
     private System.Windows.Forms.TabPage SpecificationTab;
   }
 }

@@ -670,5 +670,11 @@ namespace RobotWare.Runtime.Server.Manager
     }
 
     #endregion
+
+    private void Tab_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      ScheduleToolstrip.Enabled = MainTab.SelectedIndex == 0;
+      SchedulerView_AfterSelect(sender, new TreeViewEventArgs(SchedulerView.SelectedNode));
+    }
   }
 }
