@@ -2,33 +2,33 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39A3B743-1EBD-4CC0-8E37-ACE3DD38B1C0}"
 	ProjectSection(SolutionItems) = preProject
-		exclude_bin.txt = exclude_bin.txt
-		exclude_src.txt = exclude_src.txt
-		Keys\System.Data.SQLite.CF.snk = Keys\System.Data.SQLite.CF.snk
-		Keys\System.Data.SQLite.snk = Keys\System.Data.SQLite.snk
 		NuGet\net20\Core\config.transform = NuGet\net20\Core\config.transform
 		NuGet\net40\Core\config.transform = NuGet\net40\Core\config.transform
 		NuGet\net40\EF6\config.transform = NuGet\net40\EF6\config.transform
+		exclude_bin.txt = exclude_bin.txt
+		exclude_src.txt = exclude_src.txt
 		NuGet\net20\Core\install.ps1 = NuGet\net20\Core\install.ps1
 		NuGet\net40\Core\install.ps1 = NuGet\net40\Core\install.ps1
 		NuGet\net40\EF6\install.ps1 = NuGet\net40\EF6\install.ps1
 		NuGet\net40\EF6\provider.ps1 = NuGet\net40\EF6\provider.ps1
+		readme.htm = readme.htm
 		NuGet\SQLite.Beta.nuspec = NuGet\SQLite.Beta.nuspec
 		NuGet\SQLite.Core.nuspec = NuGet\SQLite.Core.nuspec
 		NuGet\SQLite.EF6.nuspec = NuGet\SQLite.EF6.nuspec
 		NuGet\SQLite.Linq.nuspec = NuGet\SQLite.Linq.nuspec
 		NuGet\SQLite.MSIL.nuspec = NuGet\SQLite.MSIL.nuspec
+		Targets\SQLite.NET.Settings.targets = Targets\SQLite.NET.Settings.targets
+		Targets\SQLite.NET.Settings.targets.netFx35 = Targets\SQLite.NET.Settings.targets.netFx35
+		Targets\SQLite.NET.targets = Targets\SQLite.NET.targets
 		NuGet\SQLite.nuspec = NuGet\SQLite.nuspec
 		NuGet\SQLite.Test.nuspec = NuGet\SQLite.Test.nuspec
 		NuGet\SQLite.x64.nuspec = NuGet\SQLite.x64.nuspec
 		NuGet\SQLite.x86.nuspec = NuGet\SQLite.x86.nuspec
-		readme.htm = readme.htm
+		Keys\System.Data.SQLite.CF.snk = Keys\System.Data.SQLite.CF.snk
 		System.Data.SQLite\Targets\System.Data.SQLite.Files.targets = System.Data.SQLite\Targets\System.Data.SQLite.Files.targets
 		System.Data.SQLite\Targets\System.Data.SQLite.Properties.targets = System.Data.SQLite\Targets\System.Data.SQLite.Properties.targets
 		System.Data.SQLite\Targets\System.Data.SQLite.References.targets = System.Data.SQLite\Targets\System.Data.SQLite.References.targets
-		Targets\SQLite.NET.Settings.targets = Targets\SQLite.NET.Settings.targets
-		Targets\SQLite.NET.Settings.targets.netFx35 = Targets\SQLite.NET.Settings.targets.netFx35
-		Targets\SQLite.NET.targets = Targets\SQLite.NET.targets
+		Keys\System.Data.SQLite.snk = Keys\System.Data.SQLite.snk
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Data.SQLite.2010", "System.Data.SQLite\System.Data.SQLite.2010.csproj", "{AC139952-261A-4463-B6FA-AEBC25283A66}"
@@ -185,8 +185,8 @@ Global
 		{E27B1B1E-19C0-45E8-AA74-B6E1C041A130}.ReleaseNativeOnly|x64.Build.0 = Release|Any CPU
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Any CPU.Build.0 = Debug|Win32
-		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|Win32.Build.0 = Debug|Win32
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Debug|x64.ActiveCfg = Debug|x64
@@ -201,8 +201,8 @@ Global
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.DebugNativeOnly|x64.Build.0 = DebugNativeOnly|x64
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Any CPU.ActiveCfg = Release|Win32
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Any CPU.Build.0 = Release|Win32
-		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Mixed Platforms.Build.0 = Release|x64
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Win32.ActiveCfg = Release|Win32
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|Win32.Build.0 = Release|Win32
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A}.Release|x64.ActiveCfg = Release|x64
@@ -377,8 +377,8 @@ Global
 		{2975AE0A-F159-4834-A837-5242C6691886}.ReleaseNativeOnly|x64.Build.0 = Release|Any CPU
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Any CPU.Build.0 = Debug|Win32
-		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Win32.ActiveCfg = Debug|Win32
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|Win32.Build.0 = Debug|Win32
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Debug|x64.ActiveCfg = Debug|x64
@@ -393,8 +393,8 @@ Global
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.DebugNativeOnly|x64.Build.0 = DebugNativeOnly|x64
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Any CPU.ActiveCfg = Release|Win32
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Any CPU.Build.0 = Release|Win32
-		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Mixed Platforms.Build.0 = Release|x64
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Win32.ActiveCfg = Release|Win32
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|Win32.Build.0 = Release|Win32
 		{490CBC51-A3B2-4397-89F9-16E858DCB4F8}.Release|x64.ActiveCfg = Release|x64

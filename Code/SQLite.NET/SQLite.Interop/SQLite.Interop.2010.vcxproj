@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
  *
  * SQLite.Interop.2010.vcxproj -
@@ -55,18 +55,8 @@
     <SQLiteNetDir>$(MSBuildProjectDirectory)\..</SQLiteNetDir>
   </PropertyGroup>
   <Import Project="$(SQLiteNetDir)\Targets\SQLite.NET.Settings.targets" />
-  <Import Project="$(INTEROP_EXTRA_PROPS_FILE)"
-          Condition="'$(INTEROP_EXTRA_PROPS_FILE)' != '' And
-                     Exists('$(INTEROP_EXTRA_PROPS_FILE)')" />
-  <PropertyGroup Condition="('$(Configuration)' == 'DebugNativeOnly' Or
-                             '$(Configuration)' == 'ReleaseNativeOnly') And
-                            (('$(Platform)' == 'Win32' And
-                             ('$(PROCESSOR_ARCHITECTURE)' != 'x86' Or
-                              '$(PROCESSOR_ARCHITEW6432)' != '')) Or
-                             ('$(Platform)' == 'x64' And
-                             ('$(PROCESSOR_ARCHITECTURE)' != 'x86' Or
-                              '$(PROCESSOR_ARCHITEW6432)' != 'AMD64')))"
-                 Label="PostBuildEvent">
+  <Import Project="$(INTEROP_EXTRA_PROPS_FILE)" Condition="'$(INTEROP_EXTRA_PROPS_FILE)' != '' And&#xD;&#xA;                     Exists('$(INTEROP_EXTRA_PROPS_FILE)')" />
+  <PropertyGroup Condition="('$(Configuration)' == 'DebugNativeOnly' Or&#xD;&#xA;                             '$(Configuration)' == 'ReleaseNativeOnly') And&#xD;&#xA;                            (('$(Platform)' == 'Win32' And&#xD;&#xA;                             ('$(PROCESSOR_ARCHITECTURE)' != 'x86' Or&#xD;&#xA;                              '$(PROCESSOR_ARCHITEW6432)' != '')) Or&#xD;&#xA;                             ('$(Platform)' == 'x64' And&#xD;&#xA;                             ('$(PROCESSOR_ARCHITECTURE)' != 'x86' Or&#xD;&#xA;                              '$(PROCESSOR_ARCHITEW6432)' != 'AMD64')))" Label="PostBuildEvent">
     <DoesMachineMatchPlatform>false</DoesMachineMatchPlatform>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -170,7 +160,8 @@
     </Manifest>
     <PostBuildEvent>
       <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'==''">"$(FrameworkSDKDir)Bin\sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
-      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
+      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"
+copy /y $(TargetPath) $(OutDir)$(INTEROP_NATIVE_NAME)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -214,7 +205,10 @@
     </Manifest>
     <PostBuildEvent>
       <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'==''">"$(FrameworkSDKDir)Bin\sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
-      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
+      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"
+copy /y $(TargetPath) $(OutDir)$(INTEROP_NATIVE_NAME)$(TargetExt)
+copy /y $(TargetDir)$(TargetName).pdb $(OutDir)$(INTEROP_NATIVE_NAME).pdb
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugNativeOnly|Win32'">
@@ -336,7 +330,8 @@
     </Manifest>
     <PostBuildEvent>
       <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'==''">"$(FrameworkSDKDir)Bin\sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
-      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
+      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"
+copy /y $(TargetPath) $(OutDir)$(INTEROP_NATIVE_NAME)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -382,7 +377,10 @@
     </Manifest>
     <PostBuildEvent>
       <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'==''">"$(FrameworkSDKDir)Bin\sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
-      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"</Command>
+      <Command Condition="'$(TargetFrameworkSDKToolsDirectory)'!=''">"$(TargetFrameworkSDKToolsDirectory)sn.exe" -Ra "$(TargetPath)" "$(INTEROP_KEY_FILE)"
+copy /y $(TargetPath) $(OutDir)$(INTEROP_NATIVE_NAME)$(TargetExt)
+copy /y $(TargetDir)$(TargetName).pdb $(OutDir)$(INTEROP_NATIVE_NAME).pdb
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNativeOnly|Win32'">
