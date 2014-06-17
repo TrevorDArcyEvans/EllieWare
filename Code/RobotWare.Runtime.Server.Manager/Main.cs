@@ -592,13 +592,14 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddCalendar(CalendarsNode calNode, Action updateAction)
     {
-      var frm = new AddCalendar();
+      var sched = mScheduler.GetScheduler();
+      var allCals = sched.GetCalendarNames();
+      var frm = new AddCalendar(allCals);
       if (frm.ShowDialog() != DialogResult.OK)
       {
         return;
       }
 
-      var sched = mScheduler.GetScheduler();
       sched.AddCalendar(frm.Calendar.Description, frm.Calendar, true, true);
       updateAction();
     }
