@@ -121,27 +121,32 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void UpdateScheduledJobs()
     {
-      var schedulerNode = new SchedulerNode(mScheduler);
-      if (SchedulerView.Nodes.ContainsKey(schedulerNode.Name))
+      var expNodes = SchedulerView.Nodes.GetExpansionState();
+      try
       {
-        SchedulerView.Nodes.RemoveByKey(schedulerNode.Name);
+        var schedulerNode = new SchedulerNode(mScheduler);
+        if (SchedulerView.Nodes.ContainsKey(schedulerNode.Name))
+        {
+          SchedulerView.Nodes.RemoveByKey(schedulerNode.Name);
+        }
+        SchedulerView.Nodes.Add(schedulerNode);
+        var jobGroupsIdx = schedulerNode.Nodes.Add(new JobGroupsNode("Job Groups"));
+        var jobGroupsNode = schedulerNode.Nodes[jobGroupsIdx];
+        var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
+        foreach (var jobGroup in jobGroups)
+        {
+          var jobGroupNode = new JobGroupNode(jobGroup);
+          jobGroupsNode.Nodes.Add(jobGroupNode);
+          AddJobNodes(jobGroupNode);
+        }
+
+        AddOrphanJobs(schedulerNode);
+        AddCalendars(schedulerNode);
       }
-      SchedulerView.Nodes.Add(schedulerNode);
-      var jobGroupsIdx = schedulerNode.Nodes.Add(new JobGroupsNode("Job Groups"));
-      var jobGroupsNode = schedulerNode.Nodes[jobGroupsIdx];
-      var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
-      foreach (var jobGroup in jobGroups)
+      finally
       {
-        var jobGroupNode = new JobGroupNode(jobGroup);
-        jobGroupsNode.Nodes.Add(jobGroupNode);
-        AddJobNodes(jobGroupNode);
+        SchedulerView.Nodes.SetExpansionState(expNodes);
       }
-
-      AddOrphanJobs(schedulerNode);
-      AddCalendars(schedulerNode);
-
-      SchedulerView.Nodes[0].Expand();
-      jobGroupsNode.Expand();
     }
 
     private void AddJobNodes(JobGroupNode node)

@@ -135,6 +135,7 @@
     <Compile Include="SimpleTriggerDisplay.Designer.cs">
       <DependentUpon>SimpleTriggerDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="TreeViewExtensions.cs" />
     <Compile Include="TriggerNode.cs" />
     <EmbeddedResource Include="AddCalendar.resx">
       <DependentUpon>AddCalendar.cs</DependentUpon>
