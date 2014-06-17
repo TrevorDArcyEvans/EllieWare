@@ -121,7 +121,8 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void UpdateScheduledJobs()
     {
-      var expNodes = SchedulerView.Nodes.GetExpansionState();
+      var expNodePaths = SchedulerView.Nodes.GetExpansionState();
+      var selNodePath = SchedulerView.SelectedNode != null ? SchedulerView.SelectedNode.GetNamesFullPath() : null;
       try
       {
         var schedulerNode = new SchedulerNode(mScheduler);
@@ -145,7 +146,9 @@ namespace RobotWare.Runtime.Server.Manager
       }
       finally
       {
-        SchedulerView.Nodes.SetExpansionState(expNodes);
+        SchedulerView.Nodes.SetExpansionState(expNodePaths);
+        SchedulerView.SelectedNode = SchedulerView.Nodes.FindByNamesFullPath(selNodePath);
+        SchedulerView_AfterSelect(this, new TreeViewEventArgs(SchedulerView.SelectedNode));
       }
     }
 
