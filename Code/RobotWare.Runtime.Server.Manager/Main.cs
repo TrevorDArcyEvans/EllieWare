@@ -24,6 +24,7 @@ using EllieWare.Support;
 using Quartz;
 using Quartz.Collection;
 using Quartz.Impl.Matchers;
+using Quartz.Impl.Triggers;
 using Quartz.Job;
 using RobotWare.Runtime.Server.Manager.Properties;
 
@@ -520,6 +521,24 @@ namespace RobotWare.Runtime.Server.Manager
         return;
       }
 
+      // check if changed trigger conflicts with any calendar
+      if (selectedNode.Trigger.CalendarName != null)
+      {
+        var sched = mScheduler.GetScheduler();
+        var cronStr = frm.Expression;
+        var selCal = sched.GetCalendar(selectedNode.Trigger.CalendarName);
+        var tempTrigger = (AbstractTrigger)TriggerBuilder.Create().
+                                              WithCronSchedule(cronStr).
+                                              Build();
+        var nextFire = tempTrigger.ComputeFirstFireTimeUtc(selCal);
+        if (nextFire == null)
+        {
+          var msg = string.Format("Calendar '{0}' will not let trigger '{1}' fire.", selectedNode.Trigger.CalendarName, selectedNode.Trigger.Description);
+          MessageBox.Show(msg, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return;
+        }
+      }
+
       // delete and re-add trigger so it survives a refresh
       DeleteTrigger(selectedNode, NullUpdateAction);
       var jobNode = (JobNode)selectedNode.Parent;
@@ -574,18 +593,33 @@ namespace RobotWare.Runtime.Server.Manager
         return;
       }
 
-      // unschedule existing job
+      // check if calendar will allow trigger to fire
+      var absTrigg = triggerNode.Trigger as AbstractTrigger;
+      if (absTrigg != null)
+      {
+        var selCal = sched.GetCalendar(frm.SelectedCalendar);
+        var nextFire = absTrigg.ComputeFirstFireTimeUtc(selCal);
+        if (nextFire == null)
+        {
+          var msg = string.Format("Calendar '{0}' will not let trigger '{1}' fire.", frm.SelectedCalendar, absTrigg.Description);
+          MessageBox.Show(msg, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+          return;
+        }
+      }
+
+      // create new trigger with calendar
       var trigger = triggerNode.Trigger;
+      var newTrigger = trigger.GetTriggerBuilder().
+                          ModifiedByCalendar(frm.SelectedCalendar).
+                          Build();
+
+      // unschedule existing job
       var bRet = sched.UnscheduleJob(trigger.Key);
       Debug.Assert(bRet);
 
       // reschedule it with new trigger
-      var newTrigger = trigger.GetTriggerBuilder().
-                          ModifiedByCalendar(frm.SelectedCalendar).
-                          Build();
-      var jobNode = (JobNode)triggerNode.Parent;
-
       // NOTE:  for some reason we have to use this API or it hangs - go figure
+      var jobNode = (JobNode)triggerNode.Parent;
       sched.ScheduleJob(jobNode.Detail, new HashSet<ITrigger> { newTrigger }, true);
 
       updateAction();
