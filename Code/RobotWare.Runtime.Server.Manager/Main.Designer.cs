@@ -262,6 +262,16 @@ namespace RobotWare.Runtime.Server.Manager
       toolStripSeparator2.Name = "toolStripSeparator2";
       toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
       // 
+      // CmdAbout
+      // 
+      CmdAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+      CmdAbout.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.information_32x32;
+      CmdAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+      CmdAbout.Name = "CmdAbout";
+      CmdAbout.Size = new System.Drawing.Size(36, 36);
+      CmdAbout.Text = "About...";
+      CmdAbout.Click += new System.EventHandler(this.CmdAbout_Click);
+      // 
       // ScheduleToolstrip
       // 
       this.ScheduleToolstrip.ImageScalingSize = new System.Drawing.Size(32, 32);
@@ -348,16 +358,6 @@ namespace RobotWare.Runtime.Server.Manager
       this.CmdEdit.Text = "Edit...";
       this.CmdEdit.ToolTipText = "Edit trigger";
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
-      // 
-      // CmdAbout
-      // 
-      CmdAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-      CmdAbout.Image = global::RobotWare.Runtime.Server.Manager.Properties.Resources.information_32x32;
-      CmdAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
-      CmdAbout.Name = "CmdAbout";
-      CmdAbout.Size = new System.Drawing.Size(36, 36);
-      CmdAbout.Text = "toolStripButton1";
-      CmdAbout.Click += new System.EventHandler(this.CmdAbout_Click);
       // 
       // MainTab
       // 
