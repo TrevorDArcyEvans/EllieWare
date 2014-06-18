@@ -26,6 +26,7 @@ using Quartz.Collection;
 using Quartz.Impl.Matchers;
 using Quartz.Impl.Triggers;
 using Quartz.Job;
+using Quartz.Util;
 using RobotWare.Runtime.Server.Manager.Properties;
 
 namespace RobotWare.Runtime.Server.Manager
@@ -341,7 +342,7 @@ namespace RobotWare.Runtime.Server.Manager
     {
       CmdDelete.Enabled = e.Node is TriggerNode ||
                           e.Node is JobNode ||
-                          (e.Node is CalendarNode && !(e.Node.Parent is TriggerNode));  // only allow deleting calendars from Calendars node
+                          e.Node is CalendarNode;
       CmdAdd.Enabled = e.Node is SchedulerNode ||
                        e.Node is JobGroupsNode ||
                        e.Node is JobGroupNode ||
@@ -462,9 +463,16 @@ namespace RobotWare.Runtime.Server.Manager
         DeleteTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
       }
 
-      if (selectedNode is CalendarNode)
+      // deleting calendar from Calendars node
+      if (selectedNode is CalendarNode && !(selectedNode.Parent is TriggerNode))
       {
         DeleteCalendar((CalendarNode)selectedNode, UpdateScheduledJobs);
+      }
+
+      // deleting calendar from trigger node
+      if (selectedNode is CalendarNode && selectedNode.Parent is TriggerNode)
+      {
+        DeleteCalendar((TriggerNode)selectedNode.Parent, UpdateScheduledJobs);
       }
     }
 
@@ -473,6 +481,24 @@ namespace RobotWare.Runtime.Server.Manager
       var sched = mScheduler.GetScheduler();
       var bRet = sched.DeleteCalendar(selectedNode.Name);
       Debug.Assert(bRet);
+      updateAction();
+    }
+
+    private void DeleteCalendar(TriggerNode selectedNode, Action updateAction)
+    {
+      // make a copy of the original
+      var copyTrigger = (AbstractTrigger)selectedNode.Trigger.DeepClone();
+
+      // delete the original
+      var sched = mScheduler.GetScheduler();
+      var bRet = sched.UnscheduleJob(selectedNode.Trigger.Key);
+      Debug.Assert(bRet);
+
+      // remove calendar
+      copyTrigger.CalendarName = null;
+
+      // add the copy, less the calendar
+      sched.ScheduleJob(copyTrigger);
       updateAction();
     }
 
