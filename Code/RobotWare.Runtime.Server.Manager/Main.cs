@@ -17,6 +17,7 @@ using AutoUpdaterDotNET;
 using Common.Logging;
 using CrashReporterDotNET;
 using CronExpressionDescriptor;
+using EllieWare.Common;
 using EllieWare.Interfaces;
 using EllieWare.Manager;
 using EllieWare.Support;
@@ -684,6 +685,12 @@ namespace RobotWare.Runtime.Server.Manager
     {
       ScheduleToolstrip.Enabled = MainTab.SelectedIndex == 0;
       SchedulerView_AfterSelect(sender, new TreeViewEventArgs(SchedulerView.SelectedNode));
+    }
+
+    private void CmdAbout_Click(object sender, EventArgs e)
+    {
+      var frm = new AboutBox(mRoot.ApplicationName);
+      frm.ShowDialog();
     }
   }
 }

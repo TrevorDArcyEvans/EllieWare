@@ -173,6 +173,9 @@
       <Link>EllieWare.snk</Link>
     </None>
     <None Include="app.config" />
+    <EmbeddedResource Include="LICENSE_CronExpressionDescriptor.txt" />
+    <EmbeddedResource Include="LICENSE_log4net.txt" />
+    <EmbeddedResource Include="LICENSE_Topshelf.txt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -277,6 +280,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="License.SQLite.NET.txt" />
+    <EmbeddedResource Include="LICENSE_C5.txt" />
+    <EmbeddedResource Include="license_Common-Logging.txt" />
+    <EmbeddedResource Include="license_Quartz.Net.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
