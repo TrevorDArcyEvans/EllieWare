@@ -10,7 +10,6 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
@@ -53,18 +52,10 @@ namespace RobotWare.Runtime.Server.Manager
 
       using (new AutoCursor())
       {
-        try
-        {
-          mScheduler = new QuartzSchedulerFacade(Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
-          ServerConnectStatus.Text = string.Format("Connected to {0}", mScheduler.Address);
-          UpdateScheduledJobs();
-          RefreshScheduler.Enabled = true;
-        }
-        catch (SocketException)
-        {
-          var msg = string.Format("Unable to connect to scheduler {0} on {1}:{2}", Settings.Default.Scheduler, Settings.Default.Server, Settings.Default.Port);
-          MessageBox.Show(msg, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        mScheduler = new QuartzSchedulerFacade(Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
+        ServerConnectStatus.Text = string.Format("Connected to {0}", mScheduler.Address);
+        UpdateScheduledJobs();
+        RefreshScheduler.Enabled = true;
       }
     }
 

@@ -8,6 +8,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -47,7 +48,15 @@ namespace RobotWare.Runtime.Server.Manager
             return;
           }
 
-          Application.Run(new Main(root));
+          try
+          {
+            Application.Run(new Main(root));
+          }
+          catch (SocketException)
+          {
+            var msg = string.Format("Unable to connect to scheduler {0} on {1}:{2}", Settings.Default.Scheduler, Settings.Default.Server, Settings.Default.Port);
+            MessageBox.Show(msg, root.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+          }
         }
         else
         {
