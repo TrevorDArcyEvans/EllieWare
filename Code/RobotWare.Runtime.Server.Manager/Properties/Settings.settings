@@ -9,7 +9,7 @@
       <Value Profile="(Default)">555</Value>
     </Setting>
     <Setting Name="Scheduler" Type="System.String" Scope="User">
-      <Value Profile="(Default)">QuartzScheduler</Value>
+      <Value Profile="(Default)">RobotWareScheduler</Value>
     </Setting>
   </Settings>
 </SettingsFile>
