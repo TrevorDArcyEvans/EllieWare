@@ -1,12 +1,22 @@
-﻿using System;
+﻿//
+//  Copyright (C) 2014 EllieWare
+//
+//  All rights reserved
+//
+//  www.EllieWare.com
+//
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using Quartz.Impl;
-using Quartz;
 using System.Data;
-using System.Windows.Forms;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 using System.Xml.Linq;
+using Quartz;
+using Quartz.Impl;
 using Quartz.Impl.Matchers;
 using Quartz.Impl.Triggers;
 
@@ -29,13 +39,13 @@ namespace RobotWare.Runtime.Server.Manager
       }
       catch (SchedulerException)
       {
-        MessageBox.Show("Unable to connect to the specified server", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        MessageBox.Show(@"Unable to connect to the specified server", @"Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
     }
 
     private NameValueCollection GetProperties(string address)
     {
-      NameValueCollection properties = new NameValueCollection();
+      var properties = new NameValueCollection();
       properties["quartz.scheduler.instanceName"] = "RemoteClient";
       properties["quartz.scheduler.proxy"] = "true";
       properties["quartz.threadPool.threadCount"] = "0";
@@ -50,7 +60,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     public DataTable GetJobs()
     {
-      DataTable table = new DataTable();
+      var table = new DataTable();
       table.Columns.Add("GroupName");
       table.Columns.Add("JobName");
       table.Columns.Add("JobDescription");
@@ -61,7 +71,7 @@ namespace RobotWare.Runtime.Server.Manager
       table.Columns.Add("NextFireTime");
       table.Columns.Add("PreviousFireTime");
       var jobGroups = GetScheduler().GetJobGroupNames();
-      foreach (string group in jobGroups)
+      foreach (var group in jobGroups)
       {
         var groupMatcher = GroupMatcher<JobKey>.GroupContains(group);
         var jobKeys = GetScheduler().GetJobKeys(groupMatcher);
@@ -69,9 +79,9 @@ namespace RobotWare.Runtime.Server.Manager
         {
           var detail = GetScheduler().GetJobDetail(jobKey);
           var triggers = GetScheduler().GetTriggersOfJob(jobKey);
-          foreach (ITrigger trigger in triggers)
+          foreach (var trigger in triggers)
           {
-            DataRow row = table.NewRow();
+            var row = table.NewRow();
             row["GroupName"] = group;
             row["JobName"] = jobKey.Name;
             row["JobDescription"] = detail.Description;
@@ -79,13 +89,13 @@ namespace RobotWare.Runtime.Server.Manager
             row["TriggerGroupName"] = trigger.Key.Group;
             row["TriggerType"] = trigger.GetType().Name;
             row["TriggerState"] = GetScheduler().GetTriggerState(trigger.Key);
-            DateTimeOffset? nextFireTime = trigger.GetNextFireTimeUtc();
+            var nextFireTime = trigger.GetNextFireTimeUtc();
             if (nextFireTime.HasValue)
             {
               row["NextFireTime"] = TimeZone.CurrentTimeZone.ToLocalTime(nextFireTime.Value.DateTime);
             }
 
-            DateTimeOffset? previousFireTime = trigger.GetPreviousFireTimeUtc();
+            var previousFireTime = trigger.GetPreviousFireTimeUtc();
             if (previousFireTime.HasValue)
             {
               row["PreviousFireTime"] = TimeZone.CurrentTimeZone.ToLocalTime(previousFireTime.Value.DateTime);
@@ -100,26 +110,28 @@ namespace RobotWare.Runtime.Server.Manager
 
     public void ScheduleOneTimeJob(Type jobType, JobDataMap dataMap, int clientID)
     {
-      string name = string.Format("{0}-{1}", jobType.Name, clientID);
-      string group = clientID.ToString();
-      IJobDetail jobDetail = JobBuilder.
-        Create().
-        OfType(jobType).
-        WithIdentity(name, group).
-        WithDescription("One time job").
-        UsingJobData(dataMap).Build();
-      ITrigger trigger = TriggerBuilder.
-        Create().
-        ForJob(jobDetail).
-        WithIdentity(name, group).
-        WithSchedule(SimpleScheduleBuilder.Create().WithRepeatCount(0).WithInterval(TimeSpan.Zero)).
-        StartNow().Build();
+      var name = string.Format("{0}-{1}", jobType.Name, clientID);
+      var group = clientID.ToString(CultureInfo.InvariantCulture);
+      var jobDetail = JobBuilder.
+                        Create().
+                        OfType(jobType).
+                        WithIdentity(name, group).
+                        WithDescription("One time job").
+                        UsingJobData(dataMap).
+                        Build();
+      var trigger = TriggerBuilder.
+                      Create().
+                      ForJob(jobDetail).
+                      WithIdentity(name, group).
+                      WithSchedule(SimpleScheduleBuilder.Create().WithRepeatCount(0).WithInterval(TimeSpan.Zero)).
+                      StartNow().
+                      Build();
       GetScheduler().ScheduleJob(jobDetail, trigger);
     }
 
     public DataTable GetRunningJobs()
     {
-      DataTable table = new DataTable();
+      var table = new DataTable();
       table.Columns.Add("JobName", typeof(string));
       table.Columns.Add("RunTime", typeof(int));
       try
@@ -127,15 +139,16 @@ namespace RobotWare.Runtime.Server.Manager
         var contexts = GetScheduler().GetCurrentlyExecutingJobs();
         foreach (var context in contexts)
         {
-          DataRow row = table.NewRow();
+          var row = table.NewRow();
           row["JobName"] = context.JobDetail.Key.Name;
+          Debug.Assert(context.FireTimeUtc != null);
           row["RunTime"] = (DateTime.Now.ToUniversalTime() - ((DateTimeOffset)context.FireTimeUtc).DateTime).TotalMinutes;
           table.Rows.Add(row);
         }
       }
       catch (Exception ex)
       {
-          MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
 
       return table;
@@ -143,52 +156,44 @@ namespace RobotWare.Runtime.Server.Manager
 
     public void BackupToFile(FileInfo file)
     {
-      IScheduler scheduler = GetScheduler();
+      var scheduler = GetScheduler();
       var jobGroupNames = scheduler.GetJobGroupNames();
-      List<IJobDetail> jobDetails = new List<IJobDetail>();
+      var jobDetails = new List<IJobDetail>();
       foreach (var jobGroup in jobGroupNames)
       {
         var groupMatcher = GroupMatcher<JobKey>.GroupContains(jobGroup);
 
         var jobKeys = scheduler.GetJobKeys(groupMatcher);
-        foreach (var jobKey in jobKeys)
-        {
-          jobDetails.Add(scheduler.GetJobDetail(jobKey));
-        }
+        jobDetails.AddRange(jobKeys.Select(scheduler.GetJobDetail));
       }
       WriteToFile(file, jobDetails);
     }
 
-    private void WriteToFile(FileInfo file, List<IJobDetail> jobDetails)
+    private void WriteToFile(FileInfo file, IEnumerable<IJobDetail> jobDetails)
     {
       using (StreamWriter writer = file.CreateText())
       {
         XNamespace ns = "http://quartznet.sourceforge.net/JobSchedulingData";
-        XDocument doc = new XDocument(new XDeclaration("1.0", "UTF-8", "yes")
-          , new XElement(ns + "quartz"
-            , new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance")
-            , new XAttribute("version", "1.0")
-            , new XAttribute("overwrite-existing-jobs", "true")
-            )
-          );
-        foreach (IJobDetail detail in jobDetails)
+        var doc = new XDocument(new XDeclaration("1.0", "UTF-8", "yes"),
+                        new XElement(ns + "quartz",
+                        new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"),
+                        new XAttribute("version", "1.0"),
+                        new XAttribute("overwrite-existing-jobs", "true")));
+        foreach (var detail in jobDetails)
         {
+          Debug.Assert(doc.Root != null);
           doc.Root.Add(
-              new XElement(ns + "job"
-              , new XElement(ns + "job-detail"
-              , new XElement(ns + "name", detail.Key.Name)
-              , new XElement(ns + "group", detail.Key.Group)
-              , new XElement(ns + "description", detail.Description)
-              , new XElement(ns + "job-type", detail.JobType.FullName + "," + detail.JobType.Assembly.FullName)
-            //TODO: Apparently volatile is no longer available. Check.
-            //, new XElement(ns + "volatile", detail.Volatile)
-              , new XElement(ns + "durable", detail.Durable)
-              , new XElement(ns + "recover", detail.RequestsRecovery)
-              , GetJobDataMap(ns, detail.JobDataMap)
-              )
-              , GetTriggers(ns, detail)
-              )
-            );
+              new XElement(ns + "job",
+                new XElement(ns + "job-detail",
+                new XElement(ns + "name", detail.Key.Name),
+                new XElement(ns + "group", detail.Key.Group),
+                new XElement(ns + "description", detail.Description),
+                new XElement(ns + "job-type", detail.JobType.FullName + "," + detail.JobType.Assembly.FullName),
+                //TODO: Apparently volatile is no longer available. Check.
+                //, new XElement(ns + "volatile", detail.Volatile)
+                new XElement(ns + "durable", detail.Durable),
+                new XElement(ns + "recover", detail.RequestsRecovery), GetJobDataMap(ns, detail.JobDataMap)),
+                GetTriggers(ns, detail)));
         }
         writer.Write(doc);
         writer.Flush();
@@ -198,14 +203,12 @@ namespace RobotWare.Runtime.Server.Manager
 
     private XElement GetJobDataMap(XNamespace ns, JobDataMap jobDataMap)
     {
-      XElement map = new XElement(ns + "job-data-map");
+      var map = new XElement(ns + "job-data-map");
       foreach (var key in jobDataMap.GetKeys())
       {
-        map.Add(new XElement(ns + "entry"
-          , new XElement(ns + "key", key)
-          , new XElement(ns + "value", jobDataMap[key])
-          )
-        );
+        map.Add(new XElement(ns + "entry",
+          new XElement(ns + "key", key),
+          new XElement(ns + "value", jobDataMap[key])));
       }
 
       return map;
@@ -214,8 +217,8 @@ namespace RobotWare.Runtime.Server.Manager
     private XElement[] GetTriggers(XNamespace ns, IJobDetail detail)
     {
       var triggers = mScheduler.GetTriggersOfJob(detail.Key);
-      XElement[] elements = new XElement[triggers.Count];
-      int i = 0;
+      var elements = new XElement[triggers.Count];
+      var i = 0;
       foreach (var trigger in triggers)
       {
         elements[i] = new XElement(ns + "trigger");
@@ -234,25 +237,23 @@ namespace RobotWare.Runtime.Server.Manager
 
     private XElement GetCronTrigger(XNamespace ns, CronTriggerImpl trigger)
     {
-      XElement cronTrigger = new XElement(ns + "cron");
+      var cronTrigger = new XElement(ns + "cron");
       AddCommonTriggerData(ns, cronTrigger, trigger);
-      cronTrigger.Add(
-        new XElement(ns + "cron-expression", trigger.CronExpressionString)
-        );
+      cronTrigger.Add(new XElement(ns + "cron-expression", trigger.CronExpressionString));
+
       return cronTrigger;
     }
 
     private void AddCommonTriggerData(XNamespace ns, XElement rootTriggerElement, AbstractTrigger trigger)
     {
       rootTriggerElement.Add(
-        new XElement(ns + "name", trigger.Key.Name)
-        , new XElement(ns + "group", trigger.Key.Group)
-        , new XElement(ns + "description", trigger.Description)
-        , new XElement(ns + "misfire-instruction", GetMisfireInstructionText(trigger))
+        new XElement(ns + "name", trigger.Key.Name),
+        new XElement(ns + "group", trigger.Key.Group),
+        new XElement(ns + "description", trigger.Description),
+        new XElement(ns + "misfire-instruction", GetMisfireInstructionText(trigger)),
         //, new XElement(ns + "volatile", trigger.Volatile)
-        , new XElement(ns + "job-name", trigger.JobName)
-        , new XElement(ns + "job-group", trigger.JobGroup)
-        );
+        new XElement(ns + "job-name", trigger.JobName),
+        new XElement(ns + "job-group", trigger.JobGroup));
     }
 
     private string GetMisfireInstructionText(AbstractTrigger trigger)
@@ -311,12 +312,12 @@ namespace RobotWare.Runtime.Server.Manager
 
     private XElement GetSimpleTrigger(XNamespace ns, SimpleTriggerImpl trigger)
     {
-      XElement simpleTrigger = new XElement(ns + "simple");
+      var simpleTrigger = new XElement(ns + "simple");
       AddCommonTriggerData(ns, simpleTrigger, trigger);
       simpleTrigger.Add(
-        new XElement(ns + "repeat-count", trigger.RepeatCount)
-        , new XElement(ns + "repeat-interval", trigger.RepeatInterval.Milliseconds)
-        );
+        new XElement(ns + "repeat-count", trigger.RepeatCount),
+        new XElement(ns + "repeat-interval", trigger.RepeatInterval.Milliseconds));
+
       return simpleTrigger;
     }
   }
