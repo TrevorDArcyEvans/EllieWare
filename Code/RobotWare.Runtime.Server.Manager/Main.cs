@@ -54,7 +54,7 @@ namespace RobotWare.Runtime.Server.Manager
       {
         mScheduler = new QuartzSchedulerFacade(Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
         ServerConnectStatus.Text = string.Format("Connected to {0}", mScheduler.Address);
-        UpdateScheduledJobs();
+        LoadScheduledJobs();
         RefreshScheduler.Enabled = true;
       }
     }
@@ -66,9 +66,9 @@ namespace RobotWare.Runtime.Server.Manager
       Text = mRoot.ApplicationName;
 
       var specifications = new ManagerCtl(mRoot)
-      {
-        Dock = DockStyle.Fill
-      };
+                                {
+                                  Dock = DockStyle.Fill
+                                };
       SpecificationTab.Controls.Clear();
       SpecificationTab.Controls.Add(specifications);
     }
@@ -91,7 +91,7 @@ namespace RobotWare.Runtime.Server.Manager
         {
           RefreshScheduler.Stop();
 
-          UpdateRunningJobs();
+          LoadRunningJobs();
 
           RefreshDate.Text = DateTime.Now.ToString("yyyy.MM.dd HH:mm.ss");
         }
@@ -102,7 +102,9 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void UpdateRunningJobs()
+    #region Load
+
+    private void LoadRunningJobs()
     {
       RunningJobs.Items.Clear();
       var table = mScheduler.GetRunningJobs();
@@ -113,7 +115,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void UpdateScheduledJobs()
+    private void LoadScheduledJobs()
     {
       var expNodePaths = SchedulerView.Nodes.GetExpansionState();
       var selNodePath = SchedulerView.SelectedNode != null ? SchedulerView.SelectedNode.GetNamesFullPath() : null;
@@ -132,11 +134,11 @@ namespace RobotWare.Runtime.Server.Manager
         {
           var jobGroupNode = new JobGroupNode(jobGroup);
           jobGroupsNode.Nodes.Add(jobGroupNode);
-          AddJobNodes(jobGroupNode);
+          LoadJobNodes(jobGroupNode);
         }
 
-        AddOrphanJobs(schedulerNode);
-        AddCalendars(schedulerNode);
+        LoadOrphanJobs(schedulerNode);
+        LoadCalendars(schedulerNode);
       }
       finally
       {
@@ -146,7 +148,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void AddJobNodes(JobGroupNode node)
+    private void LoadJobNodes(JobGroupNode node)
     {
       var group = node.Name;
       var groupMatcher = GroupMatcher<JobKey>.GroupContains(group);
@@ -159,7 +161,7 @@ namespace RobotWare.Runtime.Server.Manager
           var detail = sched.GetJobDetail(jobKey);
           var jobNode = new JobNode(detail);
           node.Nodes.Add(jobNode);
-          AddTriggerNodes(jobNode);
+          LoadTriggerNodes(jobNode);
         }
         catch (Exception ex)
         {
@@ -170,7 +172,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void AddTriggerNodes(JobNode jobNode)
+    private void LoadTriggerNodes(JobNode jobNode)
     {
       var sched = mScheduler.GetScheduler();
       var triggers = sched.GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Text));
@@ -178,11 +180,11 @@ namespace RobotWare.Runtime.Server.Manager
       {
         var node = new TriggerNode(trigger);
         jobNode.Nodes.Add(node);
-        AddCalendarNode(node);
+        LoadCalendarNode(node);
       }
     }
 
-    private void AddOrphanJobs(SchedulerNode schedulerNode)
+    private void LoadOrphanJobs(SchedulerNode schedulerNode)
     {
       var orphanJobsIdx = schedulerNode.Nodes.Add(new OrphanJobsNode("Orphan Jobs"));
       var orphanJobs = (OrphanJobsNode)schedulerNode.Nodes[orphanJobsIdx];
@@ -212,7 +214,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void AddCalendars(SchedulerNode schedulerNode)
+    private void LoadCalendars(SchedulerNode schedulerNode)
     {
       var calendarsIdx = schedulerNode.Nodes.Add(new CalendarsNode("Calendars"));
       var calendarsNode = (CalendarsNode)schedulerNode.Nodes[calendarsIdx];
@@ -223,7 +225,7 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
-    private void AddCalendarNode(TriggerNode node)
+    private void LoadCalendarNode(TriggerNode node)
     {
       if (node.Trigger.CalendarName != null)
       {
@@ -235,11 +237,13 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
+    #endregion
+
     private void CmdRefreshScheduled_Click(object sender, EventArgs e)
     {
       using (new AutoCursor())
       {
-        UpdateScheduledJobs();
+        LoadScheduledJobs();
       }
     }
 
@@ -284,6 +288,8 @@ namespace RobotWare.Runtime.Server.Manager
         UpdateDetails(calendarNode);
       }
     }
+
+    #region Update
 
     private void UpdateDetails(JobNode jobNode)
     {
@@ -413,6 +419,8 @@ namespace RobotWare.Runtime.Server.Manager
       }
     }
 
+    #endregion
+
     private void CmdRunJobNow_Click(object sender, EventArgs e)
     {
       var node = (JobNode)SchedulerView.SelectedNode;
@@ -446,24 +454,24 @@ namespace RobotWare.Runtime.Server.Manager
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is JobNode)
       {
-        DeleteJob((JobNode)selectedNode, UpdateScheduledJobs);
+        DeleteJob((JobNode)selectedNode, LoadScheduledJobs);
       }
 
       if (selectedNode is TriggerNode)
       {
-        DeleteTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
+        DeleteTrigger((TriggerNode)selectedNode, LoadScheduledJobs);
       }
 
       // deleting calendar from Calendars node
       if (selectedNode is CalendarNode && !(selectedNode.Parent is TriggerNode))
       {
-        DeleteCalendar((CalendarNode)selectedNode, UpdateScheduledJobs);
+        DeleteCalendar((CalendarNode)selectedNode, LoadScheduledJobs);
       }
 
       // deleting calendar from trigger node
       if (selectedNode is CalendarNode && selectedNode.Parent is TriggerNode)
       {
-        DeleteCalendar((TriggerNode)selectedNode.Parent, UpdateScheduledJobs);
+        DeleteCalendar((TriggerNode)selectedNode.Parent, LoadScheduledJobs);
       }
     }
 
@@ -518,7 +526,7 @@ namespace RobotWare.Runtime.Server.Manager
       var selectedNode = SchedulerView.SelectedNode;
       if (selectedNode is TriggerNode)
       {
-        EditTrigger((TriggerNode)selectedNode, UpdateScheduledJobs);
+        EditTrigger((TriggerNode)selectedNode, LoadScheduledJobs);
       }
     }
 
@@ -573,31 +581,31 @@ namespace RobotWare.Runtime.Server.Manager
       if (selectedNode is JobGroupNode)
       {
         var jobGroupNode = (JobGroupNode)selectedNode;
-        AddJob(jobGroupNode, UpdateScheduledJobs);
+        AddJob(jobGroupNode, LoadScheduledJobs);
       }
 
       if (selectedNode is JobNode)
       {
         var jobNode = (JobNode)selectedNode;
-        AddTrigger(jobNode, UpdateScheduledJobs);
+        AddTrigger(jobNode, LoadScheduledJobs);
       }
 
       if (selectedNode is SchedulerNode || selectedNode is JobGroupsNode)
       {
         var schedNode = selectedNode is SchedulerNode ? (SchedulerNode)selectedNode : (SchedulerNode)selectedNode.Parent;
-        AddJobGroup(schedNode, UpdateScheduledJobs);
+        AddJobGroup(schedNode, LoadScheduledJobs);
       }
 
       if (selectedNode is CalendarsNode)
       {
         var calNode = (CalendarsNode)selectedNode;
-        AddCalendar(calNode, UpdateScheduledJobs);
+        AddCalendar(calNode, LoadScheduledJobs);
       }
 
       if (selectedNode is TriggerNode)
       {
         var triggerNode = (TriggerNode)selectedNode;
-        AddCalendar(triggerNode, UpdateScheduledJobs);
+        AddCalendar(triggerNode, LoadScheduledJobs);
       }
     }
 
