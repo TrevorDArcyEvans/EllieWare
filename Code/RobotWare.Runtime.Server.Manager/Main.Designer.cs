@@ -164,7 +164,8 @@ namespace RobotWare.Runtime.Server.Manager
       // 
       // JobDuration
       // 
-      this.JobDuration.Text = "Duration";
+      this.JobDuration.Text = "Duration (s)";
+      this.JobDuration.Width = 80;
       // 
       // groupBox2
       // 
@@ -356,7 +357,7 @@ namespace RobotWare.Runtime.Server.Manager
       this.CmdEdit.Name = "CmdEdit";
       this.CmdEdit.Size = new System.Drawing.Size(36, 36);
       this.CmdEdit.Text = "Edit...";
-      this.CmdEdit.ToolTipText = "Edit trigger";
+      this.CmdEdit.ToolTipText = "Edit...";
       this.CmdEdit.Click += new System.EventHandler(this.CmdEdit_Click);
       // 
       // MainTab

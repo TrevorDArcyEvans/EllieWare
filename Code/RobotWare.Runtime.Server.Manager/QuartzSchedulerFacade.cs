@@ -133,7 +133,7 @@ namespace RobotWare.Runtime.Server.Manager
     {
       var table = new DataTable();
       table.Columns.Add("JobName", typeof(string));
-      table.Columns.Add("RunTime", typeof(int));
+      table.Columns.Add("RunTime", typeof(double));
       try
       {
         var contexts = GetScheduler().GetCurrentlyExecutingJobs();
@@ -142,7 +142,7 @@ namespace RobotWare.Runtime.Server.Manager
           var row = table.NewRow();
           row["JobName"] = context.JobDetail.Key.Name;
           Debug.Assert(context.FireTimeUtc != null);
-          row["RunTime"] = (DateTime.Now.ToUniversalTime() - ((DateTimeOffset)context.FireTimeUtc).DateTime).TotalMinutes;
+          row["RunTime"] = (DateTime.Now.ToUniversalTime() - ((DateTimeOffset)context.FireTimeUtc).DateTime).TotalSeconds;
           table.Rows.Add(row);
         }
       }

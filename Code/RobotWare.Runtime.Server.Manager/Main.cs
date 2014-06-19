@@ -109,7 +109,7 @@ namespace RobotWare.Runtime.Server.Manager
       RunningJobs.Items.Clear();
       var table = mScheduler.GetRunningJobs();
       foreach (var item in from DataRow row in table.Rows
-                           select new ListViewItem(new[] { Convert.ToString(row["JobName"]), Convert.ToString(row["Runtime"]) }))
+                           select new ListViewItem(new[] { Convert.ToString(row["JobName"]), string.Format("{0:0.0}", (double)row["Runtime"]) }))
       {
         RunningJobs.Items.Add(item);
       }
