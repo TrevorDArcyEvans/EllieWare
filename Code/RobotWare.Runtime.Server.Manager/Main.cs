@@ -568,7 +568,7 @@ namespace RobotWare.Runtime.Server.Manager
       var calName = selectedNode.Trigger.CalendarName;
       DeleteTrigger(selectedNode, NullUpdateAction);
       var jobNode = (JobNode)selectedNode.Parent;
-      AddTrigger(jobNode, frm, calName, updateAction);
+      AddTrigger(jobNode, frm.Expression, frm.GetXml(), calName, updateAction);
     }
 
     #endregion
@@ -672,15 +672,14 @@ namespace RobotWare.Runtime.Server.Manager
       }
 
       // add cron trigger
-      AddTrigger(selectedNode, frm, null, NullUpdateAction);
+      AddTrigger(selectedNode, frm.Expression,frm.GetXml(), null, NullUpdateAction);
       updateAction();
     }
 
-    private void AddTrigger(JobNode selectedNode, CronSelector frm, string calendarName, Action updateAction)
+    private void AddTrigger(JobNode selectedNode, string cronStr, string triggerXML, string calendarName, Action updateAction)
     {
-      var cronStr = frm.Expression;
       var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
-      var newCronXml = frm.GetXml();
+      var newCronXml = triggerXML;
       var trigger = TriggerBuilder.Create().
                       WithCronSchedule(cronStr).
                       WithDescription(cronDescrip).
