@@ -126,7 +126,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QuartzSchedulerFacade.cs" />
     <Compile Include="SchedulerNode.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SimpleTriggerDisplay.cs">

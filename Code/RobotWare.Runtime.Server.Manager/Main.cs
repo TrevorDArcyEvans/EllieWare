@@ -6,7 +6,7 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Data;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -22,6 +22,7 @@ using EllieWare.Manager;
 using EllieWare.Support;
 using Quartz;
 using Quartz.Collection;
+using Quartz.Impl;
 using Quartz.Impl.Matchers;
 using Quartz.Impl.Triggers;
 using Quartz.Job;
@@ -33,7 +34,7 @@ namespace RobotWare.Runtime.Server.Manager
   public sealed partial class Main : Form
   {
     private readonly IRobotWare mRoot = new RobotWareServerWrapper();
-    private readonly QuartzSchedulerFacade mScheduler;
+    private readonly IScheduler mScheduler;
     private static readonly ILog Log = LogManager.GetLogger(typeof(Main));
     private const string TriggerXml = "TriggerXml";
 
@@ -52,8 +53,17 @@ namespace RobotWare.Runtime.Server.Manager
 
       using (new AutoCursor())
       {
-        mScheduler = new QuartzSchedulerFacade(Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
-        ServerConnectStatus.Text = string.Format("Connected to {0}", mScheduler.Address);
+        var address = string.Format("tcp://{0}:{1}/{2}", Settings.Default.Server, Settings.Default.Port, Settings.Default.Scheduler);
+        var properties = new NameValueCollection();
+        properties["quartz.scheduler.instanceName"] = "RemoteClient";
+        properties["quartz.scheduler.proxy"] = "true";
+        properties["quartz.threadPool.threadCount"] = "0";
+        properties["quartz.scheduler.proxy.address"] = address;
+        var schedulerFactory = new StdSchedulerFactory(properties);
+
+        mScheduler = schedulerFactory.GetScheduler();
+
+        ServerConnectStatus.Text = string.Format("Connected to {0}", address);
         LoadScheduledJobs();
         RefreshScheduler.Enabled = true;
       }
@@ -107,10 +117,12 @@ namespace RobotWare.Runtime.Server.Manager
     private void LoadRunningJobs()
     {
       RunningJobs.Items.Clear();
-      var table = mScheduler.GetRunningJobs();
-      foreach (var item in from DataRow row in table.Rows
-                           select new ListViewItem(new[] { Convert.ToString(row["JobName"]), string.Format("{0:0.0}", (double)row["Runtime"]) }))
+      var contexts = mScheduler.GetCurrentlyExecutingJobs();
+      foreach (var context in contexts)
       {
+        Debug.Assert(context.FireTimeUtc != null);
+        var runTime = (DateTime.Now.ToUniversalTime() - ((DateTimeOffset)context.FireTimeUtc).DateTime).TotalSeconds;
+        var item = new ListViewItem(new[] { context.JobDetail.Key.Name, string.Format("{0:0.0}", runTime) });
         RunningJobs.Items.Add(item);
       }
     }
@@ -129,7 +141,7 @@ namespace RobotWare.Runtime.Server.Manager
         SchedulerView.Nodes.Add(schedulerNode);
         var jobGroupsIdx = schedulerNode.Nodes.Add(new JobGroupsNode("Job Groups"));
         var jobGroupsNode = schedulerNode.Nodes[jobGroupsIdx];
-        var jobGroups = mScheduler.GetScheduler().GetJobGroupNames();
+        var jobGroups = mScheduler.GetJobGroupNames();
         foreach (var jobGroup in jobGroups)
         {
           var jobGroupNode = new JobGroupNode(jobGroup);
@@ -152,13 +164,12 @@ namespace RobotWare.Runtime.Server.Manager
     {
       var group = node.Name;
       var groupMatcher = GroupMatcher<JobKey>.GroupContains(group);
-      var sched = mScheduler.GetScheduler();
-      var jobKeys = sched.GetJobKeys(groupMatcher);
+      var jobKeys = mScheduler.GetJobKeys(groupMatcher);
       foreach (var jobKey in jobKeys)
       {
         try
         {
-          var detail = sched.GetJobDetail(jobKey);
+          var detail = mScheduler.GetJobDetail(jobKey);
           var jobNode = new JobNode(detail);
           node.Nodes.Add(jobNode);
           LoadTriggerNodes(jobNode);
@@ -174,8 +185,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void LoadTriggerNodes(JobNode jobNode)
     {
-      var sched = mScheduler.GetScheduler();
-      var triggers = sched.GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Text));
+      var triggers = mScheduler.GetTriggersOfJob(new JobKey(jobNode.Detail.Key.Name, jobNode.Parent.Text));
       foreach (var trigger in triggers)
       {
         var node = new TriggerNode(trigger);
@@ -188,17 +198,17 @@ namespace RobotWare.Runtime.Server.Manager
     {
       var orphanJobsIdx = schedulerNode.Nodes.Add(new OrphanJobsNode("Orphan Jobs"));
       var orphanJobs = (OrphanJobsNode)schedulerNode.Nodes[orphanJobsIdx];
-      var sched = schedulerNode.Scheduler.GetScheduler();
+      var sched = schedulerNode.Scheduler;
       var groupNames = sched.GetJobGroupNames();
       foreach (var jobGroupName in groupNames)
       {
         var matcher = GroupMatcher<JobKey>.GroupEquals(jobGroupName);
-        var jobKeys = schedulerNode.Scheduler.GetScheduler().GetJobKeys(matcher);
+        var jobKeys = schedulerNode.Scheduler.GetJobKeys(matcher);
         foreach (var jobKey in jobKeys)
         {
           try
           {
-            var triggers = schedulerNode.Scheduler.GetScheduler().GetTriggersOfJob(jobKey);
+            var triggers = schedulerNode.Scheduler.GetTriggersOfJob(jobKey);
             if (triggers.Count == 0)
             {
               var jobDetail = sched.GetJobDetail(jobKey);
@@ -218,7 +228,7 @@ namespace RobotWare.Runtime.Server.Manager
     {
       var calendarsIdx = schedulerNode.Nodes.Add(new CalendarsNode("Calendars"));
       var calendarsNode = (CalendarsNode)schedulerNode.Nodes[calendarsIdx];
-      var sched = schedulerNode.Scheduler.GetScheduler();
+      var sched = schedulerNode.Scheduler;
       foreach (var calendarName in sched.GetCalendarNames())
       {
         calendarsNode.Nodes.Add(new CalendarNode(calendarName));
@@ -249,7 +259,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void SetPauseButtonText(TriggerNode triggerNode)
     {
-      CmdPause.Text = mScheduler.GetScheduler().GetTriggerState(triggerNode.Trigger.Key) == TriggerState.Paused ? @"Resume" : @"Pause";
+      CmdPause.Text = mScheduler.GetTriggerState(triggerNode.Trigger.Key) == TriggerState.Paused ? @"Resume" : @"Pause";
     }
 
     private void SchedulerView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -323,8 +333,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void UpdateDetails(CalendarNode calendarNode)
     {
-      var sched = mScheduler.GetScheduler();
-      var cal = sched.GetCalendar(calendarNode.Name);
+      var cal = mScheduler.GetCalendar(calendarNode.Name);
       var ctrl = new TextBox
       {
         Dock = DockStyle.Fill,
@@ -350,12 +359,10 @@ namespace RobotWare.Runtime.Server.Manager
       CmdRunJobNow.Enabled = e.Node is JobNode;
       CmdPause.Enabled = e.Node is TriggerNode;
 
-      var sched = mScheduler.GetScheduler();
-
       // check if there are any calendars
       if (e.Node is TriggerNode)
       {
-        CmdAdd.Enabled = sched.GetCalendarNames().Any();
+        CmdAdd.Enabled = mScheduler.GetCalendarNames().Any();
       }
 
       // trying to delete calendar from top level calendars node
@@ -364,7 +371,7 @@ namespace RobotWare.Runtime.Server.Manager
         // cannot delete a calendar if it is referenced by a trigger
         var triggerMatcher = GroupMatcher<TriggerKey>.GroupContains("");
         var calNode = (CalendarNode)e.Node;
-        var refTriggers = sched.GetTriggerKeys(triggerMatcher).Where(x => sched.GetTrigger(x).CalendarName == calNode.Name);
+        var refTriggers = mScheduler.GetTriggerKeys(triggerMatcher).Where(x => mScheduler.GetTrigger(x).CalendarName == calNode.Name);
 
         CmdDelete.Enabled = !refTriggers.Any();
       }
@@ -424,21 +431,19 @@ namespace RobotWare.Runtime.Server.Manager
     private void CmdRunJobNow_Click(object sender, EventArgs e)
     {
       var node = (JobNode)SchedulerView.SelectedNode;
-      var sched = mScheduler.GetScheduler();
-      sched.TriggerJob(node.Detail.Key);
+      mScheduler.TriggerJob(node.Detail.Key);
     }
 
     private void CmdPause_Click(object sender, EventArgs e)
     {
       var node = (TriggerNode)SchedulerView.SelectedNode;
-      var sched = mScheduler.GetScheduler();
-      if (sched.GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
+      if (mScheduler.GetTriggerState(node.Trigger.Key) == TriggerState.Paused)
       {
-        sched.ResumeTrigger(node.Trigger.Key);
+        mScheduler.ResumeTrigger(node.Trigger.Key);
       }
       else
       {
-        sched.PauseTrigger(node.Trigger.Key);
+        mScheduler.PauseTrigger(node.Trigger.Key);
       }
       SetPauseButtonText(node);
     }
@@ -477,8 +482,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void DeleteCalendar(CalendarNode selectedNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
-      var bRet = sched.DeleteCalendar(selectedNode.Name);
+      var bRet = mScheduler.DeleteCalendar(selectedNode.Name);
       Debug.Assert(bRet);
       updateAction();
     }
@@ -489,30 +493,27 @@ namespace RobotWare.Runtime.Server.Manager
       var copyTrigger = (AbstractTrigger)selectedNode.Trigger.DeepClone();
 
       // delete the original
-      var sched = mScheduler.GetScheduler();
-      var bRet = sched.UnscheduleJob(selectedNode.Trigger.Key);
+      var bRet = mScheduler.UnscheduleJob(selectedNode.Trigger.Key);
       Debug.Assert(bRet);
 
       // remove calendar
       copyTrigger.CalendarName = null;
 
       // add the copy, less the calendar
-      sched.ScheduleJob(copyTrigger);
+      mScheduler.ScheduleJob(copyTrigger);
       updateAction();
     }
 
     private void DeleteTrigger(TriggerNode selectedNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
-      var bRet = sched.UnscheduleJob(selectedNode.Trigger.Key);
+      var bRet = mScheduler.UnscheduleJob(selectedNode.Trigger.Key);
       Debug.Assert(bRet);
       updateAction();
     }
 
     private void DeleteJob(JobNode selectedNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
-      var bRet = sched.DeleteJob(selectedNode.Detail.Key);
+      var bRet = mScheduler.DeleteJob(selectedNode.Detail.Key);
       Debug.Assert(bRet);
       updateAction();
     }
@@ -549,9 +550,8 @@ namespace RobotWare.Runtime.Server.Manager
       // check if changed trigger conflicts with any calendar
       if (selectedNode.Trigger.CalendarName != null)
       {
-        var sched = mScheduler.GetScheduler();
         var cronStr = frm.Expression;
-        var selCal = sched.GetCalendar(selectedNode.Trigger.CalendarName);
+        var selCal = mScheduler.GetCalendar(selectedNode.Trigger.CalendarName);
         var tempTrigger = (AbstractTrigger)TriggerBuilder.Create().
                                               WithCronSchedule(cronStr).
                                               Build();
@@ -611,8 +611,7 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddCalendar(TriggerNode triggerNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
-      var allCals = sched.GetCalendarNames();
+      var allCals = mScheduler.GetCalendarNames();
       var frm = new CalendarSelector(allCals);
       if (frm.ShowDialog() != DialogResult.OK)
       {
@@ -623,7 +622,7 @@ namespace RobotWare.Runtime.Server.Manager
       var absTrigg = triggerNode.Trigger as AbstractTrigger;
       if (absTrigg != null)
       {
-        var selCal = sched.GetCalendar(frm.SelectedCalendar);
+        var selCal = mScheduler.GetCalendar(frm.SelectedCalendar);
         var nextFire = absTrigg.ComputeFirstFireTimeUtc(selCal);
         if (nextFire == null)
         {
@@ -640,28 +639,27 @@ namespace RobotWare.Runtime.Server.Manager
                           Build();
 
       // unschedule existing job
-      var bRet = sched.UnscheduleJob(trigger.Key);
+      var bRet = mScheduler.UnscheduleJob(trigger.Key);
       Debug.Assert(bRet);
 
       // reschedule it with new trigger
       // NOTE:  for some reason we have to use this API or it hangs - go figure
       var jobNode = (JobNode)triggerNode.Parent;
-      sched.ScheduleJob(jobNode.Detail, new HashSet<ITrigger> { newTrigger }, true);
+      mScheduler.ScheduleJob(jobNode.Detail, new HashSet<ITrigger> { newTrigger }, true);
 
       updateAction();
     }
 
     private void AddCalendar(CalendarsNode calNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
-      var allCals = sched.GetCalendarNames();
+      var allCals = mScheduler.GetCalendarNames();
       var frm = new AddCalendar(allCals);
       if (frm.ShowDialog() != DialogResult.OK)
       {
         return;
       }
 
-      sched.AddCalendar(frm.Calendar.Description, frm.Calendar, true, true);
+      mScheduler.AddCalendar(frm.Calendar.Description, frm.Calendar, true, true);
       updateAction();
     }
 
@@ -680,7 +678,6 @@ namespace RobotWare.Runtime.Server.Manager
 
     private void AddTrigger(JobNode selectedNode, CronSelector frm, string calendarName, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
       var cronStr = frm.Expression;
       var cronDescrip = ExpressionDescriptor.GetDescription(cronStr);
       var newCronXml = frm.GetXml();
@@ -691,13 +688,12 @@ namespace RobotWare.Runtime.Server.Manager
                       UsingJobData(TriggerXml, newCronXml).
                       ForJob(selectedNode.Detail).
                       Build();
-      sched.ScheduleJob(trigger);
+      mScheduler.ScheduleJob(trigger);
       updateAction();
     }
 
     private void AddJob(JobGroupNode selectedNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
       var frm = new AddJob(mRoot);
       if (frm.ShowDialog() != DialogResult.OK)
       {
@@ -717,14 +713,13 @@ namespace RobotWare.Runtime.Server.Manager
                   SetJobData(jobData).
                   StoreDurably().
                   Build();
-      sched.AddJob(job, true);
+      mScheduler.AddJob(job, true);
       updateAction();
     }
 
     private void AddJobGroup(SchedulerNode schedulerNode, Action updateAction)
     {
-      var sched = mScheduler.GetScheduler();
-      var existJobGroups = sched.GetJobGroupNames();
+      var existJobGroups = mScheduler.GetJobGroupNames();
       var frm = new AddJobGroup(existJobGroups);
       if (frm.ShowDialog() != DialogResult.OK)
       {
@@ -736,7 +731,7 @@ namespace RobotWare.Runtime.Server.Manager
                   WithIdentity("NoOp job", frm.JobGroupName).
                   StoreDurably().
                   Build();
-      sched.AddJob(job, true);
+      mScheduler.AddJob(job, true);
       updateAction();
     }
 
