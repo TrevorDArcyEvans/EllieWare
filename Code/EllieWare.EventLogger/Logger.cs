@@ -36,8 +36,8 @@ namespace EllieWare.EventLogger
     {
       get
       {
-        var level = (LogLevel)mControl.mLevel.SelectedIndex;
-        return string.Format("{0} : {1} : {2}", mControl.mSource.ResolvedValue, level, mControl.mMessage.ResolvedValue);
+        var levelName = Enum.GetNames(typeof (EventLogEntryType))[mControl.mLevel.SelectedIndex];
+        return string.Format("{0} : {1} : {2}", mControl.mSource.ResolvedValue, levelName, mControl.mMessage.ResolvedValue);
       }
     }
 
