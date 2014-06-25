@@ -97,6 +97,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FactoryBase.cs" />
     <Compile Include="FileExtensions.cs" />
+    <Compile Include="Isolated.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="RequestLicense.cs">
       <SubType>Form</SubType>

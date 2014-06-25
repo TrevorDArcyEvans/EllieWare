@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Globalization;
+using System.Xml;
 using EllieWare.Common;
 
 namespace EllieWare.DateTime
@@ -15,6 +17,21 @@ namespace EllieWare.DateTime
     public PauseCtrl()
     {
       InitializeComponent();
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      var pauseStr = reader.GetAttribute("Pause");
+      mTimeSpan.Value = System.DateTime.Parse(pauseStr, CultureInfo.InvariantCulture);
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("Pause", mTimeSpan.Value.ToString(CultureInfo.InvariantCulture));
     }
 
     private void TimeSpan_ValueChanged(object sender, EventArgs e)

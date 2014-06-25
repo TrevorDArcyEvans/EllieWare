@@ -18,8 +18,7 @@ namespace EllieWare.Common
     public string FileMask { get; set; }
     public string Directory { get; set; }
 
-    public DirectoryBatchParameter() :
-      base()
+    public DirectoryBatchParameter()
     {
     }
 

@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Diagnostics;
+using System.Xml;
 using EllieWare.Common;
 
 namespace EllieWare.EventLogger
@@ -15,6 +17,26 @@ namespace EllieWare.EventLogger
     public LoggerCtrl()
     {
       InitializeComponent();
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      mSource.Text = reader.GetAttribute("Source");
+      var levelStr = reader.GetAttribute("Level");
+      Debug.Assert(levelStr != null, "levelStr != null");
+      mLevel.SelectedIndex = mLevel.Items.IndexOf(levelStr);
+      mMessage.Text = reader.GetAttribute("Message");
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("Source", mSource.Text);
+      writer.WriteAttributeString("Level", (string)mLevel.SelectedItem);
+      writer.WriteAttributeString("Message", mMessage.Text);
     }
 
     private void Source_TextChanged(object sender, EventArgs e)

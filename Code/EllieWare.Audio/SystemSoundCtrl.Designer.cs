@@ -77,6 +77,7 @@ namespace EllieWare.Audio
       this.SelSystemSound.Name = "SelSystemSound";
       this.SelSystemSound.Size = new System.Drawing.Size(639, 21);
       this.SelSystemSound.TabIndex = 1;
+      this.SelSystemSound.SelectedIndexChanged += new System.EventHandler(this.SelSystemSound_SelectedIndexChanged);
       // 
       // SystemSoundCtrl
       // 

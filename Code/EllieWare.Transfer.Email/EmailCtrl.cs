@@ -7,6 +7,7 @@
 //
 using System;
 using System.Windows.Forms;
+using System.Xml;
 using EllieWare.Common;
 
 namespace EllieWare.Transfer.Email
@@ -16,6 +17,26 @@ namespace EllieWare.Transfer.Email
     public EmailCtrl()
     {
       InitializeComponent();
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      mRecipients.Text = reader.GetAttribute("Recipients");
+      mSubject.Text = reader.GetAttribute("Subject");
+      mMessage.Text = reader.GetAttribute("Message");
+      mAttachments.Text = reader.GetAttribute("Attachments");
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("Recipients", mRecipients.Text);
+      writer.WriteAttributeString("Subject", mSubject.Text);
+      writer.WriteAttributeString("Message", mMessage.Text);
+      writer.WriteAttributeString("Attachments", mAttachments.Text);
     }
 
     private void CmdBrowse_Click(object sender, EventArgs e)

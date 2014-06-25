@@ -6,8 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Globalization;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -33,22 +31,6 @@ namespace EllieWare.Audio
         return descrip;
       }
     }
-
-    #region Implementation of IXmlSerializable
-
-    public override void ReadXml(XmlReader reader)
-    {
-      var numStr = reader.GetAttribute("SystemSound");
-      var num = int.Parse(numStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
-      mControl.SelSystemSound.SelectedIndex = num;
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      writer.WriteAttributeString("SystemSound", mControl.SelSystemSound.SelectedIndex.ToString(CultureInfo.InvariantCulture));
-    }
-
-    #endregion
 
     public override bool Run()
     {

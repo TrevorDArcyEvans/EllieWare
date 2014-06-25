@@ -33,16 +33,6 @@ namespace EllieWare.Macro
       }
     }
 
-    public override void ReadXml(XmlReader reader)
-    {
-      mControl.MacroFileName.Text = reader.GetAttribute("MacroFileName");
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      writer.WriteAttributeString("MacroFileName", mControl.MacroFileName.Text);
-    }
-
     public override bool Run()
     {
       var factories = Utils.GetFactories();

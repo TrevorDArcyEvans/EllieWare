@@ -5,8 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Globalization;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -40,20 +38,6 @@ namespace EllieWare.Logging
       mCallback.Log((LogLevel)mControl.mLevel.SelectedIndex, mControl.mMessage.ResolvedValue);
 
       return true;
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-      var levelStr = reader.GetAttribute("Level");
-      var levelNum = int.Parse(levelStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
-      mControl.mLevel.SelectedIndex = levelNum;
-      mControl.mMessage.Text = reader.GetAttribute("Message");
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      writer.WriteAttributeString("Level", mControl.mLevel.SelectedIndex.ToString(CultureInfo.InvariantCulture));
-      writer.WriteAttributeString("Message", mControl.mMessage.Text);
     }
   }
 }

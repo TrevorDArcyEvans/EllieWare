@@ -26,51 +26,6 @@ namespace EllieWare.Batch
       base(root, callback, mgr)
     {
     }
-
-    private Type BatchTypeResolver(Assembly assy, string typeName, bool ignoreCase)
-    {
-      var assyLoc = Assembly.GetExecutingAssembly().Location;
-      var assyDir = Path.GetDirectoryName(assyLoc);
-      var commonFilePath = Path.Combine(assyDir, "EllieWare.Common.dll");
-      var commonAssy = Assembly.LoadFile(commonFilePath);
-      var retVal = commonAssy.GetType(typeName, true, ignoreCase);
-
-      return retVal;
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-      var specFileListStr = reader.GetAttribute("SpecificationFileNames");
-      var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mControl.mSpecFileNames.GetType());
-      mControl.mSpecFileNames.AddRange(tempList);
-
-      // we used to record the Type.AssemblyQualifiedName but this is sensitive to the assembly version,
-      // so we just record the type and resolve the type ourselves since we know that all batch related
-      // parameters are in EllieWare.Common.dll
-      var batchTypeStr = reader.GetAttribute("BatchType");
-      var batchType = Type.GetType(batchTypeStr, null, BatchTypeResolver);
-      mControl.mBatchParam = (ISerializableBatchParameter)Activator.CreateInstance(batchType);
-      mControl.mBatchParam.ReadXml(reader);
-
-      mControl.UpdateUserInterface();
-
-      if (mControl.mSpecs.Items.Count > 0)
-      {
-        // select first spec
-        mControl.mSpecs.SelectedIndex = 0;
-      }
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      var specFileList = XmlSerializationHelpers.XmlSerializeToString(mControl.mSpecFileNames);
-      writer.WriteAttributeString("SpecificationFileNames", specFileList);
-
-      var batchType = mControl.mBatchParam.GetType();
-      writer.WriteAttributeString("BatchType", batchType.ToString());
-      mControl.mBatchParam.WriteXml(writer);
-    }
-
     public override string Summary
     {
       get

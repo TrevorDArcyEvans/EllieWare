@@ -9,7 +9,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Permissions;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -41,26 +40,6 @@ namespace EllieWare.EventLogger
         return string.Format("{0} : {1} : {2}", mControl.mSource.ResolvedValue, level, mControl.mMessage.ResolvedValue);
       }
     }
-
-    #region Implementation of IXmlSerializable
-
-    public override void ReadXml(XmlReader reader)
-    {
-      mControl.mSource.Text = reader.GetAttribute("Source");
-      var levelStr = reader.GetAttribute("Level");
-      Debug.Assert(levelStr != null, "levelStr != null");
-      mControl.mLevel.SelectedIndex = mControl.mLevel.Items.IndexOf(levelStr);
-      mControl.mMessage.Text = reader.GetAttribute("Message");
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      writer.WriteAttributeString("Source", mControl.mSource.Text);
-      writer.WriteAttributeString("Level", (string)mControl.mLevel.SelectedItem);
-      writer.WriteAttributeString("Message", mControl.mMessage.Text);
-    }
-
-    #endregion
 
     public override bool Run()
     {

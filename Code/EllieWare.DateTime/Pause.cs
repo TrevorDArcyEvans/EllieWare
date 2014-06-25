@@ -6,8 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Globalization;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -42,17 +40,6 @@ namespace EllieWare.DateTime
       Utils.Wait(pause);
 
       return true;
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-      var pauseStr = reader.GetAttribute("Pause");
-      mControl.mTimeSpan.Value = System.DateTime.Parse(pauseStr, CultureInfo.InvariantCulture);
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      writer.WriteAttributeString("Pause", mControl.mTimeSpan.Value.ToString(CultureInfo.InvariantCulture));
     }
   }
 }

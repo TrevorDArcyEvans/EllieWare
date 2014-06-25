@@ -7,7 +7,6 @@
 //
 using System;
 using System.IO;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Microsoft.Win32;
@@ -15,7 +14,7 @@ using PdfSharp.Pdf.Printing;
 
 namespace EllieWare.Pdf
 {
-  public partial class Print : MutableRunnableBase<PrintCtrl>
+  public class Print : MutableRunnableBase<PrintCtrl>
   {
     public Print()
     {
@@ -35,22 +34,6 @@ namespace EllieWare.Pdf
 
         return descrip;
       }
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-      base.ReadXml(reader);
-
-      var storedPrinter = reader.GetAttribute("Printer");
-      var index = mControl.Printers.Items.IndexOf(storedPrinter);
-      mControl.Printers.SelectedIndex = index;
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      base.WriteXml(writer);
-
-      writer.WriteAttributeString("Printer", mControl.Printers.Text);
     }
 
     public override bool Run()

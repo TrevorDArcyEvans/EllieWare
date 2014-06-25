@@ -32,6 +32,8 @@ namespace EllieWare.Common
       mParamMgr = mgr;
 
       mControl.Initialise(root, callback, mgr);
+
+      mControl.ConfigurationChanged += (sender, args) => FireConfigurationChanged();
     }
 
     #region Implementation of IXmlSerializable
@@ -43,10 +45,12 @@ namespace EllieWare.Common
 
     public virtual void ReadXml(XmlReader reader)
     {
+      mControl.ReadXml(reader);
     }
 
     public virtual void WriteXml(XmlWriter writer)
     {
+      mControl.WriteXml(writer);
     }
 
     #endregion

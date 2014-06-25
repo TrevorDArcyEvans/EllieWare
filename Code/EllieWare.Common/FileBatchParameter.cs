@@ -16,8 +16,7 @@ namespace EllieWare.Common
   {
     public string FilePath { get; set; }
 
-    public FileBatchParameter() :
-      base()
+    public FileBatchParameter()
     {
     }
 

@@ -8,7 +8,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
+using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -27,7 +29,6 @@ namespace EllieWare.Batch
       InitializeComponent();
 
       mSpecs.DataSource = mSpecFileNames;
-      mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
 
     public override void Initialise(IRobotWare root, ICallback callback, IParameterManager mgr)
@@ -36,7 +37,57 @@ namespace EllieWare.Batch
 
       mRoot = root;
       mParamMgr = mgr;
+      mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      var specFileListStr = reader.GetAttribute("SpecificationFileNames");
+      var tempList = (List<string>)XmlSerializationHelpers.XmlDeserializeFromString(specFileListStr, mSpecFileNames.GetType());
+      mSpecFileNames.AddRange(tempList);
+
+      // we used to record the Type.AssemblyQualifiedName but this is sensitive to the assembly version,
+      // so we just record the type and resolve the type ourselves since we know that all batch related
+      // parameters are in EllieWare.Common.dll
+      var batchTypeStr = reader.GetAttribute("BatchType");
+      var batchType = Type.GetType(batchTypeStr, null, BatchTypeResolver);
+      mBatchParam = (ISerializableBatchParameter)Activator.CreateInstance(batchType);
+      mBatchParam.ReadXml(reader);
+
+      UpdateUserInterface();
+
+      if (mSpecs.Items.Count > 0)
+      {
+        // select first spec
+        mSpecs.SelectedIndex = 0;
+      }
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      var specFileList = XmlSerializationHelpers.XmlSerializeToString(mSpecFileNames);
+      writer.WriteAttributeString("SpecificationFileNames", specFileList);
+
+      var batchType = mBatchParam.GetType();
+      writer.WriteAttributeString("BatchType", batchType.ToString());
+      mBatchParam.WriteXml(writer);
+    }
+
+    private Type BatchTypeResolver(Assembly assy, string typeName, bool ignoreCase)
+    {
+      var assyLoc = Assembly.GetExecutingAssembly().Location;
+      var assyDir = Path.GetDirectoryName(assyLoc);
+      var commonFilePath = Path.Combine(assyDir, "EllieWare.Common.dll");
+      var commonAssy = Assembly.LoadFile(commonFilePath);
+      var retVal = commonAssy.GetType(typeName, true, ignoreCase);
+
+      return retVal;
+    }
+
 
     private void CmdEdit_Click(object sender, EventArgs e)
     {

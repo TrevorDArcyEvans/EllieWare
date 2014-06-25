@@ -8,7 +8,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using SendFileTo;
@@ -24,22 +23,6 @@ namespace EllieWare.Transfer.Email
     public Email(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-      mControl.mRecipients.Text = reader.GetAttribute("Recipients");
-      mControl.mSubject.Text = reader.GetAttribute("Subject");
-      mControl.mMessage.Text = reader.GetAttribute("Message");
-      mControl.mAttachments.Text = reader.GetAttribute("Attachments");
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      writer.WriteAttributeString("Recipients", mControl.mRecipients.Text);
-      writer.WriteAttributeString("Subject", mControl.mSubject.Text);
-      writer.WriteAttributeString("Message", mControl.mMessage.Text);
-      writer.WriteAttributeString("Attachments", mControl.mAttachments.Text);
     }
 
     public override string Summary

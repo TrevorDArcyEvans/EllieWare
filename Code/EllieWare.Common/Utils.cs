@@ -36,7 +36,7 @@ namespace EllieWare.Common
           var assy = Assembly.LoadFrom(thisDllFile);
           var factories = from t in assy.GetTypes()
                           where t.GetInterfaces().Contains(typeof(IFactory)) && t.IsClass && !t.IsAbstract
-                          select Activator.CreateInstance(t) as IFactory;
+                          select (IFactory)Activator.CreateInstance(t);
           retVal.AddRange(factories);
         }
         catch (BadImageFormatException)

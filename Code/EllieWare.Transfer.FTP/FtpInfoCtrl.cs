@@ -42,6 +42,8 @@ namespace EllieWare.Transfer.FTP
 
     public override void ReadXml(XmlReader reader)
     {
+      base.ReadXml(reader);
+
       Host.Text = reader.GetAttribute("Host");
       UserName.Text = reader.GetAttribute("UserName");
       Password.Text = reader.GetAttribute("Password");
@@ -49,6 +51,8 @@ namespace EllieWare.Transfer.FTP
 
     public override void WriteXml(XmlWriter writer)
     {
+      base.WriteXml(writer);
+
       writer.WriteAttributeString("Host", Host.Text);
       writer.WriteAttributeString("UserName", UserName.Text);
       writer.WriteAttributeString("Password", Password.Text);

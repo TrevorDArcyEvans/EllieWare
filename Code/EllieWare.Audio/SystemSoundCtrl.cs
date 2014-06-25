@@ -6,6 +6,8 @@
 //  www.EllieWare.com
 //
 using System.Collections.Generic;
+using System.Globalization;
+using System.Xml;
 using EllieWare.Common;
 using Media = System.Media;
 
@@ -35,6 +37,27 @@ namespace EllieWare.Audio
       }
 
       SelSystemSound.SelectedIndex = 0;
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      var numStr = reader.GetAttribute("SystemSound");
+      var num = int.Parse(numStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
+      SelSystemSound.SelectedIndex = num;
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("SystemSound", SelSystemSound.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+    }
+
+    private void SelSystemSound_SelectedIndexChanged(object sender, System.EventArgs e)
+    {
+      FireConfigurationChanged();
     }
   }
 }

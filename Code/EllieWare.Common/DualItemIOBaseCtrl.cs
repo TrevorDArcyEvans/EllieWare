@@ -6,7 +6,9 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Globalization;
 using System.Windows.Forms;
+using System.Xml;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Common
@@ -32,6 +34,27 @@ namespace EllieWare.Common
 
       // initialise to NO so that de/serialisation is safer ie no invalid values (-1)
       mExists.SelectedIndex = 0;
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      mSourceFilePath.Text = reader.GetAttribute("Source");
+      mDestinationFilePath.Text = reader.GetAttribute("Destination");
+
+      var numStr = reader.GetAttribute("Exists");
+      var num = int.Parse(numStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
+      mExists.SelectedIndex = num;
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("Source", mSourceFilePath.Text);
+      writer.WriteAttributeString("Destination", mDestinationFilePath.Text);
+      writer.WriteAttributeString("Exists", mExists.SelectedIndex.ToString(CultureInfo.InvariantCulture));
     }
 
     public bool Exists

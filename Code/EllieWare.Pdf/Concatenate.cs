@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using PdfSharp.Pdf;
@@ -30,20 +29,6 @@ namespace EllieWare.Pdf
       mControl.SourceFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
       mControl.DestinationFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
       mControl.OutputFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
-    }
-
-    public override void ReadXml(XmlReader reader)
-    {
-      base.ReadXml(reader);
-
-      mControl.mOutputFilePath.Text = reader.GetAttribute("OutputFilePath");
-    }
-
-    public override void WriteXml(XmlWriter writer)
-    {
-      base.WriteXml(writer);
-
-      writer.WriteAttributeString("OutputFilePath", mControl.mOutputFilePath.Text);
     }
 
     public override string Summary

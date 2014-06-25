@@ -8,6 +8,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -20,6 +21,20 @@ namespace EllieWare.Macro
     public MacroRunnerCtrl()
     {
       InitializeComponent();
+    }
+
+    public override void ReadXml(XmlReader reader)
+    {
+      base.ReadXml(reader);
+
+      MacroFileName.Text = reader.GetAttribute("MacroFileName");
+    }
+
+    public override void WriteXml(XmlWriter writer)
+    {
+      base.WriteXml(writer);
+
+      writer.WriteAttributeString("MacroFileName", MacroFileName.Text);
     }
 
     public override void Initialise(IRobotWare root, ICallback callback, IParameterManager mgr)
