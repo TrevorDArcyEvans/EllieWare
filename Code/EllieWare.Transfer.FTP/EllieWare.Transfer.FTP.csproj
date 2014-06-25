@@ -69,62 +69,41 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DirectoryCreate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryCreate.cs" />
     <Compile Include="DirectoryCreateFactory.cs" />
-    <Compile Include="DirectoryDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryDelete.cs" />
     <Compile Include="DirectoryDeleteFactory.cs" />
-    <Compile Include="DirectoryDownload.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryDownload.cs" />
     <Compile Include="DirectoryDownloadFactory.cs" />
-    <Compile Include="DirectoryExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryExists.cs" />
     <Compile Include="DirectoryExistsFactory.cs" />
-    <Compile Include="DirectoryUpload.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryUpload.cs" />
     <Compile Include="DirectoryUploadFactory.cs" />
-    <Compile Include="FileDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileDelete.cs" />
     <Compile Include="FileDeleteFactory.cs" />
-    <Compile Include="FileDownload.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileDownload.cs" />
     <Compile Include="FileDownloadFactory.cs" />
-    <Compile Include="FileExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileExists.cs" />
     <Compile Include="FileExistsFactory.cs" />
-    <Compile Include="FileUpload.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileUpload.cs" />
     <Compile Include="FileUploadFactory.cs" />
     <Compile Include="FtpClientExtensions.cs" />
+    <Compile Include="FtpDualItemIOBaseCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FtpDualItemIOBaseCtrl.Designer.cs">
+      <DependentUpon>FtpDualItemIOBaseCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FtpFactoryBase.cs" />
-    <Compile Include="FtpInfo.cs">
+    <Compile Include="FtpInfo.cs" />
+    <Compile Include="FtpDualItemIOBase.cs" />
+    <Compile Include="FtpInfoCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FtpInfo.Designer.cs">
-      <DependentUpon>FtpInfo.cs</DependentUpon>
+    <Compile Include="FtpInfoCtrl.Designer.cs">
+      <DependentUpon>FtpInfoCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FtpDualItemIOBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FtpDualItemIOBase.Designer.cs">
-      <DependentUpon>FtpDualItemIOBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FtpSingleItemExistsIOBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FtpSingleItemExistsIOBase.Designer.cs">
-      <DependentUpon>FtpSingleItemExistsIOBase.cs</DependentUpon>
-    </Compile>
+    <Compile Include="FtpSingleItemExistsIOBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,17 +119,6 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FtpInfo.resx">
-      <DependentUpon>FtpInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FtpDualItemIOBase.resx">
-      <DependentUpon>FtpDualItemIOBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FtpSingleItemExistsIOBase.resx">
-      <DependentUpon>FtpSingleItemExistsIOBase.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">

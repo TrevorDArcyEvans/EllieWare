@@ -13,8 +13,7 @@ namespace EllieWare.Imaging
 {
   public class GrayscalePixel : PixelBase
   {
-    public GrayscalePixel() :
-      base()
+    public GrayscalePixel()
     {
     }
 

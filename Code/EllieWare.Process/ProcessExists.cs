@@ -22,7 +22,7 @@ namespace EllieWare.Process
     {
       get
       {
-        var descrip = string.Format("Check if {0} is running", SourceFilePathResolvedValue);
+        var descrip = string.Format("Check if {0} is running", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -30,10 +30,10 @@ namespace EllieWare.Process
 
     public override bool Run()
     {
-      var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == SourceFilePathResolvedValue);
+      var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == mControl.SourceFilePathResolvedValue);
 
       // must be exactly one instance of process for it to unambiguously 'exist'
-      return Exists ? (targets.Count() == 1) : (targets.Count() != 1);
+      return mControl.Exists ? (targets.Count() == 1) : (targets.Count() != 1);
     }
   }
 }

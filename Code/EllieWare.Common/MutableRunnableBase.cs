@@ -13,16 +13,15 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public partial class MutableRunnableBase : UserControl, IMutableRunnable
+  public abstract class MutableRunnableBase<T> : IMutableRunnable where T : UserControlBase, new()
   {
     protected readonly IRobotWare mRoot;
     protected readonly ICallback mCallback;
     protected readonly IParameterManager mParamMgr;
+    protected readonly T mControl = new T();
 
-    public MutableRunnableBase() :
-      base()
+    public MutableRunnableBase()
     {
-      InitializeComponent();
     }
 
     public MutableRunnableBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
@@ -31,6 +30,8 @@ namespace EllieWare.Common
       mRoot = root;
       mCallback = callback;
       mParamMgr = mgr;
+
+      mControl.Initialise(root, callback, mgr);
     }
 
     #region Implementation of IXmlSerializable
@@ -59,7 +60,7 @@ namespace EllieWare.Common
     {
       get
       {
-        return this;
+        return mControl;
       }
     }
 

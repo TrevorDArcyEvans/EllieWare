@@ -69,41 +69,23 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DirectoryCopy.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryCopy.cs" />
     <Compile Include="DirectoryCopyFactory.cs" />
-    <Compile Include="DirectoryCreate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryCreate.cs" />
     <Compile Include="DirectoryCreateFactory.cs" />
-    <Compile Include="DirectoryDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryDelete.cs" />
     <Compile Include="DirectoryDeleteFactory.cs" />
-    <Compile Include="DirectoryExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryExists.cs" />
     <Compile Include="DirectoryExistsFactory.cs" />
-    <Compile Include="DirectoryMove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryMove.cs" />
     <Compile Include="DirectoryMoveFactory.cs" />
-    <Compile Include="FileCopy.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileCopy.cs" />
     <Compile Include="FileCopyFactory.cs" />
-    <Compile Include="FileDelete.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileDelete.cs" />
     <Compile Include="FileDeleteFactory.cs" />
-    <Compile Include="FileExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileExists.cs" />
     <Compile Include="FileExistsFactory.cs" />
-    <Compile Include="FileMove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FileMove.cs" />
     <Compile Include="FileMoveFactory.cs" />
     <Compile Include="IOFactoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,22 +13,16 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Imaging
 {
-  public partial class ResizerBase : DualItemIOBase
+  public class ResizerBase : MutableRunnableBase<ResizerBaseCtrl>
   {
     public ResizerBase()
     {
-      InitializeComponent();
     }
 
     public ResizerBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+      base(root, callback, mgr)
     {
-      InitializeComponent();
-
-      ResizerMain.BringToFront();
-
-      SetSourceFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
-      SetDestinationFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
+      mControl.Initialise(root, callback, mgr, BrowserTypes.BothFile);
     }
 
     public override void ReadXml(XmlReader reader)
@@ -37,29 +31,19 @@ namespace EllieWare.Imaging
 
       var num1Str = reader.GetAttribute("Dimension1");
       var num1 = int.Parse(num1Str, NumberStyles.Integer, CultureInfo.InvariantCulture);
-      Dimension1.Value = num1;
+      mControl.Dimension1.Value = num1;
 
       var num2Str = reader.GetAttribute("Dimension2");
       var num2 = int.Parse(num2Str, NumberStyles.Integer, CultureInfo.InvariantCulture);
-      Dimension2.Value = num2;
+      mControl.Dimension2.Value = num2;
     }
 
     public override void WriteXml(XmlWriter writer)
     {
       base.WriteXml(writer);
 
-      writer.WriteAttributeString("Dimension1", Dimension1.Value.ToString(CultureInfo.InvariantCulture));
-      writer.WriteAttributeString("Dimension2", Dimension2.Value.ToString(CultureInfo.InvariantCulture));
-    }
-
-    private void Dimension1_ValueChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Dimension2_ValueChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
+      writer.WriteAttributeString("Dimension1", mControl.Dimension1.Value.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("Dimension2", mControl.Dimension2.Value.ToString(CultureInfo.InvariantCulture));
     }
   }
 }

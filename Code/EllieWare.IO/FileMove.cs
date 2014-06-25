@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System.IO;
-using System.Windows.Forms;
 using EllieWare.Interfaces;
 
 namespace EllieWare.IO
@@ -26,23 +25,15 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Move {0} --> {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+        var descrip = string.Format("Move {0} --> {1}", mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
     }
 
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
-    }
-
     public override bool Run()
     {
-      File.Move(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+      File.Move(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

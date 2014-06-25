@@ -68,11 +68,12 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="EventLogger.cs">
+    <Compile Include="EventLogger.cs" />
+    <Compile Include="LoggerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EventLogger.Designer.cs">
-      <DependentUpon>EventLogger.cs</DependentUpon>
+    <Compile Include="LoggerCtrl.Designer.cs">
+      <DependentUpon>LoggerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="LoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,11 +92,6 @@
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="EventLogger.resx">
-      <DependentUpon>EventLogger.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

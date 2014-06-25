@@ -16,7 +16,7 @@ namespace EllieWare.Zip
     public UnZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
-      SetSourceFileSelectorFilter(Common.FileExtensions.ZipFileExtension);
+      mControl.SetSourceFileSelectorFilter(Common.FileExtensions.ZipFileExtension);
     }
 
     public override string Summary
@@ -24,8 +24,8 @@ namespace EllieWare.Zip
       get
       {
         var descrip = string.Format("Uncompress {0} to {1}",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -33,10 +33,10 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      using (var zip = Ionic.Zip.ZipFile.Read(SourceFilePathResolvedValue))
+      using (var zip = Ionic.Zip.ZipFile.Read(mControl.SourceFilePathResolvedValue))
       {
         zip.ExtractExistingFile = ExtractExistingFileAction.OverwriteSilently;
-        zip.ExtractAll(DestinationFilePathResolvedValue);
+        zip.ExtractAll(mControl.DestinationFilePathResolvedValue);
       }
 
       return true;

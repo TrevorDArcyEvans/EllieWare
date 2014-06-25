@@ -15,16 +15,16 @@ namespace EllieWare.Process
     public ProcessStart(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetDestinationLabel("Arguments:");
+      mControl.SetDestinationLabel("Arguments:");
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Start process: {0} {1}", 
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+        var descrip = string.Format("Start process: {0} {1}",
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -32,7 +32,7 @@ namespace EllieWare.Process
 
     public override bool Run()
     {
-      var newProc = System.Diagnostics.Process.Start(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+      var newProc = System.Diagnostics.Process.Start(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
       return newProc != null;
     }

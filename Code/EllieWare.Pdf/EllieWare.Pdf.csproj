@@ -69,40 +69,37 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="Concatenate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Concatenate.Designer.cs">
-      <DependentUpon>Concatenate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConcatenateAll.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Concatenate.cs" />
+    <Compile Include="ConcatenateAll.cs" />
     <Compile Include="ConcatenateAllFactory.cs" />
+    <Compile Include="ConcatenateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConcatenateCtrl.Designer.cs">
+      <DependentUpon>ConcatenateCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConcatenateFactory.cs" />
     <Compile Include="PdfFactoryBase.cs" />
-    <Compile Include="Print.cs">
+    <Compile Include="Print.cs" />
+    <Compile Include="PrintCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Print.Designer.cs">
-      <DependentUpon>Print.cs</DependentUpon>
+    <Compile Include="PrintCtrl.Designer.cs">
+      <DependentUpon>PrintCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Protect.cs">
+    <Compile Include="Protect.cs" />
+    <Compile Include="ProtectCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Protect.Designer.cs">
-      <DependentUpon>Protect.cs</DependentUpon>
+    <Compile Include="ProtectCtrl.Designer.cs">
+      <DependentUpon>ProtectCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="ProtectFactory.cs" />
-    <Compile Include="Split.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Split.cs" />
     <Compile Include="SplitFactory.cs" />
-    <Compile Include="Unprotect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Unprotect.cs" />
     <Compile Include="UnprotectFactory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,17 +120,6 @@
       <Project>{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}</Project>
       <Name>PdfSharp</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Concatenate.resx">
-      <DependentUpon>Concatenate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print.resx">
-      <DependentUpon>Print.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Protect.resx">
-      <DependentUpon>Protect.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="License.txt" />

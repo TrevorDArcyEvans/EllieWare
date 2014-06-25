@@ -69,11 +69,12 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="Email.cs">
+    <Compile Include="Email.cs" />
+    <Compile Include="EmailCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Email.Designer.cs">
-      <DependentUpon>Email.cs</DependentUpon>
+    <Compile Include="EmailCtrl.Designer.cs">
+      <DependentUpon>EmailCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="EmailFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,11 +97,6 @@
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Email.resx">
-      <DependentUpon>Email.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

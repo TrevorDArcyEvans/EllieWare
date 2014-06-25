@@ -73,207 +73,111 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="AppExit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="AppExit.cs" />
     <Compile Include="AppExitFactory.cs" />
-    <Compile Include="AssemblyDrawings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="AssemblyDrawings.cs" />
     <Compile Include="AssemblyDrawings.Designer.cs">
       <DependentUpon>AssemblyDrawings.cs</DependentUpon>
     </Compile>
     <Compile Include="AssemblyDrawingsFactory.cs" />
     <Compile Include="AutoWindow.cs" />
-    <Compile Include="ClearSelection.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ClearSelection.cs" />
     <Compile Include="ClearSelectionFactory.cs" />
-    <Compile Include="CloseAllNoSave.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="CloseAllNoSave.cs" />
     <Compile Include="CloseAllNoSaveFactory.cs" />
-    <Compile Include="CloseNoSave.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="CloseNoSave.cs" />
     <Compile Include="CloseNoSaveFactory.cs" />
-    <Compile Include="ComponentClose.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ComponentClose.cs" />
     <Compile Include="ComponentCloseFactory.cs" />
-    <Compile Include="ComponentOpen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ComponentOpen.cs" />
     <Compile Include="ComponentOpenFactory.cs" />
-    <Compile Include="ComponentOperationBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ComponentOperationBase.cs" />
     <Compile Include="ComponentOperationBase.Designer.cs">
       <DependentUpon>ComponentOperationBase.cs</DependentUpon>
     </Compile>
     <Compile Include="ComponentOperationBaseFactory.cs" />
-    <Compile Include="Difference.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Difference.cs" />
     <Compile Include="DifferenceFactory.cs" />
-    <Compile Include="EdgeLengthBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EdgeLengthPercentSelect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="EdgeLengthBase.cs" />
+    <Compile Include="EdgeLengthPercentSelect.cs" />
     <Compile Include="EdgeLengthPercentSelectFactory.cs" />
-    <Compile Include="EdgeLengthSelect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="EdgeLengthSelect.cs" />
     <Compile Include="EdgeLengthSelectFactory.cs" />
-    <Compile Include="ExportAllToAutoCAD.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ExportAllToAutoCAD.cs" />
     <Compile Include="ExportAllToAutoCAD.Designer.cs">
       <DependentUpon>ExportAllToAutoCAD.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportAllToAutoCADFactory.cs" />
-    <Compile Include="ExportAllToPdf.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ExportAllToPdf.cs" />
     <Compile Include="ExportAllToPdfFactory.cs" />
-    <Compile Include="ExportToAutoCAD.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ExportToAutoCAD.cs" />
     <Compile Include="ExportToAutoCADFactory.cs" />
-    <Compile Include="ExportToBitmap.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ExportToBitmap.cs" />
     <Compile Include="ExportToBitmapFactory.cs" />
-    <Compile Include="ExportToForeign.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ExportToForeign.cs" />
     <Compile Include="ExportToForeignFactory.cs" />
-    <Compile Include="ExportToPdf.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ExportToPdf.cs" />
     <Compile Include="ExportToPdfFactory.cs" />
-    <Compile Include="FaceAreaBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FaceAreaColor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FaceCurvatureBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FaceCurvatureColor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceAreaBase.cs" />
+    <Compile Include="FaceAreaColor.cs" />
+    <Compile Include="FaceCurvatureBase.cs" />
+    <Compile Include="FaceCurvatureColor.cs" />
     <Compile Include="FaceCurvatureColorFactory.cs" />
-    <Compile Include="FaceCurvatureRemove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceCurvatureRemove.cs" />
     <Compile Include="FaceCurvatureRemoveFactory.cs" />
-    <Compile Include="FaceCurvatureSelect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceCurvatureSelect.cs" />
     <Compile Include="FaceCurvatureSelectFactory.cs" />
-    <Compile Include="FaceEdgeOperation.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceEdgeOperation.cs" />
     <Compile Include="FaceEdgeOperation.Designer.cs">
       <DependentUpon>FaceEdgeOperation.cs</DependentUpon>
     </Compile>
     <Compile Include="FaceAreaColorFactory.cs" />
-    <Compile Include="FaceAreaPercentBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FaceAreaPercentColor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceAreaPercentBase.cs" />
+    <Compile Include="FaceAreaPercentColor.cs" />
     <Compile Include="FaceAreaPercentColorFactory.cs" />
-    <Compile Include="FaceAreaPercentRemove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceAreaPercentRemove.cs" />
     <Compile Include="FaceAreaPercentRemoveFactory.cs" />
-    <Compile Include="FaceAreaPercentSelect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceAreaPercentSelect.cs" />
     <Compile Include="FaceAreaPercentSelectFactory.cs" />
-    <Compile Include="FaceAreaRemove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceAreaRemove.cs" />
     <Compile Include="FaceAreaRemoveFactory.cs" />
-    <Compile Include="FaceAreaSelect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceAreaSelect.cs" />
     <Compile Include="FaceAreaSelectFactory.cs" />
-    <Compile Include="FaceSelectedRemove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceSelectedRemove.cs" />
     <Compile Include="FaceSelectedRemoveFactory.cs" />
-    <Compile Include="FaceSliverBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FaceSliverColor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceSliverBase.cs" />
+    <Compile Include="FaceSliverColor.cs" />
     <Compile Include="FaceSliverColorFactory.cs" />
-    <Compile Include="FaceSliverRemove.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceSliverRemove.cs" />
     <Compile Include="FaceSliverRemoveFactory.cs" />
-    <Compile Include="FaceSliverSelect.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FaceSliverSelect.cs" />
     <Compile Include="FaceSliverSelectFactory.cs" />
-    <Compile Include="ImportFromForeign.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ImportFromForeign.cs" />
     <Compile Include="ImportFromForeignFactory.cs" />
-    <Compile Include="NewDesign.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="NewDesign.cs" />
     <Compile Include="NewDesignFactory.cs" />
-    <Compile Include="OpenNative.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="OpenNative.cs" />
     <Compile Include="OpenNativeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reload.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Reload.cs" />
     <Compile Include="ReloadFactory.cs" />
-    <Compile Include="Save.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SaveAll.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Save.cs" />
+    <Compile Include="SaveAll.cs" />
     <Compile Include="SaveAllFactory.cs" />
-    <Compile Include="SaveAs.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="SaveAs.cs" />
     <Compile Include="SaveAsFactory.cs" />
     <Compile Include="SaveFactory.cs" />
-    <Compile Include="SetViewProjection.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="SetViewProjection.cs" />
     <Compile Include="SetViewProjection.Designer.cs">
       <DependentUpon>SetViewProjection.cs</DependentUpon>
     </Compile>
     <Compile Include="SetViewProjectionFactory.cs" />
-    <Compile Include="SpaceClaimMutableRunnableBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SpaceClaimSingleItemIOBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="SpaceClaimMutableRunnableBase.cs" />
+    <Compile Include="SpaceClaimSingleItemIOBase.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="ZoomExtents.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ZoomExtents.cs" />
     <Compile Include="ZoomExtentsFactory.cs" />
-    <Compile Include="ZoomSelection.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ZoomSelection.cs" />
     <Compile Include="ZoomSelectionFactory.cs" />
   </ItemGroup>
   <ItemGroup>

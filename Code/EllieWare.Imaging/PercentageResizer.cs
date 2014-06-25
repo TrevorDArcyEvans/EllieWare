@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System.Drawing;
-using System.Windows.Forms;
 using EllieWare.Interfaces;
 using Simplicode.Imaging.Filters;
 
@@ -21,11 +20,11 @@ namespace EllieWare.Imaging
     public PercentageResizer(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      Label1.Text = "Percentage:";
-      Label2.Visible = Dimension2.Visible = false;
+      mControl.Label1.Text = @"Percentage:";
+      mControl.Label2.Visible = mControl.Dimension2.Visible = false;
 
       // max = 1000% = 10x
-      Dimension1.Maximum = 1000;
+      mControl.Dimension1.Maximum = 1000;
     }
 
     public override string Summary
@@ -33,18 +32,10 @@ namespace EllieWare.Imaging
       get
       {
         var summ = string.Format("Change the size of {0} by {1}% and save it to {2}",
-                                  SourceFilePathResolvedValue,
-                                  Dimension1.Value,
-                                  DestinationFilePathResolvedValue);
+                                  mControl.SourceFilePathResolvedValue,
+                                  mControl.Dimension1.Value,
+                                  mControl.DestinationFilePathResolvedValue);
         return summ;
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
@@ -52,17 +43,17 @@ namespace EllieWare.Imaging
     {
       int newImgWidth;
       int newImgHeight;
-      using (var img = Image.FromFile(SourceFilePathResolvedValue))
+      using (var img = Image.FromFile(mControl.SourceFilePathResolvedValue))
       {
-        newImgWidth = img.Width * (int)Dimension1.Value / 100;
-        newImgHeight = img.Height * (int)Dimension1.Value / 100;
+        newImgWidth = img.Width * (int)mControl.Dimension1.Value / 100;
+        newImgHeight = img.Height * (int)mControl.Dimension1.Value / 100;
       }
 
       var processor = new Simplicode.Imaging.ImageProcessor { JpegCompression = 90L };
       var resizer = new ResizeFilter(newImgWidth, newImgHeight);
 
       processor.AddFilter(resizer);
-      processor.ProcessImage(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+      processor.ProcessImage(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

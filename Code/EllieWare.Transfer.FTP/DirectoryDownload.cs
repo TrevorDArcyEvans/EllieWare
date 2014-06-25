@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System.IO;
-using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -27,16 +26,8 @@ namespace EllieWare.Transfer.FTP
 
     private void Initialise()
     {
-      mDualItemIO.AllowSourceBrowse = false;
-      mDualItemIO.SetExistsVisible(false);
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
+      mControl.mDualItemIO.AllowSourceBrowse = false;
+      mControl.mDualItemIO.SetExistsVisible(false);
     }
 
     public override string Summary
@@ -44,11 +35,11 @@ namespace EllieWare.Transfer.FTP
       get
       {
         var descrip = string.Format("Login to {0} as {1}[{2}] and download (directory) {3} to {4}",
-                          mFtpInfo.Host.ResolvedValue,
-                          mFtpInfo.UserName.ResolvedValue,
-                          mFtpInfo.Password.ResolvedValue,
-                          mDualItemIO.SourceFilePathResolvedValue,
-                          mDualItemIO.DestinationFilePathResolvedValue);
+                          mControl.mFtpInfo.Host.ResolvedValue,
+                          mControl.mFtpInfo.UserName.ResolvedValue,
+                          mControl.mFtpInfo.Password.ResolvedValue,
+                          mControl.mDualItemIO.SourceFilePathResolvedValue,
+                          mControl.mDualItemIO.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -56,13 +47,13 @@ namespace EllieWare.Transfer.FTP
 
     public override bool Run()
     {
-      using (var ftp = mFtpInfo.GetFtpConnection())
+      using (var ftp = mControl.mFtpInfo.GetFtpConnection())
       {
         // connect and login
         ftp.Connect();
         ftp.Login();
 
-        ftp.ServerDirectory = mDualItemIO.SourceFilePathResolvedValue;
+        ftp.ServerDirectory = mControl.mDualItemIO.SourceFilePathResolvedValue;
 
         var files = ftp.GetFileInfosRecursive();
         foreach (var ftpFile in files)
@@ -74,7 +65,7 @@ namespace EllieWare.Transfer.FTP
           }
           remotePath = remotePath.Replace('/', '\\');
 
-          var localPath = Path.Combine(mDualItemIO.DestinationFilePathResolvedValue, remotePath);
+          var localPath = Path.Combine(mControl.mDualItemIO.DestinationFilePathResolvedValue, remotePath);
 
           if (ftpFile.Dir)
           {

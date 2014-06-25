@@ -22,7 +22,7 @@ namespace EllieWare.Process
     {
       get
       {
-        var descrip = string.Format("Kill process: {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Kill process: {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -30,7 +30,7 @@ namespace EllieWare.Process
 
     public override bool Run()
     {
-      var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == SourceFilePathResolvedValue);
+      var targets = System.Diagnostics.Process.GetProcesses().Where(x => x.ProcessName == mControl.SourceFilePathResolvedValue);
       if (targets.Count() == 1)
       {
         targets.First().Kill();

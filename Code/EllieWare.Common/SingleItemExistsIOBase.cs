@@ -9,17 +9,16 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class SingleItemExistsIOBase : DualItemIOBase
+  public class SingleItemExistsIOBase : MutableRunnableBase<SingleItemExistsIOBaseCtrl>
   {
     public SingleItemExistsIOBase()
     {
     }
 
     public SingleItemExistsIOBase(IRobotWare root, ICallback callback, IParameterManager mgr, BrowserTypes browsers) :
-      base(root, callback, mgr, browsers)
+      base(root, callback, mgr)
     {
-      SetDestinationVisible(false);
-      SetExistsVisible(true);
+      mControl.Initialise(root, callback, mgr, browsers);
     }
   }
 }

@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System.IO;
-using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -27,16 +26,8 @@ namespace EllieWare.Transfer.FTP
 
     private void Initialise()
     {
-      mDualItemIO.AllowDestinationBrowse = false;
-      mDualItemIO.SetExistsVisible(false);
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
+      mControl.mDualItemIO.AllowDestinationBrowse = false;
+      mControl.mDualItemIO.SetExistsVisible(false);
     }
 
     public override string Summary
@@ -44,11 +35,11 @@ namespace EllieWare.Transfer.FTP
       get
       {
         var descrip = string.Format("Login to {0} as {1}[{2}] and upload (file) {3} to {4}",
-                          mFtpInfo.Host.ResolvedValue,
-                          mFtpInfo.UserName.ResolvedValue,
-                          mFtpInfo.Password.ResolvedValue,
-                          mDualItemIO.SourceFilePathResolvedValue,
-                          mDualItemIO.DestinationFilePathResolvedValue);
+                          mControl.mFtpInfo.Host.ResolvedValue,
+                          mControl.mFtpInfo.UserName.ResolvedValue,
+                          mControl.mFtpInfo.Password.ResolvedValue,
+                          mControl.mDualItemIO.SourceFilePathResolvedValue,
+                          mControl.mDualItemIO.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -56,20 +47,20 @@ namespace EllieWare.Transfer.FTP
 
     public override bool Run()
     {
-      using (var ftp = mFtpInfo.GetFtpConnection())
+      using (var ftp = mControl.mFtpInfo.GetFtpConnection())
       {
         // connect and login
         ftp.Connect();
         ftp.Login();
 
-        var dir = Path.GetDirectoryName(mDualItemIO.DestinationFilePathResolvedValue);
+        var dir = Path.GetDirectoryName(mControl.mDualItemIO.DestinationFilePathResolvedValue);
         var dirExists = ftp.ChangeWorkingDirectory(dir);
         if (!dirExists)
         {
           return false;
         }
-        var fileName = Path.GetFileName(mDualItemIO.DestinationFilePathResolvedValue);
-        ftp.UploadFile(mDualItemIO.SourceFilePathResolvedValue, fileName);
+        var fileName = Path.GetFileName(mControl.mDualItemIO.DestinationFilePathResolvedValue);
+        ftp.UploadFile(mControl.mDualItemIO.SourceFilePathResolvedValue, fileName);
 
         return true;
       }

@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 using EllieWare.Interfaces;
 using Simplicode.Imaging.Filters;
 
@@ -20,9 +19,9 @@ namespace EllieWare.Imaging
     public PixelResizer(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      Label1.Text = "Pixels Wide:";
-      Label2.Text = "Pixels High:";
-      Dimension1.Maximum = Dimension2.Maximum = 10000;
+      mControl.Label1.Text = @"Pixels Wide:";
+      mControl.Label2.Text = @"Pixels High:";
+      mControl.Dimension1.Maximum = mControl.Dimension2.Maximum = 10000;
     }
 
     public override string Summary
@@ -30,29 +29,21 @@ namespace EllieWare.Imaging
       get
       {
         var summ = string.Format("Change the size of {0} to {1} pixels wide X {2} pixels high and save it to {3}",
-                                  SourceFilePathResolvedValue,
-                                  Dimension1.Value,
-                                  Dimension2.Value,
-                                  DestinationFilePathResolvedValue);
+                                  mControl.SourceFilePathResolvedValue,
+                                  mControl.Dimension1.Value,
+                                  mControl.Dimension2.Value,
+                                  mControl.DestinationFilePathResolvedValue);
         return summ;
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
     public override bool Run()
     {
       var processor = new Simplicode.Imaging.ImageProcessor { JpegCompression = 90L };
-      var resizer = new ResizeFilter((int)Dimension1.Value, (int)Dimension2.Value);
+      var resizer = new ResizeFilter((int)mControl.Dimension1.Value, (int)mControl.Dimension2.Value);
 
       processor.AddFilter(resizer);
-      processor.ProcessImage(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+      processor.ProcessImage(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

@@ -5,52 +5,39 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Globalization;
-using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
 {
-  public partial class Logging : MutableRunnableBase
+  public class Logging : MutableRunnableBase<LoggingCtrl>
   {
     public Logging()
     {
-      InitializeComponent();
     }
 
     public Logging(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
-
-      mMessage.SetParameterManager(mgr);
-      mLevel.SelectedIndex = 0;
+      mControl.mMessage.SetParameterManager(mgr);
+      mControl.mLevel.SelectedIndex = 0;
     }
 
     public override string Summary
     {
       get
       {
-        var level = (LogLevel) mLevel.SelectedIndex;
+        var level = (LogLevel) mControl.mLevel.SelectedIndex;
 
-        return string.Format("{0} : {1}", level, mMessage.ResolvedValue);
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
+        return string.Format("{0} : {1}", level, mControl.mMessage.ResolvedValue);
       }
     }
 
     public override bool Run()
     {
-      mCallback.Log((LogLevel)mLevel.SelectedIndex, mMessage.ResolvedValue);
+      mCallback.Log((LogLevel)mControl.mLevel.SelectedIndex, mControl.mMessage.ResolvedValue);
 
       return true;
     }
@@ -59,24 +46,14 @@ namespace EllieWare.Logging
     {
       var levelStr = reader.GetAttribute("Level");
       var levelNum = int.Parse(levelStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
-      mLevel.SelectedIndex = levelNum;
-      mMessage.Text = reader.GetAttribute("Message");
+      mControl.mLevel.SelectedIndex = levelNum;
+      mControl.mMessage.Text = reader.GetAttribute("Message");
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      writer.WriteAttributeString("Level", mLevel.SelectedIndex.ToString(CultureInfo.InvariantCulture));
-      writer.WriteAttributeString("Message", mMessage.Text);
-    }
-
-    private void Level_SelectedIndexChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Message_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
+      writer.WriteAttributeString("Level", mControl.mLevel.SelectedIndex.ToString(CultureInfo.InvariantCulture));
+      writer.WriteAttributeString("Message", mControl.mMessage.Text);
     }
   }
 }

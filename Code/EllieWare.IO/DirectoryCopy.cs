@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Copy {0} --> {1} including subdirectories", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+        var descrip = string.Format("Copy {0} --> {1} including subdirectories", mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +34,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      DoDirectoryCopy(SourceFilePathResolvedValue, DestinationFilePathResolvedValue, true);
+      DoDirectoryCopy(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue, true);
 
       return true;
     }

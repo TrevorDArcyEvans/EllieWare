@@ -5,8 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System;
-using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -15,42 +13,37 @@ using PdfSharp.Pdf.IO;
 
 namespace EllieWare.Pdf
 {
-  public partial class Concatenate : DualItemIOBase
+  public class Concatenate : MutableRunnableBase<ConcatenateCtrl>
   {
     public Concatenate()
     {
-      InitializeComponent();
-
-      ConcatenateMain.BringToFront();
     }
 
     public Concatenate(IRobotWare root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+      base(root, callback, mgr)
     {
-      InitializeComponent();
+      mControl.Initialise(root, callback, mgr, BrowserTypes.BothFile);
 
-      ConcatenateMain.BringToFront();
+      mControl.mSourceLabel.Text = @"File 1:";
+      mControl.mDestinationLabel.Text = @"File 2:";
 
-      SetSourceLabel("File 1:");
-      SetDestinationLabel("File 2:");
-
-      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
-      SetDestinationFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
-      OutputFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
+      mControl.SourceFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
+      mControl.DestinationFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
+      mControl.OutputFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
     }
 
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);
 
-      mOutputFilePath.Text = reader.GetAttribute("OutputFilePath");
+      mControl.mOutputFilePath.Text = reader.GetAttribute("OutputFilePath");
     }
 
     public override void WriteXml(XmlWriter writer)
     {
       base.WriteXml(writer);
 
-      writer.WriteAttributeString("OutputFilePath", mOutputFilePath.Text);
+      writer.WriteAttributeString("OutputFilePath", mControl.mOutputFilePath.Text);
     }
 
     public override string Summary
@@ -58,9 +51,9 @@ namespace EllieWare.Pdf
       get
       {
         var descrip = string.Format("Join {0} to {1} and save it as {2}",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue,
-                        mOutputFilePath.ResolvedValue);
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue,
+                        mControl.mOutputFilePath.ResolvedValue);
 
         return descrip;
       }
@@ -68,7 +61,7 @@ namespace EllieWare.Pdf
 
     public override bool Run()
     {
-      var files = new[] { SourceFilePathResolvedValue, DestinationFilePathResolvedValue };
+      var files = new[] { mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue };
 
       // Open the output document
       var outputDocument = new PdfDocument();
@@ -92,24 +85,9 @@ namespace EllieWare.Pdf
       }
 
       // Save the document...
-      outputDocument.Save(mOutputFilePath.ResolvedValue);
+      outputDocument.Save(mControl.mOutputFilePath.ResolvedValue);
 
       return true;
-    }
-
-    private void OutputFilePath_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void CmdOutputBrowse_Click(object sender, EventArgs e)
-    {
-      if (OutputFileSelector.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-
-      mOutputFilePath.Text = OutputFileSelector.FileName;
     }
   }
 }

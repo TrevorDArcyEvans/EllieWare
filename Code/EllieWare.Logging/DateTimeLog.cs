@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System;
-using System.Windows.Forms;
 using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
@@ -20,24 +19,16 @@ namespace EllieWare.Logging
     public DateTimeLog(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      lblMessage.Visible = mMessage.Visible = false;
+      mControl.lblMessage.Visible = mControl.mMessage.Visible = false;
     }
 
     public override string Summary
     {
       get
       {
-        var level = (LogLevel)mLevel.SelectedIndex;
+        var level = (LogLevel)mControl.mLevel.SelectedIndex;
 
         return string.Format("Log the current time at : {0}", level);
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
@@ -45,7 +36,7 @@ namespace EllieWare.Logging
     {
       var now = DateTime.Now;
       var msg = now.ToLongDateString() + " " + now.ToLongTimeString();
-      mMessage.Text = msg;
+      mControl.mMessage.Text = msg;
 
       return base.Run();
     }

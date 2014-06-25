@@ -69,17 +69,16 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DateTimeLog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DateTimeLog.cs" />
     <Compile Include="DateTimeLogFactory.cs" />
-    <Compile Include="LoggingFactory.cs" />
-    <Compile Include="Logging.cs">
+    <Compile Include="LoggingCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Logging.Designer.cs">
-      <DependentUpon>Logging.cs</DependentUpon>
+    <Compile Include="LoggingCtrl.Designer.cs">
+      <DependentUpon>LoggingCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoggingFactory.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="LoggingFactoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,11 +91,6 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Logging.resx">
-      <DependentUpon>Logging.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
@@ -124,6 +118,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LoggingCtrl.resx">
+      <DependentUpon>LoggingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

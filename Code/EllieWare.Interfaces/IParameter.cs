@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Xml.Serialization;
 
 namespace EllieWare.Interfaces
 {

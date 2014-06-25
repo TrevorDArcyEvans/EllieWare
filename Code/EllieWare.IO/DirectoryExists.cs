@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Check that {0} is ", SourceFilePathResolvedValue) + (Exists ? "" : "not ") + "present";
+        var descrip = string.Format("Check that {0} is ", mControl.SourceFilePathResolvedValue) + (mControl.Exists ? "" : "not ") + "present";
 
         return descrip;
       }
@@ -34,9 +34,9 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      var dirExists = Directory.Exists(SourceFilePathResolvedValue);
+      var dirExists = Directory.Exists(mControl.SourceFilePathResolvedValue);
 
-      return Exists ? dirExists : !dirExists;
+      return mControl.Exists ? dirExists : !dirExists;
     }
   }
 }

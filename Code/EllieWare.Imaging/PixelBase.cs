@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 using Simplicode.Imaging.Filters;
@@ -15,16 +14,15 @@ namespace EllieWare.Imaging
 {
   public class PixelBase : DualItemIOBase
   {
-    public PixelBase() :
-      base()
+    public PixelBase()
     {
     }
 
     public PixelBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(FileExtensions.ImageFilesFilter);
-      SetDestinationFileSelectorFilter(FileExtensions.ImageFilesFilter);
+      mControl.SetSourceFileSelectorFilter(FileExtensions.ImageFilesFilter);
+      mControl.SetDestinationFileSelectorFilter(FileExtensions.ImageFilesFilter);
     }
 
     public override string Summary
@@ -32,17 +30,9 @@ namespace EllieWare.Imaging
       get
       {
         var summ = string.Format(GetSummaryFormat(),
-                                  SourceFilePathResolvedValue,
-                                  DestinationFilePathResolvedValue);
+                                  mControl.SourceFilePathResolvedValue,
+                                  mControl.DestinationFilePathResolvedValue);
         return summ;
-      }
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
       }
     }
 
@@ -62,7 +52,7 @@ namespace EllieWare.Imaging
       var filter = GetFilter();
 
       processor.AddFilter(filter);
-      processor.ProcessImage(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+      processor.ProcessImage(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

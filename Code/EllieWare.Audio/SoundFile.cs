@@ -26,7 +26,7 @@ namespace EllieWare.Audio
     {
       get
       {
-        var descrip = string.Format("Play {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Play {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +34,7 @@ namespace EllieWare.Audio
 
     public override bool Run()
     {
-      var simpleSound = new SoundPlayer(SourceFilePathResolvedValue);
+      var simpleSound = new SoundPlayer(mControl.SourceFilePathResolvedValue);
       simpleSound.Play();
 
       return true;

@@ -69,13 +69,14 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="MacroRunnerFactory.cs" />
-    <Compile Include="MacroRunner.cs">
+    <Compile Include="MacroRunnerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MacroRunner.Designer.cs">
-      <DependentUpon>MacroRunner.cs</DependentUpon>
+    <Compile Include="MacroRunnerCtrl.Designer.cs">
+      <DependentUpon>MacroRunnerCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MacroRunnerFactory.cs" />
+    <Compile Include="MacroRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,11 +93,6 @@
     <None Include="..\EllieWare.snk">
       <Link>EllieWare.snk</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MacroRunner.resx">
-      <DependentUpon>MacroRunner.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

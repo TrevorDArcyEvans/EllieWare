@@ -15,15 +15,15 @@ namespace EllieWare.Zip
     public AddToZip(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Common.FileExtensions.AllFilesFilter);
-      SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
+      mControl.SetSourceFileSelectorFilter(Common.FileExtensions.AllFilesFilter);
+      mControl.SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Add {0} to {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+        var descrip = string.Format("Add {0} to {1}", mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -31,9 +31,9 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      using (var zip = Ionic.Zip.ZipFile.Read(DestinationFilePathResolvedValue))
+      using (var zip = Ionic.Zip.ZipFile.Read(mControl.DestinationFilePathResolvedValue))
       {
-        zip.AddFile(SourceFilePathResolvedValue);
+        zip.AddFile(mControl.SourceFilePathResolvedValue);
         zip.Save();
       }
 

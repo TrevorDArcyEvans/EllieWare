@@ -68,18 +68,12 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="ProcessExists.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ProcessExists.cs" />
     <Compile Include="ProcessExistsFactory.cs" />
     <Compile Include="ProcessFactoryBase.cs" />
-    <Compile Include="ProcessKill.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ProcessKill.cs" />
     <Compile Include="ProcessKillFactory.cs" />
-    <Compile Include="ProcessStart.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ProcessStart.cs" />
     <Compile Include="ProcessStartFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

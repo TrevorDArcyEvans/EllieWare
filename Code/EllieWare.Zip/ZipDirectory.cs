@@ -16,16 +16,16 @@ namespace EllieWare.Zip
     public ZipDirectory(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.DirectoryFile)
     {
-      SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
+      mControl.SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Compress {0} and all subdirectories to {1}", 
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+        var descrip = string.Format("Compress {0} and all subdirectories to {1}",
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -33,10 +33,10 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      var zipFileName = Path.ChangeExtension(DestinationFilePathResolvedValue, Common.FileExtensions.ZipFileExtension);
+      var zipFileName = Path.ChangeExtension(mControl.DestinationFilePathResolvedValue, Common.FileExtensions.ZipFileExtension);
       using (var zip = new Ionic.Zip.ZipFile(zipFileName))
       {
-        var files = Directory.EnumerateFiles(SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
+        var files = Directory.EnumerateFiles(mControl.SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
         zip.AddFiles(files);
         zip.Save();
       }

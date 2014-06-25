@@ -15,8 +15,8 @@ namespace EllieWare.Zip
     public ZipFile(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Common.FileExtensions.AllFilesFilter);
-      SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
+      mControl.SetSourceFileSelectorFilter(Common.FileExtensions.AllFilesFilter);
+      mControl.SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
     }
 
     public override string Summary
@@ -24,8 +24,8 @@ namespace EllieWare.Zip
       get
       {
         var descrip = string.Format("Compress {0} into {1}",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -33,9 +33,9 @@ namespace EllieWare.Zip
 
     public override bool Run()
     {
-      using (var zip = new Ionic.Zip.ZipFile(DestinationFilePathResolvedValue))
+      using (var zip = new Ionic.Zip.ZipFile(mControl.DestinationFilePathResolvedValue))
       {
-        zip.AddFile(SourceFilePathResolvedValue);
+        zip.AddFile(mControl.SourceFilePathResolvedValue);
         zip.Save();
       }
 

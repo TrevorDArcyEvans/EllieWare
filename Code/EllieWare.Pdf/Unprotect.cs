@@ -25,8 +25,8 @@ namespace EllieWare.Pdf
 
     private void Initialise()
     {
-      Options.Visible = OptionsLabel.Visible =
-        UserPassword.Visible = UserPasswordLabel.Visible = false;
+      mControl.Options.Visible = mControl.OptionsLabel.Visible =
+        mControl.UserPassword.Visible = mControl.UserPasswordLabel.Visible = false;
     }
 
     public override string Summary
@@ -34,8 +34,8 @@ namespace EllieWare.Pdf
       get
       {
         var descrip = string.Format("Remove password from {0} and save it as {1}",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -48,7 +48,7 @@ namespace EllieWare.Pdf
 
       try
       {
-        document = PdfReader.Open(SourceFilePathResolvedValue, OwnerPassword.ResolvedValue);
+        document = PdfReader.Open(mControl.SourceFilePathResolvedValue, mControl.OwnerPassword.ResolvedValue);
       }
       catch (Exception ex)
       {
@@ -61,7 +61,7 @@ namespace EllieWare.Pdf
       document.SecuritySettings.DocumentSecurityLevel = PdfDocumentSecurityLevel.None;
 
       // Save the document...
-      document.Save(DestinationFilePathResolvedValue);
+      document.Save(mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

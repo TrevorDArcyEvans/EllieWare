@@ -6,7 +6,6 @@
 //  www.EllieWare.com
 //
 using System.IO;
-using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -27,16 +26,8 @@ namespace EllieWare.Transfer.FTP
 
     private void Initialise()
     {
-      mDualItemIO.AllowDestinationBrowse = false;
-      mDualItemIO.SetExistsVisible(false);
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
+      mControl.mDualItemIO.AllowDestinationBrowse = false;
+      mControl.mDualItemIO.SetExistsVisible(false);
     }
 
     public override string Summary
@@ -44,11 +35,11 @@ namespace EllieWare.Transfer.FTP
       get
       {
         var descrip = string.Format("Login to {0} as {1}[{2}] and upload (directory) {3} to {4}",
-                          mFtpInfo.Host.ResolvedValue,
-                          mFtpInfo.UserName.ResolvedValue,
-                          mFtpInfo.Password.ResolvedValue,
-                          mDualItemIO.SourceFilePathResolvedValue,
-                          mDualItemIO.DestinationFilePathResolvedValue);
+                          mControl.mFtpInfo.Host.ResolvedValue,
+                          mControl.mFtpInfo.UserName.ResolvedValue,
+                          mControl.mFtpInfo.Password.ResolvedValue,
+                          mControl.mDualItemIO.SourceFilePathResolvedValue,
+                          mControl.mDualItemIO.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -56,7 +47,7 @@ namespace EllieWare.Transfer.FTP
 
     public override bool Run()
     {
-      using (var ftp = mFtpInfo.GetFtpConnection())
+      using (var ftp = mControl.mFtpInfo.GetFtpConnection())
       {
         // connect and login
         ftp.Connect();
@@ -65,31 +56,31 @@ namespace EllieWare.Transfer.FTP
         var homeDir = ftp.ServerDirectory;
 
         // first create remote directory structure
-        var dirs = Directory.GetDirectories(mDualItemIO.SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
+        var dirs = Directory.GetDirectories(mControl.mDualItemIO.SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
         foreach (var thisDir in dirs)
         {
-          var remoteDir = thisDir.Replace(mDualItemIO.SourceFilePathResolvedValue, string.Empty);
+          var remoteDir = thisDir.Replace(mControl.mDualItemIO.SourceFilePathResolvedValue, string.Empty);
           if (remoteDir[0] == '\\')
           {
             remoteDir = remoteDir.Remove(0, 1);
           }
-          remoteDir = Path.Combine(mDualItemIO.DestinationFilePathResolvedValue, remoteDir);
+          remoteDir = Path.Combine(mControl.mDualItemIO.DestinationFilePathResolvedValue, remoteDir);
 
           ftp.ServerDirectory = homeDir;
           ftp.CreateDirectoryEx(remoteDir);
         }
 
         // upload local files
-        var files = Directory.GetFiles(mDualItemIO.SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
+        var files = Directory.GetFiles(mControl.mDualItemIO.SourceFilePathResolvedValue, "*", SearchOption.AllDirectories);
         foreach (var thisFile in files)
         {
           var remoteDir = Path.GetDirectoryName(thisFile);
-          remoteDir = remoteDir.Replace(mDualItemIO.SourceFilePathResolvedValue, string.Empty);
+          remoteDir = remoteDir.Replace(mControl.mDualItemIO.SourceFilePathResolvedValue, string.Empty);
           if (remoteDir[0] == '\\')
           {
             remoteDir = remoteDir.Remove(0, 1);
           }
-          remoteDir = Path.Combine(mDualItemIO.DestinationFilePathResolvedValue, remoteDir);
+          remoteDir = Path.Combine(mControl.mDualItemIO.DestinationFilePathResolvedValue, remoteDir);
 
           ftp.ServerDirectory = homeDir;
           ftp.ServerDirectory = remoteDir;

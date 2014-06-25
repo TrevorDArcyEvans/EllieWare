@@ -13,7 +13,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public class SpaceClaimMutableRunnableBase : MutableRunnableBase
+  public class SpaceClaimMutableRunnableBase : MutableRunnableBase<UserControlBase>
   {
     public SpaceClaimMutableRunnableBase()
     {

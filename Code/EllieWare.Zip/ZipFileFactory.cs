@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Zip
 {
-  public class ZipFileFactory : ZipFactoryBase, IFactory
+  public class ZipFileFactory : ZipFactoryBase
   {
     public override string Title
     {

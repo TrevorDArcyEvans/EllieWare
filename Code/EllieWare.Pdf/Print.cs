@@ -15,36 +15,23 @@ using PdfSharp.Pdf.Printing;
 
 namespace EllieWare.Pdf
 {
-  public partial class Print : SingleItemIOBase
+  public partial class Print : MutableRunnableBase<PrintCtrl>
   {
     public Print()
     {
-      InitializeComponent();
-
-      PrintMain.BringToFront();
     }
 
     public Print(IRobotWare root, ICallback callback, IParameterManager mgr) :
-      base(root, callback, mgr, BrowserTypes.BothFile)
+      base(root, callback, mgr)
     {
-      InitializeComponent();
-
-      PrintMain.BringToFront();
-
-      Printers.Items.Clear();
-      foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-      {
-        Printers.Items.Add(printer);
-      }
-
-      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      mControl.Initialise(root, callback, mgr, BrowserTypes.BothFile);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Print {0} to {1}", SourceFilePathResolvedValue, Printers.Text);
+        var descrip = string.Format("Print {0} to {1}", mControl.SourceFilePathResolvedValue, mControl.Printers.Text);
 
         return descrip;
       }
@@ -55,15 +42,15 @@ namespace EllieWare.Pdf
       base.ReadXml(reader);
 
       var storedPrinter = reader.GetAttribute("Printer");
-      var index = Printers.Items.IndexOf(storedPrinter);
-      Printers.SelectedIndex = index;
+      var index = mControl.Printers.Items.IndexOf(storedPrinter);
+      mControl.Printers.SelectedIndex = index;
     }
 
     public override void WriteXml(XmlWriter writer)
     {
       base.WriteXml(writer);
 
-      writer.WriteAttributeString("Printer", Printers.Text);
+      writer.WriteAttributeString("Printer", mControl.Printers.Text);
     }
 
     public override bool Run()
@@ -96,7 +83,7 @@ namespace EllieWare.Pdf
         return false;
       }
 
-      var printer = new PdfFilePrinter(SourceFilePathResolvedValue, Printers.Text);
+      var printer = new PdfFilePrinter(mControl.SourceFilePathResolvedValue, mControl.Printers.Text);
 
       try
       {
@@ -108,11 +95,6 @@ namespace EllieWare.Pdf
       }
 
       return true;
-    }
-
-    private void Printers_SelectedIndexChanged(object sender, System.EventArgs e)
-    {
-      FireConfigurationChanged();
     }
   }
 }

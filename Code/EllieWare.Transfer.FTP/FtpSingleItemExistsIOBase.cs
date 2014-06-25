@@ -5,7 +5,6 @@
 //
 //  www.EllieWare.com
 //
-using System.Windows.Forms;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -15,32 +14,20 @@ namespace EllieWare.Transfer.FTP
   {
     public FtpSingleItemExistsIOBase()
     {
-      InitializeComponent();
-
       Initialise();
     }
 
     public FtpSingleItemExistsIOBase(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      InitializeComponent();
-
       Initialise();
     }
 
     private void Initialise()
     {
-      mDualItemIO.SetDestinationVisible(false);
-      mDualItemIO.AllowSourceBrowse = false;
-      mDualItemIO.SetExistsVisible(true);
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
+      mControl.mDualItemIO.SetDestinationVisible(false);
+      mControl.mDualItemIO.AllowSourceBrowse = false;
+      mControl.mDualItemIO.SetExistsVisible(true);
     }
   }
 }

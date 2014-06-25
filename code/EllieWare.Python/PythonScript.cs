@@ -22,7 +22,7 @@ namespace EllieWare.Python
     public PythonScript(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(EllieWare.Common.FileExtensions.PythonFilesFilter);
+      mControl.SetSourceFileSelectorFilter(EllieWare.Common.FileExtensions.PythonFilesFilter);
     }
 
     public override string Summary
@@ -30,7 +30,7 @@ namespace EllieWare.Python
       get
       {
         var descrip = string.Format("Run {0}",
-                        SourceFilePathResolvedValue);
+                        mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -38,9 +38,9 @@ namespace EllieWare.Python
 
     public override bool Run()
     {
-      var engine = SerpentWare.Common.Utils.CreateEngine(new PythonAddin(), new CallbackWriter(mCallback), SourceFilePathResolvedValue);
+      var engine = SerpentWare.Common.Utils.CreateEngine(new PythonAddin(), new CallbackWriter(mCallback), mControl.SourceFilePathResolvedValue);
       var scope = engine.CreateScope();
-      var source = engine.CreateScriptSourceFromFile(SourceFilePathResolvedValue, Encoding.Default, SourceCodeKind.Statements);
+      var source = engine.CreateScriptSourceFromFile(mControl.SourceFilePathResolvedValue, Encoding.Default, SourceCodeKind.Statements);
 
       try
       {

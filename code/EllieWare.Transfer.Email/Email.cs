@@ -5,11 +5,9 @@
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -17,34 +15,31 @@ using SendFileTo;
 
 namespace EllieWare.Transfer.Email
 {
-  public partial class Email : MutableRunnableBase
+  public class Email : MutableRunnableBase<EmailCtrl>
   {
-    public Email() :
-      base()
+    public Email()
     {
-      InitializeComponent();
     }
 
     public Email(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
     }
 
     public override void ReadXml(XmlReader reader)
     {
-      mRecipients.Text = reader.GetAttribute("Recipients");
-      mSubject.Text = reader.GetAttribute("Subject");
-      mMessage.Text = reader.GetAttribute("Message");
-      mAttachments.Text = reader.GetAttribute("Attachments");
+      mControl.mRecipients.Text = reader.GetAttribute("Recipients");
+      mControl.mSubject.Text = reader.GetAttribute("Subject");
+      mControl.mMessage.Text = reader.GetAttribute("Message");
+      mControl.mAttachments.Text = reader.GetAttribute("Attachments");
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      writer.WriteAttributeString("Recipients", mRecipients.Text);
-      writer.WriteAttributeString("Subject", mSubject.Text);
-      writer.WriteAttributeString("Message", mMessage.Text);
-      writer.WriteAttributeString("Attachments", mAttachments.Text);
+      writer.WriteAttributeString("Recipients", mControl.mRecipients.Text);
+      writer.WriteAttributeString("Subject", mControl.mSubject.Text);
+      writer.WriteAttributeString("Message", mControl.mMessage.Text);
+      writer.WriteAttributeString("Attachments", mControl.mAttachments.Text);
     }
 
     public override string Summary
@@ -53,29 +48,21 @@ namespace EllieWare.Transfer.Email
       {
         var summ = string.Format("Send email to {0} about {1} with {2} attachments",
                       GetAllRecipients().Count(),
-                      mSubject.ResolvedValue,
+                      mControl.mSubject.ResolvedValue,
                       GetAllAttachments().Count());
 
         return summ;
       }
     }
 
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
-    }
-
     private IEnumerable<string> GetAllRecipients()
     {
-      return mRecipients.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
+      return mControl.mRecipients.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
     }
 
     private IEnumerable<string> GetAllAttachments()
     {
-      return mAttachments.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
+      return mControl.mAttachments.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
     }
 
     private MAPI GetEmail()
@@ -100,7 +87,7 @@ namespace EllieWare.Transfer.Email
     {
       var mapi = GetEmail();
 
-      mapi.SendMailPopup(mSubject.ResolvedValue, mMessage.ResolvedValue);
+      mapi.SendMailPopup(mControl.mSubject.ResolvedValue, mControl.mMessage.ResolvedValue);
     }
 
     public override bool Run()
@@ -128,35 +115,6 @@ namespace EllieWare.Transfer.Email
       thread.Start();
 
       return retVal;
-    }
-
-    private void CmdBrowse_Click(object sender, EventArgs e)
-    {
-      if (SourceFileSelector.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-      mAttachments.Text += ";" + SourceFileSelector.FileName;
-    }
-
-    private void Recipients_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Subject_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Message_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Attachments_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
     }
   }
 }

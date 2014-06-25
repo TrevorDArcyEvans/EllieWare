@@ -70,16 +70,15 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="SoundFactoryBase.cs" />
-    <Compile Include="SoundFile.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="SoundFile.cs" />
     <Compile Include="SoundFileFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemSound.cs">
+    <Compile Include="SystemSound.cs" />
+    <Compile Include="SystemSoundCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SystemSound.Designer.cs">
-      <DependentUpon>SystemSound.cs</DependentUpon>
+    <Compile Include="SystemSoundCtrl.Designer.cs">
+      <DependentUpon>SystemSoundCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemSoundFactory.cs" />
   </ItemGroup>
@@ -94,8 +93,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SystemSound.resx">
-      <DependentUpon>SystemSound.cs</DependentUpon>
+    <EmbeddedResource Include="SystemSoundCtrl.resx">
+      <DependentUpon>SystemSoundCtrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

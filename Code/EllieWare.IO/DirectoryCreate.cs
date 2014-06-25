@@ -26,7 +26,7 @@ namespace EllieWare.IO
     {
       get
       {
-        var descrip = string.Format("Create {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Create {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -34,7 +34,7 @@ namespace EllieWare.IO
 
     public override bool Run()
     {
-      Directory.CreateDirectory(SourceFilePathResolvedValue);
+      Directory.CreateDirectory(mControl.SourceFilePathResolvedValue);
 
       return true;
     }

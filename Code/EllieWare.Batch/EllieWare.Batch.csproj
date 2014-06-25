@@ -69,11 +69,12 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="BatchRunner.cs">
+    <Compile Include="BatchRunner.cs" />
+    <Compile Include="BatchRunnerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BatchRunner.Designer.cs">
-      <DependentUpon>BatchRunner.cs</DependentUpon>
+    <Compile Include="BatchRunnerCtrl.Designer.cs">
+      <DependentUpon>BatchRunnerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="BatchRunnerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,8 +99,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BatchRunner.resx">
-      <DependentUpon>BatchRunner.cs</DependentUpon>
+    <EmbeddedResource Include="BatchRunnerCtrl.resx">
+      <DependentUpon>BatchRunnerCtrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

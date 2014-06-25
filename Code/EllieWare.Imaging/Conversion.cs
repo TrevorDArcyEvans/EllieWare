@@ -12,7 +12,6 @@ namespace EllieWare.Imaging
 {
   public class Conversion : DualItemIOBase
   {
-
     public Conversion()
     {
     }
@@ -20,15 +19,15 @@ namespace EllieWare.Imaging
     public Conversion(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
-      SetDestinationFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
+      mControl.SetSourceFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
+      mControl.SetDestinationFileSelectorFilter(Common.FileExtensions.ImageFilesFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Convert {0} --> {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+        var descrip = string.Format("Convert {0} --> {1}", mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -38,7 +37,7 @@ namespace EllieWare.Imaging
     {
       var processor = new Simplicode.Imaging.ImageProcessor { JpegCompression = 90L };
 
-      processor.ProcessImage(SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+      processor.ProcessImage(mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

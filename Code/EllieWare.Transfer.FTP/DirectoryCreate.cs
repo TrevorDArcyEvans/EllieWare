@@ -24,7 +24,7 @@ namespace EllieWare.Transfer.FTP
 
     private void Initialise()
     {
-      mDualItemIO.SetExistsVisible(false);
+      mControl.mDualItemIO.SetExistsVisible(false);
     }
 
     public override string Summary
@@ -32,10 +32,10 @@ namespace EllieWare.Transfer.FTP
       get
       {
         var descrip = string.Format("Login to {0} as {1}[{2}] and create (directory) {3}", 
-                          mFtpInfo.Host.ResolvedValue,
-                          mFtpInfo.UserName.ResolvedValue,
-                          mFtpInfo.Password.ResolvedValue,
-                          mDualItemIO.SourceFilePathResolvedValue);
+                          mControl.mFtpInfo.Host.ResolvedValue,
+                          mControl.mFtpInfo.UserName.ResolvedValue,
+                          mControl.mFtpInfo.Password.ResolvedValue,
+                          mControl.mDualItemIO.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -43,13 +43,13 @@ namespace EllieWare.Transfer.FTP
 
     public override bool Run()
     {
-      using (var ftp = mFtpInfo.GetFtpConnection())
+      using (var ftp = mControl.mFtpInfo.GetFtpConnection())
       {
         // connect and login
         ftp.Connect();
         ftp.Login();
 
-        ftp.CreateDirectoryEx(mDualItemIO.SourceFilePathResolvedValue);
+        ftp.CreateDirectoryEx(mControl.mDualItemIO.SourceFilePathResolvedValue);
 
         return true;
       }

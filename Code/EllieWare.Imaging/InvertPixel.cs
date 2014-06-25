@@ -13,8 +13,7 @@ namespace EllieWare.Imaging
 {
   public class InvertPixel : PixelBase
   {
-    public InvertPixel() :
-      base()
+    public InvertPixel()
     {
     }
 

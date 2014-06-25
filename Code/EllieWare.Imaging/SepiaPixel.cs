@@ -13,8 +13,7 @@ namespace EllieWare.Imaging
 {
   public class SepiaPixel : PixelBase
   {
-    public SepiaPixel() :
-      base()
+    public SepiaPixel()
     {
     }
 

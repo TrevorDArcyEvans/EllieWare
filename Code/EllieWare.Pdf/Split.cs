@@ -23,7 +23,7 @@ namespace EllieWare.Pdf
     public Split(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.FileDirectory)
     {
-      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      mControl.SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary
@@ -31,7 +31,7 @@ namespace EllieWare.Pdf
       get
       {
         var descrip = string.Format("Split {0} into separate files and put them in {1}",
-                        SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+                        mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -40,9 +40,9 @@ namespace EllieWare.Pdf
     public override bool Run()
     {
       // Open the file
-      var inputDocument = PdfReader.Open(SourceFilePathResolvedValue, PdfDocumentOpenMode.Import);
+      var inputDocument = PdfReader.Open(mControl.SourceFilePathResolvedValue, PdfDocumentOpenMode.Import);
 
-      var name = Path.GetFileNameWithoutExtension(SourceFilePathResolvedValue);
+      var name = Path.GetFileNameWithoutExtension(mControl.SourceFilePathResolvedValue);
       for (var idx = 0; idx < inputDocument.PageCount; idx++)
       {
         // Create new document
@@ -53,7 +53,7 @@ namespace EllieWare.Pdf
 
         // Add the page and save it
         outputDocument.AddPage(inputDocument.Pages[idx]);
-        outputDocument.Save(Path.Combine(DestinationFilePathResolvedValue, String.Format("{0} - Page {1}.pdf", name, idx + 1)));
+        outputDocument.Save(Path.Combine(mControl.DestinationFilePathResolvedValue, String.Format("{0} - Page {1}.pdf", name, idx + 1)));
       }
 
       return true;

@@ -22,7 +22,7 @@ namespace EllieWare.Pdf
     public ConcatenateAll(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.DirectoryFile)
     {
-      SetDestinationFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      mControl.SetDestinationFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary
@@ -30,8 +30,8 @@ namespace EllieWare.Pdf
       get
       {
         var descrip = string.Format("Join all PDF files in {0} and save them as {1}",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+                        mControl.SourceFilePathResolvedValue,
+                        mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -39,7 +39,7 @@ namespace EllieWare.Pdf
 
     public override bool Run()
     {
-      var files = Directory.EnumerateFiles(SourceFilePathResolvedValue, "*.pdf");
+      var files = Directory.EnumerateFiles(mControl.SourceFilePathResolvedValue, "*.pdf");
 
       // Open the output document
       var outputDocument = new PdfDocument();
@@ -63,7 +63,7 @@ namespace EllieWare.Pdf
       }
 
       // Save the document...
-      outputDocument.Save(DestinationFilePathResolvedValue);
+      outputDocument.Save(mControl.DestinationFilePathResolvedValue);
 
       return true;
     }

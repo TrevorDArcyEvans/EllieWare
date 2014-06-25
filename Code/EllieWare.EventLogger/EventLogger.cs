@@ -9,7 +9,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Permissions;
-using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -17,32 +16,29 @@ using EllieWare.Interfaces;
 namespace EllieWare.EventLogger
 {
   [EventLogPermission(SecurityAction.Demand)]
-  public partial class Logger : MutableRunnableBase
+  public class Logger : MutableRunnableBase<LoggerCtrl>
   {
     public Logger()
     {
-      InitializeComponent();
     }
 
     public Logger(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-      InitializeComponent();
-
-      mSource.SetParameterManager(mgr);
-      mMessage.SetParameterManager(mgr);
+      mControl.mSource.SetParameterManager(mgr);
+      mControl.mMessage.SetParameterManager(mgr);
 
       // get Windows Event Log levels
-      mLevel.DataSource = Enum.GetNames(typeof(EventLogEntryType)).ToList();
-      mLevel.SelectedIndex = 0;
+      mControl.mLevel.DataSource = Enum.GetNames(typeof(EventLogEntryType)).ToList();
+      mControl.mLevel.SelectedIndex = 0;
     }
 
     public override string Summary
     {
       get
       {
-        var level = (LogLevel)mLevel.SelectedIndex;
-        return string.Format("{0} : {1} : {2}", mSource.ResolvedValue, level, mMessage.ResolvedValue);
+        var level = (LogLevel)mControl.mLevel.SelectedIndex;
+        return string.Format("{0} : {1} : {2}", mControl.mSource.ResolvedValue, level, mControl.mMessage.ResolvedValue);
       }
     }
 
@@ -50,29 +46,21 @@ namespace EllieWare.EventLogger
 
     public override void ReadXml(XmlReader reader)
     {
-      mSource.Text = reader.GetAttribute("Source");
+      mControl.mSource.Text = reader.GetAttribute("Source");
       var levelStr = reader.GetAttribute("Level");
       Debug.Assert(levelStr != null, "levelStr != null");
-      mLevel.SelectedIndex = mLevel.Items.IndexOf(levelStr);
-      mMessage.Text = reader.GetAttribute("Message");
+      mControl.mLevel.SelectedIndex = mControl.mLevel.Items.IndexOf(levelStr);
+      mControl.mMessage.Text = reader.GetAttribute("Message");
     }
 
     public override void WriteXml(XmlWriter writer)
     {
-      writer.WriteAttributeString("Source", mSource.Text);
-      writer.WriteAttributeString("Level", (string)mLevel.SelectedItem);
-      writer.WriteAttributeString("Message", mMessage.Text);
+      writer.WriteAttributeString("Source", mControl.mSource.Text);
+      writer.WriteAttributeString("Level", (string)mControl.mLevel.SelectedItem);
+      writer.WriteAttributeString("Message", mControl.mMessage.Text);
     }
 
     #endregion
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
-    }
 
     public override bool Run()
     {
@@ -103,30 +91,15 @@ namespace EllieWare.EventLogger
       // A service that is executing under the LocalSystem account does not have the privileges required to execute this method.
       // The solution is to check whether the event source exists in the ServiceInstaller, and if it does not exist, to create
       // the source in the installer.
-      if (!EventLog.SourceExists(mSource.ResolvedValue))
+      if (!EventLog.SourceExists(mControl.mSource.ResolvedValue))
       {
-        EventLog.CreateEventSource(mSource.ResolvedValue, "Application");
+        EventLog.CreateEventSource(mControl.mSource.ResolvedValue, "Application");
       }
 
-      var level = (EventLogEntryType)Enum.Parse(typeof(EventLogEntryType), (string)mLevel.SelectedItem);
-      EventLog.WriteEntry(mSource.ResolvedValue, mMessage.ResolvedValue, level);
+      var level = (EventLogEntryType)Enum.Parse(typeof(EventLogEntryType), (string)mControl.mLevel.SelectedItem);
+      EventLog.WriteEntry(mControl.mSource.ResolvedValue, mControl.mMessage.ResolvedValue, level);
 
       return true;
-    }
-
-    private void Source_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Level_SelectedIndexChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
-
-    private void Message_TextChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
     }
   }
 }
