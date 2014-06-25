@@ -13,7 +13,7 @@ namespace SampleAddin
 {
   public class SampleAddinFactory : IFactory
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -21,7 +21,7 @@ namespace SampleAddin
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -29,7 +29,7 @@ namespace SampleAddin
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get 
       {
@@ -37,7 +37,7 @@ namespace SampleAddin
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -49,7 +49,7 @@ namespace SampleAddin
       }
     }
 
-    public bool IsLicensed
+    public override bool IsLicensed
     {
       get
       {
@@ -57,7 +57,7 @@ namespace SampleAddin
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -65,7 +65,7 @@ namespace SampleAddin
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new SampleAddin(root, callback, mgr);
     }

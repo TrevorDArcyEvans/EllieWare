@@ -13,7 +13,7 @@ namespace SpaceClaimSampleAddin
 {
   public class FaceAreaFactory : IFactory
   {
-    public string Title
+    public override string Title
     {
       get
       {
@@ -21,7 +21,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public string Description
+    public override string Description
     {
       get
       {
@@ -29,7 +29,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public string Keywords
+    public override string Keywords
     {
       get
       {
@@ -37,7 +37,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public IEnumerable<string> Categories
+    public override IEnumerable<string> Categories
     {
       get
       {
@@ -48,7 +48,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public bool IsLicensed
+    public override bool IsLicensed
     {
       get
       {
@@ -56,7 +56,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public Type CreatedType
+    public override Type CreatedType
     {
       get
       {
@@ -64,7 +64,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new FaceArea(root, callback, mgr);
     }

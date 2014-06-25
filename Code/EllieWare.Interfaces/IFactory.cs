@@ -14,20 +14,20 @@ namespace EllieWare.Interfaces
   /// Factory for creating <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>
   /// This should be a lightweight object, so that most of the work is done in <see cref="Create"/>
   /// </summary>
-  public interface IFactory
+  public abstract class IFactory : MarshalByRefObject
   {
     /// <summary>
     /// Name of factory to appear in user interface.
     /// </summary>
     /// <remarks>Should be localised</remarks>
-    string Title { get; }
+    public abstract string Title { get; }
 
     /// <summary>
     /// A description of what the step does.
     /// This is intended for documenting behaviour of the step.
     /// </summary>
     /// <remarks>Should be localised</remarks>
-    string Description { get; }
+    public abstract string Description { get; }
 
     /// <summary>
     /// A single string containing space and/or comma separated keywords.
@@ -35,7 +35,7 @@ namespace EllieWare.Interfaces
     /// </summary>
     /// <example>"file system, IO, disk"</example>
     /// <remarks>Should be localised</remarks>
-    string Keywords { get; }
+    public abstract string Keywords { get; }
 
     /// <summary>
     /// A list of categories for the step.
@@ -49,17 +49,17 @@ namespace EllieWare.Interfaces
     /// </list>
     /// </example>
     /// <remarks>Should be localised</remarks>
-    IEnumerable<string> Categories { get; }
+    public abstract IEnumerable<string> Categories { get; }
 
     /// <summary>
     /// If this step is correctly licensed and can be created.
     /// </summary>
-    bool IsLicensed { get; }
+    public abstract bool IsLicensed { get; }
 
     /// <summary>
     /// <see cref="Type"/> of <see cref="IRunnable"/> which will be created by <see cref="Create"/>
     /// </summary>
-    Type CreatedType { get; }
+    public abstract Type CreatedType { get; }
 
     /// <summary>
     /// Called to create a <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>.
@@ -69,6 +69,6 @@ namespace EllieWare.Interfaces
     /// <param name="callback">logging - see <see cref="ICallback"/></param>
     /// <param name="mgr">parameter manager - see <see cref="IParameterManager"/></param>
     /// <returns>A fully constructed <see cref="IRunnable"/> or <see cref="IMutableRunnable"/></returns>
-    IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
+    public abstract IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
   }
 }
