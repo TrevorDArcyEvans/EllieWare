@@ -27,7 +27,7 @@ namespace EllieWare.Common
     private readonly ISpecification mSpecification;
     private string mFilePath = string.Empty;
     private readonly Adder mAddDlg;
-    private readonly List<IFactory> mFactories;
+    private readonly List<Factory> mFactories;
 
     private int mCurrentStep;
     private int mLastLogWidth;

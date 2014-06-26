@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace SheetMetalEstimator
 {
-  public class SheetMetalEstimatorFactory : IFactory
+  public class SheetMetalEstimatorFactory : Factory
   {
     public override string Title
     {

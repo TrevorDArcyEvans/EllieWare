@@ -14,7 +14,7 @@ namespace EllieWare.Interfaces
   /// Factory for creating <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>
   /// This should be a lightweight object, so that most of the work is done in <see cref="Create"/>
   /// </summary>
-  public abstract class IFactory : MarshalByRefObject
+  public abstract class Factory : MarshalByRefObject
   {
     /// <summary>
     /// Name of factory to appear in user interface.

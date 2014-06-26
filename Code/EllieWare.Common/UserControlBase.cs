@@ -39,7 +39,7 @@ namespace EllieWare.Common
       var handler = ConfigurationChanged;
       if (handler != null)
       {
-        ConfigurationChanged(this, new EventArgs());
+        handler(this, new EventArgs());
       }
     }
 

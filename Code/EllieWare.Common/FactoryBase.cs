@@ -9,7 +9,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public abstract class FactoryBase : IFactory
+  public abstract class FactoryBase : Factory
   {
     public override bool IsLicensed
     {

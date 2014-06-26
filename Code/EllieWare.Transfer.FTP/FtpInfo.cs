@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public class FtpInfo : MutableRunnableBase<FtpInfoCtrl>
+  public abstract class FtpInfo : MutableRunnableBase<FtpInfoCtrl>
   {
     public FtpInfo()
     {

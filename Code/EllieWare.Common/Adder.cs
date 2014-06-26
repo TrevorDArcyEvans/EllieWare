@@ -18,14 +18,14 @@ namespace EllieWare.Common
 {
   public partial class Adder : Form
   {
-    private readonly IList<IFactory> mFactories;
+    private readonly IList<Factory> mFactories;
 
     public Adder()
     {
       InitializeComponent();
     }
 
-    public Adder(IEnumerable<IFactory> factories) :
+    public Adder(IEnumerable<Factory> factories) :
       this()
     {
       mFactories = factories.Where(x => x.IsLicensed).ToList();
@@ -50,7 +50,7 @@ namespace EllieWare.Common
 
     private void Steps_SelectedIndexChanged(object sender, EventArgs e)
     {
-      txtDescription.Text = ((IFactory)lbSteps.SelectedItem).Description;
+      txtDescription.Text = ((Factory)lbSteps.SelectedItem).Description;
     }
 
     private void Categories_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace EllieWare.Common
         return;
       }
 
-      IEnumerable<IFactory> factsByCat;
+      IEnumerable<Factory> factsByCat;
       if (ddlCategories.SelectedIndex == 0)
       {
         factsByCat = mFactories.ToList();
@@ -74,7 +74,7 @@ namespace EllieWare.Common
         factsByCat = from thisFact in mFactories where thisFact.Categories.Contains(selCat) select thisFact;
       }
 
-      IEnumerable<IFactory> factsBySearch;
+      IEnumerable<Factory> factsBySearch;
       if (string.IsNullOrEmpty(searchTxt))
       {
         factsBySearch = factsByCat.ToList();
@@ -96,11 +96,11 @@ namespace EllieWare.Common
       Categories_SelectedIndexChanged(sender, e);
     }
 
-    public IFactory SelectedFactory
+    public Factory SelectedFactory
     {
       get
       {
-        return (IFactory)lbSteps.SelectedItem;
+        return (Factory)lbSteps.SelectedItem;
       }
     }
 

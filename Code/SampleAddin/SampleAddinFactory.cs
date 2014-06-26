@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace SampleAddin
 {
-  public class SampleAddinFactory : IFactory
+  public class SampleAddinFactory : Factory
   {
     public override string Title
     {

@@ -12,7 +12,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public class FtpDualItemIOBase : MutableRunnableBase<FtpDualItemIOBaseCtrl>
+  public abstract class FtpDualItemIOBase : MutableRunnableBase<FtpDualItemIOBaseCtrl>
   {
     public FtpDualItemIOBase()
     {

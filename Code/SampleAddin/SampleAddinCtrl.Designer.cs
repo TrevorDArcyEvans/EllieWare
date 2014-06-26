@@ -1,5 +1,5 @@
 ﻿//
-//  Copyright (C) 2013 EllieWare
+//  Copyright (C) 2014 EllieWare
 //
 //  All rights reserved
 //
@@ -7,7 +7,7 @@
 //
 namespace SampleAddin
 {
-  partial class SampleAddin
+  partial class SampleAddinCtrl
   {
     /// <summary> 
     /// Required designer variable.
@@ -78,12 +78,12 @@ namespace SampleAddin
       this.mText.Text = "Hello, world!";
       this.mText.TextChanged += new System.EventHandler(this.Text_TextChanged);
       // 
-      // SampleAddin
+      // SampleAddinCtrl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(tableLayoutPanel1);
-      this.Name = "SampleAddin";
+      this.Name = "SampleAddinCtrl";
       this.Size = new System.Drawing.Size(385, 281);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();

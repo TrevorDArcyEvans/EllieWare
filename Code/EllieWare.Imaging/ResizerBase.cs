@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Imaging
 {
-  public class ResizerBase : MutableRunnableBase<ResizerBaseCtrl>
+  public abstract class ResizerBase : MutableRunnableBase<ResizerBaseCtrl>
   {
     public ResizerBase()
     {

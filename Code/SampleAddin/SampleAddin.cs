@@ -1,11 +1,10 @@
 ﻿//
-//  Copyright (C) 2013 EllieWare
+//  Copyright (C) 2014 EllieWare
 //
 //  All rights reserved
 //
 //  www.EllieWare.com
 //
-using System;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
@@ -13,19 +12,21 @@ using EllieWare.Interfaces;
 
 namespace SampleAddin
 {
-  public partial class SampleAddin : UserControl, IMutableRunnable
+  public class SampleAddin : IMutableRunnable
   {
     // retain these for future use
     private readonly IRobotWare mRoot;
     private readonly ICallback mCallback;
     private readonly IParameterManager mParamMgr;
 
-    // default constructor required for:
-    //    Microsoft Visual Studio designer
-    //    IXmlSerializable infrastructure
+    private readonly SampleAddinCtrl mControl = new SampleAddinCtrl();
+
     public SampleAddin()
     {
-      InitializeComponent();
+      // Subscribe to changes in control.
+      // Changing message should mark specification as dirty,
+      // so notify RobotWare which will enable 'Save' button in 'Editor'
+      mControl.ConfigurationChanged += (s, e) => FireConfigurationChanged();
     }
 
     // called by RobotWare when:
@@ -45,46 +46,46 @@ namespace SampleAddin
     #region Implementation of IXmlSerializable
 
     // must return null - see MSDN documentation
-    public XmlSchema GetSchema()
+    public override XmlSchema GetSchema()
     {
       return null;
     }
 
     // called by RobotWare when loading or running specification
     // so addin can read settings from specification file
-    public void ReadXml(XmlReader reader)
+    public override void ReadXml(XmlReader reader)
     {
-      mText.Text = reader.GetAttribute("Message");
+      mControl.SetText(reader.GetAttribute("Message"));
     }
 
     // called by RobotWare when loading or running specification
     // so addin can save settings to specification file
-    public void WriteXml(XmlWriter writer)
+    public override void WriteXml(XmlWriter writer)
     {
-      writer.WriteAttributeString("Message", mText.Text);
+      writer.WriteAttributeString("Message", mControl.GetText());
     }
 
     #endregion
 
     #region Implementation of IRunnable
 
-    public string Summary
+    public override string Summary
     {
       get
       {
-        return "Display a message box with: " + mText.Text;
+        return "Display a message box with: " + mControl.GetText();
       }
     }
 
-    public Control ConfigurationUserInterface
+    public override Control ConfigurationUserInterface
     {
       get
       {
-        return this;
+        return mControl;
       }
     }
 
-    public bool CanRun
+    public override bool CanRun
     {
       get
       {
@@ -93,29 +94,13 @@ namespace SampleAddin
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
-      MessageBox.Show(mText.Text);
+      MessageBox.Show(mControl.GetText());
 
       return true;
     }
 
     #endregion
-
-    #region Implementation of IMutableRunnable
-
-    public event EventHandler ConfigurationChanged;
-
-    #endregion
-
-    // changing message should mark specification as dirty,
-    // so notify RobotWare which will enable 'Save' button in 'Editor'
-    private void Text_TextChanged(object sender, EventArgs e)
-    {
-      if (ConfigurationChanged != null)
-      {
-        ConfigurationChanged(this, new EventArgs());
-      }
-    }
   }
 }

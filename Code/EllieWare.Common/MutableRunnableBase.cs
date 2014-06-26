@@ -38,24 +38,24 @@ namespace EllieWare.Common
 
     #region Implementation of IXmlSerializable
 
-    public XmlSchema GetSchema()
+    public override XmlSchema GetSchema()
     {
       return null;
     }
 
-    public virtual void ReadXml(XmlReader reader)
+    public override void ReadXml(XmlReader reader)
     {
       mControl.ReadXml(reader);
     }
 
-    public virtual void WriteXml(XmlWriter writer)
+    public override void WriteXml(XmlWriter writer)
     {
       mControl.WriteXml(writer);
     }
 
     #endregion
 
-    public virtual string Summary
+    public override string Summary
     {
       get
       {
@@ -63,7 +63,7 @@ namespace EllieWare.Common
       }
     }
 
-    public virtual Control ConfigurationUserInterface
+    public override Control ConfigurationUserInterface
     {
       get
       {
@@ -71,27 +71,12 @@ namespace EllieWare.Common
       }
     }
 
-    public virtual bool CanRun
+    public override bool CanRun
     {
       get
       {
         return true;
       }
     }
-
-    public virtual bool Run()
-    {
-      throw new NotImplementedException();
-    }
-
-    protected void FireConfigurationChanged()
-    {
-      if (ConfigurationChanged != null)
-      {
-        ConfigurationChanged(this, new EventArgs());
-      }
-    }
-
-    public event EventHandler ConfigurationChanged;
   }
 }

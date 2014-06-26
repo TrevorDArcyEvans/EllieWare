@@ -17,7 +17,7 @@ namespace EllieWare.Common
   {
     private readonly IRobotWare mRoot;
     private readonly ICallback mCallback;
-    private readonly IEnumerable<IFactory> mFactories;
+    private readonly IEnumerable<Factory> mFactories;
 
     // parameterless constructor required for XML serialisation
     public Specification()
@@ -26,7 +26,7 @@ namespace EllieWare.Common
       Steps = new List<IRunnable>();
     }
 
-    public Specification(IRobotWare root, ICallback callback, IEnumerable<IFactory> factories) :
+    public Specification(IRobotWare root, ICallback callback, IEnumerable<Factory> factories) :
       this()
     {
       mRoot = root;

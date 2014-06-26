@@ -11,7 +11,7 @@ using EllieWare.Interfaces;
 
 namespace SpaceClaimSampleAddin
 {
-  public class FaceAreaFactory : IFactory
+  public class FaceAreaFactory : Factory
   {
     public override string Title
     {

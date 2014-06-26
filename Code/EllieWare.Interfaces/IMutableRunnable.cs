@@ -12,11 +12,23 @@ namespace EllieWare.Interfaces
   /// <summary>
   /// A <see cref="IRunnable"/> which can change its configuration
   /// </summary>
-  public interface IMutableRunnable : IRunnable
+  public abstract class IMutableRunnable : IRunnable
   {
     /// <summary>
     /// Event fired when the configuration has changed
     /// </summary>
-    event EventHandler ConfigurationChanged;
+    public event EventHandler ConfigurationChanged;
+
+    /// <summary>
+    /// Fire event to all listeners
+    /// </summary>
+    protected void FireConfigurationChanged()
+    {
+      var handler = ConfigurationChanged;
+      if (handler != null)
+      {
+        handler(this, new EventArgs());
+      }
+    }
   }
 }

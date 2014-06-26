@@ -61,11 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleAddin.cs">
+    <Compile Include="SampleAddin.cs" />
+    <Compile Include="SampleAddinCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SampleAddin.Designer.cs">
-      <DependentUpon>SampleAddin.cs</DependentUpon>
+    <Compile Include="SampleAddinCtrl.Designer.cs">
+      <DependentUpon>SampleAddinCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="SampleAddinFactory.cs" />
   </ItemGroup>
@@ -76,12 +77,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SampleAddin.resx">
-      <DependentUpon>SampleAddin.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="License.txt" />
+    <EmbeddedResource Include="SampleAddinCtrl.resx">
+      <DependentUpon>SampleAddinCtrl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

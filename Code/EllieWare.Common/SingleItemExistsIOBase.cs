@@ -9,7 +9,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Common
 {
-  public class SingleItemExistsIOBase : MutableRunnableBase<SingleItemExistsIOBaseCtrl>
+  public abstract class SingleItemExistsIOBase : MutableRunnableBase<SingleItemExistsIOBaseCtrl>
   {
     public SingleItemExistsIOBase()
     {

@@ -10,7 +10,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.Transfer.FTP
 {
-  public partial class FtpSingleItemExistsIOBase : FtpDualItemIOBase
+  public abstract class FtpSingleItemExistsIOBase : FtpDualItemIOBase
   {
     public FtpSingleItemExistsIOBase()
     {
