@@ -105,15 +105,16 @@ namespace SampleAddin
 
     #endregion
 
-    public event System.EventHandler ConfigurationChanged;
+    public event EventHandler ConfigurationChanged;
 
     // changing message should mark specification as dirty,
     // so notify RobotWare which will enable 'Save' button in 'Editor'
     private void FireConfigurationChanged()
     {
-      if (ConfigurationChanged != null)
+      var handler = ConfigurationChanged;
+      if (handler != null)
       {
-        ConfigurationChanged(this, new EventArgs());
+        handler(this, new EventArgs());
       }
     }
   }
