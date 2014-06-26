@@ -32,7 +32,7 @@ namespace EllieWare.IO
       }
     }
 
-    public override bool Run()
+    public bool Run()
     {
       var dirExists = Directory.Exists(mControl.SourceFilePathResolvedValue);
 

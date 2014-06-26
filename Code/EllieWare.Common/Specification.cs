@@ -17,16 +17,16 @@ namespace EllieWare.Common
   {
     private readonly IRobotWare mRoot;
     private readonly ICallback mCallback;
-    private readonly IEnumerable<Factory> mFactories;
+    private readonly IEnumerable<IFactory> mFactories;
 
     // parameterless constructor required for XML serialisation
     public Specification()
     {
       ParameterManager = new ParameterManager();
-      Steps = new List<Runnable>();
+      Steps = new List<IRunnable>();
     }
 
-    public Specification(IRobotWare root, ICallback callback, IEnumerable<Factory> factories) :
+    public Specification(IRobotWare root, ICallback callback, IEnumerable<IFactory> factories) :
       this()
     {
       mRoot = root;
@@ -40,7 +40,7 @@ namespace EllieWare.Common
       private set;
     }
 
-    public List<Runnable> Steps
+    public List<IRunnable> Steps
     {
       get;
       private set;

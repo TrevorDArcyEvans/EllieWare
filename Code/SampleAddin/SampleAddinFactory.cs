@@ -11,9 +11,9 @@ using EllieWare.Interfaces;
 
 namespace SampleAddin
 {
-  public class SampleAddinFactory : Factory
+  public class SampleAddinFactory : IFactory
   {
-    public override string Title
+    public string Title
     {
       get
       {
@@ -21,7 +21,7 @@ namespace SampleAddin
       }
     }
 
-    public override string Description
+    public string Description
     {
       get
       {
@@ -29,7 +29,7 @@ namespace SampleAddin
       }
     }
 
-    public override string Keywords
+    public string Keywords
     {
       get 
       {
@@ -37,7 +37,7 @@ namespace SampleAddin
       }
     }
 
-    public override IEnumerable<string> Categories
+    public IEnumerable<string> Categories
     {
       get
       {
@@ -49,7 +49,7 @@ namespace SampleAddin
       }
     }
 
-    public override bool IsLicensed
+    public bool IsLicensed
     {
       get
       {
@@ -57,7 +57,7 @@ namespace SampleAddin
       }
     }
 
-    public override Type CreatedType
+    public Type CreatedType
     {
       get
       {
@@ -65,7 +65,7 @@ namespace SampleAddin
       }
     }
 
-    public override Runnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new SampleAddin(root, callback, mgr);
     }

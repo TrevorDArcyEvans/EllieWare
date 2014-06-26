@@ -11,9 +11,9 @@ using EllieWare.Interfaces;
 
 namespace SpaceClaimSampleAddin
 {
-  public class FaceAreaFactory : Factory
+  public class FaceAreaFactory : IFactory
   {
-    public override string Title
+    public string Title
     {
       get
       {
@@ -21,7 +21,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public override string Description
+    public string Description
     {
       get
       {
@@ -29,7 +29,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public override string Keywords
+    public string Keywords
     {
       get
       {
@@ -37,7 +37,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public override IEnumerable<string> Categories
+    public IEnumerable<string> Categories
     {
       get
       {
@@ -48,7 +48,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public override bool IsLicensed
+    public bool IsLicensed
     {
       get
       {
@@ -56,7 +56,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public override Type CreatedType
+    public Type CreatedType
     {
       get
       {
@@ -64,7 +64,7 @@ namespace SpaceClaimSampleAddin
       }
     }
 
-    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new FaceArea(root, callback, mgr);
     }

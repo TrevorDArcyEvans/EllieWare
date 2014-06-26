@@ -38,7 +38,7 @@ namespace EllieWare.Batch
       }
     }
 
-    public override bool Run()
+    public bool Run()
     {
       var factories = Utils.GetFactories();
 

@@ -37,7 +37,7 @@ namespace EllieWare.Pdf
       }
     }
 
-    public override bool Run()
+    public bool Run()
     {
       var files = Directory.EnumerateFiles(mControl.SourceFilePathResolvedValue, "*.pdf");
 

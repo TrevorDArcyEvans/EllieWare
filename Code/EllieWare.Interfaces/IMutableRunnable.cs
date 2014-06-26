@@ -10,25 +10,13 @@ using System;
 namespace EllieWare.Interfaces
 {
   /// <summary>
-  /// A <see cref="Runnable"/> which can change its configuration
+  /// A <see cref="IRunnable"/> which can change its configuration
   /// </summary>
-  public abstract class IMutableRunnable : Runnable
+  public interface IMutableRunnable : IRunnable
   {
     /// <summary>
     /// Event fired when the configuration has changed
     /// </summary>
-    public event EventHandler ConfigurationChanged;
-
-    /// <summary>
-    /// Fire event to all listeners
-    /// </summary>
-    protected void FireConfigurationChanged()
-    {
-      var handler = ConfigurationChanged;
-      if (handler != null)
-      {
-        handler(this, new EventArgs());
-      }
-    }
+    event EventHandler ConfigurationChanged;
   }
 }

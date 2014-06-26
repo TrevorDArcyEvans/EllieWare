@@ -27,7 +27,7 @@ namespace EllieWare.Common
     private readonly ISpecification mSpecification;
     private string mFilePath = string.Empty;
     private readonly Adder mAddDlg;
-    private readonly List<Factory> mFactories;
+    private readonly List<IFactory> mFactories;
 
     private int mCurrentStep;
     private int mLastLogWidth;
@@ -182,7 +182,7 @@ namespace EllieWare.Common
       }
 
       mStepsContainer.Panel2.Controls.Clear();
-      var step = (Runnable)mSteps.SelectedItem;
+      var step = (IRunnable)mSteps.SelectedItem;
       mStepsContainer.Panel2.Controls.Add(step.ConfigurationUserInterface);
       step.ConfigurationUserInterface.Dock = DockStyle.Fill;
 
@@ -232,7 +232,7 @@ namespace EllieWare.Common
     {
       mCallback.Log(LogLevel.Critical, "Error!");
 
-      var step = (Runnable)mSteps.Items[mCurrentStep];
+      var step = (IRunnable)mSteps.Items[mCurrentStep];
       mCallback.Log(LogLevel.Critical, "  " + step.Summary);
     }
 
@@ -334,7 +334,7 @@ namespace EllieWare.Common
         return false;
       }
 
-      var step = (Runnable)mSteps.Items[stepNum];
+      var step = (IRunnable)mSteps.Items[stepNum];
       if (!step.CanRun)
       {
         // caller will report error

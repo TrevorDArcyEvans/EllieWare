@@ -32,7 +32,7 @@ namespace EllieWare.IO
       }
     }
 
-    public override bool Run()
+    public bool Run()
     {
       Directory.CreateDirectory(mControl.SourceFilePathResolvedValue);
 

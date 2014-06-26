@@ -22,9 +22,9 @@ namespace EllieWare.Common
 {
   public class Utils
   {
-    public static IEnumerable<Factory> GetFactories()
+    public static IEnumerable<IFactory> GetFactories()
     {
-      var retVal = new List<Factory>();
+      var retVal = new List<IFactory>();
       var callAssyLoc = Assembly.GetCallingAssembly().Location;
       var callAssyDir = Path.GetDirectoryName(callAssyLoc);
       Debug.Assert(callAssyDir != null);
@@ -35,8 +35,8 @@ namespace EllieWare.Common
         {
           var assy = Assembly.LoadFrom(thisDllFile);
           var factories = from t in assy.GetTypes()
-                          where t.IsSubclassOf(typeof(Factory)) && t.IsClass && !t.IsAbstract && t.IsMarshalByRef
-                          select (Factory)Activator.CreateInstance(t);
+                          where t.GetInterfaces().Contains(typeof(IFactory)) && t.IsClass && !t.IsAbstract
+                          select (IFactory)Activator.CreateInstance(t);
           retVal.AddRange(factories);
         }
         catch (BadImageFormatException)

@@ -57,7 +57,7 @@ namespace EllieWare.DateTime
       }
     }
 
-    public override Runnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new Pause(root, callback, mgr);
     }

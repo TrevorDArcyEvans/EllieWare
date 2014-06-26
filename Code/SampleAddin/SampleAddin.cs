@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+
+using System;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
@@ -46,21 +48,21 @@ namespace SampleAddin
     #region Implementation of IXmlSerializable
 
     // must return null - see MSDN documentation
-    public override XmlSchema GetSchema()
+    public XmlSchema GetSchema()
     {
       return null;
     }
 
     // called by RobotWare when loading or running specification
     // so addin can read settings from specification file
-    public override void ReadXml(XmlReader reader)
+    public void ReadXml(XmlReader reader)
     {
       mControl.SetText(reader.GetAttribute("Message"));
     }
 
     // called by RobotWare when loading or running specification
     // so addin can save settings to specification file
-    public override void WriteXml(XmlWriter writer)
+    public void WriteXml(XmlWriter writer)
     {
       writer.WriteAttributeString("Message", mControl.GetText());
     }
@@ -69,7 +71,7 @@ namespace SampleAddin
 
     #region Implementation of IRunnable
 
-    public override string Summary
+    public string Summary
     {
       get
       {
@@ -77,7 +79,7 @@ namespace SampleAddin
       }
     }
 
-    public override Control ConfigurationUserInterface
+    public Control ConfigurationUserInterface
     {
       get
       {
@@ -85,7 +87,7 @@ namespace SampleAddin
       }
     }
 
-    public override bool CanRun
+    public bool CanRun
     {
       get
       {
@@ -94,7 +96,7 @@ namespace SampleAddin
       }
     }
 
-    public override bool Run()
+    public bool Run()
     {
       MessageBox.Show(mControl.GetText());
 
@@ -102,5 +104,17 @@ namespace SampleAddin
     }
 
     #endregion
+
+    public event System.EventHandler ConfigurationChanged;
+
+    // changing message should mark specification as dirty,
+    // so notify RobotWare which will enable 'Save' button in 'Editor'
+    private void FireConfigurationChanged()
+    {
+      if (ConfigurationChanged != null)
+      {
+        ConfigurationChanged(this, new EventArgs());
+      }
+    }
   }
 }

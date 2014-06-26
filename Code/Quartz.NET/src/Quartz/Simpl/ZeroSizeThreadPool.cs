@@ -124,7 +124,7 @@ namespace Quartz.Simpl
         /// <remarks>
         /// The implementation of this interface should not throw exceptions unless
         /// there is a serious problem (i.e. a serious misconfiguration). If there
-        /// are no available threads, rather it should either queue the Runnable, or
+        /// are no available threads, rather it should either queue the IRunnable, or
         /// block until a thread is available, depending on the desired strategy.
         /// </remarks>
         public virtual bool RunInThread(IThreadRunnable runnable)

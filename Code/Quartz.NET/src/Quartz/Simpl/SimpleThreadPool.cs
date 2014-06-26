@@ -267,7 +267,7 @@ namespace Quartz.Simpl
         /// <summary>
         /// Run the given <see cref="IThreadRunnable" /> object in the next available
         /// <see cref="Thread" />. If while waiting the thread pool is asked to
-        /// shut down, the Runnable is executed immediately within a new additional
+        /// shut down, the IRunnable is executed immediately within a new additional
         /// thread.
         /// </summary>
         /// <param name="runnable">The <see cref="IThreadRunnable" /> to be added.</param>
@@ -303,7 +303,7 @@ namespace Quartz.Simpl
                 }
                 else
                 {
-                    // If the thread pool is going down, execute the Runnable
+                    // If the thread pool is going down, execute the IRunnable
                     // within a new additional worker thread (no thread from the pool).
                     WorkerThread wt = new WorkerThread(this, "WorkerThread-LastJob", prio, MakeThreadsDaemons, runnable);
                     busyWorkers.AddLast(wt);
@@ -411,8 +411,8 @@ namespace Quartz.Simpl
             private readonly bool runOnce;
 
             /// <summary>
-            /// Create a worker thread and start it. Waiting for the next Runnable,
-            /// executing it, and waiting for the next Runnable, until the Shutdown
+            /// Create a worker thread and start it. Waiting for the next IRunnable,
+            /// executing it, and waiting for the next IRunnable, until the Shutdown
             /// flag is set.
             /// </summary>
             internal WorkerThread(SimpleThreadPool tp, string name,
@@ -454,7 +454,7 @@ namespace Quartz.Simpl
                 {
                     if (runnable != null)
                     {
-                        throw new ArgumentException("Already running a Runnable!");
+                        throw new ArgumentException("Already running a IRunnable!");
                     }
 
                     runnable = newRunnable;
@@ -489,7 +489,7 @@ namespace Quartz.Simpl
                     }
                     catch (Exception exceptionInRunnable)
                     {
-                        log.Error("Error while executing the Runnable: ", exceptionInRunnable);
+                        log.Error("Error while executing the IRunnable: ", exceptionInRunnable);
                     }
                     finally
                     {

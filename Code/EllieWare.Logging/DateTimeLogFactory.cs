@@ -41,7 +41,7 @@ namespace EllieWare.Logging
       get { return typeof(DateTimeLog); }
     }
 
-    public override Runnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new DateTimeLog(root, callback, mgr);
     }

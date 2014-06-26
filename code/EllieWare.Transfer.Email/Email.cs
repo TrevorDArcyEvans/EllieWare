@@ -29,7 +29,7 @@ namespace EllieWare.Transfer.Email
       mapi.SendMailPopup(mControl.mSubject.ResolvedValue, mControl.mMessage.ResolvedValue);
     }
 
-    public override bool Run()
+    public bool Run()
     {
 #if false
       var mapi = mControl.GetEmail();
