@@ -28,10 +28,5 @@ namespace EllieWare.Audio
 
       return true;
     }
-
-    private void SelSystemSound_SelectedIndexChanged(object sender, EventArgs e)
-    {
-      FireConfigurationChanged();
-    }
   }
 }
