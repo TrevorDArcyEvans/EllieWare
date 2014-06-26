@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace EllieWare.Interfaces
 {
   /// <summary>
-  /// Factory for creating <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>
+  /// Factory for creating <see cref="Runnable"/> or <see cref="IMutableRunnable"/>
   /// This should be a lightweight object, so that most of the work is done in <see cref="Create"/>
   /// </summary>
   public abstract class Factory : MarshalByRefObject
@@ -57,18 +57,18 @@ namespace EllieWare.Interfaces
     public abstract bool IsLicensed { get; }
 
     /// <summary>
-    /// <see cref="Type"/> of <see cref="IRunnable"/> which will be created by <see cref="Create"/>
+    /// <see cref="Type"/> of <see cref="Runnable"/> which will be created by <see cref="Create"/>
     /// </summary>
     public abstract Type CreatedType { get; }
 
     /// <summary>
-    /// Called to create a <see cref="IRunnable"/> or <see cref="IMutableRunnable"/>.
+    /// Called to create a <see cref="Runnable"/> or <see cref="IMutableRunnable"/>.
     /// Most of the work should be done in this method.
     /// </summary>
     /// <param name="root">RobotWare root object</param>
     /// <param name="callback">logging - see <see cref="ICallback"/></param>
     /// <param name="mgr">parameter manager - see <see cref="IParameterManager"/></param>
-    /// <returns>A fully constructed <see cref="IRunnable"/> or <see cref="IMutableRunnable"/></returns>
-    public abstract IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
+    /// <returns>A fully constructed <see cref="Runnable"/> or <see cref="IMutableRunnable"/></returns>
+    public abstract Runnable Create(IRobotWare root, ICallback callback, IParameterManager mgr);
   }
 }

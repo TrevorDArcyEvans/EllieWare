@@ -23,7 +23,7 @@ namespace EllieWare.Common
     public Specification()
     {
       ParameterManager = new ParameterManager();
-      Steps = new List<IRunnable>();
+      Steps = new List<Runnable>();
     }
 
     public Specification(IRobotWare root, ICallback callback, IEnumerable<Factory> factories) :
@@ -40,7 +40,7 @@ namespace EllieWare.Common
       private set;
     }
 
-    public List<IRunnable> Steps
+    public List<Runnable> Steps
     {
       get;
       private set;

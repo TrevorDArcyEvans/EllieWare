@@ -14,7 +14,7 @@ namespace EllieWare.Interfaces
   public interface ICallback
   {
     /// <summary>
-    /// Used by a <see cref="IRunnable"/> or <see cref="IMutableRunnable"/> to send a message during execution
+    /// Used by a <see cref="Runnable"/> or <see cref="IMutableRunnable"/> to send a message during execution
     /// </summary>
     /// <param name="level">importance of message - see <see cref="LogLevel"/></param>
     /// <param name="message">message to send</param>

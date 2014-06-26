@@ -10,9 +10,9 @@ using System;
 namespace EllieWare.Interfaces
 {
   /// <summary>
-  /// A <see cref="IRunnable"/> which can change its configuration
+  /// A <see cref="Runnable"/> which can change its configuration
   /// </summary>
-  public abstract class IMutableRunnable : IRunnable
+  public abstract class IMutableRunnable : Runnable
   {
     /// <summary>
     /// Event fired when the configuration has changed

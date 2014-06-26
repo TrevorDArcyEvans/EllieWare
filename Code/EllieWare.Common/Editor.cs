@@ -182,7 +182,7 @@ namespace EllieWare.Common
       }
 
       mStepsContainer.Panel2.Controls.Clear();
-      var step = (IRunnable)mSteps.SelectedItem;
+      var step = (Runnable)mSteps.SelectedItem;
       mStepsContainer.Panel2.Controls.Add(step.ConfigurationUserInterface);
       step.ConfigurationUserInterface.Dock = DockStyle.Fill;
 
@@ -232,7 +232,7 @@ namespace EllieWare.Common
     {
       mCallback.Log(LogLevel.Critical, "Error!");
 
-      var step = (IRunnable)mSteps.Items[mCurrentStep];
+      var step = (Runnable)mSteps.Items[mCurrentStep];
       mCallback.Log(LogLevel.Critical, "  " + step.Summary);
     }
 
@@ -334,7 +334,7 @@ namespace EllieWare.Common
         return false;
       }
 
-      var step = (IRunnable)mSteps.Items[stepNum];
+      var step = (Runnable)mSteps.Items[stepNum];
       if (!step.CanRun)
       {
         // caller will report error

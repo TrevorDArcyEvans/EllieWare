@@ -17,7 +17,7 @@ namespace EllieWare.Interfaces
   /// <summary>
   /// A single unit of execution ie step, which can be saved and loaded
   /// </summary>
-  public abstract class IRunnable : MarshalByRefObject, IXmlSerializable
+  public abstract class Runnable : MarshalByRefObject, IXmlSerializable
   {
     /// <summary>
     /// Summary of what the step will do, including any parameters.

@@ -36,7 +36,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override Runnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new AddToZip(root, callback, mgr);
     }

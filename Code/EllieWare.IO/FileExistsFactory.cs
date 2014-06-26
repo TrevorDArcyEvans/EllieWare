@@ -36,7 +36,7 @@ namespace EllieWare.IO
       }
     }
 
-    public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
+    public override Runnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       return new FileExists(root, callback, mgr);
     }
