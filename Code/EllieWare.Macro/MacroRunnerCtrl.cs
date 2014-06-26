@@ -23,6 +23,16 @@ namespace EllieWare.Macro
       InitializeComponent();
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Run {0}", MacroFileName.ResolvedValue);
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

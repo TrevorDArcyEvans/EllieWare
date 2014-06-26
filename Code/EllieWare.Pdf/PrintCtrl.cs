@@ -28,6 +28,16 @@ namespace EllieWare.Pdf
       SetSourceFileSelectorFilter(FileExtensions.PdfFilesFilter);
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Print {0} to {1}", SourceFilePathResolvedValue, Printers.Text);
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

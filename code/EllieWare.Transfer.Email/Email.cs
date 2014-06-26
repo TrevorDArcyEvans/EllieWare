@@ -5,12 +5,9 @@
 //
 //  www.EllieWare.com
 //
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using EllieWare.Common;
 using EllieWare.Interfaces;
-using SendFileTo;
 
 namespace EllieWare.Transfer.Email
 {
@@ -25,50 +22,9 @@ namespace EllieWare.Transfer.Email
     {
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var summ = string.Format("Send email to {0} about {1} with {2} attachments",
-                      GetAllRecipients().Count(),
-                      mControl.mSubject.ResolvedValue,
-                      GetAllAttachments().Count());
-
-        return summ;
-      }
-    }
-
-    private IEnumerable<string> GetAllRecipients()
-    {
-      return mControl.mRecipients.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
-    }
-
-    private IEnumerable<string> GetAllAttachments()
-    {
-      return mControl.mAttachments.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
-    }
-
-    private MAPI GetEmail()
-    {
-      var mapi = new MAPI();
-
-      var allRecipients = GetAllRecipients();
-      foreach (var thisRecipient in allRecipients)
-      {
-        mapi.AddRecipientTo(thisRecipient.Trim());
-      }
-
-      var allAttachments = GetAllAttachments();
-      foreach (var thisAttachment in allAttachments)
-      {
-        mapi.AddAttachment(thisAttachment.Trim());
-      }
-      return mapi;
-    }
-
     private void SendMailPopup()
     {
-      var mapi = GetEmail();
+      var mapi = mControl.GetEmail();
 
       mapi.SendMailPopup(mControl.mSubject.ResolvedValue, mControl.mMessage.ResolvedValue);
     }
@@ -76,7 +32,7 @@ namespace EllieWare.Transfer.Email
     public override bool Run()
     {
 #if false
-      var mapi = GetEmail();
+      var mapi = mControl.GetEmail();
 #endif
 
       var retVal = true;

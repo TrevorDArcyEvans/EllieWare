@@ -9,6 +9,7 @@ using System;
 using System.Globalization;
 using System.Xml;
 using EllieWare.Common;
+using EllieWare.Interfaces;
 
 namespace EllieWare.Logging
 {
@@ -17,6 +18,16 @@ namespace EllieWare.Logging
     public LoggingCtrl()
     {
       InitializeComponent();
+    }
+
+    public override string Summary
+    {
+      get
+      {
+        var level = (LogLevel) mLevel.SelectedIndex;
+
+        return string.Format("{0} : {1}", level, mMessage.ResolvedValue);
+      }
     }
 
     public override void ReadXml(XmlReader reader)

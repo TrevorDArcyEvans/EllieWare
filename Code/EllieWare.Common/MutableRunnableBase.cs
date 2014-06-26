@@ -57,7 +57,10 @@ namespace EllieWare.Common
 
     public virtual string Summary
     {
-      get { throw new NotImplementedException(); }
+      get
+      {
+        return mControl.Summary;
+      }
     }
 
     public virtual Control ConfigurationUserInterface

@@ -23,16 +23,6 @@ namespace EllieWare.Logging
       mControl.mLevel.SelectedIndex = 0;
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var level = (LogLevel) mControl.mLevel.SelectedIndex;
-
-        return string.Format("{0} : {1}", level, mControl.mMessage.ResolvedValue);
-      }
-    }
-
     public override bool Run()
     {
       mCallback.Log((LogLevel)mControl.mLevel.SelectedIndex, mControl.mMessage.ResolvedValue);

@@ -19,6 +19,15 @@ namespace EllieWare.EventLogger
       InitializeComponent();
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var levelName = Enum.GetNames(typeof (EventLogEntryType))[mLevel.SelectedIndex];
+        return string.Format("{0} : {1} : {2}", mSource.ResolvedValue, levelName, mMessage.ResolvedValue);
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

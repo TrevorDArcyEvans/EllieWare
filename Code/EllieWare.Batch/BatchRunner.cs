@@ -5,10 +5,7 @@
 //
 //  www.EllieWare.com
 //
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -25,15 +22,6 @@ namespace EllieWare.Batch
     public BatchRunner(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
-    }
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Run {0} other macro files with parameters", mControl.mSpecFileNames.Count);
-
-        return descrip;
-      }
     }
 
     public override bool CanRun

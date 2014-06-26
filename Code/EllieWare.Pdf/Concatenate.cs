@@ -31,19 +31,6 @@ namespace EllieWare.Pdf
       mControl.OutputFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Join {0} to {1} and save it as {2}",
-                        mControl.SourceFilePathResolvedValue,
-                        mControl.DestinationFilePathResolvedValue,
-                        mControl.mOutputFilePath.ResolvedValue);
-
-        return descrip;
-      }
-    }
-
     public override bool Run()
     {
       var files = new[] { mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue };

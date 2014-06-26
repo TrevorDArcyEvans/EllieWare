@@ -35,7 +35,7 @@ namespace EllieWare.Common
         {
           var assy = Assembly.LoadFrom(thisDllFile);
           var factories = from t in assy.GetTypes()
-                          where t.GetInterfaces().Contains(typeof(IFactory)) && t.IsClass && !t.IsAbstract
+                          where t.IsSubclassOf(typeof(IFactory)) && t.IsClass && !t.IsAbstract && t.IsMarshalByRef
                           select (IFactory)Activator.CreateInstance(t);
           retVal.AddRange(factories);
         }

@@ -22,16 +22,6 @@ namespace EllieWare.Audio
     {
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Play {0} system sound", mControl.SupportedSounds[mControl.SelSystemSound.SelectedIndex].Key);
-
-        return descrip;
-      }
-    }
-
     public override bool Run()
     {
       mControl.SupportedSounds[mControl.SelSystemSound.SelectedIndex].Value.Play();

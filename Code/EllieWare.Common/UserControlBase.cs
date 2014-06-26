@@ -26,6 +26,14 @@ namespace EllieWare.Common
 
     public event EventHandler ConfigurationChanged;
 
+    public virtual string Summary
+    {
+      get
+      {
+        throw new NotImplementedException("Either control or client should implement Summary");
+      }
+    }
+
     protected void FireConfigurationChanged()
     {
       var handler = ConfigurationChanged;

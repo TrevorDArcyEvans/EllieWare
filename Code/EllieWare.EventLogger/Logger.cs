@@ -32,15 +32,6 @@ namespace EllieWare.EventLogger
       mControl.mLevel.SelectedIndex = 0;
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var levelName = Enum.GetNames(typeof (EventLogEntryType))[mControl.mLevel.SelectedIndex];
-        return string.Format("{0} : {1} : {2}", mControl.mSource.ResolvedValue, levelName, mControl.mMessage.ResolvedValue);
-      }
-    }
-
     public override bool Run()
     {
       // From:

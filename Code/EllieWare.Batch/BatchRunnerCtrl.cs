@@ -40,6 +40,16 @@ namespace EllieWare.Batch
       mBatchParam = new DirectoryBatchParameter("Batch Parameter", mRoot.UserSpecificationFolder, "*.*");
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Run {0} other macro files with parameters", mSpecFileNames.Count);
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

@@ -39,6 +39,16 @@ namespace EllieWare.Audio
       SelSystemSound.SelectedIndex = 0;
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Play {0} system sound", SupportedSounds[SelSystemSound.SelectedIndex].Key);
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

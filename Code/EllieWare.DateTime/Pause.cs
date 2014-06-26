@@ -23,16 +23,6 @@ namespace EllieWare.DateTime
       mControl.mTimeSpan.Value = new System.DateTime(2006, 2, 20, 0, 0, 0);
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Pause for {0}", mControl.mTimeSpan.Value.ToString("HH:mm:ss"));
-
-        return descrip;
-      }
-    }
-
     public override bool Run()
     {
       var pause = new TimeSpan(mControl.mTimeSpan.Value.Hour, mControl.mTimeSpan.Value.Minute, mControl.mTimeSpan.Value.Second);

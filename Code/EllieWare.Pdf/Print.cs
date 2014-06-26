@@ -26,16 +26,6 @@ namespace EllieWare.Pdf
       mControl.Initialise(root, callback, mgr, BrowserTypes.BothFile);
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Print {0} to {1}", mControl.SourceFilePathResolvedValue, mControl.Printers.Text);
-
-        return descrip;
-      }
-    }
-
     public override bool Run()
     {
       var adobe = Registry.LocalMachine.OpenSubKey("Software").OpenSubKey("Microsoft").OpenSubKey("Windows").OpenSubKey("CurrentVersion").OpenSubKey("App Paths").OpenSubKey("AcroRd32.exe");

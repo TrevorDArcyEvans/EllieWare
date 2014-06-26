@@ -6,9 +6,12 @@
 //  www.EllieWare.com
 //
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
+using SendFileTo;
 
 namespace EllieWare.Transfer.Email
 {
@@ -17,6 +20,47 @@ namespace EllieWare.Transfer.Email
     public EmailCtrl()
     {
       InitializeComponent();
+    }
+
+    public override string Summary
+    {
+      get
+      {
+        var summ = string.Format("Send email to {0} about {1} with {2} attachments",
+                      GetAllRecipients().Count(),
+                      mSubject.ResolvedValue,
+                      GetAllAttachments().Count());
+
+        return summ;
+      }
+    }
+
+    private IEnumerable<string> GetAllRecipients()
+    {
+      return mRecipients.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
+    }
+
+    private IEnumerable<string> GetAllAttachments()
+    {
+      return mAttachments.ResolvedValue.Split(new[] { ';' }).Where(x => !string.IsNullOrEmpty(x));
+    }
+
+    public MAPI GetEmail()
+    {
+      var mapi = new MAPI();
+
+      var allRecipients = GetAllRecipients();
+      foreach (var thisRecipient in allRecipients)
+      {
+        mapi.AddRecipientTo(thisRecipient.Trim());
+      }
+
+      var allAttachments = GetAllAttachments();
+      foreach (var thisAttachment in allAttachments)
+      {
+        mapi.AddAttachment(thisAttachment.Trim());
+      }
+      return mapi;
     }
 
     public override void ReadXml(XmlReader reader)

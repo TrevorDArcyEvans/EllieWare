@@ -23,16 +23,6 @@ namespace EllieWare.Macro
     {
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Run {0}", mControl.MacroFileName.ResolvedValue);
-
-        return descrip;
-      }
-    }
-
     public override bool Run()
     {
       var factories = Utils.GetFactories();

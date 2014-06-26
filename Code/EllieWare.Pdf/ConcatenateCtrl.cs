@@ -20,6 +20,19 @@ namespace EllieWare.Pdf
       ConcatenateMain.BringToFront();
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Join {0} to {1} and save it as {2}",
+                        SourceFilePathResolvedValue,
+                        DestinationFilePathResolvedValue,
+                        mOutputFilePath.ResolvedValue);
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

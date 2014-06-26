@@ -21,6 +21,16 @@ namespace EllieWare.Pdf
       ProtectMain.BringToFront();
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Password protect {0} and save it as {1}", SourceFilePathResolvedValue, DestinationFilePathResolvedValue);
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);

@@ -25,16 +25,6 @@ namespace EllieWare.Pdf
       mControl.DestinationFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
     }
 
-    public override string Summary
-    {
-      get
-      {
-        var descrip = string.Format("Password protect {0} and save it as {1}", mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue);
-
-        return descrip;
-      }
-    }
-
     public override bool Run()
     {
       // Open an existing document. Providing an unrequired password is ignored.

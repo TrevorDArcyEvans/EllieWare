@@ -19,6 +19,16 @@ namespace EllieWare.DateTime
       InitializeComponent();
     }
 
+    public override string Summary
+    {
+      get
+      {
+        var descrip = string.Format("Pause for {0}", mTimeSpan.Value.ToString("HH:mm:ss"));
+
+        return descrip;
+      }
+    }
+
     public override void ReadXml(XmlReader reader)
     {
       base.ReadXml(reader);
