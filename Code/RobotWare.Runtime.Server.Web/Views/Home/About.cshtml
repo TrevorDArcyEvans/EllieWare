@@ -1,0 +1,26 @@
+﻿@*
+
+    Copyright (C) 2014 EllieWare
+
+    All rights reserved
+
+    www.EllieWare.com
+
+*@
+@model IEnumerable<string>
+@{
+  ViewBag.Title = "About RobotWare Server";
+}
+@section featured
+{
+  @Html.ActionLink("Home", "Index", "Home")
+  <section>
+    Assemblies:
+    <ul>
+      @foreach (var assyName in Model)
+      {
+        <li>@assyName</li>
+      }
+    </ul>
+  </section>
+}
