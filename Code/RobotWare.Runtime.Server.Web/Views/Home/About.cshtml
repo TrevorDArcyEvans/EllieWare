@@ -13,14 +13,12 @@
 }
 @section featured
 {
-  @Html.ActionLink("Home", "Index", "Home")
-  <section>
-    Assemblies:
-    <ul>
-      @foreach (var assyName in Model)
-      {
-        <li>@assyName</li>
-      }
-    </ul>
-  </section>
+  @Html.ActionLink("Home", "Index", "Home")<p/>
+  Assemblies:
+  <ul>
+    @foreach (var assyName in Model)
+    {
+      <li>@assyName</li>
+    }
+  </ul>
 }
