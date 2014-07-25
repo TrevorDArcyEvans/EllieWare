@@ -16,7 +16,10 @@ namespace RobotWare.Runtime.Server.Web.Models
 
     public string Name
     {
-      get { return mTrigger.CalendarName; }
+      get
+      {
+        return mTrigger.CalendarName;
+      }
     }
 
     public CalendarInfo(IScheduler sched, ITrigger trigger)

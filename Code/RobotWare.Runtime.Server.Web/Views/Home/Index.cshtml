@@ -7,6 +7,8 @@
     www.EllieWare.com
 
 *@
+@using Quartz
+@using Quartz.Impl.Matchers
 @model RobotWare.Runtime.Server.Web.Models.SchedulerInfo
 @{
   ViewBag.Title = "RobotWare Server - Code free automation for Windows";
@@ -24,10 +26,14 @@
         data: JSON.stringify({ Name: name, Group: group }),
         success: function (data)
         {
-          alert("Deleted trigger: " + data.Succeeded);
+          if (data.Succeeded)
+          {
+            location.reload();
+          }
         }
       });
     }
+
     function DeleteJob(name, group)
     {
       $.ajax(
@@ -38,10 +44,14 @@
         data: JSON.stringify({ Name: name, Group: group }),
         success: function (data)
         {
-          alert("Deleted job: " + data.Succeeded);
+          if (data.Succeeded)
+          {
+            location.reload();
+          }
         }
       });
     }
+
     function RunJob(name, group)
     {
       $.ajax(
@@ -52,64 +62,111 @@
         data: JSON.stringify({ Name: name, Group: group }),
         success: function (data)
         {
-          alert("Run job: " + data.Succeeded);
+          location.reload();
+        }
+      });
+    }
+
+    function DeleteCalendar(name)
+    {
+      $.ajax(
+      {
+        url: 'Home/DeleteCalendar',
+        type: 'POST',
+        contentType: 'application/json;',
+        data: JSON.stringify({ Name: name}),
+        success: function (data)
+        {
+          if (data.Succeeded)
+          {
+            location.reload();
+          }
         }
       });
     }
   </script>
   @Html.ActionLink("About", "About")
-  <section>
-    <div>
-      <h1>@Model.Name</h1><p/>
-        @foreach (var jobGroup in Model.JobGroups)
+  <div>
+    <h1>@Model.Name</h1>
+    <p />
+    Job Groups:
+    @foreach (var jobGroup in Model.JobGroups)
+    {
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <b>@jobGroup.Name</b>
+            </td>
+          </tr>
+          @foreach (var job in jobGroup.Jobs)
+          {
+            <tr>
+              <td>
+                <span>&nbsp;&nbsp;@job.Name</span>
+              </td>
+              <td>
+                <button title="Run job" onclick=' RunJob("@job.Name", "@job.Group") '>
+                  <img src="/../../Images/media_play_green_32x32.png" alt="Run" /></button>
+              </td>
+              <td>
+                <button title="Delete job" onclick=' DeleteJob("@job.Name", "@job.Group") '>
+                  <img src="/../../Images/delete_32x32.png" alt="Delete" /></button>
+              </td>
+            </tr>
+            foreach (var trigger in job.Triggers)
+            {
+            <tr>
+              <td>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><i>@trigger.Description</i>
+              </td>
+              <td>
+                <button title="Delete trigger" onclick=' DeleteTrigger("@trigger.Name", "@trigger.Group") '>
+                  <img src="/../../Images/delete_32x32.png" alt="Delete" /></button><p />
+              </td>
+            </tr>
+              if (string.IsNullOrEmpty(trigger.Calendar.Name))
+              {
+                continue;
+              }
+            <tr>
+              <td>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>@trigger.Calendar.Name
+              </td>
+            </tr>
+            }
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+  <div>
+    Calendars:
+    <table>
+      <tbody>
+        @foreach (var cal in Model.Calendars)
         {
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <b>@jobGroup.Name</b>
-                </td>
-              </tr>
-                @foreach (var job in jobGroup.Jobs)
+          <tr>
+            <td>
+              <span>@cal.Name</span>
+            </td>
+              @{
+                var triggerMatcher = GroupMatcher<TriggerKey>.GroupContains("");
+                var refTriggers = Model.Scheduler.GetTriggerKeys(triggerMatcher).Where(x => Model.Scheduler.GetTrigger(x).CalendarName == cal.Name);
+
+                if (refTriggers.Any())
                 {
-                <tr>
-                  <td>
-                    <span>@job.Name</span>
-                  </td>
-                  <td>
-                    <button onclick='RunJob("@job.Name", "@job.Group")'><img src="/../../Images/media_play_green_32x32.png" alt="Run" /></button>
-                  </td>
-                  <td>
-                    <button onclick='DeleteJob("@job.Name", "@job.Group")'><img src="/../../Images/delete_32x32.png" alt="Delete" /></button>
-                  </td>
-                </tr>
-                  foreach (var trigger in job.Triggers)
-                  {
-                <tr>
-                  <td>
-                      <span>&nbsp; &nbsp;</span><button onclick='DeleteTrigger("@trigger.Name", "@trigger.Group")'><img src="/../../Images/delete_32x32.png" alt="Delete" /></button><p/>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3">
-                      <span>&nbsp; &nbsp;Name: </span><i>@trigger.Name</i><p/>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3">
-                      <span>&nbsp; &nbsp;Group: </span>@trigger.Group<p/>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3">
-                      <span>&nbsp; &nbsp;Calendar: </span>@trigger.Calendar.Name<p/>
-                  </td>
-                </tr>
-                  }
+                  // some triggers reference this calendar, so cannot delete
+                  continue;
                 }
-            </tbody>
-          </table>
+              }
+            <td>
+              <button title="Delete calendar" onclick=' DeleteCalendar("@cal.Name") '>
+                <img src="/../../Images/delete_32x32.png" alt="Delete" /></button><p />
+            </td>
+          </tr>
         }
-    </div>
-  </section>
+      </tbody>
+    </table>
+  </div>
 }

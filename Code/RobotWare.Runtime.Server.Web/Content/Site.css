@@ -47,9 +47,8 @@ header .content-wrapper
 
 table
 {
-  margin-top: 0.75em;
+  margin: 0.75em;
   border: 1px solid black;
-  margin-left: 1.0em;
 }
 
 button

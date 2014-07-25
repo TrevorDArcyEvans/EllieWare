@@ -99,6 +99,15 @@ namespace RobotWare.Runtime.Server.Web.Controllers
       return Json(obj);
     }
 
+    [HttpPost]
+    public ActionResult DeleteCalendar(string name)
+    {
+      var bRet = mScheduler.DeleteCalendar(name);
+      var obj = new { Succeeded = bRet };
+
+      return Json(obj);
+    }
+
     private void ResetSchedulerFactory()
     {
       var repo = SchedulerRepository.Instance;
