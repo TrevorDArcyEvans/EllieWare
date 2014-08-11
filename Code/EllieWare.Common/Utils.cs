@@ -28,12 +28,15 @@ namespace EllieWare.Common
       var callAssyLoc = Assembly.GetCallingAssembly().Location;
       var callAssyDir = Path.GetDirectoryName(callAssyLoc);
       Debug.Assert(callAssyDir != null);
-      var dllFiles = Directory.EnumerateFiles(callAssyDir, "*.dll");
-      foreach (var thisDllFile in dllFiles)
+      var assyFiles = from assyFile in Directory.EnumerateFiles(callAssyDir, "*.*")
+                      let assyExt = Path.GetExtension(assyFile).ToLowerInvariant()
+                      where (assyExt == ".dll" || assyExt == ".exe")
+                      select assyFile;
+      foreach (var thisAssyFile in assyFiles)
       {
         try
         {
-          var assy = Assembly.LoadFrom(thisDllFile);
+          var assy = Assembly.LoadFrom(thisAssyFile);
           var factories = from t in assy.GetTypes()
                           where t.GetInterfaces().Contains(typeof(IFactory)) && t.IsClass && !t.IsAbstract
                           select (IFactory)Activator.CreateInstance(t);
@@ -72,7 +75,7 @@ namespace EllieWare.Common
 
     public static void Wait(int milliSecs)
     {
-      Wait(new TimeSpan(0, 0, 0,0, milliSecs));
+      Wait(new TimeSpan(0, 0, 0, 0, milliSecs));
     }
 
     public static bool IsLocalSpecification(IRobotWare root, string filePath)
