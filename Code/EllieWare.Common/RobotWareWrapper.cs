@@ -65,12 +65,18 @@ namespace EllieWare.Common
       }
     }
 
-    public RobotWareWrapper(string appName)
+    public RobotWareWrapper(string appName, object appRoot)
     {
       ApplicationName = appName;
+      ApplicationRoot = appRoot;
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);
+    }
+
+    public RobotWareWrapper(string appName) :
+      this(appName, null)
+    {
     }
 
     public IEnumerable<string> Specifications
@@ -89,5 +95,7 @@ namespace EllieWare.Common
         return retVal;
       }
     }
+
+    public object ApplicationRoot { get; private set; }
   }
 }

@@ -58,5 +58,11 @@ namespace EllieWare.Interfaces
     /// Each specification is a fully qualified path to the specification on disk.
     /// </summary>
     IEnumerable<string> Specifications { get; }
+
+    /// <summary>
+    /// Application specific root object.  This is the top level object from
+    /// which you can navigate to anywhere in the application.
+    /// </summary>
+    object ApplicationRoot { get; }
   }
 }
