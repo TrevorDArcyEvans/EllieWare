@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <!-- http://msdn.microsoft.com/en-us/library/bb514188.aspx - How to use a custom dictionary in VS2012-->
+  <Words>
+    <Recognized>
+      <!--<Word></Word>-->
+      <Word>Ast</Word>
+      <Word>Attrib</Word>
+      <Word>Vars</Word>
+      <Word>Ecma</Word>
+      <Word>Exp</Word>
+      <Word>javascript</Word>
+      <Word>msg</Word>
+      <Word>js</Word>
+      <Word>Pos</Word>
+      <Word>Rgb</Word>
+      <Word>combinator</Word>
+      <Word>expr</Word>
+      <Word>renameable</Word>
+      <Word>rulesets</Word>
+      <Word>ruleset</Word>
+      <Word>ident</Word>
+      <Word>incrementer</Word>
+      <Word>eval</Word>
+      <Word>ascii</Word>
+      <Word>minifier</Word>
+      <Word>prio</Word>
+      <Word>quantizer</Word>
+      <Word>AssemblerActivity</Word>
+      <Word>CssLocalizationActivity</Word>
+      <Word>JsLocalizationActivity</Word>
+      <Word>MinifyCssActivity</Word>
+      <Word>MinifyJsActivity</Word>
+      <Word>ResourcesResolutionActivity</Word>
+      <Word>spriting</Word>
+      <Word>Skipable</Word>
+      <Word>Cachable</Word>
+    </Recognized>
+    <DiscreteExceptions>
+      <Term>plugIn</Term>
+      <Term>AssemblerActivity</Term>
+      <Term>addEnd</Term>
+    </DiscreteExceptions>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <!--<Acronym></Acronym>-->
+      <Acronym>CSS</Acronym>
+      <Acronym>JS</Acronym>
+      <Acronym>JSON</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>

@@ -1,0 +1,2850 @@
+<stylecopresultscache>
+  <version>11</version>
+  <sourcecode name="ResourcePivotActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MinifyCssPivot.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MinifyCssResult.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BindingIdentifier.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BindingsVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BindingTransform.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ComprehensionClause.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ComprehensionForClause.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ComprehensionIfClause.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ClassNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ComprehensionNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IModuleReference.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImportExportSpecifier.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ExportNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Initializer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IRenameable.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImportExportStatement.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ModuleDeclaration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ModuleScope.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSON.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RequiresSeparatorVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatementStartVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TemplateLiteral.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TemplateLiteralExpression.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommonStrings.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommonData.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheFileLockException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="GlobalConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="INamedConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcePivotGroupCollection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcePivotApplyMode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcePivotGroup.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FileSetBase.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcePivotKey.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImportantCommentNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StyleSheetRuleOrCommentNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourceResolutionVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheFileCategories.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ErrorCode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DelayedLogManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FileTypes.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="LogDelegates.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MinifyJSActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BundleActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PreprocessorActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RenamedFile.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RenamedFilesLog.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="EverythingActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourceDirectoryPath.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RenamedFilesLogs.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcesManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcesResolver.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourceOverrideException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourceType.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourcesResolutionActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MinifyCssActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblerActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssErrorCode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssColorName.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssScanner.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssSettings.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssToken.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="activationobject.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="arrayliteral.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="aspnetblocknode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AnalyzeNodeVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="astlist.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="binaryop.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ast.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="blockscope.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="break.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="call.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="catchscope.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="cccomment.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccelif.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccelse.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccend.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccif.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccon.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="block.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccset.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ccstatement.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommaOperator.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="conditional.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="const.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="codesettings.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="constantwrapperpp.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="constantwrapper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="continue.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="crunchenumerator.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CustomNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="debugger.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="declaration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DetachReferences.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="directiveprologue.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="documentcontext.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="dowhile.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="emptystatement.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="context.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="expr.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FinalPassVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="for.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="forin.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="functionobject.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="EvaluateLiteralVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="gettersetter.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="globalscope.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="grouping.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="if.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="importantcomment.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="INameDeclaration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="INameReference.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ISourceMap.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IterationStatement.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="functionscope.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="jserror.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="jskeyword.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSONOutputVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JScript.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="jsscanner.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="jsparser.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="jstoken.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="labeledstatement.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="LexicalDeclaration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="jsvariablefield.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="lookup.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="LogicalNotVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MatchPropertiesVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="missing.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="member.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="objectliteral.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NewParensVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="objectliteralfield.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ObjectLiteralProperty.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="opprec.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="parameterdeclaration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="regexpliteral.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ReorderScopeVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResolutionVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="OutputVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="return.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ScriptSharpSourceMap.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceMapFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="switch.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="switchcase.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="thisliteral.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="throw.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="try.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TreeVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="unaryop.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="V3SourceMap.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="variabledeclaration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="while.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="with.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="var.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="withscope.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ContextError.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Extensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommonSettings.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSEncoderFallback.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Minifier.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourceStrings.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BuildWorkflowException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SwitchParser.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheDependencyGraph.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheResult.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheVaryByFile.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ICacheManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CacheSourceDependency.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NullCacheManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ICacheSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NullCacheSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FileHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ActivityMode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ArgumentProcessor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AutonameConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BundlingConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssFileSet.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssMinificationConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ReadOnlyCacheSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IFileSet.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssSpritingConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="InputSpec.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSMinificationConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSValidationConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PreprocessingConfig.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSFileSet.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ContentPivot.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="EnumerableExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="InputSpecExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JsonExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StringPathExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ICachableWebGreaseSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="WebGreaseConfiguration.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageType.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SpritePackingType.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IWebGreaseSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BitmapContainer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IWebGreaseContext.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ContentItem.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ContentItemType.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MessageImportance.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Safe.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TemporaryOverrides.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="LogManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ITimeMeasure.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NullTimeMeasure.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="WebGreaseSection.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TimeMeasure.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TimeMeasureItem.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SectionIdParts.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TimeMeasureResult.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AllowedImportData.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="KeyFramesBlockNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TimeMeasureExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="KeyFramesNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AstNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Combinator.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CombinatorSimpleSelectorSequenceNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DeclarationNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AstException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DocumentQueryNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FunctionNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ExprNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MediaExpressionNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MediaNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImportNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MediaQueryNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PageNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RulesetNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NamespaceNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttribOperatorAndValueNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttribOperatorKind.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttribNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FunctionalPseudoNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HashClassAtNameAttribPseudoNegationNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NegationArgNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PseudoNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SelectorExpressionNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SelectorNamespacePrefixNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NegationNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SelectorNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SimpleSelectorSequenceNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TypeSelectorNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UniversalSelectorNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SelectorsGroupNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StyleSheetRuleNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StyleSheetNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TermNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TermWithOperatorNode.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssConstants.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssLexer.g3.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssParser.g3.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssStrings.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AstNodeExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommonTreeTransformer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CommonTreeExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ListExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NumberExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="OrderedDictionaryExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssembleConstants.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssembleException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BackgroundAstNodeExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssemblyScanOutput.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssembledImage.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssemblyAnalysis.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssemblyScanInput.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssemblyAnalysisLog.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Background.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageLog.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BackgroundImage.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BackgroundRepeat.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssMinifier.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PrinterFormatter.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UnicodeDecoder.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ColorOptimizationVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ExcludePropertyVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FloatOptimizationVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssemblyScanVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BackgroundPosition.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssemblyUpdateVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NodeTransformVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="OptimizationVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NodeVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SelectorValidationOptimizationVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ValidateLowercaseVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ErrorHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StringExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="GlobalSuppressions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PrintVisitor.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssembleBase.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ColorQuantizer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssembleGenerator.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageAssembleStrings.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="InputImage.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NonPhotoIndexedAssemble.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NonPhotoNonIndexedAssemble.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NotSupportedAssemble.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PhotoAssemble.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IPreprocessingEngine.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PreprocessingException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ImageMap.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PreprocessingManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ResourceStrings.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Strings.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FileHasherActivity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="WebGreaseSectionKey.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="WorkflowException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="WebGreaseContext.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>01/21/2014 19:07:22</timestamp>
+    <milliseconds>113</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name=".NETFramework,Version=v4.0.AssemblyAttributes.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>11/09/2014 09:17:49</timestamp>
+    <milliseconds>574</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CssLexer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>11/10/2014 22:16:09</timestamp>
+    <milliseconds>231</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="1206967048">
+    <configuration>CODE_ANALYSIS;TRACE;DEBUG</configuration>
+  </project>
+  <sourcecode name="CssParser.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>01/21/2014 19:07:22</timestamp>
+      <milliseconds>113</milliseconds>
+    </settings>
+    <timestamp>11/10/2014 22:16:09</timestamp>
+    <milliseconds>814</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

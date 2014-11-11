@@ -1,0 +1,27 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsBuildServerBuild>False</IsBuildServerBuild>
+    <IsBuildServerBuild Condition="'$(OutDir)' != '$(OutputPath)'">True</IsBuildServerBuild>
+    <ArtifactsInputPath>$(ProjectDir)$(OutputPath)</ArtifactsInputPath>
+    <ArtifactsInputPath Condition="'$(IsBuildServerBuild)' == 'True'">$(OutDir)</ArtifactsInputPath>
+  </PropertyGroup>
+  
+  <Target Name="PrepareTestRunAfterServerBuild" AfterTargets="Build" Condition="'$(IsBuildServerBuild)' == 'True'">
+    <!-- find all test deployment items, regardless of paths -->
+    <ItemGroup>
+      <TestDeploymentItems Include="$(SolutionDir)\**\TestDeployment\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(TestDeploymentItems)" DestinationFiles="@(TestDeploymentItems->'$(OutDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+    
+  <!--
+  ANTLR Code Generation
+  -->
+  <PropertyGroup>
+    <!-- Folder containing AntlrBuildTask.dll -->
+    <AntlrBuildTaskPath>$(ProjectDir)..\Antlr\.NET Tool\</AntlrBuildTaskPath>
+    <!-- Path to the ANTLR Tool itself. -->
+    <AntlrToolPath>$(ProjectDir)..\Antlr\.NET Tool\Antlr3.exe</AntlrToolPath>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)..\Antlr\.NET Tool\Antlr3.targets" />
+</Project>
