@@ -9,6 +9,8 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using EllieWare.Common;
+using EllieWare.Interfaces;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swpublished;
 
@@ -19,8 +21,9 @@ namespace RobotWare.SolidWorks
   [SwAddin("Automation made easy", "RobotWare for SolidWorks", true)]
   public class RobotWareAddin : ISwAddin
   {
-    ISldWorks mSwApp;
-    ICommandManager mCmdMgr;
+    private ISldWorks mSwApp;
+    private ICommandManager mCmdMgr;
+    private IRobotWare mRobotWare;
 
     #region SolidWorks Registration
 
@@ -99,6 +102,8 @@ namespace RobotWare.SolidWorks
       mSwApp.SetAddinCallbackInfo(0, this, cookie);
 
       mCmdMgr = mSwApp.GetCommandManager(cookie);
+
+      mRobotWare = new RobotWareWrapper("RobotWare for SolidWorks", mSwApp);
 
       return true;
     }
