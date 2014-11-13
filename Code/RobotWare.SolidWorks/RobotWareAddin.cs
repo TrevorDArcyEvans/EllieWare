@@ -8,10 +8,13 @@
 
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using EllieWare.Manager;
 using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
 
 namespace RobotWare.SolidWorks
@@ -21,9 +24,18 @@ namespace RobotWare.SolidWorks
   [SwAddin("Automation made easy", "RobotWare for SolidWorks", true)]
   public class RobotWareAddin : ISwAddin
   {
+    public const int MainCmdGroupID = 23;
+
     private ISldWorks mSwApp;
     private ICommandManager mCmdMgr;
     private IRobotWare mRobotWare;
+    private readonly Lazy<Manager> mManager; 
+    private readonly BitmapHandler mBitmap = new BitmapHandler();
+
+    public RobotWareAddin()
+    {
+      mManager = new Lazy<Manager>(() => new Manager(mRobotWare)); 
+    }
 
     #region SolidWorks Registration
 
@@ -67,7 +79,7 @@ namespace RobotWare.SolidWorks
       catch (Exception e)
       {
         Console.WriteLine(e.Message);
-        System.Windows.Forms.MessageBox.Show("There was a problem registering this addin: \""+ System.Environment.NewLine + e.Message + "\"");
+        System.Windows.Forms.MessageBox.Show("There was a problem registering this addin: \"" + System.Environment.NewLine + e.Message + "\"");
       }
     }
 
@@ -102,6 +114,7 @@ namespace RobotWare.SolidWorks
       mSwApp.SetAddinCallbackInfo(0, this, cookie);
 
       mCmdMgr = mSwApp.GetCommandManager(cookie);
+      AddCommandManager();
 
       mRobotWare = new RobotWareWrapper("RobotWare for SolidWorks", mSwApp);
 
@@ -110,6 +123,10 @@ namespace RobotWare.SolidWorks
 
     public bool DisconnectFromSW()
     {
+      mBitmap.Dispose();
+
+      RemoveCommandMgr();
+
       Marshal.ReleaseComObject(mCmdMgr);
       mCmdMgr = null;
       Marshal.ReleaseComObject(mSwApp);
@@ -123,6 +140,47 @@ namespace RobotWare.SolidWorks
       GC.WaitForPendingFinalizers();
 
       return true;
+    }
+
+    private void AddCommandManager()
+    {
+      const string Title = "RobotWare";
+      const string ToolTip = "Show RobotWare manager";
+      const string Hint = "Manage RobotWare macros";
+
+      const int MainItemID1 = 0;
+
+      var docTypes = new[] 
+                      {
+                        (int)swDocumentTypes_e.swDocNONE,
+                        (int)swDocumentTypes_e.swDocASSEMBLY,
+                        (int)swDocumentTypes_e.swDocDRAWING,
+                        (int)swDocumentTypes_e.swDocPART
+                      };
+
+      var thisAssembly = Assembly.GetAssembly(GetType());
+      var cmdGroup = mCmdMgr.CreateCommandGroup(MainCmdGroupID, Title, ToolTip, Hint, -1);
+      cmdGroup.LargeIconList = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.ToolbarLarge.bmp", thisAssembly);
+      cmdGroup.SmallIconList = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.ToolbarSmall.bmp", thisAssembly);
+      cmdGroup.LargeMainIcon = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.MainIconLarge.bmp", thisAssembly);
+      cmdGroup.SmallMainIcon = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.MainIconSmall.bmp", thisAssembly);
+
+      var menuToolbarOption = (int)(swCommandItemType_e.swMenuItem | swCommandItemType_e.swToolbarItem);
+      var cmdIndex0 = cmdGroup.AddCommandItem2("RobotWare manager...", -1, "Manage RobotWare macros", "Show RobotWare manager", 0, "ShowRobotWareManager", "", MainItemID1, menuToolbarOption);
+
+      cmdGroup.HasToolbar = true;
+      cmdGroup.HasMenu = true;
+      cmdGroup.Activate();
+    }
+
+    public void RemoveCommandMgr()
+    {
+      mCmdMgr.RemoveCommandGroup(MainCmdGroupID);
+    }
+
+    public void ShowRobotWareManager()
+    {
+      mManager.Value.ShowDialog();
     }
   }
 }
