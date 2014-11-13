@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,6 +67,7 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="BitmapHandler.cs" />
     <Compile Include="RobotWareAddin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwAddinAttribute.cs" />
@@ -87,7 +89,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF "$(TargetFrameworkVersion)"=="v4.0" GOTO NET40
+    <PostBuildEvent>echo Must be running as admin to register DLL
+exit 0
+
+IF "$(TargetFrameworkVersion)"=="v4.0" GOTO NET40
 IF "$(TargetFrameworkVersion)"=="v3.5" GOTO NET20
 IF "$(TargetFrameworkVersion)"=="v3.0" GOTO NET20
 IF "$(TargetFrameworkVersion)"=="v2.0" GOTO NET20
