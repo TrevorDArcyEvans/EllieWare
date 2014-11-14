@@ -97,6 +97,10 @@
     <EmbeddedResource Include="ToolbarLarge.bmp" />
     <EmbeddedResource Include="ToolbarSmall.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="robot_16x16.png" />
+    <EmbeddedResource Include="robot_16x18.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo Must be running as admin to register DLL
