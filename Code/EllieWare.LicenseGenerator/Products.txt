@@ -1,4 +1,4 @@
-﻿RobotWare for SpaceClaim
+RobotWare for SpaceClaim
 RobotWare for Windows
 RobotWare Runtime for SpaceClaim Configurator
 RobotWare Runtime for SpaceClaim
@@ -7,3 +7,4 @@ RobotWare Runtime for Windows
 RobotWare Runtime for Windows Server
 RobotWare Runtime for Console
 SerpentWare for Windows
+RobotWare for SolidWorks

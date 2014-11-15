@@ -297,6 +297,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolidWorks", "SolidWorks", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.SolidWorks", "RobotWare.SolidWorks\RobotWare.SolidWorks.csproj", "{588F81F0-D581-40C9-BDFD-F5F6A986D9C0}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RobotWare for SolidWorks", "RobotWare for SolidWorks\RobotWare for SolidWorks.wixproj", "{BA45A707-FE14-4A85-AED1-893C5DB075D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2863,6 +2865,34 @@ Global
 		{588F81F0-D581-40C9-BDFD-F5F6A986D9C0}.ReleaseNativeOnly|Win32.ActiveCfg = Release|Any CPU
 		{588F81F0-D581-40C9-BDFD-F5F6A986D9C0}.ReleaseNativeOnly|x64.ActiveCfg = Release|Any CPU
 		{588F81F0-D581-40C9-BDFD-F5F6A986D9C0}.ReleaseNativeOnly|x86.ActiveCfg = Release|Any CPU
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|Win32.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|x64.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|x86.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Debug|x86.Build.0 = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|Any CPU.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|Mixed Platforms.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|Mixed Platforms.Build.0 = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|Win32.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|x64.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|x86.ActiveCfg = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.DebugNativeOnly|x86.Build.0 = Debug|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|Any CPU.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|Mixed Platforms.Build.0 = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|Win32.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|x64.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|x86.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.Release|x86.Build.0 = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|Any CPU.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|Mixed Platforms.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|Mixed Platforms.Build.0 = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|Win32.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|x64.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|x86.ActiveCfg = Release|x86
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2935,5 +2965,6 @@ Global
 		{B171CDEF-8314-4625-846A-BD76BCE03EA6} = {88177364-58A6-4486-ABC4-7EFBE56A3DC1}
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A} = {88177364-58A6-4486-ABC4-7EFBE56A3DC1}
 		{588F81F0-D581-40C9-BDFD-F5F6A986D9C0} = {5F947E20-0379-4A77-B85B-D51F8BA410DD}
+		{BA45A707-FE14-4A85-AED1-893C5DB075D0} = {5F947E20-0379-4A77-B85B-D51F8BA410DD}
 	EndGlobalSection
 EndGlobal

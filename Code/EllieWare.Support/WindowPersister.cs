@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+
+using System;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Reflection;
@@ -22,9 +24,18 @@ namespace EllieWare.Support
 
     private static IsolatedStorageFile GetIsolatedStorageFile()
     {
-      return IsolatedStorageFile.GetStore(
-              IsolatedStorageScope.User | IsolatedStorageScope.Assembly | IsolatedStorageScope.Domain,
-              typeof(System.Security.Policy.Url), typeof(System.Security.Policy.Url));
+      try
+      {
+        return IsolatedStorageFile.GetStore(
+                IsolatedStorageScope.User | IsolatedStorageScope.Assembly | IsolatedStorageScope.Domain,
+                typeof(System.Security.Policy.Url), typeof(System.Security.Policy.Url));
+
+      }
+      catch (IsolatedStorageException)
+      {
+        // probably running inside an app domain
+        return IsolatedStorageFile.GetUserStoreForAssembly();
+      }
     }
 
     public static void Restore(Assembly assy, Form form, params SplitContainer[] splitters)
