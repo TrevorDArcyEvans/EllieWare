@@ -7,7 +7,9 @@
 //
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using EllieWare.Common;
@@ -29,12 +31,47 @@ namespace RobotWare.SolidWorks
     private ISldWorks mSwApp;
     private ICommandManager mCmdMgr;
     private IRobotWare mRobotWare;
-    private readonly Lazy<Manager> mManager; 
+    private readonly Lazy<Manager> mManager;
     private readonly BitmapHandler mBitmap = new BitmapHandler();
+
+    private readonly IDictionary<string, Assembly> mAdditionalAssys = new Dictionary<string, Assembly>();
 
     public RobotWareAddin()
     {
-      mManager = new Lazy<Manager>(() => new Manager(mRobotWare)); 
+      mManager = new Lazy<Manager>(() => new Manager(mRobotWare));
+
+      // load .NET assys in our directory for assembly resolver
+      var assy = Assembly.GetExecutingAssembly();
+      var assyPath = assy.Location;
+      var assyDir = Path.GetDirectoryName(assyPath);
+      var addAssys = Directory.EnumerateFiles(assyDir, @"*.dll");
+      foreach (var assemblyName in addAssys)
+      {
+        try
+        {
+          var assembly = Assembly.LoadFrom(assemblyName);
+          mAdditionalAssys.Add(assembly.FullName, assembly);
+        }
+        catch (BadImageFormatException)
+        {
+          // might not be a .NET dll but how?
+        }
+        catch (ReflectionTypeLoadException)
+        {
+        }
+      }
+
+      // running inside SW app domain which has BaseDirectory of SW install directory
+      // so we have to use assys from our directory
+      AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+    }
+
+    private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+    {
+      Assembly assy;
+      mAdditionalAssys.TryGetValue(args.Name, out assy);
+
+      return assy;
     }
 
     #region SolidWorks Registration
