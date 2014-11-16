@@ -68,6 +68,12 @@
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
     <Compile Include="BitmapHandler.cs" />
+    <Compile Include="ManagerCtrlX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManagerCtrlX.Designer.cs">
+      <DependentUpon>ManagerCtrlX.cs</DependentUpon>
+    </Compile>
     <Compile Include="RobotWareAddin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwAddinAttribute.cs" />
@@ -182,12 +188,17 @@
   <ItemGroup>
     <EmbeddedResource Include="MainIconLarge.bmp" />
     <EmbeddedResource Include="MainIconSmall.bmp" />
+    <EmbeddedResource Include="ManagerCtrlX.resx">
+      <DependentUpon>ManagerCtrlX.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ToolbarLarge.bmp" />
     <EmbeddedResource Include="ToolbarSmall.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="robot_16x16.png" />
-    <EmbeddedResource Include="robot_16x18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="robot_16x18.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

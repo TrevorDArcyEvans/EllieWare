@@ -12,11 +12,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using EllieWare.Common;
-using EllieWare.Interfaces;
 using EllieWare.Manager;
 using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
 
 namespace RobotWare.SolidWorks
@@ -26,20 +25,19 @@ namespace RobotWare.SolidWorks
   [SwAddin("Automation made easy", "RobotWare for SolidWorks", true)]
   public class RobotWareAddin : ISwAddin
   {
-    public const int MainCmdGroupID = 23;
-
-    private ISldWorks mSwApp;
-    private ICommandManager mCmdMgr;
-    private IRobotWare mRobotWare;
-    private readonly Lazy<Manager> mManager;
-    private readonly BitmapHandler mBitmap = new BitmapHandler();
-
     private readonly IDictionary<string, Assembly> mAdditionalAssys = new Dictionary<string, Assembly>();
 
     public RobotWareAddin()
     {
-      mManager = new Lazy<Manager>(() => new Manager(mRobotWare));
+      LoadResolverAssemblies();
 
+      // running inside SW app domain which has BaseDirectory of SW install directory
+      // so we have to use assys from our directory
+      AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+    }
+
+    private void LoadResolverAssemblies()
+    {
       // load .NET assys in our directory for assembly resolver
       var assy = Assembly.GetExecutingAssembly();
       var assyPath = assy.Location;
@@ -60,10 +58,6 @@ namespace RobotWare.SolidWorks
         {
         }
       }
-
-      // running inside SW app domain which has BaseDirectory of SW install directory
-      // so we have to use assys from our directory
-      AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
     }
 
     private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
@@ -115,8 +109,8 @@ namespace RobotWare.SolidWorks
       }
       catch (Exception e)
       {
-        Console.WriteLine(e.Message);
-        System.Windows.Forms.MessageBox.Show("There was a problem registering this addin: \"" + System.Environment.NewLine + e.Message + "\"");
+        Console.WriteLine(@"There was a problem registering this dll: " + e.Message);
+        MessageBox.Show(@"There was a problem registering this addin: " + System.Environment.NewLine + e.Message);
       }
     }
 
@@ -128,7 +122,7 @@ namespace RobotWare.SolidWorks
         var hklm = Microsoft.Win32.Registry.LocalMachine;
         var hkcu = Microsoft.Win32.Registry.CurrentUser;
 
-        string keyname = "SOFTWARE\\SolidWorks\\Addins\\{" + t.GUID + "}";
+        var keyname = "SOFTWARE\\SolidWorks\\Addins\\{" + t.GUID + "}";
         hklm.DeleteSubKey(keyname);
 
         keyname = "Software\\SolidWorks\\AddInsStartup\\{" + t.GUID + "}";
@@ -136,8 +130,8 @@ namespace RobotWare.SolidWorks
       }
       catch (Exception e)
       {
-        Console.WriteLine("There was a problem unregistering this dll: " + e.Message);
-        System.Windows.Forms.MessageBox.Show("There was a problem unregistering this DLL: \"" + System.Environment.NewLine + e.Message + "\"");
+        Console.WriteLine(@"There was a problem unregistering this dll: " + e.Message);
+        MessageBox.Show(@"There was a problem unregistering this DLL: " + System.Environment.NewLine + e.Message);
       }
     }
 
@@ -145,30 +139,13 @@ namespace RobotWare.SolidWorks
 
     public bool ConnectToSW(object thisSW, int cookie)
     {
-      mSwApp = (ISldWorks)thisSW;
-
-      // setup callbacks
-      mSwApp.SetAddinCallbackInfo(0, this, cookie);
-
-      mCmdMgr = mSwApp.GetCommandManager(cookie);
-      AddCommandManager();
-
-      mRobotWare = new RobotWareWrapper("RobotWare for SolidWorks", mSwApp);
+      CreateTaskPane((ISldWorks)thisSW);
 
       return true;
     }
 
     public bool DisconnectFromSW()
     {
-      mBitmap.Dispose();
-
-      RemoveCommandMgr();
-
-      Marshal.ReleaseComObject(mCmdMgr);
-      mCmdMgr = null;
-      Marshal.ReleaseComObject(mSwApp);
-      mSwApp = null;
-
       //The addin _must_ call GC.Collect() here in order to retrieve all managed code pointers 
       GC.Collect();
       GC.WaitForPendingFinalizers();
@@ -179,45 +156,19 @@ namespace RobotWare.SolidWorks
       return true;
     }
 
-    private void AddCommandManager()
+    private void CreateTaskPane(ISldWorks pSldWorks)
     {
-      const string Title = "RobotWare";
-      const string ToolTip = "Show RobotWare manager";
-      const string Hint = "Manage RobotWare macros";
-
-      const int MainItemID1 = 0;
-
-      var docTypes = new[] 
-                      {
-                        (int)swDocumentTypes_e.swDocNONE,
-                        (int)swDocumentTypes_e.swDocASSEMBLY,
-                        (int)swDocumentTypes_e.swDocDRAWING,
-                        (int)swDocumentTypes_e.swDocPART
-                      };
-
       var thisAssembly = Assembly.GetAssembly(GetType());
-      var cmdGroup = mCmdMgr.CreateCommandGroup(MainCmdGroupID, Title, ToolTip, Hint, -1);
-      cmdGroup.LargeIconList = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.ToolbarLarge.bmp", thisAssembly);
-      cmdGroup.SmallIconList = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.ToolbarSmall.bmp", thisAssembly);
-      cmdGroup.LargeMainIcon = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.MainIconLarge.bmp", thisAssembly);
-      cmdGroup.SmallMainIcon = mBitmap.CreateFileFromResourceBitmap("RobotWare.SolidWorks.MainIconSmall.bmp", thisAssembly);
-
-      var menuToolbarOption = (int)(swCommandItemType_e.swMenuItem | swCommandItemType_e.swToolbarItem);
-      var cmdIndex0 = cmdGroup.AddCommandItem2("RobotWare manager...", -1, "Manage RobotWare macros", "Show RobotWare manager", 0, "ShowRobotWareManager", "", MainItemID1, menuToolbarOption);
-
-      cmdGroup.HasToolbar = true;
-      cmdGroup.HasMenu = true;
-      cmdGroup.Activate();
-    }
-
-    public void RemoveCommandMgr()
-    {
-      mCmdMgr.RemoveCommandGroup(MainCmdGroupID);
-    }
-
-    public void ShowRobotWareManager()
-    {
-      mManager.Value.ShowDialog();
+      var bmp = new BitmapHandler();
+      var icon = bmp.CreateFileFromResourceBitmap("RobotWare.SolidWorks.robot_16x18.bmp", thisAssembly);
+      var view = pSldWorks.CreateTaskpaneView2(icon, @"RobotWare for SolidWorks");
+      var ctrl = (ManagerCtrlX)view.AddControl(@"RobotWare.ActiveXUserControl", @"");
+      var root = new RobotWareWrapper("RobotWare for SolidWorks", pSldWorks);
+      var mgrCtl = new ManagerCtl(root)
+                        {
+                          Dock = DockStyle.Fill
+                        };
+      ctrl.Controls.Add(mgrCtl);
     }
   }
 }
