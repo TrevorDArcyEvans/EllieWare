@@ -299,6 +299,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.SolidWorks", "Rob
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RobotWare for SolidWorks", "RobotWare for SolidWorks\RobotWare for SolidWorks.wixproj", "{BA45A707-FE14-4A85-AED1-893C5DB075D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.SolidWorks", "EllieWare.SolidWorks\EllieWare.SolidWorks.csproj", "{2EEDB23E-5A23-4BFE-9044-897388A901B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2893,6 +2895,34 @@ Global
 		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|x64.ActiveCfg = Release|x86
 		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|x86.ActiveCfg = Release|x86
 		{BA45A707-FE14-4A85-AED1-893C5DB075D0}.ReleaseNativeOnly|x86.Build.0 = Release|x86
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|Any CPU.Build.0 = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|Win32.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|x64.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.DebugNativeOnly|x86.ActiveCfg = Debug|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|Win32.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|x64.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.Release|x86.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|Any CPU.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|Any CPU.Build.0 = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|Mixed Platforms.Build.0 = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|Win32.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|x64.ActiveCfg = Release|Any CPU
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7}.ReleaseNativeOnly|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2966,5 +2996,6 @@ Global
 		{53784BC1-A8BC-4AC8-8A3E-158D6807345A} = {88177364-58A6-4486-ABC4-7EFBE56A3DC1}
 		{588F81F0-D581-40C9-BDFD-F5F6A986D9C0} = {5F947E20-0379-4A77-B85B-D51F8BA410DD}
 		{BA45A707-FE14-4A85-AED1-893C5DB075D0} = {5F947E20-0379-4A77-B85B-D51F8BA410DD}
+		{2EEDB23E-5A23-4BFE-9044-897388A901B7} = {5F947E20-0379-4A77-B85B-D51F8BA410DD}
 	EndGlobalSection
 EndGlobal
