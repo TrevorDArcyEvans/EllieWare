@@ -72,6 +72,12 @@ namespace EllieWare.Common
 
       var userDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       UserSpecificationFolder = Path.Combine(userDocs, ApplicationName);
+
+      // installer should create this but not for all (other) users
+      if (!Directory.Exists(UserSpecificationFolder))
+      {
+        Directory.CreateDirectory(UserSpecificationFolder);
+      }
     }
 
     public RobotWareWrapper(string appName) :
