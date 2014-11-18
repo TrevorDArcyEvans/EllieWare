@@ -5,6 +5,8 @@
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "EllieWare"
 #define MyAppURL "http://www.EllieWare.com/"
+#define MyCopyrightYear "2014"
+#define MyDescription "Automation without the pain of code"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -28,20 +30,29 @@ SetupIconFile=robot.ico
 Compression=lzma
 SolidCompression=yes
 UninstallDisplayName={#MyAppName}
-AppCopyright=EllieWare 2014
+AppCopyright={#MyAppPublisher} {#MyCopyrightYear}
 LicenseFile=EULA.rtf
 LanguageDetectionMethod=none
 UninstallDisplayIcon={app}\robot.ico
-VersionInfoVersion=1.0.0
-VersionInfoCompany=EllieWare
-VersionInfoDescription=Automation without the pain of code
-VersionInfoCopyright=EllieWare 2014
-VersionInfoProductName=RobotWare for SolidWorks
-VersionInfoProductVersion=1.0.0
+VersionInfoVersion={#MyAppVersion}
+VersionInfoCompany={#MyAppPublisher}
+VersionInfoDescription={#MyDescription}
+VersionInfoCopyright={#MyAppPublisher} {#MyCopyrightYear}
+VersionInfoProductName={#MyAppName}
+VersionInfoProductVersion={#MyAppVersion}
+ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
+AllowUNCPath=False
+ShowLanguageDialog=no
+CloseApplications=False
+RestartApplications=False
+CloseApplicationsFilter=SldWorks.exe
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[Dirs]
+Name: {userdocs}\{#MyAppName}; Flags: uninsneveruninstall;
 
 [Files]
 ; location is relative to "RobotWare for SolidWorks.iss"
