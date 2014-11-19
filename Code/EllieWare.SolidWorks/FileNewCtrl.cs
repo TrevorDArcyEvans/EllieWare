@@ -11,12 +11,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
+using SolidWorks.Interop.swconst;
 
 namespace EllieWare.SolidWorks
 {
@@ -27,15 +29,26 @@ namespace EllieWare.SolidWorks
     public FileNewCtrl()
     {
       InitializeComponent();
+
+      DocType.SelectedIndex = 0;
     }
 
     public override string Summary
     {
       get
       {
-        //var descrip = string.Format("Run {0}", MacroFileName.ResolvedValue);
+        switch (DocumentType)
+        {
+          case swDocumentTypes_e.swDocPART:
+            return @"Create a new part";
 
-        return @"Create a new part";
+          case swDocumentTypes_e.swDocASSEMBLY:
+            return @"Create a new assembly";
+
+          case swDocumentTypes_e.swDocDRAWING:
+            return @"Create a new drawing";
+        }
+        throw new ArgumentOutOfRangeException(@"Unknown document type: " + DocumentType);
       }
     }
 
@@ -43,19 +56,30 @@ namespace EllieWare.SolidWorks
     {
       base.ReadXml(reader);
 
-      //MacroFileName.Text = reader.GetAttribute("MacroFileName");
+      var docTypeStr = reader.GetAttribute("DocType");
+      var docType = int.Parse(docTypeStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
+      DocType.SelectedIndex = docType - 1;
     }
 
     public override void WriteXml(XmlWriter writer)
     {
       base.WriteXml(writer);
 
-     // writer.WriteAttributeString("MacroFileName", MacroFileName.Text);
+      var docTypeIdx = DocType.SelectedIndex + 1;
+      writer.WriteAttributeString("DocType", docTypeIdx.ToString(CultureInfo.InvariantCulture));
     }
 
     public override void Initialise(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
       mRoot = root;
+    }
+
+    public swDocumentTypes_e DocumentType
+    {
+      get
+      {
+        return (swDocumentTypes_e)(DocType.SelectedIndex + 1);
+      }
     }
   }
 }
