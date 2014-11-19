@@ -76,6 +76,18 @@
       <Project>{6BC6C904-3CA4-494E-AF88-827394E14654}</Project>
       <Name>EllieWare.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IronLanguages\Runtime\Microsoft.Dynamic\Microsoft.Dynamic.csproj">
+      <Project>{EB66B766-6354-4208-A3D4-AACBDCB5C3B3}</Project>
+      <Name>Microsoft.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronLanguages\Runtime\Microsoft.Scripting.Core\Microsoft.Scripting.Core.csproj">
+      <Project>{2AE75F5A-CD1F-4925-9647-AF4D1C282FB4}</Project>
+      <Name>Microsoft.Scripting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IronLanguages\Runtime\Microsoft.Scripting.Metadata\Microsoft.Scripting.Metadata.csproj">
+      <Project>{ACDD9B9E-8FE6-439C-9521-1CCBA47F6143}</Project>
+      <Name>Microsoft.Scripting.Metadata</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IronLanguages\Runtime\Microsoft.Scripting\Microsoft.Scripting.csproj">
       <Project>{02FF0909-F5AD-48CF-A86A-345E721B7E40}</Project>
       <Name>Microsoft.Scripting</Name>
