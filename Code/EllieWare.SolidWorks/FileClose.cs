@@ -38,7 +38,7 @@ namespace EllieWare.SolidWorks
       var pSW = (ISldWorks)mRoot.ApplicationRoot;
       var doc = pSW.IActiveDoc2;
 
-      pSW.CloseDoc(doc.GetTitle());
+      pSW.QuitDoc(doc.GetTitle());
 
       return true;
     }
