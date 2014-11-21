@@ -14,13 +14,13 @@ using SolidWorks.Interop.swconst;
 
 namespace EllieWare.SolidWorks
 {
-  public class FileNew : MutableRunnableBase<FileNewCtrl>
+  public class New : MutableRunnableBase<NewCtrl>
   {
-    public FileNew()
+    public New()
     {
     }
 
-    public FileNew(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public New(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
     }

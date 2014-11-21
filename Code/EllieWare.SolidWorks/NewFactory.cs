@@ -13,7 +13,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SolidWorks
 {
-  public class FileNewFactory : FactoryBase
+  public class NewFactory : FactoryBase
   {
     public override string Title
     {
@@ -54,13 +54,13 @@ namespace EllieWare.SolidWorks
     {
       get
       {
-        return typeof(FileNew);
+        return typeof(New);
       }
     }
 
     public override IRunnable Create(IRobotWare root, ICallback callback, IParameterManager mgr)
     {
-      return new FileNew(root, callback, mgr);
+      return new New(root, callback, mgr);
     }
   }
 }

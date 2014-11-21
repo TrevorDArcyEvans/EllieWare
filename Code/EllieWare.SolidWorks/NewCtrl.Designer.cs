@@ -8,7 +8,7 @@
 
 namespace EllieWare.SolidWorks
 {
-  partial class FileNewCtrl
+  partial class NewCtrl
   {
     /// <summary> 
     /// Required designer variable.

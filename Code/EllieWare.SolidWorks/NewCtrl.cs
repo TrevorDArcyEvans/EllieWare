@@ -7,14 +7,7 @@
 //
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Xml;
 using EllieWare.Common;
 using EllieWare.Interfaces;
@@ -22,11 +15,11 @@ using SolidWorks.Interop.swconst;
 
 namespace EllieWare.SolidWorks
 {
-  public partial class FileNewCtrl : UserControlBase
+  public partial class NewCtrl : UserControlBase
   {
     private IRobotWare mRoot;
 
-    public FileNewCtrl()
+    public NewCtrl()
     {
       InitializeComponent();
 

@@ -12,13 +12,13 @@ using SolidWorks.Interop.sldworks;
 
 namespace EllieWare.SolidWorks
 {
-  public class FileClose : MutableRunnableBase<NullCtrl>
+  public class Close : MutableRunnableBase<NullCtrl>
   {
-    public FileClose()
+    public Close()
     {
     }
 
-    public FileClose(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public Close(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
     }

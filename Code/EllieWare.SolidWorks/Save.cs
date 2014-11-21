@@ -13,13 +13,13 @@ using SolidWorks.Interop.swconst;
 
 namespace EllieWare.SolidWorks
 {
-  public class FileSave : MutableRunnableBase<NullCtrl>
+  public class Save : MutableRunnableBase<NullCtrl>
   {
-    public FileSave()
+    public Save()
     {
     }
 
-    public FileSave(IRobotWare root, ICallback callback, IParameterManager mgr) :
+    public Save(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr)
     {
     }
