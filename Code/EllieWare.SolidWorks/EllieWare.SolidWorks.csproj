@@ -67,6 +67,16 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="ClearSelection.cs" />
+    <Compile Include="ClearSelectionFactory.cs" />
+    <Compile Include="ClearUndo.cs" />
+    <Compile Include="ClearUndoFactory.cs" />
+    <Compile Include="CopyFactory.cs" />
+    <Compile Include="Cut.cs" />
+    <Compile Include="Copy.cs" />
+    <Compile Include="CutFactory.cs" />
+    <Compile Include="Delete.cs" />
+    <Compile Include="DeleteFactory.cs" />
     <Compile Include="FileClose.cs" />
     <Compile Include="FileCloseAll.cs" />
     <Compile Include="FileCloseAllFactory.cs" />
@@ -89,9 +99,15 @@
     </Compile>
     <Compile Include="FileSave.cs" />
     <Compile Include="FileSaveFactory.cs" />
+    <Compile Include="Paste.cs" />
+    <Compile Include="PasteFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rebuild.cs" />
     <Compile Include="RebuildFactory.cs" />
+    <Compile Include="Redo.cs" />
+    <Compile Include="RedoFactory.cs" />
+    <Compile Include="Undo.cs" />
+    <Compile Include="UndoFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
