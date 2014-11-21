@@ -79,28 +79,28 @@
     <Compile Include="DeleteFactory.cs" />
     <Compile Include="Exit.cs" />
     <Compile Include="ExitFactory.cs" />
-    <Compile Include="FileClose.cs" />
-    <Compile Include="FileCloseAll.cs" />
-    <Compile Include="FileCloseAllFactory.cs" />
-    <Compile Include="FileCloseFactory.cs" />
-    <Compile Include="FileNew.cs" />
-    <Compile Include="FileNewCtrl.cs">
+    <Compile Include="Close.cs" />
+    <Compile Include="CloseAll.cs" />
+    <Compile Include="CloseAllFactory.cs" />
+    <Compile Include="CloseFactory.cs" />
+    <Compile Include="New.cs" />
+    <Compile Include="NewCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FileNewCtrl.Designer.cs">
-      <DependentUpon>FileNewCtrl.cs</DependentUpon>
+    <Compile Include="NewCtrl.Designer.cs">
+      <DependentUpon>NewCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileNewFactory.cs" />
-    <Compile Include="FileSaveAll.cs" />
-    <Compile Include="FileSaveAllFactory.cs" />
+    <Compile Include="NewFactory.cs" />
+    <Compile Include="SaveAll.cs" />
+    <Compile Include="SaveAllFactory.cs" />
     <Compile Include="NullCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="NullCtrl.Designer.cs">
       <DependentUpon>NullCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileSave.cs" />
-    <Compile Include="FileSaveFactory.cs" />
+    <Compile Include="Save.cs" />
+    <Compile Include="SaveFactory.cs" />
     <Compile Include="Paste.cs" />
     <Compile Include="PasteFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,8 +127,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FileNewCtrl.resx">
-      <DependentUpon>FileNewCtrl.cs</DependentUpon>
+    <EmbeddedResource Include="NewCtrl.resx">
+      <DependentUpon>NewCtrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
