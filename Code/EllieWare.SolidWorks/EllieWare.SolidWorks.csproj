@@ -77,6 +77,8 @@
     <Compile Include="CutFactory.cs" />
     <Compile Include="Delete.cs" />
     <Compile Include="DeleteFactory.cs" />
+    <Compile Include="Exit.cs" />
+    <Compile Include="ExitFactory.cs" />
     <Compile Include="FileClose.cs" />
     <Compile Include="FileCloseAll.cs" />
     <Compile Include="FileCloseAllFactory.cs" />
