@@ -8,8 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EllieWare.Common;
 using EllieWare.Interfaces;
 
@@ -21,7 +19,7 @@ namespace EllieWare.SolidWorks
     {
       get
       {
-        return "Create a new file";
+        return "Create a new document";
       }
     }
 
