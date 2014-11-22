@@ -61,8 +61,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAddin", "SampleAddin\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.Transfer.Email", "EllieWare.Transfer.Email\EllieWare.Transfer.Email.csproj", "{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWare.Runtime", "RobotWare.Runtime\RobotWare.Runtime.csproj", "{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllieWare.EventLogger", "EllieWare.EventLogger\EllieWare.EventLogger.csproj", "{4CEB3860-6167-4A0B-9EB9-064507620C51}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Steps", "Steps", "{075C272D-29F6-4F15-97DD-362600A2A56F}"
@@ -199,10 +197,6 @@ Global
 		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBF4F4DC-392E-4CE6-8B2F-780E1F52AF04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FD9B6FE-B59B-4EF5-A195-8B7F7AFD478C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CEB3860-6167-4A0B-9EB9-064507620C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CEB3860-6167-4A0B-9EB9-064507620C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CEB3860-6167-4A0B-9EB9-064507620C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
