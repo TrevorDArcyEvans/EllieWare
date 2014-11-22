@@ -110,6 +110,30 @@
     <Compile Include="RedoFactory.cs" />
     <Compile Include="Undo.cs" />
     <Compile Include="UndoFactory.cs" />
+    <Compile Include="ViewRotate.cs" />
+    <Compile Include="ViewRotateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewRotateCtrl.Designer.cs">
+      <DependentUpon>ViewRotateCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewRotateFactory.cs" />
+    <Compile Include="ViewTranslate.cs" />
+    <Compile Include="ViewTranslateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewTranslateCtrl.Designer.cs">
+      <DependentUpon>ViewTranslateCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTranslateFactory.cs" />
+    <Compile Include="ViewZoom.cs" />
+    <Compile Include="ViewZoomCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewZoomCtrl.Designer.cs">
+      <DependentUpon>ViewZoomCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewZoomFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\EllieWare.snk">
@@ -129,6 +153,15 @@
   <ItemGroup>
     <EmbeddedResource Include="NewCtrl.resx">
       <DependentUpon>NewCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewRotateCtrl.resx">
+      <DependentUpon>ViewRotateCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewTranslateCtrl.resx">
+      <DependentUpon>ViewTranslateCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewZoomCtrl.resx">
+      <DependentUpon>ViewZoomCtrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
