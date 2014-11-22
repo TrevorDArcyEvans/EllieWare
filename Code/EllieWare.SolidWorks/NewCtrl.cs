@@ -23,7 +23,7 @@ namespace EllieWare.SolidWorks
     {
       InitializeComponent();
 
-      DocType.SelectedIndex = 0;
+      mDocType.SelectedIndex = 0;
     }
 
     public override string Summary
@@ -51,14 +51,14 @@ namespace EllieWare.SolidWorks
 
       var docTypeStr = reader.GetAttribute("DocType");
       var docType = int.Parse(docTypeStr, NumberStyles.Integer, CultureInfo.InvariantCulture);
-      DocType.SelectedIndex = docType - 1;
+      mDocType.SelectedIndex = docType - 1;
     }
 
     public override void WriteXml(XmlWriter writer)
     {
       base.WriteXml(writer);
 
-      var docTypeIdx = DocType.SelectedIndex + 1;
+      var docTypeIdx = mDocType.SelectedIndex + 1;
       writer.WriteAttributeString("DocType", docTypeIdx.ToString(CultureInfo.InvariantCulture));
     }
 
@@ -71,7 +71,7 @@ namespace EllieWare.SolidWorks
     {
       get
       {
-        return (swDocumentTypes_e)(DocType.SelectedIndex + 1);
+        return (swDocumentTypes_e)(mDocType.SelectedIndex + 1);
       }
     }
   }

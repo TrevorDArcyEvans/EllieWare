@@ -37,7 +37,7 @@ namespace EllieWare.SolidWorks
     private void InitializeComponent()
     {
       System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-      this.DocType = new System.Windows.Forms.ComboBox();
+      this.mDocType = new System.Windows.Forms.ComboBox();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
@@ -46,7 +46,7 @@ namespace EllieWare.SolidWorks
       // 
       tableLayoutPanel1.ColumnCount = 1;
       tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      tableLayoutPanel1.Controls.Add(this.DocType, 0, 0);
+      tableLayoutPanel1.Controls.Add(this.mDocType, 0, 0);
       tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -57,17 +57,17 @@ namespace EllieWare.SolidWorks
       // 
       // DocType
       // 
-      this.DocType.Dock = System.Windows.Forms.DockStyle.Top;
-      this.DocType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.DocType.FormattingEnabled = true;
-      this.DocType.Items.AddRange(new object[] {
+      this.mDocType.Dock = System.Windows.Forms.DockStyle.Top;
+      this.mDocType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.mDocType.FormattingEnabled = true;
+      this.mDocType.Items.AddRange(new object[] {
             "Part",
             "Assembly",
             "Drawing"});
-      this.DocType.Location = new System.Drawing.Point(3, 3);
-      this.DocType.Name = "DocType";
-      this.DocType.Size = new System.Drawing.Size(144, 21);
-      this.DocType.TabIndex = 0;
+      this.mDocType.Location = new System.Drawing.Point(3, 3);
+      this.mDocType.Name = "DocType";
+      this.mDocType.Size = new System.Drawing.Size(144, 21);
+      this.mDocType.TabIndex = 0;
       // 
       // FileNewCtrl
       // 
@@ -82,7 +82,6 @@ namespace EllieWare.SolidWorks
 
     #endregion
 
-    private System.Windows.Forms.ComboBox DocType;
-
+    private System.Windows.Forms.ComboBox mDocType;
   }
 }
