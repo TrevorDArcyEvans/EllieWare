@@ -129,3 +129,41 @@ Uses for _RobotWare SDK_:
 * limited only by your imagination!
 
 </details>
+
+## Other Products
+
+<details>
+
+### RobotWare Runtime for SpaceClaim
+
+<details>
+
+Features:
+* centralise development of macros
+* run-only system for clients
+
+</details>
+
+### SerpentWare for SpaceClaim
+
+<details>
+
+Features:
+* _Python_ scripting directly integrated into _SpaceClaim_
+* automate _SpaceClaim_ with _Python_
+* editor with built-in highlighting
+* _IntelliSense_ for all _Python_ and _SpaceClaim_ APIs
+
+</details>
+
+### RobotWare for SolidWorks
+
+<details>
+
+Features:
+* all the functionality of _RobotWare_, integrated in _SolidWorks_
+* wide range of _SolidWorks_ specific steps
+
+</details>
+
+</details>
