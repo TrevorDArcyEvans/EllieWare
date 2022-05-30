@@ -23,14 +23,14 @@ namespace EllieWare.SpaceClaim
     public ImportFromForeign(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.PartExportFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.PartExportFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Import {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Import {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -62,9 +62,9 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var fmt = Format(SourceFilePathResolvedValue);
+      var fmt = Format(mControl.SourceFilePathResolvedValue);
       var extn = Extension(fmt);
-      var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+      var fileName = Path.ChangeExtension(mControl.SourceFilePathResolvedValue, extn);
       var opts = ImportOptions.Create();
 
       opts.Acis.CreateAssembly = true;

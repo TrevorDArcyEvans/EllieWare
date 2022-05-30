@@ -19,7 +19,7 @@ namespace EllieWare.Zip
       mControl.SetDestinationFileSelectorFilter(Common.FileExtensions.ZipFilesFilter);
     }
 
-    public string Summary
+    public override string Summary
     {
       get
       {
@@ -29,7 +29,7 @@ namespace EllieWare.Zip
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
       using (var zip = Ionic.Zip.ZipFile.Read(mControl.DestinationFilePathResolvedValue))
       {

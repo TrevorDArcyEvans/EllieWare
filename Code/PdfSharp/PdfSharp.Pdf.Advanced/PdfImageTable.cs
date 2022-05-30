@@ -113,7 +113,7 @@ namespace PdfSharp.Pdf.Advanced
         ImageSelector selector = obj as ImageSelector;
         if (obj == null)
           return false;
-        return this.path == selector.path; ;
+        return this.path == selector.path;
       }
 
       public override int GetHashCode()

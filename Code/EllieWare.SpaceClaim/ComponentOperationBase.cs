@@ -5,6 +5,8 @@
 //
 //  www.EllieWare.com
 //
+
+using System;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
@@ -12,7 +14,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class ComponentOperationBase : SpaceClaimMutableRunnableBase
+  public partial class ComponentOperationBase : SpaceClaimMutableRunnableBase, IDisposable
   {
     public ComponentOperationBase()
     {
@@ -42,14 +44,6 @@ namespace EllieWare.SpaceClaim
       writer.WriteAttributeString("Save", ChkSave.Checked.ToString(CultureInfo.InvariantCulture));
     }
 
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
-    }
-
     private void ChkRecursive_CheckedChanged(object sender, System.EventArgs e)
     {
       FireConfigurationChanged();
@@ -58,6 +52,11 @@ namespace EllieWare.SpaceClaim
     private void ChkSave_CheckedChanged(object sender, System.EventArgs e)
     {
       FireConfigurationChanged();
+    }
+
+    public void Dispose()
+    {
+      Dispose(true);
     }
   }
 }

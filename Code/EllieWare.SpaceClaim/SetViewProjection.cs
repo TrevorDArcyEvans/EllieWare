@@ -16,7 +16,7 @@ using SpaceClaim.Api.V10.Geometry;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class SetViewProjection : SpaceClaimMutableRunnableBase
+  public partial class SetViewProjection : SpaceClaimMutableRunnableBase, IDisposable
   {
     private readonly List<KeyValuePair<string, Matrix>> SupportedViewprojections = new List<KeyValuePair<string, Matrix>>
                                                                                      {
@@ -73,14 +73,6 @@ namespace EllieWare.SpaceClaim
       writer.WriteAttributeString("ViewProjection", SelViewProjection.SelectedIndex.ToString(CultureInfo.InvariantCulture));
     }
 
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
-    }
-
     protected override bool DoRun()
     {
       Window.ActiveWindow.SetProjection(SupportedViewprojections[SelViewProjection.SelectedIndex].Value, false, true);
@@ -91,6 +83,11 @@ namespace EllieWare.SpaceClaim
     private void SelViewProjection_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
+    }
+
+    public void Dispose()
+    {
+      Dispose(true);
     }
   }
 }

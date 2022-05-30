@@ -22,14 +22,14 @@ namespace EllieWare.SpaceClaim
     public OpenNative(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.NativeFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.NativeFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Open {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Open {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -46,7 +46,7 @@ namespace EllieWare.SpaceClaim
     protected override bool DoRun()
     {
       // if file is already open, then Document.DocumentCompleted event is never fired
-      var windows = Document.Open(SourceFilePathResolvedValue, null);
+      var windows = Document.Open(mControl.SourceFilePathResolvedValue, null);
 
       Window.ActiveWindow = windows.First();
 

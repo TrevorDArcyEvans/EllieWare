@@ -31,7 +31,7 @@ namespace EllieWare.Pdf
       mControl.OutputFileSelector.Filter = Common.FileExtensions.PdfFilesFilter;
     }
 
-    public bool Run()
+    public override bool Run()
     {
       var files = new[] { mControl.SourceFilePathResolvedValue, mControl.DestinationFilePathResolvedValue };
 

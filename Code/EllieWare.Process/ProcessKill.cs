@@ -18,7 +18,7 @@ namespace EllieWare.Process
     {
     }
 
-    public string Summary
+    public override string Summary
     {
       get
       {

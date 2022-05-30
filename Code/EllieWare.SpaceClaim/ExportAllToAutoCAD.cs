@@ -17,7 +17,7 @@ using SpaceClaim.Api.V10;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class ExportAllToAutoCAD : SpaceClaimSingleItemIOBase
+  public partial class ExportAllToAutoCAD : SpaceClaimSingleItemIOBase, IDisposable
   {
     public ExportAllToAutoCAD()
     {
@@ -33,7 +33,7 @@ namespace EllieWare.SpaceClaim
 
       ExportMain.BringToFront();
 
-      SetSourceLabel("Directory:");
+      mControl.SetSourceLabel("Directory:");
 
       FileFormat.Items.Clear();
       FileFormat.Items.AddRange(new object[] { "AutoCAD DWG files (*.dwg)", "AutoCAD DXF files (*.dxf)" });
@@ -44,7 +44,7 @@ namespace EllieWare.SpaceClaim
     {
       get
       {
-        var descrip = string.Format("Export all drawing sheets to {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Export all drawing sheets to {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -66,14 +66,6 @@ namespace EllieWare.SpaceClaim
       writer.WriteAttributeString("FileFormat", FileFormat.SelectedIndex.ToString(CultureInfo.InvariantCulture));
     }
 
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
-    }
-
     protected override bool DoRun()
     {
       var fmt = FileFormat.SelectedIndex == 0 ? WindowExportFormat.AutoCadDwg : WindowExportFormat.AutoCadDxf;
@@ -88,7 +80,7 @@ namespace EllieWare.SpaceClaim
         {
           var drawingFileNameNoExtn = String.Format("{0} - Sheet {1}", fileName, idx);
           var drawingFileName = Path.ChangeExtension(drawingFileNameNoExtn, fileExtn);
-          var outputFilePath = Path.Combine(SourceFilePathResolvedValue, drawingFileName);
+          var outputFilePath = Path.Combine(mControl.SourceFilePathResolvedValue, drawingFileName);
 
           Window.ActiveWindow.Export(fmt, outputFilePath);
         }
@@ -101,6 +93,11 @@ namespace EllieWare.SpaceClaim
     private void FileFormat_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
+    }
+
+    public void Dispose()
+    {
+      Dispose(true);
     }
   }
 }

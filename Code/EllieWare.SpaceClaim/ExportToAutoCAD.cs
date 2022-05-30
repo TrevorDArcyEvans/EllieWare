@@ -21,14 +21,14 @@ namespace EllieWare.SpaceClaim
     public ExportToAutoCAD(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.WindowVectorExportFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.WindowVectorExportFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Export drawing sheet to {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Export drawing sheet to {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -36,7 +36,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var fileName = SourceFilePathResolvedValue;
+      var fileName = mControl.SourceFilePathResolvedValue;
       WindowExportFormat fmt;
       var extn = Path.GetExtension(fileName);
       if (extn == null || !Utils.VectorFormats.ContainsKey(extn.ToLowerInvariant()))

@@ -18,13 +18,13 @@ namespace EllieWare.SpaceClaim
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    protected void Dispose(bool disposing)
     {
       if (disposing && (components != null))
       {
         components.Dispose();
       }
-      base.Dispose(disposing);
+      mControl.Dispose();
     }
 
     #region Component Designer generated code
@@ -44,7 +44,7 @@ namespace EllieWare.SpaceClaim
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label2 = new System.Windows.Forms.Label();
       tableLayoutPanel1.SuspendLayout();
-      this.SuspendLayout();
+      this.mControl.SuspendLayout();
       // 
       // label1
       // 
@@ -108,13 +108,13 @@ namespace EllieWare.SpaceClaim
       // 
       // AssemblyDrawings
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.Controls.Add(tableLayoutPanel1);
-      this.Name = "AssemblyDrawings";
-      this.Size = new System.Drawing.Size(302, 207);
+      this.mControl.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.mControl.Controls.Add(tableLayoutPanel1);
+      this.mControl.Name = "AssemblyDrawings";
+      this.mControl.Size = new System.Drawing.Size(302, 207);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
-      this.ResumeLayout(false);
+      this.mControl.ResumeLayout(false);
 
     }
 

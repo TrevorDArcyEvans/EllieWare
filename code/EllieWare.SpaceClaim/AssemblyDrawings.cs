@@ -17,7 +17,7 @@ using SpaceClaim.Api.V10.Geometry;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class AssemblyDrawings : SpaceClaimMutableRunnableBase
+  public partial class AssemblyDrawings : SpaceClaimMutableRunnableBase, IDisposable
   {
     private readonly List<KeyValuePair<string, DrawingViewStyle>> SupportedViewStyles = new List<KeyValuePair<string, DrawingViewStyle>>
                                                                                     {
@@ -129,6 +129,11 @@ namespace EllieWare.SpaceClaim
     private void DrawingStyle_SelectedIndexChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
+    }
+
+    public void Dispose()
+    {
+      Dispose(true);
     }
   }
 }

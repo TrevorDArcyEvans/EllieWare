@@ -18,13 +18,13 @@ namespace EllieWare.SpaceClaim
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    protected void Dispose(bool disposing)
     {
       if (disposing && (components != null))
       {
         components.Dispose();
       }
-      base.Dispose(disposing);
+      mControl.Dispose();
     }
 
     #region Component Designer generated code
@@ -40,7 +40,7 @@ namespace EllieWare.SpaceClaim
       this.ChkSave = new System.Windows.Forms.CheckBox();
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       tableLayoutPanel1.SuspendLayout();
-      this.SuspendLayout();
+      this.mControl.SuspendLayout();
       // 
       // tableLayoutPanel1
       // 
@@ -81,14 +81,14 @@ namespace EllieWare.SpaceClaim
       // 
       // ComponentOperationBase
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(tableLayoutPanel1);
-      this.Name = "ComponentOperationBase";
-      this.Size = new System.Drawing.Size(293, 229);
+      this.mControl.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.mControl.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.mControl.Controls.Add(tableLayoutPanel1);
+      this.mControl.Name = "ComponentOperationBase";
+      this.mControl.Size = new System.Drawing.Size(293, 229);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
-      this.ResumeLayout(false);
+      this.mControl.ResumeLayout(false);
 
     }
 

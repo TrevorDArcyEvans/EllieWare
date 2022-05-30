@@ -45,7 +45,7 @@ namespace EllieWare.Transfer.FTP
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
       using (var ftp = mControl.mFtpInfo.GetFtpConnection())
       {

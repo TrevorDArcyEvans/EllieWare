@@ -18,13 +18,13 @@ namespace EllieWare.SpaceClaim
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    protected void Dispose(bool disposing)
     {
       if (disposing && (components != null))
       {
         components.Dispose();
       }
-      base.Dispose(disposing);
+      mControl.Dispose();
     }
 
     #region Component Designer generated code
@@ -41,7 +41,7 @@ namespace EllieWare.SpaceClaim
       tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       label1 = new System.Windows.Forms.Label();
       tableLayoutPanel1.SuspendLayout();
-      this.SuspendLayout();
+      this.mControl.SuspendLayout();
       // 
       // tableLayoutPanel1
       // 
@@ -81,14 +81,14 @@ namespace EllieWare.SpaceClaim
       // 
       // ViewProjection
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(tableLayoutPanel1);
-      this.Name = "ViewProjection";
-      this.Size = new System.Drawing.Size(389, 64);
+      this.mControl.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.mControl.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.mControl.Controls.Add(tableLayoutPanel1);
+      this.mControl.Name = "ViewProjection";
+      this.mControl.Size = new System.Drawing.Size(389, 64);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
-      this.ResumeLayout(false);
+      this.mControl.ResumeLayout(false);
 
     }
 

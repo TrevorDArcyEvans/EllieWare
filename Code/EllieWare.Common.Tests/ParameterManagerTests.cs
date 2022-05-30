@@ -5,6 +5,7 @@
 //
 //  www.EllieWare.com
 //
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +23,6 @@ namespace EllieWare.Common.Tests
     private IParameterManager mParamMgr;
 
     #region SetUp/TearDown
-
-    [TestFixtureSetUp]
-    public void FixtureSetUp()
-    {
-    }
-
-    [TestFixtureTearDown]
-    public void FixtureTearDown()
-    {
-    }
 
     [SetUp]
     public void Setup()
@@ -62,11 +53,13 @@ namespace EllieWare.Common.Tests
     }
 
     [Test]
-    [ExpectedException(typeof(ArgumentException))]
     public void ParameterManager_AddSameKey_ThrowsException()
     {
-      mParamMgr.Add(new SerializableParameter(mKey1, mParam));
-      mParamMgr.Add(new SerializableParameter(mKey1, mParam));
+      Assert.Throws<ArgumentException>(() =>
+      {
+        mParamMgr.Add(new SerializableParameter(mKey1, mParam));
+        mParamMgr.Add(new SerializableParameter(mKey1, mParam));
+      });
     }
 
     [Test]
@@ -110,10 +103,9 @@ namespace EllieWare.Common.Tests
     }
 
     [Test]
-    [ExpectedException(typeof(KeyNotFoundException))]
     public void ParameterManager_GetRandomKey_ThrowsException()
     {
-      Assert.IsNull(mParamMgr.Get(Guid.NewGuid().ToString()));
+      Assert.Throws<KeyNotFoundException>(() => mParamMgr.Get(Guid.NewGuid().ToString()));
     }
 
     #endregion
@@ -166,19 +158,23 @@ namespace EllieWare.Common.Tests
     }
 
     [Test]
-    [ExpectedException(typeof(TypeAccessException))]
     public void ParameterManager_UpdateDifferentType_ThrowsException()
     {
-      mParamMgr.Add(new SerializableParameter(mKey1, mParam));
-      mParamMgr.Update(new SerializableParameter(mKey1, 7.0));
+      Assert.Throws<TypeAccessException>(() =>
+      {
+        mParamMgr.Add(new SerializableParameter(mKey1, mParam));
+        mParamMgr.Update(new SerializableParameter(mKey1, 7.0));
+      });
     }
 
     [Test]
-    [ExpectedException(typeof(KeyNotFoundException))]
     public void ParameterManager_UpdateNotExists_ThrowsException()
     {
-      mParamMgr.Add(new SerializableParameter(mKey1, mParam));
-      mParamMgr.Update(new SerializableParameter("NotExists", 7.0));
+      Assert.Throws<KeyNotFoundException>(() =>
+      {
+        mParamMgr.Add(new SerializableParameter(mKey1, mParam));
+        mParamMgr.Update(new SerializableParameter("NotExists", 7.0));
+      });
     }
 
     #endregion

@@ -197,7 +197,7 @@ namespace PdfSharp.Pdf.Advanced
         Selector selector = obj as Selector;
         if (obj == null)
           return false;
-        return this.path == selector.path; ;
+        return this.path == selector.path;
       }
 
       public override int GetHashCode()

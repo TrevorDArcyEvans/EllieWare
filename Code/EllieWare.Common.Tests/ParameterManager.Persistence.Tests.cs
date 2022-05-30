@@ -21,16 +21,6 @@ namespace EllieWare.Common.Tests
 
     #region SetUp/TearDown
 
-    [TestFixtureSetUp]
-    public void FixtureSetUp()
-    {
-    }
-
-    [TestFixtureTearDown]
-    public void FixtureTearDown()
-    {
-    }
-
     [SetUp]
     public void Setup()
     {

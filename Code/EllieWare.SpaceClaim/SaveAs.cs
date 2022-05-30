@@ -20,14 +20,14 @@ namespace EllieWare.SpaceClaim
     public SaveAs(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.NativeFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.NativeFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Save current document as {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Save current document as {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -36,7 +36,7 @@ namespace EllieWare.SpaceClaim
     protected override bool DoRun()
     {
       var doc = Window.ActiveWindow.Document;
-      doc.SaveAs(SourceFilePathResolvedValue);
+      doc.SaveAs(mControl.SourceFilePathResolvedValue);
 
       return true;
     }

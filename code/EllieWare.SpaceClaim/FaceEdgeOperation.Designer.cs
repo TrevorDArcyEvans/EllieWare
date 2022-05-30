@@ -18,13 +18,13 @@ namespace EllieWare.SpaceClaim
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    protected void Dispose(bool disposing)
     {
       if (disposing && (components != null))
       {
         components.Dispose();
       }
-      base.Dispose(disposing);
+      mControl.Dispose();
     }
 
     #region Component Designer generated code
@@ -46,7 +46,7 @@ namespace EllieWare.SpaceClaim
       tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.AreaThreshold)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
-      this.SuspendLayout();
+      this.mControl.SuspendLayout();
       // 
       // tableLayoutPanel1
       // 
@@ -130,16 +130,16 @@ namespace EllieWare.SpaceClaim
       // 
       // FaceAreaColor
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(tableLayoutPanel1);
-      this.Name = "FaceAreaColor";
-      this.Size = new System.Drawing.Size(294, 223);
+      this.mControl.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.mControl.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.mControl.Controls.Add(tableLayoutPanel1);
+      this.mControl.Name = "FaceAreaColor";
+      this.mControl.Size = new System.Drawing.Size(294, 223);
       tableLayoutPanel1.ResumeLayout(false);
       tableLayoutPanel1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.AreaThreshold)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).EndInit();
-      this.ResumeLayout(false);
+      this.mControl.ResumeLayout(false);
 
     }
 

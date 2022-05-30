@@ -25,11 +25,11 @@ namespace EllieWare.SpaceClaim
     public Difference(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceLabel("Original:");
-      SetDestinationLabel("Modified:");
+      mControl.SetSourceLabel("Original:");
+      mControl.SetDestinationLabel("Modified:");
 
-      SetSourceFileSelectorFilter(Utils.NativeFilter);
-      SetDestinationFileSelectorFilter(Utils.NativeFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.NativeFilter);
+      mControl.SetDestinationFileSelectorFilter(Utils.NativeFilter);
     }
 
     public override string Summary
@@ -37,8 +37,8 @@ namespace EllieWare.SpaceClaim
       get
       {
         var descrip = string.Format("Compare {0} to {1} and put the results in a new design",
-                        SourceFilePathResolvedValue,
-                        DestinationFilePathResolvedValue);
+          mControl.SourceFilePathResolvedValue,
+          mControl.DestinationFilePathResolvedValue);
 
         return descrip;
       }
@@ -69,13 +69,13 @@ namespace EllieWare.SpaceClaim
 
     private bool DoRun()
     {
-      var original = GetCopyMainBody(SourceFilePathResolvedValue);
+      var original = GetCopyMainBody(mControl.SourceFilePathResolvedValue);
       if (original == null)
       {
         return false;
       }
 
-      var modified = GetCopyMainBody(DestinationFilePathResolvedValue);
+      var modified = GetCopyMainBody(mControl.DestinationFilePathResolvedValue);
       if ( modified == null)
       {
         return false;

@@ -21,14 +21,14 @@ namespace EllieWare.SpaceClaim
     public ExportToPdf(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
+      mControl.SetSourceFileSelectorFilter(Common.FileExtensions.PdfFilesFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Export drawing sheet to {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Export drawing sheet to {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -36,7 +36,7 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var fileName = SourceFilePathResolvedValue;
+      var fileName = mControl.SourceFilePathResolvedValue;
       if (!fileName.ToLowerInvariant().EndsWith(Common.FileExtensions.PdfFileExtension))
       {
         fileName = Path.ChangeExtension(fileName, Common.FileExtensions.PdfFileExtension);

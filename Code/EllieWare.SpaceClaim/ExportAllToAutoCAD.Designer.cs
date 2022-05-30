@@ -18,13 +18,13 @@ namespace EllieWare.SpaceClaim
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    protected void Dispose(bool disposing)
     {
       if (disposing && (components != null))
       {
         components.Dispose();
       }
-      base.Dispose(disposing);
+      mControl.Dispose();
     }
 
     #region Component Designer generated code
@@ -40,7 +40,7 @@ namespace EllieWare.SpaceClaim
       this.FileFormat = new System.Windows.Forms.ComboBox();
       label1 = new System.Windows.Forms.Label();
       this.ExportMain.SuspendLayout();
-      this.SuspendLayout();
+      this.mControl.SuspendLayout();
       // 
       // ExportMain
       // 
@@ -79,13 +79,13 @@ namespace EllieWare.SpaceClaim
       // 
       // ExportAllToAutoCAD
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.ExportMain);
-      this.Name = "ExportAllToAutoCAD";
+      this.mControl.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.mControl.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.mControl.Controls.Add(this.ExportMain);
+      this.mControl.Name = "ExportAllToAutoCAD";
       this.ExportMain.ResumeLayout(false);
       this.ExportMain.PerformLayout();
-      this.ResumeLayout(false);
+      this.mControl.ResumeLayout(false);
 
     }
 

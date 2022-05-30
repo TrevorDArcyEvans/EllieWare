@@ -22,14 +22,14 @@ namespace EllieWare.SpaceClaim
     public ExportToForeign(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.PartExportFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.PartExportFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Export current part model to {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Export current part model to {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -64,9 +64,9 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      if (IsBrepFormat(SourceFilePathResolvedValue))
+      if (IsBrepFormat(mControl.SourceFilePathResolvedValue))
       {
-        var extn = Path.GetExtension(SourceFilePathResolvedValue).ToLowerInvariant();
+        var extn = Path.GetExtension(mControl.SourceFilePathResolvedValue).ToLowerInvariant();
         var fmt = Utils.BrepFormats[extn];
         var opts = ExportOptions.Create();
 
@@ -75,13 +75,13 @@ namespace EllieWare.SpaceClaim
 
         var doc = Window.ActiveWindow.Document;
 
-        doc.MainPart.Export(fmt, SourceFilePathResolvedValue, true, opts);
+        doc.MainPart.Export(fmt, mControl.SourceFilePathResolvedValue, true, opts);
       }
       else
       {
-        var fmt = TessellatedFormat(SourceFilePathResolvedValue);
+        var fmt = TessellatedFormat(mControl.SourceFilePathResolvedValue);
         var extn = TessellatedExtension(fmt);
-        var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+        var fileName = Path.ChangeExtension(mControl.SourceFilePathResolvedValue, extn);
 
         Window.ActiveWindow.ExportPart(fmt, fileName);
       }

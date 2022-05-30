@@ -33,7 +33,7 @@ namespace EllieWare.Imaging
       }
     }
 
-    public bool Run()
+    public override bool Run()
     {
       var processor = new Simplicode.Imaging.ImageProcessor { JpegCompression = 90L };
 

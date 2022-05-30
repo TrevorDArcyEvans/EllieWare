@@ -39,7 +39,7 @@ namespace EllieWare.SpaceClaim
       throw new NotImplementedException();
     }
 
-    public override sealed bool Run()
+    public sealed override bool Run()
     {
       var evt = new AutoResetEvent(false);
       var retVal = false;

@@ -22,14 +22,14 @@ namespace EllieWare.SpaceClaim
     public ExportToBitmap(IRobotWare root, ICallback callback, IParameterManager mgr) :
       base(root, callback, mgr, BrowserTypes.BothFile)
     {
-      SetSourceFileSelectorFilter(Utils.WindowRasterExportFilter);
+      mControl.SetSourceFileSelectorFilter(Utils.WindowRasterExportFilter);
     }
 
     public override string Summary
     {
       get
       {
-        var descrip = string.Format("Save current view as a bitmap to {0}", SourceFilePathResolvedValue);
+        var descrip = string.Format("Save current view as a bitmap to {0}", mControl.SourceFilePathResolvedValue);
 
         return descrip;
       }
@@ -53,9 +53,9 @@ namespace EllieWare.SpaceClaim
 
     protected override bool DoRun()
     {
-      var fmt = Format(SourceFilePathResolvedValue);
+      var fmt = Format(mControl.SourceFilePathResolvedValue);
       var extn = Extension(fmt);
-      var fileName = Path.ChangeExtension(SourceFilePathResolvedValue, extn);
+      var fileName = Path.ChangeExtension(mControl.SourceFilePathResolvedValue, extn);
 
       Window.ActiveWindow.Export(fmt, fileName);
 

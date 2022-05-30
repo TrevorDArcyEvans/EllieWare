@@ -14,7 +14,7 @@ using EllieWare.Interfaces;
 
 namespace EllieWare.SpaceClaim
 {
-  public partial class FaceEdgeOperation : SpaceClaimMutableRunnableBase
+  public partial class FaceEdgeOperation : SpaceClaimMutableRunnableBase, IDisposable
   {
     public FaceEdgeOperation()
     {
@@ -42,14 +42,6 @@ namespace EllieWare.SpaceClaim
     {
       writer.WriteAttributeString("AreaThreshold", AreaThreshold.Value.ToString(CultureInfo.InvariantCulture));
       writer.WriteAttributeString("Color", ColorTranslator.ToHtml(ColorDlg.Color));
-    }
-
-    public override Control ConfigurationUserInterface
-    {
-      get
-      {
-        return this;
-      }
     }
 
     protected override bool DoRun()
@@ -84,6 +76,11 @@ namespace EllieWare.SpaceClaim
     private void AreaThreshold_ValueChanged(object sender, EventArgs e)
     {
       FireConfigurationChanged();
+    }
+
+    public void Dispose()
+    {
+      Dispose(true);
     }
   }
 }
